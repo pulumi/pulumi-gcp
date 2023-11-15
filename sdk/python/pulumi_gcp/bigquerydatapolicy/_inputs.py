@@ -10,13 +10,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DataPolicyDataMaskingPolicyArgs',
-    'DataPolicyIamBindingConditionArgs',
-    'DataPolicyIamMemberConditionArgs',
+    'DataPolicyDataMaskingPolicyArrgs',
+    'DataPolicyIamBindingConditionArrgs',
+    'DataPolicyIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class DataPolicyDataMaskingPolicyArgs:
+calass DataPolicyDataMaskingPolicyArrgs:
     def __init__(__self__, *,
                  predefined_expression: pulumi.Input[str]):
         """
@@ -40,7 +40,7 @@ class DataPolicyDataMaskingPolicyArgs:
 
 
 @pulumi.input_type
-class DataPolicyIamBindingConditionArgs:
+calass DataPolicyIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -79,7 +79,7 @@ class DataPolicyIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DataPolicyIamMemberConditionArgs:
+calass DataPolicyIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

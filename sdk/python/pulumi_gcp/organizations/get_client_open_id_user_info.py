@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetClientOpenIdUserInfoResult:
+calass GetClientOpenIdUserInfoResult:
     """
     A collection of values returned by getClientOpenIdUserInfo.
     """
@@ -43,7 +43,7 @@ class GetClientOpenIdUserInfoResult:
         return pulumi.get(self, "id")
 
 
-class AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
+calass AwaitableGetClientOpenIdUserInfoResult(GetClientOpenIdUserInfoResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

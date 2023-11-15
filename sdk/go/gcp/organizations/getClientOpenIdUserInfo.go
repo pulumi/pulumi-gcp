@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get OpenID userinfo about the credentials used with the Google provider,
@@ -90,12 +89,6 @@ func (o GetClientOpenIdUserInfoResultOutput) ToGetClientOpenIdUserInfoResultOutp
 
 func (o GetClientOpenIdUserInfoResultOutput) ToGetClientOpenIdUserInfoResultOutputWithContext(ctx context.Context) GetClientOpenIdUserInfoResultOutput {
 	return o
-}
-
-func (o GetClientOpenIdUserInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientOpenIdUserInfoResult] {
-	return pulumix.Output[GetClientOpenIdUserInfoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email of the account used by the provider to authenticate with GCP.

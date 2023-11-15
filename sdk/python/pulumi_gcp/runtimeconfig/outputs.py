@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConfigIamBindingCondition(dict):
+calass ConfigIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -42,7 +42,7 @@ class ConfigIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ConfigIamMemberCondition(dict):
+calass ConfigIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

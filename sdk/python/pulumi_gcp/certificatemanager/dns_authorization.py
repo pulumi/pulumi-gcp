@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DnsAuthorizationArgs', 'DnsAuthorization']
+__all__ = ['DnsAuthorizationArrgs', 'DnsAuthorization']
 
 @pulumi.input_type
-class DnsAuthorizationArgs:
+calass DnsAuthorizationArrgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -121,10 +121,10 @@ class DnsAuthorizationArgs:
 
 
 @pulumi.input_type
-class _DnsAuthorizationState:
+calass _DnsAuthorizationState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 dns_resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]]] = None,
+                 dns_resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArrgs']]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -134,7 +134,7 @@ class _DnsAuthorizationState:
         """
         Input properties used for looking up and filtering DnsAuthorization resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
+        :param pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArrgs']]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
                to DNS configuration for the authorization to be usable by
                certificate.
                Structure is documented below.
@@ -187,7 +187,7 @@ class _DnsAuthorizationState:
 
     @property
     @pulumi.getter(name="dnsResourceRecords")
-    def dns_resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]]]:
+    def dns_resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArrgs']]]]:
         """
         The structure describing the DNS Resource Record that needs to be added
         to DNS configuration for the authorization to be usable by
@@ -197,7 +197,7 @@ class _DnsAuthorizationState:
         return pulumi.get(self, "dns_resource_records")
 
     @dns_resource_records.setter
-    def dns_resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]]]):
+    def dns_resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArrgs']]]]):
         pulumi.set(self, "dns_resource_records", value)
 
     @property
@@ -284,7 +284,7 @@ class _DnsAuthorizationState:
         pulumi.set(self, "pulumi_labels", value)
 
 
-class DnsAuthorization(pulumi.CustomResource):
+calass DnsAuthorization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -351,7 +351,7 @@ class DnsAuthorization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DnsAuthorizationArgs,
+                 args: DnsAuthorizationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
@@ -388,12 +388,12 @@ class DnsAuthorization(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DnsAuthorizationArgs args: The arguments to use to populate this resource's properties.
+        :param DnsAuthorizationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DnsAuthorizationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DnsAuthorizationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -414,7 +414,7 @@ class DnsAuthorization(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DnsAuthorizationArgs.__new__(DnsAuthorizationArgs)
+            __props__ = DnsAuthorizationArrgs.__new__(DnsAuthorizationArrgs)
 
             __props__.__dict__["description"] = description
             if domain is None and not opts.urn:
@@ -439,7 +439,7 @@ class DnsAuthorization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dns_resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArgs']]]]] = None,
+            dns_resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArrgs']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -454,7 +454,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArgs']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArrgs']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
                to DNS configuration for the authorization to be usable by
                certificate.
                Structure is documented below.

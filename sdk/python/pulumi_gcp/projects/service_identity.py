@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ServiceIdentityArgs', 'ServiceIdentity']
+__all__ = ['ServiceIdentityArrgs', 'ServiceIdentity']
 
 @pulumi.input_type
-class ServiceIdentityArgs:
+calass ServiceIdentityArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
@@ -57,7 +57,7 @@ class ServiceIdentityArgs:
 
 
 @pulumi.input_type
-class _ServiceIdentityState:
+calass _ServiceIdentityState:
     def __init__(__self__, *,
                  email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class _ServiceIdentityState:
         pulumi.set(self, "service", value)
 
 
-class ServiceIdentity(pulumi.CustomResource):
+calass ServiceIdentity(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -174,7 +174,7 @@ class ServiceIdentity(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceIdentityArgs,
+                 args: ServiceIdentityArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Generate service identity for a service.
@@ -213,12 +213,12 @@ class ServiceIdentity(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param ServiceIdentityArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceIdentityArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceIdentityArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceIdentityArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -236,7 +236,7 @@ class ServiceIdentity(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceIdentityArgs.__new__(ServiceIdentityArgs)
+            __props__ = ServiceIdentityArrgs.__new__(ServiceIdentityArrgs)
 
             __props__.__dict__["project"] = project
             if service is None and not opts.urn:

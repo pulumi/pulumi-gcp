@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SnapshotArgs', 'Snapshot']
+__all__ = ['SnapshotArrgs', 'Snapshot']
 
 @pulumi.input_type
-class SnapshotArgs:
+calass SnapshotArrgs:
     def __init__(__self__, *,
                  source_disk: pulumi.Input[str],
                  chain_name: Optional[pulumi.Input[str]] = None,
@@ -22,8 +22,8 @@ class SnapshotArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+                 snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs']] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -51,7 +51,7 @@ class SnapshotArgs:
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
                After you encrypt a snapshot using a customer-supplied key, you must
                provide the same key if you use the snapshot later. For example, you
                must provide the encryption key when you create a disk from the
@@ -62,7 +62,7 @@ class SnapshotArgs:
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
-        :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -180,7 +180,7 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter(name="snapshotEncryptionKey")
-    def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]:
+    def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs']]:
         """
         Encrypts the snapshot using a customer-supplied encryption key.
         After you encrypt a snapshot using a customer-supplied key, you must
@@ -197,12 +197,12 @@ class SnapshotArgs:
         return pulumi.get(self, "snapshot_encryption_key")
 
     @snapshot_encryption_key.setter
-    def snapshot_encryption_key(self, value: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]):
+    def snapshot_encryption_key(self, value: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs']]):
         pulumi.set(self, "snapshot_encryption_key", value)
 
     @property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]:
+    def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -212,7 +212,7 @@ class SnapshotArgs:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @source_disk_encryption_key.setter
-    def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]):
+    def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @property
@@ -241,7 +241,7 @@ class SnapshotArgs:
 
 
 @pulumi.input_type
-class _SnapshotState:
+calass _SnapshotState:
     def __init__(__self__, *,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -255,10 +255,10 @@ class _SnapshotState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
+                 snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs']] = None,
                  snapshot_id: Optional[pulumi.Input[int]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs']] = None,
                  storage_bytes: Optional[pulumi.Input[int]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -295,7 +295,7 @@ class _SnapshotState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+        :param pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
                After you encrypt a snapshot using a customer-supplied key, you must
                provide the same key if you use the snapshot later. For example, you
                must provide the encryption key when you create a disk from the
@@ -311,7 +311,7 @@ class _SnapshotState:
                
                
                - - -
-        :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -525,7 +525,7 @@ class _SnapshotState:
 
     @property
     @pulumi.getter(name="snapshotEncryptionKey")
-    def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]:
+    def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs']]:
         """
         Encrypts the snapshot using a customer-supplied encryption key.
         After you encrypt a snapshot using a customer-supplied key, you must
@@ -542,7 +542,7 @@ class _SnapshotState:
         return pulumi.get(self, "snapshot_encryption_key")
 
     @snapshot_encryption_key.setter
-    def snapshot_encryption_key(self, value: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]):
+    def snapshot_encryption_key(self, value: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArrgs']]):
         pulumi.set(self, "snapshot_encryption_key", value)
 
     @property
@@ -574,7 +574,7 @@ class _SnapshotState:
 
     @property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]:
+    def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -584,7 +584,7 @@ class _SnapshotState:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @source_disk_encryption_key.setter
-    def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]):
+    def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArrgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @property
@@ -626,7 +626,7 @@ class _SnapshotState:
         pulumi.set(self, "zone", value)
 
 
-class Snapshot(pulumi.CustomResource):
+calass Snapshot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -636,9 +636,9 @@ class Snapshot(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']]] = None,
+                 snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArrgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArrgs']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -747,7 +747,7 @@ class Snapshot(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArrgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
                After you encrypt a snapshot using a customer-supplied key, you must
                provide the same key if you use the snapshot later. For example, you
                must provide the encryption key when you create a disk from the
@@ -762,7 +762,7 @@ class Snapshot(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArrgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -773,7 +773,7 @@ class Snapshot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SnapshotArgs,
+                 args: SnapshotArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Persistent Disk Snapshot resource.
@@ -860,12 +860,12 @@ class Snapshot(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SnapshotArgs args: The arguments to use to populate this resource's properties.
+        :param SnapshotArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SnapshotArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -879,9 +879,9 @@ class Snapshot(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']]] = None,
+                 snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArrgs']]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArrgs']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -891,7 +891,7 @@ class Snapshot(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SnapshotArgs.__new__(SnapshotArgs)
+            __props__ = SnapshotArrgs.__new__(SnapshotArrgs)
 
             __props__.__dict__["chain_name"] = chain_name
             __props__.__dict__["description"] = description
@@ -938,10 +938,10 @@ class Snapshot(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']]] = None,
+            snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArrgs']]] = None,
             snapshot_id: Optional[pulumi.Input[int]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
-            source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']]] = None,
+            source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArrgs']]] = None,
             storage_bytes: Optional[pulumi.Input[int]] = None,
             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Snapshot':
@@ -983,7 +983,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['SnapshotSnapshotEncryptionKeyArrgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key.
                After you encrypt a snapshot using a customer-supplied key, you must
                provide the same key if you use the snapshot later. For example, you
                must provide the encryption key when you create a disk from the
@@ -999,7 +999,7 @@ class Snapshot(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArrgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.

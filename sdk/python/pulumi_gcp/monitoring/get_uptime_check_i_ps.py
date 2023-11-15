@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetUptimeCheckIPsResult:
+calass GetUptimeCheckIPsResult:
     """
     A collection of values returned by getUptimeCheckIPs.
     """
@@ -47,7 +47,7 @@ class GetUptimeCheckIPsResult:
         return pulumi.get(self, "uptime_check_ips")
 
 
-class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
+calass AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

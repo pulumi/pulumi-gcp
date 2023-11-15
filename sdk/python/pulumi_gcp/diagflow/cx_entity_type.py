@@ -11,24 +11,24 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxEntityTypeArgs', 'CxEntityType']
+__all__ = ['CxEntityTypeArrgs', 'CxEntityType']
 
 @pulumi.input_type
-class CxEntityTypeArgs:
+calass CxEntityTypeArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 entities: pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]],
+                 entities: pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]],
                  kind: pulumi.Input[str],
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  redact: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a CxEntityType resource.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
-        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
         :param pulumi.Input[str] kind: Indicates whether the entity type can be automatically expanded.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
@@ -40,7 +40,7 @@ class CxEntityTypeArgs:
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the following fields in entityType:
@@ -82,7 +82,7 @@ class CxEntityTypeArgs:
 
     @property
     @pulumi.getter
-    def entities(self) -> pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]:
+    def entities(self) -> pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]]:
         """
         The collection of entity entries associated with the entity type.
         Structure is documented below.
@@ -90,7 +90,7 @@ class CxEntityTypeArgs:
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]):
+    def entities(self, value: pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]]):
         pulumi.set(self, "entities", value)
 
     @property
@@ -138,7 +138,7 @@ class CxEntityTypeArgs:
 
     @property
     @pulumi.getter(name="excludedPhrases")
-    def excluded_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]]:
+    def excluded_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]]]:
         """
         Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
         If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
@@ -147,7 +147,7 @@ class CxEntityTypeArgs:
         return pulumi.get(self, "excluded_phrases")
 
     @excluded_phrases.setter
-    def excluded_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]]):
+    def excluded_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]]]):
         pulumi.set(self, "excluded_phrases", value)
 
     @property
@@ -193,13 +193,13 @@ class CxEntityTypeArgs:
 
 
 @pulumi.input_type
-class _CxEntityTypeState:
+calass _CxEntityTypeState:
     def __init__(__self__, *,
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -213,9 +213,9 @@ class _CxEntityTypeState:
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] kind: Indicates whether the entity type can be automatically expanded.
@@ -296,7 +296,7 @@ class _CxEntityTypeState:
 
     @property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]]:
+    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]]]:
         """
         The collection of entity entries associated with the entity type.
         Structure is documented below.
@@ -304,12 +304,12 @@ class _CxEntityTypeState:
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]]]):
+    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArrgs']]]]):
         pulumi.set(self, "entities", value)
 
     @property
     @pulumi.getter(name="excludedPhrases")
-    def excluded_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]]:
+    def excluded_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]]]:
         """
         Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
         If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
@@ -318,7 +318,7 @@ class _CxEntityTypeState:
         return pulumi.get(self, "excluded_phrases")
 
     @excluded_phrases.setter
-    def excluded_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]]]):
+    def excluded_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArrgs']]]]):
         pulumi.set(self, "excluded_phrases", value)
 
     @property
@@ -392,7 +392,7 @@ class _CxEntityTypeState:
         pulumi.set(self, "redact", value)
 
 
-class CxEntityType(pulumi.CustomResource):
+calass CxEntityType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -400,8 +400,8 @@ class CxEntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArrgs']]]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArrgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -438,7 +438,7 @@ class CxEntityType(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         basic_entity_type = gcp.diagflow.CxEntityType("basicEntityType",
@@ -446,14 +446,14 @@ class CxEntityType(pulumi.CustomResource):
             display_name="MyEntity",
             kind="KIND_MAP",
             entities=[
-                gcp.diagflow.CxEntityTypeEntityArgs(
+                gcp.diagflow.CxEntityTypeEntityArrgs(
                     value="value1",
                     synonyms=[
                         "synonym1",
                         "synonym2",
                     ],
                 ),
-                gcp.diagflow.CxEntityTypeEntityArgs(
+                gcp.diagflow.CxEntityTypeEntityArrgs(
                     value="value2",
                     synonyms=[
                         "synonym3",
@@ -484,9 +484,9 @@ class CxEntityType(pulumi.CustomResource):
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArrgs']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArrgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] kind: Indicates whether the entity type can be automatically expanded.
@@ -507,7 +507,7 @@ class CxEntityType(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxEntityTypeArgs,
+                 args: CxEntityTypeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Entities are extracted from user input and represent parameters that are meaningful to your application.
@@ -540,7 +540,7 @@ class CxEntityType(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         basic_entity_type = gcp.diagflow.CxEntityType("basicEntityType",
@@ -548,14 +548,14 @@ class CxEntityType(pulumi.CustomResource):
             display_name="MyEntity",
             kind="KIND_MAP",
             entities=[
-                gcp.diagflow.CxEntityTypeEntityArgs(
+                gcp.diagflow.CxEntityTypeEntityArrgs(
                     value="value1",
                     synonyms=[
                         "synonym1",
                         "synonym2",
                     ],
                 ),
-                gcp.diagflow.CxEntityTypeEntityArgs(
+                gcp.diagflow.CxEntityTypeEntityArrgs(
                     value="value2",
                     synonyms=[
                         "synonym3",
@@ -579,12 +579,12 @@ class CxEntityType(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxEntityTypeArgs args: The arguments to use to populate this resource's properties.
+        :param CxEntityTypeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxEntityTypeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxEntityTypeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -596,8 +596,8 @@ class CxEntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArrgs']]]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArrgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -609,7 +609,7 @@ class CxEntityType(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxEntityTypeArgs.__new__(CxEntityTypeArgs)
+            __props__ = CxEntityTypeArrgs.__new__(CxEntityTypeArrgs)
 
             __props__.__dict__["auto_expansion_mode"] = auto_expansion_mode
             if display_name is None and not opts.urn:
@@ -640,8 +640,8 @@ class CxEntityType(pulumi.CustomResource):
             auto_expansion_mode: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-            entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]]] = None,
-            excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]]] = None,
+            entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArrgs']]]]] = None,
+            excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArrgs']]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -660,9 +660,9 @@ class CxEntityType(pulumi.CustomResource):
                Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArrgs']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArrgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
                Structure is documented below.
         :param pulumi.Input[str] kind: Indicates whether the entity type can be automatically expanded.

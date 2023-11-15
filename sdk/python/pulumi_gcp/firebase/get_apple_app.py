@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAppleAppResult:
+calass GetAppleAppResult:
     """
     A collection of values returned by getAppleApp.
     """
@@ -127,7 +127,7 @@ class GetAppleAppResult:
         return pulumi.get(self, "team_id")
 
 
-class AwaitableGetAppleAppResult(GetAppleAppResult):
+calass AwaitableGetAppleAppResult(GetAppleAppResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

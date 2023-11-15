@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AddressGroupArgs', 'AddressGroup']
+__all__ = ['AddressGroupArrgs', 'AddressGroup']
 
 @pulumi.input_type
-class AddressGroupArgs:
+calass AddressGroupArrgs:
     def __init__(__self__, *,
                  capacity: pulumi.Input[int],
                  location: pulumi.Input[str],
@@ -163,7 +163,7 @@ class AddressGroupArgs:
 
 
 @pulumi.input_type
-class _AddressGroupState:
+calass _AddressGroupState:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input[int]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -390,7 +390,7 @@ class _AddressGroupState:
         pulumi.set(self, "update_time", value)
 
 
-class AddressGroup(pulumi.CustomResource):
+calass AddressGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -487,7 +487,7 @@ class AddressGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AddressGroupArgs,
+                 args: AddressGroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
@@ -549,12 +549,12 @@ class AddressGroup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AddressGroupArgs args: The arguments to use to populate this resource's properties.
+        :param AddressGroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AddressGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AddressGroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -578,7 +578,7 @@ class AddressGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AddressGroupArgs.__new__(AddressGroupArgs)
+            __props__ = AddressGroupArrgs.__new__(AddressGroupArrgs)
 
             if capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity'")

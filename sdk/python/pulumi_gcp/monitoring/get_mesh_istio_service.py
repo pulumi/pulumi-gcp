@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetMeshIstioServiceResult:
+calass GetMeshIstioServiceResult:
     """
     A collection of values returned by getMeshIstioService.
     """
@@ -118,7 +118,7 @@ class GetMeshIstioServiceResult:
         return pulumi.get(self, "user_labels")
 
 
-class AwaitableGetMeshIstioServiceResult(GetMeshIstioServiceResult):
+calass AwaitableGetMeshIstioServiceResult(GetMeshIstioServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

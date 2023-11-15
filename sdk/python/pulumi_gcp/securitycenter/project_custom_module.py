@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ProjectCustomModuleArgs', 'ProjectCustomModule']
+__all__ = ['ProjectCustomModuleArrgs', 'ProjectCustomModule']
 
 @pulumi.input_type
-class ProjectCustomModuleArgs:
+calass ProjectCustomModuleArrgs:
     def __init__(__self__, *,
-                 custom_config: pulumi.Input['ProjectCustomModuleCustomConfigArgs'],
+                 custom_config: pulumi.Input['ProjectCustomModuleCustomConfigArrgs'],
                  display_name: pulumi.Input[str],
                  enablement_state: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectCustomModule resource.
-        :param pulumi.Input['ProjectCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input['ProjectCustomModuleCustomConfigArrgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -42,7 +42,7 @@ class ProjectCustomModuleArgs:
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> pulumi.Input['ProjectCustomModuleCustomConfigArgs']:
+    def custom_config(self) -> pulumi.Input['ProjectCustomModuleCustomConfigArrgs']:
         """
         The user specified custom configuration for the module.
         Structure is documented below.
@@ -50,7 +50,7 @@ class ProjectCustomModuleArgs:
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: pulumi.Input['ProjectCustomModuleCustomConfigArgs']):
+    def custom_config(self, value: pulumi.Input['ProjectCustomModuleCustomConfigArrgs']):
         pulumi.set(self, "custom_config", value)
 
     @property
@@ -97,10 +97,10 @@ class ProjectCustomModuleArgs:
 
 
 @pulumi.input_type
-class _ProjectCustomModuleState:
+calass _ProjectCustomModuleState:
     def __init__(__self__, *,
                  ancestor_module: Optional[pulumi.Input[str]] = None,
-                 custom_config: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']] = None,
+                 custom_config: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  last_editor: Optional[pulumi.Input[str]] = None,
@@ -112,7 +112,7 @@ class _ProjectCustomModuleState:
         :param pulumi.Input[str] ancestor_module: If empty, indicates that the custom module was created in the organization,folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input['ProjectCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input['ProjectCustomModuleCustomConfigArrgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -162,7 +162,7 @@ class _ProjectCustomModuleState:
 
     @property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']]:
+    def custom_config(self) -> Optional[pulumi.Input['ProjectCustomModuleCustomConfigArrgs']]:
         """
         The user specified custom configuration for the module.
         Structure is documented below.
@@ -170,7 +170,7 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']]):
+    def custom_config(self, value: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArrgs']]):
         pulumi.set(self, "custom_config", value)
 
     @property
@@ -254,12 +254,12 @@ class _ProjectCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
-class ProjectCustomModule(pulumi.CustomResource):
+calass ProjectCustomModule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -285,13 +285,13 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
-            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArrgs(
                 description="The rotation period of the identified cryptokey resource exceeds 30 days.",
-                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArrgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                 ),
                 recommendation="Set the rotation period to at most 30 days.",
-                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="MEDIUM",
@@ -306,11 +306,11 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
-            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
-                custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs(
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArrgs(
+                custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArrgs(
+                    properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArrgs(
                         name="duration",
-                        value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
+                        value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArrgs(
                             description="description of the expression",
                             expression="resource.rotationPeriod",
                             location="location of the expression",
@@ -319,14 +319,14 @@ class ProjectCustomModule(pulumi.CustomResource):
                     )],
                 ),
                 description="Description of the custom module",
-                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArrgs(
                     description="description of the expression",
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                     location="location of the expression",
                     title="Purpose of the expression",
                 ),
                 recommendation="Steps to resolve violation",
-                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="LOW",
@@ -353,7 +353,7 @@ class ProjectCustomModule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArrgs']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -369,7 +369,7 @@ class ProjectCustomModule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectCustomModuleArgs,
+                 args: ProjectCustomModuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an instance of a Security Health Analytics custom module, including
@@ -392,13 +392,13 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
-            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArrgs(
                 description="The rotation period of the identified cryptokey resource exceeds 30 days.",
-                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArrgs(
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                 ),
                 recommendation="Set the rotation period to at most 30 days.",
-                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="MEDIUM",
@@ -413,11 +413,11 @@ class ProjectCustomModule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.securitycenter.ProjectCustomModule("example",
-            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArgs(
-                custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs(
+            custom_config=gcp.securitycenter.ProjectCustomModuleCustomConfigArrgs(
+                custom_output=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputArrgs(
+                    properties=[gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyArrgs(
                         name="duration",
-                        value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
+                        value_expression=gcp.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArrgs(
                             description="description of the expression",
                             expression="resource.rotationPeriod",
                             location="location of the expression",
@@ -426,14 +426,14 @@ class ProjectCustomModule(pulumi.CustomResource):
                     )],
                 ),
                 description="Description of the custom module",
-                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArgs(
+                predicate=gcp.securitycenter.ProjectCustomModuleCustomConfigPredicateArrgs(
                     description="description of the expression",
                     expression="resource.rotationPeriod > duration(\\"2592000s\\")",
                     location="location of the expression",
                     title="Purpose of the expression",
                 ),
                 recommendation="Steps to resolve violation",
-                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArgs(
+                resource_selector=gcp.securitycenter.ProjectCustomModuleCustomConfigResourceSelectorArrgs(
                     resource_types=["cloudkms.googleapis.com/CryptoKey"],
                 ),
                 severity="LOW",
@@ -459,12 +459,12 @@ class ProjectCustomModule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ProjectCustomModuleArgs args: The arguments to use to populate this resource's properties.
+        :param ProjectCustomModuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProjectCustomModuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectCustomModuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -473,7 +473,7 @@ class ProjectCustomModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -484,7 +484,7 @@ class ProjectCustomModule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProjectCustomModuleArgs.__new__(ProjectCustomModuleArgs)
+            __props__ = ProjectCustomModuleArrgs.__new__(ProjectCustomModuleArrgs)
 
             if custom_config is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_config'")
@@ -511,7 +511,7 @@ class ProjectCustomModule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ancestor_module: Optional[pulumi.Input[str]] = None,
-            custom_config: Optional[pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArgs']]] = None,
+            custom_config: Optional[pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArrgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enablement_state: Optional[pulumi.Input[str]] = None,
             last_editor: Optional[pulumi.Input[str]] = None,
@@ -528,7 +528,7 @@ class ProjectCustomModule(pulumi.CustomResource):
         :param pulumi.Input[str] ancestor_module: If empty, indicates that the custom module was created in the organization,folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[pulumi.InputType['ProjectCustomModuleCustomConfigArrgs']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are

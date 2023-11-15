@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A collection of DataItems and Annotations on them.
@@ -395,12 +394,6 @@ func (i *AiFeatureStore) ToAiFeatureStoreOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOutput)
 }
 
-func (i *AiFeatureStore) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStore] {
-	return pulumix.Output[*AiFeatureStore]{
-		OutputState: i.ToAiFeatureStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiFeatureStoreArrayInput is an input type that accepts AiFeatureStoreArray and AiFeatureStoreArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreArrayInput` via:
 //
@@ -424,12 +417,6 @@ func (i AiFeatureStoreArray) ToAiFeatureStoreArrayOutput() AiFeatureStoreArrayOu
 
 func (i AiFeatureStoreArray) ToAiFeatureStoreArrayOutputWithContext(ctx context.Context) AiFeatureStoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreArrayOutput)
-}
-
-func (i AiFeatureStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStore] {
-	return pulumix.Output[[]*AiFeatureStore]{
-		OutputState: i.ToAiFeatureStoreArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AiFeatureStoreMapInput is an input type that accepts AiFeatureStoreMap and AiFeatureStoreMapOutput values.
@@ -457,12 +444,6 @@ func (i AiFeatureStoreMap) ToAiFeatureStoreMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreMapOutput)
 }
 
-func (i AiFeatureStoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStore] {
-	return pulumix.Output[map[string]*AiFeatureStore]{
-		OutputState: i.ToAiFeatureStoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreOutput) ElementType() reflect.Type {
@@ -475,12 +456,6 @@ func (o AiFeatureStoreOutput) ToAiFeatureStoreOutput() AiFeatureStoreOutput {
 
 func (o AiFeatureStoreOutput) ToAiFeatureStoreOutputWithContext(ctx context.Context) AiFeatureStoreOutput {
 	return o
-}
-
-func (o AiFeatureStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStore] {
-	return pulumix.Output[*AiFeatureStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -572,12 +547,6 @@ func (o AiFeatureStoreArrayOutput) ToAiFeatureStoreArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AiFeatureStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStore] {
-	return pulumix.Output[[]*AiFeatureStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiFeatureStoreArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStore {
 		return vs[0].([]*AiFeatureStore)[vs[1].(int)]
@@ -596,12 +565,6 @@ func (o AiFeatureStoreMapOutput) ToAiFeatureStoreMapOutput() AiFeatureStoreMapOu
 
 func (o AiFeatureStoreMapOutput) ToAiFeatureStoreMapOutputWithContext(ctx context.Context) AiFeatureStoreMapOutput {
 	return o
-}
-
-func (o AiFeatureStoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStore] {
-	return pulumix.Output[map[string]*AiFeatureStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreOutput {

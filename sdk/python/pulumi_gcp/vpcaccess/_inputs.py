@@ -10,11 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConnectorSubnetArgs',
+    'ConnectorSubnetArrgs',
 ]
 
 @pulumi.input_type
-class ConnectorSubnetArgs:
+calass ConnectorSubnetArrgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):

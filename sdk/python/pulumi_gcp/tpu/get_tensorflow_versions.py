@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTensorflowVersionsResult:
+calass GetTensorflowVersionsResult:
     """
     A collection of values returned by getTensorflowVersions.
     """
@@ -62,7 +62,7 @@ class GetTensorflowVersionsResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
+calass AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetWorkloadIdentityPoolProviderResult:
+calass GetWorkloadIdentityPoolProviderResult:
     """
     A collection of values returned by getWorkloadIdentityPoolProvider.
     """
@@ -132,7 +132,7 @@ class GetWorkloadIdentityPoolProviderResult:
         return pulumi.get(self, "workload_identity_pool_provider_id")
 
 
-class AwaitableGetWorkloadIdentityPoolProviderResult(GetWorkloadIdentityPoolProviderResult):
+calass AwaitableGetWorkloadIdentityPoolProviderResult(GetWorkloadIdentityPoolProviderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

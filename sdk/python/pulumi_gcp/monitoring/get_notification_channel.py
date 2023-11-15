@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNotificationChannelResult:
+calass GetNotificationChannelResult:
     """
     A collection of values returned by getNotificationChannel.
     """
@@ -143,7 +143,7 @@ class GetNotificationChannelResult:
         return pulumi.get(self, "verification_status")
 
 
-class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
+calass AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -194,13 +194,13 @@ def get_notification_channel(display_name: Optional[str] = None,
         display_name="My Alert Policy",
         notification_channels=[basic.name],
         combiner="OR",
-        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+        conditions=[gcp.monitoring.AlertPolicyConditionArrgs(
             display_name="test condition",
-            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArrgs(
                 filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                 duration="60s",
                 comparison="COMPARISON_GT",
-                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
+                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArrgs(
                     alignment_period="60s",
                     per_series_aligner="ALIGN_RATE",
                 )],
@@ -277,13 +277,13 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
         display_name="My Alert Policy",
         notification_channels=[basic.name],
         combiner="OR",
-        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+        conditions=[gcp.monitoring.AlertPolicyConditionArrgs(
             display_name="test condition",
-            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArrgs(
                 filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                 duration="60s",
                 comparison="COMPARISON_GT",
-                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
+                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArrgs(
                     alignment_period="60s",
                     per_series_aligner="ALIGN_RATE",
                 )],

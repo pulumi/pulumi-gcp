@@ -35,7 +35,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class BillingAccountBucketConfigCmekSettings(dict):
+calass BillingAccountBucketConfigCmekSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -98,7 +98,7 @@ class BillingAccountBucketConfigCmekSettings(dict):
 
 
 @pulumi.output_type
-class BillingAccountSinkBigqueryOptions(dict):
+calass BillingAccountSinkBigqueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -139,7 +139,7 @@ class BillingAccountSinkBigqueryOptions(dict):
 
 
 @pulumi.output_type
-class BillingAccountSinkExclusion(dict):
+calass BillingAccountSinkExclusion(dict):
     def __init__(__self__, *,
                  filter: str,
                  name: str,
@@ -194,7 +194,7 @@ class BillingAccountSinkExclusion(dict):
 
 
 @pulumi.output_type
-class FolderBucketConfigCmekSettings(dict):
+calass FolderBucketConfigCmekSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -257,7 +257,7 @@ class FolderBucketConfigCmekSettings(dict):
 
 
 @pulumi.output_type
-class FolderSinkBigqueryOptions(dict):
+calass FolderSinkBigqueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -298,7 +298,7 @@ class FolderSinkBigqueryOptions(dict):
 
 
 @pulumi.output_type
-class FolderSinkExclusion(dict):
+calass FolderSinkExclusion(dict):
     def __init__(__self__, *,
                  filter: str,
                  name: str,
@@ -353,7 +353,7 @@ class FolderSinkExclusion(dict):
 
 
 @pulumi.output_type
-class LinkedDatasetBigqueryDataset(dict):
+calass LinkedDatasetBigqueryDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -397,7 +397,7 @@ class LinkedDatasetBigqueryDataset(dict):
 
 
 @pulumi.output_type
-class MetricBucketOptions(dict):
+calass MetricBucketOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -424,12 +424,12 @@ class MetricBucketOptions(dict):
                  exponential_buckets: Optional['outputs.MetricBucketOptionsExponentialBuckets'] = None,
                  linear_buckets: Optional['outputs.MetricBucketOptionsLinearBuckets'] = None):
         """
-        :param 'MetricBucketOptionsExplicitBucketsArgs' explicit_buckets: Specifies a set of buckets with arbitrary widths.
+        :param 'MetricBucketOptionsExplicitBucketsArrgs' explicit_buckets: Specifies a set of buckets with arbitrary widths.
                Structure is documented below.
-        :param 'MetricBucketOptionsExponentialBucketsArgs' exponential_buckets: Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+        :param 'MetricBucketOptionsExponentialBucketsArrgs' exponential_buckets: Specifies an exponential sequence of buckets that have a width that is proportional to the value of
                the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
                Structure is documented below.
-        :param 'MetricBucketOptionsLinearBucketsArgs' linear_buckets: Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+        :param 'MetricBucketOptionsLinearBucketsArrgs' linear_buckets: Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
                Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
                Structure is documented below.
         """
@@ -471,7 +471,7 @@ class MetricBucketOptions(dict):
 
 
 @pulumi.output_type
-class MetricBucketOptionsExplicitBuckets(dict):
+calass MetricBucketOptionsExplicitBuckets(dict):
     def __init__(__self__, *,
                  bounds: Sequence[float]):
         """
@@ -489,7 +489,7 @@ class MetricBucketOptionsExplicitBuckets(dict):
 
 
 @pulumi.output_type
-class MetricBucketOptionsExponentialBuckets(dict):
+calass MetricBucketOptionsExponentialBuckets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -548,7 +548,7 @@ class MetricBucketOptionsExponentialBuckets(dict):
 
 
 @pulumi.output_type
-class MetricBucketOptionsLinearBuckets(dict):
+calass MetricBucketOptionsLinearBuckets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -605,7 +605,7 @@ class MetricBucketOptionsLinearBuckets(dict):
 
 
 @pulumi.output_type
-class MetricMetricDescriptor(dict):
+calass MetricMetricDescriptor(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -645,7 +645,7 @@ class MetricMetricDescriptor(dict):
         :param str display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case
                without an ending period, for example "Request count". This field is optional but it is
                recommended to be set for any metrics associated with user-visible concepts, such as Quota.
-        :param Sequence['MetricMetricDescriptorLabelArgs'] labels: The set of labels that can be used to describe a specific instance of this metric type. For
+        :param Sequence['MetricMetricDescriptorLabelArrgs'] labels: The set of labels that can be used to describe a specific instance of this metric type. For
                example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
                for the HTTP response code, response_code, so you can look at latencies for successful responses
                or just for responses that failed.
@@ -719,7 +719,7 @@ class MetricMetricDescriptor(dict):
 
 
 @pulumi.output_type
-class MetricMetricDescriptorLabel(dict):
+calass MetricMetricDescriptorLabel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -782,7 +782,7 @@ class MetricMetricDescriptorLabel(dict):
 
 
 @pulumi.output_type
-class OrganizationBucketConfigCmekSettings(dict):
+calass OrganizationBucketConfigCmekSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -845,7 +845,7 @@ class OrganizationBucketConfigCmekSettings(dict):
 
 
 @pulumi.output_type
-class OrganizationSinkBigqueryOptions(dict):
+calass OrganizationSinkBigqueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -886,7 +886,7 @@ class OrganizationSinkBigqueryOptions(dict):
 
 
 @pulumi.output_type
-class OrganizationSinkExclusion(dict):
+calass OrganizationSinkExclusion(dict):
     def __init__(__self__, *,
                  filter: str,
                  name: str,
@@ -941,7 +941,7 @@ class OrganizationSinkExclusion(dict):
 
 
 @pulumi.output_type
-class ProjectBucketConfigCmekSettings(dict):
+calass ProjectBucketConfigCmekSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1040,7 +1040,7 @@ class ProjectBucketConfigCmekSettings(dict):
 
 
 @pulumi.output_type
-class ProjectSinkBigqueryOptions(dict):
+calass ProjectSinkBigqueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1081,7 +1081,7 @@ class ProjectSinkBigqueryOptions(dict):
 
 
 @pulumi.output_type
-class ProjectSinkExclusion(dict):
+calass ProjectSinkExclusion(dict):
     def __init__(__self__, *,
                  filter: str,
                  name: str,
@@ -1136,7 +1136,7 @@ class ProjectSinkExclusion(dict):
 
 
 @pulumi.output_type
-class GetSinkBigqueryOptionResult(dict):
+calass GetSinkBigqueryOptionResult(dict):
     def __init__(__self__, *,
                  use_partitioned_tables: bool):
         """
@@ -1154,7 +1154,7 @@ class GetSinkBigqueryOptionResult(dict):
 
 
 @pulumi.output_type
-class GetSinkExclusionResult(dict):
+calass GetSinkExclusionResult(dict):
     def __init__(__self__, *,
                  description: str,
                  disabled: bool,

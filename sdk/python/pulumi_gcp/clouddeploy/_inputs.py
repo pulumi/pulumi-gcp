@@ -10,43 +10,43 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DeliveryPipelineConditionArgs',
-    'DeliveryPipelineConditionPipelineReadyConditionArgs',
-    'DeliveryPipelineConditionTargetsPresentConditionArgs',
-    'DeliveryPipelineConditionTargetsTypeConditionArgs',
-    'DeliveryPipelineSerialPipelineArgs',
-    'DeliveryPipelineSerialPipelineStageArgs',
-    'DeliveryPipelineSerialPipelineStageDeployParameterArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyStandardArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs',
-    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs',
-    'TargetAnthosClusterArgs',
-    'TargetExecutionConfigArgs',
-    'TargetGkeArgs',
-    'TargetMultiTargetArgs',
-    'TargetRunArgs',
+    'DeliveryPipelineConditionArrgs',
+    'DeliveryPipelineConditionPipelineReadyConditionArrgs',
+    'DeliveryPipelineConditionTargetsPresentConditionArrgs',
+    'DeliveryPipelineConditionTargetsTypeConditionArrgs',
+    'DeliveryPipelineSerialPipelineArrgs',
+    'DeliveryPipelineSerialPipelineStageArrgs',
+    'DeliveryPipelineSerialPipelineStageDeployParameterArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs',
+    'TargetAnthosClusterArrgs',
+    'TargetExecutionConfigArrgs',
+    'TargetGkeArrgs',
+    'TargetMultiTargetArrgs',
+    'TargetRunArrgs',
 ]
 
 @pulumi.input_type
-class DeliveryPipelineConditionArgs:
+calass DeliveryPipelineConditionArrgs:
     def __init__(__self__, *,
-                 pipeline_ready_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgs']]]] = None,
-                 targets_present_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgs']]]] = None,
-                 targets_type_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgs']]]] = None):
+                 pipeline_ready_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArrgs']]]] = None,
+                 targets_present_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArrgs']]]] = None,
+                 targets_type_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArrgs']]]] = None):
         if pipeline_ready_conditions is not None:
             pulumi.set(__self__, "pipeline_ready_conditions", pipeline_ready_conditions)
         if targets_present_conditions is not None:
@@ -56,34 +56,34 @@ class DeliveryPipelineConditionArgs:
 
     @property
     @pulumi.getter(name="pipelineReadyConditions")
-    def pipeline_ready_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgs']]]]:
+    def pipeline_ready_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArrgs']]]]:
         return pulumi.get(self, "pipeline_ready_conditions")
 
     @pipeline_ready_conditions.setter
-    def pipeline_ready_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgs']]]]):
+    def pipeline_ready_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArrgs']]]]):
         pulumi.set(self, "pipeline_ready_conditions", value)
 
     @property
     @pulumi.getter(name="targetsPresentConditions")
-    def targets_present_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgs']]]]:
+    def targets_present_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArrgs']]]]:
         return pulumi.get(self, "targets_present_conditions")
 
     @targets_present_conditions.setter
-    def targets_present_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgs']]]]):
+    def targets_present_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArrgs']]]]):
         pulumi.set(self, "targets_present_conditions", value)
 
     @property
     @pulumi.getter(name="targetsTypeConditions")
-    def targets_type_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgs']]]]:
+    def targets_type_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArrgs']]]]:
         return pulumi.get(self, "targets_type_conditions")
 
     @targets_type_conditions.setter
-    def targets_type_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgs']]]]):
+    def targets_type_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArrgs']]]]):
         pulumi.set(self, "targets_type_conditions", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineConditionPipelineReadyConditionArgs:
+calass DeliveryPipelineConditionPipelineReadyConditionArrgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[bool]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -118,7 +118,7 @@ class DeliveryPipelineConditionPipelineReadyConditionArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineConditionTargetsPresentConditionArgs:
+calass DeliveryPipelineConditionTargetsPresentConditionArrgs:
     def __init__(__self__, *,
                  missing_targets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[bool]] = None,
@@ -165,7 +165,7 @@ class DeliveryPipelineConditionTargetsPresentConditionArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineConditionTargetsTypeConditionArgs:
+calass DeliveryPipelineConditionTargetsTypeConditionArrgs:
     def __init__(__self__, *,
                  error_details: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[bool]] = None):
@@ -194,39 +194,39 @@ class DeliveryPipelineConditionTargetsTypeConditionArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineArgs:
+calass DeliveryPipelineSerialPipelineArrgs:
     def __init__(__self__, *,
-                 stages: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgs']]]] = None):
+                 stages: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgs']]] stages: Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArrgs']]] stages: Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
         """
         if stages is not None:
             pulumi.set(__self__, "stages", stages)
 
     @property
     @pulumi.getter
-    def stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgs']]]]:
+    def stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArrgs']]]]:
         """
         Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
         """
         return pulumi.get(self, "stages")
 
     @stages.setter
-    def stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgs']]]]):
+    def stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArrgs']]]]):
         pulumi.set(self, "stages", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageArgs:
+calass DeliveryPipelineSerialPipelineStageArrgs:
     def __init__(__self__, *,
-                 deploy_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArrgs']]]] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 strategy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']] = None,
+                 strategy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArrgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArrgs']]] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs'] strategy: Optional. The strategy to use for a `Rollout` to this stage.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArrgs'] strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if deploy_parameters is not None:
@@ -240,14 +240,14 @@ class DeliveryPipelineSerialPipelineStageArgs:
 
     @property
     @pulumi.getter(name="deployParameters")
-    def deploy_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]]:
+    def deploy_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArrgs']]]]:
         """
         Optional. The deploy parameters to use for the target in this stage.
         """
         return pulumi.get(self, "deploy_parameters")
 
     @deploy_parameters.setter
-    def deploy_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]]):
+    def deploy_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArrgs']]]]):
         pulumi.set(self, "deploy_parameters", value)
 
     @property
@@ -264,14 +264,14 @@ class DeliveryPipelineSerialPipelineStageArgs:
 
     @property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']]:
+    def strategy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArrgs']]:
         """
         Optional. The strategy to use for a `Rollout` to this stage.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']]):
+    def strategy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArrgs']]):
         pulumi.set(self, "strategy", value)
 
     @property
@@ -288,7 +288,7 @@ class DeliveryPipelineSerialPipelineStageArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
+calass DeliveryPipelineSerialPipelineStageDeployParameterArrgs:
     def __init__(__self__, *,
                  values: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  match_target_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -326,13 +326,13 @@ class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyArrgs:
     def __init__(__self__, *,
-                 canary: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']] = None,
-                 standard: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']] = None):
+                 canary: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs']] = None,
+                 standard: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArrgs']] = None):
         """
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs'] canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs'] standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs'] canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArrgs'] standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
         if canary is not None:
             pulumi.set(__self__, "canary", canary)
@@ -341,39 +341,39 @@ class DeliveryPipelineSerialPipelineStageStrategyArgs:
 
     @property
     @pulumi.getter
-    def canary(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']]:
+    def canary(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs']]:
         """
         Canary deployment strategy provides progressive percentage based deployments to a Target.
         """
         return pulumi.get(self, "canary")
 
     @canary.setter
-    def canary(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']]):
+    def canary(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs']]):
         pulumi.set(self, "canary", value)
 
     @property
     @pulumi.getter
-    def standard(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']]:
+    def standard(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArrgs']]:
         """
         Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
         return pulumi.get(self, "standard")
 
     @standard.setter
-    def standard(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']]):
+    def standard(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArrgs']]):
         pulumi.set(self, "standard", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs:
     def __init__(__self__, *,
-                 canary_deployment: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs']] = None,
-                 custom_canary_deployment: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs']] = None,
-                 runtime_config: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs']] = None):
+                 canary_deployment: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs']] = None,
+                 custom_canary_deployment: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs']] = None,
+                 runtime_config: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs']] = None):
         """
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs'] canary_deployment: Configures the progressive based deployment for a Target.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs'] custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs'] runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs'] canary_deployment: Configures the progressive based deployment for a Target.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs'] custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs'] runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
         """
         if canary_deployment is not None:
             pulumi.set(__self__, "canary_deployment", canary_deployment)
@@ -384,52 +384,52 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryArgs:
 
     @property
     @pulumi.getter(name="canaryDeployment")
-    def canary_deployment(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs']]:
+    def canary_deployment(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs']]:
         """
         Configures the progressive based deployment for a Target.
         """
         return pulumi.get(self, "canary_deployment")
 
     @canary_deployment.setter
-    def canary_deployment(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs']]):
+    def canary_deployment(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs']]):
         pulumi.set(self, "canary_deployment", value)
 
     @property
     @pulumi.getter(name="customCanaryDeployment")
-    def custom_canary_deployment(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs']]:
+    def custom_canary_deployment(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs']]:
         """
         Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
         """
         return pulumi.get(self, "custom_canary_deployment")
 
     @custom_canary_deployment.setter
-    def custom_canary_deployment(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs']]):
+    def custom_canary_deployment(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs']]):
         pulumi.set(self, "custom_canary_deployment", value)
 
     @property
     @pulumi.getter(name="runtimeConfig")
-    def runtime_config(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs']]:
+    def runtime_config(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs']]:
         """
         Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
         """
         return pulumi.get(self, "runtime_config")
 
     @runtime_config.setter
-    def runtime_config(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs']]):
+    def runtime_config(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs']]):
         pulumi.set(self, "runtime_config", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs:
     def __init__(__self__, *,
                  percentages: pulumi.Input[Sequence[pulumi.Input[int]]],
-                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']] = None,
-                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']] = None,
+                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs']] = None,
+                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs']] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] percentages: Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[bool] verify: Whether to run verify tests after each percentage deployment.
         """
         pulumi.set(__self__, "percentages", percentages)
@@ -454,26 +454,26 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
 
     @property
     @pulumi.getter
-    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']]:
+    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs']]:
         """
         (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
         """
         return pulumi.get(self, "postdeploy")
 
     @postdeploy.setter
-    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']]):
+    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs']]):
         pulumi.set(self, "postdeploy", value)
 
     @property
     @pulumi.getter
-    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']]:
+    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs']]:
         """
         (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
         """
         return pulumi.get(self, "predeploy")
 
     @predeploy.setter
-    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']]):
+    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs']]):
         pulumi.set(self, "predeploy", value)
 
     @property
@@ -490,7 +490,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -513,7 +513,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -536,41 +536,41 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs:
     def __init__(__self__, *,
-                 phase_configs: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs']]]):
+                 phase_configs: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs']]] phase_configs: Required. Configuration for each phase in the canary deployment in the order executed.
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs']]] phase_configs: Required. Configuration for each phase in the canary deployment in the order executed.
         """
         pulumi.set(__self__, "phase_configs", phase_configs)
 
     @property
     @pulumi.getter(name="phaseConfigs")
-    def phase_configs(self) -> pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs']]]:
+    def phase_configs(self) -> pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs']]]:
         """
         Required. Configuration for each phase in the canary deployment in the order executed.
         """
         return pulumi.get(self, "phase_configs")
 
     @phase_configs.setter
-    def phase_configs(self, value: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs']]]):
+    def phase_configs(self, value: pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs']]]):
         pulumi.set(self, "phase_configs", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs:
     def __init__(__self__, *,
                  percentage: pulumi.Input[int],
                  phase_id: pulumi.Input[str],
-                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']] = None,
-                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']] = None,
+                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs']] = None,
+                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs']] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] percentage: Required. Percentage deployment for the phase.
         :param pulumi.Input[str] phase_id: Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param pulumi.Input[bool] verify: Whether to run verify tests after the deployment.
                
@@ -613,26 +613,26 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
     @property
     @pulumi.getter
-    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']]:
+    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs']]:
         """
         (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
         """
         return pulumi.get(self, "postdeploy")
 
     @postdeploy.setter
-    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']]):
+    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs']]):
         pulumi.set(self, "postdeploy", value)
 
     @property
     @pulumi.getter
-    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']]:
+    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs']]:
         """
         (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         """
         return pulumi.get(self, "predeploy")
 
     @predeploy.setter
-    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']]):
+    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs']]):
         pulumi.set(self, "predeploy", value)
 
     @property
@@ -663,7 +663,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -686,7 +686,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -709,13 +709,13 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs:
     def __init__(__self__, *,
-                 cloud_run: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs']] = None,
-                 kubernetes: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs']] = None):
+                 cloud_run: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs']] = None,
+                 kubernetes: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs']] = None):
         """
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs'] cloud_run: Cloud Run runtime configuration.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs'] kubernetes: Kubernetes runtime configuration.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs'] cloud_run: Cloud Run runtime configuration.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs'] kubernetes: Kubernetes runtime configuration.
         """
         if cloud_run is not None:
             pulumi.set(__self__, "cloud_run", cloud_run)
@@ -724,31 +724,31 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs:
 
     @property
     @pulumi.getter(name="cloudRun")
-    def cloud_run(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs']]:
+    def cloud_run(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs']]:
         """
         Cloud Run runtime configuration.
         """
         return pulumi.get(self, "cloud_run")
 
     @cloud_run.setter
-    def cloud_run(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs']]):
+    def cloud_run(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs']]):
         pulumi.set(self, "cloud_run", value)
 
     @property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs']]:
+    def kubernetes(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs']]:
         """
         Kubernetes runtime configuration.
         """
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs']]):
+    def kubernetes(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs']]):
         pulumi.set(self, "kubernetes", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs:
     def __init__(__self__, *,
                  automatic_traffic_control: Optional[pulumi.Input[bool]] = None):
         """
@@ -771,13 +771,13 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs:
     def __init__(__self__, *,
-                 gateway_service_mesh: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs']] = None,
-                 service_networking: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs']] = None):
+                 gateway_service_mesh: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs']] = None,
+                 service_networking: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs']] = None):
         """
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs'] gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs'] service_networking: Kubernetes Service networking configuration.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs'] gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs'] service_networking: Kubernetes Service networking configuration.
         """
         if gateway_service_mesh is not None:
             pulumi.set(__self__, "gateway_service_mesh", gateway_service_mesh)
@@ -786,31 +786,31 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesAr
 
     @property
     @pulumi.getter(name="gatewayServiceMesh")
-    def gateway_service_mesh(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs']]:
+    def gateway_service_mesh(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs']]:
         """
         Kubernetes Gateway API service mesh configuration.
         """
         return pulumi.get(self, "gateway_service_mesh")
 
     @gateway_service_mesh.setter
-    def gateway_service_mesh(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs']]):
+    def gateway_service_mesh(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs']]):
         pulumi.set(self, "gateway_service_mesh", value)
 
     @property
     @pulumi.getter(name="serviceNetworking")
-    def service_networking(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs']]:
+    def service_networking(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs']]:
         """
         Kubernetes Service networking configuration.
         """
         return pulumi.get(self, "service_networking")
 
     @service_networking.setter
-    def service_networking(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs']]):
+    def service_networking(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs']]):
         pulumi.set(self, "service_networking", value)
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
                  http_route: pulumi.Input[str],
@@ -878,7 +878,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
                  service: pulumi.Input[str],
@@ -931,14 +931,14 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyStandardArrgs:
     def __init__(__self__, *,
-                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']] = None,
-                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']] = None,
+                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs']] = None,
+                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs']] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[bool] verify: Whether to verify a deployment.
         """
         if postdeploy is not None:
@@ -950,26 +950,26 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
 
     @property
     @pulumi.getter
-    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']]:
+    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs']]:
         """
         (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
         """
         return pulumi.get(self, "postdeploy")
 
     @postdeploy.setter
-    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']]):
+    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs']]):
         pulumi.set(self, "postdeploy", value)
 
     @property
     @pulumi.getter
-    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']]:
+    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs']]:
         """
         (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         """
         return pulumi.get(self, "predeploy")
 
     @predeploy.setter
-    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']]):
+    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs']]):
         pulumi.set(self, "predeploy", value)
 
     @property
@@ -986,7 +986,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1009,7 +1009,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
 
 
 @pulumi.input_type
-class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
+calass DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1032,7 +1032,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
 
 
 @pulumi.input_type
-class TargetAnthosClusterArgs:
+calass TargetAnthosClusterArrgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None):
         """
@@ -1055,7 +1055,7 @@ class TargetAnthosClusterArgs:
 
 
 @pulumi.input_type
-class TargetExecutionConfigArgs:
+calass TargetExecutionConfigArrgs:
     def __init__(__self__, *,
                  usages: pulumi.Input[Sequence[pulumi.Input[str]]],
                  artifact_storage: Optional[pulumi.Input[str]] = None,
@@ -1141,7 +1141,7 @@ class TargetExecutionConfigArgs:
 
 
 @pulumi.input_type
-class TargetGkeArgs:
+calass TargetGkeArrgs:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
                  internal_ip: Optional[pulumi.Input[bool]] = None):
@@ -1180,7 +1180,7 @@ class TargetGkeArgs:
 
 
 @pulumi.input_type
-class TargetMultiTargetArgs:
+calass TargetMultiTargetArrgs:
     def __init__(__self__, *,
                  target_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -1202,7 +1202,7 @@ class TargetMultiTargetArgs:
 
 
 @pulumi.input_type
-class TargetRunArgs:
+calass TargetRunArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str]):
         """

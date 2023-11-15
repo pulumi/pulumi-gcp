@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FolderBucketConfigArgs', 'FolderBucketConfig']
+__all__ = ['FolderBucketConfigArrgs', 'FolderBucketConfig']
 
 @pulumi.input_type
-class FolderBucketConfigArgs:
+calass FolderBucketConfigArrgs:
     def __init__(__self__, *,
                  bucket_id: pulumi.Input[str],
                  folder: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']] = None,
+                 cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
@@ -27,7 +27,7 @@ class FolderBucketConfigArgs:
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[str] folder: The parent resource that contains the logging bucket.
         :param pulumi.Input[str] location: The location of the bucket.
-        :param pulumi.Input['FolderBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input['FolderBucketConfigCmekSettingsArrgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -81,7 +81,7 @@ class FolderBucketConfigArgs:
 
     @property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> Optional[pulumi.Input['FolderBucketConfigCmekSettingsArrgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
         key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
@@ -90,7 +90,7 @@ class FolderBucketConfigArgs:
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArrgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @property
@@ -119,10 +119,10 @@ class FolderBucketConfigArgs:
 
 
 @pulumi.input_type
-class _FolderBucketConfigState:
+calass _FolderBucketConfigState:
     def __init__(__self__, *,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']] = None,
+                 cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class _FolderBucketConfigState:
         """
         Input properties used for looking up and filtering FolderBucketConfig resources.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input['FolderBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input['FolderBucketConfigCmekSettingsArrgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -173,7 +173,7 @@ class _FolderBucketConfigState:
 
     @property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> Optional[pulumi.Input['FolderBucketConfigCmekSettingsArrgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
         key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
@@ -182,7 +182,7 @@ class _FolderBucketConfigState:
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArrgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @property
@@ -258,13 +258,13 @@ class _FolderBucketConfigState:
         pulumi.set(self, "retention_days", value)
 
 
-class FolderBucketConfig(pulumi.CustomResource):
+calass FolderBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -304,7 +304,7 @@ class FolderBucketConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArrgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -316,7 +316,7 @@ class FolderBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FolderBucketConfigArgs,
+                 args: FolderBucketConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a folder-level logging bucket config. For more information see
@@ -350,12 +350,12 @@ class FolderBucketConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FolderBucketConfigArgs args: The arguments to use to populate this resource's properties.
+        :param FolderBucketConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FolderBucketConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FolderBucketConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -365,7 +365,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -377,7 +377,7 @@ class FolderBucketConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FolderBucketConfigArgs.__new__(FolderBucketConfigArgs)
+            __props__ = FolderBucketConfigArrgs.__new__(FolderBucketConfigArrgs)
 
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
@@ -404,7 +404,7 @@ class FolderBucketConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_id: Optional[pulumi.Input[str]] = None,
-            cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']]] = None,
+            cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
@@ -419,7 +419,7 @@ class FolderBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArrgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.

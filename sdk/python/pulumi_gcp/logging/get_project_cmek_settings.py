@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetProjectCmekSettingsResult:
+calass GetProjectCmekSettingsResult:
     """
     A collection of values returned by getProjectCmekSettings.
     """
@@ -99,7 +99,7 @@ class GetProjectCmekSettingsResult:
         return pulumi.get(self, "service_account_id")
 
 
-class AwaitableGetProjectCmekSettingsResult(GetProjectCmekSettingsResult):
+calass AwaitableGetProjectCmekSettingsResult(GetProjectCmekSettingsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

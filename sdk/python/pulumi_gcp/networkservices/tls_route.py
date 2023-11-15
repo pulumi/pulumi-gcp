@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TlsRouteArgs', 'TlsRoute']
+__all__ = ['TlsRouteArrgs', 'TlsRoute']
 
 @pulumi.input_type
-class TlsRouteArgs:
+calass TlsRouteArrgs:
     def __init__(__self__, *,
-                 rules: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]],
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -24,7 +24,7 @@ class TlsRouteArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TlsRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -50,7 +50,7 @@ class TlsRouteArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]]:
         """
         Rules that define how traffic is routed and handled.
         Structure is documented below.
@@ -58,7 +58,7 @@ class TlsRouteArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -127,7 +127,7 @@ class TlsRouteArgs:
 
 
 @pulumi.input_type
-class _TlsRouteState:
+calass _TlsRouteState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -135,7 +135,7 @@ class _TlsRouteState:
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -150,7 +150,7 @@ class _TlsRouteState:
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the TlsRoute was updated in UTC.
@@ -252,7 +252,7 @@ class _TlsRouteState:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]]]:
         """
         Rules that define how traffic is routed and handled.
         Structure is documented below.
@@ -260,7 +260,7 @@ class _TlsRouteState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -288,7 +288,7 @@ class _TlsRouteState:
         pulumi.set(self, "update_time", value)
 
 
-class TlsRoute(pulumi.CustomResource):
+calass TlsRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -298,7 +298,7 @@ class TlsRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArrgs']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -330,14 +330,14 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArrgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TlsRouteArgs,
+                 args: TlsRouteArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -359,12 +359,12 @@ class TlsRoute(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TlsRouteArgs args: The arguments to use to populate this resource's properties.
+        :param TlsRouteArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TlsRouteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TlsRouteArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -378,7 +378,7 @@ class TlsRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,7 +386,7 @@ class TlsRoute(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TlsRouteArgs.__new__(TlsRouteArgs)
+            __props__ = TlsRouteArrgs.__new__(TlsRouteArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["gateways"] = gateways
@@ -415,7 +415,7 @@ class TlsRoute(pulumi.CustomResource):
             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArrgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TlsRoute':
         """
@@ -435,7 +435,7 @@ class TlsRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the TlsRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TlsRouteRuleArrgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the TlsRoute was updated in UTC.

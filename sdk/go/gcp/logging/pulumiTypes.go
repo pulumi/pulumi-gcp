@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i BillingAccountBucketConfigCmekSettingsArgs) ToBillingAccountBucketConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigCmekSettingsOutput)
 }
 
-func (i BillingAccountBucketConfigCmekSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[BillingAccountBucketConfigCmekSettings] {
-	return pulumix.Output[BillingAccountBucketConfigCmekSettings]{
-		OutputState: i.ToBillingAccountBucketConfigCmekSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BillingAccountBucketConfigCmekSettingsArgs) ToBillingAccountBucketConfigCmekSettingsPtrOutput() BillingAccountBucketConfigCmekSettingsPtrOutput {
 	return i.ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *billingAccountBucketConfigCmekSettingsPtrType) ToBillingAccountBucketCo
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigCmekSettingsPtrOutput)
 }
 
-func (i *billingAccountBucketConfigCmekSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketConfigCmekSettings] {
-	return pulumix.Output[*BillingAccountBucketConfigCmekSettings]{
-		OutputState: i.ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o BillingAccountBucketConfigCmekSettingsOutput) ToBillingAccountBucketConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountBucketConfigCmekSettings) *BillingAccountBucketConfigCmekSettings {
 		return &v
 	}).(BillingAccountBucketConfigCmekSettingsPtrOutput)
-}
-
-func (o BillingAccountBucketConfigCmekSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[BillingAccountBucketConfigCmekSettings] {
-	return pulumix.Output[BillingAccountBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingAccountBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
@@ -165,12 +146,6 @@ func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ToBillingAccountBucketC
 
 func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsPtrOutput {
 	return o
-}
-
-func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketConfigCmekSettings] {
-	return pulumix.Output[*BillingAccountBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingAccountBucketConfigCmekSettingsPtrOutput) Elem() BillingAccountBucketConfigCmekSettingsOutput {
@@ -259,12 +234,6 @@ func (i BillingAccountSinkBigqueryOptionsArgs) ToBillingAccountSinkBigqueryOptio
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkBigqueryOptionsOutput)
 }
 
-func (i BillingAccountSinkBigqueryOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[BillingAccountSinkBigqueryOptions] {
-	return pulumix.Output[BillingAccountSinkBigqueryOptions]{
-		OutputState: i.ToBillingAccountSinkBigqueryOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BillingAccountSinkBigqueryOptionsArgs) ToBillingAccountSinkBigqueryOptionsPtrOutput() BillingAccountSinkBigqueryOptionsPtrOutput {
 	return i.ToBillingAccountSinkBigqueryOptionsPtrOutputWithContext(context.Background())
 }
@@ -306,12 +275,6 @@ func (i *billingAccountSinkBigqueryOptionsPtrType) ToBillingAccountSinkBigqueryO
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkBigqueryOptionsPtrOutput)
 }
 
-func (i *billingAccountSinkBigqueryOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountSinkBigqueryOptions] {
-	return pulumix.Output[*BillingAccountSinkBigqueryOptions]{
-		OutputState: i.ToBillingAccountSinkBigqueryOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkBigqueryOptionsOutput) ElementType() reflect.Type {
@@ -336,12 +299,6 @@ func (o BillingAccountSinkBigqueryOptionsOutput) ToBillingAccountSinkBigqueryOpt
 	}).(BillingAccountSinkBigqueryOptionsPtrOutput)
 }
 
-func (o BillingAccountSinkBigqueryOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[BillingAccountSinkBigqueryOptions] {
-	return pulumix.Output[BillingAccountSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
@@ -362,12 +319,6 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) ToBillingAccountSinkBigquery
 
 func (o BillingAccountSinkBigqueryOptionsPtrOutput) ToBillingAccountSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) BillingAccountSinkBigqueryOptionsPtrOutput {
 	return o
-}
-
-func (o BillingAccountSinkBigqueryOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountSinkBigqueryOptions] {
-	return pulumix.Output[*BillingAccountSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingAccountSinkBigqueryOptionsPtrOutput) Elem() BillingAccountSinkBigqueryOptionsOutput {
@@ -440,12 +391,6 @@ func (i BillingAccountSinkExclusionArgs) ToBillingAccountSinkExclusionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkExclusionOutput)
 }
 
-func (i BillingAccountSinkExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[BillingAccountSinkExclusion] {
-	return pulumix.Output[BillingAccountSinkExclusion]{
-		OutputState: i.ToBillingAccountSinkExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BillingAccountSinkExclusionArrayInput is an input type that accepts BillingAccountSinkExclusionArray and BillingAccountSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `BillingAccountSinkExclusionArrayInput` via:
 //
@@ -471,12 +416,6 @@ func (i BillingAccountSinkExclusionArray) ToBillingAccountSinkExclusionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkExclusionArrayOutput)
 }
 
-func (i BillingAccountSinkExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]BillingAccountSinkExclusion] {
-	return pulumix.Output[[]BillingAccountSinkExclusion]{
-		OutputState: i.ToBillingAccountSinkExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountSinkExclusionOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkExclusionOutput) ElementType() reflect.Type {
@@ -489,12 +428,6 @@ func (o BillingAccountSinkExclusionOutput) ToBillingAccountSinkExclusionOutput()
 
 func (o BillingAccountSinkExclusionOutput) ToBillingAccountSinkExclusionOutputWithContext(ctx context.Context) BillingAccountSinkExclusionOutput {
 	return o
-}
-
-func (o BillingAccountSinkExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[BillingAccountSinkExclusion] {
-	return pulumix.Output[BillingAccountSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of this exclusion.
@@ -530,12 +463,6 @@ func (o BillingAccountSinkExclusionArrayOutput) ToBillingAccountSinkExclusionArr
 
 func (o BillingAccountSinkExclusionArrayOutput) ToBillingAccountSinkExclusionArrayOutputWithContext(ctx context.Context) BillingAccountSinkExclusionArrayOutput {
 	return o
-}
-
-func (o BillingAccountSinkExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BillingAccountSinkExclusion] {
-	return pulumix.Output[[]BillingAccountSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingAccountSinkExclusionArrayOutput) Index(i pulumi.IntInput) BillingAccountSinkExclusionOutput {
@@ -583,12 +510,6 @@ func (i FolderBucketConfigCmekSettingsArgs) ToFolderBucketConfigCmekSettingsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigCmekSettingsOutput)
 }
 
-func (i FolderBucketConfigCmekSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[FolderBucketConfigCmekSettings] {
-	return pulumix.Output[FolderBucketConfigCmekSettings]{
-		OutputState: i.ToFolderBucketConfigCmekSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderBucketConfigCmekSettingsArgs) ToFolderBucketConfigCmekSettingsPtrOutput() FolderBucketConfigCmekSettingsPtrOutput {
 	return i.ToFolderBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
 }
@@ -630,12 +551,6 @@ func (i *folderBucketConfigCmekSettingsPtrType) ToFolderBucketConfigCmekSettings
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigCmekSettingsPtrOutput)
 }
 
-func (i *folderBucketConfigCmekSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderBucketConfigCmekSettings] {
-	return pulumix.Output[*FolderBucketConfigCmekSettings]{
-		OutputState: i.ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
 
 func (FolderBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
@@ -658,12 +573,6 @@ func (o FolderBucketConfigCmekSettingsOutput) ToFolderBucketConfigCmekSettingsPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderBucketConfigCmekSettings) *FolderBucketConfigCmekSettings {
 		return &v
 	}).(FolderBucketConfigCmekSettingsPtrOutput)
-}
-
-func (o FolderBucketConfigCmekSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[FolderBucketConfigCmekSettings] {
-	return pulumix.Output[FolderBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
@@ -695,12 +604,6 @@ func (o FolderBucketConfigCmekSettingsPtrOutput) ToFolderBucketConfigCmekSetting
 
 func (o FolderBucketConfigCmekSettingsPtrOutput) ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsPtrOutput {
 	return o
-}
-
-func (o FolderBucketConfigCmekSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderBucketConfigCmekSettings] {
-	return pulumix.Output[*FolderBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderBucketConfigCmekSettingsPtrOutput) Elem() FolderBucketConfigCmekSettingsOutput {
@@ -789,12 +692,6 @@ func (i FolderSinkBigqueryOptionsArgs) ToFolderSinkBigqueryOptionsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkBigqueryOptionsOutput)
 }
 
-func (i FolderSinkBigqueryOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[FolderSinkBigqueryOptions] {
-	return pulumix.Output[FolderSinkBigqueryOptions]{
-		OutputState: i.ToFolderSinkBigqueryOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderSinkBigqueryOptionsArgs) ToFolderSinkBigqueryOptionsPtrOutput() FolderSinkBigqueryOptionsPtrOutput {
 	return i.ToFolderSinkBigqueryOptionsPtrOutputWithContext(context.Background())
 }
@@ -836,12 +733,6 @@ func (i *folderSinkBigqueryOptionsPtrType) ToFolderSinkBigqueryOptionsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkBigqueryOptionsPtrOutput)
 }
 
-func (i *folderSinkBigqueryOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderSinkBigqueryOptions] {
-	return pulumix.Output[*FolderSinkBigqueryOptions]{
-		OutputState: i.ToFolderSinkBigqueryOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkBigqueryOptionsOutput) ElementType() reflect.Type {
@@ -866,12 +757,6 @@ func (o FolderSinkBigqueryOptionsOutput) ToFolderSinkBigqueryOptionsPtrOutputWit
 	}).(FolderSinkBigqueryOptionsPtrOutput)
 }
 
-func (o FolderSinkBigqueryOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[FolderSinkBigqueryOptions] {
-	return pulumix.Output[FolderSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
@@ -892,12 +777,6 @@ func (o FolderSinkBigqueryOptionsPtrOutput) ToFolderSinkBigqueryOptionsPtrOutput
 
 func (o FolderSinkBigqueryOptionsPtrOutput) ToFolderSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) FolderSinkBigqueryOptionsPtrOutput {
 	return o
-}
-
-func (o FolderSinkBigqueryOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderSinkBigqueryOptions] {
-	return pulumix.Output[*FolderSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderSinkBigqueryOptionsPtrOutput) Elem() FolderSinkBigqueryOptionsOutput {
@@ -970,12 +849,6 @@ func (i FolderSinkExclusionArgs) ToFolderSinkExclusionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkExclusionOutput)
 }
 
-func (i FolderSinkExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[FolderSinkExclusion] {
-	return pulumix.Output[FolderSinkExclusion]{
-		OutputState: i.ToFolderSinkExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FolderSinkExclusionArrayInput is an input type that accepts FolderSinkExclusionArray and FolderSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `FolderSinkExclusionArrayInput` via:
 //
@@ -1001,12 +874,6 @@ func (i FolderSinkExclusionArray) ToFolderSinkExclusionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkExclusionArrayOutput)
 }
 
-func (i FolderSinkExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]FolderSinkExclusion] {
-	return pulumix.Output[[]FolderSinkExclusion]{
-		OutputState: i.ToFolderSinkExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderSinkExclusionOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkExclusionOutput) ElementType() reflect.Type {
@@ -1019,12 +886,6 @@ func (o FolderSinkExclusionOutput) ToFolderSinkExclusionOutput() FolderSinkExclu
 
 func (o FolderSinkExclusionOutput) ToFolderSinkExclusionOutputWithContext(ctx context.Context) FolderSinkExclusionOutput {
 	return o
-}
-
-func (o FolderSinkExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[FolderSinkExclusion] {
-	return pulumix.Output[FolderSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of this exclusion.
@@ -1060,12 +921,6 @@ func (o FolderSinkExclusionArrayOutput) ToFolderSinkExclusionArrayOutput() Folde
 
 func (o FolderSinkExclusionArrayOutput) ToFolderSinkExclusionArrayOutputWithContext(ctx context.Context) FolderSinkExclusionArrayOutput {
 	return o
-}
-
-func (o FolderSinkExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FolderSinkExclusion] {
-	return pulumix.Output[[]FolderSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderSinkExclusionArrayOutput) Index(i pulumi.IntInput) FolderSinkExclusionOutput {
@@ -1115,12 +970,6 @@ func (i LinkedDatasetBigqueryDatasetArgs) ToLinkedDatasetBigqueryDatasetOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetBigqueryDatasetOutput)
 }
 
-func (i LinkedDatasetBigqueryDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedDatasetBigqueryDataset] {
-	return pulumix.Output[LinkedDatasetBigqueryDataset]{
-		OutputState: i.ToLinkedDatasetBigqueryDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LinkedDatasetBigqueryDatasetArrayInput is an input type that accepts LinkedDatasetBigqueryDatasetArray and LinkedDatasetBigqueryDatasetArrayOutput values.
 // You can construct a concrete instance of `LinkedDatasetBigqueryDatasetArrayInput` via:
 //
@@ -1146,12 +995,6 @@ func (i LinkedDatasetBigqueryDatasetArray) ToLinkedDatasetBigqueryDatasetArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetBigqueryDatasetArrayOutput)
 }
 
-func (i LinkedDatasetBigqueryDatasetArray) ToOutput(ctx context.Context) pulumix.Output[[]LinkedDatasetBigqueryDataset] {
-	return pulumix.Output[[]LinkedDatasetBigqueryDataset]{
-		OutputState: i.ToLinkedDatasetBigqueryDatasetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LinkedDatasetBigqueryDatasetOutput struct{ *pulumi.OutputState }
 
 func (LinkedDatasetBigqueryDatasetOutput) ElementType() reflect.Type {
@@ -1164,12 +1007,6 @@ func (o LinkedDatasetBigqueryDatasetOutput) ToLinkedDatasetBigqueryDatasetOutput
 
 func (o LinkedDatasetBigqueryDatasetOutput) ToLinkedDatasetBigqueryDatasetOutputWithContext(ctx context.Context) LinkedDatasetBigqueryDatasetOutput {
 	return o
-}
-
-func (o LinkedDatasetBigqueryDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedDatasetBigqueryDataset] {
-	return pulumix.Output[LinkedDatasetBigqueryDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1193,12 +1030,6 @@ func (o LinkedDatasetBigqueryDatasetArrayOutput) ToLinkedDatasetBigqueryDatasetA
 
 func (o LinkedDatasetBigqueryDatasetArrayOutput) ToLinkedDatasetBigqueryDatasetArrayOutputWithContext(ctx context.Context) LinkedDatasetBigqueryDatasetArrayOutput {
 	return o
-}
-
-func (o LinkedDatasetBigqueryDatasetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedDatasetBigqueryDataset] {
-	return pulumix.Output[[]LinkedDatasetBigqueryDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedDatasetBigqueryDatasetArrayOutput) Index(i pulumi.IntInput) LinkedDatasetBigqueryDatasetOutput {
@@ -1258,12 +1089,6 @@ func (i MetricBucketOptionsArgs) ToMetricBucketOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsOutput)
 }
 
-func (i MetricBucketOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptions] {
-	return pulumix.Output[MetricBucketOptions]{
-		OutputState: i.ToMetricBucketOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricBucketOptionsArgs) ToMetricBucketOptionsPtrOutput() MetricBucketOptionsPtrOutput {
 	return i.ToMetricBucketOptionsPtrOutputWithContext(context.Background())
 }
@@ -1305,12 +1130,6 @@ func (i *metricBucketOptionsPtrType) ToMetricBucketOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsPtrOutput)
 }
 
-func (i *metricBucketOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptions] {
-	return pulumix.Output[*MetricBucketOptions]{
-		OutputState: i.ToMetricBucketOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricBucketOptionsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsOutput) ElementType() reflect.Type {
@@ -1333,12 +1152,6 @@ func (o MetricBucketOptionsOutput) ToMetricBucketOptionsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptions) *MetricBucketOptions {
 		return &v
 	}).(MetricBucketOptionsPtrOutput)
-}
-
-func (o MetricBucketOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptions] {
-	return pulumix.Output[MetricBucketOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a set of buckets with arbitrary widths.
@@ -1373,12 +1186,6 @@ func (o MetricBucketOptionsPtrOutput) ToMetricBucketOptionsPtrOutput() MetricBuc
 
 func (o MetricBucketOptionsPtrOutput) ToMetricBucketOptionsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsPtrOutput {
 	return o
-}
-
-func (o MetricBucketOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptions] {
-	return pulumix.Output[*MetricBucketOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricBucketOptionsPtrOutput) Elem() MetricBucketOptionsOutput {
@@ -1459,12 +1266,6 @@ func (i MetricBucketOptionsExplicitBucketsArgs) ToMetricBucketOptionsExplicitBuc
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsExplicitBucketsOutput)
 }
 
-func (i MetricBucketOptionsExplicitBucketsArgs) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptionsExplicitBuckets] {
-	return pulumix.Output[MetricBucketOptionsExplicitBuckets]{
-		OutputState: i.ToMetricBucketOptionsExplicitBucketsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricBucketOptionsExplicitBucketsArgs) ToMetricBucketOptionsExplicitBucketsPtrOutput() MetricBucketOptionsExplicitBucketsPtrOutput {
 	return i.ToMetricBucketOptionsExplicitBucketsPtrOutputWithContext(context.Background())
 }
@@ -1506,12 +1307,6 @@ func (i *metricBucketOptionsExplicitBucketsPtrType) ToMetricBucketOptionsExplici
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
-func (i *metricBucketOptionsExplicitBucketsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptionsExplicitBuckets] {
-	return pulumix.Output[*MetricBucketOptionsExplicitBuckets]{
-		OutputState: i.ToMetricBucketOptionsExplicitBucketsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricBucketOptionsExplicitBucketsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsExplicitBucketsOutput) ElementType() reflect.Type {
@@ -1536,12 +1331,6 @@ func (o MetricBucketOptionsExplicitBucketsOutput) ToMetricBucketOptionsExplicitB
 	}).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
-func (o MetricBucketOptionsExplicitBucketsOutput) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptionsExplicitBuckets] {
-	return pulumix.Output[MetricBucketOptionsExplicitBuckets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The values must be monotonically increasing.
 func (o MetricBucketOptionsExplicitBucketsOutput) Bounds() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
@@ -1559,12 +1348,6 @@ func (o MetricBucketOptionsExplicitBucketsPtrOutput) ToMetricBucketOptionsExplic
 
 func (o MetricBucketOptionsExplicitBucketsPtrOutput) ToMetricBucketOptionsExplicitBucketsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsExplicitBucketsPtrOutput {
 	return o
-}
-
-func (o MetricBucketOptionsExplicitBucketsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptionsExplicitBuckets] {
-	return pulumix.Output[*MetricBucketOptionsExplicitBuckets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricBucketOptionsExplicitBucketsPtrOutput) Elem() MetricBucketOptionsExplicitBucketsOutput {
@@ -1628,12 +1411,6 @@ func (i MetricBucketOptionsExponentialBucketsArgs) ToMetricBucketOptionsExponent
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsExponentialBucketsOutput)
 }
 
-func (i MetricBucketOptionsExponentialBucketsArgs) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptionsExponentialBuckets] {
-	return pulumix.Output[MetricBucketOptionsExponentialBuckets]{
-		OutputState: i.ToMetricBucketOptionsExponentialBucketsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricBucketOptionsExponentialBucketsArgs) ToMetricBucketOptionsExponentialBucketsPtrOutput() MetricBucketOptionsExponentialBucketsPtrOutput {
 	return i.ToMetricBucketOptionsExponentialBucketsPtrOutputWithContext(context.Background())
 }
@@ -1675,12 +1452,6 @@ func (i *metricBucketOptionsExponentialBucketsPtrType) ToMetricBucketOptionsExpo
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
-func (i *metricBucketOptionsExponentialBucketsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptionsExponentialBuckets] {
-	return pulumix.Output[*MetricBucketOptionsExponentialBuckets]{
-		OutputState: i.ToMetricBucketOptionsExponentialBucketsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricBucketOptionsExponentialBucketsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsExponentialBucketsOutput) ElementType() reflect.Type {
@@ -1703,12 +1474,6 @@ func (o MetricBucketOptionsExponentialBucketsOutput) ToMetricBucketOptionsExpone
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptionsExponentialBuckets) *MetricBucketOptionsExponentialBuckets {
 		return &v
 	}).(MetricBucketOptionsExponentialBucketsPtrOutput)
-}
-
-func (o MetricBucketOptionsExponentialBucketsOutput) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptionsExponentialBuckets] {
-	return pulumix.Output[MetricBucketOptionsExponentialBuckets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Must be greater than 1.
@@ -1738,12 +1503,6 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) ToMetricBucketOptionsExp
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) ToMetricBucketOptionsExponentialBucketsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsExponentialBucketsPtrOutput {
 	return o
-}
-
-func (o MetricBucketOptionsExponentialBucketsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptionsExponentialBuckets] {
-	return pulumix.Output[*MetricBucketOptionsExponentialBuckets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) Elem() MetricBucketOptionsExponentialBucketsOutput {
@@ -1827,12 +1586,6 @@ func (i MetricBucketOptionsLinearBucketsArgs) ToMetricBucketOptionsLinearBuckets
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsLinearBucketsOutput)
 }
 
-func (i MetricBucketOptionsLinearBucketsArgs) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptionsLinearBuckets] {
-	return pulumix.Output[MetricBucketOptionsLinearBuckets]{
-		OutputState: i.ToMetricBucketOptionsLinearBucketsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricBucketOptionsLinearBucketsArgs) ToMetricBucketOptionsLinearBucketsPtrOutput() MetricBucketOptionsLinearBucketsPtrOutput {
 	return i.ToMetricBucketOptionsLinearBucketsPtrOutputWithContext(context.Background())
 }
@@ -1874,12 +1627,6 @@ func (i *metricBucketOptionsLinearBucketsPtrType) ToMetricBucketOptionsLinearBuc
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
 
-func (i *metricBucketOptionsLinearBucketsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptionsLinearBuckets] {
-	return pulumix.Output[*MetricBucketOptionsLinearBuckets]{
-		OutputState: i.ToMetricBucketOptionsLinearBucketsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricBucketOptionsLinearBucketsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsLinearBucketsOutput) ElementType() reflect.Type {
@@ -1902,12 +1649,6 @@ func (o MetricBucketOptionsLinearBucketsOutput) ToMetricBucketOptionsLinearBucke
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricBucketOptionsLinearBuckets) *MetricBucketOptionsLinearBuckets {
 		return &v
 	}).(MetricBucketOptionsLinearBucketsPtrOutput)
-}
-
-func (o MetricBucketOptionsLinearBucketsOutput) ToOutput(ctx context.Context) pulumix.Output[MetricBucketOptionsLinearBuckets] {
-	return pulumix.Output[MetricBucketOptionsLinearBuckets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Must be greater than 0.
@@ -1937,12 +1678,6 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) ToMetricBucketOptionsLinearBu
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) ToMetricBucketOptionsLinearBucketsPtrOutputWithContext(ctx context.Context) MetricBucketOptionsLinearBucketsPtrOutput {
 	return o
-}
-
-func (o MetricBucketOptionsLinearBucketsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricBucketOptionsLinearBuckets] {
-	return pulumix.Output[*MetricBucketOptionsLinearBuckets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Elem() MetricBucketOptionsLinearBucketsOutput {
@@ -2062,12 +1797,6 @@ func (i MetricMetricDescriptorArgs) ToMetricMetricDescriptorOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorOutput)
 }
 
-func (i MetricMetricDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[MetricMetricDescriptor] {
-	return pulumix.Output[MetricMetricDescriptor]{
-		OutputState: i.ToMetricMetricDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricMetricDescriptorArgs) ToMetricMetricDescriptorPtrOutput() MetricMetricDescriptorPtrOutput {
 	return i.ToMetricMetricDescriptorPtrOutputWithContext(context.Background())
 }
@@ -2109,12 +1838,6 @@ func (i *metricMetricDescriptorPtrType) ToMetricMetricDescriptorPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorPtrOutput)
 }
 
-func (i *metricMetricDescriptorPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricMetricDescriptor] {
-	return pulumix.Output[*MetricMetricDescriptor]{
-		OutputState: i.ToMetricMetricDescriptorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricMetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorOutput) ElementType() reflect.Type {
@@ -2137,12 +1860,6 @@ func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricMetricDescriptor) *MetricMetricDescriptor {
 		return &v
 	}).(MetricMetricDescriptorPtrOutput)
-}
-
-func (o MetricMetricDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[MetricMetricDescriptor] {
-	return pulumix.Output[MetricMetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A concise name for the metric, which can be displayed in user interfaces. Use sentence case
@@ -2196,12 +1913,6 @@ func (o MetricMetricDescriptorPtrOutput) ToMetricMetricDescriptorPtrOutput() Met
 
 func (o MetricMetricDescriptorPtrOutput) ToMetricMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricMetricDescriptorPtrOutput {
 	return o
-}
-
-func (o MetricMetricDescriptorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricMetricDescriptor] {
-	return pulumix.Output[*MetricMetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricMetricDescriptorPtrOutput) Elem() MetricMetricDescriptorOutput {
@@ -2323,12 +2034,6 @@ func (i MetricMetricDescriptorLabelArgs) ToMetricMetricDescriptorLabelOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorLabelOutput)
 }
 
-func (i MetricMetricDescriptorLabelArgs) ToOutput(ctx context.Context) pulumix.Output[MetricMetricDescriptorLabel] {
-	return pulumix.Output[MetricMetricDescriptorLabel]{
-		OutputState: i.ToMetricMetricDescriptorLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricMetricDescriptorLabelArrayInput is an input type that accepts MetricMetricDescriptorLabelArray and MetricMetricDescriptorLabelArrayOutput values.
 // You can construct a concrete instance of `MetricMetricDescriptorLabelArrayInput` via:
 //
@@ -2354,12 +2059,6 @@ func (i MetricMetricDescriptorLabelArray) ToMetricMetricDescriptorLabelArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorLabelArrayOutput)
 }
 
-func (i MetricMetricDescriptorLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricMetricDescriptorLabel] {
-	return pulumix.Output[[]MetricMetricDescriptorLabel]{
-		OutputState: i.ToMetricMetricDescriptorLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricMetricDescriptorLabelOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorLabelOutput) ElementType() reflect.Type {
@@ -2372,12 +2071,6 @@ func (o MetricMetricDescriptorLabelOutput) ToMetricMetricDescriptorLabelOutput()
 
 func (o MetricMetricDescriptorLabelOutput) ToMetricMetricDescriptorLabelOutputWithContext(ctx context.Context) MetricMetricDescriptorLabelOutput {
 	return o
-}
-
-func (o MetricMetricDescriptorLabelOutput) ToOutput(ctx context.Context) pulumix.Output[MetricMetricDescriptorLabel] {
-	return pulumix.Output[MetricMetricDescriptorLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description for the label.
@@ -2409,12 +2102,6 @@ func (o MetricMetricDescriptorLabelArrayOutput) ToMetricMetricDescriptorLabelArr
 
 func (o MetricMetricDescriptorLabelArrayOutput) ToMetricMetricDescriptorLabelArrayOutputWithContext(ctx context.Context) MetricMetricDescriptorLabelArrayOutput {
 	return o
-}
-
-func (o MetricMetricDescriptorLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricMetricDescriptorLabel] {
-	return pulumix.Output[[]MetricMetricDescriptorLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricMetricDescriptorLabelArrayOutput) Index(i pulumi.IntInput) MetricMetricDescriptorLabelOutput {
@@ -2462,12 +2149,6 @@ func (i OrganizationBucketConfigCmekSettingsArgs) ToOrganizationBucketConfigCmek
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigCmekSettingsOutput)
 }
 
-func (i OrganizationBucketConfigCmekSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationBucketConfigCmekSettings] {
-	return pulumix.Output[OrganizationBucketConfigCmekSettings]{
-		OutputState: i.ToOrganizationBucketConfigCmekSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationBucketConfigCmekSettingsArgs) ToOrganizationBucketConfigCmekSettingsPtrOutput() OrganizationBucketConfigCmekSettingsPtrOutput {
 	return i.ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
 }
@@ -2509,12 +2190,6 @@ func (i *organizationBucketConfigCmekSettingsPtrType) ToOrganizationBucketConfig
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigCmekSettingsPtrOutput)
 }
 
-func (i *organizationBucketConfigCmekSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBucketConfigCmekSettings] {
-	return pulumix.Output[*OrganizationBucketConfigCmekSettings]{
-		OutputState: i.ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
 
 func (OrganizationBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
@@ -2537,12 +2212,6 @@ func (o OrganizationBucketConfigCmekSettingsOutput) ToOrganizationBucketConfigCm
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationBucketConfigCmekSettings) *OrganizationBucketConfigCmekSettings {
 		return &v
 	}).(OrganizationBucketConfigCmekSettingsPtrOutput)
-}
-
-func (o OrganizationBucketConfigCmekSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationBucketConfigCmekSettings] {
-	return pulumix.Output[OrganizationBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
@@ -2574,12 +2243,6 @@ func (o OrganizationBucketConfigCmekSettingsPtrOutput) ToOrganizationBucketConfi
 
 func (o OrganizationBucketConfigCmekSettingsPtrOutput) ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsPtrOutput {
 	return o
-}
-
-func (o OrganizationBucketConfigCmekSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationBucketConfigCmekSettings] {
-	return pulumix.Output[*OrganizationBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationBucketConfigCmekSettingsPtrOutput) Elem() OrganizationBucketConfigCmekSettingsOutput {
@@ -2668,12 +2331,6 @@ func (i OrganizationSinkBigqueryOptionsArgs) ToOrganizationSinkBigqueryOptionsOu
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkBigqueryOptionsOutput)
 }
 
-func (i OrganizationSinkBigqueryOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationSinkBigqueryOptions] {
-	return pulumix.Output[OrganizationSinkBigqueryOptions]{
-		OutputState: i.ToOrganizationSinkBigqueryOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationSinkBigqueryOptionsArgs) ToOrganizationSinkBigqueryOptionsPtrOutput() OrganizationSinkBigqueryOptionsPtrOutput {
 	return i.ToOrganizationSinkBigqueryOptionsPtrOutputWithContext(context.Background())
 }
@@ -2715,12 +2372,6 @@ func (i *organizationSinkBigqueryOptionsPtrType) ToOrganizationSinkBigqueryOptio
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkBigqueryOptionsPtrOutput)
 }
 
-func (i *organizationSinkBigqueryOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSinkBigqueryOptions] {
-	return pulumix.Output[*OrganizationSinkBigqueryOptions]{
-		OutputState: i.ToOrganizationSinkBigqueryOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkBigqueryOptionsOutput) ElementType() reflect.Type {
@@ -2745,12 +2396,6 @@ func (o OrganizationSinkBigqueryOptionsOutput) ToOrganizationSinkBigqueryOptions
 	}).(OrganizationSinkBigqueryOptionsPtrOutput)
 }
 
-func (o OrganizationSinkBigqueryOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationSinkBigqueryOptions] {
-	return pulumix.Output[OrganizationSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
@@ -2771,12 +2416,6 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) ToOrganizationSinkBigqueryOpti
 
 func (o OrganizationSinkBigqueryOptionsPtrOutput) ToOrganizationSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) OrganizationSinkBigqueryOptionsPtrOutput {
 	return o
-}
-
-func (o OrganizationSinkBigqueryOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSinkBigqueryOptions] {
-	return pulumix.Output[*OrganizationSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationSinkBigqueryOptionsPtrOutput) Elem() OrganizationSinkBigqueryOptionsOutput {
@@ -2849,12 +2488,6 @@ func (i OrganizationSinkExclusionArgs) ToOrganizationSinkExclusionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkExclusionOutput)
 }
 
-func (i OrganizationSinkExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationSinkExclusion] {
-	return pulumix.Output[OrganizationSinkExclusion]{
-		OutputState: i.ToOrganizationSinkExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationSinkExclusionArrayInput is an input type that accepts OrganizationSinkExclusionArray and OrganizationSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `OrganizationSinkExclusionArrayInput` via:
 //
@@ -2880,12 +2513,6 @@ func (i OrganizationSinkExclusionArray) ToOrganizationSinkExclusionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkExclusionArrayOutput)
 }
 
-func (i OrganizationSinkExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationSinkExclusion] {
-	return pulumix.Output[[]OrganizationSinkExclusion]{
-		OutputState: i.ToOrganizationSinkExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationSinkExclusionOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkExclusionOutput) ElementType() reflect.Type {
@@ -2898,12 +2525,6 @@ func (o OrganizationSinkExclusionOutput) ToOrganizationSinkExclusionOutput() Org
 
 func (o OrganizationSinkExclusionOutput) ToOrganizationSinkExclusionOutputWithContext(ctx context.Context) OrganizationSinkExclusionOutput {
 	return o
-}
-
-func (o OrganizationSinkExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationSinkExclusion] {
-	return pulumix.Output[OrganizationSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of this exclusion.
@@ -2939,12 +2560,6 @@ func (o OrganizationSinkExclusionArrayOutput) ToOrganizationSinkExclusionArrayOu
 
 func (o OrganizationSinkExclusionArrayOutput) ToOrganizationSinkExclusionArrayOutputWithContext(ctx context.Context) OrganizationSinkExclusionArrayOutput {
 	return o
-}
-
-func (o OrganizationSinkExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationSinkExclusion] {
-	return pulumix.Output[[]OrganizationSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationSinkExclusionArrayOutput) Index(i pulumi.IntInput) OrganizationSinkExclusionOutput {
@@ -3022,12 +2637,6 @@ func (i ProjectBucketConfigCmekSettingsArgs) ToProjectBucketConfigCmekSettingsOu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigCmekSettingsOutput)
 }
 
-func (i ProjectBucketConfigCmekSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectBucketConfigCmekSettings] {
-	return pulumix.Output[ProjectBucketConfigCmekSettings]{
-		OutputState: i.ToProjectBucketConfigCmekSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectBucketConfigCmekSettingsArgs) ToProjectBucketConfigCmekSettingsPtrOutput() ProjectBucketConfigCmekSettingsPtrOutput {
 	return i.ToProjectBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
 }
@@ -3069,12 +2678,6 @@ func (i *projectBucketConfigCmekSettingsPtrType) ToProjectBucketConfigCmekSettin
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigCmekSettingsPtrOutput)
 }
 
-func (i *projectBucketConfigCmekSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectBucketConfigCmekSettings] {
-	return pulumix.Output[*ProjectBucketConfigCmekSettings]{
-		OutputState: i.ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
@@ -3097,12 +2700,6 @@ func (o ProjectBucketConfigCmekSettingsOutput) ToProjectBucketConfigCmekSettings
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectBucketConfigCmekSettings) *ProjectBucketConfigCmekSettings {
 		return &v
 	}).(ProjectBucketConfigCmekSettingsPtrOutput)
-}
-
-func (o ProjectBucketConfigCmekSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectBucketConfigCmekSettings] {
-	return pulumix.Output[ProjectBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name for the configured Cloud KMS key.
@@ -3149,12 +2746,6 @@ func (o ProjectBucketConfigCmekSettingsPtrOutput) ToProjectBucketConfigCmekSetti
 
 func (o ProjectBucketConfigCmekSettingsPtrOutput) ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsPtrOutput {
 	return o
-}
-
-func (o ProjectBucketConfigCmekSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectBucketConfigCmekSettings] {
-	return pulumix.Output[*ProjectBucketConfigCmekSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectBucketConfigCmekSettingsPtrOutput) Elem() ProjectBucketConfigCmekSettingsOutput {
@@ -3258,12 +2849,6 @@ func (i ProjectSinkBigqueryOptionsArgs) ToProjectSinkBigqueryOptionsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkBigqueryOptionsOutput)
 }
 
-func (i ProjectSinkBigqueryOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectSinkBigqueryOptions] {
-	return pulumix.Output[ProjectSinkBigqueryOptions]{
-		OutputState: i.ToProjectSinkBigqueryOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectSinkBigqueryOptionsArgs) ToProjectSinkBigqueryOptionsPtrOutput() ProjectSinkBigqueryOptionsPtrOutput {
 	return i.ToProjectSinkBigqueryOptionsPtrOutputWithContext(context.Background())
 }
@@ -3305,12 +2890,6 @@ func (i *projectSinkBigqueryOptionsPtrType) ToProjectSinkBigqueryOptionsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkBigqueryOptionsPtrOutput)
 }
 
-func (i *projectSinkBigqueryOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectSinkBigqueryOptions] {
-	return pulumix.Output[*ProjectSinkBigqueryOptions]{
-		OutputState: i.ToProjectSinkBigqueryOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkBigqueryOptionsOutput) ElementType() reflect.Type {
@@ -3335,12 +2914,6 @@ func (o ProjectSinkBigqueryOptionsOutput) ToProjectSinkBigqueryOptionsPtrOutputW
 	}).(ProjectSinkBigqueryOptionsPtrOutput)
 }
 
-func (o ProjectSinkBigqueryOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSinkBigqueryOptions] {
-	return pulumix.Output[ProjectSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog20170523`. With partitioned
 // tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
@@ -3361,12 +2934,6 @@ func (o ProjectSinkBigqueryOptionsPtrOutput) ToProjectSinkBigqueryOptionsPtrOutp
 
 func (o ProjectSinkBigqueryOptionsPtrOutput) ToProjectSinkBigqueryOptionsPtrOutputWithContext(ctx context.Context) ProjectSinkBigqueryOptionsPtrOutput {
 	return o
-}
-
-func (o ProjectSinkBigqueryOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSinkBigqueryOptions] {
-	return pulumix.Output[*ProjectSinkBigqueryOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectSinkBigqueryOptionsPtrOutput) Elem() ProjectSinkBigqueryOptionsOutput {
@@ -3439,12 +3006,6 @@ func (i ProjectSinkExclusionArgs) ToProjectSinkExclusionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkExclusionOutput)
 }
 
-func (i ProjectSinkExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectSinkExclusion] {
-	return pulumix.Output[ProjectSinkExclusion]{
-		OutputState: i.ToProjectSinkExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectSinkExclusionArrayInput is an input type that accepts ProjectSinkExclusionArray and ProjectSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `ProjectSinkExclusionArrayInput` via:
 //
@@ -3470,12 +3031,6 @@ func (i ProjectSinkExclusionArray) ToProjectSinkExclusionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkExclusionArrayOutput)
 }
 
-func (i ProjectSinkExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]ProjectSinkExclusion] {
-	return pulumix.Output[[]ProjectSinkExclusion]{
-		OutputState: i.ToProjectSinkExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectSinkExclusionOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkExclusionOutput) ElementType() reflect.Type {
@@ -3488,12 +3043,6 @@ func (o ProjectSinkExclusionOutput) ToProjectSinkExclusionOutput() ProjectSinkEx
 
 func (o ProjectSinkExclusionOutput) ToProjectSinkExclusionOutputWithContext(ctx context.Context) ProjectSinkExclusionOutput {
 	return o
-}
-
-func (o ProjectSinkExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSinkExclusion] {
-	return pulumix.Output[ProjectSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of this exclusion.
@@ -3529,12 +3078,6 @@ func (o ProjectSinkExclusionArrayOutput) ToProjectSinkExclusionArrayOutput() Pro
 
 func (o ProjectSinkExclusionArrayOutput) ToProjectSinkExclusionArrayOutputWithContext(ctx context.Context) ProjectSinkExclusionArrayOutput {
 	return o
-}
-
-func (o ProjectSinkExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProjectSinkExclusion] {
-	return pulumix.Output[[]ProjectSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectSinkExclusionArrayOutput) Index(i pulumi.IntInput) ProjectSinkExclusionOutput {
@@ -3576,12 +3119,6 @@ func (i GetSinkBigqueryOptionArgs) ToGetSinkBigqueryOptionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetSinkBigqueryOptionOutput)
 }
 
-func (i GetSinkBigqueryOptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetSinkBigqueryOption] {
-	return pulumix.Output[GetSinkBigqueryOption]{
-		OutputState: i.ToGetSinkBigqueryOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSinkBigqueryOptionArrayInput is an input type that accepts GetSinkBigqueryOptionArray and GetSinkBigqueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetSinkBigqueryOptionArrayInput` via:
 //
@@ -3607,12 +3144,6 @@ func (i GetSinkBigqueryOptionArray) ToGetSinkBigqueryOptionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSinkBigqueryOptionArrayOutput)
 }
 
-func (i GetSinkBigqueryOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSinkBigqueryOption] {
-	return pulumix.Output[[]GetSinkBigqueryOption]{
-		OutputState: i.ToGetSinkBigqueryOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSinkBigqueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetSinkBigqueryOptionOutput) ElementType() reflect.Type {
@@ -3625,12 +3156,6 @@ func (o GetSinkBigqueryOptionOutput) ToGetSinkBigqueryOptionOutput() GetSinkBigq
 
 func (o GetSinkBigqueryOptionOutput) ToGetSinkBigqueryOptionOutputWithContext(ctx context.Context) GetSinkBigqueryOptionOutput {
 	return o
-}
-
-func (o GetSinkBigqueryOptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetSinkBigqueryOption] {
-	return pulumix.Output[GetSinkBigqueryOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
@@ -3650,12 +3175,6 @@ func (o GetSinkBigqueryOptionArrayOutput) ToGetSinkBigqueryOptionArrayOutput() G
 
 func (o GetSinkBigqueryOptionArrayOutput) ToGetSinkBigqueryOptionArrayOutputWithContext(ctx context.Context) GetSinkBigqueryOptionArrayOutput {
 	return o
-}
-
-func (o GetSinkBigqueryOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSinkBigqueryOption] {
-	return pulumix.Output[[]GetSinkBigqueryOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSinkBigqueryOptionArrayOutput) Index(i pulumi.IntInput) GetSinkBigqueryOptionOutput {
@@ -3709,12 +3228,6 @@ func (i GetSinkExclusionArgs) ToGetSinkExclusionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSinkExclusionOutput)
 }
 
-func (i GetSinkExclusionArgs) ToOutput(ctx context.Context) pulumix.Output[GetSinkExclusion] {
-	return pulumix.Output[GetSinkExclusion]{
-		OutputState: i.ToGetSinkExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSinkExclusionArrayInput is an input type that accepts GetSinkExclusionArray and GetSinkExclusionArrayOutput values.
 // You can construct a concrete instance of `GetSinkExclusionArrayInput` via:
 //
@@ -3740,12 +3253,6 @@ func (i GetSinkExclusionArray) ToGetSinkExclusionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSinkExclusionArrayOutput)
 }
 
-func (i GetSinkExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSinkExclusion] {
-	return pulumix.Output[[]GetSinkExclusion]{
-		OutputState: i.ToGetSinkExclusionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSinkExclusionOutput struct{ *pulumi.OutputState }
 
 func (GetSinkExclusionOutput) ElementType() reflect.Type {
@@ -3758,12 +3265,6 @@ func (o GetSinkExclusionOutput) ToGetSinkExclusionOutput() GetSinkExclusionOutpu
 
 func (o GetSinkExclusionOutput) ToGetSinkExclusionOutputWithContext(ctx context.Context) GetSinkExclusionOutput {
 	return o
-}
-
-func (o GetSinkExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[GetSinkExclusion] {
-	return pulumix.Output[GetSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of this exclusion.
@@ -3798,12 +3299,6 @@ func (o GetSinkExclusionArrayOutput) ToGetSinkExclusionArrayOutput() GetSinkExcl
 
 func (o GetSinkExclusionArrayOutput) ToGetSinkExclusionArrayOutputWithContext(ctx context.Context) GetSinkExclusionArrayOutput {
 	return o
-}
-
-func (o GetSinkExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSinkExclusion] {
-	return pulumix.Output[[]GetSinkExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSinkExclusionArrayOutput) Index(i pulumi.IntInput) GetSinkExclusionOutput {

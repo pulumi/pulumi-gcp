@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetIAMPolicyResult:
+calass GetIAMPolicyResult:
     """
     A collection of values returned by getIAMPolicy.
     """
@@ -65,7 +65,7 @@ class GetIAMPolicyResult:
         return pulumi.get(self, "policy_data")
 
 
-class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
+calass AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -77,8 +77,8 @@ class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
             policy_data=self.policy_data)
 
 
-def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']]] = None,
-                   bindings: Optional[Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']]] = None,
+def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArrgs']]] = None,
+                   bindings: Optional[Sequence[pulumi.InputType['GetIAMPolicyBindingArrgs']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIAMPolicyResult:
     """
     Generates an IAM policy document that may be referenced by and applied to
@@ -90,27 +90,27 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
     import pulumi
     import pulumi_gcp as gcp
 
-    admin = gcp.organizations.get_iam_policy(audit_configs=[gcp.organizations.GetIAMPolicyAuditConfigArgs(
+    admin = gcp.organizations.get_iam_policy(audit_configs=[gcp.organizations.GetIAMPolicyAuditConfigArrgs(
             audit_log_configs=[
-                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs(
+                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:you@domain.com"],
                     log_type="DATA_READ",
                 ),
-                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs(
+                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArrgs(
                     log_type="DATA_WRITE",
                 ),
-                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs(
+                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
             ],
             service="cloudkms.googleapis.com",
         )],
         bindings=[
-            gcp.organizations.GetIAMPolicyBindingArgs(
+            gcp.organizations.GetIAMPolicyBindingArrgs(
                 members=["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
                 role="roles/compute.instanceAdmin",
             ),
-            gcp.organizations.GetIAMPolicyBindingArgs(
+            gcp.organizations.GetIAMPolicyBindingArrgs(
                 members=["user:alice@gmail.com"],
                 role="roles/storage.objectViewer",
             ),
@@ -122,8 +122,8 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
     from another resource is the only way to apply an IAM policy to a resource.
 
 
-    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
-    :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
+    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArrgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
+    :param Sequence[pulumi.InputType['GetIAMPolicyBindingArrgs']] bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.
            
@@ -144,8 +144,8 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
 
 
 @_utilities.lift_output_func(get_iam_policy)
-def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']]]]] = None,
-                          bindings: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']]]]] = None,
+def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArrgs']]]]] = None,
+                          bindings: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIAMPolicyBindingArrgs']]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIAMPolicyResult]:
     """
     Generates an IAM policy document that may be referenced by and applied to
@@ -157,27 +157,27 @@ def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence
     import pulumi
     import pulumi_gcp as gcp
 
-    admin = gcp.organizations.get_iam_policy(audit_configs=[gcp.organizations.GetIAMPolicyAuditConfigArgs(
+    admin = gcp.organizations.get_iam_policy(audit_configs=[gcp.organizations.GetIAMPolicyAuditConfigArrgs(
             audit_log_configs=[
-                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs(
+                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:you@domain.com"],
                     log_type="DATA_READ",
                 ),
-                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs(
+                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArrgs(
                     log_type="DATA_WRITE",
                 ),
-                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs(
+                gcp.organizations.GetIAMPolicyAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
             ],
             service="cloudkms.googleapis.com",
         )],
         bindings=[
-            gcp.organizations.GetIAMPolicyBindingArgs(
+            gcp.organizations.GetIAMPolicyBindingArrgs(
                 members=["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
                 role="roles/compute.instanceAdmin",
             ),
-            gcp.organizations.GetIAMPolicyBindingArgs(
+            gcp.organizations.GetIAMPolicyBindingArrgs(
                 members=["user:alice@gmail.com"],
                 role="roles/storage.objectViewer",
             ),
@@ -189,8 +189,8 @@ def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence
     from another resource is the only way to apply an IAM policy to a resource.
 
 
-    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
-    :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
+    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArrgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
+    :param Sequence[pulumi.InputType['GetIAMPolicyBindingArrgs']] bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.
            

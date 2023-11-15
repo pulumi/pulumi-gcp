@@ -52,7 +52,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DnsManagedZoneIamBindingCondition(dict):
+calass DnsManagedZoneIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -79,7 +79,7 @@ class DnsManagedZoneIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DnsManagedZoneIamMemberCondition(dict):
+calass DnsManagedZoneIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -106,7 +106,7 @@ class DnsManagedZoneIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ManagedZoneCloudLoggingConfig(dict):
+calass ManagedZoneCloudLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -141,7 +141,7 @@ class ManagedZoneCloudLoggingConfig(dict):
 
 
 @pulumi.output_type
-class ManagedZoneDnssecConfig(dict):
+calass ManagedZoneDnssecConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -167,7 +167,7 @@ class ManagedZoneDnssecConfig(dict):
                  non_existence: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['ManagedZoneDnssecConfigDefaultKeySpecArgs'] default_key_specs: Specifies parameters that will be used for generating initial DnsKeys
+        :param Sequence['ManagedZoneDnssecConfigDefaultKeySpecArrgs'] default_key_specs: Specifies parameters that will be used for generating initial DnsKeys
                for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
                you must also provide one for the other.
                default_key_specs can only be updated when the state is `off`.
@@ -229,7 +229,7 @@ class ManagedZoneDnssecConfig(dict):
 
 
 @pulumi.output_type
-class ManagedZoneDnssecConfigDefaultKeySpec(dict):
+calass ManagedZoneDnssecConfigDefaultKeySpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -317,7 +317,7 @@ class ManagedZoneDnssecConfigDefaultKeySpec(dict):
 
 
 @pulumi.output_type
-class ManagedZoneForwardingConfig(dict):
+calass ManagedZoneForwardingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -338,7 +338,7 @@ class ManagedZoneForwardingConfig(dict):
     def __init__(__self__, *,
                  target_name_servers: Sequence['outputs.ManagedZoneForwardingConfigTargetNameServer']):
         """
-        :param Sequence['ManagedZoneForwardingConfigTargetNameServerArgs'] target_name_servers: List of target name servers to forward to. Cloud DNS will
+        :param Sequence['ManagedZoneForwardingConfigTargetNameServerArrgs'] target_name_servers: List of target name servers to forward to. Cloud DNS will
                select the best available name server if more than
                one target is given.
                Structure is documented below.
@@ -358,7 +358,7 @@ class ManagedZoneForwardingConfig(dict):
 
 
 @pulumi.output_type
-class ManagedZoneForwardingConfigTargetNameServer(dict):
+calass ManagedZoneForwardingConfigTargetNameServer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -413,7 +413,7 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
 
 
 @pulumi.output_type
-class ManagedZonePeeringConfig(dict):
+calass ManagedZonePeeringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -434,7 +434,7 @@ class ManagedZonePeeringConfig(dict):
     def __init__(__self__, *,
                  target_network: 'outputs.ManagedZonePeeringConfigTargetNetwork'):
         """
-        :param 'ManagedZonePeeringConfigTargetNetworkArgs' target_network: The network with which to peer.
+        :param 'ManagedZonePeeringConfigTargetNetworkArrgs' target_network: The network with which to peer.
                Structure is documented below.
         """
         pulumi.set(__self__, "target_network", target_network)
@@ -450,7 +450,7 @@ class ManagedZonePeeringConfig(dict):
 
 
 @pulumi.output_type
-class ManagedZonePeeringConfigTargetNetwork(dict):
+calass ManagedZonePeeringConfigTargetNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -489,7 +489,7 @@ class ManagedZonePeeringConfigTargetNetwork(dict):
 
 
 @pulumi.output_type
-class ManagedZonePrivateVisibilityConfig(dict):
+calass ManagedZonePrivateVisibilityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -511,7 +511,7 @@ class ManagedZonePrivateVisibilityConfig(dict):
                  gke_clusters: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigGkeCluster']] = None,
                  networks: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork']] = None):
         """
-        :param Sequence['ManagedZonePrivateVisibilityConfigGkeClusterArgs'] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+        :param Sequence['ManagedZonePrivateVisibilityConfigGkeClusterArrgs'] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
         """
         if gke_clusters is not None:
@@ -535,7 +535,7 @@ class ManagedZonePrivateVisibilityConfig(dict):
 
 
 @pulumi.output_type
-class ManagedZonePrivateVisibilityConfigGkeCluster(dict):
+calass ManagedZonePrivateVisibilityConfigGkeCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -574,7 +574,7 @@ class ManagedZonePrivateVisibilityConfigGkeCluster(dict):
 
 
 @pulumi.output_type
-class ManagedZonePrivateVisibilityConfigNetwork(dict):
+calass ManagedZonePrivateVisibilityConfigNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -613,11 +613,11 @@ class ManagedZonePrivateVisibilityConfigNetwork(dict):
 
 
 @pulumi.output_type
-class ManagedZoneServiceDirectoryConfig(dict):
+calass ManagedZoneServiceDirectoryConfig(dict):
     def __init__(__self__, *,
                  namespace: 'outputs.ManagedZoneServiceDirectoryConfigNamespace'):
         """
-        :param 'ManagedZoneServiceDirectoryConfigNamespaceArgs' namespace: The namespace associated with the zone.
+        :param 'ManagedZoneServiceDirectoryConfigNamespaceArrgs' namespace: The namespace associated with the zone.
                Structure is documented below.
         """
         pulumi.set(__self__, "namespace", namespace)
@@ -633,7 +633,7 @@ class ManagedZoneServiceDirectoryConfig(dict):
 
 
 @pulumi.output_type
-class ManagedZoneServiceDirectoryConfigNamespace(dict):
+calass ManagedZoneServiceDirectoryConfigNamespace(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -676,7 +676,7 @@ class ManagedZoneServiceDirectoryConfigNamespace(dict):
 
 
 @pulumi.output_type
-class PolicyAlternativeNameServerConfig(dict):
+calass PolicyAlternativeNameServerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -697,7 +697,7 @@ class PolicyAlternativeNameServerConfig(dict):
     def __init__(__self__, *,
                  target_name_servers: Sequence['outputs.PolicyAlternativeNameServerConfigTargetNameServer']):
         """
-        :param Sequence['PolicyAlternativeNameServerConfigTargetNameServerArgs'] target_name_servers: Sets an alternative name server for the associated networks. When specified,
+        :param Sequence['PolicyAlternativeNameServerConfigTargetNameServerArrgs'] target_name_servers: Sets an alternative name server for the associated networks. When specified,
                all DNS queries are forwarded to a name server that you choose. Names such as .internal
                are not available when an alternative name server is specified.
                Structure is documented below.
@@ -717,7 +717,7 @@ class PolicyAlternativeNameServerConfig(dict):
 
 
 @pulumi.output_type
-class PolicyAlternativeNameServerConfigTargetNameServer(dict):
+calass PolicyAlternativeNameServerConfigTargetNameServer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -772,7 +772,7 @@ class PolicyAlternativeNameServerConfigTargetNameServer(dict):
 
 
 @pulumi.output_type
-class PolicyNetwork(dict):
+calass PolicyNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -811,7 +811,7 @@ class PolicyNetwork(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicy(dict):
+calass RecordSetRoutingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -838,11 +838,11 @@ class RecordSetRoutingPolicy(dict):
                  wrrs: Optional[Sequence['outputs.RecordSetRoutingPolicyWrr']] = None):
         """
         :param bool enable_geo_fencing: Specifies whether to enable fencing for geo queries.
-        :param Sequence['RecordSetRoutingPolicyGeoArgs'] geos: The configuration for Geolocation based routing policy.
+        :param Sequence['RecordSetRoutingPolicyGeoArrgs'] geos: The configuration for Geolocation based routing policy.
                Structure is document below.
-        :param 'RecordSetRoutingPolicyPrimaryBackupArgs' primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        :param 'RecordSetRoutingPolicyPrimaryBackupArrgs' primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
                Structure is document below.
-        :param Sequence['RecordSetRoutingPolicyWrrArgs'] wrrs: The configuration for Weighted Round Robin based routing policy.
+        :param Sequence['RecordSetRoutingPolicyWrrArrgs'] wrrs: The configuration for Weighted Round Robin based routing policy.
                Structure is document below.
         """
         if enable_geo_fencing is not None:
@@ -891,7 +891,7 @@ class RecordSetRoutingPolicy(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyGeo(dict):
+calass RecordSetRoutingPolicyGeo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -915,7 +915,7 @@ class RecordSetRoutingPolicyGeo(dict):
                  rrdatas: Optional[Sequence[str]] = None):
         """
         :param str location: The location name defined in Google Cloud.
-        :param 'RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param 'RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
                Structure is document below.
         :param Sequence[str] rrdatas: Same as `rrdatas` above.
         """
@@ -952,7 +952,7 @@ class RecordSetRoutingPolicyGeo(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
+calass RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -973,7 +973,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
     def __init__(__self__, *,
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer']):
         """
-        :param Sequence['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
+        :param Sequence['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
@@ -989,7 +989,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
+calass RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1097,7 +1097,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyPrimaryBackup(dict):
+calass RecordSetRoutingPolicyPrimaryBackup(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1125,9 +1125,9 @@ class RecordSetRoutingPolicyPrimaryBackup(dict):
                  enable_geo_fencing_for_backups: Optional[bool] = None,
                  trickle_ratio: Optional[float] = None):
         """
-        :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs'] backup_geos: The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+        :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs'] backup_geos: The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
                Structure is document above.
-        :param 'RecordSetRoutingPolicyPrimaryBackupPrimaryArgs' primary: The list of global primary targets to be health checked.
+        :param 'RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs' primary: The list of global primary targets to be health checked.
                Structure is document below.
         :param bool enable_geo_fencing_for_backups: Specifies whether to enable fencing for backup geo queries.
         :param float trickle_ratio: Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
@@ -1175,7 +1175,7 @@ class RecordSetRoutingPolicyPrimaryBackup(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
+calass RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1199,7 +1199,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
                  rrdatas: Optional[Sequence[str]] = None):
         """
         :param str location: The location name defined in Google Cloud.
-        :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
                Structure is document below.
         """
         pulumi.set(__self__, "location", location)
@@ -1232,7 +1232,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
+calass RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1253,7 +1253,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
     def __init__(__self__, *,
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer']):
         """
-        :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
+        :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
@@ -1269,7 +1269,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer(dict):
+calass RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1377,7 +1377,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
+calass RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1398,7 +1398,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
     def __init__(__self__, *,
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer']):
         """
-        :param Sequence['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
+        :param Sequence['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
@@ -1414,7 +1414,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
+calass RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1522,7 +1522,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyWrr(dict):
+calass RecordSetRoutingPolicyWrr(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1546,7 +1546,7 @@ class RecordSetRoutingPolicyWrr(dict):
                  rrdatas: Optional[Sequence[str]] = None):
         """
         :param float weight: The ratio of traffic routed to the target.
-        :param 'RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs' health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+        :param 'RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs' health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
                Structure is document below.
         :param Sequence[str] rrdatas: Same as `rrdatas` above.
         """
@@ -1583,7 +1583,7 @@ class RecordSetRoutingPolicyWrr(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
+calass RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1604,7 +1604,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
     def __init__(__self__, *,
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer']):
         """
-        :param Sequence['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
+        :param Sequence['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs'] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
@@ -1620,7 +1620,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
 
 
 @pulumi.output_type
-class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
+calass RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1728,7 +1728,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
 
 
 @pulumi.output_type
-class ResponsePolicyGkeCluster(dict):
+calass ResponsePolicyGkeCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1767,7 +1767,7 @@ class ResponsePolicyGkeCluster(dict):
 
 
 @pulumi.output_type
-class ResponsePolicyNetwork(dict):
+calass ResponsePolicyNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1806,7 +1806,7 @@ class ResponsePolicyNetwork(dict):
 
 
 @pulumi.output_type
-class ResponsePolicyRuleLocalData(dict):
+calass ResponsePolicyRuleLocalData(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1827,7 +1827,7 @@ class ResponsePolicyRuleLocalData(dict):
     def __init__(__self__, *,
                  local_datas: Sequence['outputs.ResponsePolicyRuleLocalDataLocalData']):
         """
-        :param Sequence['ResponsePolicyRuleLocalDataLocalDataArgs'] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        :param Sequence['ResponsePolicyRuleLocalDataLocalDataArrgs'] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
                Structure is documented below.
         """
         pulumi.set(__self__, "local_datas", local_datas)
@@ -1843,7 +1843,7 @@ class ResponsePolicyRuleLocalData(dict):
 
 
 @pulumi.output_type
-class ResponsePolicyRuleLocalDataLocalData(dict):
+calass ResponsePolicyRuleLocalDataLocalData(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str,
@@ -1900,7 +1900,7 @@ class ResponsePolicyRuleLocalDataLocalData(dict):
 
 
 @pulumi.output_type
-class GetKeysKeySigningKeyResult(dict):
+calass GetKeysKeySigningKeyResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  creation_time: str,
@@ -1916,7 +1916,7 @@ class GetKeysKeySigningKeyResult(dict):
         :param str algorithm: String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
         :param str creation_time: The time that this resource was created in the control plane. This is in RFC3339 text format.
         :param str description: A mutable string of at most 1024 characters associated with this resource for the user's convenience.
-        :param Sequence['GetKeysKeySigningKeyDigestArgs'] digests: A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+        :param Sequence['GetKeysKeySigningKeyDigestArrgs'] digests: A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
         :param str ds_record: The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
         :param str id: Unique identifier for the resource; defined by the server.
         :param bool is_active: Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
@@ -2017,7 +2017,7 @@ class GetKeysKeySigningKeyResult(dict):
 
 
 @pulumi.output_type
-class GetKeysKeySigningKeyDigestResult(dict):
+calass GetKeysKeySigningKeyDigestResult(dict):
     def __init__(__self__, *,
                  digest: str,
                  type: str):
@@ -2046,7 +2046,7 @@ class GetKeysKeySigningKeyDigestResult(dict):
 
 
 @pulumi.output_type
-class GetKeysZoneSigningKeyResult(dict):
+calass GetKeysZoneSigningKeyResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  creation_time: str,
@@ -2061,7 +2061,7 @@ class GetKeysZoneSigningKeyResult(dict):
         :param str algorithm: String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
         :param str creation_time: The time that this resource was created in the control plane. This is in RFC3339 text format.
         :param str description: A mutable string of at most 1024 characters associated with this resource for the user's convenience.
-        :param Sequence['GetKeysZoneSigningKeyDigestArgs'] digests: A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+        :param Sequence['GetKeysZoneSigningKeyDigestArrgs'] digests: A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
         :param str id: Unique identifier for the resource; defined by the server.
         :param bool is_active: Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
         :param int key_length: Length of the key in bits. Specified at creation time then immutable.
@@ -2152,7 +2152,7 @@ class GetKeysZoneSigningKeyResult(dict):
 
 
 @pulumi.output_type
-class GetKeysZoneSigningKeyDigestResult(dict):
+calass GetKeysZoneSigningKeyDigestResult(dict):
     def __init__(__self__, *,
                  digest: str,
                  type: str):

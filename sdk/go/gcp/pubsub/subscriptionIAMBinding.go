@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
@@ -336,12 +335,6 @@ func (i *SubscriptionIAMBinding) ToSubscriptionIAMBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingOutput)
 }
 
-func (i *SubscriptionIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionIAMBinding] {
-	return pulumix.Output[*SubscriptionIAMBinding]{
-		OutputState: i.ToSubscriptionIAMBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubscriptionIAMBindingArrayInput is an input type that accepts SubscriptionIAMBindingArray and SubscriptionIAMBindingArrayOutput values.
 // You can construct a concrete instance of `SubscriptionIAMBindingArrayInput` via:
 //
@@ -365,12 +358,6 @@ func (i SubscriptionIAMBindingArray) ToSubscriptionIAMBindingArrayOutput() Subsc
 
 func (i SubscriptionIAMBindingArray) ToSubscriptionIAMBindingArrayOutputWithContext(ctx context.Context) SubscriptionIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingArrayOutput)
-}
-
-func (i SubscriptionIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubscriptionIAMBinding] {
-	return pulumix.Output[[]*SubscriptionIAMBinding]{
-		OutputState: i.ToSubscriptionIAMBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubscriptionIAMBindingMapInput is an input type that accepts SubscriptionIAMBindingMap and SubscriptionIAMBindingMapOutput values.
@@ -398,12 +385,6 @@ func (i SubscriptionIAMBindingMap) ToSubscriptionIAMBindingMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingMapOutput)
 }
 
-func (i SubscriptionIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubscriptionIAMBinding] {
-	return pulumix.Output[map[string]*SubscriptionIAMBinding]{
-		OutputState: i.ToSubscriptionIAMBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMBindingOutput) ElementType() reflect.Type {
@@ -416,12 +397,6 @@ func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingOutput() Subscript
 
 func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingOutputWithContext(ctx context.Context) SubscriptionIAMBindingOutput {
 	return o
-}
-
-func (o SubscriptionIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionIAMBinding] {
-	return pulumix.Output[*SubscriptionIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionIAMBindingOutput) Condition() SubscriptionIAMBindingConditionPtrOutput {
@@ -478,12 +453,6 @@ func (o SubscriptionIAMBindingArrayOutput) ToSubscriptionIAMBindingArrayOutputWi
 	return o
 }
 
-func (o SubscriptionIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubscriptionIAMBinding] {
-	return pulumix.Output[[]*SubscriptionIAMBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubscriptionIAMBindingArrayOutput) Index(i pulumi.IntInput) SubscriptionIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionIAMBinding {
 		return vs[0].([]*SubscriptionIAMBinding)[vs[1].(int)]
@@ -502,12 +471,6 @@ func (o SubscriptionIAMBindingMapOutput) ToSubscriptionIAMBindingMapOutput() Sub
 
 func (o SubscriptionIAMBindingMapOutput) ToSubscriptionIAMBindingMapOutputWithContext(ctx context.Context) SubscriptionIAMBindingMapOutput {
 	return o
-}
-
-func (o SubscriptionIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubscriptionIAMBinding] {
-	return pulumix.Output[map[string]*SubscriptionIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionIAMBindingMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIAMBindingOutput {

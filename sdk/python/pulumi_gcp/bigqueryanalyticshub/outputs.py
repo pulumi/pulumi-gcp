@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DataExchangeIamBindingCondition(dict):
+calass DataExchangeIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -47,7 +47,7 @@ class DataExchangeIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DataExchangeIamMemberCondition(dict):
+calass DataExchangeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -74,7 +74,7 @@ class DataExchangeIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ListingBigqueryDataset(dict):
+calass ListingBigqueryDataset(dict):
     def __init__(__self__, *,
                  dataset: str):
         """
@@ -96,7 +96,7 @@ class ListingBigqueryDataset(dict):
 
 
 @pulumi.output_type
-class ListingDataProvider(dict):
+calass ListingDataProvider(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -143,7 +143,7 @@ class ListingDataProvider(dict):
 
 
 @pulumi.output_type
-class ListingIamBindingCondition(dict):
+calass ListingIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -170,7 +170,7 @@ class ListingIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ListingIamMemberCondition(dict):
+calass ListingIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -197,7 +197,7 @@ class ListingIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ListingPublisher(dict):
+calass ListingPublisher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

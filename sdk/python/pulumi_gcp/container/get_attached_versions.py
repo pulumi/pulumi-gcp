@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAttachedVersionsResult:
+calass GetAttachedVersionsResult:
     """
     A collection of values returned by getAttachedVersions.
     """
@@ -62,7 +62,7 @@ class GetAttachedVersionsResult:
         return pulumi.get(self, "valid_versions")
 
 
-class AwaitableGetAttachedVersionsResult(GetAttachedVersionsResult):
+calass AwaitableGetAttachedVersionsResult(GetAttachedVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

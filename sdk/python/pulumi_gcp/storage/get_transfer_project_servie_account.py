@@ -19,7 +19,7 @@ __all__ = [
 warnings.warn("""gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""", DeprecationWarning)
 
 @pulumi.output_type
-class GetTransferProjectServieAccountResult:
+calass GetTransferProjectServieAccountResult:
     """
     A collection of values returned by getTransferProjectServieAccount.
     """
@@ -78,7 +78,7 @@ class GetTransferProjectServieAccountResult:
         return pulumi.get(self, "subject_id")
 
 
-class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
+calass AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

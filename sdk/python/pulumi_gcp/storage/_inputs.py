@@ -10,52 +10,52 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'BucketAutoclassArgs',
-    'BucketCorArgs',
-    'BucketCustomPlacementConfigArgs',
-    'BucketEncryptionArgs',
-    'BucketIAMBindingConditionArgs',
-    'BucketIAMMemberConditionArgs',
-    'BucketLifecycleRuleArgs',
-    'BucketLifecycleRuleActionArgs',
-    'BucketLifecycleRuleConditionArgs',
-    'BucketLoggingArgs',
-    'BucketObjectCustomerEncryptionArgs',
-    'BucketRetentionPolicyArgs',
-    'BucketVersioningArgs',
-    'BucketWebsiteArgs',
-    'DefaultObjectAccessControlProjectTeamArgs',
-    'InsightsReportConfigCsvOptionsArgs',
-    'InsightsReportConfigFrequencyOptionsArgs',
-    'InsightsReportConfigFrequencyOptionsEndDateArgs',
-    'InsightsReportConfigFrequencyOptionsStartDateArgs',
-    'InsightsReportConfigObjectMetadataReportOptionsArgs',
-    'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs',
-    'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs',
-    'ObjectAccessControlProjectTeamArgs',
-    'TransferAgentPoolBandwidthLimitArgs',
-    'TransferJobEventStreamArgs',
-    'TransferJobNotificationConfigArgs',
-    'TransferJobScheduleArgs',
-    'TransferJobScheduleScheduleEndDateArgs',
-    'TransferJobScheduleScheduleStartDateArgs',
-    'TransferJobScheduleStartTimeOfDayArgs',
-    'TransferJobTransferSpecArgs',
-    'TransferJobTransferSpecAwsS3DataSourceArgs',
-    'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs',
-    'TransferJobTransferSpecAzureBlobStorageDataSourceArgs',
-    'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs',
-    'TransferJobTransferSpecGcsDataSinkArgs',
-    'TransferJobTransferSpecGcsDataSourceArgs',
-    'TransferJobTransferSpecHttpDataSourceArgs',
-    'TransferJobTransferSpecObjectConditionsArgs',
-    'TransferJobTransferSpecPosixDataSinkArgs',
-    'TransferJobTransferSpecPosixDataSourceArgs',
-    'TransferJobTransferSpecTransferOptionsArgs',
+    'BucketAutoclassArrgs',
+    'BucketCorArrgs',
+    'BucketCustomPlacementConfigArrgs',
+    'BucketEncryptionArrgs',
+    'BucketIAMBindingConditionArrgs',
+    'BucketIAMMemberConditionArrgs',
+    'BucketLifecycleRuleArrgs',
+    'BucketLifecycleRuleActionArrgs',
+    'BucketLifecycleRuleConditionArrgs',
+    'BucketLoggingArrgs',
+    'BucketObjectCustomerEncryptionArrgs',
+    'BucketRetentionPolicyArrgs',
+    'BucketVersioningArrgs',
+    'BucketWebsiteArrgs',
+    'DefaultObjectAccessControlProjectTeamArrgs',
+    'InsightsReportConfigCsvOptionsArrgs',
+    'InsightsReportConfigFrequencyOptionsArrgs',
+    'InsightsReportConfigFrequencyOptionsEndDateArrgs',
+    'InsightsReportConfigFrequencyOptionsStartDateArrgs',
+    'InsightsReportConfigObjectMetadataReportOptionsArrgs',
+    'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs',
+    'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs',
+    'ObjectAccessControlProjectTeamArrgs',
+    'TransferAgentPoolBandwidthLimitArrgs',
+    'TransferJobEventStreamArrgs',
+    'TransferJobNotificationConfigArrgs',
+    'TransferJobScheduleArrgs',
+    'TransferJobScheduleScheduleEndDateArrgs',
+    'TransferJobScheduleScheduleStartDateArrgs',
+    'TransferJobScheduleStartTimeOfDayArrgs',
+    'TransferJobTransferSpecArrgs',
+    'TransferJobTransferSpecAwsS3DataSourceArrgs',
+    'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceArrgs',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs',
+    'TransferJobTransferSpecGcsDataSinkArrgs',
+    'TransferJobTransferSpecGcsDataSourceArrgs',
+    'TransferJobTransferSpecHttpDataSourceArrgs',
+    'TransferJobTransferSpecObjectConditionsArrgs',
+    'TransferJobTransferSpecPosixDataSinkArrgs',
+    'TransferJobTransferSpecPosixDataSourceArrgs',
+    'TransferJobTransferSpecTransferOptionsArrgs',
 ]
 
 @pulumi.input_type
-class BucketAutoclassArgs:
+calass BucketAutoclassArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -77,7 +77,7 @@ class BucketAutoclassArgs:
 
 
 @pulumi.input_type
-class BucketCorArgs:
+calass BucketCorArrgs:
     def __init__(__self__, *,
                  max_age_seconds: Optional[pulumi.Input[int]] = None,
                  methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -148,7 +148,7 @@ class BucketCorArgs:
 
 
 @pulumi.input_type
-class BucketCustomPlacementConfigArgs:
+calass BucketCustomPlacementConfigArrgs:
     def __init__(__self__, *,
                  data_locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -170,7 +170,7 @@ class BucketCustomPlacementConfigArgs:
 
 
 @pulumi.input_type
-class BucketEncryptionArgs:
+calass BucketEncryptionArrgs:
     def __init__(__self__, *,
                  default_kms_key_name: pulumi.Input[str]):
         """
@@ -218,7 +218,7 @@ class BucketEncryptionArgs:
 
 
 @pulumi.input_type
-class BucketIAMBindingConditionArgs:
+calass BucketIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -279,7 +279,7 @@ class BucketIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class BucketIAMMemberConditionArgs:
+calass BucketIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -340,44 +340,44 @@ class BucketIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class BucketLifecycleRuleArgs:
+calass BucketLifecycleRuleArrgs:
     def __init__(__self__, *,
-                 action: pulumi.Input['BucketLifecycleRuleActionArgs'],
-                 condition: pulumi.Input['BucketLifecycleRuleConditionArgs']):
+                 action: pulumi.Input['BucketLifecycleRuleActionArrgs'],
+                 condition: pulumi.Input['BucketLifecycleRuleConditionArrgs']):
         """
-        :param pulumi.Input['BucketLifecycleRuleActionArgs'] action: The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
-        :param pulumi.Input['BucketLifecycleRuleConditionArgs'] condition: The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        :param pulumi.Input['BucketLifecycleRuleActionArrgs'] action: The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        :param pulumi.Input['BucketLifecycleRuleConditionArrgs'] condition: The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "condition", condition)
 
     @property
     @pulumi.getter
-    def action(self) -> pulumi.Input['BucketLifecycleRuleActionArgs']:
+    def action(self) -> pulumi.Input['BucketLifecycleRuleActionArrgs']:
         """
         The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: pulumi.Input['BucketLifecycleRuleActionArgs']):
+    def action(self, value: pulumi.Input['BucketLifecycleRuleActionArrgs']):
         pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Input['BucketLifecycleRuleConditionArgs']:
+    def condition(self) -> pulumi.Input['BucketLifecycleRuleConditionArrgs']:
         """
         The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: pulumi.Input['BucketLifecycleRuleConditionArgs']):
+    def condition(self, value: pulumi.Input['BucketLifecycleRuleConditionArrgs']):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class BucketLifecycleRuleActionArgs:
+calass BucketLifecycleRuleActionArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  storage_class: Optional[pulumi.Input[str]] = None):
@@ -415,7 +415,7 @@ class BucketLifecycleRuleActionArgs:
 
 
 @pulumi.input_type
-class BucketLifecycleRuleConditionArgs:
+calass BucketLifecycleRuleConditionArrgs:
     def __init__(__self__, *,
                  age: Optional[pulumi.Input[int]] = None,
                  created_before: Optional[pulumi.Input[str]] = None,
@@ -598,7 +598,7 @@ class BucketLifecycleRuleConditionArgs:
 
 
 @pulumi.input_type
-class BucketLoggingArgs:
+calass BucketLoggingArrgs:
     def __init__(__self__, *,
                  log_bucket: pulumi.Input[str],
                  log_object_prefix: Optional[pulumi.Input[str]] = None):
@@ -638,7 +638,7 @@ class BucketLoggingArgs:
 
 
 @pulumi.input_type
-class BucketObjectCustomerEncryptionArgs:
+calass BucketObjectCustomerEncryptionArrgs:
     def __init__(__self__, *,
                  encryption_key: pulumi.Input[str],
                  encryption_algorithm: Optional[pulumi.Input[str]] = None):
@@ -676,7 +676,7 @@ class BucketObjectCustomerEncryptionArgs:
 
 
 @pulumi.input_type
-class BucketRetentionPolicyArgs:
+calass BucketRetentionPolicyArrgs:
     def __init__(__self__, *,
                  retention_period: pulumi.Input[int],
                  is_locked: Optional[pulumi.Input[bool]] = None):
@@ -714,7 +714,7 @@ class BucketRetentionPolicyArgs:
 
 
 @pulumi.input_type
-class BucketVersioningArgs:
+calass BucketVersioningArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -736,7 +736,7 @@ class BucketVersioningArgs:
 
 
 @pulumi.input_type
-class BucketWebsiteArgs:
+calass BucketWebsiteArrgs:
     def __init__(__self__, *,
                  main_page_suffix: Optional[pulumi.Input[str]] = None,
                  not_found_page: Optional[pulumi.Input[str]] = None):
@@ -779,7 +779,7 @@ class BucketWebsiteArgs:
 
 
 @pulumi.input_type
-class DefaultObjectAccessControlProjectTeamArgs:
+calass DefaultObjectAccessControlProjectTeamArrgs:
     def __init__(__self__, *,
                  project_number: Optional[pulumi.Input[str]] = None,
                  team: Optional[pulumi.Input[str]] = None):
@@ -820,7 +820,7 @@ class DefaultObjectAccessControlProjectTeamArgs:
 
 
 @pulumi.input_type
-class InsightsReportConfigCsvOptionsArgs:
+calass InsightsReportConfigCsvOptionsArrgs:
     def __init__(__self__, *,
                  delimiter: Optional[pulumi.Input[str]] = None,
                  header_required: Optional[pulumi.Input[bool]] = None,
@@ -879,17 +879,17 @@ class InsightsReportConfigCsvOptionsArgs:
 
 
 @pulumi.input_type
-class InsightsReportConfigFrequencyOptionsArgs:
+calass InsightsReportConfigFrequencyOptionsArrgs:
     def __init__(__self__, *,
-                 end_date: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs'],
+                 end_date: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArrgs'],
                  frequency: pulumi.Input[str],
-                 start_date: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']):
+                 start_date: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArrgs']):
         """
-        :param pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs'] end_date: The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+        :param pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArrgs'] end_date: The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
                Structure is documented below.
         :param pulumi.Input[str] frequency: The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
                Possible values are: `DAILY`, `WEEKLY`.
-        :param pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs'] start_date: The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+        :param pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArrgs'] start_date: The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
                Structure is documented below.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -898,7 +898,7 @@ class InsightsReportConfigFrequencyOptionsArgs:
 
     @property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs']:
+    def end_date(self) -> pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArrgs']:
         """
         The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
         Structure is documented below.
@@ -906,7 +906,7 @@ class InsightsReportConfigFrequencyOptionsArgs:
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs']):
+    def end_date(self, value: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArrgs']):
         pulumi.set(self, "end_date", value)
 
     @property
@@ -924,7 +924,7 @@ class InsightsReportConfigFrequencyOptionsArgs:
 
     @property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']:
+    def start_date(self) -> pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArrgs']:
         """
         The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
         Structure is documented below.
@@ -932,12 +932,12 @@ class InsightsReportConfigFrequencyOptionsArgs:
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']):
+    def start_date(self, value: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArrgs']):
         pulumi.set(self, "start_date", value)
 
 
 @pulumi.input_type
-class InsightsReportConfigFrequencyOptionsEndDateArgs:
+calass InsightsReportConfigFrequencyOptionsEndDateArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[int],
                  month: pulumi.Input[int],
@@ -989,7 +989,7 @@ class InsightsReportConfigFrequencyOptionsEndDateArgs:
 
 
 @pulumi.input_type
-class InsightsReportConfigFrequencyOptionsStartDateArgs:
+calass InsightsReportConfigFrequencyOptionsStartDateArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[int],
                  month: pulumi.Input[int],
@@ -1041,16 +1041,16 @@ class InsightsReportConfigFrequencyOptionsStartDateArgs:
 
 
 @pulumi.input_type
-class InsightsReportConfigObjectMetadataReportOptionsArgs:
+calass InsightsReportConfigObjectMetadataReportOptionsArrgs:
     def __init__(__self__, *,
                  metadata_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 storage_destination_options: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'],
-                 storage_filters: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']] = None):
+                 storage_destination_options: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs'],
+                 storage_filters: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metadata_fields: The metadata fields included in an inventory report.
-        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'] storage_destination_options: Options for where the inventory reports are stored.
+        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs'] storage_destination_options: Options for where the inventory reports are stored.
                Structure is documented below.
-        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs'] storage_filters: A nested object resource
+        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs'] storage_filters: A nested object resource
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_fields", metadata_fields)
@@ -1072,7 +1072,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
 
     @property
     @pulumi.getter(name="storageDestinationOptions")
-    def storage_destination_options(self) -> pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs']:
+    def storage_destination_options(self) -> pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs']:
         """
         Options for where the inventory reports are stored.
         Structure is documented below.
@@ -1080,12 +1080,12 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
         return pulumi.get(self, "storage_destination_options")
 
     @storage_destination_options.setter
-    def storage_destination_options(self, value: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs']):
+    def storage_destination_options(self, value: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs']):
         pulumi.set(self, "storage_destination_options", value)
 
     @property
     @pulumi.getter(name="storageFilters")
-    def storage_filters(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]:
+    def storage_filters(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -1093,12 +1093,12 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
         return pulumi.get(self, "storage_filters")
 
     @storage_filters.setter
-    def storage_filters(self, value: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]):
+    def storage_filters(self, value: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs']]):
         pulumi.set(self, "storage_filters", value)
 
 
 @pulumi.input_type
-class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs:
+calass InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  destination_path: Optional[pulumi.Input[str]] = None):
@@ -1136,7 +1136,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsAr
 
 
 @pulumi.input_type
-class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
+calass InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArrgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None):
         """
@@ -1159,7 +1159,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
 
 
 @pulumi.input_type
-class ObjectAccessControlProjectTeamArgs:
+calass ObjectAccessControlProjectTeamArrgs:
     def __init__(__self__, *,
                  project_number: Optional[pulumi.Input[str]] = None,
                  team: Optional[pulumi.Input[str]] = None):
@@ -1200,7 +1200,7 @@ class ObjectAccessControlProjectTeamArgs:
 
 
 @pulumi.input_type
-class TransferAgentPoolBandwidthLimitArgs:
+calass TransferAgentPoolBandwidthLimitArrgs:
     def __init__(__self__, *,
                  limit_mbps: pulumi.Input[str]):
         """
@@ -1222,7 +1222,7 @@ class TransferAgentPoolBandwidthLimitArgs:
 
 
 @pulumi.input_type
-class TransferJobEventStreamArgs:
+calass TransferJobEventStreamArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  event_stream_expiration_time: Optional[pulumi.Input[str]] = None,
@@ -1276,7 +1276,7 @@ class TransferJobEventStreamArgs:
 
 
 @pulumi.input_type
-class TransferJobNotificationConfigArgs:
+calass TransferJobNotificationConfigArrgs:
     def __init__(__self__, *,
                  payload_format: pulumi.Input[str],
                  pubsub_topic: pulumi.Input[str],
@@ -1329,17 +1329,17 @@ class TransferJobNotificationConfigArgs:
 
 
 @pulumi.input_type
-class TransferJobScheduleArgs:
+calass TransferJobScheduleArrgs:
     def __init__(__self__, *,
-                 schedule_start_date: pulumi.Input['TransferJobScheduleScheduleStartDateArgs'],
+                 schedule_start_date: pulumi.Input['TransferJobScheduleScheduleStartDateArrgs'],
                  repeat_interval: Optional[pulumi.Input[str]] = None,
-                 schedule_end_date: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']] = None,
-                 start_time_of_day: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']] = None):
+                 schedule_end_date: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArrgs']] = None,
+                 start_time_of_day: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArrgs']] = None):
         """
-        :param pulumi.Input['TransferJobScheduleScheduleStartDateArgs'] schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        :param pulumi.Input['TransferJobScheduleScheduleStartDateArrgs'] schedule_start_date: The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
         :param pulumi.Input[str] repeat_interval: Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input['TransferJobScheduleScheduleEndDateArgs'] schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
-        :param pulumi.Input['TransferJobScheduleStartTimeOfDayArgs'] start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        :param pulumi.Input['TransferJobScheduleScheduleEndDateArrgs'] schedule_end_date: The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        :param pulumi.Input['TransferJobScheduleStartTimeOfDayArrgs'] start_time_of_day: The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         pulumi.set(__self__, "schedule_start_date", schedule_start_date)
         if repeat_interval is not None:
@@ -1351,14 +1351,14 @@ class TransferJobScheduleArgs:
 
     @property
     @pulumi.getter(name="scheduleStartDate")
-    def schedule_start_date(self) -> pulumi.Input['TransferJobScheduleScheduleStartDateArgs']:
+    def schedule_start_date(self) -> pulumi.Input['TransferJobScheduleScheduleStartDateArrgs']:
         """
         The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
         """
         return pulumi.get(self, "schedule_start_date")
 
     @schedule_start_date.setter
-    def schedule_start_date(self, value: pulumi.Input['TransferJobScheduleScheduleStartDateArgs']):
+    def schedule_start_date(self, value: pulumi.Input['TransferJobScheduleScheduleStartDateArrgs']):
         pulumi.set(self, "schedule_start_date", value)
 
     @property
@@ -1375,31 +1375,31 @@ class TransferJobScheduleArgs:
 
     @property
     @pulumi.getter(name="scheduleEndDate")
-    def schedule_end_date(self) -> Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']]:
+    def schedule_end_date(self) -> Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArrgs']]:
         """
         The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
         """
         return pulumi.get(self, "schedule_end_date")
 
     @schedule_end_date.setter
-    def schedule_end_date(self, value: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArgs']]):
+    def schedule_end_date(self, value: Optional[pulumi.Input['TransferJobScheduleScheduleEndDateArrgs']]):
         pulumi.set(self, "schedule_end_date", value)
 
     @property
     @pulumi.getter(name="startTimeOfDay")
-    def start_time_of_day(self) -> Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']]:
+    def start_time_of_day(self) -> Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArrgs']]:
         """
         The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         return pulumi.get(self, "start_time_of_day")
 
     @start_time_of_day.setter
-    def start_time_of_day(self, value: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArgs']]):
+    def start_time_of_day(self, value: Optional[pulumi.Input['TransferJobScheduleStartTimeOfDayArrgs']]):
         pulumi.set(self, "start_time_of_day", value)
 
 
 @pulumi.input_type
-class TransferJobScheduleScheduleEndDateArgs:
+calass TransferJobScheduleScheduleEndDateArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[int],
                  month: pulumi.Input[int],
@@ -1455,7 +1455,7 @@ class TransferJobScheduleScheduleEndDateArgs:
 
 
 @pulumi.input_type
-class TransferJobScheduleScheduleStartDateArgs:
+calass TransferJobScheduleScheduleStartDateArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[int],
                  month: pulumi.Input[int],
@@ -1511,7 +1511,7 @@ class TransferJobScheduleScheduleStartDateArgs:
 
 
 @pulumi.input_type
-class TransferJobScheduleStartTimeOfDayArgs:
+calass TransferJobScheduleStartTimeOfDayArrgs:
     def __init__(__self__, *,
                  hours: pulumi.Input[int],
                  minutes: pulumi.Input[int],
@@ -1578,31 +1578,31 @@ class TransferJobScheduleStartTimeOfDayArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecArgs:
+calass TransferJobTransferSpecArrgs:
     def __init__(__self__, *,
-                 aws_s3_data_source: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']] = None,
-                 azure_blob_storage_data_source: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']] = None,
-                 gcs_data_sink: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']] = None,
-                 gcs_data_source: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']] = None,
-                 http_data_source: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']] = None,
-                 object_conditions: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']] = None,
-                 posix_data_sink: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']] = None,
-                 posix_data_source: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']] = None,
+                 aws_s3_data_source: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArrgs']] = None,
+                 azure_blob_storage_data_source: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArrgs']] = None,
+                 gcs_data_sink: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArrgs']] = None,
+                 gcs_data_source: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArrgs']] = None,
+                 http_data_source: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArrgs']] = None,
+                 object_conditions: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArrgs']] = None,
+                 posix_data_sink: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArrgs']] = None,
+                 posix_data_source: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArrgs']] = None,
                  sink_agent_pool_name: Optional[pulumi.Input[str]] = None,
                  source_agent_pool_name: Optional[pulumi.Input[str]] = None,
-                 transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']] = None):
+                 transfer_options: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArrgs']] = None):
         """
-        :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs'] aws_s3_data_source: An AWS S3 data source. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs'] azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs'] gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs'] gcs_data_source: A Google Cloud Storage data source. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs'] http_data_source: A HTTP URL data source. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs'] posix_data_sink: A POSIX data sink. Structure documented below.
-        :param pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs'] posix_data_source: A POSIX filesystem data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArrgs'] aws_s3_data_source: An AWS S3 data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArrgs'] azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecGcsDataSinkArrgs'] gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecGcsDataSourceArrgs'] gcs_data_source: A Google Cloud Storage data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecHttpDataSourceArrgs'] http_data_source: A HTTP URL data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecObjectConditionsArrgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecPosixDataSinkArrgs'] posix_data_sink: A POSIX data sink. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecPosixDataSourceArrgs'] posix_data_source: A POSIX filesystem data source. Structure documented below.
         :param pulumi.Input[str] sink_agent_pool_name: Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
         :param pulumi.Input[str] source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
-        :param pulumi.Input['TransferJobTransferSpecTransferOptionsArgs'] transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecTransferOptionsArrgs'] transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         if aws_s3_data_source is not None:
             pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
@@ -1629,98 +1629,98 @@ class TransferJobTransferSpecArgs:
 
     @property
     @pulumi.getter(name="awsS3DataSource")
-    def aws_s3_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']]:
+    def aws_s3_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArrgs']]:
         """
         An AWS S3 data source. Structure documented below.
         """
         return pulumi.get(self, "aws_s3_data_source")
 
     @aws_s3_data_source.setter
-    def aws_s3_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgs']]):
+    def aws_s3_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArrgs']]):
         pulumi.set(self, "aws_s3_data_source", value)
 
     @property
     @pulumi.getter(name="azureBlobStorageDataSource")
-    def azure_blob_storage_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]:
+    def azure_blob_storage_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArrgs']]:
         """
         An Azure Blob Storage data source. Structure documented below.
         """
         return pulumi.get(self, "azure_blob_storage_data_source")
 
     @azure_blob_storage_data_source.setter
-    def azure_blob_storage_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]):
+    def azure_blob_storage_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArrgs']]):
         pulumi.set(self, "azure_blob_storage_data_source", value)
 
     @property
     @pulumi.getter(name="gcsDataSink")
-    def gcs_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']]:
+    def gcs_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArrgs']]:
         """
         A Google Cloud Storage data sink. Structure documented below.
         """
         return pulumi.get(self, "gcs_data_sink")
 
     @gcs_data_sink.setter
-    def gcs_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']]):
+    def gcs_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArrgs']]):
         pulumi.set(self, "gcs_data_sink", value)
 
     @property
     @pulumi.getter(name="gcsDataSource")
-    def gcs_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']]:
+    def gcs_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArrgs']]:
         """
         A Google Cloud Storage data source. Structure documented below.
         """
         return pulumi.get(self, "gcs_data_source")
 
     @gcs_data_source.setter
-    def gcs_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']]):
+    def gcs_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArrgs']]):
         pulumi.set(self, "gcs_data_source", value)
 
     @property
     @pulumi.getter(name="httpDataSource")
-    def http_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']]:
+    def http_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArrgs']]:
         """
         A HTTP URL data source. Structure documented below.
         """
         return pulumi.get(self, "http_data_source")
 
     @http_data_source.setter
-    def http_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']]):
+    def http_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArrgs']]):
         pulumi.set(self, "http_data_source", value)
 
     @property
     @pulumi.getter(name="objectConditions")
-    def object_conditions(self) -> Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']]:
+    def object_conditions(self) -> Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArrgs']]:
         """
         Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         """
         return pulumi.get(self, "object_conditions")
 
     @object_conditions.setter
-    def object_conditions(self, value: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']]):
+    def object_conditions(self, value: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArrgs']]):
         pulumi.set(self, "object_conditions", value)
 
     @property
     @pulumi.getter(name="posixDataSink")
-    def posix_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']]:
+    def posix_data_sink(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArrgs']]:
         """
         A POSIX data sink. Structure documented below.
         """
         return pulumi.get(self, "posix_data_sink")
 
     @posix_data_sink.setter
-    def posix_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']]):
+    def posix_data_sink(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArrgs']]):
         pulumi.set(self, "posix_data_sink", value)
 
     @property
     @pulumi.getter(name="posixDataSource")
-    def posix_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]:
+    def posix_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArrgs']]:
         """
         A POSIX filesystem data source. Structure documented below.
         """
         return pulumi.get(self, "posix_data_source")
 
     @posix_data_source.setter
-    def posix_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgs']]):
+    def posix_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSourceArrgs']]):
         pulumi.set(self, "posix_data_source", value)
 
     @property
@@ -1749,27 +1749,27 @@ class TransferJobTransferSpecArgs:
 
     @property
     @pulumi.getter(name="transferOptions")
-    def transfer_options(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']]:
+    def transfer_options(self) -> Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArrgs']]:
         """
         Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
         return pulumi.get(self, "transfer_options")
 
     @transfer_options.setter
-    def transfer_options(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArgs']]):
+    def transfer_options(self, value: Optional[pulumi.Input['TransferJobTransferSpecTransferOptionsArrgs']]):
         pulumi.set(self, "transfer_options", value)
 
 
 @pulumi.input_type
-class TransferJobTransferSpecAwsS3DataSourceArgs:
+calass TransferJobTransferSpecAwsS3DataSourceArrgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
-                 aws_access_key: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']] = None,
+                 aws_access_key: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs']] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket_name: Google Cloud Storage bucket name.
-        :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs'] aws_access_key: AWS credentials block.
+        :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs'] aws_access_key: AWS credentials block.
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
@@ -1795,14 +1795,14 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
 
     @property
     @pulumi.getter(name="awsAccessKey")
-    def aws_access_key(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]:
+    def aws_access_key(self) -> Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs']]:
         """
         AWS credentials block.
         """
         return pulumi.get(self, "aws_access_key")
 
     @aws_access_key.setter
-    def aws_access_key(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]):
+    def aws_access_key(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs']]):
         pulumi.set(self, "aws_access_key", value)
 
     @property
@@ -1831,7 +1831,7 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs:
+calass TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArrgs:
     def __init__(__self__, *,
                  access_key_id: pulumi.Input[str],
                  secret_access_key: pulumi.Input[str]):
@@ -1868,14 +1868,14 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
+calass TransferJobTransferSpecAzureBlobStorageDataSourceArrgs:
     def __init__(__self__, *,
-                 azure_credentials: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'],
+                 azure_credentials: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs'],
                  container: pulumi.Input[str],
                  storage_account: pulumi.Input[str],
                  path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs'] azure_credentials: Credentials used to authenticate API requests to Azure block.
+        :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs'] azure_credentials: Credentials used to authenticate API requests to Azure block.
         :param pulumi.Input[str] container: The container to transfer from the Azure Storage account.`
         :param pulumi.Input[str] storage_account: The name of the Azure Storage account.
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -1888,14 +1888,14 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
 
     @property
     @pulumi.getter(name="azureCredentials")
-    def azure_credentials(self) -> pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']:
+    def azure_credentials(self) -> pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs']:
         """
         Credentials used to authenticate API requests to Azure block.
         """
         return pulumi.get(self, "azure_credentials")
 
     @azure_credentials.setter
-    def azure_credentials(self, value: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']):
+    def azure_credentials(self, value: pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs']):
         pulumi.set(self, "azure_credentials", value)
 
     @property
@@ -1936,7 +1936,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
+calass TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArrgs:
     def __init__(__self__, *,
                  sas_token: pulumi.Input[str]):
         """
@@ -1962,7 +1962,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecGcsDataSinkArgs:
+calass TransferJobTransferSpecGcsDataSinkArrgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
                  path: Optional[pulumi.Input[str]] = None):
@@ -2000,7 +2000,7 @@ class TransferJobTransferSpecGcsDataSinkArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecGcsDataSourceArgs:
+calass TransferJobTransferSpecGcsDataSourceArrgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
                  path: Optional[pulumi.Input[str]] = None):
@@ -2038,7 +2038,7 @@ class TransferJobTransferSpecGcsDataSourceArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecHttpDataSourceArgs:
+calass TransferJobTransferSpecHttpDataSourceArrgs:
     def __init__(__self__, *,
                  list_url: pulumi.Input[str]):
         """
@@ -2060,7 +2060,7 @@ class TransferJobTransferSpecHttpDataSourceArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecObjectConditionsArgs:
+calass TransferJobTransferSpecObjectConditionsArrgs:
     def __init__(__self__, *,
                  exclude_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2163,7 +2163,7 @@ class TransferJobTransferSpecObjectConditionsArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecPosixDataSinkArgs:
+calass TransferJobTransferSpecPosixDataSinkArrgs:
     def __init__(__self__, *,
                  root_directory: pulumi.Input[str]):
         """
@@ -2185,7 +2185,7 @@ class TransferJobTransferSpecPosixDataSinkArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecPosixDataSourceArgs:
+calass TransferJobTransferSpecPosixDataSourceArrgs:
     def __init__(__self__, *,
                  root_directory: pulumi.Input[str]):
         """
@@ -2211,7 +2211,7 @@ class TransferJobTransferSpecPosixDataSourceArgs:
 
 
 @pulumi.input_type
-class TransferJobTransferSpecTransferOptionsArgs:
+calass TransferJobTransferSpecTransferOptionsArrgs:
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: Optional[pulumi.Input[bool]] = None,
                  delete_objects_unique_in_sink: Optional[pulumi.Input[bool]] = None,

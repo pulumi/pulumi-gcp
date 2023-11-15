@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MetastoreFederationIamMemberArgs', 'MetastoreFederationIamMember']
+__all__ = ['MetastoreFederationIamMemberArrgs', 'MetastoreFederationIamMember']
 
 @pulumi.input_type
-class MetastoreFederationIamMemberArgs:
+calass MetastoreFederationIamMemberArrgs:
     def __init__(__self__, *,
                  federation_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -88,11 +88,11 @@ class MetastoreFederationIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MetastoreFederationIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MetastoreFederationIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -135,9 +135,9 @@ class MetastoreFederationIamMemberArgs:
 
 
 @pulumi.input_type
-class _MetastoreFederationIamMemberState:
+calass _MetastoreFederationIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -184,11 +184,11 @@ class _MetastoreFederationIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MetastoreFederationIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MetastoreFederationIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MetastoreFederationIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -274,12 +274,12 @@ class _MetastoreFederationIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class MetastoreFederationIamMember(pulumi.CustomResource):
+calass MetastoreFederationIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreFederationIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreFederationIamMemberConditionArrgs']]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -337,7 +337,7 @@ class MetastoreFederationIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MetastoreFederationIamMemberArgs,
+                 args: MetastoreFederationIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -365,12 +365,12 @@ class MetastoreFederationIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param MetastoreFederationIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param MetastoreFederationIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MetastoreFederationIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MetastoreFederationIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -379,7 +379,7 @@ class MetastoreFederationIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreFederationIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreFederationIamMemberConditionArrgs']]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -392,7 +392,7 @@ class MetastoreFederationIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MetastoreFederationIamMemberArgs.__new__(MetastoreFederationIamMemberArgs)
+            __props__ = MetastoreFederationIamMemberArrgs.__new__(MetastoreFederationIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if federation_id is None and not opts.urn:
@@ -417,7 +417,7 @@ class MetastoreFederationIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['MetastoreFederationIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['MetastoreFederationIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             federation_id: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,

@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppConnectorArgs', 'AppConnector']
+__all__ = ['AppConnectorArrgs', 'AppConnector']
 
 @pulumi.input_type
-class AppConnectorArgs:
+calass AppConnectorArrgs:
     def __init__(__self__, *,
-                 principal_info: pulumi.Input['AppConnectorPrincipalInfoArgs'],
+                 principal_info: pulumi.Input['AppConnectorPrincipalInfoArrgs'],
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -24,7 +24,7 @@ class AppConnectorArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AppConnector resource.
-        :param pulumi.Input['AppConnectorPrincipalInfoArgs'] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input['AppConnectorPrincipalInfoArrgs'] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnector.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
@@ -50,7 +50,7 @@ class AppConnectorArgs:
 
     @property
     @pulumi.getter(name="principalInfo")
-    def principal_info(self) -> pulumi.Input['AppConnectorPrincipalInfoArgs']:
+    def principal_info(self) -> pulumi.Input['AppConnectorPrincipalInfoArrgs']:
         """
         Principal information about the Identity of the AppConnector.
         Structure is documented below.
@@ -58,7 +58,7 @@ class AppConnectorArgs:
         return pulumi.get(self, "principal_info")
 
     @principal_info.setter
-    def principal_info(self, value: pulumi.Input['AppConnectorPrincipalInfoArgs']):
+    def principal_info(self, value: pulumi.Input['AppConnectorPrincipalInfoArrgs']):
         pulumi.set(self, "principal_info", value)
 
     @property
@@ -127,13 +127,13 @@ class AppConnectorArgs:
 
 
 @pulumi.input_type
-class _AppConnectorState:
+calass _AppConnectorState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']] = None,
+                 principal_info: Optional[pulumi.Input['AppConnectorPrincipalInfoArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -147,7 +147,7 @@ class _AppConnectorState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnector.
-        :param pulumi.Input['AppConnectorPrincipalInfoArgs'] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input['AppConnectorPrincipalInfoArrgs'] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -228,7 +228,7 @@ class _AppConnectorState:
 
     @property
     @pulumi.getter(name="principalInfo")
-    def principal_info(self) -> Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']]:
+    def principal_info(self) -> Optional[pulumi.Input['AppConnectorPrincipalInfoArrgs']]:
         """
         Principal information about the Identity of the AppConnector.
         Structure is documented below.
@@ -236,7 +236,7 @@ class _AppConnectorState:
         return pulumi.get(self, "principal_info")
 
     @principal_info.setter
-    def principal_info(self, value: Optional[pulumi.Input['AppConnectorPrincipalInfoArgs']]):
+    def principal_info(self, value: Optional[pulumi.Input['AppConnectorPrincipalInfoArrgs']]):
         pulumi.set(self, "principal_info", value)
 
     @property
@@ -290,7 +290,7 @@ class _AppConnectorState:
         pulumi.set(self, "state", value)
 
 
-class AppConnector(pulumi.CustomResource):
+calass AppConnector(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -298,7 +298,7 @@ class AppConnector(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']]] = None,
+                 principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -324,8 +324,8 @@ class AppConnector(pulumi.CustomResource):
         service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                 email=service_account.email,
             ),
         ))
@@ -342,8 +342,8 @@ class AppConnector(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("appConnector",
             region="us-central1",
             display_name="some display name",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                     email=service_account.email,
                 ),
             ),
@@ -381,7 +381,7 @@ class AppConnector(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnector.
-        :param pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArrgs']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -391,7 +391,7 @@ class AppConnector(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppConnectorArgs,
+                 args: AppConnectorArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A BeyondCorp AppConnector resource represents an application facing component deployed proximal to
@@ -415,8 +415,8 @@ class AppConnector(pulumi.CustomResource):
         service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                 email=service_account.email,
             ),
         ))
@@ -433,8 +433,8 @@ class AppConnector(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("appConnector",
             region="us-central1",
             display_name="some display name",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                     email=service_account.email,
                 ),
             ),
@@ -465,12 +465,12 @@ class AppConnector(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AppConnectorArgs args: The arguments to use to populate this resource's properties.
+        :param AppConnectorArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppConnectorArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -482,7 +482,7 @@ class AppConnector(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']]] = None,
+                 principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -492,7 +492,7 @@ class AppConnector(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppConnectorArgs.__new__(AppConnectorArgs)
+            __props__ = AppConnectorArrgs.__new__(AppConnectorArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
@@ -521,7 +521,7 @@ class AppConnector(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']]] = None,
+            principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -540,7 +540,7 @@ class AppConnector(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppConnector.
-        :param pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArrgs']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RouterArgs', 'Router']
+__all__ = ['RouterArrgs', 'Router']
 
 @pulumi.input_type
-class RouterArgs:
+calass RouterArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
-                 bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
+                 bgp: Optional[pulumi.Input['RouterBgpArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +29,7 @@ class RouterArgs:
                
                
                - - -
-        :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
+        :param pulumi.Input['RouterBgpArrgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
@@ -75,7 +75,7 @@ class RouterArgs:
 
     @property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['RouterBgpArgs']]:
+    def bgp(self) -> Optional[pulumi.Input['RouterBgpArrgs']]:
         """
         BGP information specific to this router.
         Structure is documented below.
@@ -83,7 +83,7 @@ class RouterArgs:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['RouterBgpArgs']]):
+    def bgp(self, value: Optional[pulumi.Input['RouterBgpArrgs']]):
         pulumi.set(self, "bgp", value)
 
     @property
@@ -155,9 +155,9 @@ class RouterArgs:
 
 
 @pulumi.input_type
-class _RouterState:
+calass _RouterState:
     def __init__(__self__, *,
-                 bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
+                 bgp: Optional[pulumi.Input['RouterBgpArrgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
@@ -168,7 +168,7 @@ class _RouterState:
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Router resources.
-        :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
+        :param pulumi.Input['RouterBgpArrgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -210,7 +210,7 @@ class _RouterState:
 
     @property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['RouterBgpArgs']]:
+    def bgp(self) -> Optional[pulumi.Input['RouterBgpArrgs']]:
         """
         BGP information specific to this router.
         Structure is documented below.
@@ -218,7 +218,7 @@ class _RouterState:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['RouterBgpArgs']]):
+    def bgp(self, value: Optional[pulumi.Input['RouterBgpArrgs']]):
         pulumi.set(self, "bgp", value)
 
     @property
@@ -328,12 +328,12 @@ class _RouterState:
         pulumi.set(self, "self_link", value)
 
 
-class Router(pulumi.CustomResource):
+calass Router(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
+                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -360,15 +360,15 @@ class Router(pulumi.CustomResource):
         foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
         foobar_router = gcp.compute.Router("foobarRouter",
             network=foobar_network.name,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=64514,
                 advertise_mode="CUSTOM",
                 advertised_groups=["ALL_SUBNETS"],
                 advertised_ip_ranges=[
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                    gcp.compute.RouterBgpAdvertisedIpRangeArrgs(
                         range="1.2.3.4",
                     ),
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                    gcp.compute.RouterBgpAdvertisedIpRangeArrgs(
                         range="6.7.0.0/16",
                     ),
                 ],
@@ -384,7 +384,7 @@ class Router(pulumi.CustomResource):
         encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
             network=network.name,
             encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=64514,
             ))
         ```
@@ -411,7 +411,7 @@ class Router(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
+        :param pulumi.Input[pulumi.InputType['RouterBgpArrgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN
@@ -434,7 +434,7 @@ class Router(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RouterArgs,
+                 args: RouterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Router resource.
@@ -455,15 +455,15 @@ class Router(pulumi.CustomResource):
         foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
         foobar_router = gcp.compute.Router("foobarRouter",
             network=foobar_network.name,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=64514,
                 advertise_mode="CUSTOM",
                 advertised_groups=["ALL_SUBNETS"],
                 advertised_ip_ranges=[
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                    gcp.compute.RouterBgpAdvertisedIpRangeArrgs(
                         range="1.2.3.4",
                     ),
-                    gcp.compute.RouterBgpAdvertisedIpRangeArgs(
+                    gcp.compute.RouterBgpAdvertisedIpRangeArrgs(
                         range="6.7.0.0/16",
                     ),
                 ],
@@ -479,7 +479,7 @@ class Router(pulumi.CustomResource):
         encrypted_interconnect_router = gcp.compute.Router("encrypted-interconnect-router",
             network=network.name,
             encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=64514,
             ))
         ```
@@ -505,12 +505,12 @@ class Router(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RouterArgs args: The arguments to use to populate this resource's properties.
+        :param RouterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RouterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RouterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -519,7 +519,7 @@ class Router(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
+                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -533,7 +533,7 @@ class Router(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RouterArgs.__new__(RouterArgs)
+            __props__ = RouterArrgs.__new__(RouterArrgs)
 
             __props__.__dict__["bgp"] = bgp
             __props__.__dict__["description"] = description
@@ -556,7 +556,7 @@ class Router(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
+            bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArrgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
@@ -572,7 +572,7 @@ class Router(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
+        :param pulumi.Input[pulumi.InputType['RouterBgpArrgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.

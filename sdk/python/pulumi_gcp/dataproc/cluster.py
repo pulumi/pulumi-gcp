@@ -11,21 +11,21 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterArgs', 'Cluster']
+__all__ = ['ClusterArrgs', 'Cluster']
 
 @pulumi.input_type
-class ClusterArgs:
+calass ClusterArrgs:
     def __init__(__self__, *,
-                 cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
+                 cluster_config: Optional[pulumi.Input['ClusterClusterConfigArrgs']] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
+                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArrgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input['ClusterClusterConfigArrgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
                terraform apply
@@ -40,7 +40,7 @@ class ClusterArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input['ClusterVirtualClusterConfigArrgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         if cluster_config is not None:
@@ -60,7 +60,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigArgs']]:
+    def cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigArrgs']]:
         """
         Allows you to configure various aspects of the cluster.
         Structure defined below.
@@ -68,7 +68,7 @@ class ClusterArgs:
         return pulumi.get(self, "cluster_config")
 
     @cluster_config.setter
-    def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArgs']]):
+    def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArrgs']]):
         pulumi.set(self, "cluster_config", value)
 
     @property
@@ -141,7 +141,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="virtualClusterConfig")
-    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]:
+    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArrgs']]:
         """
         Allows you to configure a virtual Dataproc on GKE cluster.
         Structure defined below.
@@ -149,14 +149,14 @@ class ClusterArgs:
         return pulumi.get(self, "virtual_cluster_config")
 
     @virtual_cluster_config.setter
-    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]):
+    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArrgs']]):
         pulumi.set(self, "virtual_cluster_config", value)
 
 
 @pulumi.input_type
-class _ClusterState:
+calass _ClusterState:
     def __init__(__self__, *,
-                 cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
+                 cluster_config: Optional[pulumi.Input['ClusterClusterConfigArrgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -164,10 +164,10 @@ class _ClusterState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
+                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input['ClusterClusterConfigArgs'] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input['ClusterClusterConfigArrgs'] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -186,7 +186,7 @@ class _ClusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input['ClusterVirtualClusterConfigArgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input['ClusterVirtualClusterConfigArrgs'] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         if cluster_config is not None:
@@ -210,7 +210,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigArgs']]:
+    def cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigArrgs']]:
         """
         Allows you to configure various aspects of the cluster.
         Structure defined below.
@@ -218,7 +218,7 @@ class _ClusterState:
         return pulumi.get(self, "cluster_config")
 
     @cluster_config.setter
-    def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArgs']]):
+    def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArrgs']]):
         pulumi.set(self, "cluster_config", value)
 
     @property
@@ -317,7 +317,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="virtualClusterConfig")
-    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]:
+    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArrgs']]:
         """
         Allows you to configure a virtual Dataproc on GKE cluster.
         Structure defined below.
@@ -325,22 +325,22 @@ class _ClusterState:
         return pulumi.get(self, "virtual_cluster_config")
 
     @virtual_cluster_config.setter
-    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]):
+    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArrgs']]):
         pulumi.set(self, "virtual_cluster_config", value)
 
 
-class Cluster(pulumi.CustomResource):
+calass Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArrgs']]] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArrgs']]] = None,
                  __props__=None):
         """
         Manages a Cloud Dataproc cluster resource within GCP.
@@ -377,35 +377,35 @@ class Cluster(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
+            cluster_config=gcp.dataproc.ClusterClusterConfigArrgs(
                 staging_bucket="dataproc-staging-bucket",
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
+                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArrgs(
                     num_instances=1,
                     machine_type="e2-medium",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
+                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArrgs(
                         boot_disk_type="pd-ssd",
                         boot_disk_size_gb=30,
                     ),
                 ),
-                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
+                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArrgs(
                     num_instances=2,
                     machine_type="e2-medium",
                     min_cpu_platform="Intel Skylake",
-                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
+                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArrgs(
                         boot_disk_size_gb=30,
                         num_local_ssds=1,
                     ),
                 ),
-                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
+                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArrgs(
                     num_instances=0,
                 ),
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
+                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArrgs(
                     image_version="2.0.35-debian10",
                     override_properties={
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
                 ),
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArrgs(
                     tags=[
                         "foo",
                         "bar",
@@ -413,7 +413,7 @@ class Cluster(pulumi.CustomResource):
                     service_account=default.email,
                     service_account_scopes=["cloud-platform"],
                 ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
+                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArrgs(
                     script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
                     timeout_sec=500,
                 )],
@@ -426,12 +426,12 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+            cluster_config=gcp.dataproc.ClusterClusterConfigArrgs(
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArrgs(
                     zone="us-central1-a",
                 ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
+                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArrgs(
+                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArrgs(
                         accelerator_count=1,
                         accelerator_type="nvidia-tesla-k80",
                     )],
@@ -446,7 +446,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArrgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[str] graceful_decommission_timeout: The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
                terraform apply
@@ -461,14 +461,14 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArrgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ClusterArgs] = None,
+                 args: Optional[ClusterArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Cloud Dataproc cluster resource within GCP.
@@ -505,35 +505,35 @@ class Cluster(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
+            cluster_config=gcp.dataproc.ClusterClusterConfigArrgs(
                 staging_bucket="dataproc-staging-bucket",
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
+                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArrgs(
                     num_instances=1,
                     machine_type="e2-medium",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
+                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArrgs(
                         boot_disk_type="pd-ssd",
                         boot_disk_size_gb=30,
                     ),
                 ),
-                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArgs(
+                worker_config=gcp.dataproc.ClusterClusterConfigWorkerConfigArrgs(
                     num_instances=2,
                     machine_type="e2-medium",
                     min_cpu_platform="Intel Skylake",
-                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs(
+                    disk_config=gcp.dataproc.ClusterClusterConfigWorkerConfigDiskConfigArrgs(
                         boot_disk_size_gb=30,
                         num_local_ssds=1,
                     ),
                 ),
-                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
+                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArrgs(
                     num_instances=0,
                 ),
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
+                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArrgs(
                     image_version="2.0.35-debian10",
                     override_properties={
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
                 ),
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArrgs(
                     tags=[
                         "foo",
                         "bar",
@@ -541,7 +541,7 @@ class Cluster(pulumi.CustomResource):
                     service_account=default.email,
                     service_account_scopes=["cloud-platform"],
                 ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
+                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArrgs(
                     script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
                     timeout_sec=500,
                 )],
@@ -554,12 +554,12 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+            cluster_config=gcp.dataproc.ClusterClusterConfigArrgs(
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArrgs(
                     zone="us-central1-a",
                 ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
+                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArrgs(
+                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArrgs(
                         accelerator_count=1,
                         accelerator_type="nvidia-tesla-k80",
                     )],
@@ -573,12 +573,12 @@ class Cluster(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param ClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -587,13 +587,13 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArrgs']]] = None,
                  graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,7 +601,7 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClusterArgs.__new__(ClusterArgs)
+            __props__ = ClusterArrgs.__new__(ClusterArrgs)
 
             __props__.__dict__["cluster_config"] = cluster_config
             __props__.__dict__["graceful_decommission_timeout"] = graceful_decommission_timeout
@@ -624,7 +624,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']]] = None,
+            cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterClusterConfigArrgs']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -632,7 +632,7 @@ class Cluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']]] = None) -> 'Cluster':
+            virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArrgs']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -640,7 +640,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArgs']] cluster_config: Allows you to configure various aspects of the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterClusterConfigArrgs']] cluster_config: Allows you to configure various aspects of the cluster.
                Structure defined below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -659,7 +659,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterVirtualClusterConfigArrgs']] virtual_cluster_config: Allows you to configure a virtual Dataproc on GKE cluster.
                Structure defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

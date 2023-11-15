@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['InstanceIamPolicyArgs', 'InstanceIamPolicy']
+__all__ = ['InstanceIamPolicyArrgs', 'InstanceIamPolicy']
 
 @pulumi.input_type
-class InstanceIamPolicyArgs:
+calass InstanceIamPolicyArrgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -94,7 +94,7 @@ class InstanceIamPolicyArgs:
 
 
 @pulumi.input_type
-class _InstanceIamPolicyState:
+calass _InstanceIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class _InstanceIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class InstanceIamPolicy(pulumi.CustomResource):
+calass InstanceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -219,7 +219,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigtable.user",
             members=["user:jane@example.com"],
         )])
@@ -297,7 +297,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceIamPolicyArgs,
+                 args: InstanceIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
@@ -316,7 +316,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigtable.user",
             members=["user:jane@example.com"],
         )])
@@ -371,12 +371,12 @@ class InstanceIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param InstanceIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -395,7 +395,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceIamPolicyArgs.__new__(InstanceIamPolicyArgs)
+            __props__ = InstanceIamPolicyArrgs.__new__(InstanceIamPolicyArrgs)
 
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the IP address from a static address. For more information see
@@ -153,12 +152,6 @@ func (o LookupAddressResultOutput) ToLookupAddressResultOutput() LookupAddressRe
 
 func (o LookupAddressResultOutput) ToLookupAddressResultOutputWithContext(ctx context.Context) LookupAddressResultOutput {
 	return o
-}
-
-func (o LookupAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAddressResult] {
-	return pulumix.Output[LookupAddressResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP of the created resource.

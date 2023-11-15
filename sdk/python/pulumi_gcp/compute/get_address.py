@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAddressResult:
+calass GetAddressResult:
     """
     A collection of values returned by getAddress.
     """
@@ -148,7 +148,7 @@ class GetAddressResult:
         return pulumi.get(self, "users")
 
 
-class AwaitableGetAddressResult(GetAddressResult):
+calass AwaitableGetAddressResult(GetAddressResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DicomStoreIamBindingArgs', 'DicomStoreIamBinding']
+__all__ = ['DicomStoreIamBindingArrgs', 'DicomStoreIamBinding']
 
 @pulumi.input_type
-class DicomStoreIamBindingArgs:
+calass DicomStoreIamBindingArrgs:
     def __init__(__self__, *,
                  dicom_store_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['DicomStoreIamBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a DicomStoreIamBinding resource.
         :param pulumi.Input[str] dicom_store_id: The DICOM store ID, in the form
@@ -94,18 +94,18 @@ class DicomStoreIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DicomStoreIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DicomStoreIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _DicomStoreIamBindingState:
+calass _DicomStoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DicomStoreIamBindingConditionArrgs']] = None,
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -143,11 +143,11 @@ class _DicomStoreIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DicomStoreIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DicomStoreIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _DicomStoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class DicomStoreIamBinding(pulumi.CustomResource):
+calass DicomStoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamBindingConditionArrgs']]] = None,
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class DicomStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -319,7 +319,7 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DicomStoreIamBindingArgs,
+                 args: DicomStoreIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
@@ -338,7 +338,7 @@ class DicomStoreIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -398,12 +398,12 @@ class DicomStoreIamBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DicomStoreIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param DicomStoreIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DicomStoreIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -412,7 +412,7 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamBindingConditionArrgs']]] = None,
                  dicom_store_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -423,7 +423,7 @@ class DicomStoreIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DicomStoreIamBindingArgs.__new__(DicomStoreIamBindingArgs)
+            __props__ = DicomStoreIamBindingArrgs.__new__(DicomStoreIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if dicom_store_id is None and not opts.urn:
@@ -446,7 +446,7 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['DicomStoreIamBindingConditionArrgs']]] = None,
             dicom_store_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

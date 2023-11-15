@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AppleAppArgs', 'AppleApp']
+__all__ = ['AppleAppArrgs', 'AppleApp']
 
 @pulumi.input_type
-class AppleAppArgs:
+calass AppleAppArrgs:
     def __init__(__self__, *,
                  bundle_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
@@ -146,7 +146,7 @@ class AppleAppArgs:
 
 
 @pulumi.input_type
-class _AppleAppState:
+calass _AppleAppState:
     def __init__(__self__, *,
                  api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
@@ -317,7 +317,7 @@ class _AppleAppState:
         pulumi.set(self, "team_id", value)
 
 
-class AppleApp(pulumi.CustomResource):
+calass AppleApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -353,8 +353,8 @@ class AppleApp(pulumi.CustomResource):
         apple = gcp.projects.ApiKey("apple",
             display_name="Display Name Full",
             project="my-project-name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArrgs(
                     allowed_bundle_ids=["apple.app.12345"],
                 ),
             ),
@@ -415,7 +415,7 @@ class AppleApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppleAppArgs,
+                 args: AppleAppArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -440,8 +440,8 @@ class AppleApp(pulumi.CustomResource):
         apple = gcp.projects.ApiKey("apple",
             display_name="Display Name Full",
             project="my-project-name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArrgs(
                     allowed_bundle_ids=["apple.app.12345"],
                 ),
             ),
@@ -481,12 +481,12 @@ class AppleApp(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AppleAppArgs args: The arguments to use to populate this resource's properties.
+        :param AppleAppArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppleAppArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppleAppArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -509,7 +509,7 @@ class AppleApp(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppleAppArgs.__new__(AppleAppArgs)
+            __props__ = AppleAppArrgs.__new__(AppleAppArrgs)
 
             __props__.__dict__["api_key_id"] = api_key_id
             __props__.__dict__["app_store_id"] = app_store_id

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetInstanceGroupResult:
+calass GetInstanceGroupResult:
     """
     A collection of values returned by getInstanceGroup.
     """
@@ -126,7 +126,7 @@ class GetInstanceGroupResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
+calass AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

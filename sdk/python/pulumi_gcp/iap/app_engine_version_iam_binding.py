@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppEngineVersionIamBindingArgs', 'AppEngineVersionIamBinding']
+__all__ = ['AppEngineVersionIamBindingArrgs', 'AppEngineVersionIamBinding']
 
 @pulumi.input_type
-class AppEngineVersionIamBindingArgs:
+calass AppEngineVersionIamBindingArrgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  service: pulumi.Input[str],
                  version_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AppEngineVersionIamBinding resource.
@@ -31,7 +31,7 @@ class AppEngineVersionIamBindingArgs:
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] version_id: Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input['AppEngineVersionIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['AppEngineVersionIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -119,7 +119,7 @@ class AppEngineVersionIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AppEngineVersionIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -127,7 +127,7 @@ class AppEngineVersionIamBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -157,10 +157,10 @@ class AppEngineVersionIamBindingArgs:
 
 
 @pulumi.input_type
-class _AppEngineVersionIamBindingState:
+calass _AppEngineVersionIamBindingState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class _AppEngineVersionIamBindingState:
         """
         Input properties used for looking up and filtering AppEngineVersionIamBinding resources.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input['AppEngineVersionIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['AppEngineVersionIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -224,7 +224,7 @@ class _AppEngineVersionIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AppEngineVersionIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -232,7 +232,7 @@ class _AppEngineVersionIamBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AppEngineVersionIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -320,13 +320,13 @@ class _AppEngineVersionIamBindingState:
         pulumi.set(self, "version_id", value)
 
 
-class AppEngineVersionIamBinding(pulumi.CustomResource):
+calass AppEngineVersionIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -356,7 +356,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -374,10 +374,10 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -413,7 +413,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -447,7 +447,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         member = gcp.iap.AppEngineVersionIamMember("member",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -486,7 +486,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -512,7 +512,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppEngineVersionIamBindingArgs,
+                 args: AppEngineVersionIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineVersion. Each of these resources serves a different use case:
@@ -537,7 +537,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -555,10 +555,10 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -594,7 +594,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         binding = gcp.iap.AppEngineVersionIamBinding("binding",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamBindingConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -628,7 +628,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         member = gcp.iap.AppEngineVersionIamMember("member",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineVersionIamMemberConditionArgs(
+            condition=gcp.iap.AppEngineVersionIamMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -665,12 +665,12 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AppEngineVersionIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param AppEngineVersionIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppEngineVersionIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppEngineVersionIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -680,7 +680,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -693,7 +693,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppEngineVersionIamBindingArgs.__new__(AppEngineVersionIamBindingArgs)
+            __props__ = AppEngineVersionIamBindingArrgs.__new__(AppEngineVersionIamBindingArrgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
@@ -724,7 +724,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -739,7 +739,7 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['AppEngineVersionIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

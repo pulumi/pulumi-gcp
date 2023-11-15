@@ -10,78 +10,78 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConnectionProfileBigqueryProfileArgs',
-    'ConnectionProfileForwardSshConnectivityArgs',
-    'ConnectionProfileGcsProfileArgs',
-    'ConnectionProfileMysqlProfileArgs',
-    'ConnectionProfileMysqlProfileSslConfigArgs',
-    'ConnectionProfileOracleProfileArgs',
-    'ConnectionProfilePostgresqlProfileArgs',
-    'ConnectionProfilePrivateConnectivityArgs',
-    'PrivateConnectionErrorArgs',
-    'PrivateConnectionVpcPeeringConfigArgs',
-    'StreamBackfillAllArgs',
-    'StreamBackfillAllMysqlExcludedObjectsArgs',
-    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs',
-    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs',
-    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
-    'StreamBackfillAllOracleExcludedObjectsArgs',
-    'StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs',
-    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs',
-    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs',
-    'StreamBackfillAllPostgresqlExcludedObjectsArgs',
-    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs',
-    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs',
-    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
-    'StreamBackfillNoneArgs',
-    'StreamDestinationConfigArgs',
-    'StreamDestinationConfigBigqueryDestinationConfigArgs',
-    'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs',
-    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs',
-    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs',
-    'StreamDestinationConfigGcsDestinationConfigArgs',
-    'StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs',
-    'StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs',
-    'StreamSourceConfigArgs',
-    'StreamSourceConfigMysqlSourceConfigArgs',
-    'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs',
-    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs',
-    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs',
-    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
-    'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs',
-    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs',
-    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs',
-    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
-    'StreamSourceConfigOracleSourceConfigArgs',
-    'StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs',
-    'StreamSourceConfigOracleSourceConfigExcludeObjectsArgs',
-    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs',
-    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs',
-    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs',
-    'StreamSourceConfigOracleSourceConfigIncludeObjectsArgs',
-    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs',
-    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs',
-    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs',
-    'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs',
-    'StreamSourceConfigPostgresqlSourceConfigArgs',
-    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs',
-    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs',
-    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs',
-    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
-    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs',
-    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs',
-    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs',
-    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
+    'ConnectionProfileBigqueryProfileArrgs',
+    'ConnectionProfileForwardSshConnectivityArrgs',
+    'ConnectionProfileGcsProfileArrgs',
+    'ConnectionProfileMysqlProfileArrgs',
+    'ConnectionProfileMysqlProfileSslConfigArrgs',
+    'ConnectionProfileOracleProfileArrgs',
+    'ConnectionProfilePostgresqlProfileArrgs',
+    'ConnectionProfilePrivateConnectivityArrgs',
+    'PrivateConnectionErrorArrgs',
+    'PrivateConnectionVpcPeeringConfigArrgs',
+    'StreamBackfillAllArrgs',
+    'StreamBackfillAllMysqlExcludedObjectsArrgs',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs',
+    'StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs',
+    'StreamBackfillAllOracleExcludedObjectsArrgs',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs',
+    'StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsArrgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs',
+    'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs',
+    'StreamBackfillNoneArrgs',
+    'StreamDestinationConfigArrgs',
+    'StreamDestinationConfigBigqueryDestinationConfigArrgs',
+    'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs',
+    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs',
+    'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs',
+    'StreamDestinationConfigGcsDestinationConfigArrgs',
+    'StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs',
+    'StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs',
+    'StreamSourceConfigArrgs',
+    'StreamSourceConfigMysqlSourceConfigArrgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs',
+    'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs',
+    'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs',
+    'StreamSourceConfigOracleSourceConfigArrgs',
+    'StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs',
+    'StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs',
+    'StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs',
+    'StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs',
+    'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs',
 ]
 
 @pulumi.input_type
-class ConnectionProfileBigqueryProfileArgs:
+calass ConnectionProfileBigqueryProfileArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class ConnectionProfileForwardSshConnectivityArgs:
+calass ConnectionProfileForwardSshConnectivityArrgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
                  username: pulumi.Input[str],
@@ -170,7 +170,7 @@ class ConnectionProfileForwardSshConnectivityArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileGcsProfileArgs:
+calass ConnectionProfileGcsProfileArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  root_path: Optional[pulumi.Input[str]] = None):
@@ -208,20 +208,20 @@ class ConnectionProfileGcsProfileArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileMysqlProfileArgs:
+calass ConnectionProfileMysqlProfileArrgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
                  password: pulumi.Input[str],
                  username: pulumi.Input[str],
                  port: Optional[pulumi.Input[int]] = None,
-                 ssl_config: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']] = None):
+                 ssl_config: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArrgs']] = None):
         """
         :param pulumi.Input[str] hostname: Hostname for the MySQL connection.
         :param pulumi.Input[str] password: Password for the MySQL connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] username: Username for the MySQL connection.
         :param pulumi.Input[int] port: Port for the MySQL connection.
-        :param pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs'] ssl_config: SSL configuration for the MySQL connection.
+        :param pulumi.Input['ConnectionProfileMysqlProfileSslConfigArrgs'] ssl_config: SSL configuration for the MySQL connection.
                Structure is documented below.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -283,7 +283,7 @@ class ConnectionProfileMysqlProfileArgs:
 
     @property
     @pulumi.getter(name="sslConfig")
-    def ssl_config(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']]:
+    def ssl_config(self) -> Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArrgs']]:
         """
         SSL configuration for the MySQL connection.
         Structure is documented below.
@@ -291,12 +291,12 @@ class ConnectionProfileMysqlProfileArgs:
         return pulumi.get(self, "ssl_config")
 
     @ssl_config.setter
-    def ssl_config(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']]):
+    def ssl_config(self, value: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArrgs']]):
         pulumi.set(self, "ssl_config", value)
 
 
 @pulumi.input_type
-class ConnectionProfileMysqlProfileSslConfigArgs:
+calass ConnectionProfileMysqlProfileSslConfigArrgs:
     def __init__(__self__, *,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  ca_certificate_set: Optional[pulumi.Input[bool]] = None,
@@ -423,7 +423,7 @@ class ConnectionProfileMysqlProfileSslConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileOracleProfileArgs:
+calass ConnectionProfileOracleProfileArrgs:
     def __init__(__self__, *,
                  database_service: pulumi.Input[str],
                  hostname: pulumi.Input[str],
@@ -524,7 +524,7 @@ class ConnectionProfileOracleProfileArgs:
 
 
 @pulumi.input_type
-class ConnectionProfilePostgresqlProfileArgs:
+calass ConnectionProfilePostgresqlProfileArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
@@ -609,7 +609,7 @@ class ConnectionProfilePostgresqlProfileArgs:
 
 
 @pulumi.input_type
-class ConnectionProfilePrivateConnectivityArgs:
+calass ConnectionProfilePrivateConnectivityArrgs:
     def __init__(__self__, *,
                  private_connection: pulumi.Input[str]):
         """
@@ -631,7 +631,7 @@ class ConnectionProfilePrivateConnectivityArgs:
 
 
 @pulumi.input_type
-class PrivateConnectionErrorArgs:
+calass PrivateConnectionErrorArrgs:
     def __init__(__self__, *,
                  details: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
@@ -670,7 +670,7 @@ class PrivateConnectionErrorArgs:
 
 
 @pulumi.input_type
-class PrivateConnectionVpcPeeringConfigArgs:
+calass PrivateConnectionVpcPeeringConfigArrgs:
     def __init__(__self__, *,
                  subnet: pulumi.Input[str],
                  vpc: pulumi.Input[str]):
@@ -713,17 +713,17 @@ class PrivateConnectionVpcPeeringConfigArgs:
 
 
 @pulumi.input_type
-class StreamBackfillAllArgs:
+calass StreamBackfillAllArrgs:
     def __init__(__self__, *,
-                 mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']] = None,
-                 oracle_excluded_objects: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']] = None,
-                 postgresql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']] = None):
+                 mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArrgs']] = None,
+                 oracle_excluded_objects: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArrgs']] = None,
+                 postgresql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArrgs']] = None):
         """
-        :param pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
+        :param pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArrgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
                Structure is documented below.
-        :param pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs'] oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+        :param pulumi.Input['StreamBackfillAllOracleExcludedObjectsArrgs'] oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
-        :param pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs'] postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+        :param pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArrgs'] postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         """
         if mysql_excluded_objects is not None:
@@ -735,7 +735,7 @@ class StreamBackfillAllArgs:
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
-    def mysql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]:
+    def mysql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArrgs']]:
         """
         MySQL data source objects to avoid backfilling.
         Structure is documented below.
@@ -743,12 +743,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "mysql_excluded_objects")
 
     @mysql_excluded_objects.setter
-    def mysql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']]):
+    def mysql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArrgs']]):
         pulumi.set(self, "mysql_excluded_objects", value)
 
     @property
     @pulumi.getter(name="oracleExcludedObjects")
-    def oracle_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']]:
+    def oracle_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArrgs']]:
         """
         PostgreSQL data source objects to avoid backfilling.
         Structure is documented below.
@@ -756,12 +756,12 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "oracle_excluded_objects")
 
     @oracle_excluded_objects.setter
-    def oracle_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']]):
+    def oracle_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArrgs']]):
         pulumi.set(self, "oracle_excluded_objects", value)
 
     @property
     @pulumi.getter(name="postgresqlExcludedObjects")
-    def postgresql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]:
+    def postgresql_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArrgs']]:
         """
         PostgreSQL data source objects to avoid backfilling.
         Structure is documented below.
@@ -769,23 +769,23 @@ class StreamBackfillAllArgs:
         return pulumi.get(self, "postgresql_excluded_objects")
 
     @postgresql_excluded_objects.setter
-    def postgresql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]):
+    def postgresql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArrgs']]):
         pulumi.set(self, "postgresql_excluded_objects", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllMysqlExcludedObjectsArgs:
+calass StreamBackfillAllMysqlExcludedObjectsArrgs:
     def __init__(__self__, *,
-                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]]):
+                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]] mysql_databases: MySQL databases on the server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs']]] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "mysql_databases", mysql_databases)
 
     @property
     @pulumi.getter(name="mysqlDatabases")
-    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]]:
+    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs']]]:
         """
         MySQL databases on the server
         Structure is documented below.
@@ -793,18 +793,18 @@ class StreamBackfillAllMysqlExcludedObjectsArgs:
         return pulumi.get(self, "mysql_databases")
 
     @mysql_databases.setter
-    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs']]]):
+    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs']]]):
         pulumi.set(self, "mysql_databases", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
+calass StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
-                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] database: Database name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs']]] mysql_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -825,7 +825,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
 
     @property
     @pulumi.getter(name="mysqlTables")
-    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]:
+    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -833,18 +833,18 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
         return pulumi.get(self, "mysql_tables")
 
     @mysql_tables.setter
-    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]):
+    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs']]]]):
         pulumi.set(self, "mysql_tables", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
+calass StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -865,7 +865,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
 
     @property
     @pulumi.getter(name="mysqlColumns")
-    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]]:
         """
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -873,12 +873,12 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
         return pulumi.get(self, "mysql_columns")
 
     @mysql_columns.setter
-    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]]):
         pulumi.set(self, "mysql_columns", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
+calass StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs:
     def __init__(__self__, *,
                  collation: Optional[pulumi.Input[str]] = None,
                  column: Optional[pulumi.Input[str]] = None,
@@ -1001,18 +1001,18 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
 
 
 @pulumi.input_type
-class StreamBackfillAllOracleExcludedObjectsArgs:
+calass StreamBackfillAllOracleExcludedObjectsArrgs:
     def __init__(__self__, *,
-                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]]):
+                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]] oracle_schemas: Oracle schemas/databases in the database server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs']]] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
         pulumi.set(__self__, "oracle_schemas", oracle_schemas)
 
     @property
     @pulumi.getter(name="oracleSchemas")
-    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]]:
+    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs']]]:
         """
         Oracle schemas/databases in the database server
         Structure is documented below.
@@ -1020,18 +1020,18 @@ class StreamBackfillAllOracleExcludedObjectsArgs:
         return pulumi.get(self, "oracle_schemas")
 
     @oracle_schemas.setter
-    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs']]]):
+    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs']]]):
         pulumi.set(self, "oracle_schemas", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
+calass StreamBackfillAllOracleExcludedObjectsOracleSchemaArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]] = None):
+                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] schema: Schema name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs']]] oracle_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -1052,7 +1052,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
 
     @property
     @pulumi.getter(name="oracleTables")
-    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]:
+    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -1060,18 +1060,18 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
         return pulumi.get(self, "oracle_tables")
 
     @oracle_tables.setter
-    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]):
+    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs']]]]):
         pulumi.set(self, "oracle_tables", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
+calass StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -1092,7 +1092,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
 
     @property
     @pulumi.getter(name="oracleColumns")
-    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs']]]]:
         """
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -1100,12 +1100,12 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
         return pulumi.get(self, "oracle_columns")
 
     @oracle_columns.setter
-    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs']]]]):
         pulumi.set(self, "oracle_columns", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs:
+calass StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrgs:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
@@ -1272,18 +1272,18 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
 
 
 @pulumi.input_type
-class StreamBackfillAllPostgresqlExcludedObjectsArgs:
+calass StreamBackfillAllPostgresqlExcludedObjectsArrgs:
     def __init__(__self__, *,
-                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]]):
+                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas on the server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs']]] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
 
     @property
     @pulumi.getter(name="postgresqlSchemas")
-    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]]:
+    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs']]]:
         """
         PostgreSQL schemas on the server
         Structure is documented below.
@@ -1291,18 +1291,18 @@ class StreamBackfillAllPostgresqlExcludedObjectsArgs:
         return pulumi.get(self, "postgresql_schemas")
 
     @postgresql_schemas.setter
-    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs']]]):
+    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs']]]):
         pulumi.set(self, "postgresql_schemas", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
+calass StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] schema: Database name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs']]] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -1323,7 +1323,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
 
     @property
     @pulumi.getter(name="postgresqlTables")
-    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -1331,18 +1331,18 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
         return pulumi.get(self, "postgresql_tables")
 
     @postgresql_tables.setter
-    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs']]]]):
         pulumi.set(self, "postgresql_tables", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs:
+calass StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -1363,7 +1363,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
 
     @property
     @pulumi.getter(name="postgresqlColumns")
-    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]]:
         """
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -1371,12 +1371,12 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
         return pulumi.get(self, "postgresql_columns")
 
     @postgresql_columns.setter
-    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]]):
         pulumi.set(self, "postgresql_columns", value)
 
 
 @pulumi.input_type
-class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
+calass StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
@@ -1519,22 +1519,22 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 
 
 @pulumi.input_type
-class StreamBackfillNoneArgs:
+calass StreamBackfillNoneArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class StreamDestinationConfigArgs:
+calass StreamDestinationConfigArrgs:
     def __init__(__self__, *,
                  destination_connection_profile: pulumi.Input[str],
-                 bigquery_destination_config: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']] = None,
-                 gcs_destination_config: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']] = None):
+                 bigquery_destination_config: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArrgs']] = None,
+                 gcs_destination_config: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArrgs']] = None):
         """
         :param pulumi.Input[str] destination_connection_profile: Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs'] bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArrgs'] bigquery_destination_config: A configuration for how data should be loaded to Cloud Storage.
                Structure is documented below.
-        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs'] gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
+        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigArrgs'] gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
                Structure is documented below.
         """
         pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
@@ -1557,7 +1557,7 @@ class StreamDestinationConfigArgs:
 
     @property
     @pulumi.getter(name="bigqueryDestinationConfig")
-    def bigquery_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']]:
+    def bigquery_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArrgs']]:
         """
         A configuration for how data should be loaded to Cloud Storage.
         Structure is documented below.
@@ -1565,12 +1565,12 @@ class StreamDestinationConfigArgs:
         return pulumi.get(self, "bigquery_destination_config")
 
     @bigquery_destination_config.setter
-    def bigquery_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArgs']]):
+    def bigquery_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigArrgs']]):
         pulumi.set(self, "bigquery_destination_config", value)
 
     @property
     @pulumi.getter(name="gcsDestinationConfig")
-    def gcs_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']]:
+    def gcs_destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArrgs']]:
         """
         A configuration for how data should be loaded to Cloud Storage.
         Structure is documented below.
@@ -1578,24 +1578,24 @@ class StreamDestinationConfigArgs:
         return pulumi.get(self, "gcs_destination_config")
 
     @gcs_destination_config.setter
-    def gcs_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArgs']]):
+    def gcs_destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigArrgs']]):
         pulumi.set(self, "gcs_destination_config", value)
 
 
 @pulumi.input_type
-class StreamDestinationConfigBigqueryDestinationConfigArgs:
+calass StreamDestinationConfigBigqueryDestinationConfigArrgs:
     def __init__(__self__, *,
                  data_freshness: Optional[pulumi.Input[str]] = None,
-                 single_target_dataset: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']] = None,
-                 source_hierarchy_datasets: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']] = None):
+                 single_target_dataset: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs']] = None,
+                 source_hierarchy_datasets: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs']] = None):
         """
         :param pulumi.Input[str] data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream.
                Editing this field will only affect new tables created in the future, but existing tables
                will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
-        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs'] single_target_dataset: A single target dataset to which all data will be streamed.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs'] single_target_dataset: A single target dataset to which all data will be streamed.
                Structure is documented below.
-        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs'] source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs'] source_hierarchy_datasets: Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
                Structure is documented below.
         """
         if data_freshness is not None:
@@ -1622,7 +1622,7 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
 
     @property
     @pulumi.getter(name="singleTargetDataset")
-    def single_target_dataset(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]:
+    def single_target_dataset(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs']]:
         """
         A single target dataset to which all data will be streamed.
         Structure is documented below.
@@ -1630,12 +1630,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "single_target_dataset")
 
     @single_target_dataset.setter
-    def single_target_dataset(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]):
+    def single_target_dataset(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs']]):
         pulumi.set(self, "single_target_dataset", value)
 
     @property
     @pulumi.getter(name="sourceHierarchyDatasets")
-    def source_hierarchy_datasets(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]:
+    def source_hierarchy_datasets(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs']]:
         """
         Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
         Structure is documented below.
@@ -1643,12 +1643,12 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         return pulumi.get(self, "source_hierarchy_datasets")
 
     @source_hierarchy_datasets.setter
-    def source_hierarchy_datasets(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]):
+    def source_hierarchy_datasets(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs']]):
         pulumi.set(self, "source_hierarchy_datasets", value)
 
 
 @pulumi.input_type
-class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
+calass StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str]):
         """
@@ -1672,18 +1672,18 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
 
 
 @pulumi.input_type
-class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs:
+calass StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArrgs:
     def __init__(__self__, *,
-                 dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']):
+                 dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs']):
         """
-        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs'] dataset_template: Dataset template used for dynamic dataset creation.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs'] dataset_template: Dataset template used for dynamic dataset creation.
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset_template", dataset_template)
 
     @property
     @pulumi.getter(name="datasetTemplate")
-    def dataset_template(self) -> pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']:
+    def dataset_template(self) -> pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs']:
         """
         Dataset template used for dynamic dataset creation.
         Structure is documented below.
@@ -1691,12 +1691,12 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
         return pulumi.get(self, "dataset_template")
 
     @dataset_template.setter
-    def dataset_template(self, value: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']):
+    def dataset_template(self, value: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs']):
         pulumi.set(self, "dataset_template", value)
 
 
 @pulumi.input_type
-class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs:
+calass StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  dataset_id_prefix: Optional[pulumi.Input[str]] = None,
@@ -1764,19 +1764,19 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
 
 
 @pulumi.input_type
-class StreamDestinationConfigGcsDestinationConfigArgs:
+calass StreamDestinationConfigGcsDestinationConfigArrgs:
     def __init__(__self__, *,
-                 avro_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']] = None,
+                 avro_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs']] = None,
                  file_rotation_interval: Optional[pulumi.Input[str]] = None,
                  file_rotation_mb: Optional[pulumi.Input[int]] = None,
-                 json_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']] = None,
+                 json_file_format: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs']] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs'] avro_file_format: AVRO file format configuration.
+        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs'] avro_file_format: AVRO file format configuration.
         :param pulumi.Input[str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
         :param pulumi.Input[int] file_rotation_mb: The maximum file size to be saved in the bucket.
-        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs'] json_file_format: JSON file format configuration.
+        :param pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs'] json_file_format: JSON file format configuration.
                Structure is documented below.
         :param pulumi.Input[str] path: Path inside the Cloud Storage bucket to write data to.
         """
@@ -1793,14 +1793,14 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
 
     @property
     @pulumi.getter(name="avroFileFormat")
-    def avro_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]:
+    def avro_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs']]:
         """
         AVRO file format configuration.
         """
         return pulumi.get(self, "avro_file_format")
 
     @avro_file_format.setter
-    def avro_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]):
+    def avro_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs']]):
         pulumi.set(self, "avro_file_format", value)
 
     @property
@@ -1830,7 +1830,7 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
 
     @property
     @pulumi.getter(name="jsonFileFormat")
-    def json_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]:
+    def json_file_format(self) -> Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs']]:
         """
         JSON file format configuration.
         Structure is documented below.
@@ -1838,7 +1838,7 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
         return pulumi.get(self, "json_file_format")
 
     @json_file_format.setter
-    def json_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]):
+    def json_file_format(self, value: Optional[pulumi.Input['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs']]):
         pulumi.set(self, "json_file_format", value)
 
     @property
@@ -1855,13 +1855,13 @@ class StreamDestinationConfigGcsDestinationConfigArgs:
 
 
 @pulumi.input_type
-class StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs:
+calass StreamDestinationConfigGcsDestinationConfigAvroFileFormatArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
+calass StreamDestinationConfigGcsDestinationConfigJsonFileFormatArrgs:
     def __init__(__self__, *,
                  compression: Optional[pulumi.Input[str]] = None,
                  schema_file_format: Optional[pulumi.Input[str]] = None):
@@ -1904,19 +1904,19 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
 
 
 @pulumi.input_type
-class StreamSourceConfigArgs:
+calass StreamSourceConfigArrgs:
     def __init__(__self__, *,
                  source_connection_profile: pulumi.Input[str],
-                 mysql_source_config: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']] = None,
-                 oracle_source_config: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']] = None,
-                 postgresql_source_config: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']] = None):
+                 mysql_source_config: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArrgs']] = None,
+                 oracle_source_config: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArrgs']] = None,
+                 postgresql_source_config: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArrgs']] = None):
         """
         :param pulumi.Input[str] source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
-        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration.
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigArrgs'] mysql_source_config: MySQL data source configuration.
                Structure is documented below.
-        :param pulumi.Input['StreamSourceConfigOracleSourceConfigArgs'] oracle_source_config: MySQL data source configuration.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigArrgs'] oracle_source_config: MySQL data source configuration.
                Structure is documented below.
-        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs'] postgresql_source_config: PostgreSQL data source configuration.
+        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArrgs'] postgresql_source_config: PostgreSQL data source configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
@@ -1941,7 +1941,7 @@ class StreamSourceConfigArgs:
 
     @property
     @pulumi.getter(name="mysqlSourceConfig")
-    def mysql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']]:
+    def mysql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArrgs']]:
         """
         MySQL data source configuration.
         Structure is documented below.
@@ -1949,12 +1949,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "mysql_source_config")
 
     @mysql_source_config.setter
-    def mysql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']]):
+    def mysql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArrgs']]):
         pulumi.set(self, "mysql_source_config", value)
 
     @property
     @pulumi.getter(name="oracleSourceConfig")
-    def oracle_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']]:
+    def oracle_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArrgs']]:
         """
         MySQL data source configuration.
         Structure is documented below.
@@ -1962,12 +1962,12 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "oracle_source_config")
 
     @oracle_source_config.setter
-    def oracle_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']]):
+    def oracle_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArrgs']]):
         pulumi.set(self, "oracle_source_config", value)
 
     @property
     @pulumi.getter(name="postgresqlSourceConfig")
-    def postgresql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]:
+    def postgresql_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArrgs']]:
         """
         PostgreSQL data source configuration.
         Structure is documented below.
@@ -1975,21 +1975,21 @@ class StreamSourceConfigArgs:
         return pulumi.get(self, "postgresql_source_config")
 
     @postgresql_source_config.setter
-    def postgresql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]):
+    def postgresql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArrgs']]):
         pulumi.set(self, "postgresql_source_config", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigArgs:
+calass StreamSourceConfigMysqlSourceConfigArrgs:
     def __init__(__self__, *,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']] = None,
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs']] = None,
                  max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
                  max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs'] exclude_objects: MySQL objects to exclude from the stream.
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs'] exclude_objects: MySQL objects to exclude from the stream.
                Structure is documented below.
-        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs'] include_objects: MySQL objects to retrieve from the source.
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs'] include_objects: MySQL objects to retrieve from the source.
                Structure is documented below.
         :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
@@ -2007,7 +2007,7 @@ class StreamSourceConfigMysqlSourceConfigArgs:
 
     @property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs']]:
         """
         MySQL objects to exclude from the stream.
         Structure is documented below.
@@ -2015,12 +2015,12 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs']]:
         """
         MySQL objects to retrieve from the source.
         Structure is documented below.
@@ -2028,7 +2028,7 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs']]):
         pulumi.set(self, "include_objects", value)
 
     @property
@@ -2059,18 +2059,18 @@ class StreamSourceConfigMysqlSourceConfigArgs:
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs:
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsArrgs:
     def __init__(__self__, *,
-                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]]):
+                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]] mysql_databases: MySQL databases on the server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs']]] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "mysql_databases", mysql_databases)
 
     @property
     @pulumi.getter(name="mysqlDatabases")
-    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]]:
+    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs']]]:
         """
         MySQL databases on the server
         Structure is documented below.
@@ -2078,18 +2078,18 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs:
         return pulumi.get(self, "mysql_databases")
 
     @mysql_databases.setter
-    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs']]]):
+    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs']]]):
         pulumi.set(self, "mysql_databases", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
-                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] database: Database name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs']]] mysql_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -2110,7 +2110,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
 
     @property
     @pulumi.getter(name="mysqlTables")
-    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
+    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -2118,18 +2118,18 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
         return pulumi.get(self, "mysql_tables")
 
     @mysql_tables.setter
-    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
+    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs']]]]):
         pulumi.set(self, "mysql_tables", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs:
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2150,7 +2150,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
 
     @property
     @pulumi.getter(name="mysqlColumns")
-    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]]:
         """
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -2158,12 +2158,12 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
         return pulumi.get(self, "mysql_columns")
 
     @mysql_columns.setter
-    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]]):
         pulumi.set(self, "mysql_columns", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
+calass StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs:
     def __init__(__self__, *,
                  collation: Optional[pulumi.Input[str]] = None,
                  column: Optional[pulumi.Input[str]] = None,
@@ -2286,18 +2286,18 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs:
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsArrgs:
     def __init__(__self__, *,
-                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]]):
+                 mysql_databases: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]] mysql_databases: MySQL databases on the server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs']]] mysql_databases: MySQL databases on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "mysql_databases", mysql_databases)
 
     @property
     @pulumi.getter(name="mysqlDatabases")
-    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]]:
+    def mysql_databases(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs']]]:
         """
         MySQL databases on the server
         Structure is documented below.
@@ -2305,18 +2305,18 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs:
         return pulumi.get(self, "mysql_databases")
 
     @mysql_databases.setter
-    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs']]]):
+    def mysql_databases(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs']]]):
         pulumi.set(self, "mysql_databases", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
-                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
+                 mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] database: Database name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs']]] mysql_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -2337,7 +2337,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
 
     @property
     @pulumi.getter(name="mysqlTables")
-    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
+    def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -2345,18 +2345,18 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
         return pulumi.get(self, "mysql_tables")
 
     @mysql_tables.setter
-    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]):
+    def mysql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs']]]]):
         pulumi.set(self, "mysql_tables", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs:
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
+                 mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2377,7 +2377,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
 
     @property
     @pulumi.getter(name="mysqlColumns")
-    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
+    def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]]:
         """
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -2385,12 +2385,12 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
         return pulumi.get(self, "mysql_columns")
 
     @mysql_columns.setter
-    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]):
+    def mysql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs']]]]):
         pulumi.set(self, "mysql_columns", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs:
+calass StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrgs:
     def __init__(__self__, *,
                  collation: Optional[pulumi.Input[str]] = None,
                  column: Optional[pulumi.Input[str]] = None,
@@ -2513,25 +2513,25 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigArgs:
+calass StreamSourceConfigOracleSourceConfigArrgs:
     def __init__(__self__, *,
-                 drop_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']] = None,
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']] = None,
+                 drop_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs']] = None,
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs']] = None,
                  max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
                  max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None,
-                 stream_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']] = None):
+                 stream_large_objects: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs']] = None):
         """
-        :param pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs'] drop_large_objects: Configuration to drop large object values.
-        :param pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs'] exclude_objects: Oracle objects to exclude from the stream.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs'] drop_large_objects: Configuration to drop large object values.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs'] exclude_objects: Oracle objects to exclude from the stream.
                Structure is documented below.
-        :param pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs'] include_objects: Oracle objects to retrieve from the source.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs'] include_objects: Oracle objects to retrieve from the source.
                Structure is documented below.
         :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
-        :param pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs'] stream_large_objects: Configuration to drop large object values.
+        :param pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs'] stream_large_objects: Configuration to drop large object values.
         """
         if drop_large_objects is not None:
             pulumi.set(__self__, "drop_large_objects", drop_large_objects)
@@ -2548,19 +2548,19 @@ class StreamSourceConfigOracleSourceConfigArgs:
 
     @property
     @pulumi.getter(name="dropLargeObjects")
-    def drop_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]:
+    def drop_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs']]:
         """
         Configuration to drop large object values.
         """
         return pulumi.get(self, "drop_large_objects")
 
     @drop_large_objects.setter
-    def drop_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]):
+    def drop_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs']]):
         pulumi.set(self, "drop_large_objects", value)
 
     @property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs']]:
         """
         Oracle objects to exclude from the stream.
         Structure is documented below.
@@ -2568,12 +2568,12 @@ class StreamSourceConfigOracleSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs']]:
         """
         Oracle objects to retrieve from the source.
         Structure is documented below.
@@ -2581,7 +2581,7 @@ class StreamSourceConfigOracleSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs']]):
         pulumi.set(self, "include_objects", value)
 
     @property
@@ -2612,36 +2612,36 @@ class StreamSourceConfigOracleSourceConfigArgs:
 
     @property
     @pulumi.getter(name="streamLargeObjects")
-    def stream_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]:
+    def stream_large_objects(self) -> Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs']]:
         """
         Configuration to drop large object values.
         """
         return pulumi.get(self, "stream_large_objects")
 
     @stream_large_objects.setter
-    def stream_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]):
+    def stream_large_objects(self, value: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs']]):
         pulumi.set(self, "stream_large_objects", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs:
+calass StreamSourceConfigOracleSourceConfigDropLargeObjectsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsArgs:
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsArrgs:
     def __init__(__self__, *,
-                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]]):
+                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]] oracle_schemas: Oracle schemas/databases in the database server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs']]] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
         pulumi.set(__self__, "oracle_schemas", oracle_schemas)
 
     @property
     @pulumi.getter(name="oracleSchemas")
-    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]]:
+    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs']]]:
         """
         Oracle schemas/databases in the database server
         Structure is documented below.
@@ -2649,18 +2649,18 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsArgs:
         return pulumi.get(self, "oracle_schemas")
 
     @oracle_schemas.setter
-    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs']]]):
+    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs']]]):
         pulumi.set(self, "oracle_schemas", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]] = None):
+                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] schema: Schema name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs']]] oracle_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2681,7 +2681,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
 
     @property
     @pulumi.getter(name="oracleTables")
-    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]:
+    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -2689,18 +2689,18 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
         return pulumi.get(self, "oracle_tables")
 
     @oracle_tables.setter
-    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]):
+    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs']]]]):
         pulumi.set(self, "oracle_tables", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs:
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2721,7 +2721,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
 
     @property
     @pulumi.getter(name="oracleColumns")
-    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]]]:
         """
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -2729,12 +2729,12 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
         return pulumi.get(self, "oracle_columns")
 
     @oracle_columns.setter
-    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]]]):
         pulumi.set(self, "oracle_columns", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs:
+calass StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrgs:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
@@ -2901,18 +2901,18 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsArgs:
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsArrgs:
     def __init__(__self__, *,
-                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]]):
+                 oracle_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]] oracle_schemas: Oracle schemas/databases in the database server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs']]] oracle_schemas: Oracle schemas/databases in the database server
                Structure is documented below.
         """
         pulumi.set(__self__, "oracle_schemas", oracle_schemas)
 
     @property
     @pulumi.getter(name="oracleSchemas")
-    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]]:
+    def oracle_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs']]]:
         """
         Oracle schemas/databases in the database server
         Structure is documented below.
@@ -2920,18 +2920,18 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsArgs:
         return pulumi.get(self, "oracle_schemas")
 
     @oracle_schemas.setter
-    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs']]]):
+    def oracle_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs']]]):
         pulumi.set(self, "oracle_schemas", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]] = None):
+                 oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] schema: Schema name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs']]] oracle_tables: Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2952,7 +2952,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
 
     @property
     @pulumi.getter(name="oracleTables")
-    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]:
+    def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs']]]]:
         """
         Tables in the database.
         Structure is documented below.
@@ -2960,18 +2960,18 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
         return pulumi.get(self, "oracle_tables")
 
     @oracle_tables.setter
-    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]):
+    def oracle_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs']]]]):
         pulumi.set(self, "oracle_tables", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs:
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
+                 oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2992,7 +2992,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
 
     @property
     @pulumi.getter(name="oracleColumns")
-    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
+    def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]]]:
         """
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -3000,12 +3000,12 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
         return pulumi.get(self, "oracle_columns")
 
     @oracle_columns.setter
-    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]):
+    def oracle_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs']]]]):
         pulumi.set(self, "oracle_columns", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs:
+calass StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrgs:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
@@ -3172,27 +3172,27 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
 
 
 @pulumi.input_type
-class StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs:
+calass StreamSourceConfigOracleSourceConfigStreamLargeObjectsArrgs:
     def __init__(__self__):
         pass
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigArgs:
+calass StreamSourceConfigPostgresqlSourceConfigArrgs:
     def __init__(__self__, *,
                  publication: pulumi.Input[str],
                  replication_slot: pulumi.Input[str],
-                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']] = None,
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs']] = None,
                  max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] publication: The name of the publication that includes the set of all tables
                that are defined in the stream's include_objects.
         :param pulumi.Input[str] replication_slot: The name of the logical replication slot that's configured with
                the pgoutput plugin.
-        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs'] exclude_objects: PostgreSQL objects to exclude from the stream.
+        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs'] exclude_objects: PostgreSQL objects to exclude from the stream.
                Structure is documented below.
-        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs'] include_objects: PostgreSQL objects to retrieve from the source.
+        :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs'] include_objects: PostgreSQL objects to retrieve from the source.
                Structure is documented below.
         :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non
                negative. If not set (or set to 0), the system's default value will be used.
@@ -3234,7 +3234,7 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
 
     @property
     @pulumi.getter(name="excludeObjects")
-    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]:
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs']]:
         """
         PostgreSQL objects to exclude from the stream.
         Structure is documented below.
@@ -3242,12 +3242,12 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
         return pulumi.get(self, "exclude_objects")
 
     @exclude_objects.setter
-    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]):
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs']]):
         pulumi.set(self, "exclude_objects", value)
 
     @property
     @pulumi.getter(name="includeObjects")
-    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]:
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs']]:
         """
         PostgreSQL objects to retrieve from the source.
         Structure is documented below.
@@ -3255,7 +3255,7 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
         return pulumi.get(self, "include_objects")
 
     @include_objects.setter
-    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]):
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs']]):
         pulumi.set(self, "include_objects", value)
 
     @property
@@ -3273,18 +3273,18 @@ class StreamSourceConfigPostgresqlSourceConfigArgs:
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs:
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArrgs:
     def __init__(__self__, *,
-                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]]):
+                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas on the server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs']]] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
 
     @property
     @pulumi.getter(name="postgresqlSchemas")
-    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]]:
+    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs']]]:
         """
         PostgreSQL schemas on the server
         Structure is documented below.
@@ -3292,18 +3292,18 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs:
         return pulumi.get(self, "postgresql_schemas")
 
     @postgresql_schemas.setter
-    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs']]]):
+    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs']]]):
         pulumi.set(self, "postgresql_schemas", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs:
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] schema: Database name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3324,7 +3324,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
 
     @property
     @pulumi.getter(name="postgresqlTables")
-    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -3332,18 +3332,18 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
         return pulumi.get(self, "postgresql_tables")
 
     @postgresql_tables.setter
-    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]]]):
         pulumi.set(self, "postgresql_tables", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs:
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3364,7 +3364,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 
     @property
     @pulumi.getter(name="postgresqlColumns")
-    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]]:
         """
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -3372,12 +3372,12 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "postgresql_columns")
 
     @postgresql_columns.setter
-    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]]):
         pulumi.set(self, "postgresql_columns", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
+calass StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
@@ -3520,18 +3520,18 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs:
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArrgs:
     def __init__(__self__, *,
-                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]]):
+                 postgresql_schemas: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas on the server
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs']]] postgresql_schemas: PostgreSQL schemas on the server
                Structure is documented below.
         """
         pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
 
     @property
     @pulumi.getter(name="postgresqlSchemas")
-    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]]:
+    def postgresql_schemas(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs']]]:
         """
         PostgreSQL schemas on the server
         Structure is documented below.
@@ -3539,18 +3539,18 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs:
         return pulumi.get(self, "postgresql_schemas")
 
     @postgresql_schemas.setter
-    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs']]]):
+    def postgresql_schemas(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs']]]):
         pulumi.set(self, "postgresql_schemas", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs:
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
-                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]]] = None):
         """
         :param pulumi.Input[str] schema: Database name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]] postgresql_tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3571,7 +3571,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
 
     @property
     @pulumi.getter(name="postgresqlTables")
-    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]]]:
         """
         Tables in the schema.
         Structure is documented below.
@@ -3579,18 +3579,18 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
         return pulumi.get(self, "postgresql_tables")
 
     @postgresql_tables.setter
-    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]):
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs']]]]):
         pulumi.set(self, "postgresql_tables", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs:
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
-                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]] = None):
         """
         :param pulumi.Input[str] table: Table name.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3611,7 +3611,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 
     @property
     @pulumi.getter(name="postgresqlColumns")
-    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]]:
         """
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
@@ -3619,12 +3619,12 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         return pulumi.get(self, "postgresql_columns")
 
     @postgresql_columns.setter
-    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]):
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs']]]]):
         pulumi.set(self, "postgresql_columns", value)
 
 
 @pulumi.input_type
-class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs:
+calass StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrgs:
     def __init__(__self__, *,
                  column: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,

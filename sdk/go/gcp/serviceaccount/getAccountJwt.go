@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
@@ -130,12 +129,6 @@ func (o GetAccountJwtResultOutput) ToGetAccountJwtResultOutput() GetAccountJwtRe
 
 func (o GetAccountJwtResultOutput) ToGetAccountJwtResultOutputWithContext(ctx context.Context) GetAccountJwtResultOutput {
 	return o
-}
-
-func (o GetAccountJwtResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountJwtResult] {
-	return pulumix.Output[GetAccountJwtResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccountJwtResultOutput) Delegates() pulumi.StringArrayOutput {

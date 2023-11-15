@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
@@ -362,12 +361,6 @@ func (i *NoteIamBinding) ToNoteIamBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingOutput)
 }
 
-func (i *NoteIamBinding) ToOutput(ctx context.Context) pulumix.Output[*NoteIamBinding] {
-	return pulumix.Output[*NoteIamBinding]{
-		OutputState: i.ToNoteIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NoteIamBindingArrayInput is an input type that accepts NoteIamBindingArray and NoteIamBindingArrayOutput values.
 // You can construct a concrete instance of `NoteIamBindingArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i NoteIamBindingArray) ToNoteIamBindingArrayOutput() NoteIamBindingArrayOu
 
 func (i NoteIamBindingArray) ToNoteIamBindingArrayOutputWithContext(ctx context.Context) NoteIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingArrayOutput)
-}
-
-func (i NoteIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*NoteIamBinding] {
-	return pulumix.Output[[]*NoteIamBinding]{
-		OutputState: i.ToNoteIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NoteIamBindingMapInput is an input type that accepts NoteIamBindingMap and NoteIamBindingMapOutput values.
@@ -424,12 +411,6 @@ func (i NoteIamBindingMap) ToNoteIamBindingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingMapOutput)
 }
 
-func (i NoteIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NoteIamBinding] {
-	return pulumix.Output[map[string]*NoteIamBinding]{
-		OutputState: i.ToNoteIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NoteIamBindingOutput struct{ *pulumi.OutputState }
 
 func (NoteIamBindingOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o NoteIamBindingOutput) ToNoteIamBindingOutput() NoteIamBindingOutput {
 
 func (o NoteIamBindingOutput) ToNoteIamBindingOutputWithContext(ctx context.Context) NoteIamBindingOutput {
 	return o
-}
-
-func (o NoteIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteIamBinding] {
-	return pulumix.Output[*NoteIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NoteIamBindingOutput) Condition() NoteIamBindingConditionPtrOutput {
@@ -507,12 +482,6 @@ func (o NoteIamBindingArrayOutput) ToNoteIamBindingArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o NoteIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NoteIamBinding] {
-	return pulumix.Output[[]*NoteIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NoteIamBindingArrayOutput) Index(i pulumi.IntInput) NoteIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NoteIamBinding {
 		return vs[0].([]*NoteIamBinding)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o NoteIamBindingMapOutput) ToNoteIamBindingMapOutput() NoteIamBindingMapOu
 
 func (o NoteIamBindingMapOutput) ToNoteIamBindingMapOutputWithContext(ctx context.Context) NoteIamBindingMapOutput {
 	return o
-}
-
-func (o NoteIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NoteIamBinding] {
-	return pulumix.Output[map[string]*NoteIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NoteIamBindingMapOutput) MapIndex(k pulumi.StringInput) NoteIamBindingOutput {

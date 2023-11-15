@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNodeTypesResult:
+calass GetNodeTypesResult:
     """
     A collection of values returned by getNodeTypes.
     """
@@ -62,7 +62,7 @@ class GetNodeTypesResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetNodeTypesResult(GetNodeTypesResult):
+calass AwaitableGetNodeTypesResult(GetNodeTypesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

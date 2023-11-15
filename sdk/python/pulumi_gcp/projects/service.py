@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ServiceArgs', 'Service']
+__all__ = ['ServiceArrgs', 'Service']
 
 @pulumi.input_type
-class ServiceArgs:
+calass ServiceArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
                  disable_dependent_services: Optional[pulumi.Input[bool]] = None,
@@ -91,7 +91,7 @@ class ServiceArgs:
 
 
 @pulumi.input_type
-class _ServiceState:
+calass _ServiceState:
     def __init__(__self__, *,
                  disable_dependent_services: Optional[pulumi.Input[bool]] = None,
                  disable_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -170,7 +170,7 @@ class _ServiceState:
         pulumi.set(self, "service", value)
 
 
-class Service(pulumi.CustomResource):
+calass Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -231,7 +231,7 @@ class Service(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServiceArgs,
+                 args: ServiceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of a single API service for a Google Cloud Platform project.
@@ -270,12 +270,12 @@ class Service(pulumi.CustomResource):
          Note that unlike other resources that fail if they already exist, `pulumi up` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `pulumi up` to add them to state.
 
         :param str resource_name: The name of the resource.
-        :param ServiceArgs args: The arguments to use to populate this resource's properties.
+        :param ServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -295,7 +295,7 @@ class Service(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServiceArgs.__new__(ServiceArgs)
+            __props__ = ServiceArrgs.__new__(ServiceArrgs)
 
             __props__.__dict__["disable_dependent_services"] = disable_dependent_services
             __props__.__dict__["disable_on_destroy"] = disable_on_destroy

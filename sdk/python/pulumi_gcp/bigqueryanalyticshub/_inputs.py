@@ -10,17 +10,17 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DataExchangeIamBindingConditionArgs',
-    'DataExchangeIamMemberConditionArgs',
-    'ListingBigqueryDatasetArgs',
-    'ListingDataProviderArgs',
-    'ListingIamBindingConditionArgs',
-    'ListingIamMemberConditionArgs',
-    'ListingPublisherArgs',
+    'DataExchangeIamBindingConditionArrgs',
+    'DataExchangeIamMemberConditionArrgs',
+    'ListingBigqueryDatasetArrgs',
+    'ListingDataProviderArrgs',
+    'ListingIamBindingConditionArrgs',
+    'ListingIamMemberConditionArrgs',
+    'ListingPublisherArrgs',
 ]
 
 @pulumi.input_type
-class DataExchangeIamBindingConditionArgs:
+calass DataExchangeIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -59,7 +59,7 @@ class DataExchangeIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DataExchangeIamMemberConditionArgs:
+calass DataExchangeIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -98,7 +98,7 @@ class DataExchangeIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ListingBigqueryDatasetArgs:
+calass ListingBigqueryDatasetArrgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[str]):
         """
@@ -124,7 +124,7 @@ class ListingBigqueryDatasetArgs:
 
 
 @pulumi.input_type
-class ListingDataProviderArgs:
+calass ListingDataProviderArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  primary_contact: Optional[pulumi.Input[str]] = None):
@@ -162,7 +162,7 @@ class ListingDataProviderArgs:
 
 
 @pulumi.input_type
-class ListingIamBindingConditionArgs:
+calass ListingIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -201,7 +201,7 @@ class ListingIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ListingIamMemberConditionArgs:
+calass ListingIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -240,7 +240,7 @@ class ListingIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ListingPublisherArgs:
+calass ListingPublisherArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  primary_contact: Optional[pulumi.Input[str]] = None):

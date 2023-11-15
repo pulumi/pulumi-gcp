@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceIamBindingArgs', 'InstanceIamBinding']
+__all__ = ['InstanceIamBindingArrgs', 'InstanceIamBinding']
 
 @pulumi.input_type
-class InstanceIamBindingArgs:
+calass InstanceIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['InstanceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['InstanceIamBindingConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -60,11 +60,11 @@ class InstanceIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['InstanceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['InstanceIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['InstanceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['InstanceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -106,9 +106,9 @@ class InstanceIamBindingArgs:
 
 
 @pulumi.input_type
-class _InstanceIamBindingState:
+calass _InstanceIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['InstanceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['InstanceIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -139,11 +139,11 @@ class _InstanceIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['InstanceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['InstanceIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['InstanceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['InstanceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -211,12 +211,12 @@ class _InstanceIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class InstanceIamBinding(pulumi.CustomResource):
+calass InstanceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -268,11 +268,11 @@ class InstanceIamBinding(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+            network_config=gcp.datafusion.InstanceNetworkConfigArrgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+            accelerators=[gcp.datafusion.InstanceAcceleratorArrgs(
                 accelerator_type="CDC",
                 state="ENABLED",
             )])
@@ -293,7 +293,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArrgs(
                 key_reference=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
@@ -319,7 +319,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArrgs(
                 enabled=True,
                 topic=event_topic.id,
             ))
@@ -367,7 +367,7 @@ class InstanceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceIamBindingArgs,
+                 args: InstanceIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Data Fusion instance.
@@ -414,11 +414,11 @@ class InstanceIamBinding(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+            network_config=gcp.datafusion.InstanceNetworkConfigArrgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+            accelerators=[gcp.datafusion.InstanceAcceleratorArrgs(
                 accelerator_type="CDC",
                 state="ENABLED",
             )])
@@ -439,7 +439,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArrgs(
                 key_reference=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
@@ -465,7 +465,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArrgs(
                 enabled=True,
                 topic=event_topic.id,
             ))
@@ -503,12 +503,12 @@ class InstanceIamBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -517,7 +517,7 @@ class InstanceIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -530,7 +530,7 @@ class InstanceIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceIamBindingArgs.__new__(InstanceIamBindingArgs)
+            __props__ = InstanceIamBindingArrgs.__new__(InstanceIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -553,7 +553,7 @@ class InstanceIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,

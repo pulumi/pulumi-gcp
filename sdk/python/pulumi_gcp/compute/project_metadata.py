@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ProjectMetadataArgs', 'ProjectMetadata']
+__all__ = ['ProjectMetadataArrgs', 'ProjectMetadata']
 
 @pulumi.input_type
-class ProjectMetadataArgs:
+calass ProjectMetadataArrgs:
     def __init__(__self__, *,
                  metadata: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  project: Optional[pulumi.Input[str]] = None):
@@ -57,7 +57,7 @@ class ProjectMetadataArgs:
 
 
 @pulumi.input_type
-class _ProjectMetadataState:
+calass _ProjectMetadataState:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -102,7 +102,7 @@ class _ProjectMetadataState:
         pulumi.set(self, "project", value)
 
 
-class ProjectMetadata(pulumi.CustomResource):
+calass ProjectMetadata(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -170,7 +170,7 @@ class ProjectMetadata(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectMetadataArgs,
+                 args: ProjectMetadataArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Authoritatively manages metadata common to all instances for a project in GCE. For more information see
@@ -221,12 +221,12 @@ class ProjectMetadata(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ProjectMetadataArgs args: The arguments to use to populate this resource's properties.
+        :param ProjectMetadataArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ProjectMetadataArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectMetadataArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -244,7 +244,7 @@ class ProjectMetadata(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ProjectMetadataArgs.__new__(ProjectMetadataArgs)
+            __props__ = ProjectMetadataArrgs.__new__(ProjectMetadataArrgs)
 
             if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")

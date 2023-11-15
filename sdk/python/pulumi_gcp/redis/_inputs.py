@@ -10,31 +10,31 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ClusterDiscoveryEndpointArgs',
-    'ClusterDiscoveryEndpointPscConfigArgs',
-    'ClusterPscConfigArgs',
-    'ClusterPscConnectionArgs',
-    'ClusterStateInfoArgs',
-    'ClusterStateInfoUpdateInfoArgs',
-    'InstanceMaintenancePolicyArgs',
-    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs',
-    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
-    'InstanceMaintenanceScheduleArgs',
-    'InstanceNodeArgs',
-    'InstancePersistenceConfigArgs',
-    'InstanceServerCaCertArgs',
+    'ClusterDiscoveryEndpointArrgs',
+    'ClusterDiscoveryEndpointPscConfigArrgs',
+    'ClusterPscConfigArrgs',
+    'ClusterPscConnectionArrgs',
+    'ClusterStateInfoArrgs',
+    'ClusterStateInfoUpdateInfoArrgs',
+    'InstanceMaintenancePolicyArrgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs',
+    'InstanceMaintenanceScheduleArrgs',
+    'InstanceNodeArrgs',
+    'InstancePersistenceConfigArrgs',
+    'InstanceServerCaCertArrgs',
 ]
 
 @pulumi.input_type
-class ClusterDiscoveryEndpointArgs:
+calass ClusterDiscoveryEndpointArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 psc_config: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']] = None):
+                 psc_config: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArrgs']] = None):
         """
         :param pulumi.Input[str] address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         :param pulumi.Input[int] port: Output only. The port number of the exposed Redis endpoint.
-        :param pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs'] psc_config: Output only. Customer configuration for where the endpoint
+        :param pulumi.Input['ClusterDiscoveryEndpointPscConfigArrgs'] psc_config: Output only. Customer configuration for where the endpoint
                is created and accessed from.
                Structure is documented below.
         """
@@ -71,7 +71,7 @@ class ClusterDiscoveryEndpointArgs:
 
     @property
     @pulumi.getter(name="pscConfig")
-    def psc_config(self) -> Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']]:
+    def psc_config(self) -> Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArrgs']]:
         """
         Output only. Customer configuration for where the endpoint
         is created and accessed from.
@@ -80,12 +80,12 @@ class ClusterDiscoveryEndpointArgs:
         return pulumi.get(self, "psc_config")
 
     @psc_config.setter
-    def psc_config(self, value: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']]):
+    def psc_config(self, value: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArrgs']]):
         pulumi.set(self, "psc_config", value)
 
 
 @pulumi.input_type
-class ClusterDiscoveryEndpointPscConfigArgs:
+calass ClusterDiscoveryEndpointPscConfigArrgs:
     def __init__(__self__, *,
                  network: Optional[pulumi.Input[str]] = None):
         """
@@ -116,7 +116,7 @@ class ClusterDiscoveryEndpointPscConfigArgs:
 
 
 @pulumi.input_type
-class ClusterPscConfigArgs:
+calass ClusterPscConfigArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str]):
         """
@@ -146,7 +146,7 @@ class ClusterPscConfigArgs:
 
 
 @pulumi.input_type
-class ClusterPscConnectionArgs:
+calass ClusterPscConnectionArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  forwarding_rule: Optional[pulumi.Input[str]] = None,
@@ -241,11 +241,11 @@ class ClusterPscConnectionArgs:
 
 
 @pulumi.input_type
-class ClusterStateInfoArgs:
+calass ClusterStateInfoArrgs:
     def __init__(__self__, *,
-                 update_info: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']] = None):
+                 update_info: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArrgs']] = None):
         """
-        :param pulumi.Input['ClusterStateInfoUpdateInfoArgs'] update_info: A nested object resource
+        :param pulumi.Input['ClusterStateInfoUpdateInfoArrgs'] update_info: A nested object resource
                Structure is documented below.
         """
         if update_info is not None:
@@ -253,7 +253,7 @@ class ClusterStateInfoArgs:
 
     @property
     @pulumi.getter(name="updateInfo")
-    def update_info(self) -> Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']]:
+    def update_info(self) -> Optional[pulumi.Input['ClusterStateInfoUpdateInfoArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -261,12 +261,12 @@ class ClusterStateInfoArgs:
         return pulumi.get(self, "update_info")
 
     @update_info.setter
-    def update_info(self, value: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']]):
+    def update_info(self, value: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArrgs']]):
         pulumi.set(self, "update_info", value)
 
 
 @pulumi.input_type
-class ClusterStateInfoUpdateInfoArgs:
+calass ClusterStateInfoUpdateInfoArrgs:
     def __init__(__self__, *,
                  target_replica_count: Optional[pulumi.Input[int]] = None,
                  target_shard_count: Optional[pulumi.Input[int]] = None):
@@ -305,12 +305,12 @@ class ClusterStateInfoUpdateInfoArgs:
 
 
 @pulumi.input_type
-class InstanceMaintenancePolicyArgs:
+calass InstanceMaintenancePolicyArrgs:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
+                 weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]]] = None):
         """
         :param pulumi.Input[str] create_time: (Output)
                Output only. The time when the policy was created.
@@ -323,7 +323,7 @@ class InstanceMaintenancePolicyArgs:
                Output only. The time when the policy was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
                Minimum 1. For the current version, the maximum number
                of weekly_window is expected to be one.
                Structure is documented below.
@@ -383,7 +383,7 @@ class InstanceMaintenancePolicyArgs:
 
     @property
     @pulumi.getter(name="weeklyMaintenanceWindows")
-    def weekly_maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
+    def weekly_maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]]]:
         """
         Optional. Maintenance window that is applied to resources covered by this policy.
         Minimum 1. For the current version, the maximum number
@@ -393,15 +393,15 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "weekly_maintenance_windows")
 
     @weekly_maintenance_windows.setter
-    def weekly_maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
+    def weekly_maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs']]]]):
         pulumi.set(self, "weekly_maintenance_windows", value)
 
 
 @pulumi.input_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[str],
-                 start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'],
+                 start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs'],
                  duration: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] day: Required. The day of week that maintenance updates occur.
@@ -414,7 +414,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
                - SATURDAY: Saturday
                - SUNDAY: Sunday
                Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
+        :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param pulumi.Input[str] duration: (Output)
                Output only. Duration of the maintenance window.
@@ -450,7 +450,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']:
+    def start_time(self) -> pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs']:
         """
         Required. Start time of the window in UTC time.
         Structure is documented below.
@@ -458,7 +458,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']):
+    def start_time(self, value: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs']):
         pulumi.set(self, "start_time", value)
 
     @property
@@ -479,7 +479,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
+calass InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs:
     def __init__(__self__, *,
                  hours: Optional[pulumi.Input[int]] = None,
                  minutes: Optional[pulumi.Input[int]] = None,
@@ -554,7 +554,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
 
 
 @pulumi.input_type
-class InstanceMaintenanceScheduleArgs:
+calass InstanceMaintenanceScheduleArrgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
                  schedule_deadline_time: Optional[pulumi.Input[str]] = None,
@@ -625,7 +625,7 @@ class InstanceMaintenanceScheduleArgs:
 
 
 @pulumi.input_type
-class InstanceNodeArgs:
+calass InstanceNodeArrgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -668,7 +668,7 @@ class InstanceNodeArgs:
 
 
 @pulumi.input_type
-class InstancePersistenceConfigArgs:
+calass InstancePersistenceConfigArrgs:
     def __init__(__self__, *,
                  persistence_mode: Optional[pulumi.Input[str]] = None,
                  rdb_next_snapshot_time: Optional[pulumi.Input[str]] = None,
@@ -773,7 +773,7 @@ class InstancePersistenceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceServerCaCertArgs:
+calass InstanceServerCaCertArrgs:
     def __init__(__self__, *,
                  cert: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,

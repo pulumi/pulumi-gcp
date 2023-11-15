@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AppConnectionApplicationEndpoint(dict):
+calass AppConnectionApplicationEndpoint(dict):
     def __init__(__self__, *,
                  host: str,
                  port: int):
@@ -57,7 +57,7 @@ class AppConnectionApplicationEndpoint(dict):
 
 
 @pulumi.output_type
-class AppConnectionGateway(dict):
+calass AppConnectionGateway(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -138,7 +138,7 @@ class AppConnectionGateway(dict):
 
 
 @pulumi.output_type
-class AppConnectorPrincipalInfo(dict):
+calass AppConnectorPrincipalInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -159,7 +159,7 @@ class AppConnectorPrincipalInfo(dict):
     def __init__(__self__, *,
                  service_account: 'outputs.AppConnectorPrincipalInfoServiceAccount'):
         """
-        :param 'AppConnectorPrincipalInfoServiceAccountArgs' service_account: ServiceAccount represents a GCP service account.
+        :param 'AppConnectorPrincipalInfoServiceAccountArrgs' service_account: ServiceAccount represents a GCP service account.
                Structure is documented below.
         """
         pulumi.set(__self__, "service_account", service_account)
@@ -175,7 +175,7 @@ class AppConnectorPrincipalInfo(dict):
 
 
 @pulumi.output_type
-class AppConnectorPrincipalInfoServiceAccount(dict):
+calass AppConnectorPrincipalInfoServiceAccount(dict):
     def __init__(__self__, *,
                  email: str):
         """
@@ -197,7 +197,7 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
 
 
 @pulumi.output_type
-class AppGatewayAllocatedConnection(dict):
+calass AppGatewayAllocatedConnection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -247,7 +247,7 @@ class AppGatewayAllocatedConnection(dict):
 
 
 @pulumi.output_type
-class GetAppConnectionApplicationEndpointResult(dict):
+calass GetAppConnectionApplicationEndpointResult(dict):
     def __init__(__self__, *,
                  host: str,
                  port: int):
@@ -266,7 +266,7 @@ class GetAppConnectionApplicationEndpointResult(dict):
 
 
 @pulumi.output_type
-class GetAppConnectionGatewayResult(dict):
+calass GetAppConnectionGatewayResult(dict):
     def __init__(__self__, *,
                  app_gateway: str,
                  ingress_port: int,
@@ -299,7 +299,7 @@ class GetAppConnectionGatewayResult(dict):
 
 
 @pulumi.output_type
-class GetAppConnectorPrincipalInfoResult(dict):
+calass GetAppConnectorPrincipalInfoResult(dict):
     def __init__(__self__, *,
                  service_accounts: Sequence['outputs.GetAppConnectorPrincipalInfoServiceAccountResult']):
         pulumi.set(__self__, "service_accounts", service_accounts)
@@ -311,7 +311,7 @@ class GetAppConnectorPrincipalInfoResult(dict):
 
 
 @pulumi.output_type
-class GetAppConnectorPrincipalInfoServiceAccountResult(dict):
+calass GetAppConnectorPrincipalInfoServiceAccountResult(dict):
     def __init__(__self__, *,
                  email: str):
         pulumi.set(__self__, "email", email)
@@ -323,7 +323,7 @@ class GetAppConnectorPrincipalInfoServiceAccountResult(dict):
 
 
 @pulumi.output_type
-class GetAppGatewayAllocatedConnectionResult(dict):
+calass GetAppGatewayAllocatedConnectionResult(dict):
     def __init__(__self__, *,
                  ingress_port: int,
                  psc_uri: str):

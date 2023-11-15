@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppConnectionArgs', 'AppConnection']
+__all__ = ['AppConnectionArrgs', 'AppConnection']
 
 @pulumi.input_type
-class AppConnectionArgs:
+calass AppConnectionArrgs:
     def __init__(__self__, *,
-                 application_endpoint: pulumi.Input['AppConnectionApplicationEndpointArgs'],
+                 application_endpoint: pulumi.Input['AppConnectionApplicationEndpointArrgs'],
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
+                 gateway: Optional[pulumi.Input['AppConnectionGatewayArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,11 +27,11 @@ class AppConnectionArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AppConnection resource.
-        :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input['AppConnectionApplicationEndpointArrgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
-        :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input['AppConnectionGatewayArrgs'] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
@@ -65,7 +65,7 @@ class AppConnectionArgs:
 
     @property
     @pulumi.getter(name="applicationEndpoint")
-    def application_endpoint(self) -> pulumi.Input['AppConnectionApplicationEndpointArgs']:
+    def application_endpoint(self) -> pulumi.Input['AppConnectionApplicationEndpointArrgs']:
         """
         Address of the remote application endpoint for the BeyondCorp AppConnection.
         Structure is documented below.
@@ -73,7 +73,7 @@ class AppConnectionArgs:
         return pulumi.get(self, "application_endpoint")
 
     @application_endpoint.setter
-    def application_endpoint(self, value: pulumi.Input['AppConnectionApplicationEndpointArgs']):
+    def application_endpoint(self, value: pulumi.Input['AppConnectionApplicationEndpointArrgs']):
         pulumi.set(self, "application_endpoint", value)
 
     @property
@@ -102,7 +102,7 @@ class AppConnectionArgs:
 
     @property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArgs']]:
+    def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArrgs']]:
         """
         Gateway used by the AppConnection.
         Structure is documented below.
@@ -110,7 +110,7 @@ class AppConnectionArgs:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input['AppConnectionGatewayArgs']]):
+    def gateway(self, value: Optional[pulumi.Input['AppConnectionGatewayArrgs']]):
         pulumi.set(self, "gateway", value)
 
     @property
@@ -181,13 +181,13 @@ class AppConnectionArgs:
 
 
 @pulumi.input_type
-class _AppConnectionState:
+calass _AppConnectionState:
     def __init__(__self__, *,
-                 application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']] = None,
+                 application_endpoint: Optional[pulumi.Input['AppConnectionApplicationEndpointArrgs']] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 gateway: Optional[pulumi.Input['AppConnectionGatewayArgs']] = None,
+                 gateway: Optional[pulumi.Input['AppConnectionGatewayArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -196,12 +196,12 @@ class _AppConnectionState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AppConnection resources.
-        :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input['AppConnectionApplicationEndpointArrgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input['AppConnectionGatewayArrgs'] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
@@ -242,7 +242,7 @@ class _AppConnectionState:
 
     @property
     @pulumi.getter(name="applicationEndpoint")
-    def application_endpoint(self) -> Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']]:
+    def application_endpoint(self) -> Optional[pulumi.Input['AppConnectionApplicationEndpointArrgs']]:
         """
         Address of the remote application endpoint for the BeyondCorp AppConnection.
         Structure is documented below.
@@ -250,7 +250,7 @@ class _AppConnectionState:
         return pulumi.get(self, "application_endpoint")
 
     @application_endpoint.setter
-    def application_endpoint(self, value: Optional[pulumi.Input['AppConnectionApplicationEndpointArgs']]):
+    def application_endpoint(self, value: Optional[pulumi.Input['AppConnectionApplicationEndpointArrgs']]):
         pulumi.set(self, "application_endpoint", value)
 
     @property
@@ -291,7 +291,7 @@ class _AppConnectionState:
 
     @property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArgs']]:
+    def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArrgs']]:
         """
         Gateway used by the AppConnection.
         Structure is documented below.
@@ -299,7 +299,7 @@ class _AppConnectionState:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input['AppConnectionGatewayArgs']]):
+    def gateway(self, value: Optional[pulumi.Input['AppConnectionGatewayArrgs']]):
         pulumi.set(self, "gateway", value)
 
     @property
@@ -382,15 +382,15 @@ class _AppConnectionState:
         pulumi.set(self, "type", value)
 
 
-class AppConnection(pulumi.CustomResource):
+calass AppConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
+                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArrgs']]] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -418,14 +418,14 @@ class AppConnection(pulumi.CustomResource):
         service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                 email=service_account.email,
             ),
         ))
         app_connection = gcp.beyondcorp.AppConnection("appConnection",
             type="TCP_PROXY",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
+            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArrgs(
                 host="foo-host",
                 port=8080,
             ),
@@ -443,20 +443,20 @@ class AppConnection(pulumi.CustomResource):
         app_gateway = gcp.beyondcorp.AppGateway("appGateway",
             type="TCP_PROXY",
             host_type="GCP_REGIONAL_MIG")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                 email=service_account.email,
             ),
         ))
         app_connection = gcp.beyondcorp.AppConnection("appConnection",
             type="TCP_PROXY",
             display_name="some display name",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
+            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArrgs(
                 host="foo-host",
                 port=8080,
             ),
             connectors=[app_connector.id],
-            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
+            gateway=gcp.beyondcorp.AppConnectionGatewayArrgs(
                 app_gateway=app_gateway.id,
             ),
             labels={
@@ -487,11 +487,11 @@ class AppConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArrgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
-        :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArrgs']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
@@ -509,7 +509,7 @@ class AppConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppConnectionArgs,
+                 args: AppConnectionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A BeyondCorp AppConnection resource represents a BeyondCorp protected AppConnection to a remote application.
@@ -532,14 +532,14 @@ class AppConnection(pulumi.CustomResource):
         service_account = gcp.serviceaccount.Account("serviceAccount",
             account_id="my-account",
             display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                 email=service_account.email,
             ),
         ))
         app_connection = gcp.beyondcorp.AppConnection("appConnection",
             type="TCP_PROXY",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
+            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArrgs(
                 host="foo-host",
                 port=8080,
             ),
@@ -557,20 +557,20 @@ class AppConnection(pulumi.CustomResource):
         app_gateway = gcp.beyondcorp.AppGateway("appGateway",
             type="TCP_PROXY",
             host_type="GCP_REGIONAL_MIG")
-        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArrgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArrgs(
                 email=service_account.email,
             ),
         ))
         app_connection = gcp.beyondcorp.AppConnection("appConnection",
             type="TCP_PROXY",
             display_name="some display name",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
+            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArrgs(
                 host="foo-host",
                 port=8080,
             ),
             connectors=[app_connector.id],
-            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
+            gateway=gcp.beyondcorp.AppConnectionGatewayArrgs(
                 app_gateway=app_gateway.id,
             ),
             labels={
@@ -600,12 +600,12 @@ class AppConnection(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AppConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param AppConnectionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppConnectionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -614,10 +614,10 @@ class AppConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
+                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArrgs']]] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -630,7 +630,7 @@ class AppConnection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppConnectionArgs.__new__(AppConnectionArgs)
+            __props__ = AppConnectionArrgs.__new__(AppConnectionArrgs)
 
             if application_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'application_endpoint'")
@@ -657,11 +657,11 @@ class AppConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
+            application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArrgs']]] = None,
             connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
+            gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -675,12 +675,12 @@ class AppConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArrgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArrgs']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                

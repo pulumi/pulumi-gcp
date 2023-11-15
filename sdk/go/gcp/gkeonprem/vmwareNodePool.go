@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -526,12 +525,6 @@ func (i *VMwareNodePool) ToVMwareNodePoolOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolOutput)
 }
 
-func (i *VMwareNodePool) ToOutput(ctx context.Context) pulumix.Output[*VMwareNodePool] {
-	return pulumix.Output[*VMwareNodePool]{
-		OutputState: i.ToVMwareNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMwareNodePoolArrayInput is an input type that accepts VMwareNodePoolArray and VMwareNodePoolArrayOutput values.
 // You can construct a concrete instance of `VMwareNodePoolArrayInput` via:
 //
@@ -555,12 +548,6 @@ func (i VMwareNodePoolArray) ToVMwareNodePoolArrayOutput() VMwareNodePoolArrayOu
 
 func (i VMwareNodePoolArray) ToVMwareNodePoolArrayOutputWithContext(ctx context.Context) VMwareNodePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolArrayOutput)
-}
-
-func (i VMwareNodePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*VMwareNodePool] {
-	return pulumix.Output[[]*VMwareNodePool]{
-		OutputState: i.ToVMwareNodePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VMwareNodePoolMapInput is an input type that accepts VMwareNodePoolMap and VMwareNodePoolMapOutput values.
@@ -588,12 +575,6 @@ func (i VMwareNodePoolMap) ToVMwareNodePoolMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareNodePoolMapOutput)
 }
 
-func (i VMwareNodePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VMwareNodePool] {
-	return pulumix.Output[map[string]*VMwareNodePool]{
-		OutputState: i.ToVMwareNodePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMwareNodePoolOutput struct{ *pulumi.OutputState }
 
 func (VMwareNodePoolOutput) ElementType() reflect.Type {
@@ -606,12 +587,6 @@ func (o VMwareNodePoolOutput) ToVMwareNodePoolOutput() VMwareNodePoolOutput {
 
 func (o VMwareNodePoolOutput) ToVMwareNodePoolOutputWithContext(ctx context.Context) VMwareNodePoolOutput {
 	return o
-}
-
-func (o VMwareNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareNodePool] {
-	return pulumix.Output[*VMwareNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations on the node Pool.
@@ -738,12 +713,6 @@ func (o VMwareNodePoolArrayOutput) ToVMwareNodePoolArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o VMwareNodePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VMwareNodePool] {
-	return pulumix.Output[[]*VMwareNodePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VMwareNodePoolArrayOutput) Index(i pulumi.IntInput) VMwareNodePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VMwareNodePool {
 		return vs[0].([]*VMwareNodePool)[vs[1].(int)]
@@ -762,12 +731,6 @@ func (o VMwareNodePoolMapOutput) ToVMwareNodePoolMapOutput() VMwareNodePoolMapOu
 
 func (o VMwareNodePoolMapOutput) ToVMwareNodePoolMapOutputWithContext(ctx context.Context) VMwareNodePoolMapOutput {
 	return o
-}
-
-func (o VMwareNodePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VMwareNodePool] {
-	return pulumix.Output[map[string]*VMwareNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMwareNodePoolMapOutput) MapIndex(k pulumi.StringInput) VMwareNodePoolOutput {

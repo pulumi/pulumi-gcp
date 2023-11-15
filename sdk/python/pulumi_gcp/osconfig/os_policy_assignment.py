@@ -11,27 +11,27 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OsPolicyAssignmentArgs', 'OsPolicyAssignment']
+__all__ = ['OsPolicyAssignmentArrgs', 'OsPolicyAssignment']
 
 @pulumi.input_type
-class OsPolicyAssignmentArgs:
+calass OsPolicyAssignmentArrgs:
     def __init__(__self__, *,
-                 instance_filter: pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'],
+                 instance_filter: pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs'],
                  location: pulumi.Input[str],
-                 os_policies: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]],
-                 rollout: pulumi.Input['OsPolicyAssignmentRolloutArgs'],
+                 os_policies: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]],
+                 rollout: pulumi.Input['OsPolicyAssignmentRolloutArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a OsPolicyAssignment resource.
-        :param pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs'] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
-        :param pulumi.Input['OsPolicyAssignmentRolloutArgs'] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input['OsPolicyAssignmentRolloutArrgs'] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
@@ -59,7 +59,7 @@ class OsPolicyAssignmentArgs:
 
     @property
     @pulumi.getter(name="instanceFilter")
-    def instance_filter(self) -> pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']:
+    def instance_filter(self) -> pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs']:
         """
         Filter to select VMs. Structure is
         documented below.
@@ -67,7 +67,7 @@ class OsPolicyAssignmentArgs:
         return pulumi.get(self, "instance_filter")
 
     @instance_filter.setter
-    def instance_filter(self, value: pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']):
+    def instance_filter(self, value: pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs']):
         pulumi.set(self, "instance_filter", value)
 
     @property
@@ -84,7 +84,7 @@ class OsPolicyAssignmentArgs:
 
     @property
     @pulumi.getter(name="osPolicies")
-    def os_policies(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]:
+    def os_policies(self) -> pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]]:
         """
         List of OS policies to be applied to the VMs.
         Structure is documented below.
@@ -92,12 +92,12 @@ class OsPolicyAssignmentArgs:
         return pulumi.get(self, "os_policies")
 
     @os_policies.setter
-    def os_policies(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]):
+    def os_policies(self, value: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]]):
         pulumi.set(self, "os_policies", value)
 
     @property
     @pulumi.getter
-    def rollout(self) -> pulumi.Input['OsPolicyAssignmentRolloutArgs']:
+    def rollout(self) -> pulumi.Input['OsPolicyAssignmentRolloutArrgs']:
         """
         Rollout to deploy the OS policy assignment. A rollout
         is triggered in the following situations: 1) OSPolicyAssignment is created.
@@ -108,7 +108,7 @@ class OsPolicyAssignmentArgs:
         return pulumi.get(self, "rollout")
 
     @rollout.setter
-    def rollout(self, value: pulumi.Input['OsPolicyAssignmentRolloutArgs']):
+    def rollout(self, value: pulumi.Input['OsPolicyAssignmentRolloutArrgs']):
         pulumi.set(self, "rollout", value)
 
     @property
@@ -164,21 +164,21 @@ class OsPolicyAssignmentArgs:
 
 
 @pulumi.input_type
-class _OsPolicyAssignmentState:
+calass _OsPolicyAssignmentState:
     def __init__(__self__, *,
                  baseline: Optional[pulumi.Input[bool]] = None,
                  deleted: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']] = None,
+                 instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  revision_create_time: Optional[pulumi.Input[str]] = None,
                  revision_id: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
+                 rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArrgs']] = None,
                  rollout_state: Optional[pulumi.Input[str]] = None,
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
@@ -194,11 +194,11 @@ class _OsPolicyAssignmentState:
                description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
-        :param pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs'] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -208,7 +208,7 @@ class _OsPolicyAssignmentState:
                created.
         :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is
                committed whenever a rollout is triggered for a OS policy assignment
-        :param pulumi.Input['OsPolicyAssignmentRolloutArgs'] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input['OsPolicyAssignmentRolloutArrgs'] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
@@ -308,7 +308,7 @@ class _OsPolicyAssignmentState:
 
     @property
     @pulumi.getter(name="instanceFilter")
-    def instance_filter(self) -> Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']]:
+    def instance_filter(self) -> Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs']]:
         """
         Filter to select VMs. Structure is
         documented below.
@@ -316,7 +316,7 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "instance_filter")
 
     @instance_filter.setter
-    def instance_filter(self, value: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']]):
+    def instance_filter(self, value: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArrgs']]):
         pulumi.set(self, "instance_filter", value)
 
     @property
@@ -345,7 +345,7 @@ class _OsPolicyAssignmentState:
 
     @property
     @pulumi.getter(name="osPolicies")
-    def os_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]]:
+    def os_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]]]:
         """
         List of OS policies to be applied to the VMs.
         Structure is documented below.
@@ -353,7 +353,7 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "os_policies")
 
     @os_policies.setter
-    def os_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]]):
+    def os_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArrgs']]]]):
         pulumi.set(self, "os_policies", value)
 
     @property
@@ -410,7 +410,7 @@ class _OsPolicyAssignmentState:
 
     @property
     @pulumi.getter
-    def rollout(self) -> Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']]:
+    def rollout(self) -> Optional[pulumi.Input['OsPolicyAssignmentRolloutArrgs']]:
         """
         Rollout to deploy the OS policy assignment. A rollout
         is triggered in the following situations: 1) OSPolicyAssignment is created.
@@ -421,7 +421,7 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "rollout")
 
     @rollout.setter
-    def rollout(self, value: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']]):
+    def rollout(self, value: Optional[pulumi.Input['OsPolicyAssignmentRolloutArrgs']]):
         pulumi.set(self, "rollout", value)
 
     @property
@@ -463,18 +463,18 @@ class _OsPolicyAssignmentState:
         pulumi.set(self, "uid", value)
 
 
-class OsPolicyAssignment(pulumi.CustomResource):
+calass OsPolicyAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+                 rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArrgs']]] = None,
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -501,39 +501,39 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         primary = gcp.osconfig.OsPolicyAssignment("primary",
             description="A test os policy assignment",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
+            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArrgs(
                 all=False,
-                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
+                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArrgs(
                     labels={
                         "label-two": "value-two",
                     },
                 )],
-                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
+                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArrgs(
                     labels={
                         "label-one": "value-one",
                     },
                 )],
-                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
+                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArrgs(
                     os_short_name="centos",
                     os_version="8.*",
                 )],
             ),
             location="us-central1-a",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
+            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArrgs(
                 allow_no_resource_group_match=False,
                 description="A test os policy",
                 id="policy",
                 mode="VALIDATION",
-                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
+                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArrgs(
+                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs(
                         os_short_name="centos",
                         os_version="8.*",
                     )],
                     resources=[
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs(
                             id="apt-to-yum",
-                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
+                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs(
+                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs(
                                     archive_type="DEB",
                                     components=["doc"],
                                     distribution="debian",
@@ -542,13 +542,13 @@ class OsPolicyAssignment(pulumi.CustomResource):
                                 ),
                             ),
                         ),
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs(
+                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs(
+                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs(
                                     args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs(
                                         allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
+                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs(
                                             sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
                                             uri="https://www.example.com/script.sh",
                                         ),
@@ -556,9 +556,9 @@ class OsPolicyAssignment(pulumi.CustomResource):
                                     interpreter="SHELL",
                                     output_file_path="$HOME/out",
                                 ),
-                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
+                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs(
                                     args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs(
                                         local_path="$HOME/script.sh",
                                     ),
                                     interpreter="SHELL",
@@ -570,8 +570,8 @@ class OsPolicyAssignment(pulumi.CustomResource):
                     ],
                 )],
             )],
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
+            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArrgs(
+                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArrgs(
                     percent=100,
                 ),
                 min_wait_duration="3s",
@@ -598,15 +598,15 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: OS policy assignment description. Length of the
                description is limited to 1024 characters.
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArrgs']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArrgs']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArrgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
@@ -618,7 +618,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OsPolicyAssignmentArgs,
+                 args: OsPolicyAssignmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         OS policy assignment is an API resource that is used to apply a set of OS
@@ -644,39 +644,39 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         primary = gcp.osconfig.OsPolicyAssignment("primary",
             description="A test os policy assignment",
-            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArgs(
+            instance_filter=gcp.osconfig.OsPolicyAssignmentInstanceFilterArrgs(
                 all=False,
-                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArgs(
+                exclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabelArrgs(
                     labels={
                         "label-two": "value-two",
                     },
                 )],
-                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArgs(
+                inclusion_labels=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabelArrgs(
                     labels={
                         "label-one": "value-one",
                     },
                 )],
-                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArgs(
+                inventories=[gcp.osconfig.OsPolicyAssignmentInstanceFilterInventoryArrgs(
                     os_short_name="centos",
                     os_version="8.*",
                 )],
             ),
             location="us-central1-a",
-            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArgs(
+            os_policies=[gcp.osconfig.OsPolicyAssignmentOsPolicyArrgs(
                 allow_no_resource_group_match=False,
                 description="A test os policy",
                 id="policy",
                 mode="VALIDATION",
-                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArgs(
-                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs(
+                resource_groups=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupArrgs(
+                    inventory_filters=[gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrgs(
                         os_short_name="centos",
                         os_version="8.*",
                     )],
                     resources=[
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs(
                             id="apt-to-yum",
-                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs(
-                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs(
+                            repository=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArrgs(
+                                apt=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArrgs(
                                     archive_type="DEB",
                                     components=["doc"],
                                     distribution="debian",
@@ -685,13 +685,13 @@ class OsPolicyAssignment(pulumi.CustomResource):
                                 ),
                             ),
                         ),
-                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs(
-                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs(
-                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs(
+                        gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceArrgs(
+                            exec_=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArrgs(
+                                enforce=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArrgs(
                                     args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs(
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArrgs(
                                         allow_insecure=True,
-                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs(
+                                        remote=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArrgs(
                                             sha256_checksum="c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
                                             uri="https://www.example.com/script.sh",
                                         ),
@@ -699,9 +699,9 @@ class OsPolicyAssignment(pulumi.CustomResource):
                                     interpreter="SHELL",
                                     output_file_path="$HOME/out",
                                 ),
-                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs(
+                                validate=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArrgs(
                                     args=["arg1"],
-                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs(
+                                    file=gcp.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArrgs(
                                         local_path="$HOME/script.sh",
                                     ),
                                     interpreter="SHELL",
@@ -713,8 +713,8 @@ class OsPolicyAssignment(pulumi.CustomResource):
                     ],
                 )],
             )],
-            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArgs(
-                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArgs(
+            rollout=gcp.osconfig.OsPolicyAssignmentRolloutArrgs(
+                disruption_budget=gcp.osconfig.OsPolicyAssignmentRolloutDisruptionBudgetArrgs(
                     percent=100,
                 ),
                 min_wait_duration="3s",
@@ -738,12 +738,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OsPolicyAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param OsPolicyAssignmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OsPolicyAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OsPolicyAssignmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -753,12 +753,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+                 rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArrgs']]] = None,
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -767,7 +767,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OsPolicyAssignmentArgs.__new__(OsPolicyAssignmentArgs)
+            __props__ = OsPolicyAssignmentArrgs.__new__(OsPolicyAssignmentArrgs)
 
             __props__.__dict__["description"] = description
             if instance_filter is None and not opts.urn:
@@ -807,15 +807,15 @@ class OsPolicyAssignment(pulumi.CustomResource):
             deleted: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']]] = None,
+            instance_filter: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArrgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]]] = None,
+            os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             revision_create_time: Optional[pulumi.Input[str]] = None,
             revision_id: Optional[pulumi.Input[str]] = None,
-            rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']]] = None,
+            rollout: Optional[pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArrgs']]] = None,
             rollout_state: Optional[pulumi.Input[str]] = None,
             skip_await_rollout: Optional[pulumi.Input[bool]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'OsPolicyAssignment':
@@ -836,11 +836,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
                description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
+        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArrgs']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArrgs']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -850,7 +850,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                created.
         :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is
                committed whenever a rollout is triggered for a OS policy assignment
-        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
+        :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArrgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment

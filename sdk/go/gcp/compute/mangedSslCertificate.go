@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An SslCertificate resource, used for HTTPS load balancing.  This resource
@@ -291,12 +290,6 @@ func (i *MangedSslCertificate) ToMangedSslCertificateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MangedSslCertificateOutput)
 }
 
-func (i *MangedSslCertificate) ToOutput(ctx context.Context) pulumix.Output[*MangedSslCertificate] {
-	return pulumix.Output[*MangedSslCertificate]{
-		OutputState: i.ToMangedSslCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MangedSslCertificateArrayInput is an input type that accepts MangedSslCertificateArray and MangedSslCertificateArrayOutput values.
 // You can construct a concrete instance of `MangedSslCertificateArrayInput` via:
 //
@@ -320,12 +313,6 @@ func (i MangedSslCertificateArray) ToMangedSslCertificateArrayOutput() MangedSsl
 
 func (i MangedSslCertificateArray) ToMangedSslCertificateArrayOutputWithContext(ctx context.Context) MangedSslCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MangedSslCertificateArrayOutput)
-}
-
-func (i MangedSslCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*MangedSslCertificate] {
-	return pulumix.Output[[]*MangedSslCertificate]{
-		OutputState: i.ToMangedSslCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MangedSslCertificateMapInput is an input type that accepts MangedSslCertificateMap and MangedSslCertificateMapOutput values.
@@ -353,12 +340,6 @@ func (i MangedSslCertificateMap) ToMangedSslCertificateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MangedSslCertificateMapOutput)
 }
 
-func (i MangedSslCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MangedSslCertificate] {
-	return pulumix.Output[map[string]*MangedSslCertificate]{
-		OutputState: i.ToMangedSslCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MangedSslCertificateOutput struct{ *pulumi.OutputState }
 
 func (MangedSslCertificateOutput) ElementType() reflect.Type {
@@ -371,12 +352,6 @@ func (o MangedSslCertificateOutput) ToMangedSslCertificateOutput() MangedSslCert
 
 func (o MangedSslCertificateOutput) ToMangedSslCertificateOutputWithContext(ctx context.Context) MangedSslCertificateOutput {
 	return o
-}
-
-func (o MangedSslCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*MangedSslCertificate] {
-	return pulumix.Output[*MangedSslCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the resource.
@@ -457,12 +432,6 @@ func (o MangedSslCertificateArrayOutput) ToMangedSslCertificateArrayOutputWithCo
 	return o
 }
 
-func (o MangedSslCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MangedSslCertificate] {
-	return pulumix.Output[[]*MangedSslCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MangedSslCertificateArrayOutput) Index(i pulumi.IntInput) MangedSslCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MangedSslCertificate {
 		return vs[0].([]*MangedSslCertificate)[vs[1].(int)]
@@ -481,12 +450,6 @@ func (o MangedSslCertificateMapOutput) ToMangedSslCertificateMapOutput() MangedS
 
 func (o MangedSslCertificateMapOutput) ToMangedSslCertificateMapOutputWithContext(ctx context.Context) MangedSslCertificateMapOutput {
 	return o
-}
-
-func (o MangedSslCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MangedSslCertificate] {
-	return pulumix.Output[map[string]*MangedSslCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MangedSslCertificateMapOutput) MapIndex(k pulumi.StringInput) MangedSslCertificateOutput {

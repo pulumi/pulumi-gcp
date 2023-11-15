@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -335,12 +334,6 @@ func (i *ClientTlsPolicy) ToClientTlsPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyOutput)
 }
 
-func (i *ClientTlsPolicy) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicy] {
-	return pulumix.Output[*ClientTlsPolicy]{
-		OutputState: i.ToClientTlsPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientTlsPolicyArrayInput is an input type that accepts ClientTlsPolicyArray and ClientTlsPolicyArrayOutput values.
 // You can construct a concrete instance of `ClientTlsPolicyArrayInput` via:
 //
@@ -364,12 +357,6 @@ func (i ClientTlsPolicyArray) ToClientTlsPolicyArrayOutput() ClientTlsPolicyArra
 
 func (i ClientTlsPolicyArray) ToClientTlsPolicyArrayOutputWithContext(ctx context.Context) ClientTlsPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyArrayOutput)
-}
-
-func (i ClientTlsPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClientTlsPolicy] {
-	return pulumix.Output[[]*ClientTlsPolicy]{
-		OutputState: i.ToClientTlsPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClientTlsPolicyMapInput is an input type that accepts ClientTlsPolicyMap and ClientTlsPolicyMapOutput values.
@@ -397,12 +384,6 @@ func (i ClientTlsPolicyMap) ToClientTlsPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsPolicyMapOutput)
 }
 
-func (i ClientTlsPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientTlsPolicy] {
-	return pulumix.Output[map[string]*ClientTlsPolicy]{
-		OutputState: i.ToClientTlsPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientTlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClientTlsPolicyOutput) ElementType() reflect.Type {
@@ -415,12 +396,6 @@ func (o ClientTlsPolicyOutput) ToClientTlsPolicyOutput() ClientTlsPolicyOutput {
 
 func (o ClientTlsPolicyOutput) ToClientTlsPolicyOutputWithContext(ctx context.Context) ClientTlsPolicyOutput {
 	return o
-}
-
-func (o ClientTlsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientTlsPolicy] {
-	return pulumix.Output[*ClientTlsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -506,12 +481,6 @@ func (o ClientTlsPolicyArrayOutput) ToClientTlsPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ClientTlsPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClientTlsPolicy] {
-	return pulumix.Output[[]*ClientTlsPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientTlsPolicyArrayOutput) Index(i pulumi.IntInput) ClientTlsPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientTlsPolicy {
 		return vs[0].([]*ClientTlsPolicy)[vs[1].(int)]
@@ -530,12 +499,6 @@ func (o ClientTlsPolicyMapOutput) ToClientTlsPolicyMapOutput() ClientTlsPolicyMa
 
 func (o ClientTlsPolicyMapOutput) ToClientTlsPolicyMapOutputWithContext(ctx context.Context) ClientTlsPolicyMapOutput {
 	return o
-}
-
-func (o ClientTlsPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientTlsPolicy] {
-	return pulumix.Output[map[string]*ClientTlsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientTlsPolicyMapOutput) MapIndex(k pulumi.StringInput) ClientTlsPolicyOutput {

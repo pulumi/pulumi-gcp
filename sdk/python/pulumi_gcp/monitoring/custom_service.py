@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CustomServiceArgs', 'CustomService']
+__all__ = ['CustomServiceArrgs', 'CustomService']
 
 @pulumi.input_type
-class CustomServiceArgs:
+calass CustomServiceArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
+                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArrgs']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CustomService resource.
@@ -28,7 +28,7 @@ class CustomServiceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input['CustomServiceTelemetryArgs'] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input['CustomServiceTelemetryArrgs'] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,
@@ -88,7 +88,7 @@ class CustomServiceArgs:
 
     @property
     @pulumi.getter
-    def telemetry(self) -> Optional[pulumi.Input['CustomServiceTelemetryArgs']]:
+    def telemetry(self) -> Optional[pulumi.Input['CustomServiceTelemetryArrgs']]:
         """
         Configuration for how to query telemetry on a Service.
         Structure is documented below.
@@ -96,7 +96,7 @@ class CustomServiceArgs:
         return pulumi.get(self, "telemetry")
 
     @telemetry.setter
-    def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
+    def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArrgs']]):
         pulumi.set(self, "telemetry", value)
 
     @property
@@ -118,13 +118,13 @@ class CustomServiceArgs:
 
 
 @pulumi.input_type
-class _CustomServiceState:
+calass _CustomServiceState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
+                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArrgs']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CustomService resources.
@@ -135,7 +135,7 @@ class _CustomServiceState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input['CustomServiceTelemetryArgs'] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input['CustomServiceTelemetryArrgs'] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,
@@ -210,7 +210,7 @@ class _CustomServiceState:
 
     @property
     @pulumi.getter
-    def telemetry(self) -> Optional[pulumi.Input['CustomServiceTelemetryArgs']]:
+    def telemetry(self) -> Optional[pulumi.Input['CustomServiceTelemetryArrgs']]:
         """
         Configuration for how to query telemetry on a Service.
         Structure is documented below.
@@ -218,7 +218,7 @@ class _CustomServiceState:
         return pulumi.get(self, "telemetry")
 
     @telemetry.setter
-    def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
+    def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArrgs']]):
         pulumi.set(self, "telemetry", value)
 
     @property
@@ -239,7 +239,7 @@ class _CustomServiceState:
         pulumi.set(self, "user_labels", value)
 
 
-class CustomService(pulumi.CustomResource):
+calass CustomService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -247,7 +247,7 @@ class CustomService(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
+                 telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArrgs']]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -273,7 +273,7 @@ class CustomService(pulumi.CustomResource):
         custom = gcp.monitoring.CustomService("custom",
             display_name="My Custom Service custom-srv",
             service_id="custom-srv",
-            telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
+            telemetry=gcp.monitoring.CustomServiceTelemetryArrgs(
                 resource_name="//product.googleapis.com/foo/foo/services/test",
             ),
             user_labels={
@@ -297,7 +297,7 @@ class CustomService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[pulumi.InputType['CustomServiceTelemetryArrgs']] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,
@@ -310,7 +310,7 @@ class CustomService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[CustomServiceArgs] = None,
+                 args: Optional[CustomServiceArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Service is a discrete, autonomous, and network-accessible unit,
@@ -335,7 +335,7 @@ class CustomService(pulumi.CustomResource):
         custom = gcp.monitoring.CustomService("custom",
             display_name="My Custom Service custom-srv",
             service_id="custom-srv",
-            telemetry=gcp.monitoring.CustomServiceTelemetryArgs(
+            telemetry=gcp.monitoring.CustomServiceTelemetryArrgs(
                 resource_name="//product.googleapis.com/foo/foo/services/test",
             ),
             user_labels={
@@ -353,12 +353,12 @@ class CustomService(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CustomServiceArgs args: The arguments to use to populate this resource's properties.
+        :param CustomServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CustomServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CustomServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -370,7 +370,7 @@ class CustomService(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
+                 telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArrgs']]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -379,7 +379,7 @@ class CustomService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CustomServiceArgs.__new__(CustomServiceArgs)
+            __props__ = CustomServiceArrgs.__new__(CustomServiceArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
@@ -401,7 +401,7 @@ class CustomService(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
-            telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']]] = None,
+            telemetry: Optional[pulumi.Input[pulumi.InputType['CustomServiceTelemetryArrgs']]] = None,
             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'CustomService':
         """
         Get an existing CustomService resource's state with the given name, id, and optional extra
@@ -417,7 +417,7 @@ class CustomService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
-        :param pulumi.Input[pulumi.InputType['CustomServiceTelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[pulumi.InputType['CustomServiceTelemetryArrgs']] telemetry: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,

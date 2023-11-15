@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['MonitoredProjectArgs', 'MonitoredProject']
+__all__ = ['MonitoredProjectArrgs', 'MonitoredProject']
 
 @pulumi.input_type
-class MonitoredProjectArgs:
+calass MonitoredProjectArrgs:
     def __init__(__self__, *,
                  metrics_scope: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
@@ -57,7 +57,7 @@ class MonitoredProjectArgs:
 
 
 @pulumi.input_type
-class _MonitoredProjectState:
+calass _MonitoredProjectState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  metrics_scope: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class _MonitoredProjectState:
         pulumi.set(self, "name", value)
 
 
-class MonitoredProject(pulumi.CustomResource):
+calass MonitoredProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -172,7 +172,7 @@ class MonitoredProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MonitoredProjectArgs,
+                 args: MonitoredProjectArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A [project being monitored](https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a Metrics Scope.
@@ -209,12 +209,12 @@ class MonitoredProject(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MonitoredProjectArgs args: The arguments to use to populate this resource's properties.
+        :param MonitoredProjectArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MonitoredProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MonitoredProjectArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -232,7 +232,7 @@ class MonitoredProject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MonitoredProjectArgs.__new__(MonitoredProjectArgs)
+            __props__ = MonitoredProjectArrgs.__new__(MonitoredProjectArrgs)
 
             if metrics_scope is None and not opts.urn:
                 raise TypeError("Missing required property 'metrics_scope'")

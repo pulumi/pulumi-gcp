@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GatewayIamPolicyArgs', 'GatewayIamPolicy']
+__all__ = ['GatewayIamPolicyArrgs', 'GatewayIamPolicy']
 
 @pulumi.input_type
-class GatewayIamPolicyArgs:
+calass GatewayIamPolicyArrgs:
     def __init__(__self__, *,
                  gateway: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -112,7 +112,7 @@ class GatewayIamPolicyArgs:
 
 
 @pulumi.input_type
-class _GatewayIamPolicyState:
+calass _GatewayIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class _GatewayIamPolicyState:
         pulumi.set(self, "region", value)
 
 
-class GatewayIamPolicy(pulumi.CustomResource):
+calass GatewayIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -260,7 +260,7 @@ class GatewayIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -353,7 +353,7 @@ class GatewayIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GatewayIamPolicyArgs,
+                 args: GatewayIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
@@ -376,7 +376,7 @@ class GatewayIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -443,12 +443,12 @@ class GatewayIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param GatewayIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param GatewayIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GatewayIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GatewayIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -468,7 +468,7 @@ class GatewayIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GatewayIamPolicyArgs.__new__(GatewayIamPolicyArgs)
+            __props__ = GatewayIamPolicyArrgs.__new__(GatewayIamPolicyArrgs)
 
             if gateway is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway'")

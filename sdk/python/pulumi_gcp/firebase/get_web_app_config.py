@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetWebAppConfigResult:
+calass GetWebAppConfigResult:
     """
     A collection of values returned by getWebAppConfig.
     """
@@ -134,7 +134,7 @@ class GetWebAppConfigResult:
         return pulumi.get(self, "web_app_id")
 
 
-class AwaitableGetWebAppConfigResult(GetWebAppConfigResult):
+calass AwaitableGetWebAppConfigResult(GetWebAppConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

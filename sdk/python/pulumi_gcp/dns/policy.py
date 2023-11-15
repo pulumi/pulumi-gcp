@@ -11,21 +11,21 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PolicyArgs', 'Policy']
+__all__ = ['PolicyArrgs', 'Policy']
 
 @pulumi.input_type
-class PolicyArgs:
+calass PolicyArrgs:
     def __init__(__self__, *,
-                 alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']] = None,
+                 alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Policy resource.
-        :param pulumi.Input['PolicyAlternativeNameServerConfigArgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
+        :param pulumi.Input['PolicyAlternativeNameServerConfigArrgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
@@ -40,7 +40,7 @@ class PolicyArgs:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -62,7 +62,7 @@ class PolicyArgs:
 
     @property
     @pulumi.getter(name="alternativeNameServerConfig")
-    def alternative_name_server_config(self) -> Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]:
+    def alternative_name_server_config(self) -> Optional[pulumi.Input['PolicyAlternativeNameServerConfigArrgs']]:
         """
         Sets an alternative name server for the associated networks.
         When specified, all DNS queries are forwarded to a name server that you choose.
@@ -72,7 +72,7 @@ class PolicyArgs:
         return pulumi.get(self, "alternative_name_server_config")
 
     @alternative_name_server_config.setter
-    def alternative_name_server_config(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]):
+    def alternative_name_server_config(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArrgs']]):
         pulumi.set(self, "alternative_name_server_config", value)
 
     @property
@@ -132,7 +132,7 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]]:
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]]]:
         """
         List of network names specifying networks to which this policy is applied.
         Structure is documented below.
@@ -140,7 +140,7 @@ class PolicyArgs:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]]):
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]]]):
         pulumi.set(self, "networks", value)
 
     @property
@@ -158,18 +158,18 @@ class PolicyArgs:
 
 
 @pulumi.input_type
-class _PolicyState:
+calass _PolicyState:
     def __init__(__self__, *,
-                 alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']] = None,
+                 alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-        :param pulumi.Input['PolicyAlternativeNameServerConfigArgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
+        :param pulumi.Input['PolicyAlternativeNameServerConfigArrgs'] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
@@ -184,7 +184,7 @@ class _PolicyState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -206,7 +206,7 @@ class _PolicyState:
 
     @property
     @pulumi.getter(name="alternativeNameServerConfig")
-    def alternative_name_server_config(self) -> Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]:
+    def alternative_name_server_config(self) -> Optional[pulumi.Input['PolicyAlternativeNameServerConfigArrgs']]:
         """
         Sets an alternative name server for the associated networks.
         When specified, all DNS queries are forwarded to a name server that you choose.
@@ -216,7 +216,7 @@ class _PolicyState:
         return pulumi.get(self, "alternative_name_server_config")
 
     @alternative_name_server_config.setter
-    def alternative_name_server_config(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]):
+    def alternative_name_server_config(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArrgs']]):
         pulumi.set(self, "alternative_name_server_config", value)
 
     @property
@@ -276,7 +276,7 @@ class _PolicyState:
 
     @property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]]:
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]]]:
         """
         List of network names specifying networks to which this policy is applied.
         Structure is documented below.
@@ -284,7 +284,7 @@ class _PolicyState:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]]]):
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArrgs']]]]):
         pulumi.set(self, "networks", value)
 
     @property
@@ -301,17 +301,17 @@ class _PolicyState:
         pulumi.set(self, "project", value)
 
 
-class Policy(pulumi.CustomResource):
+calass Policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
+                 alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -336,22 +336,22 @@ class Policy(pulumi.CustomResource):
         example_policy = gcp.dns.Policy("example-policy",
             enable_inbound_forwarding=True,
             enable_logging=True,
-            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
+            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArrgs(
                 target_name_servers=[
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArrgs(
                         ipv4_address="172.16.1.10",
                         forwarding_path="private",
                     ),
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArrgs(
                         ipv4_address="172.16.1.20",
                     ),
                 ],
             ),
             networks=[
-                gcp.dns.PolicyNetworkArgs(
+                gcp.dns.PolicyNetworkArrgs(
                     network_url=network_1.id,
                 ),
-                gcp.dns.PolicyNetworkArgs(
+                gcp.dns.PolicyNetworkArrgs(
                     network_url=network_2.id,
                 ),
             ])
@@ -375,7 +375,7 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']] alternative_name_server_config: Sets an alternative name server for the associated networks.
+        :param pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArrgs']] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
@@ -390,7 +390,7 @@ class Policy(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArrgs']]]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -399,7 +399,7 @@ class Policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[PolicyArgs] = None,
+                 args: Optional[PolicyArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A policy is a collection of DNS rules applied to one or more Virtual
@@ -423,22 +423,22 @@ class Policy(pulumi.CustomResource):
         example_policy = gcp.dns.Policy("example-policy",
             enable_inbound_forwarding=True,
             enable_logging=True,
-            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArgs(
+            alternative_name_server_config=gcp.dns.PolicyAlternativeNameServerConfigArrgs(
                 target_name_servers=[
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArrgs(
                         ipv4_address="172.16.1.10",
                         forwarding_path="private",
                     ),
-                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArgs(
+                    gcp.dns.PolicyAlternativeNameServerConfigTargetNameServerArrgs(
                         ipv4_address="172.16.1.20",
                     ),
                 ],
             ),
             networks=[
-                gcp.dns.PolicyNetworkArgs(
+                gcp.dns.PolicyNetworkArrgs(
                     network_url=network_1.id,
                 ),
-                gcp.dns.PolicyNetworkArgs(
+                gcp.dns.PolicyNetworkArrgs(
                     network_url=network_2.id,
                 ),
             ])
@@ -461,12 +461,12 @@ class Policy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PolicyArgs args: The arguments to use to populate this resource's properties.
+        :param PolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -475,12 +475,12 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
+                 alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -489,7 +489,7 @@ class Policy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PolicyArgs.__new__(PolicyArgs)
+            __props__ = PolicyArrgs.__new__(PolicyArrgs)
 
             __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
             __props__.__dict__["description"] = description
@@ -508,12 +508,12 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
+            alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArrgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
@@ -522,7 +522,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']] alternative_name_server_config: Sets an alternative name server for the associated networks.
+        :param pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArrgs']] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
@@ -537,7 +537,7 @@ class Policy(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArrgs']]]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

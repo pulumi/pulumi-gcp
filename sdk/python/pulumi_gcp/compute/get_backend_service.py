@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetBackendServiceResult:
+calass GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
@@ -320,7 +320,7 @@ class GetBackendServiceResult:
         return pulumi.get(self, "timeout_sec")
 
 
-class AwaitableGetBackendServiceResult(GetBackendServiceResult):
+calass AwaitableGetBackendServiceResult(GetBackendServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

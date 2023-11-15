@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DomainTrustArgs', 'DomainTrust']
+__all__ = ['DomainTrustArrgs', 'DomainTrust']
 
 @pulumi.input_type
-class DomainTrustArgs:
+calass DomainTrustArrgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
                  target_dns_ip_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -158,7 +158,7 @@ class DomainTrustArgs:
 
 
 @pulumi.input_type
-class _DomainTrustState:
+calass _DomainTrustState:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -309,7 +309,7 @@ class _DomainTrustState:
         pulumi.set(self, "trust_type", value)
 
 
-class DomainTrust(pulumi.CustomResource):
+calass DomainTrust(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -391,7 +391,7 @@ class DomainTrust(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DomainTrustArgs,
+                 args: DomainTrustArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Adds a trust between Active Directory domains
@@ -439,12 +439,12 @@ class DomainTrust(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DomainTrustArgs args: The arguments to use to populate this resource's properties.
+        :param DomainTrustArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DomainTrustArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DomainTrustArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -468,7 +468,7 @@ class DomainTrust(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DomainTrustArgs.__new__(DomainTrustArgs)
+            __props__ = DomainTrustArrgs.__new__(DomainTrustArrgs)
 
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")

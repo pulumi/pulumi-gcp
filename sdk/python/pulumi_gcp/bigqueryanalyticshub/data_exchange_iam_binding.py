@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DataExchangeIamBindingArgs', 'DataExchangeIamBinding']
+__all__ = ['DataExchangeIamBindingArrgs', 'DataExchangeIamBinding']
 
 @pulumi.input_type
-class DataExchangeIamBindingArgs:
+calass DataExchangeIamBindingArrgs:
     def __init__(__self__, *,
                  data_exchange_id: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DataExchangeIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -92,11 +92,11 @@ class DataExchangeIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DataExchangeIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DataExchangeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -139,9 +139,9 @@ class DataExchangeIamBindingArgs:
 
 
 @pulumi.input_type
-class _DataExchangeIamBindingState:
+calass _DataExchangeIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DataExchangeIamBindingConditionArrgs']] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -189,11 +189,11 @@ class _DataExchangeIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DataExchangeIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DataExchangeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DataExchangeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -282,12 +282,12 @@ class _DataExchangeIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class DataExchangeIamBinding(pulumi.CustomResource):
+calass DataExchangeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamBindingConditionArrgs']]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -315,7 +315,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -405,7 +405,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DataExchangeIamBindingArgs,
+                 args: DataExchangeIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
@@ -428,7 +428,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -492,12 +492,12 @@ class DataExchangeIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DataExchangeIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param DataExchangeIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DataExchangeIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DataExchangeIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -506,7 +506,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamBindingConditionArrgs']]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -519,7 +519,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DataExchangeIamBindingArgs.__new__(DataExchangeIamBindingArgs)
+            __props__ = DataExchangeIamBindingArrgs.__new__(DataExchangeIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if data_exchange_id is None and not opts.urn:
@@ -544,7 +544,7 @@ class DataExchangeIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamBindingConditionArrgs']]] = None,
             data_exchange_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,

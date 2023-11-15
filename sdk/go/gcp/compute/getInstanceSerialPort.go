@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the serial port output from a Compute Instance. For more information see
@@ -203,12 +202,6 @@ func (o GetInstanceSerialPortResultOutput) ToGetInstanceSerialPortResultOutput()
 
 func (o GetInstanceSerialPortResultOutput) ToGetInstanceSerialPortResultOutputWithContext(ctx context.Context) GetInstanceSerialPortResultOutput {
 	return o
-}
-
-func (o GetInstanceSerialPortResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSerialPortResult] {
-	return pulumix.Output[GetInstanceSerialPortResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.

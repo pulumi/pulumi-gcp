@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterArgs', 'Cluster']
+__all__ = ['ClusterArrgs', 'Cluster']
 
 @pulumi.input_type
-class ClusterArgs:
+calass ClusterArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
+                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
@@ -28,7 +28,7 @@ class ClusterArgs:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         """
@@ -69,7 +69,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]:
+    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]]]:
         """
         The map of cluster node types in this cluster,
         where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -78,16 +78,16 @@ class ClusterArgs:
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]):
+    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
 
 @pulumi.input_type
-class _ClusterState:
+calass _ClusterState:
     def __init__(__self__, *,
                  management: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
@@ -99,7 +99,7 @@ class _ClusterState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
@@ -151,7 +151,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]:
+    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]]]:
         """
         The map of cluster node types in this cluster,
         where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -160,7 +160,7 @@ class _ClusterState:
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]):
+    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArrgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
     @property
@@ -202,13 +202,13 @@ class _ClusterState:
         pulumi.set(self, "uid", value)
 
 
-class Cluster(pulumi.CustomResource):
+calass Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArgs']]]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArrgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -227,13 +227,13 @@ class Cluster(pulumi.CustomResource):
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArrgs(
                 management_cidr="192.168.30.0/24",
                 vmware_engine_network=cluster_nw.id,
             ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArrgs(
                 cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArrgs(
                     node_type_id="standard-72",
                     node_count=3,
                 )],
@@ -241,7 +241,7 @@ class Cluster(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
             parent=cluster_pc.id,
-            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
+            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArrgs(
                 node_type_id="standard-72",
                 node_count=3,
             )],
@@ -261,13 +261,13 @@ class Cluster(pulumi.CustomResource):
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArrgs(
                 management_cidr="192.168.30.0/24",
                 vmware_engine_network=cluster_nw.id,
             ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArrgs(
                 cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArrgs(
                     node_type_id="standard-72",
                     node_count=3,
                     custom_core_count=32,
@@ -276,7 +276,7 @@ class Cluster(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             parent=cluster_pc.id,
-            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
+            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArrgs(
                 node_type_id="standard-72",
                 node_count=3,
                 custom_core_count=32,
@@ -298,7 +298,7 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArgs']]]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArrgs']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
@@ -309,7 +309,7 @@ class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClusterArgs,
+                 args: ClusterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -327,13 +327,13 @@ class Cluster(pulumi.CustomResource):
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArrgs(
                 management_cidr="192.168.30.0/24",
                 vmware_engine_network=cluster_nw.id,
             ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArrgs(
                 cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArrgs(
                     node_type_id="standard-72",
                     node_count=3,
                 )],
@@ -341,7 +341,7 @@ class Cluster(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
             parent=cluster_pc.id,
-            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
+            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArrgs(
                 node_type_id="standard-72",
                 node_count=3,
             )],
@@ -361,13 +361,13 @@ class Cluster(pulumi.CustomResource):
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArrgs(
                 management_cidr="192.168.30.0/24",
                 vmware_engine_network=cluster_nw.id,
             ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArrgs(
                 cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArrgs(
                     node_type_id="standard-72",
                     node_count=3,
                     custom_core_count=32,
@@ -376,7 +376,7 @@ class Cluster(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             parent=cluster_pc.id,
-            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
+            node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArrgs(
                 node_type_id="standard-72",
                 node_count=3,
                 custom_core_count=32,
@@ -393,12 +393,12 @@ class Cluster(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param ClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -408,7 +408,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArgs']]]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArrgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -417,7 +417,7 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClusterArgs.__new__(ClusterArgs)
+            __props__ = ClusterArrgs.__new__(ClusterArrgs)
 
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type_configs"] = node_type_configs
@@ -439,7 +439,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             management: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArgs']]]]] = None,
+            node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArrgs']]]]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
@@ -456,7 +456,7 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArgs']]]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeTypeConfigArrgs']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.

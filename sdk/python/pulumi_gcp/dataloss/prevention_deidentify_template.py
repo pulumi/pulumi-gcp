@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PreventionDeidentifyTemplateArgs', 'PreventionDeidentifyTemplate']
+__all__ = ['PreventionDeidentifyTemplateArrgs', 'PreventionDeidentifyTemplate']
 
 @pulumi.input_type
-class PreventionDeidentifyTemplateArgs:
+calass PreventionDeidentifyTemplateArrgs:
     def __init__(__self__, *,
-                 deidentify_config: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'],
+                 deidentify_config: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs'],
                  parent: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PreventionDeidentifyTemplate resource.
-        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
                * `projects/{{project}}`
@@ -47,7 +47,7 @@ class PreventionDeidentifyTemplateArgs:
 
     @property
     @pulumi.getter(name="deidentifyConfig")
-    def deidentify_config(self) -> pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']:
+    def deidentify_config(self) -> pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs']:
         """
         Configuration of the deidentify template
         Structure is documented below.
@@ -55,7 +55,7 @@ class PreventionDeidentifyTemplateArgs:
         return pulumi.get(self, "deidentify_config")
 
     @deidentify_config.setter
-    def deidentify_config(self, value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']):
+    def deidentify_config(self, value: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs']):
         pulumi.set(self, "deidentify_config", value)
 
     @property
@@ -114,10 +114,10 @@ class PreventionDeidentifyTemplateArgs:
 
 
 @pulumi.input_type
-class _PreventionDeidentifyTemplateState:
+calass _PreventionDeidentifyTemplateState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
+                 deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class _PreventionDeidentifyTemplateState:
         """
         Input properties used for looking up and filtering PreventionDeidentifyTemplate resources.
         :param pulumi.Input[str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
-        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
@@ -173,7 +173,7 @@ class _PreventionDeidentifyTemplateState:
 
     @property
     @pulumi.getter(name="deidentifyConfig")
-    def deidentify_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']]:
+    def deidentify_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs']]:
         """
         Configuration of the deidentify template
         Structure is documented below.
@@ -181,7 +181,7 @@ class _PreventionDeidentifyTemplateState:
         return pulumi.get(self, "deidentify_config")
 
     @deidentify_config.setter
-    def deidentify_config(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']]):
+    def deidentify_config(self, value: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArrgs']]):
         pulumi.set(self, "deidentify_config", value)
 
     @property
@@ -263,12 +263,12 @@ class _PreventionDeidentifyTemplateState:
         pulumi.set(self, "update_time", value)
 
 
-class PreventionDeidentifyTemplate(pulumi.CustomResource):
+calass PreventionDeidentifyTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -295,27 +295,27 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArrgs(
+                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArrgs(
                     transforms=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs(
+                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArrgs(
                                 blue=1,
                                 green=0.2,
                                 red=0.5,
                             ),
-                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
-                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
+                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArrgs(
+                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArrgs(
                                     name="COLOR_INFO",
                                     version="latest",
                                 )],
                             ),
                         ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs(
+                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArrgs(),
                         ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs(
+                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArrgs(),
                         ),
                     ],
                 ),
@@ -339,7 +339,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArrgs']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
@@ -356,7 +356,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PreventionDeidentifyTemplateArgs,
+                 args: PreventionDeidentifyTemplateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows creation of templates to de-identify content.
@@ -379,27 +379,27 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArrgs(
+                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArrgs(
                     transforms=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs(
+                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArrgs(
                                 blue=1,
                                 green=0.2,
                                 red=0.5,
                             ),
-                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
-                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
+                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArrgs(
+                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArrgs(
                                     name="COLOR_INFO",
                                     version="latest",
                                 )],
                             ),
                         ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs(
+                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArrgs(),
                         ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArrgs(
+                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArrgs(),
                         ),
                     ],
                 ),
@@ -422,12 +422,12 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param PreventionDeidentifyTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param PreventionDeidentifyTemplateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PreventionDeidentifyTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PreventionDeidentifyTemplateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -436,7 +436,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -448,7 +448,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PreventionDeidentifyTemplateArgs.__new__(PreventionDeidentifyTemplateArgs)
+            __props__ = PreventionDeidentifyTemplateArrgs.__new__(PreventionDeidentifyTemplateArrgs)
 
             if deidentify_config is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_config'")
@@ -473,7 +473,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+            deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -488,7 +488,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
-        :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArrgs']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.

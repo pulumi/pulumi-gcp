@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ReleaseArgs', 'Release']
+__all__ = ['ReleaseArrgs', 'Release']
 
 @pulumi.input_type
-class ReleaseArgs:
+calass ReleaseArrgs:
     def __init__(__self__, *,
                  ruleset_name: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -75,7 +75,7 @@ class ReleaseArgs:
 
 
 @pulumi.input_type
-class _ReleaseState:
+calass _ReleaseState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -186,7 +186,7 @@ class _ReleaseState:
         pulumi.set(self, "update_time", value)
 
 
-class Release(pulumi.CustomResource):
+calass Release(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -206,8 +206,8 @@ class Release(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         firestore = gcp.firebaserules.Ruleset("firestore",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
                     name="firestore.rules",
                 )],
@@ -236,8 +236,8 @@ class Release(pulumi.CustomResource):
         # Create a ruleset of Firebase Security Rules from a local file.
         storage = gcp.firebaserules.Ruleset("storage",
             project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     name="storage.rules",
                     content="service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
                 )],
@@ -272,7 +272,7 @@ class Release(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ReleaseArgs,
+                 args: ReleaseArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         For more information, see:
@@ -285,8 +285,8 @@ class Release(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         firestore = gcp.firebaserules.Ruleset("firestore",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
                     name="firestore.rules",
                 )],
@@ -315,8 +315,8 @@ class Release(pulumi.CustomResource):
         # Create a ruleset of Firebase Security Rules from a local file.
         storage = gcp.firebaserules.Ruleset("storage",
             project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     name="storage.rules",
                     content="service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
                 )],
@@ -338,12 +338,12 @@ class Release(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ReleaseArgs args: The arguments to use to populate this resource's properties.
+        :param ReleaseArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ReleaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ReleaseArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -362,7 +362,7 @@ class Release(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ReleaseArgs.__new__(ReleaseArgs)
+            __props__ = ReleaseArrgs.__new__(ReleaseArrgs)
 
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

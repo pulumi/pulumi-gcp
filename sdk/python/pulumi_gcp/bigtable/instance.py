@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceArgs', 'Instance']
+__all__ = ['InstanceArrgs', 'Instance']
 
 @pulumi.input_type
-class InstanceArgs:
+calass InstanceArrgs:
     def __init__(__self__, *,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -25,7 +25,7 @@ class InstanceArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -66,7 +66,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
+    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]]]:
         """
         A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
@@ -77,7 +77,7 @@ class InstanceArgs:
         return pulumi.get(self, "clusters")
 
     @clusters.setter
-    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]):
+    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]]]):
         pulumi.set(self, "clusters", value)
 
     @property
@@ -166,9 +166,9 @@ class InstanceArgs:
 
 
 @pulumi.input_type
-class _InstanceState:
+calass _InstanceState:
     def __init__(__self__, *,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -179,7 +179,7 @@ class _InstanceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -228,7 +228,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
+    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]]]:
         """
         A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
@@ -239,7 +239,7 @@ class _InstanceState:
         return pulumi.get(self, "clusters")
 
     @clusters.setter
-    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]):
+    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArrgs']]]]):
         pulumi.set(self, "clusters", value)
 
     @property
@@ -353,12 +353,12 @@ class _InstanceState:
         pulumi.set(self, "pulumi_labels", value)
 
 
-class Instance(pulumi.CustomResource):
+calass Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArrgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -390,7 +390,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         production_instance = gcp.bigtable.Instance("production-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
+            clusters=[gcp.bigtable.InstanceClusterArrgs(
                 cluster_id="tf-instance-cluster",
                 num_nodes=1,
                 storage_type="HDD",
@@ -407,14 +407,14 @@ class Instance(pulumi.CustomResource):
 
         production_instance = gcp.bigtable.Instance("production-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="tf-instance-cluster1",
                     num_nodes=1,
                     storage_type="HDD",
                     zone="us-central1-c",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
+                gcp.bigtable.InstanceClusterArrgs(
+                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArrgs(
                         cpu_target=50,
                         max_nodes=3,
                         min_nodes=1,
@@ -447,7 +447,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArrgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                
@@ -472,7 +472,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[InstanceArgs] = None,
+                 args: Optional[InstanceArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## +---
@@ -498,7 +498,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         production_instance = gcp.bigtable.Instance("production-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
+            clusters=[gcp.bigtable.InstanceClusterArrgs(
                 cluster_id="tf-instance-cluster",
                 num_nodes=1,
                 storage_type="HDD",
@@ -515,14 +515,14 @@ class Instance(pulumi.CustomResource):
 
         production_instance = gcp.bigtable.Instance("production-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="tf-instance-cluster1",
                     num_nodes=1,
                     storage_type="HDD",
                     zone="us-central1-c",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
-                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArgs(
+                gcp.bigtable.InstanceClusterArrgs(
+                    autoscaling_config=gcp.bigtable.InstanceClusterAutoscalingConfigArrgs(
                         cpu_target=50,
                         max_nodes=3,
                         min_nodes=1,
@@ -554,12 +554,12 @@ class Instance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -568,7 +568,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArrgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -582,7 +582,7 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceArgs.__new__(InstanceArgs)
+            __props__ = InstanceArrgs.__new__(InstanceArrgs)
 
             __props__.__dict__["clusters"] = clusters
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -605,7 +605,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]]] = None,
+            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArrgs']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -621,7 +621,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArrgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
                

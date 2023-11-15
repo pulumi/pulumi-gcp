@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetHealthCheckResult:
+calass GetHealthCheckResult:
     """
     A collection of values returned by getHealthCheck.
     """
@@ -172,7 +172,7 @@ class GetHealthCheckResult:
         return pulumi.get(self, "unhealthy_threshold")
 
 
-class AwaitableGetHealthCheckResult(GetHealthCheckResult):
+calass AwaitableGetHealthCheckResult(GetHealthCheckResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

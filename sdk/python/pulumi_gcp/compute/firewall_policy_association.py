@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['FirewallPolicyAssociationArgs', 'FirewallPolicyAssociation']
+__all__ = ['FirewallPolicyAssociationArrgs', 'FirewallPolicyAssociation']
 
 @pulumi.input_type
-class FirewallPolicyAssociationArgs:
+calass FirewallPolicyAssociationArrgs:
     def __init__(__self__, *,
                  attachment_target: pulumi.Input[str],
                  firewall_policy: pulumi.Input[str],
@@ -74,7 +74,7 @@ class FirewallPolicyAssociationArgs:
 
 
 @pulumi.input_type
-class _FirewallPolicyAssociationState:
+calass _FirewallPolicyAssociationState:
     def __init__(__self__, *,
                  attachment_target: Optional[pulumi.Input[str]] = None,
                  firewall_policy: Optional[pulumi.Input[str]] = None,
@@ -153,7 +153,7 @@ class _FirewallPolicyAssociationState:
         pulumi.set(self, "short_name", value)
 
 
-class FirewallPolicyAssociation(pulumi.CustomResource):
+calass FirewallPolicyAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -208,7 +208,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FirewallPolicyAssociationArgs,
+                 args: FirewallPolicyAssociationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
@@ -243,12 +243,12 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FirewallPolicyAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param FirewallPolicyAssociationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FirewallPolicyAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FirewallPolicyAssociationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -267,7 +267,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FirewallPolicyAssociationArgs.__new__(FirewallPolicyAssociationArgs)
+            __props__ = FirewallPolicyAssociationArrgs.__new__(FirewallPolicyAssociationArrgs)
 
             if attachment_target is None and not opts.urn:
                 raise TypeError("Missing required property 'attachment_target'")

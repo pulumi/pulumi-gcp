@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class EngineModelDefaultVersion(dict):
+calass EngineModelDefaultVersion(dict):
     def __init__(__self__, *,
                  name: str):
         """

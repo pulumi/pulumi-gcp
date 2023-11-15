@@ -28,7 +28,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AccessApprovalSettingsEnrolledService(dict):
+calass AccessApprovalSettingsEnrolledService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -105,7 +105,7 @@ class AccessApprovalSettingsEnrolledService(dict):
 
 
 @pulumi.output_type
-class IAMBindingCondition(dict):
+calass IAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -132,7 +132,7 @@ class IAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class IAMMemberCondition(dict):
+calass IAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -181,7 +181,7 @@ class IAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class IamAuditConfigAuditLogConfig(dict):
+calass IamAuditConfigAuditLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -240,7 +240,7 @@ class IamAuditConfigAuditLogConfig(dict):
 
 
 @pulumi.output_type
-class PolicyBooleanPolicy(dict):
+calass PolicyBooleanPolicy(dict):
     def __init__(__self__, *,
                  enforced: bool):
         """
@@ -258,7 +258,7 @@ class PolicyBooleanPolicy(dict):
 
 
 @pulumi.output_type
-class PolicyListPolicy(dict):
+calass PolicyListPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -284,7 +284,7 @@ class PolicyListPolicy(dict):
                  inherit_from_parent: Optional[bool] = None,
                  suggested_value: Optional[str] = None):
         """
-        :param 'PolicyListPolicyAllowArgs' allow: or `deny` - (Optional) One or the other must be set.
+        :param 'PolicyListPolicyAllowArrgs' allow: or `deny` - (Optional) One or the other must be set.
         :param bool inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
@@ -334,7 +334,7 @@ class PolicyListPolicy(dict):
 
 
 @pulumi.output_type
-class PolicyListPolicyAllow(dict):
+calass PolicyListPolicyAllow(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
                  values: Optional[Sequence[str]] = None):
@@ -365,7 +365,7 @@ class PolicyListPolicyAllow(dict):
 
 
 @pulumi.output_type
-class PolicyListPolicyDeny(dict):
+calass PolicyListPolicyDeny(dict):
     def __init__(__self__, *,
                  all: Optional[bool] = None,
                  values: Optional[Sequence[str]] = None):
@@ -396,7 +396,7 @@ class PolicyListPolicyDeny(dict):
 
 
 @pulumi.output_type
-class PolicyRestorePolicy(dict):
+calass PolicyRestorePolicy(dict):
     def __init__(__self__, *,
                  default: bool):
         """
@@ -414,7 +414,7 @@ class PolicyRestorePolicy(dict):
 
 
 @pulumi.output_type
-class GetFoldersFolderResult(dict):
+calass GetFoldersFolderResult(dict):
     def __init__(__self__, *,
                  create_time: str,
                  delete_time: str,
@@ -509,12 +509,12 @@ class GetFoldersFolderResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyAuditConfigResult(dict):
+calass GetIAMPolicyAuditConfigResult(dict):
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult'],
                  service: str):
         """
-        :param Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
+        :param Sequence['GetIAMPolicyAuditConfigAuditLogConfigArrgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
         :param str service: Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -538,7 +538,7 @@ class GetIAMPolicyAuditConfigResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
+calass GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
     def __init__(__self__, *,
                  log_type: str,
                  exempted_members: Optional[Sequence[str]] = None):
@@ -568,7 +568,7 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyBindingResult(dict):
+calass GetIAMPolicyBindingResult(dict):
     def __init__(__self__, *,
                  members: Sequence[str],
                  role: str,
@@ -585,7 +585,7 @@ class GetIAMPolicyBindingResult(dict):
         :param str role: The role/permission that will be granted to the members.
                See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
                Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param 'GetIAMPolicyBindingConditionArgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        :param 'GetIAMPolicyBindingConditionArrgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -627,7 +627,7 @@ class GetIAMPolicyBindingResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyBindingConditionResult(dict):
+calass GetIAMPolicyBindingConditionResult(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

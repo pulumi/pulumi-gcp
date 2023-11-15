@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAwsVersionsResult:
+calass GetAwsVersionsResult:
     """
     A collection of values returned by getAwsVersions.
     """
@@ -73,7 +73,7 @@ class GetAwsVersionsResult:
         return pulumi.get(self, "valid_versions")
 
 
-class AwaitableGetAwsVersionsResult(GetAwsVersionsResult):
+calass AwaitableGetAwsVersionsResult(GetAwsVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MetastoreServiceIamBindingArgs', 'MetastoreServiceIamBinding']
+__all__ = ['MetastoreServiceIamBindingArrgs', 'MetastoreServiceIamBinding']
 
 @pulumi.input_type
-class MetastoreServiceIamBindingArgs:
+calass MetastoreServiceIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  service_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -89,11 +89,11 @@ class MetastoreServiceIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MetastoreServiceIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -137,9 +137,9 @@ class MetastoreServiceIamBindingArgs:
 
 
 @pulumi.input_type
-class _MetastoreServiceIamBindingState:
+calass _MetastoreServiceIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -187,11 +187,11 @@ class _MetastoreServiceIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['MetastoreServiceIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['MetastoreServiceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -278,12 +278,12 @@ class _MetastoreServiceIamBindingState:
         pulumi.set(self, "service_id", value)
 
 
-class MetastoreServiceIamBinding(pulumi.CustomResource):
+calass MetastoreServiceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceIamBindingConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -311,7 +311,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -401,7 +401,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MetastoreServiceIamBindingArgs,
+                 args: MetastoreServiceIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
@@ -424,7 +424,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -488,12 +488,12 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param MetastoreServiceIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param MetastoreServiceIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -502,7 +502,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceIamBindingConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -515,7 +515,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MetastoreServiceIamBindingArgs.__new__(MetastoreServiceIamBindingArgs)
+            __props__ = MetastoreServiceIamBindingArrgs.__new__(MetastoreServiceIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -540,7 +540,7 @@ class MetastoreServiceIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetSupportedDatabaseFlagsResult:
+calass GetSupportedDatabaseFlagsResult:
     """
     A collection of values returned by getSupportedDatabaseFlags.
     """
@@ -63,7 +63,7 @@ class GetSupportedDatabaseFlagsResult:
         return pulumi.get(self, "supported_database_flags")
 
 
-class AwaitableGetSupportedDatabaseFlagsResult(GetSupportedDatabaseFlagsResult):
+calass AwaitableGetSupportedDatabaseFlagsResult(GetSupportedDatabaseFlagsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

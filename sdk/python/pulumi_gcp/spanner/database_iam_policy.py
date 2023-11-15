@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DatabaseIAMPolicyArgs', 'DatabaseIAMPolicy']
+__all__ = ['DatabaseIAMPolicyArrgs', 'DatabaseIAMPolicy']
 
 @pulumi.input_type
-class DatabaseIAMPolicyArgs:
+calass DatabaseIAMPolicyArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  instance: pulumi.Input[str],
@@ -103,7 +103,7 @@ class DatabaseIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _DatabaseIAMPolicyState:
+calass _DatabaseIAMPolicyState:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -212,7 +212,7 @@ class _DatabaseIAMPolicyState:
         pulumi.set(self, "project", value)
 
 
-class DatabaseIAMPolicy(pulumi.CustomResource):
+calass DatabaseIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -242,7 +242,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -324,7 +324,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatabaseIAMPolicyArgs,
+                 args: DatabaseIAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
@@ -346,7 +346,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -407,12 +407,12 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DatabaseIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DatabaseIAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -432,7 +432,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatabaseIAMPolicyArgs.__new__(DatabaseIAMPolicyArgs)
+            __props__ = DatabaseIAMPolicyArrgs.__new__(DatabaseIAMPolicyArrgs)
 
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")

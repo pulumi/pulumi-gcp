@@ -10,13 +10,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'WorkloadKmsSettingsArgs',
-    'WorkloadResourceArgs',
-    'WorkloadResourceSettingArgs',
+    'WorkloadKmsSettingsArrgs',
+    'WorkloadResourceArrgs',
+    'WorkloadResourceSettingArrgs',
 ]
 
 @pulumi.input_type
-class WorkloadKmsSettingsArgs:
+calass WorkloadKmsSettingsArrgs:
     def __init__(__self__, *,
                  next_rotation_time: pulumi.Input[str],
                  rotation_period: pulumi.Input[str]):
@@ -53,7 +53,7 @@ class WorkloadKmsSettingsArgs:
 
 
 @pulumi.input_type
-class WorkloadResourceArgs:
+calass WorkloadResourceArrgs:
     def __init__(__self__, *,
                  resource_id: Optional[pulumi.Input[int]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None):
@@ -92,7 +92,7 @@ class WorkloadResourceArgs:
 
 
 @pulumi.input_type
-class WorkloadResourceSettingArgs:
+calass WorkloadResourceSettingArrgs:
     def __init__(__self__, *,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None):

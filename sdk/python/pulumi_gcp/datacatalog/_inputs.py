@@ -10,29 +10,29 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'EntryBigqueryDateShardedSpecArgs',
-    'EntryBigqueryTableSpecArgs',
-    'EntryBigqueryTableSpecTableSpecArgs',
-    'EntryBigqueryTableSpecViewSpecArgs',
-    'EntryGcsFilesetSpecArgs',
-    'EntryGcsFilesetSpecSampleGcsFileSpecArgs',
-    'EntryGroupIamBindingConditionArgs',
-    'EntryGroupIamMemberConditionArgs',
-    'PolicyTagIamBindingConditionArgs',
-    'PolicyTagIamMemberConditionArgs',
-    'TagFieldArgs',
-    'TagTemplateFieldArgs',
-    'TagTemplateFieldTypeArgs',
-    'TagTemplateFieldTypeEnumTypeArgs',
-    'TagTemplateFieldTypeEnumTypeAllowedValueArgs',
-    'TagTemplateIamBindingConditionArgs',
-    'TagTemplateIamMemberConditionArgs',
-    'TaxonomyIamBindingConditionArgs',
-    'TaxonomyIamMemberConditionArgs',
+    'EntryBigqueryDateShardedSpecArrgs',
+    'EntryBigqueryTableSpecArrgs',
+    'EntryBigqueryTableSpecTableSpecArrgs',
+    'EntryBigqueryTableSpecViewSpecArrgs',
+    'EntryGcsFilesetSpecArrgs',
+    'EntryGcsFilesetSpecSampleGcsFileSpecArrgs',
+    'EntryGroupIamBindingConditionArrgs',
+    'EntryGroupIamMemberConditionArrgs',
+    'PolicyTagIamBindingConditionArrgs',
+    'PolicyTagIamMemberConditionArrgs',
+    'TagFieldArrgs',
+    'TagTemplateFieldArrgs',
+    'TagTemplateFieldTypeArrgs',
+    'TagTemplateFieldTypeEnumTypeArrgs',
+    'TagTemplateFieldTypeEnumTypeAllowedValueArrgs',
+    'TagTemplateIamBindingConditionArrgs',
+    'TagTemplateIamMemberConditionArrgs',
+    'TaxonomyIamBindingConditionArrgs',
+    'TaxonomyIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class EntryBigqueryDateShardedSpecArgs:
+calass EntryBigqueryDateShardedSpecArrgs:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -97,18 +97,18 @@ class EntryBigqueryDateShardedSpecArgs:
 
 
 @pulumi.input_type
-class EntryBigqueryTableSpecArgs:
+calass EntryBigqueryTableSpecArrgs:
     def __init__(__self__, *,
                  table_source_type: Optional[pulumi.Input[str]] = None,
-                 table_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]] = None,
-                 view_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]] = None):
+                 table_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArrgs']]]] = None,
+                 view_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArrgs']]]] = None):
         """
         :param pulumi.Input[str] table_source_type: (Output)
                The table source type.
-        :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]] table_specs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArrgs']]] table_specs: (Output)
                Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]] view_specs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArrgs']]] view_specs: (Output)
                Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
                Structure is documented below.
         """
@@ -134,7 +134,7 @@ class EntryBigqueryTableSpecArgs:
 
     @property
     @pulumi.getter(name="tableSpecs")
-    def table_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]:
+    def table_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArrgs']]]]:
         """
         (Output)
         Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
@@ -143,12 +143,12 @@ class EntryBigqueryTableSpecArgs:
         return pulumi.get(self, "table_specs")
 
     @table_specs.setter
-    def table_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]):
+    def table_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArrgs']]]]):
         pulumi.set(self, "table_specs", value)
 
     @property
     @pulumi.getter(name="viewSpecs")
-    def view_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]:
+    def view_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArrgs']]]]:
         """
         (Output)
         Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
@@ -157,12 +157,12 @@ class EntryBigqueryTableSpecArgs:
         return pulumi.get(self, "view_specs")
 
     @view_specs.setter
-    def view_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]):
+    def view_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArrgs']]]]):
         pulumi.set(self, "view_specs", value)
 
 
 @pulumi.input_type
-class EntryBigqueryTableSpecTableSpecArgs:
+calass EntryBigqueryTableSpecTableSpecArrgs:
     def __init__(__self__, *,
                  grouped_entry: Optional[pulumi.Input[str]] = None):
         """
@@ -193,7 +193,7 @@ class EntryBigqueryTableSpecTableSpecArgs:
 
 
 @pulumi.input_type
-class EntryBigqueryTableSpecViewSpecArgs:
+calass EntryBigqueryTableSpecViewSpecArrgs:
     def __init__(__self__, *,
                  view_query: Optional[pulumi.Input[str]] = None):
         """
@@ -218,10 +218,10 @@ class EntryBigqueryTableSpecViewSpecArgs:
 
 
 @pulumi.input_type
-class EntryGcsFilesetSpecArgs:
+calass EntryGcsFilesetSpecArrgs:
     def __init__(__self__, *,
                  file_patterns: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 sample_gcs_file_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]] = None):
+                 sample_gcs_file_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_patterns: Patterns to identify a set of files in Google Cloud Storage.
                See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
@@ -234,7 +234,7 @@ class EntryGcsFilesetSpecArgs:
                * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
                * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
                * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
-        :param pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]] sample_gcs_file_specs: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArrgs']]] sample_gcs_file_specs: (Output)
                Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
                
@@ -269,7 +269,7 @@ class EntryGcsFilesetSpecArgs:
 
     @property
     @pulumi.getter(name="sampleGcsFileSpecs")
-    def sample_gcs_file_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]:
+    def sample_gcs_file_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArrgs']]]]:
         """
         (Output)
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
@@ -281,12 +281,12 @@ class EntryGcsFilesetSpecArgs:
         return pulumi.get(self, "sample_gcs_file_specs")
 
     @sample_gcs_file_specs.setter
-    def sample_gcs_file_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]):
+    def sample_gcs_file_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArrgs']]]]):
         pulumi.set(self, "sample_gcs_file_specs", value)
 
 
 @pulumi.input_type
-class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
+calass EntryGcsFilesetSpecSampleGcsFileSpecArrgs:
     def __init__(__self__, *,
                  file_path: Optional[pulumi.Input[str]] = None,
                  size_bytes: Optional[pulumi.Input[int]] = None):
@@ -329,7 +329,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
 
 
 @pulumi.input_type
-class EntryGroupIamBindingConditionArgs:
+calass EntryGroupIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -368,7 +368,7 @@ class EntryGroupIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class EntryGroupIamMemberConditionArgs:
+calass EntryGroupIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -407,7 +407,7 @@ class EntryGroupIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class PolicyTagIamBindingConditionArgs:
+calass PolicyTagIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -446,7 +446,7 @@ class PolicyTagIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class PolicyTagIamMemberConditionArgs:
+calass PolicyTagIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -485,7 +485,7 @@ class PolicyTagIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class TagFieldArgs:
+calass TagFieldArrgs:
     def __init__(__self__, *,
                  field_name: pulumi.Input[str],
                  bool_value: Optional[pulumi.Input[bool]] = None,
@@ -631,10 +631,10 @@ class TagFieldArgs:
 
 
 @pulumi.input_type
-class TagTemplateFieldArgs:
+calass TagTemplateFieldArrgs:
     def __init__(__self__, *,
                  field_id: pulumi.Input[str],
-                 type: pulumi.Input['TagTemplateFieldTypeArgs'],
+                 type: pulumi.Input['TagTemplateFieldTypeArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  is_required: Optional[pulumi.Input[bool]] = None,
@@ -642,7 +642,7 @@ class TagTemplateFieldArgs:
                  order: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] field_id: The identifier for this object. Format specified above.
-        :param pulumi.Input['TagTemplateFieldTypeArgs'] type: The type of value this tag field can contain.
+        :param pulumi.Input['TagTemplateFieldTypeArrgs'] type: The type of value this tag field can contain.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for this field.
         :param pulumi.Input[str] display_name: The display name for this field.
@@ -680,7 +680,7 @@ class TagTemplateFieldArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Input['TagTemplateFieldTypeArgs']:
+    def type(self) -> pulumi.Input['TagTemplateFieldTypeArrgs']:
         """
         The type of value this tag field can contain.
         Structure is documented below.
@@ -688,7 +688,7 @@ class TagTemplateFieldArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: pulumi.Input['TagTemplateFieldTypeArgs']):
+    def type(self, value: pulumi.Input['TagTemplateFieldTypeArrgs']):
         pulumi.set(self, "type", value)
 
     @property
@@ -756,12 +756,12 @@ class TagTemplateFieldArgs:
 
 
 @pulumi.input_type
-class TagTemplateFieldTypeArgs:
+calass TagTemplateFieldTypeArrgs:
     def __init__(__self__, *,
-                 enum_type: Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArgs']] = None,
+                 enum_type: Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArrgs']] = None,
                  primitive_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['TagTemplateFieldTypeEnumTypeArgs'] enum_type: Represents an enum type.
+        :param pulumi.Input['TagTemplateFieldTypeEnumTypeArrgs'] enum_type: Represents an enum type.
                Exactly one of `primitive_type` or `enum_type` must be set
                Structure is documented below.
         :param pulumi.Input[str] primitive_type: Represents primitive types - string, bool etc.
@@ -775,7 +775,7 @@ class TagTemplateFieldTypeArgs:
 
     @property
     @pulumi.getter(name="enumType")
-    def enum_type(self) -> Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArgs']]:
+    def enum_type(self) -> Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArrgs']]:
         """
         Represents an enum type.
         Exactly one of `primitive_type` or `enum_type` must be set
@@ -784,7 +784,7 @@ class TagTemplateFieldTypeArgs:
         return pulumi.get(self, "enum_type")
 
     @enum_type.setter
-    def enum_type(self, value: Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArgs']]):
+    def enum_type(self, value: Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArrgs']]):
         pulumi.set(self, "enum_type", value)
 
     @property
@@ -803,11 +803,11 @@ class TagTemplateFieldTypeArgs:
 
 
 @pulumi.input_type
-class TagTemplateFieldTypeEnumTypeArgs:
+calass TagTemplateFieldTypeEnumTypeArrgs:
     def __init__(__self__, *,
-                 allowed_values: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]):
+                 allowed_values: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]] allowed_values: The set of allowed values for this enum. The display names of the
+        :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArrgs']]] allowed_values: The set of allowed values for this enum. The display names of the
                values must be case-insensitively unique within this set. Currently,
                enum values can only be added to the list of allowed values. Deletion
                and renaming of enum values are not supported.
@@ -818,7 +818,7 @@ class TagTemplateFieldTypeEnumTypeArgs:
 
     @property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]:
+    def allowed_values(self) -> pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArrgs']]]:
         """
         The set of allowed values for this enum. The display names of the
         values must be case-insensitively unique within this set. Currently,
@@ -830,12 +830,12 @@ class TagTemplateFieldTypeEnumTypeArgs:
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgs']]]):
+    def allowed_values(self, value: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArrgs']]]):
         pulumi.set(self, "allowed_values", value)
 
 
 @pulumi.input_type
-class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
+calass TagTemplateFieldTypeEnumTypeAllowedValueArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str]):
         """
@@ -857,7 +857,7 @@ class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
 
 
 @pulumi.input_type
-class TagTemplateIamBindingConditionArgs:
+calass TagTemplateIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -896,7 +896,7 @@ class TagTemplateIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class TagTemplateIamMemberConditionArgs:
+calass TagTemplateIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -935,7 +935,7 @@ class TagTemplateIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class TaxonomyIamBindingConditionArgs:
+calass TaxonomyIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -974,7 +974,7 @@ class TaxonomyIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class TaxonomyIamMemberConditionArgs:
+calass TaxonomyIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

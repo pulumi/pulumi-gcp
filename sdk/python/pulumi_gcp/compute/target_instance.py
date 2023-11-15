@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TargetInstanceArgs', 'TargetInstance']
+__all__ = ['TargetInstanceArrgs', 'TargetInstance']
 
 @pulumi.input_type
-class TargetInstanceArgs:
+calass TargetInstanceArrgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -183,7 +183,7 @@ class TargetInstanceArgs:
 
 
 @pulumi.input_type
-class _TargetInstanceState:
+calass _TargetInstanceState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -386,7 +386,7 @@ class _TargetInstanceState:
         pulumi.set(self, "zone", value)
 
 
-class TargetInstance(pulumi.CustomResource):
+calass TargetInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -426,12 +426,12 @@ class TargetInstance(pulumi.CustomResource):
         target_vm = gcp.compute.Instance("target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=vmimage.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )])
         default = gcp.compute.TargetInstance("default", instance=target_vm.id)
@@ -448,12 +448,12 @@ class TargetInstance(pulumi.CustomResource):
         target_vm_instance = gcp.compute.Instance("target-vmInstance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=vmimage.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -516,7 +516,7 @@ class TargetInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetInstanceArgs,
+                 args: TargetInstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a TargetInstance resource which defines an endpoint instance
@@ -544,12 +544,12 @@ class TargetInstance(pulumi.CustomResource):
         target_vm = gcp.compute.Instance("target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=vmimage.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )])
         default = gcp.compute.TargetInstance("default", instance=target_vm.id)
@@ -566,12 +566,12 @@ class TargetInstance(pulumi.CustomResource):
         target_vm_instance = gcp.compute.Instance("target-vmInstance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image=vmimage.self_link,
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -602,12 +602,12 @@ class TargetInstance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TargetInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param TargetInstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TargetInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TargetInstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -631,7 +631,7 @@ class TargetInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TargetInstanceArgs.__new__(TargetInstanceArgs)
+            __props__ = TargetInstanceArrgs.__new__(TargetInstanceArrgs)
 
             __props__.__dict__["description"] = description
             if instance is None and not opts.urn:

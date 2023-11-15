@@ -10,12 +10,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ManagementServerManagementUriArgs',
-    'ManagementServerNetworkArgs',
+    'ManagementServerManagementUriArrgs',
+    'ManagementServerNetworkArrgs',
 ]
 
 @pulumi.input_type
-class ManagementServerManagementUriArgs:
+calass ManagementServerManagementUriArrgs:
     def __init__(__self__, *,
                  api: Optional[pulumi.Input[str]] = None,
                  web_ui: Optional[pulumi.Input[str]] = None):
@@ -58,7 +58,7 @@ class ManagementServerManagementUriArgs:
 
 
 @pulumi.input_type
-class ManagementServerNetworkArgs:
+calass ManagementServerNetworkArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  peering_mode: Optional[pulumi.Input[str]] = None):

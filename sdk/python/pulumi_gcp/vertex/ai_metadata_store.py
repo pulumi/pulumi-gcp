@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiMetadataStoreArgs', 'AiMetadataStore']
+__all__ = ['AiMetadataStoreArrgs', 'AiMetadataStore']
 
 @pulumi.input_type
-class AiMetadataStoreArgs:
+calass AiMetadataStoreArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AiMetadataStore resource.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input['AiMetadataStoreEncryptionSpecArrgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -56,7 +56,7 @@ class AiMetadataStoreArgs:
 
     @property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArrgs']]:
         """
         Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
@@ -64,7 +64,7 @@ class AiMetadataStoreArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArrgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @property
@@ -106,27 +106,27 @@ class AiMetadataStoreArgs:
 
 
 @pulumi.input_type
-class _AiMetadataStoreState:
+calass _AiMetadataStoreState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArrgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiMetadataStore resources.
         :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input['AiMetadataStoreEncryptionSpecArrgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Metadata Store. eg us-central1
-        :param pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]] states: State information of the MetadataStore.
+        :param pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArrgs']]] states: State information of the MetadataStore.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
@@ -173,7 +173,7 @@ class _AiMetadataStoreState:
 
     @property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArrgs']]:
         """
         Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
@@ -181,7 +181,7 @@ class _AiMetadataStoreState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArrgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @property
@@ -223,7 +223,7 @@ class _AiMetadataStoreState:
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArrgs']]]]:
         """
         State information of the MetadataStore.
         Structure is documented below.
@@ -231,7 +231,7 @@ class _AiMetadataStoreState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
     @property
@@ -247,13 +247,13 @@ class _AiMetadataStoreState:
         pulumi.set(self, "update_time", value)
 
 
-class AiMetadataStore(pulumi.CustomResource):
+calass AiMetadataStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -294,7 +294,7 @@ class AiMetadataStore(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArrgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -305,7 +305,7 @@ class AiMetadataStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AiMetadataStoreArgs] = None,
+                 args: Optional[AiMetadataStoreArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -341,12 +341,12 @@ class AiMetadataStore(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiMetadataStoreArgs args: The arguments to use to populate this resource's properties.
+        :param AiMetadataStoreArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiMetadataStoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiMetadataStoreArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -356,7 +356,7 @@ class AiMetadataStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -367,7 +367,7 @@ class AiMetadataStore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiMetadataStoreArgs.__new__(AiMetadataStoreArgs)
+            __props__ = AiMetadataStoreArrgs.__new__(AiMetadataStoreArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption_spec"] = encryption_spec
@@ -389,11 +389,11 @@ class AiMetadataStore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']]] = None,
+            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiMetadataStoreStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiMetadataStoreStateArrgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiMetadataStore':
         """
         Get an existing AiMetadataStore resource's state with the given name, id, and optional extra
@@ -404,13 +404,13 @@ class AiMetadataStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of the MetadataStore.
-        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArrgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Metadata Store. eg us-central1
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiMetadataStoreStateArgs']]]] states: State information of the MetadataStore.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiMetadataStoreStateArrgs']]]] states: State information of the MetadataStore.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """

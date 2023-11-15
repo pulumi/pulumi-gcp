@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeystoresAliasesKeyCertFileArgs', 'KeystoresAliasesKeyCertFile']
+__all__ = ['KeystoresAliasesKeyCertFileArrgs', 'KeystoresAliasesKeyCertFile']
 
 @pulumi.input_type
-class KeystoresAliasesKeyCertFileArgs:
+calass KeystoresAliasesKeyCertFileArrgs:
     def __init__(__self__, *,
                  alias: pulumi.Input[str],
                  cert: pulumi.Input[str],
                  environment: pulumi.Input[str],
                  keystore: pulumi.Input[str],
                  org_id: pulumi.Input[str],
-                 certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
+                 certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs']] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None):
         """
@@ -34,7 +34,7 @@ class KeystoresAliasesKeyCertFileArgs:
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] keystore: Keystore Name
         :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
-        :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs'] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs'] certs_info: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
@@ -116,7 +116,7 @@ class KeystoresAliasesKeyCertFileArgs:
 
     @property
     @pulumi.getter(name="certsInfo")
-    def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]:
+    def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs']]:
         """
         Chain of certificates under this alias.
         Structure is documented below.
@@ -124,7 +124,7 @@ class KeystoresAliasesKeyCertFileArgs:
         return pulumi.get(self, "certs_info")
 
     @certs_info.setter
-    def certs_info(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]):
+    def certs_info(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs']]):
         pulumi.set(self, "certs_info", value)
 
     @property
@@ -153,11 +153,11 @@ class KeystoresAliasesKeyCertFileArgs:
 
 
 @pulumi.input_type
-class _KeystoresAliasesKeyCertFileState:
+calass _KeystoresAliasesKeyCertFileState:
     def __init__(__self__, *,
                  alias: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[str]] = None,
-                 certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']] = None,
+                 certs_info: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs']] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  keystore: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class _KeystoresAliasesKeyCertFileState:
                
                
                - - -
-        :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs'] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs'] certs_info: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
@@ -228,7 +228,7 @@ class _KeystoresAliasesKeyCertFileState:
 
     @property
     @pulumi.getter(name="certsInfo")
-    def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]:
+    def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs']]:
         """
         Chain of certificates under this alias.
         Structure is documented below.
@@ -236,7 +236,7 @@ class _KeystoresAliasesKeyCertFileState:
         return pulumi.get(self, "certs_info")
 
     @certs_info.setter
-    def certs_info(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]):
+    def certs_info(self, value: Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArrgs']]):
         pulumi.set(self, "certs_info", value)
 
     @property
@@ -312,14 +312,14 @@ class _KeystoresAliasesKeyCertFileState:
         pulumi.set(self, "type", value)
 
 
-class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
+calass KeystoresAliasesKeyCertFile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[str]] = None,
-                 certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']]] = None,
+                 certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArrgs']]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  keystore: Optional[pulumi.Input[str]] = None,
@@ -354,7 +354,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArrgs']] certs_info: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
@@ -366,7 +366,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeystoresAliasesKeyCertFileArgs,
+                 args: KeystoresAliasesKeyCertFileArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An alias from a key/certificate pair.
@@ -390,12 +390,12 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param KeystoresAliasesKeyCertFileArgs args: The arguments to use to populate this resource's properties.
+        :param KeystoresAliasesKeyCertFileArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KeystoresAliasesKeyCertFileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KeystoresAliasesKeyCertFileArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -406,7 +406,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[str]] = None,
-                 certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']]] = None,
+                 certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArrgs']]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  keystore: Optional[pulumi.Input[str]] = None,
@@ -419,7 +419,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KeystoresAliasesKeyCertFileArgs.__new__(KeystoresAliasesKeyCertFileArgs)
+            __props__ = KeystoresAliasesKeyCertFileArrgs.__new__(KeystoresAliasesKeyCertFileArrgs)
 
             if alias is None and not opts.urn:
                 raise TypeError("Missing required property 'alias'")
@@ -454,7 +454,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[str]] = None,
             cert: Optional[pulumi.Input[str]] = None,
-            certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']]] = None,
+            certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArrgs']]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
             keystore: Optional[pulumi.Input[str]] = None,
@@ -473,7 +473,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArrgs']] certs_info: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore

@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessLevelConditionArgs', 'AccessLevelCondition']
+__all__ = ['AccessLevelConditionArrgs', 'AccessLevelCondition']
 
 @pulumi.input_type
-class AccessLevelConditionArgs:
+calass AccessLevelConditionArrgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[str],
-                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
@@ -29,7 +29,7 @@ class AccessLevelConditionArgs:
                
                
                - - -
-        :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input['AccessLevelConditionDevicePolicyArrgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -93,7 +93,7 @@ class AccessLevelConditionArgs:
 
     @property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -103,7 +103,7 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]):
         pulumi.set(self, "device_policy", value)
 
     @property
@@ -191,10 +191,10 @@ class AccessLevelConditionArgs:
 
 
 @pulumi.input_type
-class _AccessLevelConditionState:
+calass _AccessLevelConditionState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
+                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
@@ -206,7 +206,7 @@ class _AccessLevelConditionState:
                
                
                - - -
-        :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input['AccessLevelConditionDevicePolicyArrgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -271,7 +271,7 @@ class _AccessLevelConditionState:
 
     @property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -281,7 +281,7 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArrgs']]):
         pulumi.set(self, "device_policy", value)
 
     @property
@@ -368,13 +368,13 @@ class _AccessLevelConditionState:
         pulumi.set(self, "required_access_levels", value)
 
 
-class AccessLevelCondition(pulumi.CustomResource):
+calass AccessLevelCondition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']]] = None,
+                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']]] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
@@ -416,11 +416,11 @@ class AccessLevelCondition(pulumi.CustomResource):
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
                         require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                     ),
@@ -441,11 +441,11 @@ class AccessLevelCondition(pulumi.CustomResource):
                 created_later.email.apply(lambda email: f"serviceAccount:{email}"),
             ],
             negate=False,
-            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
+            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArrgs(
                 require_screen_lock=False,
                 require_admin_approval=False,
                 require_corp_owned=True,
-                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
+                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArrgs(
                     os_type="DESKTOP_CHROME_OS",
                 )],
             ),
@@ -465,7 +465,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.
@@ -502,7 +502,7 @@ class AccessLevelCondition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessLevelConditionArgs,
+                 args: AccessLevelConditionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -539,11 +539,11 @@ class AccessLevelCondition(pulumi.CustomResource):
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
                         require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                     ),
@@ -564,11 +564,11 @@ class AccessLevelCondition(pulumi.CustomResource):
                 created_later.email.apply(lambda email: f"serviceAccount:{email}"),
             ],
             negate=False,
-            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArgs(
+            device_policy=gcp.accesscontextmanager.AccessLevelConditionDevicePolicyArrgs(
                 require_screen_lock=False,
                 require_admin_approval=False,
                 require_corp_owned=True,
-                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArgs(
+                os_constraints=[gcp.accesscontextmanager.AccessLevelConditionDevicePolicyOsConstraintArrgs(
                     os_type="DESKTOP_CHROME_OS",
                 )],
             ),
@@ -583,12 +583,12 @@ class AccessLevelCondition(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param AccessLevelConditionArgs args: The arguments to use to populate this resource's properties.
+        :param AccessLevelConditionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelConditionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelConditionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -598,7 +598,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: Optional[pulumi.Input[str]] = None,
-                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']]] = None,
+                 device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']]] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
@@ -611,7 +611,7 @@ class AccessLevelCondition(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessLevelConditionArgs.__new__(AccessLevelConditionArgs)
+            __props__ = AccessLevelConditionArrgs.__new__(AccessLevelConditionArrgs)
 
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
@@ -633,7 +633,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
-            device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']]] = None,
+            device_policy: Optional[pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']]] = None,
             ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             negate: Optional[pulumi.Input[bool]] = None,
@@ -650,7 +650,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArgs']] device_policy: Device specific restrictions, all restrictions must hold for
+        :param pulumi.Input[pulumi.InputType['AccessLevelConditionDevicePolicyArrgs']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
                Structure is documented below.

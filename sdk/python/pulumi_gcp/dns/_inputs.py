@@ -10,44 +10,44 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DnsManagedZoneIamBindingConditionArgs',
-    'DnsManagedZoneIamMemberConditionArgs',
-    'ManagedZoneCloudLoggingConfigArgs',
-    'ManagedZoneDnssecConfigArgs',
-    'ManagedZoneDnssecConfigDefaultKeySpecArgs',
-    'ManagedZoneForwardingConfigArgs',
-    'ManagedZoneForwardingConfigTargetNameServerArgs',
-    'ManagedZonePeeringConfigArgs',
-    'ManagedZonePeeringConfigTargetNetworkArgs',
-    'ManagedZonePrivateVisibilityConfigArgs',
-    'ManagedZonePrivateVisibilityConfigGkeClusterArgs',
-    'ManagedZonePrivateVisibilityConfigNetworkArgs',
-    'ManagedZoneServiceDirectoryConfigArgs',
-    'ManagedZoneServiceDirectoryConfigNamespaceArgs',
-    'PolicyAlternativeNameServerConfigArgs',
-    'PolicyAlternativeNameServerConfigTargetNameServerArgs',
-    'PolicyNetworkArgs',
-    'RecordSetRoutingPolicyArgs',
-    'RecordSetRoutingPolicyGeoArgs',
-    'RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs',
-    'RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs',
-    'RecordSetRoutingPolicyPrimaryBackupArgs',
-    'RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs',
-    'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs',
-    'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs',
-    'RecordSetRoutingPolicyPrimaryBackupPrimaryArgs',
-    'RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs',
-    'RecordSetRoutingPolicyWrrArgs',
-    'RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs',
-    'RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs',
-    'ResponsePolicyGkeClusterArgs',
-    'ResponsePolicyNetworkArgs',
-    'ResponsePolicyRuleLocalDataArgs',
-    'ResponsePolicyRuleLocalDataLocalDataArgs',
+    'DnsManagedZoneIamBindingConditionArrgs',
+    'DnsManagedZoneIamMemberConditionArrgs',
+    'ManagedZoneCloudLoggingConfigArrgs',
+    'ManagedZoneDnssecConfigArrgs',
+    'ManagedZoneDnssecConfigDefaultKeySpecArrgs',
+    'ManagedZoneForwardingConfigArrgs',
+    'ManagedZoneForwardingConfigTargetNameServerArrgs',
+    'ManagedZonePeeringConfigArrgs',
+    'ManagedZonePeeringConfigTargetNetworkArrgs',
+    'ManagedZonePrivateVisibilityConfigArrgs',
+    'ManagedZonePrivateVisibilityConfigGkeClusterArrgs',
+    'ManagedZonePrivateVisibilityConfigNetworkArrgs',
+    'ManagedZoneServiceDirectoryConfigArrgs',
+    'ManagedZoneServiceDirectoryConfigNamespaceArrgs',
+    'PolicyAlternativeNameServerConfigArrgs',
+    'PolicyAlternativeNameServerConfigTargetNameServerArrgs',
+    'PolicyNetworkArrgs',
+    'RecordSetRoutingPolicyArrgs',
+    'RecordSetRoutingPolicyGeoArrgs',
+    'RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs',
+    'RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs',
+    'RecordSetRoutingPolicyPrimaryBackupArrgs',
+    'RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs',
+    'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs',
+    'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs',
+    'RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs',
+    'RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs',
+    'RecordSetRoutingPolicyWrrArrgs',
+    'RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs',
+    'RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs',
+    'ResponsePolicyGkeClusterArrgs',
+    'ResponsePolicyNetworkArrgs',
+    'ResponsePolicyRuleLocalDataArrgs',
+    'ResponsePolicyRuleLocalDataLocalDataArrgs',
 ]
 
 @pulumi.input_type
-class DnsManagedZoneIamBindingConditionArgs:
+calass DnsManagedZoneIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -86,7 +86,7 @@ class DnsManagedZoneIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DnsManagedZoneIamMemberConditionArgs:
+calass DnsManagedZoneIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -125,7 +125,7 @@ class DnsManagedZoneIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class ManagedZoneCloudLoggingConfigArgs:
+calass ManagedZoneCloudLoggingConfigArrgs:
     def __init__(__self__, *,
                  enable_logging: pulumi.Input[bool]):
         """
@@ -147,14 +147,14 @@ class ManagedZoneCloudLoggingConfigArgs:
 
 
 @pulumi.input_type
-class ManagedZoneDnssecConfigArgs:
+calass ManagedZoneDnssecConfigArrgs:
     def __init__(__self__, *,
-                 default_key_specs: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]] = None,
+                 default_key_specs: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArrgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  non_existence: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]] default_key_specs: Specifies parameters that will be used for generating initial DnsKeys
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArrgs']]] default_key_specs: Specifies parameters that will be used for generating initial DnsKeys
                for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
                you must also provide one for the other.
                default_key_specs can only be updated when the state is `off`.
@@ -177,7 +177,7 @@ class ManagedZoneDnssecConfigArgs:
 
     @property
     @pulumi.getter(name="defaultKeySpecs")
-    def default_key_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]:
+    def default_key_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArrgs']]]]:
         """
         Specifies parameters that will be used for generating initial DnsKeys
         for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
@@ -188,7 +188,7 @@ class ManagedZoneDnssecConfigArgs:
         return pulumi.get(self, "default_key_specs")
 
     @default_key_specs.setter
-    def default_key_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]):
+    def default_key_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArrgs']]]]):
         pulumi.set(self, "default_key_specs", value)
 
     @property
@@ -232,7 +232,7 @@ class ManagedZoneDnssecConfigArgs:
 
 
 @pulumi.input_type
-class ManagedZoneDnssecConfigDefaultKeySpecArgs:
+calass ManagedZoneDnssecConfigDefaultKeySpecArrgs:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  key_length: Optional[pulumi.Input[int]] = None,
@@ -317,11 +317,11 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
 
 
 @pulumi.input_type
-class ManagedZoneForwardingConfigArgs:
+calass ManagedZoneForwardingConfigArrgs:
     def __init__(__self__, *,
-                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
+                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS will
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArrgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS will
                select the best available name server if more than
                one target is given.
                Structure is documented below.
@@ -330,7 +330,7 @@ class ManagedZoneForwardingConfigArgs:
 
     @property
     @pulumi.getter(name="targetNameServers")
-    def target_name_servers(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]:
+    def target_name_servers(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArrgs']]]:
         """
         List of target name servers to forward to. Cloud DNS will
         select the best available name server if more than
@@ -340,12 +340,12 @@ class ManagedZoneForwardingConfigArgs:
         return pulumi.get(self, "target_name_servers")
 
     @target_name_servers.setter
-    def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArgs']]]):
+    def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigTargetNameServerArrgs']]]):
         pulumi.set(self, "target_name_servers", value)
 
 
 @pulumi.input_type
-class ManagedZoneForwardingConfigTargetNameServerArgs:
+calass ManagedZoneForwardingConfigTargetNameServerArrgs:
     def __init__(__self__, *,
                  ipv4_address: pulumi.Input[str],
                  forwarding_path: Optional[pulumi.Input[str]] = None):
@@ -389,18 +389,18 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
 
 
 @pulumi.input_type
-class ManagedZonePeeringConfigArgs:
+calass ManagedZonePeeringConfigArrgs:
     def __init__(__self__, *,
-                 target_network: pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']):
+                 target_network: pulumi.Input['ManagedZonePeeringConfigTargetNetworkArrgs']):
         """
-        :param pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs'] target_network: The network with which to peer.
+        :param pulumi.Input['ManagedZonePeeringConfigTargetNetworkArrgs'] target_network: The network with which to peer.
                Structure is documented below.
         """
         pulumi.set(__self__, "target_network", target_network)
 
     @property
     @pulumi.getter(name="targetNetwork")
-    def target_network(self) -> pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']:
+    def target_network(self) -> pulumi.Input['ManagedZonePeeringConfigTargetNetworkArrgs']:
         """
         The network with which to peer.
         Structure is documented below.
@@ -408,12 +408,12 @@ class ManagedZonePeeringConfigArgs:
         return pulumi.get(self, "target_network")
 
     @target_network.setter
-    def target_network(self, value: pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']):
+    def target_network(self, value: pulumi.Input['ManagedZonePeeringConfigTargetNetworkArrgs']):
         pulumi.set(self, "target_network", value)
 
 
 @pulumi.input_type
-class ManagedZonePeeringConfigTargetNetworkArgs:
+calass ManagedZonePeeringConfigTargetNetworkArrgs:
     def __init__(__self__, *,
                  network_url: pulumi.Input[str]):
         """
@@ -439,12 +439,12 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 
 
 @pulumi.input_type
-class ManagedZonePrivateVisibilityConfigArgs:
+calass ManagedZonePrivateVisibilityConfigArrgs:
     def __init__(__self__, *,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None):
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArrgs']]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArrgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
         """
         if gke_clusters is not None:
@@ -454,7 +454,7 @@ class ManagedZonePrivateVisibilityConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusters")
-    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]]:
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArrgs']]]]:
         """
         The list of Google Kubernetes Engine clusters that can see this zone.
         Structure is documented below.
@@ -462,21 +462,21 @@ class ManagedZonePrivateVisibilityConfigArgs:
         return pulumi.get(self, "gke_clusters")
 
     @gke_clusters.setter
-    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]]):
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArrgs']]]]):
         pulumi.set(self, "gke_clusters", value)
 
     @property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]:
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArrgs']]]]:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]):
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArrgs']]]]):
         pulumi.set(self, "networks", value)
 
 
 @pulumi.input_type
-class ManagedZonePrivateVisibilityConfigGkeClusterArgs:
+calass ManagedZonePrivateVisibilityConfigGkeClusterArrgs:
     def __init__(__self__, *,
                  gke_cluster_name: pulumi.Input[str]):
         """
@@ -502,7 +502,7 @@ class ManagedZonePrivateVisibilityConfigGkeClusterArgs:
 
 
 @pulumi.input_type
-class ManagedZonePrivateVisibilityConfigNetworkArgs:
+calass ManagedZonePrivateVisibilityConfigNetworkArrgs:
     def __init__(__self__, *,
                  network_url: pulumi.Input[str]):
         """
@@ -528,18 +528,18 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
 
 
 @pulumi.input_type
-class ManagedZoneServiceDirectoryConfigArgs:
+calass ManagedZoneServiceDirectoryConfigArrgs:
     def __init__(__self__, *,
-                 namespace: pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']):
+                 namespace: pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArrgs']):
         """
-        :param pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs'] namespace: The namespace associated with the zone.
+        :param pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArrgs'] namespace: The namespace associated with the zone.
                Structure is documented below.
         """
         pulumi.set(__self__, "namespace", namespace)
 
     @property
     @pulumi.getter
-    def namespace(self) -> pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']:
+    def namespace(self) -> pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArrgs']:
         """
         The namespace associated with the zone.
         Structure is documented below.
@@ -547,12 +547,12 @@ class ManagedZoneServiceDirectoryConfigArgs:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']):
+    def namespace(self, value: pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArrgs']):
         pulumi.set(self, "namespace", value)
 
 
 @pulumi.input_type
-class ManagedZoneServiceDirectoryConfigNamespaceArgs:
+calass ManagedZoneServiceDirectoryConfigNamespaceArrgs:
     def __init__(__self__, *,
                  namespace_url: pulumi.Input[str]):
         """
@@ -582,11 +582,11 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
 
 
 @pulumi.input_type
-class PolicyAlternativeNameServerConfigArgs:
+calass PolicyAlternativeNameServerConfigArrgs:
     def __init__(__self__, *,
-                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
+                 target_name_servers: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified,
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArrgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified,
                all DNS queries are forwarded to a name server that you choose. Names such as .internal
                are not available when an alternative name server is specified.
                Structure is documented below.
@@ -595,7 +595,7 @@ class PolicyAlternativeNameServerConfigArgs:
 
     @property
     @pulumi.getter(name="targetNameServers")
-    def target_name_servers(self) -> pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]:
+    def target_name_servers(self) -> pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArrgs']]]:
         """
         Sets an alternative name server for the associated networks. When specified,
         all DNS queries are forwarded to a name server that you choose. Names such as .internal
@@ -605,12 +605,12 @@ class PolicyAlternativeNameServerConfigArgs:
         return pulumi.get(self, "target_name_servers")
 
     @target_name_servers.setter
-    def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]):
+    def target_name_servers(self, value: pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArrgs']]]):
         pulumi.set(self, "target_name_servers", value)
 
 
 @pulumi.input_type
-class PolicyAlternativeNameServerConfigTargetNameServerArgs:
+calass PolicyAlternativeNameServerConfigTargetNameServerArrgs:
     def __init__(__self__, *,
                  ipv4_address: pulumi.Input[str],
                  forwarding_path: Optional[pulumi.Input[str]] = None):
@@ -654,7 +654,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
 
 
 @pulumi.input_type
-class PolicyNetworkArgs:
+calass PolicyNetworkArrgs:
     def __init__(__self__, *,
                  network_url: pulumi.Input[str]):
         """
@@ -680,19 +680,19 @@ class PolicyNetworkArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyArgs:
+calass RecordSetRoutingPolicyArrgs:
     def __init__(__self__, *,
                  enable_geo_fencing: Optional[pulumi.Input[bool]] = None,
-                 geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]] = None,
-                 primary_backup: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']] = None,
-                 wrrs: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]] = None):
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArrgs']]]] = None,
+                 primary_backup: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArrgs']] = None,
+                 wrrs: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArrgs']]]] = None):
         """
         :param pulumi.Input[bool] enable_geo_fencing: Specifies whether to enable fencing for geo queries.
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]] geos: The configuration for Geolocation based routing policy.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArrgs']]] geos: The configuration for Geolocation based routing policy.
                Structure is document below.
-        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs'] primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArrgs'] primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
                Structure is document below.
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArrgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
                Structure is document below.
         """
         if enable_geo_fencing is not None:
@@ -718,7 +718,7 @@ class RecordSetRoutingPolicyArgs:
 
     @property
     @pulumi.getter
-    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]:
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArrgs']]]]:
         """
         The configuration for Geolocation based routing policy.
         Structure is document below.
@@ -726,12 +726,12 @@ class RecordSetRoutingPolicyArgs:
         return pulumi.get(self, "geos")
 
     @geos.setter
-    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]):
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArrgs']]]]):
         pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter(name="primaryBackup")
-    def primary_backup(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']]:
+    def primary_backup(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArrgs']]:
         """
         The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
         Structure is document below.
@@ -739,12 +739,12 @@ class RecordSetRoutingPolicyArgs:
         return pulumi.get(self, "primary_backup")
 
     @primary_backup.setter
-    def primary_backup(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']]):
+    def primary_backup(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArrgs']]):
         pulumi.set(self, "primary_backup", value)
 
     @property
     @pulumi.getter
-    def wrrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]]:
+    def wrrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArrgs']]]]:
         """
         The configuration for Weighted Round Robin based routing policy.
         Structure is document below.
@@ -752,19 +752,19 @@ class RecordSetRoutingPolicyArgs:
         return pulumi.get(self, "wrrs")
 
     @wrrs.setter
-    def wrrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]]):
+    def wrrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArrgs']]]]):
         pulumi.set(self, "wrrs", value)
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyGeoArgs:
+calass RecordSetRoutingPolicyGeoArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']] = None,
+                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] location: The location name defined in Google Cloud.
-        :param pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
                Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
@@ -788,7 +788,7 @@ class RecordSetRoutingPolicyGeoArgs:
 
     @property
     @pulumi.getter(name="healthCheckedTargets")
-    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']]:
+    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs']]:
         """
         For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
         Structure is document below.
@@ -796,7 +796,7 @@ class RecordSetRoutingPolicyGeoArgs:
         return pulumi.get(self, "health_checked_targets")
 
     @health_checked_targets.setter
-    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']]):
+    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs']]):
         pulumi.set(self, "health_checked_targets", value)
 
     @property
@@ -813,18 +813,18 @@ class RecordSetRoutingPolicyGeoArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
+calass RecordSetRoutingPolicyGeoHealthCheckedTargetsArrgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]]:
         """
         The list of internal load balancers to health check.
         Structure is document below.
@@ -832,12 +832,12 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
+calass RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  ip_protocol: pulumi.Input[str],
@@ -950,16 +950,16 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyPrimaryBackupArgs:
+calass RecordSetRoutingPolicyPrimaryBackupArrgs:
     def __init__(__self__, *,
-                 backup_geos: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]],
-                 primary: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs'],
+                 backup_geos: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs']]],
+                 primary: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs'],
                  enable_geo_fencing_for_backups: Optional[pulumi.Input[bool]] = None,
                  trickle_ratio: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]] backup_geos: The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs']]] backup_geos: The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
                Structure is document above.
-        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs'] primary: The list of global primary targets to be health checked.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs'] primary: The list of global primary targets to be health checked.
                Structure is document below.
         :param pulumi.Input[bool] enable_geo_fencing_for_backups: Specifies whether to enable fencing for backup geo queries.
         :param pulumi.Input[float] trickle_ratio: Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
@@ -973,7 +973,7 @@ class RecordSetRoutingPolicyPrimaryBackupArgs:
 
     @property
     @pulumi.getter(name="backupGeos")
-    def backup_geos(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]]:
+    def backup_geos(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs']]]:
         """
         The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
         Structure is document above.
@@ -981,12 +981,12 @@ class RecordSetRoutingPolicyPrimaryBackupArgs:
         return pulumi.get(self, "backup_geos")
 
     @backup_geos.setter
-    def backup_geos(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]]):
+    def backup_geos(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs']]]):
         pulumi.set(self, "backup_geos", value)
 
     @property
     @pulumi.getter
-    def primary(self) -> pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs']:
+    def primary(self) -> pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs']:
         """
         The list of global primary targets to be health checked.
         Structure is document below.
@@ -994,7 +994,7 @@ class RecordSetRoutingPolicyPrimaryBackupArgs:
         return pulumi.get(self, "primary")
 
     @primary.setter
-    def primary(self, value: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs']):
+    def primary(self, value: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs']):
         pulumi.set(self, "primary", value)
 
     @property
@@ -1023,14 +1023,14 @@ class RecordSetRoutingPolicyPrimaryBackupArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
+calass RecordSetRoutingPolicyPrimaryBackupBackupGeoArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']] = None,
+                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] location: The location name defined in Google Cloud.
-        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
                Structure is document below.
         """
         pulumi.set(__self__, "location", location)
@@ -1053,7 +1053,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
 
     @property
     @pulumi.getter(name="healthCheckedTargets")
-    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]:
+    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs']]:
         """
         For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
         Structure is document below.
@@ -1061,7 +1061,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
         return pulumi.get(self, "health_checked_targets")
 
     @health_checked_targets.setter
-    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]):
+    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs']]):
         pulumi.set(self, "health_checked_targets", value)
 
     @property
@@ -1075,18 +1075,18 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
+calass RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArrgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]]:
         """
         The list of internal load balancers to health check.
         Structure is document below.
@@ -1094,12 +1094,12 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs']]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs:
+calass RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  ip_protocol: pulumi.Input[str],
@@ -1212,18 +1212,18 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
+calass RecordSetRoutingPolicyPrimaryBackupPrimaryArrgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs']]]:
         """
         The list of internal load balancers to health check.
         Structure is document below.
@@ -1231,12 +1231,12 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs']]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
+calass RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  ip_protocol: pulumi.Input[str],
@@ -1349,14 +1349,14 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyWrrArgs:
+calass RecordSetRoutingPolicyWrrArrgs:
     def __init__(__self__, *,
                  weight: pulumi.Input[float],
-                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']] = None,
+                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[float] weight: The ratio of traffic routed to the target.
-        :param pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs'] health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+        :param pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs'] health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
                Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
@@ -1380,7 +1380,7 @@ class RecordSetRoutingPolicyWrrArgs:
 
     @property
     @pulumi.getter(name="healthCheckedTargets")
-    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']]:
+    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs']]:
         """
         The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
         Structure is document below.
@@ -1388,7 +1388,7 @@ class RecordSetRoutingPolicyWrrArgs:
         return pulumi.get(self, "health_checked_targets")
 
     @health_checked_targets.setter
-    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']]):
+    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs']]):
         pulumi.set(self, "health_checked_targets", value)
 
     @property
@@ -1405,18 +1405,18 @@ class RecordSetRoutingPolicyWrrArgs:
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
+calass RecordSetRoutingPolicyWrrHealthCheckedTargetsArrgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is document below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs']]]:
         """
         The list of internal load balancers to health check.
         Structure is document below.
@@ -1424,12 +1424,12 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs']]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
 @pulumi.input_type
-class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
+calass RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
                  ip_protocol: pulumi.Input[str],
@@ -1542,7 +1542,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
 
 
 @pulumi.input_type
-class ResponsePolicyGkeClusterArgs:
+calass ResponsePolicyGkeClusterArrgs:
     def __init__(__self__, *,
                  gke_cluster_name: pulumi.Input[str]):
         """
@@ -1568,7 +1568,7 @@ class ResponsePolicyGkeClusterArgs:
 
 
 @pulumi.input_type
-class ResponsePolicyNetworkArgs:
+calass ResponsePolicyNetworkArrgs:
     def __init__(__self__, *,
                  network_url: pulumi.Input[str]):
         """
@@ -1594,18 +1594,18 @@ class ResponsePolicyNetworkArgs:
 
 
 @pulumi.input_type
-class ResponsePolicyRuleLocalDataArgs:
+calass ResponsePolicyRuleLocalDataArrgs:
     def __init__(__self__, *,
-                 local_datas: pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgs']]]):
+                 local_datas: pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgs']]] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArrgs']]] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
                Structure is documented below.
         """
         pulumi.set(__self__, "local_datas", local_datas)
 
     @property
     @pulumi.getter(name="localDatas")
-    def local_datas(self) -> pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgs']]]:
+    def local_datas(self) -> pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArrgs']]]:
         """
         All resource record sets for this selector, one per resource record type. The name must match the dns_name.
         Structure is documented below.
@@ -1613,12 +1613,12 @@ class ResponsePolicyRuleLocalDataArgs:
         return pulumi.get(self, "local_datas")
 
     @local_datas.setter
-    def local_datas(self, value: pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArgs']]]):
+    def local_datas(self, value: pulumi.Input[Sequence[pulumi.Input['ResponsePolicyRuleLocalDataLocalDataArrgs']]]):
         pulumi.set(self, "local_datas", value)
 
 
 @pulumi.input_type
-class ResponsePolicyRuleLocalDataLocalDataArgs:
+calass ResponsePolicyRuleLocalDataLocalDataArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],

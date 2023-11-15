@@ -10,13 +10,13 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DatabaseHiveOptionsArgs',
-    'TableHiveOptionsArgs',
-    'TableHiveOptionsStorageDescriptorArgs',
+    'DatabaseHiveOptionsArrgs',
+    'TableHiveOptionsArrgs',
+    'TableHiveOptionsStorageDescriptorArrgs',
 ]
 
 @pulumi.input_type
-class DatabaseHiveOptionsArgs:
+calass DatabaseHiveOptionsArrgs:
     def __init__(__self__, *,
                  location_uri: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -63,16 +63,16 @@ class DatabaseHiveOptionsArgs:
 
 
 @pulumi.input_type
-class TableHiveOptionsArgs:
+calass TableHiveOptionsArrgs:
     def __init__(__self__, *,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 storage_descriptor: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']] = None,
+                 storage_descriptor: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArrgs']] = None,
                  table_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Stores user supplied Hive table parameters. An object containing a
                list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input['TableHiveOptionsStorageDescriptorArgs'] storage_descriptor: Stores physical storage information on the data.
+        :param pulumi.Input['TableHiveOptionsStorageDescriptorArrgs'] storage_descriptor: Stores physical storage information on the data.
                Structure is documented below.
         :param pulumi.Input[str] table_type: Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
         """
@@ -99,7 +99,7 @@ class TableHiveOptionsArgs:
 
     @property
     @pulumi.getter(name="storageDescriptor")
-    def storage_descriptor(self) -> Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']]:
+    def storage_descriptor(self) -> Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArrgs']]:
         """
         Stores physical storage information on the data.
         Structure is documented below.
@@ -107,7 +107,7 @@ class TableHiveOptionsArgs:
         return pulumi.get(self, "storage_descriptor")
 
     @storage_descriptor.setter
-    def storage_descriptor(self, value: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArgs']]):
+    def storage_descriptor(self, value: Optional[pulumi.Input['TableHiveOptionsStorageDescriptorArrgs']]):
         pulumi.set(self, "storage_descriptor", value)
 
     @property
@@ -124,7 +124,7 @@ class TableHiveOptionsArgs:
 
 
 @pulumi.input_type
-class TableHiveOptionsStorageDescriptorArgs:
+calass TableHiveOptionsStorageDescriptorArrgs:
     def __init__(__self__, *,
                  input_format: Optional[pulumi.Input[str]] = None,
                  location_uri: Optional[pulumi.Input[str]] = None,

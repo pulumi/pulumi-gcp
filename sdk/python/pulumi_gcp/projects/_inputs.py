@@ -10,26 +10,26 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AccessApprovalSettingsEnrolledServiceArgs',
-    'ApiKeyRestrictionsArgs',
-    'ApiKeyRestrictionsAndroidKeyRestrictionsArgs',
-    'ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs',
-    'ApiKeyRestrictionsApiTargetArgs',
-    'ApiKeyRestrictionsBrowserKeyRestrictionsArgs',
-    'ApiKeyRestrictionsIosKeyRestrictionsArgs',
-    'ApiKeyRestrictionsServerKeyRestrictionsArgs',
-    'IAMAuditConfigAuditLogConfigArgs',
-    'IAMBindingConditionArgs',
-    'IAMMemberConditionArgs',
-    'OrganizationPolicyBooleanPolicyArgs',
-    'OrganizationPolicyListPolicyArgs',
-    'OrganizationPolicyListPolicyAllowArgs',
-    'OrganizationPolicyListPolicyDenyArgs',
-    'OrganizationPolicyRestorePolicyArgs',
+    'AccessApprovalSettingsEnrolledServiceArrgs',
+    'ApiKeyRestrictionsArrgs',
+    'ApiKeyRestrictionsAndroidKeyRestrictionsArrgs',
+    'ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs',
+    'ApiKeyRestrictionsApiTargetArrgs',
+    'ApiKeyRestrictionsBrowserKeyRestrictionsArrgs',
+    'ApiKeyRestrictionsIosKeyRestrictionsArrgs',
+    'ApiKeyRestrictionsServerKeyRestrictionsArrgs',
+    'IAMAuditConfigAuditLogConfigArrgs',
+    'IAMBindingConditionArrgs',
+    'IAMMemberConditionArrgs',
+    'OrganizationPolicyBooleanPolicyArrgs',
+    'OrganizationPolicyListPolicyArrgs',
+    'OrganizationPolicyListPolicyAllowArrgs',
+    'OrganizationPolicyListPolicyDenyArrgs',
+    'OrganizationPolicyRestorePolicyArrgs',
 ]
 
 @pulumi.input_type
-class AccessApprovalSettingsEnrolledServiceArgs:
+calass AccessApprovalSettingsEnrolledServiceArrgs:
     def __init__(__self__, *,
                  cloud_product: pulumi.Input[str],
                  enrollment_level: Optional[pulumi.Input[str]] = None):
@@ -95,19 +95,19 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsArgs:
+calass ApiKeyRestrictionsArrgs:
     def __init__(__self__, *,
-                 android_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']] = None,
-                 api_targets: Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]] = None,
-                 browser_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']] = None,
-                 ios_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs']] = None,
-                 server_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs']] = None):
+                 android_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArrgs']] = None,
+                 api_targets: Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArrgs']]]] = None,
+                 browser_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArrgs']] = None,
+                 ios_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArrgs']] = None,
+                 server_key_restrictions: Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArrgs']] = None):
         """
-        :param pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs'] android_key_restrictions: The Android apps that are allowed to use the key.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]] api_targets: A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-        :param pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs'] browser_key_restrictions: The HTTP referrers (websites) that are allowed to use the key.
-        :param pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs'] ios_key_restrictions: The iOS apps that are allowed to use the key.
-        :param pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs'] server_key_restrictions: The IP addresses of callers that are allowed to use the key.
+        :param pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArrgs'] android_key_restrictions: The Android apps that are allowed to use the key.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArrgs']]] api_targets: A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+        :param pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArrgs'] browser_key_restrictions: The HTTP referrers (websites) that are allowed to use the key.
+        :param pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArrgs'] ios_key_restrictions: The iOS apps that are allowed to use the key.
+        :param pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArrgs'] server_key_restrictions: The IP addresses of callers that are allowed to use the key.
         """
         if android_key_restrictions is not None:
             pulumi.set(__self__, "android_key_restrictions", android_key_restrictions)
@@ -122,89 +122,89 @@ class ApiKeyRestrictionsArgs:
 
     @property
     @pulumi.getter(name="androidKeyRestrictions")
-    def android_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']]:
+    def android_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArrgs']]:
         """
         The Android apps that are allowed to use the key.
         """
         return pulumi.get(self, "android_key_restrictions")
 
     @android_key_restrictions.setter
-    def android_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']]):
+    def android_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsArrgs']]):
         pulumi.set(self, "android_key_restrictions", value)
 
     @property
     @pulumi.getter(name="apiTargets")
-    def api_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]]:
+    def api_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArrgs']]]]:
         """
         A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
         """
         return pulumi.get(self, "api_targets")
 
     @api_targets.setter
-    def api_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]]):
+    def api_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArrgs']]]]):
         pulumi.set(self, "api_targets", value)
 
     @property
     @pulumi.getter(name="browserKeyRestrictions")
-    def browser_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']]:
+    def browser_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArrgs']]:
         """
         The HTTP referrers (websites) that are allowed to use the key.
         """
         return pulumi.get(self, "browser_key_restrictions")
 
     @browser_key_restrictions.setter
-    def browser_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']]):
+    def browser_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsBrowserKeyRestrictionsArrgs']]):
         pulumi.set(self, "browser_key_restrictions", value)
 
     @property
     @pulumi.getter(name="iosKeyRestrictions")
-    def ios_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs']]:
+    def ios_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArrgs']]:
         """
         The iOS apps that are allowed to use the key.
         """
         return pulumi.get(self, "ios_key_restrictions")
 
     @ios_key_restrictions.setter
-    def ios_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArgs']]):
+    def ios_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsIosKeyRestrictionsArrgs']]):
         pulumi.set(self, "ios_key_restrictions", value)
 
     @property
     @pulumi.getter(name="serverKeyRestrictions")
-    def server_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs']]:
+    def server_key_restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArrgs']]:
         """
         The IP addresses of callers that are allowed to use the key.
         """
         return pulumi.get(self, "server_key_restrictions")
 
     @server_key_restrictions.setter
-    def server_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArgs']]):
+    def server_key_restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsServerKeyRestrictionsArrgs']]):
         pulumi.set(self, "server_key_restrictions", value)
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsAndroidKeyRestrictionsArgs:
+calass ApiKeyRestrictionsAndroidKeyRestrictionsArrgs:
     def __init__(__self__, *,
-                 allowed_applications: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]]):
+                 allowed_applications: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]] allowed_applications: A list of Android applications that are allowed to make API calls with this key.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs']]] allowed_applications: A list of Android applications that are allowed to make API calls with this key.
         """
         pulumi.set(__self__, "allowed_applications", allowed_applications)
 
     @property
     @pulumi.getter(name="allowedApplications")
-    def allowed_applications(self) -> pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]]:
+    def allowed_applications(self) -> pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs']]]:
         """
         A list of Android applications that are allowed to make API calls with this key.
         """
         return pulumi.get(self, "allowed_applications")
 
     @allowed_applications.setter
-    def allowed_applications(self, value: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs']]]):
+    def allowed_applications(self, value: pulumi.Input[Sequence[pulumi.Input['ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs']]]):
         pulumi.set(self, "allowed_applications", value)
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs:
+calass ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs:
     def __init__(__self__, *,
                  package_name: pulumi.Input[str],
                  sha1_fingerprint: pulumi.Input[str]):
@@ -245,7 +245,7 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs:
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsApiTargetArgs:
+calass ApiKeyRestrictionsApiTargetArrgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
                  methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -283,7 +283,7 @@ class ApiKeyRestrictionsApiTargetArgs:
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsBrowserKeyRestrictionsArgs:
+calass ApiKeyRestrictionsBrowserKeyRestrictionsArrgs:
     def __init__(__self__, *,
                  allowed_referrers: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -305,7 +305,7 @@ class ApiKeyRestrictionsBrowserKeyRestrictionsArgs:
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsIosKeyRestrictionsArgs:
+calass ApiKeyRestrictionsIosKeyRestrictionsArrgs:
     def __init__(__self__, *,
                  allowed_bundle_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -327,7 +327,7 @@ class ApiKeyRestrictionsIosKeyRestrictionsArgs:
 
 
 @pulumi.input_type
-class ApiKeyRestrictionsServerKeyRestrictionsArgs:
+calass ApiKeyRestrictionsServerKeyRestrictionsArrgs:
     def __init__(__self__, *,
                  allowed_ips: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -349,7 +349,7 @@ class ApiKeyRestrictionsServerKeyRestrictionsArgs:
 
 
 @pulumi.input_type
-class IAMAuditConfigAuditLogConfigArgs:
+calass IAMAuditConfigAuditLogConfigArrgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[str],
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -387,7 +387,7 @@ class IAMAuditConfigAuditLogConfigArgs:
 
 
 @pulumi.input_type
-class IAMBindingConditionArgs:
+calass IAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -448,7 +448,7 @@ class IAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class IAMMemberConditionArgs:
+calass IAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -509,7 +509,7 @@ class IAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyBooleanPolicyArgs:
+calass OrganizationPolicyBooleanPolicyArrgs:
     def __init__(__self__, *,
                  enforced: pulumi.Input[bool]):
         """
@@ -531,14 +531,14 @@ class OrganizationPolicyBooleanPolicyArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyListPolicyArgs:
+calass OrganizationPolicyListPolicyArrgs:
     def __init__(__self__, *,
-                 allow: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArgs']] = None,
-                 deny: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']] = None,
+                 allow: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArrgs']] = None,
+                 deny: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArrgs']] = None,
                  inherit_from_parent: Optional[pulumi.Input[bool]] = None,
                  suggested_value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['OrganizationPolicyListPolicyAllowArgs'] allow: or `deny` - (Optional) One or the other must be set.
+        :param pulumi.Input['OrganizationPolicyListPolicyAllowArrgs'] allow: or `deny` - (Optional) One or the other must be set.
         :param pulumi.Input[bool] inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
@@ -556,23 +556,23 @@ class OrganizationPolicyListPolicyArgs:
 
     @property
     @pulumi.getter
-    def allow(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArgs']]:
+    def allow(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArrgs']]:
         """
         or `deny` - (Optional) One or the other must be set.
         """
         return pulumi.get(self, "allow")
 
     @allow.setter
-    def allow(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArgs']]):
+    def allow(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArrgs']]):
         pulumi.set(self, "allow", value)
 
     @property
     @pulumi.getter
-    def deny(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']]:
+    def deny(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArrgs']]:
         return pulumi.get(self, "deny")
 
     @deny.setter
-    def deny(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']]):
+    def deny(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArrgs']]):
         pulumi.set(self, "deny", value)
 
     @property
@@ -604,7 +604,7 @@ class OrganizationPolicyListPolicyArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyListPolicyAllowArgs:
+calass OrganizationPolicyListPolicyAllowArrgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -643,7 +643,7 @@ class OrganizationPolicyListPolicyAllowArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyListPolicyDenyArgs:
+calass OrganizationPolicyListPolicyDenyArrgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -682,7 +682,7 @@ class OrganizationPolicyListPolicyDenyArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyRestorePolicyArgs:
+calass OrganizationPolicyRestorePolicyArrgs:
     def __init__(__self__, *,
                  default: pulumi.Input[bool]):
         """

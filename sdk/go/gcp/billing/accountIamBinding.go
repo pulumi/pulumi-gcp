@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
@@ -331,12 +330,6 @@ func (i *AccountIamBinding) ToAccountIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingOutput)
 }
 
-func (i *AccountIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AccountIamBinding] {
-	return pulumix.Output[*AccountIamBinding]{
-		OutputState: i.ToAccountIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountIamBindingArrayInput is an input type that accepts AccountIamBindingArray and AccountIamBindingArrayOutput values.
 // You can construct a concrete instance of `AccountIamBindingArrayInput` via:
 //
@@ -360,12 +353,6 @@ func (i AccountIamBindingArray) ToAccountIamBindingArrayOutput() AccountIamBindi
 
 func (i AccountIamBindingArray) ToAccountIamBindingArrayOutputWithContext(ctx context.Context) AccountIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingArrayOutput)
-}
-
-func (i AccountIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountIamBinding] {
-	return pulumix.Output[[]*AccountIamBinding]{
-		OutputState: i.ToAccountIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountIamBindingMapInput is an input type that accepts AccountIamBindingMap and AccountIamBindingMapOutput values.
@@ -393,12 +380,6 @@ func (i AccountIamBindingMap) ToAccountIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingMapOutput)
 }
 
-func (i AccountIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountIamBinding] {
-	return pulumix.Output[map[string]*AccountIamBinding]{
-		OutputState: i.ToAccountIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AccountIamBindingOutput) ElementType() reflect.Type {
@@ -411,12 +392,6 @@ func (o AccountIamBindingOutput) ToAccountIamBindingOutput() AccountIamBindingOu
 
 func (o AccountIamBindingOutput) ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput {
 	return o
-}
-
-func (o AccountIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountIamBinding] {
-	return pulumix.Output[*AccountIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The billing account id.
@@ -469,12 +444,6 @@ func (o AccountIamBindingArrayOutput) ToAccountIamBindingArrayOutputWithContext(
 	return o
 }
 
-func (o AccountIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountIamBinding] {
-	return pulumix.Output[[]*AccountIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountIamBindingArrayOutput) Index(i pulumi.IntInput) AccountIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountIamBinding {
 		return vs[0].([]*AccountIamBinding)[vs[1].(int)]
@@ -493,12 +462,6 @@ func (o AccountIamBindingMapOutput) ToAccountIamBindingMapOutput() AccountIamBin
 
 func (o AccountIamBindingMapOutput) ToAccountIamBindingMapOutputWithContext(ctx context.Context) AccountIamBindingMapOutput {
 	return o
-}
-
-func (o AccountIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountIamBinding] {
-	return pulumix.Output[map[string]*AccountIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountIamBindingMapOutput) MapIndex(k pulumi.StringInput) AccountIamBindingOutput {

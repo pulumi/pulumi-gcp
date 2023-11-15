@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SslCertArgs', 'SslCert']
+__all__ = ['SslCertArrgs', 'SslCert']
 
 @pulumi.input_type
-class SslCertArgs:
+calass SslCertArrgs:
     def __init__(__self__, *,
                  common_name: pulumi.Input[str],
                  instance: pulumi.Input[str],
@@ -72,7 +72,7 @@ class SslCertArgs:
 
 
 @pulumi.input_type
-class _SslCertState:
+calass _SslCertState:
     def __init__(__self__, *,
                  cert: Optional[pulumi.Input[str]] = None,
                  cert_serial_number: Optional[pulumi.Input[str]] = None,
@@ -249,7 +249,7 @@ class _SslCertState:
         pulumi.set(self, "sha1_fingerprint", value)
 
 
-class SslCert(pulumi.CustomResource):
+calass SslCert(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -275,7 +275,7 @@ class SslCert(pulumi.CustomResource):
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ))
         client_cert = gcp.sql.SslCert("clientCert",
@@ -300,7 +300,7 @@ class SslCert(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SslCertArgs,
+                 args: SslCertArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
@@ -319,7 +319,7 @@ class SslCert(pulumi.CustomResource):
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            settings=gcp.sql.DatabaseInstanceSettingsArrgs(
                 tier="db-f1-micro",
             ))
         client_cert = gcp.sql.SslCert("clientCert",
@@ -332,12 +332,12 @@ class SslCert(pulumi.CustomResource):
         Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
 
         :param str resource_name: The name of the resource.
-        :param SslCertArgs args: The arguments to use to populate this resource's properties.
+        :param SslCertArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SslCertArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SslCertArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -356,7 +356,7 @@ class SslCert(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SslCertArgs.__new__(SslCertArgs)
+            __props__ = SslCertArrgs.__new__(SslCertArrgs)
 
             if common_name is None and not opts.urn:
                 raise TypeError("Missing required property 'common_name'")

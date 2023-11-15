@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ScopeIamBindingArgs', 'ScopeIamBinding']
+__all__ = ['ScopeIamBindingArrgs', 'ScopeIamBinding']
 
 @pulumi.input_type
-class ScopeIamBindingArgs:
+calass ScopeIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  scope_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ScopeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ScopeIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ScopeIamBinding resource.
@@ -83,11 +83,11 @@ class ScopeIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ScopeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ScopeIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ScopeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ScopeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -117,9 +117,9 @@ class ScopeIamBindingArgs:
 
 
 @pulumi.input_type
-class _ScopeIamBindingState:
+calass _ScopeIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ScopeIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ScopeIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -161,11 +161,11 @@ class _ScopeIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ScopeIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ScopeIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ScopeIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ScopeIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -238,12 +238,12 @@ class _ScopeIamBindingState:
         pulumi.set(self, "scope_id", value)
 
 
-class ScopeIamBinding(pulumi.CustomResource):
+calass ScopeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ScopeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ScopeIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -270,7 +270,7 @@ class ScopeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -354,7 +354,7 @@ class ScopeIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ScopeIamBindingArgs,
+                 args: ScopeIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for GKEHub Scope. Each of these resources serves a different use case:
@@ -377,7 +377,7 @@ class ScopeIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -438,12 +438,12 @@ class ScopeIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ScopeIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ScopeIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ScopeIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ScopeIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -452,7 +452,7 @@ class ScopeIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ScopeIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ScopeIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -464,7 +464,7 @@ class ScopeIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ScopeIamBindingArgs.__new__(ScopeIamBindingArgs)
+            __props__ = ScopeIamBindingArrgs.__new__(ScopeIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -488,7 +488,7 @@ class ScopeIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ScopeIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ScopeIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

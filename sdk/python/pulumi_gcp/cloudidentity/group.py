@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GroupArgs', 'Group']
+__all__ = ['GroupArrgs', 'Group']
 
 @pulumi.input_type
-class GroupArgs:
+calass GroupArrgs:
     def __init__(__self__, *,
-                 group_key: pulumi.Input['GroupGroupKeyArgs'],
+                 group_key: pulumi.Input['GroupGroupKeyArrgs'],
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  parent: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -24,7 +24,7 @@ class GroupArgs:
                  initial_group_config: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
-        :param pulumi.Input['GroupGroupKeyArgs'] group_key: EntityKey of the Group.
+        :param pulumi.Input['GroupGroupKeyArrgs'] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
                Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -57,7 +57,7 @@ class GroupArgs:
 
     @property
     @pulumi.getter(name="groupKey")
-    def group_key(self) -> pulumi.Input['GroupGroupKeyArgs']:
+    def group_key(self) -> pulumi.Input['GroupGroupKeyArrgs']:
         """
         EntityKey of the Group.
         Structure is documented below.
@@ -65,7 +65,7 @@ class GroupArgs:
         return pulumi.get(self, "group_key")
 
     @group_key.setter
-    def group_key(self, value: pulumi.Input['GroupGroupKeyArgs']):
+    def group_key(self, value: pulumi.Input['GroupGroupKeyArrgs']):
         pulumi.set(self, "group_key", value)
 
     @property
@@ -143,12 +143,12 @@ class GroupArgs:
 
 
 @pulumi.input_type
-class _GroupState:
+calass _GroupState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group_key: Optional[pulumi.Input['GroupGroupKeyArgs']] = None,
+                 group_key: Optional[pulumi.Input['GroupGroupKeyArrgs']] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class _GroupState:
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input['GroupGroupKeyArgs'] group_key: EntityKey of the Group.
+        :param pulumi.Input['GroupGroupKeyArrgs'] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
                See the
@@ -239,7 +239,7 @@ class _GroupState:
 
     @property
     @pulumi.getter(name="groupKey")
-    def group_key(self) -> Optional[pulumi.Input['GroupGroupKeyArgs']]:
+    def group_key(self) -> Optional[pulumi.Input['GroupGroupKeyArrgs']]:
         """
         EntityKey of the Group.
         Structure is documented below.
@@ -247,7 +247,7 @@ class _GroupState:
         return pulumi.get(self, "group_key")
 
     @group_key.setter
-    def group_key(self, value: Optional[pulumi.Input['GroupGroupKeyArgs']]):
+    def group_key(self, value: Optional[pulumi.Input['GroupGroupKeyArrgs']]):
         pulumi.set(self, "group_key", value)
 
     @property
@@ -324,14 +324,14 @@ class _GroupState:
         pulumi.set(self, "update_time", value)
 
 
-class Group(pulumi.CustomResource):
+calass Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+                 group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArrgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -360,7 +360,7 @@ class Group(pulumi.CustomResource):
 
         cloud_identity_group_basic = gcp.cloudidentity.Group("cloudIdentityGroupBasic",
             display_name="my-identity-group",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group@example.com",
             ),
             initial_group_config="WITH_INITIAL_OWNER",
@@ -383,7 +383,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']] group_key: EntityKey of the Group.
+        :param pulumi.Input[pulumi.InputType['GroupGroupKeyArrgs']] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
                See the
@@ -405,7 +405,7 @@ class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GroupArgs,
+                 args: GroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Cloud Identity resource representing a Group.
@@ -431,7 +431,7 @@ class Group(pulumi.CustomResource):
 
         cloud_identity_group_basic = gcp.cloudidentity.Group("cloudIdentityGroupBasic",
             display_name="my-identity-group",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+            group_key=gcp.cloudidentity.GroupGroupKeyArrgs(
                 id="my-identity-group@example.com",
             ),
             initial_group_config="WITH_INITIAL_OWNER",
@@ -450,12 +450,12 @@ class Group(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GroupArgs args: The arguments to use to populate this resource's properties.
+        :param GroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -466,7 +466,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+                 group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArrgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -477,7 +477,7 @@ class Group(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GroupArgs.__new__(GroupArgs)
+            __props__ = GroupArrgs.__new__(GroupArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -507,7 +507,7 @@ class Group(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+            group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArrgs']]] = None,
             initial_group_config: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -524,7 +524,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']] group_key: EntityKey of the Group.
+        :param pulumi.Input[pulumi.InputType['GroupGroupKeyArrgs']] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group.
                See the

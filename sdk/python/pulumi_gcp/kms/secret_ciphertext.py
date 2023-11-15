@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SecretCiphertextArgs', 'SecretCiphertext']
+__all__ = ['SecretCiphertextArrgs', 'SecretCiphertext']
 
 @pulumi.input_type
-class SecretCiphertextArgs:
+calass SecretCiphertextArrgs:
     def __init__(__self__, *,
                  crypto_key: pulumi.Input[str],
                  plaintext: pulumi.Input[str],
@@ -78,7 +78,7 @@ class SecretCiphertextArgs:
 
 
 @pulumi.input_type
-class _SecretCiphertextState:
+calass _SecretCiphertextState:
     def __init__(__self__, *,
                  additional_authenticated_data: Optional[pulumi.Input[str]] = None,
                  ciphertext: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,7 @@ class _SecretCiphertextState:
         pulumi.set(self, "plaintext", value)
 
 
-class SecretCiphertext(pulumi.CustomResource):
+calass SecretCiphertext(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -203,14 +203,14 @@ class SecretCiphertext(pulumi.CustomResource):
         instance = gcp.compute.Instance("instance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )],
             metadata={
                 "password": my_password.ciphertext,
@@ -237,7 +237,7 @@ class SecretCiphertext(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SecretCiphertextArgs,
+                 args: SecretCiphertextArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
@@ -272,14 +272,14 @@ class SecretCiphertext(pulumi.CustomResource):
         instance = gcp.compute.Instance("instance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArrgs()],
             )],
             metadata={
                 "password": my_password.ciphertext,
@@ -291,12 +291,12 @@ class SecretCiphertext(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param SecretCiphertextArgs args: The arguments to use to populate this resource's properties.
+        :param SecretCiphertextArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SecretCiphertextArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SecretCiphertextArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -315,7 +315,7 @@ class SecretCiphertext(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SecretCiphertextArgs.__new__(SecretCiphertextArgs)
+            __props__ = SecretCiphertextArrgs.__new__(SecretCiphertextArrgs)
 
             __props__.__dict__["additional_authenticated_data"] = None if additional_authenticated_data is None else pulumi.Output.secret(additional_authenticated_data)
             if crypto_key is None and not opts.urn:

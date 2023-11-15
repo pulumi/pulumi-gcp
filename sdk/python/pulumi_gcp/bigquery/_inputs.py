@@ -10,77 +10,77 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AppProfileSingleClusterRoutingArgs',
-    'BiReservationPreferredTableArgs',
-    'ConnectionAwsArgs',
-    'ConnectionAwsAccessRoleArgs',
-    'ConnectionAzureArgs',
-    'ConnectionCloudResourceArgs',
-    'ConnectionCloudSpannerArgs',
-    'ConnectionCloudSqlArgs',
-    'ConnectionCloudSqlCredentialArgs',
-    'ConnectionIamBindingConditionArgs',
-    'ConnectionIamMemberConditionArgs',
-    'DataTransferConfigEmailPreferencesArgs',
-    'DataTransferConfigScheduleOptionsArgs',
-    'DataTransferConfigSensitiveParamsArgs',
-    'DatasetAccessArgs',
-    'DatasetAccessAuthorizedDatasetArgs',
-    'DatasetAccessAuthorizedDatasetDatasetArgs',
-    'DatasetAccessDatasetArgs',
-    'DatasetAccessDatasetDatasetArgs',
-    'DatasetAccessRoutineArgs',
-    'DatasetAccessViewArgs',
-    'DatasetDefaultEncryptionConfigurationArgs',
-    'DatasetIamBindingConditionArgs',
-    'DatasetIamMemberConditionArgs',
-    'IamBindingConditionArgs',
-    'IamMemberConditionArgs',
-    'JobCopyArgs',
-    'JobCopyDestinationEncryptionConfigurationArgs',
-    'JobCopyDestinationTableArgs',
-    'JobCopySourceTableArgs',
-    'JobExtractArgs',
-    'JobExtractSourceModelArgs',
-    'JobExtractSourceTableArgs',
-    'JobLoadArgs',
-    'JobLoadDestinationEncryptionConfigurationArgs',
-    'JobLoadDestinationTableArgs',
-    'JobLoadParquetOptionsArgs',
-    'JobLoadTimePartitioningArgs',
-    'JobQueryArgs',
-    'JobQueryDefaultDatasetArgs',
-    'JobQueryDestinationEncryptionConfigurationArgs',
-    'JobQueryDestinationTableArgs',
-    'JobQueryScriptOptionsArgs',
-    'JobQueryUserDefinedFunctionResourceArgs',
-    'JobStatusArgs',
-    'JobStatusErrorArgs',
-    'JobStatusErrorResultArgs',
-    'ReservationAutoscaleArgs',
-    'RoutineArgumentArgs',
-    'TableEncryptionConfigurationArgs',
-    'TableExternalDataConfigurationArgs',
-    'TableExternalDataConfigurationAvroOptionsArgs',
-    'TableExternalDataConfigurationCsvOptionsArgs',
-    'TableExternalDataConfigurationGoogleSheetsOptionsArgs',
-    'TableExternalDataConfigurationHivePartitioningOptionsArgs',
-    'TableExternalDataConfigurationJsonOptionsArgs',
-    'TableExternalDataConfigurationParquetOptionsArgs',
-    'TableMaterializedViewArgs',
-    'TableRangePartitioningArgs',
-    'TableRangePartitioningRangeArgs',
-    'TableTableConstraintsArgs',
-    'TableTableConstraintsForeignKeyArgs',
-    'TableTableConstraintsForeignKeyColumnReferencesArgs',
-    'TableTableConstraintsForeignKeyReferencedTableArgs',
-    'TableTableConstraintsPrimaryKeyArgs',
-    'TableTimePartitioningArgs',
-    'TableViewArgs',
+    'AppProfileSingleClusterRoutingArrgs',
+    'BiReservationPreferredTableArrgs',
+    'ConnectionAwsArrgs',
+    'ConnectionAwsAccessRoleArrgs',
+    'ConnectionAzureArrgs',
+    'ConnectionCloudResourceArrgs',
+    'ConnectionCloudSpannerArrgs',
+    'ConnectionCloudSqlArrgs',
+    'ConnectionCloudSqlCredentialArrgs',
+    'ConnectionIamBindingConditionArrgs',
+    'ConnectionIamMemberConditionArrgs',
+    'DataTransferConfigEmailPreferencesArrgs',
+    'DataTransferConfigScheduleOptionsArrgs',
+    'DataTransferConfigSensitiveParamsArrgs',
+    'DatasetAccessArrgs',
+    'DatasetAccessAuthorizedDatasetArrgs',
+    'DatasetAccessAuthorizedDatasetDatasetArrgs',
+    'DatasetAccessDatasetArrgs',
+    'DatasetAccessDatasetDatasetArrgs',
+    'DatasetAccessRoutineArrgs',
+    'DatasetAccessViewArrgs',
+    'DatasetDefaultEncryptionConfigurationArrgs',
+    'DatasetIamBindingConditionArrgs',
+    'DatasetIamMemberConditionArrgs',
+    'IamBindingConditionArrgs',
+    'IamMemberConditionArrgs',
+    'JobCopyArrgs',
+    'JobCopyDestinationEncryptionConfigurationArrgs',
+    'JobCopyDestinationTableArrgs',
+    'JobCopySourceTableArrgs',
+    'JobExtractArrgs',
+    'JobExtractSourceModelArrgs',
+    'JobExtractSourceTableArrgs',
+    'JobLoadArrgs',
+    'JobLoadDestinationEncryptionConfigurationArrgs',
+    'JobLoadDestinationTableArrgs',
+    'JobLoadParquetOptionsArrgs',
+    'JobLoadTimePartitioningArrgs',
+    'JobQueryArrgs',
+    'JobQueryDefaultDatasetArrgs',
+    'JobQueryDestinationEncryptionConfigurationArrgs',
+    'JobQueryDestinationTableArrgs',
+    'JobQueryScriptOptionsArrgs',
+    'JobQueryUserDefinedFunctionResourceArrgs',
+    'JobStatusArrgs',
+    'JobStatusErrorArrgs',
+    'JobStatusErrorResultArrgs',
+    'ReservationAutoscaleArrgs',
+    'RoutineArgumentArrgs',
+    'TableEncryptionConfigurationArrgs',
+    'TableExternalDataConfigurationArrgs',
+    'TableExternalDataConfigurationAvroOptionsArrgs',
+    'TableExternalDataConfigurationCsvOptionsArrgs',
+    'TableExternalDataConfigurationGoogleSheetsOptionsArrgs',
+    'TableExternalDataConfigurationHivePartitioningOptionsArrgs',
+    'TableExternalDataConfigurationJsonOptionsArrgs',
+    'TableExternalDataConfigurationParquetOptionsArrgs',
+    'TableMaterializedViewArrgs',
+    'TableRangePartitioningArrgs',
+    'TableRangePartitioningRangeArrgs',
+    'TableTableConstraintsArrgs',
+    'TableTableConstraintsForeignKeyArrgs',
+    'TableTableConstraintsForeignKeyColumnReferencesArrgs',
+    'TableTableConstraintsForeignKeyReferencedTableArrgs',
+    'TableTableConstraintsPrimaryKeyArrgs',
+    'TableTimePartitioningArrgs',
+    'TableViewArrgs',
 ]
 
 @pulumi.input_type
-class AppProfileSingleClusterRoutingArgs:
+calass AppProfileSingleClusterRoutingArrgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  allow_transactional_writes: Optional[pulumi.Input[bool]] = None):
@@ -120,7 +120,7 @@ class AppProfileSingleClusterRoutingArgs:
 
 
 @pulumi.input_type
-class BiReservationPreferredTableArgs:
+calass BiReservationPreferredTableArrgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -175,18 +175,18 @@ class BiReservationPreferredTableArgs:
 
 
 @pulumi.input_type
-class ConnectionAwsArgs:
+calass ConnectionAwsArrgs:
     def __init__(__self__, *,
-                 access_role: pulumi.Input['ConnectionAwsAccessRoleArgs']):
+                 access_role: pulumi.Input['ConnectionAwsAccessRoleArrgs']):
         """
-        :param pulumi.Input['ConnectionAwsAccessRoleArgs'] access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
+        :param pulumi.Input['ConnectionAwsAccessRoleArrgs'] access_role: Authentication using Google owned service account to assume into customer's AWS IAM Role.
                Structure is documented below.
         """
         pulumi.set(__self__, "access_role", access_role)
 
     @property
     @pulumi.getter(name="accessRole")
-    def access_role(self) -> pulumi.Input['ConnectionAwsAccessRoleArgs']:
+    def access_role(self) -> pulumi.Input['ConnectionAwsAccessRoleArrgs']:
         """
         Authentication using Google owned service account to assume into customer's AWS IAM Role.
         Structure is documented below.
@@ -194,12 +194,12 @@ class ConnectionAwsArgs:
         return pulumi.get(self, "access_role")
 
     @access_role.setter
-    def access_role(self, value: pulumi.Input['ConnectionAwsAccessRoleArgs']):
+    def access_role(self, value: pulumi.Input['ConnectionAwsAccessRoleArrgs']):
         pulumi.set(self, "access_role", value)
 
 
 @pulumi.input_type
-class ConnectionAwsAccessRoleArgs:
+calass ConnectionAwsAccessRoleArrgs:
     def __init__(__self__, *,
                  iam_role_id: pulumi.Input[str],
                  identity: Optional[pulumi.Input[str]] = None):
@@ -239,7 +239,7 @@ class ConnectionAwsAccessRoleArgs:
 
 
 @pulumi.input_type
-class ConnectionAzureArgs:
+calass ConnectionAzureArrgs:
     def __init__(__self__, *,
                  customer_tenant_id: pulumi.Input[str],
                  application: Optional[pulumi.Input[str]] = None,
@@ -367,7 +367,7 @@ class ConnectionAzureArgs:
 
 
 @pulumi.input_type
-class ConnectionCloudResourceArgs:
+calass ConnectionCloudResourceArrgs:
     def __init__(__self__, *,
                  service_account_id: Optional[pulumi.Input[str]] = None):
         """
@@ -392,7 +392,7 @@ class ConnectionCloudResourceArgs:
 
 
 @pulumi.input_type
-class ConnectionCloudSpannerArgs:
+calass ConnectionCloudSpannerArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  use_parallelism: Optional[pulumi.Input[bool]] = None,
@@ -446,15 +446,15 @@ class ConnectionCloudSpannerArgs:
 
 
 @pulumi.input_type
-class ConnectionCloudSqlArgs:
+calass ConnectionCloudSqlArrgs:
     def __init__(__self__, *,
-                 credential: pulumi.Input['ConnectionCloudSqlCredentialArgs'],
+                 credential: pulumi.Input['ConnectionCloudSqlCredentialArrgs'],
                  database: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  service_account_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ConnectionCloudSqlCredentialArgs'] credential: Cloud SQL properties.
+        :param pulumi.Input['ConnectionCloudSqlCredentialArrgs'] credential: Cloud SQL properties.
                Structure is documented below.
         :param pulumi.Input[str] database: Database name.
         :param pulumi.Input[str] instance_id: Cloud SQL instance ID in the form project:location:instance.
@@ -472,7 +472,7 @@ class ConnectionCloudSqlArgs:
 
     @property
     @pulumi.getter
-    def credential(self) -> pulumi.Input['ConnectionCloudSqlCredentialArgs']:
+    def credential(self) -> pulumi.Input['ConnectionCloudSqlCredentialArrgs']:
         """
         Cloud SQL properties.
         Structure is documented below.
@@ -480,7 +480,7 @@ class ConnectionCloudSqlArgs:
         return pulumi.get(self, "credential")
 
     @credential.setter
-    def credential(self, value: pulumi.Input['ConnectionCloudSqlCredentialArgs']):
+    def credential(self, value: pulumi.Input['ConnectionCloudSqlCredentialArrgs']):
         pulumi.set(self, "credential", value)
 
     @property
@@ -535,7 +535,7 @@ class ConnectionCloudSqlArgs:
 
 
 @pulumi.input_type
-class ConnectionCloudSqlCredentialArgs:
+calass ConnectionCloudSqlCredentialArrgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str],
                  username: pulumi.Input[str]):
@@ -574,7 +574,7 @@ class ConnectionCloudSqlCredentialArgs:
 
 
 @pulumi.input_type
-class ConnectionIamBindingConditionArgs:
+calass ConnectionIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -613,7 +613,7 @@ class ConnectionIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class ConnectionIamMemberConditionArgs:
+calass ConnectionIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -652,7 +652,7 @@ class ConnectionIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class DataTransferConfigEmailPreferencesArgs:
+calass DataTransferConfigEmailPreferencesArrgs:
     def __init__(__self__, *,
                  enable_failure_email: pulumi.Input[bool]):
         """
@@ -674,7 +674,7 @@ class DataTransferConfigEmailPreferencesArgs:
 
 
 @pulumi.input_type
-class DataTransferConfigScheduleOptionsArgs:
+calass DataTransferConfigScheduleOptionsArrgs:
     def __init__(__self__, *,
                  disable_auto_scheduling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -751,7 +751,7 @@ class DataTransferConfigScheduleOptionsArgs:
 
 
 @pulumi.input_type
-class DataTransferConfigSensitiveParamsArgs:
+calass DataTransferConfigSensitiveParamsArrgs:
     def __init__(__self__, *,
                  secret_access_key: pulumi.Input[str]):
         """
@@ -775,18 +775,18 @@ class DataTransferConfigSensitiveParamsArgs:
 
 
 @pulumi.input_type
-class DatasetAccessArgs:
+calass DatasetAccessArrgs:
     def __init__(__self__, *,
-                 dataset: Optional[pulumi.Input['DatasetAccessDatasetArgs']] = None,
+                 dataset: Optional[pulumi.Input['DatasetAccessDatasetArrgs']] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
+                 routine: Optional[pulumi.Input['DatasetAccessRoutineArrgs']] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
-                 view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
+                 view: Optional[pulumi.Input['DatasetAccessViewArrgs']] = None):
         """
-        :param pulumi.Input['DatasetAccessDatasetArgs'] dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+        :param pulumi.Input['DatasetAccessDatasetArrgs'] dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -796,7 +796,7 @@ class DatasetAccessArgs:
                are supported. Predefined roles that have equivalent basic roles
                are swapped by the API to their basic counterparts. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
-        :param pulumi.Input['DatasetAccessRoutineArgs'] routine: A routine from a different dataset to grant access to. Queries
+        :param pulumi.Input['DatasetAccessRoutineArrgs'] routine: A routine from a different dataset to grant access to. Queries
                executed against that routine will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that routine is updated by any user, access to the routine
@@ -805,7 +805,7 @@ class DatasetAccessArgs:
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
-        :param pulumi.Input['DatasetAccessViewArgs'] view: A view from a different dataset to grant access to. Queries
+        :param pulumi.Input['DatasetAccessViewArrgs'] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
                set. If that view is updated by any user, access to the view
@@ -831,7 +831,7 @@ class DatasetAccessArgs:
 
     @property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input['DatasetAccessDatasetArgs']]:
+    def dataset(self) -> Optional[pulumi.Input['DatasetAccessDatasetArrgs']]:
         """
         Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
@@ -839,7 +839,7 @@ class DatasetAccessArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input['DatasetAccessDatasetArgs']]):
+    def dataset(self, value: Optional[pulumi.Input['DatasetAccessDatasetArrgs']]):
         pulumi.set(self, "dataset", value)
 
     @property
@@ -885,7 +885,7 @@ class DatasetAccessArgs:
 
     @property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArrgs']]:
         """
         A routine from a different dataset to grant access to. Queries
         executed against that routine will have read access to tables in
@@ -897,7 +897,7 @@ class DatasetAccessArgs:
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArrgs']]):
         pulumi.set(self, "routine", value)
 
     @property
@@ -927,7 +927,7 @@ class DatasetAccessArgs:
 
     @property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['DatasetAccessViewArgs']]:
+    def view(self) -> Optional[pulumi.Input['DatasetAccessViewArrgs']]:
         """
         A view from a different dataset to grant access to. Queries
         executed against that view will have read access to tables in
@@ -939,17 +939,17 @@ class DatasetAccessArgs:
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
+    def view(self, value: Optional[pulumi.Input['DatasetAccessViewArrgs']]):
         pulumi.set(self, "view", value)
 
 
 @pulumi.input_type
-class DatasetAccessAuthorizedDatasetArgs:
+calass DatasetAccessAuthorizedDatasetArrgs:
     def __init__(__self__, *,
-                 dataset: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs'],
+                 dataset: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArrgs'],
                  target_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs'] dataset: The dataset this entry applies to
+        :param pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArrgs'] dataset: The dataset this entry applies to
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
                but additional target types may be added in the future. Possible values: VIEWS
@@ -959,7 +959,7 @@ class DatasetAccessAuthorizedDatasetArgs:
 
     @property
     @pulumi.getter
-    def dataset(self) -> pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs']:
+    def dataset(self) -> pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArrgs']:
         """
         The dataset this entry applies to
         Structure is documented below.
@@ -967,7 +967,7 @@ class DatasetAccessAuthorizedDatasetArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArgs']):
+    def dataset(self, value: pulumi.Input['DatasetAccessAuthorizedDatasetDatasetArrgs']):
         pulumi.set(self, "dataset", value)
 
     @property
@@ -985,7 +985,7 @@ class DatasetAccessAuthorizedDatasetArgs:
 
 
 @pulumi.input_type
-class DatasetAccessAuthorizedDatasetDatasetArgs:
+calass DatasetAccessAuthorizedDatasetDatasetArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: pulumi.Input[str]):
@@ -1022,12 +1022,12 @@ class DatasetAccessAuthorizedDatasetDatasetArgs:
 
 
 @pulumi.input_type
-class DatasetAccessDatasetArgs:
+calass DatasetAccessDatasetArrgs:
     def __init__(__self__, *,
-                 dataset: pulumi.Input['DatasetAccessDatasetDatasetArgs'],
+                 dataset: pulumi.Input['DatasetAccessDatasetDatasetArrgs'],
                  target_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input['DatasetAccessDatasetDatasetArgs'] dataset: The dataset this entry applies to
+        :param pulumi.Input['DatasetAccessDatasetDatasetArrgs'] dataset: The dataset this entry applies to
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
                but additional target types may be added in the future. Possible values: VIEWS
@@ -1037,7 +1037,7 @@ class DatasetAccessDatasetArgs:
 
     @property
     @pulumi.getter
-    def dataset(self) -> pulumi.Input['DatasetAccessDatasetDatasetArgs']:
+    def dataset(self) -> pulumi.Input['DatasetAccessDatasetDatasetArrgs']:
         """
         The dataset this entry applies to
         Structure is documented below.
@@ -1045,7 +1045,7 @@ class DatasetAccessDatasetArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: pulumi.Input['DatasetAccessDatasetDatasetArgs']):
+    def dataset(self, value: pulumi.Input['DatasetAccessDatasetDatasetArrgs']):
         pulumi.set(self, "dataset", value)
 
     @property
@@ -1063,7 +1063,7 @@ class DatasetAccessDatasetArgs:
 
 
 @pulumi.input_type
-class DatasetAccessDatasetDatasetArgs:
+calass DatasetAccessDatasetDatasetArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: pulumi.Input[str]):
@@ -1100,7 +1100,7 @@ class DatasetAccessDatasetDatasetArgs:
 
 
 @pulumi.input_type
-class DatasetAccessRoutineArgs:
+calass DatasetAccessRoutineArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
@@ -1156,7 +1156,7 @@ class DatasetAccessRoutineArgs:
 
 
 @pulumi.input_type
-class DatasetAccessViewArgs:
+calass DatasetAccessViewArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
@@ -1212,7 +1212,7 @@ class DatasetAccessViewArgs:
 
 
 @pulumi.input_type
-class DatasetDefaultEncryptionConfigurationArgs:
+calass DatasetDefaultEncryptionConfigurationArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -1238,7 +1238,7 @@ class DatasetDefaultEncryptionConfigurationArgs:
 
 
 @pulumi.input_type
-class DatasetIamBindingConditionArgs:
+calass DatasetIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1277,7 +1277,7 @@ class DatasetIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class DatasetIamMemberConditionArgs:
+calass DatasetIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1316,68 +1316,7 @@ class DatasetIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class IamBindingConditionArgs:
-    def __init__(__self__, *,
-                 expression: pulumi.Input[str],
-                 title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
-        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-               consider it to be an entirely different resource and will treat it as such.
-        """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> pulumi.Input[str]:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @expression.setter
-    def expression(self, value: pulumi.Input[str]):
-        pulumi.set(self, "expression", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-
-@pulumi.input_type
-class IamMemberConditionArgs:
+calass IamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -1438,15 +1377,76 @@ class IamMemberConditionArgs:
 
 
 @pulumi.input_type
-class JobCopyArgs:
+calass IamMemberConditionArrgs:
     def __init__(__self__, *,
-                 source_tables: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgs']]],
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+calass JobCopyArrgs:
+    def __init__(__self__, *,
+                 source_tables: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArrgs']]],
                  create_disposition: Optional[pulumi.Input[str]] = None,
-                 destination_encryption_configuration: Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs']] = None,
-                 destination_table: Optional[pulumi.Input['JobCopyDestinationTableArgs']] = None,
+                 destination_encryption_configuration: Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArrgs']] = None,
+                 destination_table: Optional[pulumi.Input['JobCopyDestinationTableArrgs']] = None,
                  write_disposition: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgs']]] source_tables: Source tables to copy.
+        :param pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArrgs']]] source_tables: Source tables to copy.
                Structure is documented below.
         :param pulumi.Input[str] create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -1454,9 +1454,9 @@ class JobCopyArgs:
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
                Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        :param pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param pulumi.Input['JobCopyDestinationEncryptionConfigurationArrgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
-        :param pulumi.Input['JobCopyDestinationTableArgs'] destination_table: The destination table.
+        :param pulumi.Input['JobCopyDestinationTableArrgs'] destination_table: The destination table.
                Structure is documented below.
         :param pulumi.Input[str] write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -1479,7 +1479,7 @@ class JobCopyArgs:
 
     @property
     @pulumi.getter(name="sourceTables")
-    def source_tables(self) -> pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgs']]]:
+    def source_tables(self) -> pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArrgs']]]:
         """
         Source tables to copy.
         Structure is documented below.
@@ -1487,7 +1487,7 @@ class JobCopyArgs:
         return pulumi.get(self, "source_tables")
 
     @source_tables.setter
-    def source_tables(self, value: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArgs']]]):
+    def source_tables(self, value: pulumi.Input[Sequence[pulumi.Input['JobCopySourceTableArrgs']]]):
         pulumi.set(self, "source_tables", value)
 
     @property
@@ -1509,7 +1509,7 @@ class JobCopyArgs:
 
     @property
     @pulumi.getter(name="destinationEncryptionConfiguration")
-    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs']]:
+    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArrgs']]:
         """
         Custom encryption configuration (e.g., Cloud KMS keys)
         Structure is documented below.
@@ -1517,12 +1517,12 @@ class JobCopyArgs:
         return pulumi.get(self, "destination_encryption_configuration")
 
     @destination_encryption_configuration.setter
-    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs']]):
+    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobCopyDestinationEncryptionConfigurationArrgs']]):
         pulumi.set(self, "destination_encryption_configuration", value)
 
     @property
     @pulumi.getter(name="destinationTable")
-    def destination_table(self) -> Optional[pulumi.Input['JobCopyDestinationTableArgs']]:
+    def destination_table(self) -> Optional[pulumi.Input['JobCopyDestinationTableArrgs']]:
         """
         The destination table.
         Structure is documented below.
@@ -1530,7 +1530,7 @@ class JobCopyArgs:
         return pulumi.get(self, "destination_table")
 
     @destination_table.setter
-    def destination_table(self, value: Optional[pulumi.Input['JobCopyDestinationTableArgs']]):
+    def destination_table(self, value: Optional[pulumi.Input['JobCopyDestinationTableArrgs']]):
         pulumi.set(self, "destination_table", value)
 
     @property
@@ -1554,7 +1554,7 @@ class JobCopyArgs:
 
 
 @pulumi.input_type
-class JobCopyDestinationEncryptionConfigurationArgs:
+calass JobCopyDestinationEncryptionConfigurationArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version: Optional[pulumi.Input[str]] = None):
@@ -1596,7 +1596,7 @@ class JobCopyDestinationEncryptionConfigurationArgs:
 
 
 @pulumi.input_type
-class JobCopyDestinationTableArgs:
+calass JobCopyDestinationTableArrgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[str],
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -1652,7 +1652,7 @@ class JobCopyDestinationTableArgs:
 
 
 @pulumi.input_type
-class JobCopySourceTableArgs:
+calass JobCopySourceTableArrgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[str],
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -1708,15 +1708,15 @@ class JobCopySourceTableArgs:
 
 
 @pulumi.input_type
-class JobExtractArgs:
+calass JobExtractArrgs:
     def __init__(__self__, *,
                  destination_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
                  compression: Optional[pulumi.Input[str]] = None,
                  destination_format: Optional[pulumi.Input[str]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
                  print_header: Optional[pulumi.Input[bool]] = None,
-                 source_model: Optional[pulumi.Input['JobExtractSourceModelArgs']] = None,
-                 source_table: Optional[pulumi.Input['JobExtractSourceTableArgs']] = None,
+                 source_model: Optional[pulumi.Input['JobExtractSourceModelArrgs']] = None,
+                 source_table: Optional[pulumi.Input['JobExtractSourceTableArrgs']] = None,
                  use_avro_logical_types: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_uris: A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
@@ -1728,9 +1728,9 @@ class JobExtractArgs:
         :param pulumi.Input[str] field_delimiter: When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
                Default is ','
         :param pulumi.Input[bool] print_header: Whether to print out a header row in the results. Default is true.
-        :param pulumi.Input['JobExtractSourceModelArgs'] source_model: A reference to the model being exported.
+        :param pulumi.Input['JobExtractSourceModelArrgs'] source_model: A reference to the model being exported.
                Structure is documented below.
-        :param pulumi.Input['JobExtractSourceTableArgs'] source_table: A reference to the table being exported.
+        :param pulumi.Input['JobExtractSourceTableArrgs'] source_table: A reference to the table being exported.
                Structure is documented below.
         :param pulumi.Input[bool] use_avro_logical_types: Whether to use logical types when extracting to AVRO format.
         """
@@ -1816,7 +1816,7 @@ class JobExtractArgs:
 
     @property
     @pulumi.getter(name="sourceModel")
-    def source_model(self) -> Optional[pulumi.Input['JobExtractSourceModelArgs']]:
+    def source_model(self) -> Optional[pulumi.Input['JobExtractSourceModelArrgs']]:
         """
         A reference to the model being exported.
         Structure is documented below.
@@ -1824,12 +1824,12 @@ class JobExtractArgs:
         return pulumi.get(self, "source_model")
 
     @source_model.setter
-    def source_model(self, value: Optional[pulumi.Input['JobExtractSourceModelArgs']]):
+    def source_model(self, value: Optional[pulumi.Input['JobExtractSourceModelArrgs']]):
         pulumi.set(self, "source_model", value)
 
     @property
     @pulumi.getter(name="sourceTable")
-    def source_table(self) -> Optional[pulumi.Input['JobExtractSourceTableArgs']]:
+    def source_table(self) -> Optional[pulumi.Input['JobExtractSourceTableArrgs']]:
         """
         A reference to the table being exported.
         Structure is documented below.
@@ -1837,7 +1837,7 @@ class JobExtractArgs:
         return pulumi.get(self, "source_table")
 
     @source_table.setter
-    def source_table(self, value: Optional[pulumi.Input['JobExtractSourceTableArgs']]):
+    def source_table(self, value: Optional[pulumi.Input['JobExtractSourceTableArrgs']]):
         pulumi.set(self, "source_table", value)
 
     @property
@@ -1854,7 +1854,7 @@ class JobExtractArgs:
 
 
 @pulumi.input_type
-class JobExtractSourceModelArgs:
+calass JobExtractSourceModelArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  model_id: pulumi.Input[str],
@@ -1910,7 +1910,7 @@ class JobExtractSourceModelArgs:
 
 
 @pulumi.input_type
-class JobExtractSourceTableArgs:
+calass JobExtractSourceTableArrgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[str],
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -1966,31 +1966,31 @@ class JobExtractSourceTableArgs:
 
 
 @pulumi.input_type
-class JobLoadArgs:
+calass JobLoadArrgs:
     def __init__(__self__, *,
-                 destination_table: pulumi.Input['JobLoadDestinationTableArgs'],
+                 destination_table: pulumi.Input['JobLoadDestinationTableArrgs'],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
                  allow_jagged_rows: Optional[pulumi.Input[bool]] = None,
                  allow_quoted_newlines: Optional[pulumi.Input[bool]] = None,
                  autodetect: Optional[pulumi.Input[bool]] = None,
                  create_disposition: Optional[pulumi.Input[str]] = None,
-                 destination_encryption_configuration: Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs']] = None,
+                 destination_encryption_configuration: Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArrgs']] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
                  json_extension: Optional[pulumi.Input[str]] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
                  null_marker: Optional[pulumi.Input[str]] = None,
-                 parquet_options: Optional[pulumi.Input['JobLoadParquetOptionsArgs']] = None,
+                 parquet_options: Optional[pulumi.Input['JobLoadParquetOptionsArrgs']] = None,
                  projection_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quote: Optional[pulumi.Input[str]] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  skip_leading_rows: Optional[pulumi.Input[int]] = None,
                  source_format: Optional[pulumi.Input[str]] = None,
-                 time_partitioning: Optional[pulumi.Input['JobLoadTimePartitioningArgs']] = None,
+                 time_partitioning: Optional[pulumi.Input['JobLoadTimePartitioningArrgs']] = None,
                  write_disposition: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['JobLoadDestinationTableArgs'] destination_table: The destination table to load the data into.
+        :param pulumi.Input['JobLoadDestinationTableArrgs'] destination_table: The destination table to load the data into.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: The fully-qualified URIs that point to your data in Google Cloud.
                For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
@@ -2010,7 +2010,7 @@ class JobLoadArgs:
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
                Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        :param pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param pulumi.Input['JobLoadDestinationEncryptionConfigurationArrgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
         :param pulumi.Input[str] encoding: The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
                The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -2035,7 +2035,7 @@ class JobLoadArgs:
                property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
-        :param pulumi.Input['JobLoadParquetOptionsArgs'] parquet_options: Parquet Options for load and make external tables.
+        :param pulumi.Input['JobLoadParquetOptionsArrgs'] parquet_options: Parquet Options for load and make external tables.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
                Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
@@ -2062,7 +2062,7 @@ class JobLoadArgs:
                For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
                For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
                The default value is CSV.
-        :param pulumi.Input['JobLoadTimePartitioningArgs'] time_partitioning: Time-based partitioning specification for the destination table.
+        :param pulumi.Input['JobLoadTimePartitioningArrgs'] time_partitioning: Time-based partitioning specification for the destination table.
                Structure is documented below.
         :param pulumi.Input[str] write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -2116,7 +2116,7 @@ class JobLoadArgs:
 
     @property
     @pulumi.getter(name="destinationTable")
-    def destination_table(self) -> pulumi.Input['JobLoadDestinationTableArgs']:
+    def destination_table(self) -> pulumi.Input['JobLoadDestinationTableArrgs']:
         """
         The destination table to load the data into.
         Structure is documented below.
@@ -2124,7 +2124,7 @@ class JobLoadArgs:
         return pulumi.get(self, "destination_table")
 
     @destination_table.setter
-    def destination_table(self, value: pulumi.Input['JobLoadDestinationTableArgs']):
+    def destination_table(self, value: pulumi.Input['JobLoadDestinationTableArrgs']):
         pulumi.set(self, "destination_table", value)
 
     @property
@@ -2202,7 +2202,7 @@ class JobLoadArgs:
 
     @property
     @pulumi.getter(name="destinationEncryptionConfiguration")
-    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs']]:
+    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArrgs']]:
         """
         Custom encryption configuration (e.g., Cloud KMS keys)
         Structure is documented below.
@@ -2210,7 +2210,7 @@ class JobLoadArgs:
         return pulumi.get(self, "destination_encryption_configuration")
 
     @destination_encryption_configuration.setter
-    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs']]):
+    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobLoadDestinationEncryptionConfigurationArrgs']]):
         pulumi.set(self, "destination_encryption_configuration", value)
 
     @property
@@ -2304,7 +2304,7 @@ class JobLoadArgs:
 
     @property
     @pulumi.getter(name="parquetOptions")
-    def parquet_options(self) -> Optional[pulumi.Input['JobLoadParquetOptionsArgs']]:
+    def parquet_options(self) -> Optional[pulumi.Input['JobLoadParquetOptionsArrgs']]:
         """
         Parquet Options for load and make external tables.
         Structure is documented below.
@@ -2312,7 +2312,7 @@ class JobLoadArgs:
         return pulumi.get(self, "parquet_options")
 
     @parquet_options.setter
-    def parquet_options(self, value: Optional[pulumi.Input['JobLoadParquetOptionsArgs']]):
+    def parquet_options(self, value: Optional[pulumi.Input['JobLoadParquetOptionsArrgs']]):
         pulumi.set(self, "parquet_options", value)
 
     @property
@@ -2397,7 +2397,7 @@ class JobLoadArgs:
 
     @property
     @pulumi.getter(name="timePartitioning")
-    def time_partitioning(self) -> Optional[pulumi.Input['JobLoadTimePartitioningArgs']]:
+    def time_partitioning(self) -> Optional[pulumi.Input['JobLoadTimePartitioningArrgs']]:
         """
         Time-based partitioning specification for the destination table.
         Structure is documented below.
@@ -2405,7 +2405,7 @@ class JobLoadArgs:
         return pulumi.get(self, "time_partitioning")
 
     @time_partitioning.setter
-    def time_partitioning(self, value: Optional[pulumi.Input['JobLoadTimePartitioningArgs']]):
+    def time_partitioning(self, value: Optional[pulumi.Input['JobLoadTimePartitioningArrgs']]):
         pulumi.set(self, "time_partitioning", value)
 
     @property
@@ -2429,7 +2429,7 @@ class JobLoadArgs:
 
 
 @pulumi.input_type
-class JobLoadDestinationEncryptionConfigurationArgs:
+calass JobLoadDestinationEncryptionConfigurationArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version: Optional[pulumi.Input[str]] = None):
@@ -2471,7 +2471,7 @@ class JobLoadDestinationEncryptionConfigurationArgs:
 
 
 @pulumi.input_type
-class JobLoadDestinationTableArgs:
+calass JobLoadDestinationTableArrgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[str],
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -2527,7 +2527,7 @@ class JobLoadDestinationTableArgs:
 
 
 @pulumi.input_type
-class JobLoadParquetOptionsArgs:
+calass JobLoadParquetOptionsArrgs:
     def __init__(__self__, *,
                  enable_list_inference: Optional[pulumi.Input[bool]] = None,
                  enum_as_string: Optional[pulumi.Input[bool]] = None):
@@ -2566,7 +2566,7 @@ class JobLoadParquetOptionsArgs:
 
 
 @pulumi.input_type
-class JobLoadTimePartitioningArgs:
+calass JobLoadTimePartitioningArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  expiration_ms: Optional[pulumi.Input[str]] = None,
@@ -2626,24 +2626,24 @@ class JobLoadTimePartitioningArgs:
 
 
 @pulumi.input_type
-class JobQueryArgs:
+calass JobQueryArrgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
                  allow_large_results: Optional[pulumi.Input[bool]] = None,
                  create_disposition: Optional[pulumi.Input[str]] = None,
-                 default_dataset: Optional[pulumi.Input['JobQueryDefaultDatasetArgs']] = None,
-                 destination_encryption_configuration: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']] = None,
-                 destination_table: Optional[pulumi.Input['JobQueryDestinationTableArgs']] = None,
+                 default_dataset: Optional[pulumi.Input['JobQueryDefaultDatasetArrgs']] = None,
+                 destination_encryption_configuration: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArrgs']] = None,
+                 destination_table: Optional[pulumi.Input['JobQueryDestinationTableArrgs']] = None,
                  flatten_results: Optional[pulumi.Input[bool]] = None,
                  maximum_billing_tier: Optional[pulumi.Input[int]] = None,
                  maximum_bytes_billed: Optional[pulumi.Input[str]] = None,
                  parameter_mode: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 script_options: Optional[pulumi.Input['JobQueryScriptOptionsArgs']] = None,
+                 script_options: Optional[pulumi.Input['JobQueryScriptOptionsArrgs']] = None,
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None,
                  use_query_cache: Optional[pulumi.Input[bool]] = None,
-                 user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]] = None,
+                 user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArrgs']]]] = None,
                  write_disposition: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
@@ -2658,11 +2658,11 @@ class JobQueryArgs:
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
                Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-        :param pulumi.Input['JobQueryDefaultDatasetArgs'] default_dataset: Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+        :param pulumi.Input['JobQueryDefaultDatasetArrgs'] default_dataset: Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
                Structure is documented below.
-        :param pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param pulumi.Input['JobQueryDestinationEncryptionConfigurationArrgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
-        :param pulumi.Input['JobQueryDestinationTableArgs'] destination_table: Describes the table where the query results should be stored.
+        :param pulumi.Input['JobQueryDestinationTableArrgs'] destination_table: Describes the table where the query results should be stored.
                This property must be set for large results that exceed the maximum response size.
                For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
                Structure is documented below.
@@ -2683,14 +2683,14 @@ class JobQueryArgs:
                One or more of the following values are specified:
                ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
                ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param pulumi.Input['JobQueryScriptOptionsArgs'] script_options: Options controlling the execution of scripts.
+        :param pulumi.Input['JobQueryScriptOptionsArrgs'] script_options: Options controlling the execution of scripts.
                Structure is documented below.
         :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
                If set to false, the query will use BigQuery's standard SQL.
         :param pulumi.Input[bool] use_query_cache: Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
                tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
                The default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]] user_defined_function_resources: Describes user-defined function resources used in the query.
+        :param pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArrgs']]] user_defined_function_resources: Describes user-defined function resources used in the query.
                Structure is documented below.
         :param pulumi.Input[str] write_disposition: Specifies the action that occurs if the destination table already exists. The following values are supported:
                WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -2782,7 +2782,7 @@ class JobQueryArgs:
 
     @property
     @pulumi.getter(name="defaultDataset")
-    def default_dataset(self) -> Optional[pulumi.Input['JobQueryDefaultDatasetArgs']]:
+    def default_dataset(self) -> Optional[pulumi.Input['JobQueryDefaultDatasetArrgs']]:
         """
         Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
         Structure is documented below.
@@ -2790,12 +2790,12 @@ class JobQueryArgs:
         return pulumi.get(self, "default_dataset")
 
     @default_dataset.setter
-    def default_dataset(self, value: Optional[pulumi.Input['JobQueryDefaultDatasetArgs']]):
+    def default_dataset(self, value: Optional[pulumi.Input['JobQueryDefaultDatasetArrgs']]):
         pulumi.set(self, "default_dataset", value)
 
     @property
     @pulumi.getter(name="destinationEncryptionConfiguration")
-    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']]:
+    def destination_encryption_configuration(self) -> Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArrgs']]:
         """
         Custom encryption configuration (e.g., Cloud KMS keys)
         Structure is documented below.
@@ -2803,12 +2803,12 @@ class JobQueryArgs:
         return pulumi.get(self, "destination_encryption_configuration")
 
     @destination_encryption_configuration.setter
-    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs']]):
+    def destination_encryption_configuration(self, value: Optional[pulumi.Input['JobQueryDestinationEncryptionConfigurationArrgs']]):
         pulumi.set(self, "destination_encryption_configuration", value)
 
     @property
     @pulumi.getter(name="destinationTable")
-    def destination_table(self) -> Optional[pulumi.Input['JobQueryDestinationTableArgs']]:
+    def destination_table(self) -> Optional[pulumi.Input['JobQueryDestinationTableArrgs']]:
         """
         Describes the table where the query results should be stored.
         This property must be set for large results that exceed the maximum response size.
@@ -2818,7 +2818,7 @@ class JobQueryArgs:
         return pulumi.get(self, "destination_table")
 
     @destination_table.setter
-    def destination_table(self, value: Optional[pulumi.Input['JobQueryDestinationTableArgs']]):
+    def destination_table(self, value: Optional[pulumi.Input['JobQueryDestinationTableArrgs']]):
         pulumi.set(self, "destination_table", value)
 
     @property
@@ -2906,7 +2906,7 @@ class JobQueryArgs:
 
     @property
     @pulumi.getter(name="scriptOptions")
-    def script_options(self) -> Optional[pulumi.Input['JobQueryScriptOptionsArgs']]:
+    def script_options(self) -> Optional[pulumi.Input['JobQueryScriptOptionsArrgs']]:
         """
         Options controlling the execution of scripts.
         Structure is documented below.
@@ -2914,7 +2914,7 @@ class JobQueryArgs:
         return pulumi.get(self, "script_options")
 
     @script_options.setter
-    def script_options(self, value: Optional[pulumi.Input['JobQueryScriptOptionsArgs']]):
+    def script_options(self, value: Optional[pulumi.Input['JobQueryScriptOptionsArrgs']]):
         pulumi.set(self, "script_options", value)
 
     @property
@@ -2946,7 +2946,7 @@ class JobQueryArgs:
 
     @property
     @pulumi.getter(name="userDefinedFunctionResources")
-    def user_defined_function_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]:
+    def user_defined_function_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArrgs']]]]:
         """
         Describes user-defined function resources used in the query.
         Structure is documented below.
@@ -2954,7 +2954,7 @@ class JobQueryArgs:
         return pulumi.get(self, "user_defined_function_resources")
 
     @user_defined_function_resources.setter
-    def user_defined_function_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]):
+    def user_defined_function_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArrgs']]]]):
         pulumi.set(self, "user_defined_function_resources", value)
 
     @property
@@ -2978,7 +2978,7 @@ class JobQueryArgs:
 
 
 @pulumi.input_type
-class JobQueryDefaultDatasetArgs:
+calass JobQueryDefaultDatasetArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: Optional[pulumi.Input[str]] = None):
@@ -3018,7 +3018,7 @@ class JobQueryDefaultDatasetArgs:
 
 
 @pulumi.input_type
-class JobQueryDestinationEncryptionConfigurationArgs:
+calass JobQueryDestinationEncryptionConfigurationArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version: Optional[pulumi.Input[str]] = None):
@@ -3060,7 +3060,7 @@ class JobQueryDestinationEncryptionConfigurationArgs:
 
 
 @pulumi.input_type
-class JobQueryDestinationTableArgs:
+calass JobQueryDestinationTableArrgs:
     def __init__(__self__, *,
                  table_id: pulumi.Input[str],
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -3116,7 +3116,7 @@ class JobQueryDestinationTableArgs:
 
 
 @pulumi.input_type
-class JobQueryScriptOptionsArgs:
+calass JobQueryScriptOptionsArrgs:
     def __init__(__self__, *,
                  key_result_statement: Optional[pulumi.Input[str]] = None,
                  statement_byte_budget: Optional[pulumi.Input[str]] = None,
@@ -3175,7 +3175,7 @@ class JobQueryScriptOptionsArgs:
 
 
 @pulumi.input_type
-class JobQueryUserDefinedFunctionResourceArgs:
+calass JobQueryUserDefinedFunctionResourceArrgs:
     def __init__(__self__, *,
                  inline_code: Optional[pulumi.Input[str]] = None,
                  resource_uri: Optional[pulumi.Input[str]] = None):
@@ -3216,16 +3216,16 @@ class JobQueryUserDefinedFunctionResourceArgs:
 
 
 @pulumi.input_type
-class JobStatusArgs:
+calass JobStatusArrgs:
     def __init__(__self__, *,
-                 error_results: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]] = None,
+                 error_results: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArrgs']]]] = None,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArrgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]] error_results: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArrgs']]] error_results: (Output)
                Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]] errors: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArrgs']]] errors: (Output)
                The first errors encountered during the running of the job. The final message
                includes the number of errors that caused the process to stop. Errors here do
                not necessarily mean that the job has not completed or was unsuccessful.
@@ -3242,7 +3242,7 @@ class JobStatusArgs:
 
     @property
     @pulumi.getter(name="errorResults")
-    def error_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]:
+    def error_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArrgs']]]]:
         """
         (Output)
         Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
@@ -3251,12 +3251,12 @@ class JobStatusArgs:
         return pulumi.get(self, "error_results")
 
     @error_results.setter
-    def error_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]):
+    def error_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArrgs']]]]):
         pulumi.set(self, "error_results", value)
 
     @property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]]:
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArrgs']]]]:
         """
         (Output)
         The first errors encountered during the running of the job. The final message
@@ -3267,7 +3267,7 @@ class JobStatusArgs:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]]):
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArrgs']]]]):
         pulumi.set(self, "errors", value)
 
     @property
@@ -3285,7 +3285,7 @@ class JobStatusArgs:
 
 
 @pulumi.input_type
-class JobStatusErrorArgs:
+calass JobStatusErrorArrgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -3340,7 +3340,7 @@ class JobStatusErrorArgs:
 
 
 @pulumi.input_type
-class JobStatusErrorResultArgs:
+calass JobStatusErrorResultArrgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -3395,7 +3395,7 @@ class JobStatusErrorResultArgs:
 
 
 @pulumi.input_type
-class ReservationAutoscaleArgs:
+calass ReservationAutoscaleArrgs:
     def __init__(__self__, *,
                  current_slots: Optional[pulumi.Input[int]] = None,
                  max_slots: Optional[pulumi.Input[int]] = None):
@@ -3436,7 +3436,7 @@ class ReservationAutoscaleArgs:
 
 
 @pulumi.input_type
-class RoutineArgumentArgs:
+calass RoutineArgumentArrgs:
     def __init__(__self__, *,
                  argument_kind: Optional[pulumi.Input[str]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
@@ -3525,7 +3525,7 @@ class RoutineArgumentArgs:
 
 
 @pulumi.input_type
-class TableEncryptionConfigurationArgs:
+calass TableEncryptionConfigurationArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str],
                  kms_key_version: Optional[pulumi.Input[str]] = None):
@@ -3571,23 +3571,23 @@ class TableEncryptionConfigurationArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationArgs:
+calass TableExternalDataConfigurationArrgs:
     def __init__(__self__, *,
                  autodetect: pulumi.Input[bool],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 avro_options: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']] = None,
+                 avro_options: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArrgs']] = None,
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
-                 csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
+                 csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArrgs']] = None,
                  file_set_spec_type: Optional[pulumi.Input[str]] = None,
-                 google_sheets_options: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']] = None,
-                 hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
+                 google_sheets_options: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArrgs']] = None,
+                 hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArrgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
-                 json_options: Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs']] = None,
+                 json_options: Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArrgs']] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
                  metadata_cache_mode: Optional[pulumi.Input[str]] = None,
                  object_metadata: Optional[pulumi.Input[str]] = None,
-                 parquet_options: Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs']] = None,
+                 parquet_options: Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArrgs']] = None,
                  reference_file_schema_uri: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
@@ -3596,7 +3596,7 @@ class TableExternalDataConfigurationArgs:
                and format of the table.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
-        :param pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs'] avro_options: Additional options if `source_format` is set to
+        :param pulumi.Input['TableExternalDataConfigurationAvroOptionsArrgs'] avro_options: Additional options if `source_format` is set to
                "AVRO".  Structure is documented below.
         :param pulumi.Input[str] compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
@@ -3608,15 +3608,15 @@ class TableExternalDataConfigurationArgs:
                ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
                table schema must be specified using the top-level `schema` field
                documented above.
-        :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs'] csv_options: Additional properties to set if
+        :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArrgs'] csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
         :param pulumi.Input[str] file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.
                By default source URIs are expanded against the underlying storage.
                Other options include specifying manifest files. Only applicable to object storage systems. Docs
-        :param pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs'] google_sheets_options: Additional options if
+        :param pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArrgs'] google_sheets_options: Additional options if
                `source_format` is set to "GOOGLE_SHEETS". Structure is
                documented below.
-        :param pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs'] hive_partitioning_options: When set, configures hive partitioning
+        :param pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArrgs'] hive_partitioning_options: When set, configures hive partitioning
                support. Not all storage formats support hive partitioning -- requesting hive
                partitioning on an unsupported format will lead to an error, as will providing
                an invalid specification. Structure is documented below.
@@ -3626,13 +3626,13 @@ class TableExternalDataConfigurationArgs:
                extra columns are treated as bad records, and if there are too
                many bad records, an invalid error is returned in the job result.
                The default value is false.
-        :param pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs'] json_options: Additional properties to set if
+        :param pulumi.Input['TableExternalDataConfigurationJsonOptionsArrgs'] json_options: Additional properties to set if
                `source_format` is set to "JSON". Structure is documented below.
         :param pulumi.Input[int] max_bad_records: The maximum number of bad records that
                BigQuery can ignore when reading data.
         :param pulumi.Input[str] metadata_cache_mode: Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
         :param pulumi.Input[str] object_metadata: Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
-        :param pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs'] parquet_options: Additional properties to set if
+        :param pulumi.Input['TableExternalDataConfigurationParquetOptionsArrgs'] parquet_options: Additional properties to set if
                `source_format` is set to "PARQUET". Structure is documented below.
         :param pulumi.Input[str] reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
@@ -3718,7 +3718,7 @@ class TableExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="avroOptions")
-    def avro_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]:
+    def avro_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArrgs']]:
         """
         Additional options if `source_format` is set to
         "AVRO".  Structure is documented below.
@@ -3726,7 +3726,7 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "avro_options")
 
     @avro_options.setter
-    def avro_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]):
+    def avro_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArrgs']]):
         pulumi.set(self, "avro_options", value)
 
     @property
@@ -3763,7 +3763,7 @@ class TableExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="csvOptions")
-    def csv_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']]:
+    def csv_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArrgs']]:
         """
         Additional properties to set if
         `source_format` is set to "CSV". Structure is documented below.
@@ -3771,7 +3771,7 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "csv_options")
 
     @csv_options.setter
-    def csv_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']]):
+    def csv_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArrgs']]):
         pulumi.set(self, "csv_options", value)
 
     @property
@@ -3790,7 +3790,7 @@ class TableExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="googleSheetsOptions")
-    def google_sheets_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]:
+    def google_sheets_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArrgs']]:
         """
         Additional options if
         `source_format` is set to "GOOGLE_SHEETS". Structure is
@@ -3799,12 +3799,12 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "google_sheets_options")
 
     @google_sheets_options.setter
-    def google_sheets_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]):
+    def google_sheets_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArrgs']]):
         pulumi.set(self, "google_sheets_options", value)
 
     @property
     @pulumi.getter(name="hivePartitioningOptions")
-    def hive_partitioning_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']]:
+    def hive_partitioning_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArrgs']]:
         """
         When set, configures hive partitioning
         support. Not all storage formats support hive partitioning -- requesting hive
@@ -3814,7 +3814,7 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "hive_partitioning_options")
 
     @hive_partitioning_options.setter
-    def hive_partitioning_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']]):
+    def hive_partitioning_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArrgs']]):
         pulumi.set(self, "hive_partitioning_options", value)
 
     @property
@@ -3836,7 +3836,7 @@ class TableExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="jsonOptions")
-    def json_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs']]:
+    def json_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArrgs']]:
         """
         Additional properties to set if
         `source_format` is set to "JSON". Structure is documented below.
@@ -3844,7 +3844,7 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "json_options")
 
     @json_options.setter
-    def json_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArgs']]):
+    def json_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationJsonOptionsArrgs']]):
         pulumi.set(self, "json_options", value)
 
     @property
@@ -3886,7 +3886,7 @@ class TableExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="parquetOptions")
-    def parquet_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs']]:
+    def parquet_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArrgs']]:
         """
         Additional properties to set if
         `source_format` is set to "PARQUET". Structure is documented below.
@@ -3894,7 +3894,7 @@ class TableExternalDataConfigurationArgs:
         return pulumi.get(self, "parquet_options")
 
     @parquet_options.setter
-    def parquet_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArgs']]):
+    def parquet_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationParquetOptionsArrgs']]):
         pulumi.set(self, "parquet_options", value)
 
     @property
@@ -3952,7 +3952,7 @@ class TableExternalDataConfigurationArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationAvroOptionsArgs:
+calass TableExternalDataConfigurationAvroOptionsArrgs:
     def __init__(__self__, *,
                  use_avro_logical_types: pulumi.Input[bool]):
         """
@@ -3978,7 +3978,7 @@ class TableExternalDataConfigurationAvroOptionsArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationCsvOptionsArgs:
+calass TableExternalDataConfigurationCsvOptionsArrgs:
     def __init__(__self__, *,
                  quote: pulumi.Input[str],
                  allow_jagged_rows: Optional[pulumi.Input[bool]] = None,
@@ -4102,7 +4102,7 @@ class TableExternalDataConfigurationCsvOptionsArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
+calass TableExternalDataConfigurationGoogleSheetsOptionsArrgs:
     def __init__(__self__, *,
                  range: Optional[pulumi.Input[str]] = None,
                  skip_leading_rows: Optional[pulumi.Input[int]] = None):
@@ -4151,7 +4151,7 @@ class TableExternalDataConfigurationGoogleSheetsOptionsArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationHivePartitioningOptionsArgs:
+calass TableExternalDataConfigurationHivePartitioningOptionsArrgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
@@ -4238,7 +4238,7 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationJsonOptionsArgs:
+calass TableExternalDataConfigurationJsonOptionsArrgs:
     def __init__(__self__, *,
                  encoding: Optional[pulumi.Input[str]] = None):
         """
@@ -4261,7 +4261,7 @@ class TableExternalDataConfigurationJsonOptionsArgs:
 
 
 @pulumi.input_type
-class TableExternalDataConfigurationParquetOptionsArgs:
+calass TableExternalDataConfigurationParquetOptionsArrgs:
     def __init__(__self__, *,
                  enable_list_inference: Optional[pulumi.Input[bool]] = None,
                  enum_as_string: Optional[pulumi.Input[bool]] = None):
@@ -4300,7 +4300,7 @@ class TableExternalDataConfigurationParquetOptionsArgs:
 
 
 @pulumi.input_type
-class TableMaterializedViewArgs:
+calass TableMaterializedViewArrgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
                  allow_non_incremental_definition: Optional[pulumi.Input[bool]] = None,
@@ -4376,14 +4376,14 @@ class TableMaterializedViewArgs:
 
 
 @pulumi.input_type
-class TableRangePartitioningArgs:
+calass TableRangePartitioningArrgs:
     def __init__(__self__, *,
                  field: pulumi.Input[str],
-                 range: pulumi.Input['TableRangePartitioningRangeArgs']):
+                 range: pulumi.Input['TableRangePartitioningRangeArrgs']):
         """
         :param pulumi.Input[str] field: The field used to determine how to create a range-based
                partition.
-        :param pulumi.Input['TableRangePartitioningRangeArgs'] range: Information required to partition based on ranges.
+        :param pulumi.Input['TableRangePartitioningRangeArrgs'] range: Information required to partition based on ranges.
                Structure is documented below.
         """
         pulumi.set(__self__, "field", field)
@@ -4404,7 +4404,7 @@ class TableRangePartitioningArgs:
 
     @property
     @pulumi.getter
-    def range(self) -> pulumi.Input['TableRangePartitioningRangeArgs']:
+    def range(self) -> pulumi.Input['TableRangePartitioningRangeArrgs']:
         """
         Information required to partition based on ranges.
         Structure is documented below.
@@ -4412,12 +4412,12 @@ class TableRangePartitioningArgs:
         return pulumi.get(self, "range")
 
     @range.setter
-    def range(self, value: pulumi.Input['TableRangePartitioningRangeArgs']):
+    def range(self, value: pulumi.Input['TableRangePartitioningRangeArrgs']):
         pulumi.set(self, "range", value)
 
 
 @pulumi.input_type
-class TableRangePartitioningRangeArgs:
+calass TableRangePartitioningRangeArrgs:
     def __init__(__self__, *,
                  end: pulumi.Input[int],
                  interval: pulumi.Input[int],
@@ -4469,15 +4469,15 @@ class TableRangePartitioningRangeArgs:
 
 
 @pulumi.input_type
-class TableTableConstraintsArgs:
+calass TableTableConstraintsArrgs:
     def __init__(__self__, *,
-                 foreign_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]] = None,
-                 primary_key: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']] = None):
+                 foreign_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArrgs']]]] = None,
+                 primary_key: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]] foreign_keys: Present only if the table has a foreign key.
+        :param pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArrgs']]] foreign_keys: Present only if the table has a foreign key.
                The foreign key is not enforced.
                Structure is documented below.
-        :param pulumi.Input['TableTableConstraintsPrimaryKeyArgs'] primary_key: Represents the primary key constraint
+        :param pulumi.Input['TableTableConstraintsPrimaryKeyArrgs'] primary_key: Represents the primary key constraint
                on a table's columns. Present only if the table has a primary key.
                The primary key is not enforced.
                Structure is documented below.
@@ -4489,7 +4489,7 @@ class TableTableConstraintsArgs:
 
     @property
     @pulumi.getter(name="foreignKeys")
-    def foreign_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]:
+    def foreign_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArrgs']]]]:
         """
         Present only if the table has a foreign key.
         The foreign key is not enforced.
@@ -4498,12 +4498,12 @@ class TableTableConstraintsArgs:
         return pulumi.get(self, "foreign_keys")
 
     @foreign_keys.setter
-    def foreign_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]):
+    def foreign_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArrgs']]]]):
         pulumi.set(self, "foreign_keys", value)
 
     @property
     @pulumi.getter(name="primaryKey")
-    def primary_key(self) -> Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']]:
+    def primary_key(self) -> Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArrgs']]:
         """
         Represents the primary key constraint
         on a table's columns. Present only if the table has a primary key.
@@ -4513,20 +4513,20 @@ class TableTableConstraintsArgs:
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
-    def primary_key(self, value: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']]):
+    def primary_key(self, value: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArrgs']]):
         pulumi.set(self, "primary_key", value)
 
 
 @pulumi.input_type
-class TableTableConstraintsForeignKeyArgs:
+calass TableTableConstraintsForeignKeyArrgs:
     def __init__(__self__, *,
-                 column_references: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs'],
-                 referenced_table: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs'],
+                 column_references: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArrgs'],
+                 referenced_table: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArrgs'],
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs'] column_references: The pair of the foreign key column and primary key column.
+        :param pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArrgs'] column_references: The pair of the foreign key column and primary key column.
                Structure is documented below.
-        :param pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs'] referenced_table: The table that holds the primary key
+        :param pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArrgs'] referenced_table: The table that holds the primary key
                and is referenced by this foreign key.
                Structure is documented below.
         :param pulumi.Input[str] name: Set only if the foreign key constraint is named.
@@ -4538,7 +4538,7 @@ class TableTableConstraintsForeignKeyArgs:
 
     @property
     @pulumi.getter(name="columnReferences")
-    def column_references(self) -> pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs']:
+    def column_references(self) -> pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArrgs']:
         """
         The pair of the foreign key column and primary key column.
         Structure is documented below.
@@ -4546,12 +4546,12 @@ class TableTableConstraintsForeignKeyArgs:
         return pulumi.get(self, "column_references")
 
     @column_references.setter
-    def column_references(self, value: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs']):
+    def column_references(self, value: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArrgs']):
         pulumi.set(self, "column_references", value)
 
     @property
     @pulumi.getter(name="referencedTable")
-    def referenced_table(self) -> pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs']:
+    def referenced_table(self) -> pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArrgs']:
         """
         The table that holds the primary key
         and is referenced by this foreign key.
@@ -4560,7 +4560,7 @@ class TableTableConstraintsForeignKeyArgs:
         return pulumi.get(self, "referenced_table")
 
     @referenced_table.setter
-    def referenced_table(self, value: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs']):
+    def referenced_table(self, value: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArrgs']):
         pulumi.set(self, "referenced_table", value)
 
     @property
@@ -4577,7 +4577,7 @@ class TableTableConstraintsForeignKeyArgs:
 
 
 @pulumi.input_type
-class TableTableConstraintsForeignKeyColumnReferencesArgs:
+calass TableTableConstraintsForeignKeyColumnReferencesArrgs:
     def __init__(__self__, *,
                  referenced_column: pulumi.Input[str],
                  referencing_column: pulumi.Input[str]):
@@ -4616,7 +4616,7 @@ class TableTableConstraintsForeignKeyColumnReferencesArgs:
 
 
 @pulumi.input_type
-class TableTableConstraintsForeignKeyReferencedTableArgs:
+calass TableTableConstraintsForeignKeyReferencedTableArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
@@ -4676,7 +4676,7 @@ class TableTableConstraintsForeignKeyReferencedTableArgs:
 
 
 @pulumi.input_type
-class TableTableConstraintsPrimaryKeyArgs:
+calass TableTableConstraintsPrimaryKeyArrgs:
     def __init__(__self__, *,
                  columns: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -4698,7 +4698,7 @@ class TableTableConstraintsPrimaryKeyArgs:
 
 
 @pulumi.input_type
-class TableTimePartitioningArgs:
+calass TableTimePartitioningArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  expiration_ms: Optional[pulumi.Input[int]] = None,
@@ -4780,7 +4780,7 @@ class TableTimePartitioningArgs:
 
 
 @pulumi.input_type
-class TableViewArgs:
+calass TableViewArrgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None):

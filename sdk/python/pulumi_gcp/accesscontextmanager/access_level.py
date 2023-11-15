@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessLevelArgs', 'AccessLevel']
+__all__ = ['AccessLevelArrgs', 'AccessLevel']
 
 @pulumi.input_type
-class AccessLevelArgs:
+calass AccessLevelArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  title: pulumi.Input[str],
-                 basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
-                 custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
+                 basic: Optional[pulumi.Input['AccessLevelBasicArrgs']] = None,
+                 custom: Optional[pulumi.Input['AccessLevelCustomArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -27,9 +27,9 @@ class AccessLevelArgs:
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
-        :param pulumi.Input['AccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input['AccessLevelBasicArrgs'] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input['AccessLevelCustomArrgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
@@ -78,7 +78,7 @@ class AccessLevelArgs:
 
     @property
     @pulumi.getter
-    def basic(self) -> Optional[pulumi.Input['AccessLevelBasicArgs']]:
+    def basic(self) -> Optional[pulumi.Input['AccessLevelBasicArrgs']]:
         """
         A set of predefined conditions for the access level and a combining function.
         Structure is documented below.
@@ -86,12 +86,12 @@ class AccessLevelArgs:
         return pulumi.get(self, "basic")
 
     @basic.setter
-    def basic(self, value: Optional[pulumi.Input['AccessLevelBasicArgs']]):
+    def basic(self, value: Optional[pulumi.Input['AccessLevelBasicArrgs']]):
         pulumi.set(self, "basic", value)
 
     @property
     @pulumi.getter
-    def custom(self) -> Optional[pulumi.Input['AccessLevelCustomArgs']]:
+    def custom(self) -> Optional[pulumi.Input['AccessLevelCustomArrgs']]:
         """
         Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
         See CEL spec at: https://github.com/google/cel-spec.
@@ -100,7 +100,7 @@ class AccessLevelArgs:
         return pulumi.get(self, "custom")
 
     @custom.setter
-    def custom(self, value: Optional[pulumi.Input['AccessLevelCustomArgs']]):
+    def custom(self, value: Optional[pulumi.Input['AccessLevelCustomArrgs']]):
         pulumi.set(self, "custom", value)
 
     @property
@@ -134,19 +134,19 @@ class AccessLevelArgs:
 
 
 @pulumi.input_type
-class _AccessLevelState:
+calass _AccessLevelState:
     def __init__(__self__, *,
-                 basic: Optional[pulumi.Input['AccessLevelBasicArgs']] = None,
-                 custom: Optional[pulumi.Input['AccessLevelCustomArgs']] = None,
+                 basic: Optional[pulumi.Input['AccessLevelBasicArrgs']] = None,
+                 custom: Optional[pulumi.Input['AccessLevelCustomArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessLevel resources.
-        :param pulumi.Input['AccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input['AccessLevelBasicArrgs'] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input['AccessLevelCustomArrgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
@@ -175,7 +175,7 @@ class _AccessLevelState:
 
     @property
     @pulumi.getter
-    def basic(self) -> Optional[pulumi.Input['AccessLevelBasicArgs']]:
+    def basic(self) -> Optional[pulumi.Input['AccessLevelBasicArrgs']]:
         """
         A set of predefined conditions for the access level and a combining function.
         Structure is documented below.
@@ -183,12 +183,12 @@ class _AccessLevelState:
         return pulumi.get(self, "basic")
 
     @basic.setter
-    def basic(self, value: Optional[pulumi.Input['AccessLevelBasicArgs']]):
+    def basic(self, value: Optional[pulumi.Input['AccessLevelBasicArrgs']]):
         pulumi.set(self, "basic", value)
 
     @property
     @pulumi.getter
-    def custom(self) -> Optional[pulumi.Input['AccessLevelCustomArgs']]:
+    def custom(self) -> Optional[pulumi.Input['AccessLevelCustomArrgs']]:
         """
         Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
         See CEL spec at: https://github.com/google/cel-spec.
@@ -197,7 +197,7 @@ class _AccessLevelState:
         return pulumi.get(self, "custom")
 
     @custom.setter
-    def custom(self, value: Optional[pulumi.Input['AccessLevelCustomArgs']]):
+    def custom(self, value: Optional[pulumi.Input['AccessLevelCustomArrgs']]):
         pulumi.set(self, "custom", value)
 
     @property
@@ -255,13 +255,13 @@ class _AccessLevelState:
         pulumi.set(self, "title", value)
 
 
-class AccessLevel(pulumi.CustomResource):
+calass AccessLevel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
+                 basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArrgs']]] = None,
+                 custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -294,10 +294,10 @@ class AccessLevel(pulumi.CustomResource):
             parent="organizations/123456789",
             title="my policy")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                         require_screen_lock=True,
@@ -323,9 +323,9 @@ class AccessLevel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[pulumi.InputType['AccessLevelBasicArrgs']] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input[pulumi.InputType['AccessLevelCustomArrgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
@@ -343,7 +343,7 @@ class AccessLevel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessLevelArgs,
+                 args: AccessLevelArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An AccessLevel is a label that can be applied to requests to GCP services,
@@ -372,10 +372,10 @@ class AccessLevel(pulumi.CustomResource):
             parent="organizations/123456789",
             title="my policy")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
+            basic=gcp.accesscontextmanager.AccessLevelBasicArrgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArrgs(
+                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArrgs(
+                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArrgs(
                             os_type="DESKTOP_CHROME_OS",
                         )],
                         require_screen_lock=True,
@@ -400,12 +400,12 @@ class AccessLevel(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccessLevelArgs args: The arguments to use to populate this resource's properties.
+        :param AccessLevelArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -414,8 +414,8 @@ class AccessLevel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
+                 basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArrgs']]] = None,
+                 custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -427,7 +427,7 @@ class AccessLevel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessLevelArgs.__new__(AccessLevelArgs)
+            __props__ = AccessLevelArrgs.__new__(AccessLevelArrgs)
 
             __props__.__dict__["basic"] = basic
             __props__.__dict__["custom"] = custom
@@ -449,8 +449,8 @@ class AccessLevel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']]] = None,
-            custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']]] = None,
+            basic: Optional[pulumi.Input[pulumi.InputType['AccessLevelBasicArrgs']]] = None,
+            custom: Optional[pulumi.Input[pulumi.InputType['AccessLevelCustomArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
@@ -462,9 +462,9 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AccessLevelBasicArgs']] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[pulumi.InputType['AccessLevelBasicArrgs']] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        :param pulumi.Input[pulumi.InputType['AccessLevelCustomArrgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.

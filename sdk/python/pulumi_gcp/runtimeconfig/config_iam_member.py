@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConfigIamMemberArgs', 'ConfigIamMember']
+__all__ = ['ConfigIamMemberArrgs', 'ConfigIamMember']
 
 @pulumi.input_type
-class ConfigIamMemberArgs:
+calass ConfigIamMemberArrgs:
     def __init__(__self__, *,
                  config: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ConfigIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConfigIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConfigIamMember resource.
@@ -87,11 +87,11 @@ class ConfigIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConfigIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConfigIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConfigIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConfigIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -121,9 +121,9 @@ class ConfigIamMemberArgs:
 
 
 @pulumi.input_type
-class _ConfigIamMemberState:
+calass _ConfigIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConfigIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConfigIamMemberConditionArrgs']] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -166,11 +166,11 @@ class _ConfigIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConfigIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConfigIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConfigIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConfigIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -246,12 +246,12 @@ class _ConfigIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class ConfigIamMember(pulumi.CustomResource):
+calass ConfigIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArrgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -307,7 +307,7 @@ class ConfigIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConfigIamMemberArgs,
+                 args: ConfigIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -335,12 +335,12 @@ class ConfigIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConfigIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ConfigIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConfigIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -349,7 +349,7 @@ class ConfigIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArrgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -361,7 +361,7 @@ class ConfigIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConfigIamMemberArgs.__new__(ConfigIamMemberArgs)
+            __props__ = ConfigIamMemberArrgs.__new__(ConfigIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if config is None and not opts.urn:
@@ -385,7 +385,7 @@ class ConfigIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArrgs']]] = None,
             config: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

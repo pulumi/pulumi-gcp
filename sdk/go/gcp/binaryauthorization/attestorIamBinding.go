@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
@@ -362,12 +361,6 @@ func (i *AttestorIamBinding) ToAttestorIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingOutput)
 }
 
-func (i *AttestorIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamBinding] {
-	return pulumix.Output[*AttestorIamBinding]{
-		OutputState: i.ToAttestorIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestorIamBindingArrayInput is an input type that accepts AttestorIamBindingArray and AttestorIamBindingArrayOutput values.
 // You can construct a concrete instance of `AttestorIamBindingArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i AttestorIamBindingArray) ToAttestorIamBindingArrayOutput() AttestorIamBi
 
 func (i AttestorIamBindingArray) ToAttestorIamBindingArrayOutputWithContext(ctx context.Context) AttestorIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingArrayOutput)
-}
-
-func (i AttestorIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AttestorIamBinding] {
-	return pulumix.Output[[]*AttestorIamBinding]{
-		OutputState: i.ToAttestorIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AttestorIamBindingMapInput is an input type that accepts AttestorIamBindingMap and AttestorIamBindingMapOutput values.
@@ -424,12 +411,6 @@ func (i AttestorIamBindingMap) ToAttestorIamBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingMapOutput)
 }
 
-func (i AttestorIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttestorIamBinding] {
-	return pulumix.Output[map[string]*AttestorIamBinding]{
-		OutputState: i.ToAttestorIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AttestorIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamBindingOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o AttestorIamBindingOutput) ToAttestorIamBindingOutput() AttestorIamBindin
 
 func (o AttestorIamBindingOutput) ToAttestorIamBindingOutputWithContext(ctx context.Context) AttestorIamBindingOutput {
 	return o
-}
-
-func (o AttestorIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamBinding] {
-	return pulumix.Output[*AttestorIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -507,12 +482,6 @@ func (o AttestorIamBindingArrayOutput) ToAttestorIamBindingArrayOutputWithContex
 	return o
 }
 
-func (o AttestorIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AttestorIamBinding] {
-	return pulumix.Output[[]*AttestorIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttestorIamBindingArrayOutput) Index(i pulumi.IntInput) AttestorIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AttestorIamBinding {
 		return vs[0].([]*AttestorIamBinding)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o AttestorIamBindingMapOutput) ToAttestorIamBindingMapOutput() AttestorIam
 
 func (o AttestorIamBindingMapOutput) ToAttestorIamBindingMapOutputWithContext(ctx context.Context) AttestorIamBindingMapOutput {
 	return o
-}
-
-func (o AttestorIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttestorIamBinding] {
-	return pulumix.Output[map[string]*AttestorIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestorIamBindingMapOutput) MapIndex(k pulumi.StringInput) AttestorIamBindingOutput {

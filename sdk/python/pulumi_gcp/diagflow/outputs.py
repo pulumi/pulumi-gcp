@@ -134,7 +134,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class CxAgentSpeechToTextSettings(dict):
+calass CxAgentSpeechToTextSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -170,7 +170,7 @@ class CxAgentSpeechToTextSettings(dict):
 
 
 @pulumi.output_type
-class CxEntityTypeEntity(dict):
+calass CxEntityTypeEntity(dict):
     def __init__(__self__, *,
                  synonyms: Optional[Sequence[str]] = None,
                  value: Optional[str] = None):
@@ -211,7 +211,7 @@ class CxEntityTypeEntity(dict):
 
 
 @pulumi.output_type
-class CxEntityTypeExcludedPhrase(dict):
+calass CxEntityTypeExcludedPhrase(dict):
     def __init__(__self__, *,
                  value: Optional[str] = None):
         """
@@ -230,7 +230,7 @@ class CxEntityTypeExcludedPhrase(dict):
 
 
 @pulumi.output_type
-class CxEnvironmentVersionConfig(dict):
+calass CxEnvironmentVersionConfig(dict):
     def __init__(__self__, *,
                  version: str):
         """
@@ -252,7 +252,7 @@ class CxEnvironmentVersionConfig(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandler(dict):
+calass CxFlowEventHandler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -288,7 +288,7 @@ class CxFlowEventHandler(dict):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param 'CxFlowEventHandlerTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param 'CxFlowEventHandlerTriggerFulfillmentArrgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
                Structure is documented below.
         """
         if event is not None:
@@ -348,7 +348,7 @@ class CxFlowEventHandler(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillment(dict):
+calass CxFlowEventHandlerTriggerFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -378,12 +378,12 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxFlowEventHandlerTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxFlowEventHandlerTriggerFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -454,7 +454,7 @@ class CxFlowEventHandlerTriggerFulfillment(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentConditionalCase(dict):
+calass CxFlowEventHandlerTriggerFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -475,7 +475,7 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCase(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -512,26 +512,26 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
                  text: Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -631,7 +631,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -650,7 +650,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -669,7 +669,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -731,7 +731,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -782,7 +782,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -817,7 +817,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
+calass CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -867,7 +867,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
 
 
 @pulumi.output_type
-class CxFlowEventHandlerTriggerFulfillmentSetParameterAction(dict):
+calass CxFlowEventHandlerTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -898,7 +898,7 @@ class CxFlowEventHandlerTriggerFulfillmentSetParameterAction(dict):
 
 
 @pulumi.output_type
-class CxFlowNluSettings(dict):
+calass CxFlowNluSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -976,7 +976,7 @@ class CxFlowNluSettings(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRoute(dict):
+calass CxFlowTransitionRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1016,7 +1016,7 @@ class CxFlowTransitionRoute(dict):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentArrgs' trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
                Structure is documented below.
         """
         if condition is not None:
@@ -1088,7 +1088,7 @@ class CxFlowTransitionRoute(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillment(dict):
+calass CxFlowTransitionRouteTriggerFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1118,12 +1118,12 @@ class CxFlowTransitionRouteTriggerFulfillment(dict):
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -1194,7 +1194,7 @@ class CxFlowTransitionRouteTriggerFulfillment(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentConditionalCase(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -1215,7 +1215,7 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCase(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1252,26 +1252,26 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
                  text: Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -1371,7 +1371,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -1390,7 +1390,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -1409,7 +1409,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1471,7 +1471,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1522,7 +1522,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1557,7 +1557,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1607,7 +1607,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
 
 
 @pulumi.output_type
-class CxFlowTransitionRouteTriggerFulfillmentSetParameterAction(dict):
+calass CxFlowTransitionRouteTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -1638,7 +1638,7 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterAction(dict):
 
 
 @pulumi.output_type
-class CxIntentParameter(dict):
+calass CxIntentParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1714,7 +1714,7 @@ class CxIntentParameter(dict):
 
 
 @pulumi.output_type
-class CxIntentTrainingPhrase(dict):
+calass CxIntentTrainingPhrase(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1737,7 +1737,7 @@ class CxIntentTrainingPhrase(dict):
                  id: Optional[str] = None,
                  repeat_count: Optional[int] = None):
         """
-        :param Sequence['CxIntentTrainingPhrasePartArgs'] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+        :param Sequence['CxIntentTrainingPhrasePartArrgs'] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
                Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
                Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
                If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
@@ -1789,7 +1789,7 @@ class CxIntentTrainingPhrase(dict):
 
 
 @pulumi.output_type
-class CxIntentTrainingPhrasePart(dict):
+calass CxIntentTrainingPhrasePart(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1836,7 +1836,7 @@ class CxIntentTrainingPhrasePart(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillment(dict):
+calass CxPageEntryFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1866,12 +1866,12 @@ class CxPageEntryFulfillment(dict):
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxPageEntryFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxPageEntryFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxPageEntryFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxPageEntryFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxPageEntryFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxPageEntryFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -1942,7 +1942,7 @@ class CxPageEntryFulfillment(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentConditionalCase(dict):
+calass CxPageEntryFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -1963,7 +1963,7 @@ class CxPageEntryFulfillmentConditionalCase(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessage(dict):
+calass CxPageEntryFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2000,26 +2000,26 @@ class CxPageEntryFulfillmentMessage(dict):
                  text: Optional['outputs.CxPageEntryFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxPageEntryFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxPageEntryFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxPageEntryFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxPageEntryFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxPageEntryFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxPageEntryFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxPageEntryFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxPageEntryFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxPageEntryFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxPageEntryFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -2119,7 +2119,7 @@ class CxPageEntryFulfillmentMessage(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessageConversationSuccess(dict):
+calass CxPageEntryFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -2138,7 +2138,7 @@ class CxPageEntryFulfillmentMessageConversationSuccess(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessageLiveAgentHandoff(dict):
+calass CxPageEntryFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -2157,7 +2157,7 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoff(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessageOutputAudioText(dict):
+calass CxPageEntryFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2219,7 +2219,7 @@ class CxPageEntryFulfillmentMessageOutputAudioText(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessagePlayAudio(dict):
+calass CxPageEntryFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2270,7 +2270,7 @@ class CxPageEntryFulfillmentMessagePlayAudio(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessageTelephonyTransferCall(dict):
+calass CxPageEntryFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2305,7 +2305,7 @@ class CxPageEntryFulfillmentMessageTelephonyTransferCall(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentMessageText(dict):
+calass CxPageEntryFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2355,7 +2355,7 @@ class CxPageEntryFulfillmentMessageText(dict):
 
 
 @pulumi.output_type
-class CxPageEntryFulfillmentSetParameterAction(dict):
+calass CxPageEntryFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -2386,7 +2386,7 @@ class CxPageEntryFulfillmentSetParameterAction(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandler(dict):
+calass CxPageEventHandler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2422,7 +2422,7 @@ class CxPageEventHandler(dict):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param 'CxPageEventHandlerTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param 'CxPageEventHandlerTriggerFulfillmentArrgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
                Structure is documented below.
         """
         if event is not None:
@@ -2482,7 +2482,7 @@ class CxPageEventHandler(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillment(dict):
+calass CxPageEventHandlerTriggerFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2512,12 +2512,12 @@ class CxPageEventHandlerTriggerFulfillment(dict):
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxPageEventHandlerTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxPageEventHandlerTriggerFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2588,7 +2588,7 @@ class CxPageEventHandlerTriggerFulfillment(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentConditionalCase(dict):
+calass CxPageEventHandlerTriggerFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -2609,7 +2609,7 @@ class CxPageEventHandlerTriggerFulfillmentConditionalCase(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessage(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2646,26 +2646,26 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
                  text: Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxPageEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -2765,7 +2765,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -2784,7 +2784,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -2803,7 +2803,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2865,7 +2865,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2916,7 +2916,7 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2951,7 +2951,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
+calass CxPageEventHandlerTriggerFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3001,7 +3001,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
 
 
 @pulumi.output_type
-class CxPageEventHandlerTriggerFulfillmentSetParameterAction(dict):
+calass CxPageEventHandlerTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -3032,11 +3032,11 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterAction(dict):
 
 
 @pulumi.output_type
-class CxPageForm(dict):
+calass CxPageForm(dict):
     def __init__(__self__, *,
                  parameters: Optional[Sequence['outputs.CxPageFormParameter']] = None):
         """
-        :param Sequence['CxPageFormParameterArgs'] parameters: Parameters to collect from the user.
+        :param Sequence['CxPageFormParameterArrgs'] parameters: Parameters to collect from the user.
                Structure is documented below.
         """
         if parameters is not None:
@@ -3053,7 +3053,7 @@ class CxPageForm(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameter(dict):
+calass CxPageFormParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3092,7 +3092,7 @@ class CxPageFormParameter(dict):
         :param str display_name: The human-readable name of the parameter, unique within the form.
         :param str entity_type: The entity type of the parameter.
                Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
-        :param 'CxPageFormParameterFillBehaviorArgs' fill_behavior: Defines fill behavior for the parameter.
+        :param 'CxPageFormParameterFillBehaviorArrgs' fill_behavior: Defines fill behavior for the parameter.
                Structure is documented below.
         :param bool is_list: Indicates whether the parameter represents a list of values.
         :param bool redact: Indicates whether the parameter content should be redacted in log.
@@ -3177,7 +3177,7 @@ class CxPageFormParameter(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehavior(dict):
+calass CxPageFormParameterFillBehavior(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3201,9 +3201,9 @@ class CxPageFormParameterFillBehavior(dict):
                  initial_prompt_fulfillment: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillment'] = None,
                  reprompt_event_handlers: Optional[Sequence['outputs.CxPageFormParameterFillBehaviorRepromptEventHandler']] = None):
         """
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs' initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs' initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
                Structure is documented below.
-        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs'] reprompt_event_handlers: The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs'] reprompt_event_handlers: The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
                * sys.no-match-<N>, where N can be from 1 to 6
                * sys.no-match-default
                * sys.no-input-<N>, where N can be from 1 to 6
@@ -3251,7 +3251,7 @@ class CxPageFormParameterFillBehavior(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillment(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3281,12 +3281,12 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment(dict):
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -3357,7 +3357,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -3378,7 +3378,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase(dic
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3415,26 +3415,26 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
                  text: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -3534,7 +3534,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -3553,7 +3553,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -3572,7 +3572,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3634,7 +3634,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3685,7 +3685,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio(di
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3720,7 +3720,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3770,7 +3770,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction(dict):
+calass CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -3801,7 +3801,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction(
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandler(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3837,7 +3837,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandler(dict):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
                Structure is documented below.
         """
         if event is not None:
@@ -3897,7 +3897,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandler(dict):
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3927,12 +3927,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment(dict
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -4003,7 +4003,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment(dict
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -4024,7 +4024,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4061,26 +4061,26 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
                  text: Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -4180,7 +4180,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -4199,7 +4199,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -4218,7 +4218,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4280,7 +4280,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4331,7 +4331,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4366,7 +4366,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4416,7 +4416,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
 
 @pulumi.output_type
-class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction(dict):
+calass CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -4447,7 +4447,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetPa
 
 
 @pulumi.output_type
-class CxPageTransitionRoute(dict):
+calass CxPageTransitionRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4487,7 +4487,7 @@ class CxPageTransitionRoute(dict):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param 'CxPageTransitionRouteTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+        :param 'CxPageTransitionRouteTriggerFulfillmentArrgs' trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
                Structure is documented below.
         """
         if condition is not None:
@@ -4559,7 +4559,7 @@ class CxPageTransitionRoute(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillment(dict):
+calass CxPageTransitionRouteTriggerFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4589,12 +4589,12 @@ class CxPageTransitionRouteTriggerFulfillment(dict):
                  tag: Optional[str] = None,
                  webhook: Optional[str] = None):
         """
-        :param Sequence['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+        :param Sequence['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs'] conditional_cases: Conditional cases for this fulfillment.
                Structure is documented below.
-        :param Sequence['CxPageTransitionRouteTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+        :param Sequence['CxPageTransitionRouteTriggerFulfillmentMessageArrgs'] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-        :param Sequence['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+        :param Sequence['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs'] set_parameter_actions: Set parameter values before executing the webhook.
                Structure is documented below.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -4665,7 +4665,7 @@ class CxPageTransitionRouteTriggerFulfillment(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentConditionalCase(dict):
+calass CxPageTransitionRouteTriggerFulfillmentConditionalCase(dict):
     def __init__(__self__, *,
                  cases: Optional[str] = None):
         """
@@ -4686,7 +4686,7 @@ class CxPageTransitionRouteTriggerFulfillmentConditionalCase(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4723,26 +4723,26 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
                  text: Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText'] = None):
         """
         :param str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
                Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
                Structure is documented below.
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
                Structure is documented below.
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
                Structure is documented below.
         :param str payload: A custom, platform-specific payload.
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
                Structure is documented below.
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
                Structure is documented below.
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs' text: The text response message.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs' text: The text response message.
                Structure is documented below.
         """
         if channel is not None:
@@ -4842,7 +4842,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -4861,7 +4861,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
     def __init__(__self__, *,
                  metadata: Optional[str] = None):
         """
@@ -4880,7 +4880,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4942,7 +4942,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4993,7 +4993,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5028,7 +5028,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
+calass CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5078,7 +5078,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
 
 
 @pulumi.output_type
-class CxPageTransitionRouteTriggerFulfillmentSetParameterAction(dict):
+calass CxPageTransitionRouteTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[str] = None,
                  value: Optional[str] = None):
@@ -5109,7 +5109,7 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterAction(dict):
 
 
 @pulumi.output_type
-class CxSecuritySettingsAudioExportSettings(dict):
+calass CxSecuritySettingsAudioExportSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5195,7 +5195,7 @@ class CxSecuritySettingsAudioExportSettings(dict):
 
 
 @pulumi.output_type
-class CxSecuritySettingsInsightsExportSettings(dict):
+calass CxSecuritySettingsInsightsExportSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5230,7 +5230,7 @@ class CxSecuritySettingsInsightsExportSettings(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResult(dict):
+calass CxTestCaseLastTestResult(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5259,7 +5259,7 @@ class CxTestCaseLastTestResult(dict):
                  test_result: Optional[str] = None,
                  test_time: Optional[str] = None):
         """
-        :param Sequence['CxTestCaseLastTestResultConversationTurnArgs'] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
+        :param Sequence['CxTestCaseLastTestResultConversationTurnArrgs'] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
                Structure is documented below.
         :param str environment: Environment where the test was run. If not set, it indicates the draft environment.
         :param str name: The unique identifier of the page.
@@ -5328,7 +5328,7 @@ class CxTestCaseLastTestResult(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurn(dict):
+calass CxTestCaseLastTestResultConversationTurn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5352,9 +5352,9 @@ class CxTestCaseLastTestResultConversationTurn(dict):
                  user_input: Optional['outputs.CxTestCaseLastTestResultConversationTurnUserInput'] = None,
                  virtual_agent_output: Optional['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutput'] = None):
         """
-        :param 'CxTestCaseLastTestResultConversationTurnUserInputArgs' user_input: The user input.
+        :param 'CxTestCaseLastTestResultConversationTurnUserInputArrgs' user_input: The user input.
                Structure is documented below.
-        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs' virtual_agent_output: The virtual agent output.
+        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArrgs' virtual_agent_output: The virtual agent output.
                Structure is documented below.
         """
         if user_input is not None:
@@ -5382,7 +5382,7 @@ class CxTestCaseLastTestResultConversationTurn(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnUserInput(dict):
+calass CxTestCaseLastTestResultConversationTurnUserInput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5412,7 +5412,7 @@ class CxTestCaseLastTestResultConversationTurnUserInput(dict):
         """
         :param bool enable_sentiment_analysis: Whether sentiment analysis is enabled.
         :param str injected_parameters: Parameters that need to be injected into the conversation during intent detection.
-        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputArgs' input: User input. Supports text input, event input, dtmf input in the test case.
+        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputArrgs' input: User input. Supports text input, event input, dtmf input in the test case.
                Structure is documented below.
         :param bool is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
@@ -5460,7 +5460,7 @@ class CxTestCaseLastTestResultConversationTurnUserInput(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnUserInputInput(dict):
+calass CxTestCaseLastTestResultConversationTurnUserInputInput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5484,13 +5484,13 @@ class CxTestCaseLastTestResultConversationTurnUserInputInput(dict):
                  language_code: Optional[str] = None,
                  text: Optional['outputs.CxTestCaseLastTestResultConversationTurnUserInputInputText'] = None):
         """
-        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs' dtmf: The DTMF event to be handled.
+        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArrgs' dtmf: The DTMF event to be handled.
                Structure is documented below.
-        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs' event: The event to be triggered.
+        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputEventArrgs' event: The event to be triggered.
                Structure is documented below.
         :param str language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
                Note that queries in the same session do not necessarily need to specify the same language.
-        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs' text: The natural language text to be processed.
+        :param 'CxTestCaseLastTestResultConversationTurnUserInputInputTextArrgs' text: The natural language text to be processed.
                Structure is documented below.
         """
         if dtmf is not None:
@@ -5540,7 +5540,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInput(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputDtmf(dict):
+calass CxTestCaseLastTestResultConversationTurnUserInputInputDtmf(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5588,7 +5588,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputDtmf(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputEvent(dict):
+calass CxTestCaseLastTestResultConversationTurnUserInputInputEvent(dict):
     def __init__(__self__, *,
                  event: str):
         """
@@ -5606,7 +5606,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEvent(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnUserInputInputText(dict):
+calass CxTestCaseLastTestResultConversationTurnUserInputInputText(dict):
     def __init__(__self__, *,
                  text: str):
         """
@@ -5624,7 +5624,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputText(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput(dict):
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5656,16 +5656,16 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput(dict):
                  text_responses: Optional[Sequence['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse']] = None,
                  triggered_intent: Optional['outputs.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent'] = None):
         """
-        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs' current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArrgs' current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
                Structure is documented below.
-        :param Sequence['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs'] differences: The list of differences between the original run and the replay for this output, if any.
+        :param Sequence['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrgs'] differences: The list of differences between the original run and the replay for this output, if any.
                Structure is documented below.
         :param str session_parameters: The session parameters available to the bot at this point.
-        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs' status: Response error from the agent in the test result. If set, other output is empty.
+        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArrgs' status: Response error from the agent in the test result. If set, other output is empty.
                Structure is documented below.
-        :param Sequence['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs'] text_responses: The text responses from the agent for the turn.
+        :param Sequence['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrgs'] text_responses: The text responses from the agent for the turn.
                Structure is documented below.
-        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs' triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        :param 'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArrgs' triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
                Structure is documented below.
         """
         if current_page is not None:
@@ -5736,7 +5736,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage(dict):
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5788,7 +5788,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage(dict
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference(dict):
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  type: Optional[str] = None):
@@ -5831,7 +5831,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference(dict)
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus(dict):
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  details: Optional[str] = None,
@@ -5874,7 +5874,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus(dict):
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse(dict):
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse(dict):
     def __init__(__self__, *,
                  texts: Optional[Sequence[str]] = None):
         """
@@ -5893,7 +5893,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse(dic
 
 
 @pulumi.output_type
-class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent(dict):
+calass CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5945,7 +5945,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent(
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurn(dict):
+calass CxTestCaseTestCaseConversationTurn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5969,9 +5969,9 @@ class CxTestCaseTestCaseConversationTurn(dict):
                  user_input: Optional['outputs.CxTestCaseTestCaseConversationTurnUserInput'] = None,
                  virtual_agent_output: Optional['outputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutput'] = None):
         """
-        :param 'CxTestCaseTestCaseConversationTurnUserInputArgs' user_input: The user input.
+        :param 'CxTestCaseTestCaseConversationTurnUserInputArrgs' user_input: The user input.
                Structure is documented below.
-        :param 'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs' virtual_agent_output: The virtual agent output.
+        :param 'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs' virtual_agent_output: The virtual agent output.
                Structure is documented below.
         """
         if user_input is not None:
@@ -5999,7 +5999,7 @@ class CxTestCaseTestCaseConversationTurn(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnUserInput(dict):
+calass CxTestCaseTestCaseConversationTurnUserInput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6029,7 +6029,7 @@ class CxTestCaseTestCaseConversationTurnUserInput(dict):
         """
         :param bool enable_sentiment_analysis: Whether sentiment analysis is enabled.
         :param str injected_parameters: Parameters that need to be injected into the conversation during intent detection.
-        :param 'CxTestCaseTestCaseConversationTurnUserInputInputArgs' input: User input. Supports text input, event input, dtmf input in the test case.
+        :param 'CxTestCaseTestCaseConversationTurnUserInputInputArrgs' input: User input. Supports text input, event input, dtmf input in the test case.
                Structure is documented below.
         :param bool is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
@@ -6077,7 +6077,7 @@ class CxTestCaseTestCaseConversationTurnUserInput(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnUserInputInput(dict):
+calass CxTestCaseTestCaseConversationTurnUserInputInput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6101,13 +6101,13 @@ class CxTestCaseTestCaseConversationTurnUserInputInput(dict):
                  language_code: Optional[str] = None,
                  text: Optional['outputs.CxTestCaseTestCaseConversationTurnUserInputInputText'] = None):
         """
-        :param 'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs' dtmf: The DTMF event to be handled.
+        :param 'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs' dtmf: The DTMF event to be handled.
                Structure is documented below.
-        :param 'CxTestCaseTestCaseConversationTurnUserInputInputEventArgs' event: The event to be triggered.
+        :param 'CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs' event: The event to be triggered.
                Structure is documented below.
         :param str language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
                Note that queries in the same session do not necessarily need to specify the same language.
-        :param 'CxTestCaseTestCaseConversationTurnUserInputInputTextArgs' text: The natural language text to be processed.
+        :param 'CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs' text: The natural language text to be processed.
                Structure is documented below.
         """
         if dtmf is not None:
@@ -6157,7 +6157,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInput(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnUserInputInputDtmf(dict):
+calass CxTestCaseTestCaseConversationTurnUserInputInputDtmf(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6205,7 +6205,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmf(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnUserInputInputEvent(dict):
+calass CxTestCaseTestCaseConversationTurnUserInputInputEvent(dict):
     def __init__(__self__, *,
                  event: str):
         """
@@ -6223,7 +6223,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputEvent(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnUserInputInputText(dict):
+calass CxTestCaseTestCaseConversationTurnUserInputInputText(dict):
     def __init__(__self__, *,
                  text: str):
         """
@@ -6241,7 +6241,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputText(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutput(dict):
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6271,12 +6271,12 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput(dict):
                  text_responses: Optional[Sequence['outputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse']] = None,
                  triggered_intent: Optional['outputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent'] = None):
         """
-        :param 'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs' current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        :param 'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs' current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
                Structure is documented below.
         :param str session_parameters: The session parameters available to the bot at this point.
-        :param Sequence['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs'] text_responses: The text responses from the agent for the turn.
+        :param Sequence['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs'] text_responses: The text responses from the agent for the turn.
                Structure is documented below.
-        :param 'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs' triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        :param 'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs' triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
                Structure is documented below.
         """
         if current_page is not None:
@@ -6325,7 +6325,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage(dict):
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6377,7 +6377,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse(dict):
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse(dict):
     def __init__(__self__, *,
                  texts: Optional[Sequence[str]] = None):
         """
@@ -6396,7 +6396,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent(dict):
+calass CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6448,7 +6448,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent(dict):
 
 
 @pulumi.output_type
-class CxTestCaseTestConfig(dict):
+calass CxTestCaseTestConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6516,7 +6516,7 @@ class CxTestCaseTestConfig(dict):
 
 
 @pulumi.output_type
-class CxVersionNluSetting(dict):
+calass CxVersionNluSetting(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6594,7 +6594,7 @@ class CxVersionNluSetting(dict):
 
 
 @pulumi.output_type
-class CxWebhookGenericWebService(dict):
+calass CxWebhookGenericWebService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6655,7 +6655,7 @@ class CxWebhookGenericWebService(dict):
 
 
 @pulumi.output_type
-class CxWebhookServiceDirectory(dict):
+calass CxWebhookServiceDirectory(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6677,7 +6677,7 @@ class CxWebhookServiceDirectory(dict):
                  generic_web_service: 'outputs.CxWebhookServiceDirectoryGenericWebService',
                  service: str):
         """
-        :param 'CxWebhookServiceDirectoryGenericWebServiceArgs' generic_web_service: The name of Service Directory service.
+        :param 'CxWebhookServiceDirectoryGenericWebServiceArrgs' generic_web_service: The name of Service Directory service.
                Structure is documented below.
         :param str service: The name of Service Directory service.
         """
@@ -6703,7 +6703,7 @@ class CxWebhookServiceDirectory(dict):
 
 
 @pulumi.output_type
-class CxWebhookServiceDirectoryGenericWebService(dict):
+calass CxWebhookServiceDirectoryGenericWebService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6764,7 +6764,7 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
 
 
 @pulumi.output_type
-class EntityTypeEntity(dict):
+calass EntityTypeEntity(dict):
     def __init__(__self__, *,
                  synonyms: Sequence[str],
                  value: str):
@@ -6809,7 +6809,7 @@ class EntityTypeEntity(dict):
 
 
 @pulumi.output_type
-class FulfillmentFeature(dict):
+calass FulfillmentFeature(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -6831,7 +6831,7 @@ class FulfillmentFeature(dict):
 
 
 @pulumi.output_type
-class FulfillmentGenericWebService(dict):
+calass FulfillmentGenericWebService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6902,7 +6902,7 @@ class FulfillmentGenericWebService(dict):
 
 
 @pulumi.output_type
-class IntentFollowupIntentInfo(dict):
+calass IntentFollowupIntentInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

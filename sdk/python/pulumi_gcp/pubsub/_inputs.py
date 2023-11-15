@@ -10,30 +10,30 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'LiteSubscriptionDeliveryConfigArgs',
-    'LiteTopicPartitionConfigArgs',
-    'LiteTopicPartitionConfigCapacityArgs',
-    'LiteTopicReservationConfigArgs',
-    'LiteTopicRetentionConfigArgs',
-    'SubscriptionBigqueryConfigArgs',
-    'SubscriptionCloudStorageConfigArgs',
-    'SubscriptionCloudStorageConfigAvroConfigArgs',
-    'SubscriptionDeadLetterPolicyArgs',
-    'SubscriptionExpirationPolicyArgs',
-    'SubscriptionIAMBindingConditionArgs',
-    'SubscriptionIAMMemberConditionArgs',
-    'SubscriptionPushConfigArgs',
-    'SubscriptionPushConfigNoWrapperArgs',
-    'SubscriptionPushConfigOidcTokenArgs',
-    'SubscriptionRetryPolicyArgs',
-    'TopicIAMBindingConditionArgs',
-    'TopicIAMMemberConditionArgs',
-    'TopicMessageStoragePolicyArgs',
-    'TopicSchemaSettingsArgs',
+    'LiteSubscriptionDeliveryConfigArrgs',
+    'LiteTopicPartitionConfigArrgs',
+    'LiteTopicPartitionConfigCapacityArrgs',
+    'LiteTopicReservationConfigArrgs',
+    'LiteTopicRetentionConfigArrgs',
+    'SubscriptionBigqueryConfigArrgs',
+    'SubscriptionCloudStorageConfigArrgs',
+    'SubscriptionCloudStorageConfigAvroConfigArrgs',
+    'SubscriptionDeadLetterPolicyArrgs',
+    'SubscriptionExpirationPolicyArrgs',
+    'SubscriptionIAMBindingConditionArrgs',
+    'SubscriptionIAMMemberConditionArrgs',
+    'SubscriptionPushConfigArrgs',
+    'SubscriptionPushConfigNoWrapperArrgs',
+    'SubscriptionPushConfigOidcTokenArrgs',
+    'SubscriptionRetryPolicyArrgs',
+    'TopicIAMBindingConditionArrgs',
+    'TopicIAMMemberConditionArrgs',
+    'TopicMessageStoragePolicyArrgs',
+    'TopicSchemaSettingsArrgs',
 ]
 
 @pulumi.input_type
-class LiteSubscriptionDeliveryConfigArgs:
+calass LiteSubscriptionDeliveryConfigArrgs:
     def __init__(__self__, *,
                  delivery_requirement: pulumi.Input[str]):
         """
@@ -57,13 +57,13 @@ class LiteSubscriptionDeliveryConfigArgs:
 
 
 @pulumi.input_type
-class LiteTopicPartitionConfigArgs:
+calass LiteTopicPartitionConfigArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
-                 capacity: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']] = None):
+                 capacity: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArrgs']] = None):
         """
         :param pulumi.Input[int] count: The number of partitions in the topic. Must be at least 1.
-        :param pulumi.Input['LiteTopicPartitionConfigCapacityArgs'] capacity: The capacity configuration.
+        :param pulumi.Input['LiteTopicPartitionConfigCapacityArrgs'] capacity: The capacity configuration.
                Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
@@ -84,7 +84,7 @@ class LiteTopicPartitionConfigArgs:
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']]:
+    def capacity(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArrgs']]:
         """
         The capacity configuration.
         Structure is documented below.
@@ -92,12 +92,12 @@ class LiteTopicPartitionConfigArgs:
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']]):
+    def capacity(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArrgs']]):
         pulumi.set(self, "capacity", value)
 
 
 @pulumi.input_type
-class LiteTopicPartitionConfigCapacityArgs:
+calass LiteTopicPartitionConfigCapacityArrgs:
     def __init__(__self__, *,
                  publish_mib_per_sec: pulumi.Input[int],
                  subscribe_mib_per_sec: pulumi.Input[int]):
@@ -134,7 +134,7 @@ class LiteTopicPartitionConfigCapacityArgs:
 
 
 @pulumi.input_type
-class LiteTopicReservationConfigArgs:
+calass LiteTopicReservationConfigArrgs:
     def __init__(__self__, *,
                  throughput_reservation: Optional[pulumi.Input[str]] = None):
         """
@@ -157,7 +157,7 @@ class LiteTopicReservationConfigArgs:
 
 
 @pulumi.input_type
-class LiteTopicRetentionConfigArgs:
+calass LiteTopicRetentionConfigArrgs:
     def __init__(__self__, *,
                  per_partition_bytes: pulumi.Input[str],
                  period: Optional[pulumi.Input[str]] = None):
@@ -205,7 +205,7 @@ class LiteTopicRetentionConfigArgs:
 
 
 @pulumi.input_type
-class SubscriptionBigqueryConfigArgs:
+calass SubscriptionBigqueryConfigArrgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
                  drop_unknown_fields: Optional[pulumi.Input[bool]] = None,
@@ -279,10 +279,10 @@ class SubscriptionBigqueryConfigArgs:
 
 
 @pulumi.input_type
-class SubscriptionCloudStorageConfigArgs:
+calass SubscriptionCloudStorageConfigArrgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 avro_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']] = None,
+                 avro_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArrgs']] = None,
                  filename_prefix: Optional[pulumi.Input[str]] = None,
                  filename_suffix: Optional[pulumi.Input[str]] = None,
                  max_bytes: Optional[pulumi.Input[int]] = None,
@@ -290,7 +290,7 @@ class SubscriptionCloudStorageConfigArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
-        :param pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
+        :param pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArrgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
                Structure is documented below.
         :param pulumi.Input[str] filename_prefix: User-provided prefix for Cloud Storage filename.
         :param pulumi.Input[str] filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in "/".
@@ -330,7 +330,7 @@ class SubscriptionCloudStorageConfigArgs:
 
     @property
     @pulumi.getter(name="avroConfig")
-    def avro_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]:
+    def avro_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArrgs']]:
         """
         If set, message data will be written to Cloud Storage in Avro format.
         Structure is documented below.
@@ -338,7 +338,7 @@ class SubscriptionCloudStorageConfigArgs:
         return pulumi.get(self, "avro_config")
 
     @avro_config.setter
-    def avro_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]):
+    def avro_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArrgs']]):
         pulumi.set(self, "avro_config", value)
 
     @property
@@ -407,7 +407,7 @@ class SubscriptionCloudStorageConfigArgs:
 
 
 @pulumi.input_type
-class SubscriptionCloudStorageConfigAvroConfigArgs:
+calass SubscriptionCloudStorageConfigAvroConfigArrgs:
     def __init__(__self__, *,
                  write_metadata: Optional[pulumi.Input[bool]] = None):
         """
@@ -430,7 +430,7 @@ class SubscriptionCloudStorageConfigAvroConfigArgs:
 
 
 @pulumi.input_type
-class SubscriptionDeadLetterPolicyArgs:
+calass SubscriptionDeadLetterPolicyArrgs:
     def __init__(__self__, *,
                  dead_letter_topic: Optional[pulumi.Input[str]] = None,
                  max_delivery_attempts: Optional[pulumi.Input[int]] = None):
@@ -499,7 +499,7 @@ class SubscriptionDeadLetterPolicyArgs:
 
 
 @pulumi.input_type
-class SubscriptionExpirationPolicyArgs:
+calass SubscriptionExpirationPolicyArrgs:
     def __init__(__self__, *,
                  ttl: pulumi.Input[str]):
         """
@@ -529,7 +529,7 @@ class SubscriptionExpirationPolicyArgs:
 
 
 @pulumi.input_type
-class SubscriptionIAMBindingConditionArgs:
+calass SubscriptionIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -568,7 +568,7 @@ class SubscriptionIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class SubscriptionIAMMemberConditionArgs:
+calass SubscriptionIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -607,12 +607,12 @@ class SubscriptionIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class SubscriptionPushConfigArgs:
+calass SubscriptionPushConfigArrgs:
     def __init__(__self__, *,
                  push_endpoint: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 no_wrapper: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']] = None):
+                 no_wrapper: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArrgs']] = None,
+                 oidc_token: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArrgs']] = None):
         """
         :param pulumi.Input[str] push_endpoint: A URL locating the endpoint to which messages should be pushed.
                For example, a Webhook endpoint might use
@@ -635,10 +635,10 @@ class SubscriptionPushConfigArgs:
                The possible values for this attribute are:
                - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
                - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
-        :param pulumi.Input['SubscriptionPushConfigNoWrapperArgs'] no_wrapper: When set, the payload to the push endpoint is not wrapped.Sets the
+        :param pulumi.Input['SubscriptionPushConfigNoWrapperArrgs'] no_wrapper: When set, the payload to the push endpoint is not wrapped.Sets the
                `data` field as the HTTP body for delivery.
                Structure is documented below.
-        :param pulumi.Input['SubscriptionPushConfigOidcTokenArgs'] oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as
+        :param pulumi.Input['SubscriptionPushConfigOidcTokenArrgs'] oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as
                an Authorization header in the HTTP request for every pushed message.
                Structure is documented below.
         """
@@ -695,7 +695,7 @@ class SubscriptionPushConfigArgs:
 
     @property
     @pulumi.getter(name="noWrapper")
-    def no_wrapper(self) -> Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']]:
+    def no_wrapper(self) -> Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArrgs']]:
         """
         When set, the payload to the push endpoint is not wrapped.Sets the
         `data` field as the HTTP body for delivery.
@@ -704,12 +704,12 @@ class SubscriptionPushConfigArgs:
         return pulumi.get(self, "no_wrapper")
 
     @no_wrapper.setter
-    def no_wrapper(self, value: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']]):
+    def no_wrapper(self, value: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArrgs']]):
         pulumi.set(self, "no_wrapper", value)
 
     @property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']]:
+    def oidc_token(self) -> Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArrgs']]:
         """
         If specified, Pub/Sub will generate and attach an OIDC JWT token as
         an Authorization header in the HTTP request for every pushed message.
@@ -718,12 +718,12 @@ class SubscriptionPushConfigArgs:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']]):
+    def oidc_token(self, value: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArrgs']]):
         pulumi.set(self, "oidc_token", value)
 
 
 @pulumi.input_type
-class SubscriptionPushConfigNoWrapperArgs:
+calass SubscriptionPushConfigNoWrapperArrgs:
     def __init__(__self__, *,
                  write_metadata: pulumi.Input[bool]):
         """
@@ -749,7 +749,7 @@ class SubscriptionPushConfigNoWrapperArgs:
 
 
 @pulumi.input_type
-class SubscriptionPushConfigOidcTokenArgs:
+calass SubscriptionPushConfigOidcTokenArrgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[str],
                  audience: Optional[pulumi.Input[str]] = None):
@@ -803,7 +803,7 @@ class SubscriptionPushConfigOidcTokenArgs:
 
 
 @pulumi.input_type
-class SubscriptionRetryPolicyArgs:
+calass SubscriptionRetryPolicyArrgs:
     def __init__(__self__, *,
                  maximum_backoff: Optional[pulumi.Input[str]] = None,
                  minimum_backoff: Optional[pulumi.Input[str]] = None):
@@ -846,7 +846,7 @@ class SubscriptionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class TopicIAMBindingConditionArgs:
+calass TopicIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -885,7 +885,7 @@ class TopicIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class TopicIAMMemberConditionArgs:
+calass TopicIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -924,7 +924,7 @@ class TopicIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class TopicMessageStoragePolicyArgs:
+calass TopicMessageStoragePolicyArrgs:
     def __init__(__self__, *,
                  allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -956,7 +956,7 @@ class TopicMessageStoragePolicyArgs:
 
 
 @pulumi.input_type
-class TopicSchemaSettingsArgs:
+calass TopicSchemaSettingsArrgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[str],
                  encoding: Optional[pulumi.Input[str]] = None):

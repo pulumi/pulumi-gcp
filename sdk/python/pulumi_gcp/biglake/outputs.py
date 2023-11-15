@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DatabaseHiveOptions(dict):
+calass DatabaseHiveOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -73,7 +73,7 @@ class DatabaseHiveOptions(dict):
 
 
 @pulumi.output_type
-class TableHiveOptions(dict):
+calass TableHiveOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -101,7 +101,7 @@ class TableHiveOptions(dict):
         :param Mapping[str, str] parameters: Stores user supplied Hive table parameters. An object containing a
                list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param 'TableHiveOptionsStorageDescriptorArgs' storage_descriptor: Stores physical storage information on the data.
+        :param 'TableHiveOptionsStorageDescriptorArrgs' storage_descriptor: Stores physical storage information on the data.
                Structure is documented below.
         :param str table_type: Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
         """
@@ -141,7 +141,7 @@ class TableHiveOptions(dict):
 
 
 @pulumi.output_type
-class TableHiveOptionsStorageDescriptor(dict):
+calass TableHiveOptionsStorageDescriptor(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

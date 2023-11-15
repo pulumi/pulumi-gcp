@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TargetTCPProxyArgs', 'TargetTCPProxy']
+__all__ = ['TargetTCPProxyArrgs', 'TargetTCPProxy']
 
 @pulumi.input_type
-class TargetTCPProxyArgs:
+calass TargetTCPProxyArrgs:
     def __init__(__self__, *,
                  backend_service: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class TargetTCPProxyArgs:
 
 
 @pulumi.input_type
-class _TargetTCPProxyState:
+calass _TargetTCPProxyState:
     def __init__(__self__, *,
                  backend_service: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -322,7 +322,7 @@ class _TargetTCPProxyState:
         pulumi.set(self, "self_link", value)
 
 
-class TargetTCPProxy(pulumi.CustomResource):
+calass TargetTCPProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -390,7 +390,7 @@ class TargetTCPProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetTCPProxyArgs,
+                 args: TargetTCPProxyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a TargetTcpProxy resource, which is used by one or more
@@ -422,12 +422,12 @@ class TargetTCPProxy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TargetTCPProxyArgs args: The arguments to use to populate this resource's properties.
+        :param TargetTCPProxyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TargetTCPProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TargetTCPProxyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -449,7 +449,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TargetTCPProxyArgs.__new__(TargetTCPProxyArgs)
+            __props__ = TargetTCPProxyArrgs.__new__(TargetTCPProxyArrgs)
 
             if backend_service is None and not opts.urn:
                 raise TypeError("Missing required property 'backend_service'")

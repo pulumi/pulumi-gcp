@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HaVpnGatewayArgs', 'HaVpnGateway']
+__all__ = ['HaVpnGatewayArrgs', 'HaVpnGateway']
 
 @pulumi.input_type
-class HaVpnGatewayArgs:
+calass HaVpnGatewayArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -22,7 +22,7 @@ class HaVpnGatewayArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
-                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]]] = None):
         """
         The set of arguments for constructing a HaVpnGateway resource.
         :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
@@ -44,7 +44,7 @@ class HaVpnGatewayArgs:
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
-        :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
         pulumi.set(__self__, "network", network)
@@ -148,7 +148,7 @@ class HaVpnGatewayArgs:
 
     @property
     @pulumi.getter(name="vpnInterfaces")
-    def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
+    def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]]]:
         """
         A list of interfaces on this VPN gateway.
         Structure is documented below.
@@ -156,12 +156,12 @@ class HaVpnGatewayArgs:
         return pulumi.get(self, "vpn_interfaces")
 
     @vpn_interfaces.setter
-    def vpn_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]):
+    def vpn_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]]]):
         pulumi.set(self, "vpn_interfaces", value)
 
 
 @pulumi.input_type
-class _HaVpnGatewayState:
+calass _HaVpnGatewayState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -170,7 +170,7 @@ class _HaVpnGatewayState:
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
-                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]]] = None):
         """
         Input properties used for looking up and filtering HaVpnGateway resources.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -193,7 +193,7 @@ class _HaVpnGatewayState:
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
-        :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
         if description is not None:
@@ -312,7 +312,7 @@ class _HaVpnGatewayState:
 
     @property
     @pulumi.getter(name="vpnInterfaces")
-    def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
+    def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]]]:
         """
         A list of interfaces on this VPN gateway.
         Structure is documented below.
@@ -320,11 +320,11 @@ class _HaVpnGatewayState:
         return pulumi.get(self, "vpn_interfaces")
 
     @vpn_interfaces.setter
-    def vpn_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]):
+    def vpn_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArrgs']]]]):
         pulumi.set(self, "vpn_interfaces", value)
 
 
-class HaVpnGateway(pulumi.CustomResource):
+calass HaVpnGateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -335,7 +335,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
-                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None,
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArrgs']]]]] = None,
                  __props__=None):
         """
         Represents a VPN gateway running in GCP. This virtual device is managed
@@ -389,7 +389,7 @@ class HaVpnGateway(pulumi.CustomResource):
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=16550,
             ))
         attachment1 = gcp.compute.InterconnectAttachment("attachment1",
@@ -413,11 +413,11 @@ class HaVpnGateway(pulumi.CustomResource):
         vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
             network=network.id,
             vpn_interfaces=[
-                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                gcp.compute.HaVpnGatewayVpnInterfaceArrgs(
                     id=0,
                     interconnect_attachment=attachment1.self_link,
                 ),
-                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                gcp.compute.HaVpnGatewayVpnInterfaceArrgs(
                     id=1,
                     interconnect_attachment=attachment2.self_link,
                 ),
@@ -465,14 +465,14 @@ class HaVpnGateway(pulumi.CustomResource):
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArrgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HaVpnGatewayArgs,
+                 args: HaVpnGatewayArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a VPN gateway running in GCP. This virtual device is managed
@@ -526,7 +526,7 @@ class HaVpnGateway(pulumi.CustomResource):
         router = gcp.compute.Router("router",
             network=network.name,
             encrypted_interconnect_router=True,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=16550,
             ))
         attachment1 = gcp.compute.InterconnectAttachment("attachment1",
@@ -550,11 +550,11 @@ class HaVpnGateway(pulumi.CustomResource):
         vpn_gateway = gcp.compute.HaVpnGateway("vpn-gateway",
             network=network.id,
             vpn_interfaces=[
-                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                gcp.compute.HaVpnGatewayVpnInterfaceArrgs(
                     id=0,
                     interconnect_attachment=attachment1.self_link,
                 ),
-                gcp.compute.HaVpnGatewayVpnInterfaceArgs(
+                gcp.compute.HaVpnGatewayVpnInterfaceArrgs(
                     id=1,
                     interconnect_attachment=attachment2.self_link,
                 ),
@@ -582,12 +582,12 @@ class HaVpnGateway(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HaVpnGatewayArgs args: The arguments to use to populate this resource's properties.
+        :param HaVpnGatewayArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HaVpnGatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HaVpnGatewayArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -602,7 +602,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
-                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None,
+                 vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -610,7 +610,7 @@ class HaVpnGateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HaVpnGatewayArgs.__new__(HaVpnGatewayArgs)
+            __props__ = HaVpnGatewayArrgs.__new__(HaVpnGatewayArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -639,7 +639,7 @@ class HaVpnGateway(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stack_type: Optional[pulumi.Input[str]] = None,
-            vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None) -> 'HaVpnGateway':
+            vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArrgs']]]]] = None) -> 'HaVpnGateway':
         """
         Get an existing HaVpnGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -667,7 +667,7 @@ class HaVpnGateway(pulumi.CustomResource):
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArrgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

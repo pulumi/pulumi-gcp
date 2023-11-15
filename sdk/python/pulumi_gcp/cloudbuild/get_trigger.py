@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTriggerResult:
+calass GetTriggerResult:
     """
     A collection of values returned by getTrigger.
     """
@@ -236,7 +236,7 @@ class GetTriggerResult:
         return pulumi.get(self, "webhook_configs")
 
 
-class AwaitableGetTriggerResult(GetTriggerResult):
+calass AwaitableGetTriggerResult(GetTriggerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

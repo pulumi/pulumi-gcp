@@ -11,30 +11,30 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxPageArgs', 'CxPage']
+__all__ = ['CxPageArrgs', 'CxPage']
 
 @pulumi.input_type
-class CxPageArgs:
+calass CxPageArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
-                 form: Optional[pulumi.Input['CxPageFormArgs']] = None,
+                 entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArrgs']] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]]] = None,
+                 form: Optional[pulumi.Input['CxPageFormArrgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None):
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]]] = None):
         """
         The set of arguments for constructing a CxPage resource.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
                
                
                - - -
-        :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
+        :param pulumi.Input['CxPageEntryFulfillmentArrgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input['CxPageFormArrgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -54,7 +54,7 @@ class CxPageArgs:
                If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
                If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
                When we are in a certain page, the TransitionRoutes are evalauted in the following order:
                TransitionRoutes defined in the page with intent specified.
                TransitionRoutes defined in the transition route groups with intent specified.
@@ -97,7 +97,7 @@ class CxPageArgs:
 
     @property
     @pulumi.getter(name="entryFulfillment")
-    def entry_fulfillment(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentArgs']]:
+    def entry_fulfillment(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentArrgs']]:
         """
         The fulfillment to call when the session is entering the page.
         Structure is documented below.
@@ -105,12 +105,12 @@ class CxPageArgs:
         return pulumi.get(self, "entry_fulfillment")
 
     @entry_fulfillment.setter
-    def entry_fulfillment(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']]):
+    def entry_fulfillment(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentArrgs']]):
         pulumi.set(self, "entry_fulfillment", value)
 
     @property
     @pulumi.getter(name="eventHandlers")
-    def event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]]:
+    def event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]]]:
         """
         Handlers associated with the page to handle events such as webhook errors, no match or no input.
         Structure is documented below.
@@ -118,12 +118,12 @@ class CxPageArgs:
         return pulumi.get(self, "event_handlers")
 
     @event_handlers.setter
-    def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]]):
+    def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]]]):
         pulumi.set(self, "event_handlers", value)
 
     @property
     @pulumi.getter
-    def form(self) -> Optional[pulumi.Input['CxPageFormArgs']]:
+    def form(self) -> Optional[pulumi.Input['CxPageFormArrgs']]:
         """
         The form associated with the page, used for collecting parameters relevant to the page.
         Structure is documented below.
@@ -131,7 +131,7 @@ class CxPageArgs:
         return pulumi.get(self, "form")
 
     @form.setter
-    def form(self, value: Optional[pulumi.Input['CxPageFormArgs']]):
+    def form(self, value: Optional[pulumi.Input['CxPageFormArrgs']]):
         pulumi.set(self, "form", value)
 
     @property
@@ -187,7 +187,7 @@ class CxPageArgs:
 
     @property
     @pulumi.getter(name="transitionRoutes")
-    def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]]:
+    def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]]]:
         """
         A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
         When we are in a certain page, the TransitionRoutes are evalauted in the following order:
@@ -202,33 +202,33 @@ class CxPageArgs:
         return pulumi.get(self, "transition_routes")
 
     @transition_routes.setter
-    def transition_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]]):
+    def transition_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]]]):
         pulumi.set(self, "transition_routes", value)
 
 
 @pulumi.input_type
-class _CxPageState:
+calass _CxPageState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
-                 form: Optional[pulumi.Input['CxPageFormArgs']] = None,
+                 entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArrgs']] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]]] = None,
+                 form: Optional[pulumi.Input['CxPageFormArrgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None):
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]]] = None):
         """
         Input properties used for looking up and filtering CxPage resources.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
                
                
                - - -
-        :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
+        :param pulumi.Input['CxPageEntryFulfillmentArrgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
-        :param pulumi.Input['CxPageFormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input['CxPageFormArrgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -250,7 +250,7 @@ class _CxPageState:
                If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
                If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
                When we are in a certain page, the TransitionRoutes are evalauted in the following order:
                TransitionRoutes defined in the page with intent specified.
                TransitionRoutes defined in the transition route groups with intent specified.
@@ -296,7 +296,7 @@ class _CxPageState:
 
     @property
     @pulumi.getter(name="entryFulfillment")
-    def entry_fulfillment(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentArgs']]:
+    def entry_fulfillment(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentArrgs']]:
         """
         The fulfillment to call when the session is entering the page.
         Structure is documented below.
@@ -304,12 +304,12 @@ class _CxPageState:
         return pulumi.get(self, "entry_fulfillment")
 
     @entry_fulfillment.setter
-    def entry_fulfillment(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']]):
+    def entry_fulfillment(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentArrgs']]):
         pulumi.set(self, "entry_fulfillment", value)
 
     @property
     @pulumi.getter(name="eventHandlers")
-    def event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]]:
+    def event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]]]:
         """
         Handlers associated with the page to handle events such as webhook errors, no match or no input.
         Structure is documented below.
@@ -317,12 +317,12 @@ class _CxPageState:
         return pulumi.get(self, "event_handlers")
 
     @event_handlers.setter
-    def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]]):
+    def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArrgs']]]]):
         pulumi.set(self, "event_handlers", value)
 
     @property
     @pulumi.getter
-    def form(self) -> Optional[pulumi.Input['CxPageFormArgs']]:
+    def form(self) -> Optional[pulumi.Input['CxPageFormArrgs']]:
         """
         The form associated with the page, used for collecting parameters relevant to the page.
         Structure is documented below.
@@ -330,7 +330,7 @@ class _CxPageState:
         return pulumi.get(self, "form")
 
     @form.setter
-    def form(self, value: Optional[pulumi.Input['CxPageFormArgs']]):
+    def form(self, value: Optional[pulumi.Input['CxPageFormArrgs']]):
         pulumi.set(self, "form", value)
 
     @property
@@ -399,7 +399,7 @@ class _CxPageState:
 
     @property
     @pulumi.getter(name="transitionRoutes")
-    def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]]:
+    def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]]]:
         """
         A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
         When we are in a certain page, the TransitionRoutes are evalauted in the following order:
@@ -414,23 +414,23 @@ class _CxPageState:
         return pulumi.get(self, "transition_routes")
 
     @transition_routes.setter
-    def transition_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]]):
+    def transition_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArrgs']]]]):
         pulumi.set(self, "transition_routes", value)
 
 
-class CxPage(pulumi.CustomResource):
+calass CxPage(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]]] = None,
-                 form: Optional[pulumi.Input[pulumi.InputType['CxPageFormArgs']]] = None,
+                 entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArrgs']]] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArrgs']]]]] = None,
+                 form: Optional[pulumi.Input[pulumi.InputType['CxPageFormArrgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArgs']]]]] = None,
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArrgs']]]]] = None,
                  __props__=None):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages.
@@ -463,7 +463,7 @@ class CxPage(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         my_page2 = gcp.diagflow.CxPage("myPage2",
@@ -472,69 +472,69 @@ class CxPage(pulumi.CustomResource):
         my_webhook = gcp.diagflow.CxWebhook("myWebhook",
             parent=agent.id,
             display_name="MyWebhook",
-            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
+            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArrgs(
                 uri="https://example.com",
             ))
         basic_page = gcp.diagflow.CxPage("basicPage",
             parent=agent.start_flow,
             display_name="MyPage",
-            entry_fulfillment=gcp.diagflow.CxPageEntryFulfillmentArgs(
+            entry_fulfillment=gcp.diagflow.CxPageEntryFulfillmentArrgs(
                 messages=[
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
                         channel="some-channel",
-                        text=gcp.diagflow.CxPageEntryFulfillmentMessageTextArgs(
+                        text=gcp.diagflow.CxPageEntryFulfillmentMessageTextArrgs(
                             texts=["Welcome to page"],
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
                         payload="        {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        conversation_success=gcp.diagflow.CxPageEntryFulfillmentMessageConversationSuccessArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        conversation_success=gcp.diagflow.CxPageEntryFulfillmentMessageConversationSuccessArrgs(
                             metadata="          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArrgs(
                             text="some output text",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArrgs(
                             ssml="          <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        live_agent_handoff=gcp.diagflow.CxPageEntryFulfillmentMessageLiveAgentHandoffArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        live_agent_handoff=gcp.diagflow.CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs(
                             metadata="          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        play_audio=gcp.diagflow.CxPageEntryFulfillmentMessagePlayAudioArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        play_audio=gcp.diagflow.CxPageEntryFulfillmentMessagePlayAudioArrgs(
                             audio_uri="http://example.com/some-audio-file.mp3",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        telephony_transfer_call=gcp.diagflow.CxPageEntryFulfillmentMessageTelephonyTransferCallArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        telephony_transfer_call=gcp.diagflow.CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs(
                             phone_number="1-234-567-8901",
                         ),
                     ),
                 ],
                 set_parameter_actions=[
-                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArrgs(
                         parameter="some-param",
                         value="123.45",
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArrgs(
                         parameter="another-param",
                         value=json.dumps("abc"),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArrgs(
                         parameter="other-param",
                         value=json.dumps(["foo"]),
                     ),
                 ],
-                conditional_cases=[gcp.diagflow.CxPageEntryFulfillmentConditionalCaseArgs(
+                conditional_cases=[gcp.diagflow.CxPageEntryFulfillmentConditionalCaseArrgs(
                     cases=json.dumps([
                         {
                             "condition": "$sys.func.RAND() < 0.5",
@@ -574,66 +574,66 @@ class CxPage(pulumi.CustomResource):
                     ]),
                 )],
             ),
-            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
+            event_handlers=[gcp.diagflow.CxPageEventHandlerArrgs(
                 event="some-event",
-                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArrgs(
                     return_partial_responses=True,
                     messages=[
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
                             channel="some-channel",
-                            text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
+                            text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArrgs(
                                 texts=["Some text"],
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
                             payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            conversation_success=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            conversation_success=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 text="some output text",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            live_agent_handoff=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            live_agent_handoff=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            play_audio=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            play_audio=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs(
                                 audio_uri="http://example.com/some-audio-file.mp3",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            telephony_transfer_call=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            telephony_transfer_call=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs(
                                 phone_number="1-234-567-8901",
                             ),
                         ),
                     ],
                     set_parameter_actions=[
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                             parameter="some-param",
                             value="123.45",
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                             parameter="another-param",
                             value=json.dumps("abc"),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                             parameter="other-param",
                             value=json.dumps(["foo"]),
                         ),
                     ],
-                    conditional_cases=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs(
+                    conditional_cases=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs(
                         cases=json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
@@ -674,69 +674,69 @@ class CxPage(pulumi.CustomResource):
                     )],
                 ),
             )],
-            form=gcp.diagflow.CxPageFormArgs(
-                parameters=[gcp.diagflow.CxPageFormParameterArgs(
+            form=gcp.diagflow.CxPageFormArrgs(
+                parameters=[gcp.diagflow.CxPageFormParameterArrgs(
                     display_name="param1",
                     entity_type="projects/-/locations/-/agents/-/entityTypes/sys.date",
                     default_value=json.dumps("2000-01-01"),
-                    fill_behavior=gcp.diagflow.CxPageFormParameterFillBehaviorArgs(
-                        initial_prompt_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs(
+                    fill_behavior=gcp.diagflow.CxPageFormParameterFillBehaviorArrgs(
+                        initial_prompt_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs(
                             messages=[
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
                                     channel="some-channel",
-                                    text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs(
+                                    text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs(
                                         texts=["Please provide param1"],
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
                                     payload="              {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs(
                                         metadata="                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs(
                                         text="some output text",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs(
                                         ssml="                <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs(
                                         metadata="                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs(
                                         audio_uri="http://example.com/some-audio-file.mp3",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs(
                                         phone_number="1-234-567-8901",
                                     ),
                                 ),
                             ],
                             set_parameter_actions=[
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs(
                                     parameter="some-param",
                                     value="123.45",
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs(
                                     parameter="another-param",
                                     value=json.dumps("abc"),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs(
                                     parameter="other-param",
                                     value=json.dumps(["foo"]),
                                 ),
                             ],
-                            conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs(
+                            conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs(
                                 cases=json.dumps([
                                     {
                                         "condition": "$sys.func.RAND() < 0.5",
@@ -777,68 +777,68 @@ class CxPage(pulumi.CustomResource):
                             )],
                         ),
                         reprompt_event_handlers=[
-                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs(
+                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs(
                                 event="sys.no-match-1",
-                                trigger_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs(
+                                trigger_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs(
                                     return_partial_responses=True,
                                     webhook=my_webhook.id,
                                     tag="some-tag",
                                     messages=[
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
                                             channel="some-channel",
-                                            text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs(
+                                            text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs(
                                                 texts=["Please provide param1"],
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
                                             payload="                {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs(
                                                 metadata="                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                                 text="some output text",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                                 ssml="                  <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs(
                                                 metadata="                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs(
                                                 audio_uri="http://example.com/some-audio-file.mp3",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs(
                                                 phone_number="1-234-567-8901",
                                             ),
                                         ),
                                     ],
                                     set_parameter_actions=[
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                                             parameter="some-param",
                                             value="123.45",
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                                             parameter="another-param",
                                             value=json.dumps("abc"),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                                             parameter="other-param",
                                             value=json.dumps(["foo"]),
                                         ),
                                     ],
-                                    conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs(
+                                    conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs(
                                         cases=json.dumps([
                                             {
                                                 "condition": "$sys.func.RAND() < 0.5",
@@ -879,11 +879,11 @@ class CxPage(pulumi.CustomResource):
                                     )],
                                 ),
                             ),
-                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs(
+                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs(
                                 event="sys.no-match-2",
                                 target_flow=agent.start_flow,
                             ),
-                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs(
+                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs(
                                 event="sys.no-match-3",
                                 target_page=my_page2.id,
                             ),
@@ -893,65 +893,65 @@ class CxPage(pulumi.CustomResource):
                     redact=True,
                 )],
             ),
-            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
+            transition_routes=[gcp.diagflow.CxPageTransitionRouteArrgs(
                 condition="$page.params.status = 'FINAL'",
-                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArrgs(
                     messages=[
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
                             channel="some-channel",
-                            text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
+                            text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs(
                                 texts=["information completed, navigating to page 2"],
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
                             payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            conversation_success=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            conversation_success=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 text="some output text",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            live_agent_handoff=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            live_agent_handoff=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            play_audio=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            play_audio=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs(
                                 audio_uri="http://example.com/some-audio-file.mp3",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            telephony_transfer_call=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            telephony_transfer_call=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs(
                                 phone_number="1-234-567-8901",
                             ),
                         ),
                     ],
                     set_parameter_actions=[
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs(
                             parameter="some-param",
                             value="123.45",
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs(
                             parameter="another-param",
                             value=json.dumps("abc"),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs(
                             parameter="other-param",
                             value=json.dumps(["foo"]),
                         ),
                     ],
-                    conditional_cases=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs(
+                    conditional_cases=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs(
                         cases=json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
@@ -1013,11 +1013,11 @@ class CxPage(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
+        :param pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArrgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArrgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['CxPageFormArgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input[pulumi.InputType['CxPageFormArrgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -1037,7 +1037,7 @@ class CxPage(pulumi.CustomResource):
                If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
                If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArgs']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArrgs']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
                When we are in a certain page, the TransitionRoutes are evalauted in the following order:
                TransitionRoutes defined in the page with intent specified.
                TransitionRoutes defined in the transition route groups with intent specified.
@@ -1051,7 +1051,7 @@ class CxPage(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxPageArgs,
+                 args: CxPageArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages.
@@ -1084,7 +1084,7 @@ class CxPage(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         my_page2 = gcp.diagflow.CxPage("myPage2",
@@ -1093,69 +1093,69 @@ class CxPage(pulumi.CustomResource):
         my_webhook = gcp.diagflow.CxWebhook("myWebhook",
             parent=agent.id,
             display_name="MyWebhook",
-            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArgs(
+            generic_web_service=gcp.diagflow.CxWebhookGenericWebServiceArrgs(
                 uri="https://example.com",
             ))
         basic_page = gcp.diagflow.CxPage("basicPage",
             parent=agent.start_flow,
             display_name="MyPage",
-            entry_fulfillment=gcp.diagflow.CxPageEntryFulfillmentArgs(
+            entry_fulfillment=gcp.diagflow.CxPageEntryFulfillmentArrgs(
                 messages=[
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
                         channel="some-channel",
-                        text=gcp.diagflow.CxPageEntryFulfillmentMessageTextArgs(
+                        text=gcp.diagflow.CxPageEntryFulfillmentMessageTextArrgs(
                             texts=["Welcome to page"],
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
                         payload="        {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        conversation_success=gcp.diagflow.CxPageEntryFulfillmentMessageConversationSuccessArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        conversation_success=gcp.diagflow.CxPageEntryFulfillmentMessageConversationSuccessArrgs(
                             metadata="          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArrgs(
                             text="some output text",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        output_audio_text=gcp.diagflow.CxPageEntryFulfillmentMessageOutputAudioTextArrgs(
                             ssml="          <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        live_agent_handoff=gcp.diagflow.CxPageEntryFulfillmentMessageLiveAgentHandoffArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        live_agent_handoff=gcp.diagflow.CxPageEntryFulfillmentMessageLiveAgentHandoffArrgs(
                             metadata="          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        play_audio=gcp.diagflow.CxPageEntryFulfillmentMessagePlayAudioArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        play_audio=gcp.diagflow.CxPageEntryFulfillmentMessagePlayAudioArrgs(
                             audio_uri="http://example.com/some-audio-file.mp3",
                         ),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentMessageArgs(
-                        telephony_transfer_call=gcp.diagflow.CxPageEntryFulfillmentMessageTelephonyTransferCallArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentMessageArrgs(
+                        telephony_transfer_call=gcp.diagflow.CxPageEntryFulfillmentMessageTelephonyTransferCallArrgs(
                             phone_number="1-234-567-8901",
                         ),
                     ),
                 ],
                 set_parameter_actions=[
-                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArrgs(
                         parameter="some-param",
                         value="123.45",
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArrgs(
                         parameter="another-param",
                         value=json.dumps("abc"),
                     ),
-                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArgs(
+                    gcp.diagflow.CxPageEntryFulfillmentSetParameterActionArrgs(
                         parameter="other-param",
                         value=json.dumps(["foo"]),
                     ),
                 ],
-                conditional_cases=[gcp.diagflow.CxPageEntryFulfillmentConditionalCaseArgs(
+                conditional_cases=[gcp.diagflow.CxPageEntryFulfillmentConditionalCaseArrgs(
                     cases=json.dumps([
                         {
                             "condition": "$sys.func.RAND() < 0.5",
@@ -1195,66 +1195,66 @@ class CxPage(pulumi.CustomResource):
                     ]),
                 )],
             ),
-            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
+            event_handlers=[gcp.diagflow.CxPageEventHandlerArrgs(
                 event="some-event",
-                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArrgs(
                     return_partial_responses=True,
                     messages=[
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
                             channel="some-channel",
-                            text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
+                            text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArrgs(
                                 texts=["Some text"],
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
                             payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            conversation_success=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            conversation_success=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 text="some output text",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            live_agent_handoff=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            live_agent_handoff=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            play_audio=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            play_audio=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArrgs(
                                 audio_uri="http://example.com/some-audio-file.mp3",
                             ),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                            telephony_transfer_call=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                            telephony_transfer_call=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs(
                                 phone_number="1-234-567-8901",
                             ),
                         ),
                     ],
                     set_parameter_actions=[
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                             parameter="some-param",
                             value="123.45",
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                             parameter="another-param",
                             value=json.dumps("abc"),
                         ),
-                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                             parameter="other-param",
                             value=json.dumps(["foo"]),
                         ),
                     ],
-                    conditional_cases=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs(
+                    conditional_cases=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCaseArrgs(
                         cases=json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
@@ -1295,69 +1295,69 @@ class CxPage(pulumi.CustomResource):
                     )],
                 ),
             )],
-            form=gcp.diagflow.CxPageFormArgs(
-                parameters=[gcp.diagflow.CxPageFormParameterArgs(
+            form=gcp.diagflow.CxPageFormArrgs(
+                parameters=[gcp.diagflow.CxPageFormParameterArrgs(
                     display_name="param1",
                     entity_type="projects/-/locations/-/agents/-/entityTypes/sys.date",
                     default_value=json.dumps("2000-01-01"),
-                    fill_behavior=gcp.diagflow.CxPageFormParameterFillBehaviorArgs(
-                        initial_prompt_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs(
+                    fill_behavior=gcp.diagflow.CxPageFormParameterFillBehaviorArrgs(
+                        initial_prompt_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArrgs(
                             messages=[
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
                                     channel="some-channel",
-                                    text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs(
+                                    text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArrgs(
                                         texts=["Please provide param1"],
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
                                     payload="              {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArrgs(
                                         metadata="                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs(
                                         text="some output text",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArrgs(
                                         ssml="                <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArrgs(
                                         metadata="                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArrgs(
                                         audio_uri="http://example.com/some-audio-file.mp3",
                                     ),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs(
-                                    telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrgs(
+                                    telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArrgs(
                                         phone_number="1-234-567-8901",
                                     ),
                                 ),
                             ],
                             set_parameter_actions=[
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs(
                                     parameter="some-param",
                                     value="123.45",
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs(
                                     parameter="another-param",
                                     value=json.dumps("abc"),
                                 ),
-                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs(
+                                gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrgs(
                                     parameter="other-param",
                                     value=json.dumps(["foo"]),
                                 ),
                             ],
-                            conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs(
+                            conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrgs(
                                 cases=json.dumps([
                                     {
                                         "condition": "$sys.func.RAND() < 0.5",
@@ -1398,68 +1398,68 @@ class CxPage(pulumi.CustomResource):
                             )],
                         ),
                         reprompt_event_handlers=[
-                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs(
+                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs(
                                 event="sys.no-match-1",
-                                trigger_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs(
+                                trigger_fulfillment=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArrgs(
                                     return_partial_responses=True,
                                     webhook=my_webhook.id,
                                     tag="some-tag",
                                     messages=[
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
                                             channel="some-channel",
-                                            text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs(
+                                            text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArrgs(
                                                 texts=["Please provide param1"],
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
                                             payload="                {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            conversation_success=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArrgs(
                                                 metadata="                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                                 text="some output text",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            output_audio_text=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArrgs(
                                                 ssml="                  <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            live_agent_handoff=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArrgs(
                                                 metadata="                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            play_audio=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArrgs(
                                                 audio_uri="http://example.com/some-audio-file.mp3",
                                             ),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs(
-                                            telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrgs(
+                                            telephony_transfer_call=gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArrgs(
                                                 phone_number="1-234-567-8901",
                                             ),
                                         ),
                                     ],
                                     set_parameter_actions=[
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                                             parameter="some-param",
                                             value="123.45",
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                                             parameter="another-param",
                                             value=json.dumps("abc"),
                                         ),
-                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs(
+                                        gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrgs(
                                             parameter="other-param",
                                             value=json.dumps(["foo"]),
                                         ),
                                     ],
-                                    conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs(
+                                    conditional_cases=[gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrgs(
                                         cases=json.dumps([
                                             {
                                                 "condition": "$sys.func.RAND() < 0.5",
@@ -1500,11 +1500,11 @@ class CxPage(pulumi.CustomResource):
                                     )],
                                 ),
                             ),
-                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs(
+                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs(
                                 event="sys.no-match-2",
                                 target_flow=agent.start_flow,
                             ),
-                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs(
+                            gcp.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArrgs(
                                 event="sys.no-match-3",
                                 target_page=my_page2.id,
                             ),
@@ -1514,65 +1514,65 @@ class CxPage(pulumi.CustomResource):
                     redact=True,
                 )],
             ),
-            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
+            transition_routes=[gcp.diagflow.CxPageTransitionRouteArrgs(
                 condition="$page.params.status = 'FINAL'",
-                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArrgs(
                     messages=[
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
                             channel="some-channel",
-                            text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
+                            text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs(
                                 texts=["information completed, navigating to page 2"],
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
                             payload="          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            conversation_success=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            conversation_success=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 text="some output text",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            output_audio_text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArrgs(
                                 ssml="            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            live_agent_handoff=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            live_agent_handoff=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArrgs(
                                 metadata="            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            play_audio=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            play_audio=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArrgs(
                                 audio_uri="http://example.com/some-audio-file.mp3",
                             ),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                            telephony_transfer_call=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                            telephony_transfer_call=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArrgs(
                                 phone_number="1-234-567-8901",
                             ),
                         ),
                     ],
                     set_parameter_actions=[
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs(
                             parameter="some-param",
                             value="123.45",
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs(
                             parameter="another-param",
                             value=json.dumps("abc"),
                         ),
-                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs(
+                        gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrgs(
                             parameter="other-param",
                             value=json.dumps(["foo"]),
                         ),
                     ],
-                    conditional_cases=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs(
+                    conditional_cases=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrgs(
                         cases=json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
@@ -1629,12 +1629,12 @@ class CxPage(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxPageArgs args: The arguments to use to populate this resource's properties.
+        :param CxPageArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxPageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxPageArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1644,13 +1644,13 @@ class CxPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]]] = None,
-                 form: Optional[pulumi.Input[pulumi.InputType['CxPageFormArgs']]] = None,
+                 entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArrgs']]] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArrgs']]]]] = None,
+                 form: Optional[pulumi.Input[pulumi.InputType['CxPageFormArrgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArgs']]]]] = None,
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1658,7 +1658,7 @@ class CxPage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxPageArgs.__new__(CxPageArgs)
+            __props__ = CxPageArrgs.__new__(CxPageArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1682,14 +1682,14 @@ class CxPage(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']]] = None,
-            event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]]] = None,
-            form: Optional[pulumi.Input[pulumi.InputType['CxPageFormArgs']]] = None,
+            entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArrgs']]] = None,
+            event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArrgs']]]]] = None,
+            form: Optional[pulumi.Input[pulumi.InputType['CxPageFormArrgs']]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArgs']]]]] = None) -> 'CxPage':
+            transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArrgs']]]]] = None) -> 'CxPage':
         """
         Get an existing CxPage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1701,11 +1701,11 @@ class CxPage(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
+        :param pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArrgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArrgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['CxPageFormArgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
+        :param pulumi.Input[pulumi.InputType['CxPageFormArrgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
                Structure is documented below.
         :param pulumi.Input[str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -1727,7 +1727,7 @@ class CxPage(pulumi.CustomResource):
                If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
                If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
                Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArgs']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageTransitionRouteArrgs']]]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
                When we are in a certain page, the TransitionRoutes are evalauted in the following order:
                TransitionRoutes defined in the page with intent specified.
                TransitionRoutes defined in the transition route groups with intent specified.

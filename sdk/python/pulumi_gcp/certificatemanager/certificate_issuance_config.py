@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CertificateIssuanceConfigArgs', 'CertificateIssuanceConfig']
+__all__ = ['CertificateIssuanceConfigArrgs', 'CertificateIssuanceConfig']
 
 @pulumi.input_type
-class CertificateIssuanceConfigArgs:
+calass CertificateIssuanceConfigArrgs:
     def __init__(__self__, *,
-                 certificate_authority_config: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'],
+                 certificate_authority_config: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs'],
                  key_algorithm: pulumi.Input[str],
                  lifetime: pulumi.Input[str],
                  rotation_window_percentage: pulumi.Input[int],
@@ -27,7 +27,7 @@ class CertificateIssuanceConfigArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateIssuanceConfig resource.
-        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs'] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[str] key_algorithm: Key algorithm to use when generating the private key.
                Possible values are: `RSA_2048`, `ECDSA_P256`.
@@ -66,7 +66,7 @@ class CertificateIssuanceConfigArgs:
 
     @property
     @pulumi.getter(name="certificateAuthorityConfig")
-    def certificate_authority_config(self) -> pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']:
+    def certificate_authority_config(self) -> pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']:
         """
         The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
         Structure is documented below.
@@ -74,7 +74,7 @@ class CertificateIssuanceConfigArgs:
         return pulumi.get(self, "certificate_authority_config")
 
     @certificate_authority_config.setter
-    def certificate_authority_config(self, value: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']):
+    def certificate_authority_config(self, value: pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']):
         pulumi.set(self, "certificate_authority_config", value)
 
     @property
@@ -186,9 +186,9 @@ class CertificateIssuanceConfigArgs:
 
 
 @pulumi.input_type
-class _CertificateIssuanceConfigState:
+calass _CertificateIssuanceConfigState:
     def __init__(__self__, *,
-                 certificate_authority_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] = None,
+                 certificate_authority_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -203,7 +203,7 @@ class _CertificateIssuanceConfigState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificateIssuanceConfig resources.
-        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs'] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs'] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds with up to nine fractional digits.
@@ -263,7 +263,7 @@ class _CertificateIssuanceConfigState:
 
     @property
     @pulumi.getter(name="certificateAuthorityConfig")
-    def certificate_authority_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]:
+    def certificate_authority_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']]:
         """
         The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
         Structure is documented below.
@@ -271,7 +271,7 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "certificate_authority_config")
 
     @certificate_authority_config.setter
-    def certificate_authority_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]):
+    def certificate_authority_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']]):
         pulumi.set(self, "certificate_authority_config", value)
 
     @property
@@ -435,12 +435,12 @@ class _CertificateIssuanceConfigState:
         pulumi.set(self, "update_time", value)
 
 
-class CertificateIssuanceConfig(pulumi.CustomResource):
+calass CertificateIssuanceConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]] = None,
+                 certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -473,32 +473,32 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-certificate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             deletion_protection=False,
@@ -506,8 +506,8 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             ignore_active_certificates_on_deletion=True)
         default = gcp.certificatemanager.CertificateIssuanceConfig("default",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArrgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs(
                     ca_pool=pool.id,
                 ),
             ),
@@ -539,7 +539,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a CertificateIssuanceConfig.
         :param pulumi.Input[str] key_algorithm: Key algorithm to use when generating the private key.
@@ -565,7 +565,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CertificateIssuanceConfigArgs,
+                 args: CertificateIssuanceConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
@@ -590,32 +590,32 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             location="us-central1",
             pool=pool.name,
             certificate_authority_id="ca-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+            config=gcp.certificateauthority.AuthorityConfigArrgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArrgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArrgs(
                         organization="HashiCorp",
                         common_name="my-certificate-authority",
                     ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArrgs(
                         dns_names=["hashicorp.com"],
                     ),
                 ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArrgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArrgs(
                         is_ca=True,
                     ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArrgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs(
                             cert_sign=True,
                             crl_sign=True,
                         ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs(
                             server_auth=True,
                         ),
                     ),
                 ),
             ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArrgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             deletion_protection=False,
@@ -623,8 +623,8 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             ignore_active_certificates_on_deletion=True)
         default = gcp.certificatemanager.CertificateIssuanceConfig("default",
             description="sample description for the certificate issuanceConfigs",
-            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
-                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArrgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArrgs(
                     ca_pool=pool.id,
                 ),
             ),
@@ -655,12 +655,12 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CertificateIssuanceConfigArgs args: The arguments to use to populate this resource's properties.
+        :param CertificateIssuanceConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CertificateIssuanceConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateIssuanceConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -669,7 +669,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]] = None,
+                 certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -685,7 +685,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CertificateIssuanceConfigArgs.__new__(CertificateIssuanceConfigArgs)
+            __props__ = CertificateIssuanceConfigArrgs.__new__(CertificateIssuanceConfigArrgs)
 
             if certificate_authority_config is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authority_config'")
@@ -720,7 +720,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]] = None,
+            certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -740,7 +740,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input[pulumi.InputType['CertificateIssuanceConfigCertificateAuthorityConfigArrgs']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds with up to nine fractional digits.

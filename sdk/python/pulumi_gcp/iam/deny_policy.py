@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DenyPolicyArgs', 'DenyPolicy']
+__all__ = ['DenyPolicyArrgs', 'DenyPolicy']
 
 @pulumi.input_type
-class DenyPolicyArgs:
+calass DenyPolicyArrgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
-                 rules: pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]],
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DenyPolicy resource.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]] rules: Rules to be applied.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] name: The name of the policy.
@@ -49,7 +49,7 @@ class DenyPolicyArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]]:
         """
         Rules to be applied.
         Structure is documented below.
@@ -57,7 +57,7 @@ class DenyPolicyArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -86,20 +86,20 @@ class DenyPolicyArgs:
 
 
 @pulumi.input_type
-class _DenyPolicyState:
+calass _DenyPolicyState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]]] = None):
         """
         Input properties used for looking up and filtering DenyPolicy resources.
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]] rules: Rules to be applied.
                Structure is documented below.
         """
         if display_name is not None:
@@ -163,7 +163,7 @@ class _DenyPolicyState:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]]]:
         """
         Rules to be applied.
         Structure is documented below.
@@ -171,11 +171,11 @@ class _DenyPolicyState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DenyPolicyRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
 
-class DenyPolicy(pulumi.CustomResource):
+calass DenyPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -183,7 +183,7 @@ class DenyPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArrgs']]]]] = None,
                  __props__=None):
         """
         Represents a collection of denial policies to apply to a given resource.
@@ -209,14 +209,14 @@ class DenyPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArrgs']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DenyPolicyArgs,
+                 args: DenyPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a collection of denial policies to apply to a given resource.
@@ -238,12 +238,12 @@ class DenyPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DenyPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DenyPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DenyPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DenyPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -255,7 +255,7 @@ class DenyPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,7 +263,7 @@ class DenyPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DenyPolicyArgs.__new__(DenyPolicyArgs)
+            __props__ = DenyPolicyArrgs.__new__(DenyPolicyArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
@@ -288,7 +288,7 @@ class DenyPolicy(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]]] = None) -> 'DenyPolicy':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArrgs']]]]] = None) -> 'DenyPolicy':
         """
         Get an existing DenyPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -300,7 +300,7 @@ class DenyPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DenyPolicyRuleArrgs']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

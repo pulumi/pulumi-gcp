@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Distributed Cloud Edge subnet, which provides L2 isolation within a network.
@@ -392,12 +391,6 @@ func (i *Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
 }
 
-func (i *Subnet) ToOutput(ctx context.Context) pulumix.Output[*Subnet] {
-	return pulumix.Output[*Subnet]{
-		OutputState: i.ToSubnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetArrayInput is an input type that accepts SubnetArray and SubnetArrayOutput values.
 // You can construct a concrete instance of `SubnetArrayInput` via:
 //
@@ -421,12 +414,6 @@ func (i SubnetArray) ToSubnetArrayOutput() SubnetArrayOutput {
 
 func (i SubnetArray) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetArrayOutput)
-}
-
-func (i SubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Subnet] {
-	return pulumix.Output[[]*Subnet]{
-		OutputState: i.ToSubnetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubnetMapInput is an input type that accepts SubnetMap and SubnetMapOutput values.
@@ -454,12 +441,6 @@ func (i SubnetMap) ToSubnetMapOutputWithContext(ctx context.Context) SubnetMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetMapOutput)
 }
 
-func (i SubnetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnet] {
-	return pulumix.Output[map[string]*Subnet]{
-		OutputState: i.ToSubnetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetOutput struct{ *pulumi.OutputState }
 
 func (SubnetOutput) ElementType() reflect.Type {
@@ -472,12 +453,6 @@ func (o SubnetOutput) ToSubnetOutput() SubnetOutput {
 
 func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 	return o
-}
-
-func (o SubnetOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnet] {
-	return pulumix.Output[*Subnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the subnet was created.
@@ -573,12 +548,6 @@ func (o SubnetArrayOutput) ToSubnetArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Subnet] {
-	return pulumix.Output[[]*Subnet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubnetArrayOutput) Index(i pulumi.IntInput) SubnetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Subnet {
 		return vs[0].([]*Subnet)[vs[1].(int)]
@@ -597,12 +566,6 @@ func (o SubnetMapOutput) ToSubnetMapOutput() SubnetMapOutput {
 
 func (o SubnetMapOutput) ToSubnetMapOutputWithContext(ctx context.Context) SubnetMapOutput {
 	return o
-}
-
-func (o SubnetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnet] {
-	return pulumix.Output[map[string]*Subnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetMapOutput) MapIndex(k pulumi.StringInput) SubnetOutput {

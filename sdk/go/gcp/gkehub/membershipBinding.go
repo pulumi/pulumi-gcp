@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MembershipBinding is a subresource of a Membership, representing what Fleet Scopes (or other, future Fleet resources) a Membership is bound to.
@@ -284,12 +283,6 @@ func (i *MembershipBinding) ToMembershipBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingOutput)
 }
 
-func (i *MembershipBinding) ToOutput(ctx context.Context) pulumix.Output[*MembershipBinding] {
-	return pulumix.Output[*MembershipBinding]{
-		OutputState: i.ToMembershipBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipBindingArrayInput is an input type that accepts MembershipBindingArray and MembershipBindingArrayOutput values.
 // You can construct a concrete instance of `MembershipBindingArrayInput` via:
 //
@@ -313,12 +306,6 @@ func (i MembershipBindingArray) ToMembershipBindingArrayOutput() MembershipBindi
 
 func (i MembershipBindingArray) ToMembershipBindingArrayOutputWithContext(ctx context.Context) MembershipBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingArrayOutput)
-}
-
-func (i MembershipBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipBinding] {
-	return pulumix.Output[[]*MembershipBinding]{
-		OutputState: i.ToMembershipBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MembershipBindingMapInput is an input type that accepts MembershipBindingMap and MembershipBindingMapOutput values.
@@ -346,12 +333,6 @@ func (i MembershipBindingMap) ToMembershipBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingMapOutput)
 }
 
-func (i MembershipBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipBinding] {
-	return pulumix.Output[map[string]*MembershipBinding]{
-		OutputState: i.ToMembershipBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipBindingOutput struct{ *pulumi.OutputState }
 
 func (MembershipBindingOutput) ElementType() reflect.Type {
@@ -364,12 +345,6 @@ func (o MembershipBindingOutput) ToMembershipBindingOutput() MembershipBindingOu
 
 func (o MembershipBindingOutput) ToMembershipBindingOutputWithContext(ctx context.Context) MembershipBindingOutput {
 	return o
-}
-
-func (o MembershipBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipBinding] {
-	return pulumix.Output[*MembershipBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the MembershipBinding was created in UTC.
@@ -465,12 +440,6 @@ func (o MembershipBindingArrayOutput) ToMembershipBindingArrayOutputWithContext(
 	return o
 }
 
-func (o MembershipBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipBinding] {
-	return pulumix.Output[[]*MembershipBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipBindingArrayOutput) Index(i pulumi.IntInput) MembershipBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MembershipBinding {
 		return vs[0].([]*MembershipBinding)[vs[1].(int)]
@@ -489,12 +458,6 @@ func (o MembershipBindingMapOutput) ToMembershipBindingMapOutput() MembershipBin
 
 func (o MembershipBindingMapOutput) ToMembershipBindingMapOutputWithContext(ctx context.Context) MembershipBindingMapOutput {
 	return o
-}
-
-func (o MembershipBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipBinding] {
-	return pulumix.Output[map[string]*MembershipBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipBindingMapOutput) MapIndex(k pulumi.StringInput) MembershipBindingOutput {

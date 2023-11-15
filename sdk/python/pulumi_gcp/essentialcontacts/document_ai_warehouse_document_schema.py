@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DocumentAiWarehouseDocumentSchemaArgs', 'DocumentAiWarehouseDocumentSchema']
+__all__ = ['DocumentAiWarehouseDocumentSchemaArrgs', 'DocumentAiWarehouseDocumentSchema']
 
 @pulumi.input_type
-class DocumentAiWarehouseDocumentSchemaArgs:
+calass DocumentAiWarehouseDocumentSchemaArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project_number: pulumi.Input[str],
-                 property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]],
+                 property_definitions: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]],
                  document_is_folder: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DocumentAiWarehouseDocumentSchema resource.
         :param pulumi.Input[str] display_name: Name of the schema given by the user.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         """
@@ -75,7 +75,7 @@ class DocumentAiWarehouseDocumentSchemaArgs:
 
     @property
     @pulumi.getter(name="propertyDefinitions")
-    def property_definitions(self) -> pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]:
+    def property_definitions(self) -> pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]:
         """
         Defines the metadata for a schema property.
         Structure is documented below.
@@ -83,7 +83,7 @@ class DocumentAiWarehouseDocumentSchemaArgs:
         return pulumi.get(self, "property_definitions")
 
     @property_definitions.setter
-    def property_definitions(self, value: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]):
+    def property_definitions(self, value: pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]):
         pulumi.set(self, "property_definitions", value)
 
     @property
@@ -100,14 +100,14 @@ class DocumentAiWarehouseDocumentSchemaArgs:
 
 
 @pulumi.input_type
-class _DocumentAiWarehouseDocumentSchemaState:
+calass _DocumentAiWarehouseDocumentSchemaState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  document_is_folder: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] = None):
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]] = None):
         """
         Input properties used for looking up and filtering DocumentAiWarehouseDocumentSchema resources.
         :param pulumi.Input[str] display_name: Name of the schema given by the user.
@@ -115,7 +115,7 @@ class _DocumentAiWarehouseDocumentSchemaState:
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The name of the metadata property.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         if display_name is not None:
@@ -193,7 +193,7 @@ class _DocumentAiWarehouseDocumentSchemaState:
 
     @property
     @pulumi.getter(name="propertyDefinitions")
-    def property_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]:
+    def property_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]]:
         """
         Defines the metadata for a schema property.
         Structure is documented below.
@@ -201,11 +201,11 @@ class _DocumentAiWarehouseDocumentSchemaState:
         return pulumi.get(self, "property_definitions")
 
     @property_definitions.setter
-    def property_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]):
+    def property_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]]):
         pulumi.set(self, "property_definitions", value)
 
 
-class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
+calass DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -214,7 +214,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                  document_is_folder: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]] = None,
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]]] = None,
                  __props__=None):
         """
         A document schema is used to define document structure.
@@ -238,7 +238,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-text",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop3",
                 display_name="propdisp3",
                 is_repeatable=False,
@@ -247,11 +247,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
+                text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Integer
@@ -265,7 +265,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-integer",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop1",
                 display_name="propdisp1",
                 is_repeatable=False,
@@ -274,11 +274,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs(),
+                integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Float
@@ -292,7 +292,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-float",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop2",
                 display_name="propdisp2",
                 is_repeatable=False,
@@ -301,11 +301,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs(),
+                float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Property
@@ -320,7 +320,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-property",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop8",
                 display_name="propdisp8",
                 is_repeatable=False,
@@ -329,12 +329,12 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs(
-                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs(
+                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs(
+                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs(
                         name="prop8_nested",
                         display_name="propdisp8_nested",
                         is_repeatable=False,
@@ -343,11 +343,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                         is_metadata=False,
                         is_required=False,
                         retrieval_importance="HIGHEST",
-                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs(
+                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs(
                             name="dummy_source_nested",
                             processor_type="dummy_processor_nested",
                         )],
-                        text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs(),
+                        text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs(),
                     )],
                 ),
             )])
@@ -364,7 +364,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-property",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop8",
                 display_name="propdisp8",
                 is_repeatable=False,
@@ -373,12 +373,12 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs(
-                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs(
+                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs(
+                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs(
                         name="prop8_nested",
                         display_name="propdisp8_nested",
                         is_repeatable=False,
@@ -387,11 +387,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                         is_metadata=False,
                         is_required=False,
                         retrieval_importance="HIGHEST",
-                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs(
+                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs(
                             name="dummy_source_nested",
                             processor_type="dummy_processor_nested",
                         )],
-                        enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs(
+                        enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs(
                             possible_values=[
                                 "M",
                                 "F",
@@ -414,7 +414,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-enum",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop6",
                 display_name="propdisp6",
                 is_repeatable=False,
@@ -423,11 +423,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs(
+                enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs(
                     possible_values=[
                         "M",
                         "F",
@@ -448,7 +448,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-map",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop4",
                 display_name="propdisp4",
                 is_repeatable=False,
@@ -457,11 +457,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs(),
+                map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Datetime
@@ -475,7 +475,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-date_time",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop7",
                 display_name="propdisp7",
                 is_repeatable=False,
@@ -484,11 +484,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs(),
+                date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Timestamp
@@ -502,7 +502,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-timestamp",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop5",
                 display_name="propdisp5",
                 is_repeatable=False,
@@ -511,11 +511,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs(),
+                timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs(),
             )])
         ```
 
@@ -537,14 +537,14 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[bool] document_is_folder: Tells whether the document is a folder or a typical document.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DocumentAiWarehouseDocumentSchemaArgs,
+                 args: DocumentAiWarehouseDocumentSchemaArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A document schema is used to define document structure.
@@ -568,7 +568,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-text",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop3",
                 display_name="propdisp3",
                 is_repeatable=False,
@@ -577,11 +577,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
+                text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Integer
@@ -595,7 +595,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-integer",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop1",
                 display_name="propdisp1",
                 is_repeatable=False,
@@ -604,11 +604,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs(),
+                integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Float
@@ -622,7 +622,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-float",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop2",
                 display_name="propdisp2",
                 is_repeatable=False,
@@ -631,11 +631,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs(),
+                float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Property
@@ -650,7 +650,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-property",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop8",
                 display_name="propdisp8",
                 is_repeatable=False,
@@ -659,12 +659,12 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs(
-                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs(
+                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs(
+                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs(
                         name="prop8_nested",
                         display_name="propdisp8_nested",
                         is_repeatable=False,
@@ -673,11 +673,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                         is_metadata=False,
                         is_required=False,
                         retrieval_importance="HIGHEST",
-                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs(
+                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs(
                             name="dummy_source_nested",
                             processor_type="dummy_processor_nested",
                         )],
-                        text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs(),
+                        text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArrgs(),
                     )],
                 ),
             )])
@@ -694,7 +694,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             display_name="test-property-property",
             location="us",
             document_is_folder=False,
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop8",
                 display_name="propdisp8",
                 is_repeatable=False,
@@ -703,12 +703,12 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs(
-                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArgs(
+                property_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArrgs(
+                    property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionArrgs(
                         name="prop8_nested",
                         display_name="propdisp8_nested",
                         is_repeatable=False,
@@ -717,11 +717,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                         is_metadata=False,
                         is_required=False,
                         retrieval_importance="HIGHEST",
-                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs(
+                        schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArrgs(
                             name="dummy_source_nested",
                             processor_type="dummy_processor_nested",
                         )],
-                        enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs(
+                        enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArrgs(
                             possible_values=[
                                 "M",
                                 "F",
@@ -744,7 +744,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-enum",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop6",
                 display_name="propdisp6",
                 is_repeatable=False,
@@ -753,11 +753,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs(
+                enum_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArrgs(
                     possible_values=[
                         "M",
                         "F",
@@ -778,7 +778,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-map",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop4",
                 display_name="propdisp4",
                 is_repeatable=False,
@@ -787,11 +787,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs(),
+                map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Datetime
@@ -805,7 +805,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-date_time",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop7",
                 display_name="propdisp7",
                 is_repeatable=False,
@@ -814,11 +814,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs(),
+                date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArrgs(),
             )])
         ```
         ### Document Ai Warehouse Document Schema Timestamp
@@ -832,7 +832,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             project_number=project.number,
             display_name="test-property-timestamp",
             location="us",
-            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs(
+            property_definitions=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs(
                 name="prop5",
                 display_name="propdisp5",
                 is_repeatable=False,
@@ -841,11 +841,11 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 is_metadata=False,
                 is_required=False,
                 retrieval_importance="HIGHEST",
-                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs(
+                schema_sources=[gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArrgs(
                     name="dummy_source",
                     processor_type="dummy_processor",
                 )],
-                timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs(),
+                timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArrgs(),
             )])
         ```
 
@@ -862,12 +862,12 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DocumentAiWarehouseDocumentSchemaArgs args: The arguments to use to populate this resource's properties.
+        :param DocumentAiWarehouseDocumentSchemaArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DocumentAiWarehouseDocumentSchemaArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DocumentAiWarehouseDocumentSchemaArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -880,7 +880,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                  document_is_folder: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]] = None,
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -888,7 +888,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DocumentAiWarehouseDocumentSchemaArgs.__new__(DocumentAiWarehouseDocumentSchemaArgs)
+            __props__ = DocumentAiWarehouseDocumentSchemaArrgs.__new__(DocumentAiWarehouseDocumentSchemaArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -919,7 +919,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_number: Optional[pulumi.Input[str]] = None,
-            property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
+            property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]]] = None) -> 'DocumentAiWarehouseDocumentSchema':
         """
         Get an existing DocumentAiWarehouseDocumentSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -932,7 +932,7 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The name of the metadata property.
         :param pulumi.Input[str] project_number: The unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs']]]] property_definitions: Defines the metadata for a schema property.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DocumentAiWarehouseDocumentSchemaPropertyDefinitionArrgs']]]] property_definitions: Defines the metadata for a schema property.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

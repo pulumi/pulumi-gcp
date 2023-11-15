@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['LakeIamPolicyArgs', 'LakeIamPolicy']
+__all__ = ['LakeIamPolicyArrgs', 'LakeIamPolicy']
 
 @pulumi.input_type
-class LakeIamPolicyArgs:
+calass LakeIamPolicyArrgs:
     def __init__(__self__, *,
                  lake: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -106,7 +106,7 @@ class LakeIamPolicyArgs:
 
 
 @pulumi.input_type
-class _LakeIamPolicyState:
+calass _LakeIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class _LakeIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class LakeIamPolicy(pulumi.CustomResource):
+calass LakeIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -248,7 +248,7 @@ class LakeIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -335,7 +335,7 @@ class LakeIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LakeIamPolicyArgs,
+                 args: LakeIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
@@ -358,7 +358,7 @@ class LakeIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -422,12 +422,12 @@ class LakeIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param LakeIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param LakeIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LakeIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LakeIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -447,7 +447,7 @@ class LakeIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LakeIamPolicyArgs.__new__(LakeIamPolicyArgs)
+            __props__ = LakeIamPolicyArrgs.__new__(LakeIamPolicyArrgs)
 
             if lake is None and not opts.urn:
                 raise TypeError("Missing required property 'lake'")

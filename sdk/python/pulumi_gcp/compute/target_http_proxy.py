@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TargetHttpProxyArgs', 'TargetHttpProxy']
+__all__ = ['TargetHttpProxyArrgs', 'TargetHttpProxy']
 
 @pulumi.input_type
-class TargetHttpProxyArgs:
+calass TargetHttpProxyArrgs:
     def __init__(__self__, *,
                  url_map: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class TargetHttpProxyArgs:
 
 
 @pulumi.input_type
-class _TargetHttpProxyState:
+calass _TargetHttpProxyState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -334,7 +334,7 @@ class _TargetHttpProxyState:
         pulumi.set(self, "url_map", value)
 
 
-class TargetHttpProxy(pulumi.CustomResource):
+calass TargetHttpProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -363,7 +363,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArrgs(
             https_redirect=True,
             strip_query=False,
         ))
@@ -416,7 +416,7 @@ class TargetHttpProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TargetHttpProxyArgs,
+                 args: TargetHttpProxyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a TargetHttpProxy resource, which is used by one or more global
@@ -435,7 +435,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArrgs(
             https_redirect=True,
             strip_query=False,
         ))
@@ -459,12 +459,12 @@ class TargetHttpProxy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TargetHttpProxyArgs args: The arguments to use to populate this resource's properties.
+        :param TargetHttpProxyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TargetHttpProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TargetHttpProxyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -486,7 +486,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TargetHttpProxyArgs.__new__(TargetHttpProxyArgs)
+            __props__ = TargetHttpProxyArrgs.__new__(TargetHttpProxyArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec

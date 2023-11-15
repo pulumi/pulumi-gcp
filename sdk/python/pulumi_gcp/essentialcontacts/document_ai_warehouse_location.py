@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DocumentAiWarehouseLocationArgs', 'DocumentAiWarehouseLocation']
+__all__ = ['DocumentAiWarehouseLocationArrgs', 'DocumentAiWarehouseLocation']
 
 @pulumi.input_type
-class DocumentAiWarehouseLocationArgs:
+calass DocumentAiWarehouseLocationArrgs:
     def __init__(__self__, *,
                  access_control_mode: pulumi.Input[str],
                  database_type: pulumi.Input[str],
@@ -132,7 +132,7 @@ class DocumentAiWarehouseLocationArgs:
 
 
 @pulumi.input_type
-class _DocumentAiWarehouseLocationState:
+calass _DocumentAiWarehouseLocationState:
     def __init__(__self__, *,
                  access_control_mode: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -255,7 +255,7 @@ class _DocumentAiWarehouseLocationState:
         pulumi.set(self, "project_number", value)
 
 
-class DocumentAiWarehouseLocation(pulumi.CustomResource):
+calass DocumentAiWarehouseLocation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -320,7 +320,7 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DocumentAiWarehouseLocationArgs,
+                 args: DocumentAiWarehouseLocationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A location is used to initialize a project.
@@ -353,12 +353,12 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param DocumentAiWarehouseLocationArgs args: The arguments to use to populate this resource's properties.
+        :param DocumentAiWarehouseLocationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DocumentAiWarehouseLocationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DocumentAiWarehouseLocationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -380,7 +380,7 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DocumentAiWarehouseLocationArgs.__new__(DocumentAiWarehouseLocationArgs)
+            __props__ = DocumentAiWarehouseLocationArrgs.__new__(DocumentAiWarehouseLocationArrgs)
 
             if access_control_mode is None and not opts.urn:
                 raise TypeError("Missing required property 'access_control_mode'")

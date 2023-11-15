@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SecretIamBindingArgs', 'SecretIamBinding']
+__all__ = ['SecretIamBindingArrgs', 'SecretIamBinding']
 
 @pulumi.input_type
-class SecretIamBindingArgs:
+calass SecretIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  secret_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SecretIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SecretIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecretIamBinding resource.
@@ -83,11 +83,11 @@ class SecretIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SecretIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SecretIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SecretIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SecretIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -117,9 +117,9 @@ class SecretIamBindingArgs:
 
 
 @pulumi.input_type
-class _SecretIamBindingState:
+calass _SecretIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SecretIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SecretIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -161,11 +161,11 @@ class _SecretIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SecretIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SecretIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SecretIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SecretIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -238,12 +238,12 @@ class _SecretIamBindingState:
         pulumi.set(self, "secret_id", value)
 
 
-class SecretIamBinding(pulumi.CustomResource):
+calass SecretIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -270,7 +270,7 @@ class SecretIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
         )])
@@ -354,7 +354,7 @@ class SecretIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SecretIamBindingArgs,
+                 args: SecretIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
@@ -377,7 +377,7 @@ class SecretIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
         )])
@@ -438,12 +438,12 @@ class SecretIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SecretIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param SecretIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SecretIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SecretIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -452,7 +452,7 @@ class SecretIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SecretIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -464,7 +464,7 @@ class SecretIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SecretIamBindingArgs.__new__(SecretIamBindingArgs)
+            __props__ = SecretIamBindingArrgs.__new__(SecretIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -488,7 +488,7 @@ class SecretIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SecretIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SecretIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

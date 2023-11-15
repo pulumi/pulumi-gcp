@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -264,12 +263,6 @@ func (i *WorkstationConfigIamBinding) ToWorkstationConfigIamBindingOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingOutput)
 }
 
-func (i *WorkstationConfigIamBinding) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamBinding] {
-	return pulumix.Output[*WorkstationConfigIamBinding]{
-		OutputState: i.ToWorkstationConfigIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkstationConfigIamBindingArrayInput is an input type that accepts WorkstationConfigIamBindingArray and WorkstationConfigIamBindingArrayOutput values.
 // You can construct a concrete instance of `WorkstationConfigIamBindingArrayInput` via:
 //
@@ -293,12 +286,6 @@ func (i WorkstationConfigIamBindingArray) ToWorkstationConfigIamBindingArrayOutp
 
 func (i WorkstationConfigIamBindingArray) ToWorkstationConfigIamBindingArrayOutputWithContext(ctx context.Context) WorkstationConfigIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingArrayOutput)
-}
-
-func (i WorkstationConfigIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationConfigIamBinding] {
-	return pulumix.Output[[]*WorkstationConfigIamBinding]{
-		OutputState: i.ToWorkstationConfigIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkstationConfigIamBindingMapInput is an input type that accepts WorkstationConfigIamBindingMap and WorkstationConfigIamBindingMapOutput values.
@@ -326,12 +313,6 @@ func (i WorkstationConfigIamBindingMap) ToWorkstationConfigIamBindingMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingMapOutput)
 }
 
-func (i WorkstationConfigIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationConfigIamBinding] {
-	return pulumix.Output[map[string]*WorkstationConfigIamBinding]{
-		OutputState: i.ToWorkstationConfigIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkstationConfigIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigIamBindingOutput) ElementType() reflect.Type {
@@ -344,12 +325,6 @@ func (o WorkstationConfigIamBindingOutput) ToWorkstationConfigIamBindingOutput()
 
 func (o WorkstationConfigIamBindingOutput) ToWorkstationConfigIamBindingOutputWithContext(ctx context.Context) WorkstationConfigIamBindingOutput {
 	return o
-}
-
-func (o WorkstationConfigIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamBinding] {
-	return pulumix.Output[*WorkstationConfigIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkstationConfigIamBindingOutput) Condition() WorkstationConfigIamBindingConditionPtrOutput {
@@ -418,12 +393,6 @@ func (o WorkstationConfigIamBindingArrayOutput) ToWorkstationConfigIamBindingArr
 	return o
 }
 
-func (o WorkstationConfigIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationConfigIamBinding] {
-	return pulumix.Output[[]*WorkstationConfigIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkstationConfigIamBindingArrayOutput) Index(i pulumi.IntInput) WorkstationConfigIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkstationConfigIamBinding {
 		return vs[0].([]*WorkstationConfigIamBinding)[vs[1].(int)]
@@ -442,12 +411,6 @@ func (o WorkstationConfigIamBindingMapOutput) ToWorkstationConfigIamBindingMapOu
 
 func (o WorkstationConfigIamBindingMapOutput) ToWorkstationConfigIamBindingMapOutputWithContext(ctx context.Context) WorkstationConfigIamBindingMapOutput {
 	return o
-}
-
-func (o WorkstationConfigIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationConfigIamBinding] {
-	return pulumix.Output[map[string]*WorkstationConfigIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkstationConfigIamBindingMapOutput) MapIndex(k pulumi.StringInput) WorkstationConfigIamBindingOutput {

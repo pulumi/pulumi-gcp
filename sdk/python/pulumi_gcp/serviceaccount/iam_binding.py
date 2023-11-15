@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMBindingArgs', 'IAMBinding']
+__all__ = ['IAMBindingArrgs', 'IAMBinding']
 
 @pulumi.input_type
-class IAMBindingArgs:
+calass IAMBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  service_account_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['IAMBindingConditionArrgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -35,7 +35,7 @@ class IAMBindingArgs:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['IAMBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "members", members)
@@ -90,7 +90,7 @@ class IAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -98,21 +98,21 @@ class IAMBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _IAMBindingState:
+calass _IAMBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['IAMBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IAMBinding resources.
-        :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['IAMBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the service account IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -142,7 +142,7 @@ class _IAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -150,7 +150,7 @@ class _IAMBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _IAMBindingState:
         pulumi.set(self, "service_account_id", value)
 
 
-class IAMBinding(pulumi.CustomResource):
+calass IAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -240,7 +240,7 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
         )])
@@ -278,7 +278,7 @@ class IAMBinding(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
-            condition=gcp.serviceaccount.IAMBindingConditionArgs(
+            condition=gcp.serviceaccount.IAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -317,7 +317,7 @@ class IAMBinding(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             member="user:jane@example.com",
-            condition=gcp.serviceaccount.IAMMemberConditionArgs(
+            condition=gcp.serviceaccount.IAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -352,7 +352,7 @@ class IAMBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -372,7 +372,7 @@ class IAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMBindingArgs,
+                 args: IAMBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource, such as allowing the members to run operations as or modify the service account. To configure permissions for a service account on other GCP resources, use the google_project_iam set of resources.
@@ -394,7 +394,7 @@ class IAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
         )])
@@ -432,7 +432,7 @@ class IAMBinding(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
-            condition=gcp.serviceaccount.IAMBindingConditionArgs(
+            condition=gcp.serviceaccount.IAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -471,7 +471,7 @@ class IAMBinding(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             member="user:jane@example.com",
-            condition=gcp.serviceaccount.IAMMemberConditionArgs(
+            condition=gcp.serviceaccount.IAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -505,12 +505,12 @@ class IAMBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param IAMBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IAMBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -519,7 +519,7 @@ class IAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  service_account_id: Optional[pulumi.Input[str]] = None,
@@ -530,7 +530,7 @@ class IAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
+            __props__ = IAMBindingArrgs.__new__(IAMBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -555,7 +555,7 @@ class IAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
@@ -567,7 +567,7 @@ class IAMBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['IAMBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the service account IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one

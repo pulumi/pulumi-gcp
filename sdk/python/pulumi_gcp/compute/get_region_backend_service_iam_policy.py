@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegionBackendServiceIamPolicyResult:
+calass GetRegionBackendServiceIamPolicyResult:
     """
     A collection of values returned by getRegionBackendServiceIamPolicy.
     """
@@ -82,7 +82,7 @@ class GetRegionBackendServiceIamPolicyResult:
         return pulumi.get(self, "region")
 
 
-class AwaitableGetRegionBackendServiceIamPolicyResult(GetRegionBackendServiceIamPolicyResult):
+calass AwaitableGetRegionBackendServiceIamPolicyResult(GetRegionBackendServiceIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

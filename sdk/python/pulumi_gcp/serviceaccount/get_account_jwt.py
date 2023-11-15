@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAccountJwtResult:
+calass GetAccountJwtResult:
     """
     A collection of values returned by getAccountJwt.
     """
@@ -78,7 +78,7 @@ class GetAccountJwtResult:
         return pulumi.get(self, "target_service_account")
 
 
-class AwaitableGetAccountJwtResult(GetAccountJwtResult):
+calass AwaitableGetAccountJwtResult(GetAccountJwtResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

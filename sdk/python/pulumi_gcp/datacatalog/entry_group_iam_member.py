@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EntryGroupIamMemberArgs', 'EntryGroupIamMember']
+__all__ = ['EntryGroupIamMemberArrgs', 'EntryGroupIamMember']
 
 @pulumi.input_type
-class EntryGroupIamMemberArgs:
+calass EntryGroupIamMemberArrgs:
     def __init__(__self__, *,
                  entry_group: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['EntryGroupIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['EntryGroupIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -90,11 +90,11 @@ class EntryGroupIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['EntryGroupIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['EntryGroupIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['EntryGroupIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['EntryGroupIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -133,9 +133,9 @@ class EntryGroupIamMemberArgs:
 
 
 @pulumi.input_type
-class _EntryGroupIamMemberState:
+calass _EntryGroupIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['EntryGroupIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['EntryGroupIamMemberConditionArrgs']] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -181,11 +181,11 @@ class _EntryGroupIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['EntryGroupIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['EntryGroupIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['EntryGroupIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['EntryGroupIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -270,12 +270,12 @@ class _EntryGroupIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class EntryGroupIamMember(pulumi.CustomResource):
+calass EntryGroupIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamMemberConditionArrgs']]] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -303,7 +303,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -385,7 +385,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EntryGroupIamMemberArgs,
+                 args: EntryGroupIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
@@ -408,7 +408,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -466,12 +466,12 @@ class EntryGroupIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param EntryGroupIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param EntryGroupIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -480,7 +480,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamMemberConditionArrgs']]] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -493,7 +493,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EntryGroupIamMemberArgs.__new__(EntryGroupIamMemberArgs)
+            __props__ = EntryGroupIamMemberArrgs.__new__(EntryGroupIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if entry_group is None and not opts.urn:
@@ -518,7 +518,7 @@ class EntryGroupIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['EntryGroupIamMemberConditionArrgs']]] = None,
             entry_group: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

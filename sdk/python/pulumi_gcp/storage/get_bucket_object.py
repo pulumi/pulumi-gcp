@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetBucketObjectResult:
+calass GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
@@ -243,7 +243,7 @@ class GetBucketObjectResult:
         return pulumi.get(self, "temporary_hold")
 
 
-class AwaitableGetBucketObjectResult(GetBucketObjectResult):
+calass AwaitableGetBucketObjectResult(GetBucketObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

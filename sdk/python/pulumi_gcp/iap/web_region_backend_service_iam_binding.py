@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WebRegionBackendServiceIamBindingArgs', 'WebRegionBackendServiceIamBinding']
+__all__ = ['WebRegionBackendServiceIamBindingArrgs', 'WebRegionBackendServiceIamBinding']
 
 @pulumi.input_type
-class WebRegionBackendServiceIamBindingArgs:
+calass WebRegionBackendServiceIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  web_region_backend_service: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -28,7 +28,7 @@ class WebRegionBackendServiceIamBindingArgs:
                `iap.WebRegionBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] web_region_backend_service: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -92,7 +92,7 @@ class WebRegionBackendServiceIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -100,7 +100,7 @@ class WebRegionBackendServiceIamBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -139,9 +139,9 @@ class WebRegionBackendServiceIamBindingArgs:
 
 
 @pulumi.input_type
-class _WebRegionBackendServiceIamBindingState:
+calass _WebRegionBackendServiceIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class _WebRegionBackendServiceIamBindingState:
                  web_region_backend_service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WebRegionBackendServiceIamBinding resources.
-        :param pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -189,7 +189,7 @@ class _WebRegionBackendServiceIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -197,7 +197,7 @@ class _WebRegionBackendServiceIamBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WebRegionBackendServiceIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -282,12 +282,12 @@ class _WebRegionBackendServiceIamBindingState:
         pulumi.set(self, "web_region_backend_service", value)
 
 
-class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
+calass WebRegionBackendServiceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -317,7 +317,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -334,10 +334,10 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -375,7 +375,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -407,7 +407,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -440,7 +440,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -465,7 +465,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WebRegionBackendServiceIamBindingArgs,
+                 args: WebRegionBackendServiceIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionBackendService. Each of these resources serves a different use case:
@@ -490,7 +490,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -507,10 +507,10 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -548,7 +548,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -580,7 +580,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
             web_region_backend_service=google_compute_region_backend_service["default"]["name"],
             role="roles/iap.httpsResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArgs(
+            condition=gcp.iap.WebRegionBackendServiceIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -612,12 +612,12 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WebRegionBackendServiceIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param WebRegionBackendServiceIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WebRegionBackendServiceIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WebRegionBackendServiceIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -626,7 +626,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -639,7 +639,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WebRegionBackendServiceIamBindingArgs.__new__(WebRegionBackendServiceIamBindingArgs)
+            __props__ = WebRegionBackendServiceIamBindingArrgs.__new__(WebRegionBackendServiceIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -664,7 +664,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -678,7 +678,7 @@ class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['WebRegionBackendServiceIamBindingConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterArgs', 'Cluster']
+__all__ = ['ClusterArrgs', 'Cluster']
 
 @pulumi.input_type
-class ClusterArgs:
+calass ClusterArrgs:
     def __init__(__self__, *,
-                 psc_configs: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]],
+                 psc_configs: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]],
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +26,7 @@ class ClusterArgs:
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
@@ -62,7 +62,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]:
+    def psc_configs(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]]:
         """
         Required. Each PscConfig configures the consumer network where two
         network addresses will be designated to the cluster for client access.
@@ -72,7 +72,7 @@ class ClusterArgs:
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
-    def psc_configs(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]):
+    def psc_configs(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]]):
         pulumi.set(self, "psc_configs", value)
 
     @property
@@ -168,21 +168,21 @@ class ClusterArgs:
 
 
 @pulumi.input_type
-class _ClusterState:
+calass _ClusterState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+                 discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
-                 psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]]] = None,
+                 psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArrgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  size_gb: Optional[pulumi.Input[int]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]] = None,
+                 state_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArrgs']]]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
@@ -193,7 +193,7 @@ class _ClusterState:
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]] discovery_endpoints: Output only. Endpoints created on each given network,
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArrgs']]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
@@ -201,18 +201,18 @@ class _ClusterState:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArrgs']]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[int] size_gb: Output only. Redis memory size in GB for the entire cluster.
         :param pulumi.Input[str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]] state_infos: Output only. Additional information about the current state of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArrgs']]] state_infos: Output only. Additional information about the current state of the cluster.
                Structure is documented below.
         :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
                If not provided, encryption is disabled for the cluster.
@@ -281,7 +281,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="discoveryEndpoints")
-    def discovery_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]:
+    def discovery_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArrgs']]]]:
         """
         Output only. Endpoints created on each given network,
         for Redis clients to connect to the cluster.
@@ -291,7 +291,7 @@ class _ClusterState:
         return pulumi.get(self, "discovery_endpoints")
 
     @discovery_endpoints.setter
-    def discovery_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]):
+    def discovery_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArrgs']]]]):
         pulumi.set(self, "discovery_endpoints", value)
 
     @property
@@ -322,7 +322,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]:
+    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]]]:
         """
         Required. Each PscConfig configures the consumer network where two
         network addresses will be designated to the cluster for client access.
@@ -332,12 +332,12 @@ class _ClusterState:
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
-    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]):
+    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArrgs']]]]):
         pulumi.set(self, "psc_configs", value)
 
     @property
     @pulumi.getter(name="pscConnections")
-    def psc_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]]:
+    def psc_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArrgs']]]]:
         """
         Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
         Structure is documented below.
@@ -345,7 +345,7 @@ class _ClusterState:
         return pulumi.get(self, "psc_connections")
 
     @psc_connections.setter
-    def psc_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]]):
+    def psc_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArrgs']]]]):
         pulumi.set(self, "psc_connections", value)
 
     @property
@@ -410,7 +410,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="stateInfos")
-    def state_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]]:
+    def state_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArrgs']]]]:
         """
         Output only. Additional information about the current state of the cluster.
         Structure is documented below.
@@ -418,7 +418,7 @@ class _ClusterState:
         return pulumi.get(self, "state_infos")
 
     @state_infos.setter
-    def state_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]]]):
+    def state_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArrgs']]]]):
         pulumi.set(self, "state_infos", value)
 
     @property
@@ -449,7 +449,7 @@ class _ClusterState:
         pulumi.set(self, "uid", value)
 
 
-class Cluster(pulumi.CustomResource):
+calass Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -457,7 +457,7 @@ class Cluster(pulumi.CustomResource):
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArrgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -483,13 +483,13 @@ class Cluster(pulumi.CustomResource):
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArrgs(
                 subnetworks=[producer_subnet.id],
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+            psc_configs=[gcp.redis.ClusterPscConfigArrgs(
                 network=producer_net.id,
             )],
             region="us-central1",
@@ -529,7 +529,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArrgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
@@ -545,7 +545,7 @@ class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClusterArgs,
+                 args: ClusterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -567,13 +567,13 @@ class Cluster(pulumi.CustomResource):
             service_class="gcp-memorystore-redis",
             description="my basic service connection policy",
             network=producer_net.id,
-            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
+            psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArrgs(
                 subnetworks=[producer_subnet.id],
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             shard_count=3,
-            psc_configs=[gcp.redis.ClusterPscConfigArgs(
+            psc_configs=[gcp.redis.ClusterPscConfigArrgs(
                 network=producer_net.id,
             )],
             region="us-central1",
@@ -605,12 +605,12 @@ class Cluster(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param ClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -622,7 +622,7 @@ class Cluster(pulumi.CustomResource):
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArrgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -634,7 +634,7 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClusterArgs.__new__(ClusterArgs)
+            __props__ = ClusterArrgs.__new__(ClusterArrgs)
 
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["name"] = name
@@ -667,17 +667,17 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArgs']]]]] = None,
+            discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
-            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]]] = None,
+            psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArrgs']]]]] = None,
+            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArrgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_count: Optional[pulumi.Input[int]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
             size_gb: Optional[pulumi.Input[int]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArgs']]]]] = None,
+            state_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArrgs']]]]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -693,7 +693,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArgs']]]] discovery_endpoints: Output only. Endpoints created on each given network,
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArrgs']]]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
@@ -701,18 +701,18 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArrgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArrgs']]]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
         :param pulumi.Input[int] size_gb: Output only. Redis memory size in GB for the entire cluster.
         :param pulumi.Input[str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArgs']]]] state_infos: Output only. Additional information about the current state of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterStateInfoArrgs']]]] state_infos: Output only. Additional information about the current state of the cluster.
                Structure is documented below.
         :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
                If not provided, encryption is disabled for the cluster.

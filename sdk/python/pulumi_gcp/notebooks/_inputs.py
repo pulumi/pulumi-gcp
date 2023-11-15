@@ -10,33 +10,33 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'EnvironmentContainerImageArgs',
-    'EnvironmentVmImageArgs',
-    'InstanceAcceleratorConfigArgs',
-    'InstanceContainerImageArgs',
-    'InstanceIamBindingConditionArgs',
-    'InstanceIamMemberConditionArgs',
-    'InstanceReservationAffinityArgs',
-    'InstanceShieldedInstanceConfigArgs',
-    'InstanceVmImageArgs',
-    'RuntimeAccessConfigArgs',
-    'RuntimeIamBindingConditionArgs',
-    'RuntimeIamMemberConditionArgs',
-    'RuntimeMetricArgs',
-    'RuntimeSoftwareConfigArgs',
-    'RuntimeSoftwareConfigKernelArgs',
-    'RuntimeVirtualMachineArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs',
-    'RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs',
+    'EnvironmentContainerImageArrgs',
+    'EnvironmentVmImageArrgs',
+    'InstanceAcceleratorConfigArrgs',
+    'InstanceContainerImageArrgs',
+    'InstanceIamBindingConditionArrgs',
+    'InstanceIamMemberConditionArrgs',
+    'InstanceReservationAffinityArrgs',
+    'InstanceShieldedInstanceConfigArrgs',
+    'InstanceVmImageArrgs',
+    'RuntimeAccessConfigArrgs',
+    'RuntimeIamBindingConditionArrgs',
+    'RuntimeIamMemberConditionArrgs',
+    'RuntimeMetricArrgs',
+    'RuntimeSoftwareConfigArrgs',
+    'RuntimeSoftwareConfigKernelArrgs',
+    'RuntimeVirtualMachineArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs',
+    'RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs',
 ]
 
 @pulumi.input_type
-class EnvironmentContainerImageArgs:
+calass EnvironmentContainerImageArrgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[str],
                  tag: Optional[pulumi.Input[str]] = None):
@@ -76,7 +76,7 @@ class EnvironmentContainerImageArgs:
 
 
 @pulumi.input_type
-class EnvironmentVmImageArgs:
+calass EnvironmentVmImageArrgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  image_family: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class EnvironmentVmImageArgs:
 
 
 @pulumi.input_type
-class InstanceAcceleratorConfigArgs:
+calass InstanceAcceleratorConfigArrgs:
     def __init__(__self__, *,
                  core_count: pulumi.Input[int],
                  type: pulumi.Input[str]):
@@ -171,7 +171,7 @@ class InstanceAcceleratorConfigArgs:
 
 
 @pulumi.input_type
-class InstanceContainerImageArgs:
+calass InstanceContainerImageArrgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[str],
                  tag: Optional[pulumi.Input[str]] = None):
@@ -211,7 +211,7 @@ class InstanceContainerImageArgs:
 
 
 @pulumi.input_type
-class InstanceIamBindingConditionArgs:
+calass InstanceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -250,7 +250,7 @@ class InstanceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIamMemberConditionArgs:
+calass InstanceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -289,7 +289,7 @@ class InstanceIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class InstanceReservationAffinityArgs:
+calass InstanceReservationAffinityArrgs:
     def __init__(__self__, *,
                  consume_reservation_type: pulumi.Input[str],
                  key: Optional[pulumi.Input[str]] = None,
@@ -345,7 +345,7 @@ class InstanceReservationAffinityArgs:
 
 
 @pulumi.input_type
-class InstanceShieldedInstanceConfigArgs:
+calass InstanceShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -414,7 +414,7 @@ class InstanceShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class InstanceVmImageArgs:
+calass InstanceVmImageArrgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  image_family: Optional[pulumi.Input[str]] = None,
@@ -470,7 +470,7 @@ class InstanceVmImageArgs:
 
 
 @pulumi.input_type
-class RuntimeAccessConfigArgs:
+calass RuntimeAccessConfigArrgs:
     def __init__(__self__, *,
                  access_type: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
@@ -533,7 +533,7 @@ class RuntimeAccessConfigArgs:
 
 
 @pulumi.input_type
-class RuntimeIamBindingConditionArgs:
+calass RuntimeIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -572,7 +572,7 @@ class RuntimeIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class RuntimeIamMemberConditionArgs:
+calass RuntimeIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -611,7 +611,7 @@ class RuntimeIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class RuntimeMetricArgs:
+calass RuntimeMetricArrgs:
     def __init__(__self__, *,
                  system_metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -638,14 +638,14 @@ class RuntimeMetricArgs:
 
 
 @pulumi.input_type
-class RuntimeSoftwareConfigArgs:
+calass RuntimeSoftwareConfigArrgs:
     def __init__(__self__, *,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  enable_health_monitoring: Optional[pulumi.Input[bool]] = None,
                  idle_shutdown: Optional[pulumi.Input[bool]] = None,
                  idle_shutdown_timeout: Optional[pulumi.Input[int]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-                 kernels: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]] = None,
+                 kernels: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArrgs']]]] = None,
                  notebook_upgrade_schedule: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  post_startup_script_behavior: Optional[pulumi.Input[str]] = None,
@@ -659,7 +659,7 @@ class RuntimeSoftwareConfigArgs:
         :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shuting down runtime.
                Default: 180 minutes
         :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically.
-        :param pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]] kernels: Use a list of container images to use as Kernels in the notebook instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArrgs']]] kernels: Use a list of container images to use as Kernels in the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone for schedule instance auto upgrade.
                Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -757,7 +757,7 @@ class RuntimeSoftwareConfigArgs:
 
     @property
     @pulumi.getter
-    def kernels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]:
+    def kernels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArrgs']]]]:
         """
         Use a list of container images to use as Kernels in the notebook instance.
         Structure is documented below.
@@ -765,7 +765,7 @@ class RuntimeSoftwareConfigArgs:
         return pulumi.get(self, "kernels")
 
     @kernels.setter
-    def kernels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]):
+    def kernels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArrgs']]]]):
         pulumi.set(self, "kernels", value)
 
     @property
@@ -823,7 +823,7 @@ class RuntimeSoftwareConfigArgs:
 
 
 @pulumi.input_type
-class RuntimeSoftwareConfigKernelArgs:
+calass RuntimeSoftwareConfigKernelArrgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[str],
                  tag: Optional[pulumi.Input[str]] = None):
@@ -863,17 +863,17 @@ class RuntimeSoftwareConfigKernelArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineArgs:
+calass RuntimeVirtualMachineArrgs:
     def __init__(__self__, *,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
-                 virtual_machine_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']] = None):
+                 virtual_machine_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArrgs']] = None):
         """
         :param pulumi.Input[str] instance_id: (Output)
                The unique identifier of the Managed Compute Engine instance.
         :param pulumi.Input[str] instance_name: (Output)
                The user-friendly name of the Managed Compute Engine instance.
-        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs'] virtual_machine_config: Virtual Machine configuration settings.
+        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArrgs'] virtual_machine_config: Virtual Machine configuration settings.
                Structure is documented below.
         """
         if instance_id is not None:
@@ -911,7 +911,7 @@ class RuntimeVirtualMachineArgs:
 
     @property
     @pulumi.getter(name="virtualMachineConfig")
-    def virtual_machine_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']]:
+    def virtual_machine_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArrgs']]:
         """
         Virtual Machine configuration settings.
         Structure is documented below.
@@ -919,18 +919,18 @@ class RuntimeVirtualMachineArgs:
         return pulumi.get(self, "virtual_machine_config")
 
     @virtual_machine_config.setter
-    def virtual_machine_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']]):
+    def virtual_machine_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArrgs']]):
         pulumi.set(self, "virtual_machine_config", value)
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigArrgs:
     def __init__(__self__, *,
-                 data_disk: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs'],
+                 data_disk: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs'],
                  machine_type: pulumi.Input[str],
-                 accelerator_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']] = None,
-                 container_images: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]] = None,
-                 encryption_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']] = None,
+                 accelerator_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs']] = None,
+                 container_images: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs']]]] = None,
+                 encryption_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs']] = None,
                  guest_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -938,19 +938,19 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs']] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs'] data_disk: Data disk option configuration settings.
+        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs'] data_disk: Data disk option configuration settings.
                Structure is documented below.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type used for runtimes.
-        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs'] accelerator_config: The Compute Engine accelerator configuration for this runtime.
+        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs'] accelerator_config: The Compute Engine accelerator configuration for this runtime.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]] container_images: Use a list of container images to start the notebook instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs']]] container_images: Use a list of container images to start the notebook instance.
                Structure is documented below.
-        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs'] encryption_config: Encryption settings for virtual machine data disk.
+        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs'] encryption_config: Encryption settings for virtual machine data disk.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] guest_attributes: (Output)
                The Compute Engine guest attributes. (see [Project and instance
@@ -991,7 +991,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param pulumi.Input[str] reserved_ip_range: Reserved IP Range name is used for VPC Peering. The
                subnetwork allocation will use the range *name* if it's assigned.
-        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded VM Instance configuration settings.
+        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs'] shielded_instance_config: Shielded VM Instance configuration settings.
                Structure is documented below.
         :param pulumi.Input[str] subnet: The Compute Engine subnetwork to be used for machine
                communications. Cannot be specified with network. A full URL or
@@ -1038,7 +1038,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
 
     @property
     @pulumi.getter(name="dataDisk")
-    def data_disk(self) -> pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs']:
+    def data_disk(self) -> pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs']:
         """
         Data disk option configuration settings.
         Structure is documented below.
@@ -1046,7 +1046,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "data_disk")
 
     @data_disk.setter
-    def data_disk(self, value: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs']):
+    def data_disk(self, value: pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs']):
         pulumi.set(self, "data_disk", value)
 
     @property
@@ -1063,7 +1063,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
 
     @property
     @pulumi.getter(name="acceleratorConfig")
-    def accelerator_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]:
+    def accelerator_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs']]:
         """
         The Compute Engine accelerator configuration for this runtime.
         Structure is documented below.
@@ -1071,12 +1071,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "accelerator_config")
 
     @accelerator_config.setter
-    def accelerator_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]):
+    def accelerator_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs']]):
         pulumi.set(self, "accelerator_config", value)
 
     @property
     @pulumi.getter(name="containerImages")
-    def container_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]:
+    def container_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs']]]]:
         """
         Use a list of container images to start the notebook instance.
         Structure is documented below.
@@ -1084,12 +1084,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "container_images")
 
     @container_images.setter
-    def container_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]):
+    def container_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs']]]]):
         pulumi.set(self, "container_images", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs']]:
         """
         Encryption settings for virtual machine data disk.
         Structure is documented below.
@@ -1097,7 +1097,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -1218,7 +1218,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs']]:
         """
         Shielded VM Instance configuration settings.
         Structure is documented below.
@@ -1226,7 +1226,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -1275,7 +1275,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArrgs:
     def __init__(__self__, *,
                  core_count: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -1318,7 +1318,7 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigContainerImageArrgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[str],
                  tag: Optional[pulumi.Input[str]] = None):
@@ -1358,14 +1358,14 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigDataDiskArrgs:
     def __init__(__self__, *,
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  boot: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  index: Optional[pulumi.Input[int]] = None,
-                 initialize_params: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']] = None,
+                 initialize_params: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs']] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1401,7 +1401,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
                Output only. A zero-based index to this disk, where 0 is
                reserved for the boot disk. If you have many disks attached
                to an instance, each disk would have a unique index number.
-        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs'] initialize_params: Input only. Specifies the parameters for a new disk that will
+        :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs'] initialize_params: Input only. Specifies the parameters for a new disk that will
                be created alongside the new instance. Use initialization
                parameters to create boot disks or local SSDs attached to the
                new instance. This property is mutually exclusive with the
@@ -1537,7 +1537,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
 
     @property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]:
+    def initialize_params(self) -> Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs']]:
         """
         Input only. Specifies the parameters for a new disk that will
         be created alongside the new instance. Use initialization
@@ -1550,7 +1550,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]):
+    def initialize_params(self, value: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs']]):
         pulumi.set(self, "initialize_params", value)
 
     @property
@@ -1639,7 +1639,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_name: Optional[pulumi.Input[str]] = None,
@@ -1748,7 +1748,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key: Optional[pulumi.Input[str]] = None):
         """
@@ -1779,7 +1779,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs:
+calass RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,

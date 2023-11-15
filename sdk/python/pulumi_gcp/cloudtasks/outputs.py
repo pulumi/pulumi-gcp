@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class QueueAppEngineRoutingOverride(dict):
+calass QueueAppEngineRoutingOverride(dict):
     def __init__(__self__, *,
                  host: Optional[str] = None,
                  instance: Optional[str] = None,
@@ -82,7 +82,7 @@ class QueueAppEngineRoutingOverride(dict):
 
 
 @pulumi.output_type
-class QueueIamBindingCondition(dict):
+calass QueueIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -109,7 +109,7 @@ class QueueIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class QueueIamMemberCondition(dict):
+calass QueueIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -136,7 +136,7 @@ class QueueIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class QueueRateLimits(dict):
+calass QueueRateLimits(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -218,7 +218,7 @@ class QueueRateLimits(dict):
 
 
 @pulumi.output_type
-class QueueRetryConfig(dict):
+calass QueueRetryConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -346,7 +346,7 @@ class QueueRetryConfig(dict):
 
 
 @pulumi.output_type
-class QueueStackdriverLoggingConfig(dict):
+calass QueueStackdriverLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

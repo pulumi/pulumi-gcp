@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MetastoreFederationArgs', 'MetastoreFederation']
+__all__ = ['MetastoreFederationArrgs', 'MetastoreFederation']
 
 @pulumi.input_type
-class MetastoreFederationArgs:
+calass MetastoreFederationArrgs:
     def __init__(__self__, *,
-                 backend_metastores: pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]],
+                 backend_metastores: pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]],
                  federation_id: pulumi.Input[str],
                  version: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -24,7 +24,7 @@ class MetastoreFederationArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetastoreFederation resource.
-        :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -49,7 +49,7 @@ class MetastoreFederationArgs:
 
     @property
     @pulumi.getter(name="backendMetastores")
-    def backend_metastores(self) -> pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]:
+    def backend_metastores(self) -> pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]]:
         """
         A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         Structure is documented below.
@@ -57,7 +57,7 @@ class MetastoreFederationArgs:
         return pulumi.get(self, "backend_metastores")
 
     @backend_metastores.setter
-    def backend_metastores(self, value: pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]):
+    def backend_metastores(self, value: pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]]):
         pulumi.set(self, "backend_metastores", value)
 
     @property
@@ -127,9 +127,9 @@ class MetastoreFederationArgs:
 
 
 @pulumi.input_type
-class _MetastoreFederationState:
+calass _MetastoreFederationState:
     def __init__(__self__, *,
-                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class _MetastoreFederationState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetastoreFederation resources.
-        :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore federation.
@@ -194,7 +194,7 @@ class _MetastoreFederationState:
 
     @property
     @pulumi.getter(name="backendMetastores")
-    def backend_metastores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]]:
+    def backend_metastores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]]]:
         """
         A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         Structure is documented below.
@@ -202,7 +202,7 @@ class _MetastoreFederationState:
         return pulumi.get(self, "backend_metastores")
 
     @backend_metastores.setter
-    def backend_metastores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArgs']]]]):
+    def backend_metastores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreFederationBackendMetastoreArrgs']]]]):
         pulumi.set(self, "backend_metastores", value)
 
     @property
@@ -356,12 +356,12 @@ class _MetastoreFederationState:
         pulumi.set(self, "version", value)
 
 
-class MetastoreFederation(pulumi.CustomResource):
+calass MetastoreFederation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArrgs']]]]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -380,7 +380,7 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
                 endpoint_protocol="GRPC",
             ),
@@ -389,7 +389,7 @@ class MetastoreFederation(pulumi.CustomResource):
             location="us-central1",
             federation_id="",
             version="3.1.2",
-            backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+            backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArrgs(
                 rank="1",
                 name=default_metastore_service.id,
                 metastore_type="DATAPROC_METASTORE",
@@ -406,7 +406,7 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
                 endpoint_protocol="GRPC",
             ),
@@ -417,12 +417,12 @@ class MetastoreFederation(pulumi.CustomResource):
             federation_id="",
             version="3.1.2",
             backend_metastores=[
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                gcp.dataproc.MetastoreFederationBackendMetastoreArrgs(
                     rank="2",
                     name=project.id,
                     metastore_type="BIGQUERY",
                 ),
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                gcp.dataproc.MetastoreFederationBackendMetastoreArrgs(
                     rank="1",
                     name=default_metastore_service.id,
                     metastore_type="DATAPROC_METASTORE",
@@ -449,7 +449,7 @@ class MetastoreFederation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArrgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -466,7 +466,7 @@ class MetastoreFederation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MetastoreFederationArgs,
+                 args: MetastoreFederationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -480,7 +480,7 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
                 endpoint_protocol="GRPC",
             ),
@@ -489,7 +489,7 @@ class MetastoreFederation(pulumi.CustomResource):
             location="us-central1",
             federation_id="",
             version="3.1.2",
-            backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+            backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArrgs(
                 rank="1",
                 name=default_metastore_service.id,
                 metastore_type="DATAPROC_METASTORE",
@@ -506,7 +506,7 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
                 endpoint_protocol="GRPC",
             ),
@@ -517,12 +517,12 @@ class MetastoreFederation(pulumi.CustomResource):
             federation_id="",
             version="3.1.2",
             backend_metastores=[
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                gcp.dataproc.MetastoreFederationBackendMetastoreArrgs(
                     rank="2",
                     name=project.id,
                     metastore_type="BIGQUERY",
                 ),
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                gcp.dataproc.MetastoreFederationBackendMetastoreArrgs(
                     rank="1",
                     name=default_metastore_service.id,
                     metastore_type="DATAPROC_METASTORE",
@@ -548,12 +548,12 @@ class MetastoreFederation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MetastoreFederationArgs args: The arguments to use to populate this resource's properties.
+        :param MetastoreFederationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MetastoreFederationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MetastoreFederationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -562,7 +562,7 @@ class MetastoreFederation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArrgs']]]]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -575,7 +575,7 @@ class MetastoreFederation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MetastoreFederationArgs.__new__(MetastoreFederationArgs)
+            __props__ = MetastoreFederationArrgs.__new__(MetastoreFederationArrgs)
 
             if backend_metastores is None and not opts.urn:
                 raise TypeError("Missing required property 'backend_metastores'")
@@ -608,7 +608,7 @@ class MetastoreFederation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]]] = None,
+            backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArrgs']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
             federation_id: Optional[pulumi.Input[str]] = None,
@@ -628,7 +628,7 @@ class MetastoreFederation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArrgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore federation.

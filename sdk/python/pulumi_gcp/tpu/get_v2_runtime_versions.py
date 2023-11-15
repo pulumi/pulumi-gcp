@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetV2RuntimeVersionsResult:
+calass GetV2RuntimeVersionsResult:
     """
     A collection of values returned by getV2RuntimeVersions.
     """
@@ -62,7 +62,7 @@ class GetV2RuntimeVersionsResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetV2RuntimeVersionsResult(GetV2RuntimeVersionsResult):
+calass AwaitableGetV2RuntimeVersionsResult(GetV2RuntimeVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

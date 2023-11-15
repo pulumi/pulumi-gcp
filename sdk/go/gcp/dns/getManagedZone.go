@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to a zone's attributes within Google Cloud DNS.
@@ -130,12 +129,6 @@ func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutput() LookupM
 
 func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutputWithContext(ctx context.Context) LookupManagedZoneResultOutput {
 	return o
-}
-
-func (o LookupManagedZoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedZoneResult] {
-	return pulumix.Output[LookupManagedZoneResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A textual description field.

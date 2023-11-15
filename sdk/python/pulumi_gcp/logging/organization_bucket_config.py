@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationBucketConfigArgs', 'OrganizationBucketConfig']
+__all__ = ['OrganizationBucketConfigArrgs', 'OrganizationBucketConfig']
 
 @pulumi.input_type
-class OrganizationBucketConfigArgs:
+calass OrganizationBucketConfigArrgs:
     def __init__(__self__, *,
                  bucket_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  organization: pulumi.Input[str],
-                 cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
+                 cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
@@ -27,7 +27,7 @@ class OrganizationBucketConfigArgs:
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] organization: The parent resource that contains the logging bucket.
-        :param pulumi.Input['OrganizationBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -81,7 +81,7 @@ class OrganizationBucketConfigArgs:
 
     @property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
         key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
@@ -90,7 +90,7 @@ class OrganizationBucketConfigArgs:
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @property
@@ -119,10 +119,10 @@ class OrganizationBucketConfigArgs:
 
 
 @pulumi.input_type
-class _OrganizationBucketConfigState:
+calass _OrganizationBucketConfigState:
     def __init__(__self__, *,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
+                 cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class _OrganizationBucketConfigState:
         """
         Input properties used for looking up and filtering OrganizationBucketConfig resources.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input['OrganizationBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -173,7 +173,7 @@ class _OrganizationBucketConfigState:
 
     @property
     @pulumi.getter(name="cmekSettings")
-    def cmek_settings(self) -> Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]:
+    def cmek_settings(self) -> Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs']]:
         """
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
         key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
@@ -182,7 +182,7 @@ class _OrganizationBucketConfigState:
         return pulumi.get(self, "cmek_settings")
 
     @cmek_settings.setter
-    def cmek_settings(self, value: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]):
+    def cmek_settings(self, value: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArrgs']]):
         pulumi.set(self, "cmek_settings", value)
 
     @property
@@ -258,13 +258,13 @@ class _OrganizationBucketConfigState:
         pulumi.set(self, "retention_days", value)
 
 
-class OrganizationBucketConfig(pulumi.CustomResource):
+calass OrganizationBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -302,7 +302,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArrgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -314,7 +314,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationBucketConfigArgs,
+                 args: OrganizationBucketConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a organization-level logging bucket config. For more information see
@@ -346,12 +346,12 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationBucketConfigArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationBucketConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationBucketConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationBucketConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -361,7 +361,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -373,7 +373,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationBucketConfigArgs.__new__(OrganizationBucketConfigArgs)
+            __props__ = OrganizationBucketConfigArrgs.__new__(OrganizationBucketConfigArrgs)
 
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
@@ -400,7 +400,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_id: Optional[pulumi.Input[str]] = None,
-            cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
+            cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -415,7 +415,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArrgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GatewayArgs', 'Gateway']
+__all__ = ['GatewayArrgs', 'Gateway']
 
 @pulumi.input_type
-class GatewayArgs:
+calass GatewayArrgs:
     def __init__(__self__, *,
                  ports: pulumi.Input[Sequence[pulumi.Input[int]]],
                  type: pulumi.Input[str],
@@ -306,7 +306,7 @@ class GatewayArgs:
 
 
 @pulumi.input_type
-class _GatewayState:
+calass _GatewayState:
     def __init__(__self__, *,
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -683,7 +683,7 @@ class _GatewayState:
         pulumi.set(self, "update_time", value)
 
 
-class Gateway(pulumi.CustomResource):
+calass Gateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -749,7 +749,7 @@ class Gateway(pulumi.CustomResource):
 
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -797,7 +797,7 @@ class Gateway(pulumi.CustomResource):
 
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-south1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -912,7 +912,7 @@ class Gateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GatewayArgs,
+                 args: GatewayArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Gateway represents the configuration for a proxy, typically a load balancer.
@@ -959,7 +959,7 @@ class Gateway(pulumi.CustomResource):
 
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -1007,7 +1007,7 @@ class Gateway(pulumi.CustomResource):
 
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-south1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArrgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
@@ -1077,12 +1077,12 @@ class Gateway(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GatewayArgs args: The arguments to use to populate this resource's properties.
+        :param GatewayArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GatewayArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1113,7 +1113,7 @@ class Gateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GatewayArgs.__new__(GatewayArgs)
+            __props__ = GatewayArrgs.__new__(GatewayArrgs)
 
             __props__.__dict__["addresses"] = addresses
             __props__.__dict__["certificate_urls"] = certificate_urls

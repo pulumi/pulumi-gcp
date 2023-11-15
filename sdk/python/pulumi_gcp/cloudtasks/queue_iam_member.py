@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['QueueIamMemberArgs', 'QueueIamMember']
+__all__ = ['QueueIamMemberArrgs', 'QueueIamMember']
 
 @pulumi.input_type
-class QueueIamMemberArgs:
+calass QueueIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['QueueIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['QueueIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -80,11 +80,11 @@ class QueueIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['QueueIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['QueueIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['QueueIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['QueueIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -138,9 +138,9 @@ class QueueIamMemberArgs:
 
 
 @pulumi.input_type
-class _QueueIamMemberState:
+calass _QueueIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['QueueIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['QueueIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -187,11 +187,11 @@ class _QueueIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['QueueIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['QueueIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['QueueIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['QueueIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -279,12 +279,12 @@ class _QueueIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class QueueIamMember(pulumi.CustomResource):
+calass QueueIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['QueueIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['QueueIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -312,7 +312,7 @@ class QueueIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -398,7 +398,7 @@ class QueueIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: QueueIamMemberArgs,
+                 args: QueueIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
@@ -421,7 +421,7 @@ class QueueIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -482,12 +482,12 @@ class QueueIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param QueueIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param QueueIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(QueueIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(QueueIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -496,7 +496,7 @@ class QueueIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['QueueIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['QueueIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -509,7 +509,7 @@ class QueueIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = QueueIamMemberArgs.__new__(QueueIamMemberArgs)
+            __props__ = QueueIamMemberArrgs.__new__(QueueIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -532,7 +532,7 @@ class QueueIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['QueueIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['QueueIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

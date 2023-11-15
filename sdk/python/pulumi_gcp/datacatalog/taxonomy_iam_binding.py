@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TaxonomyIamBindingArgs', 'TaxonomyIamBinding']
+__all__ = ['TaxonomyIamBindingArrgs', 'TaxonomyIamBinding']
 
 @pulumi.input_type
-class TaxonomyIamBindingArgs:
+calass TaxonomyIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  taxonomy: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['TaxonomyIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TaxonomyIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -90,11 +90,11 @@ class TaxonomyIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TaxonomyIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TaxonomyIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TaxonomyIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TaxonomyIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -133,9 +133,9 @@ class TaxonomyIamBindingArgs:
 
 
 @pulumi.input_type
-class _TaxonomyIamBindingState:
+calass _TaxonomyIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['TaxonomyIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TaxonomyIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -181,11 +181,11 @@ class _TaxonomyIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TaxonomyIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TaxonomyIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TaxonomyIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TaxonomyIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -270,12 +270,12 @@ class _TaxonomyIamBindingState:
         pulumi.set(self, "taxonomy", value)
 
 
-class TaxonomyIamBinding(pulumi.CustomResource):
+calass TaxonomyIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TaxonomyIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TaxonomyIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -303,7 +303,7 @@ class TaxonomyIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -385,7 +385,7 @@ class TaxonomyIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TaxonomyIamBindingArgs,
+                 args: TaxonomyIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
@@ -408,7 +408,7 @@ class TaxonomyIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -466,12 +466,12 @@ class TaxonomyIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param TaxonomyIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param TaxonomyIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TaxonomyIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TaxonomyIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -480,7 +480,7 @@ class TaxonomyIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TaxonomyIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TaxonomyIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -493,7 +493,7 @@ class TaxonomyIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TaxonomyIamBindingArgs.__new__(TaxonomyIamBindingArgs)
+            __props__ = TaxonomyIamBindingArrgs.__new__(TaxonomyIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -518,7 +518,7 @@ class TaxonomyIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TaxonomyIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['TaxonomyIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

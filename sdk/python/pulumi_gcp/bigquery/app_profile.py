@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppProfileArgs', 'AppProfile']
+__all__ = ['AppProfileArrgs', 'AppProfile']
 
 @pulumi.input_type
-class AppProfileArgs:
+calass AppProfileArrgs:
     def __init__(__self__, *,
                  app_profile_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -23,7 +23,7 @@ class AppProfileArgs:
                  multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
+                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArrgs']] = None):
         """
         The set of arguments for constructing a AppProfile resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -40,7 +40,7 @@ class AppProfileArgs:
                consistency to improve availability.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input['AppProfileSingleClusterRoutingArrgs'] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
         pulumi.set(__self__, "app_profile_id", app_profile_id)
@@ -152,7 +152,7 @@ class AppProfileArgs:
 
     @property
     @pulumi.getter(name="singleClusterRouting")
-    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]:
+    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArrgs']]:
         """
         Use a single-cluster routing policy.
         Structure is documented below.
@@ -160,12 +160,12 @@ class AppProfileArgs:
         return pulumi.get(self, "single_cluster_routing")
 
     @single_cluster_routing.setter
-    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
+    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArrgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
 
 @pulumi.input_type
-class _AppProfileState:
+calass _AppProfileState:
     def __init__(__self__, *,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -175,7 +175,7 @@ class _AppProfileState:
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
+                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArrgs']] = None):
         """
         Input properties used for looking up and filtering AppProfile resources.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -193,7 +193,7 @@ class _AppProfileState:
         :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input['AppProfileSingleClusterRoutingArrgs'] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
         if app_profile_id is not None:
@@ -320,7 +320,7 @@ class _AppProfileState:
 
     @property
     @pulumi.getter(name="singleClusterRouting")
-    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]:
+    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArrgs']]:
         """
         Use a single-cluster routing policy.
         Structure is documented below.
@@ -328,11 +328,11 @@ class _AppProfileState:
         return pulumi.get(self, "single_cluster_routing")
 
     @single_cluster_routing.setter
-    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
+    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArrgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
 
-class AppProfile(pulumi.CustomResource):
+calass AppProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -344,7 +344,7 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArrgs']]] = None,
                  __props__=None):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -362,19 +362,19 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-1",
                     zone="us-central1-a",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-2",
                     zone="us-central1-b",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-3",
                     zone="us-central1-c",
                     num_nodes=3,
@@ -395,7 +395,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
+            clusters=[gcp.bigtable.InstanceClusterArrgs(
                 cluster_id="cluster-1",
                 zone="us-central1-b",
                 num_nodes=3,
@@ -405,7 +405,7 @@ class AppProfile(pulumi.CustomResource):
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArrgs(
                 cluster_id="cluster-1",
                 allow_transactional_writes=True,
             ),
@@ -419,19 +419,19 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-1",
                     zone="us-central1-a",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-2",
                     zone="us-central1-b",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-3",
                     zone="us-central1-c",
                     num_nodes=3,
@@ -482,14 +482,14 @@ class AppProfile(pulumi.CustomResource):
                consistency to improve availability.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArrgs']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppProfileArgs,
+                 args: AppProfileArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -507,19 +507,19 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-1",
                     zone="us-central1-a",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-2",
                     zone="us-central1-b",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-3",
                     zone="us-central1-c",
                     num_nodes=3,
@@ -540,7 +540,7 @@ class AppProfile(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
+            clusters=[gcp.bigtable.InstanceClusterArrgs(
                 cluster_id="cluster-1",
                 zone="us-central1-b",
                 num_nodes=3,
@@ -550,7 +550,7 @@ class AppProfile(pulumi.CustomResource):
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArrgs(
                 cluster_id="cluster-1",
                 allow_transactional_writes=True,
             ),
@@ -564,19 +564,19 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-1",
                     zone="us-central1-a",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-2",
                     zone="us-central1-b",
                     num_nodes=3,
                     storage_type="HDD",
                 ),
-                gcp.bigtable.InstanceClusterArgs(
+                gcp.bigtable.InstanceClusterArrgs(
                     cluster_id="cluster-3",
                     zone="us-central1-c",
                     num_nodes=3,
@@ -612,12 +612,12 @@ class AppProfile(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AppProfileArgs args: The arguments to use to populate this resource's properties.
+        :param AppProfileArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppProfileArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -633,7 +633,7 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -641,7 +641,7 @@ class AppProfile(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppProfileArgs.__new__(AppProfileArgs)
+            __props__ = AppProfileArrgs.__new__(AppProfileArrgs)
 
             if app_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_profile_id'")
@@ -672,7 +672,7 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None) -> 'AppProfile':
+            single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArrgs']]] = None) -> 'AppProfile':
         """
         Get an existing AppProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -695,7 +695,7 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArrgs']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

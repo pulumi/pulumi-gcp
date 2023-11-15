@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class FieldIndexConfig(dict):
+calass FieldIndexConfig(dict):
     def __init__(__self__, *,
                  indexes: Optional[Sequence['outputs.FieldIndexConfigIndex']] = None):
         """
-        :param Sequence['FieldIndexConfigIndexArgs'] indexes: The indexes to configure on the field. Order or array contains must be specified.
+        :param Sequence['FieldIndexConfigIndexArrgs'] indexes: The indexes to configure on the field. Order or array contains must be specified.
                Structure is documented below.
         """
         if indexes is not None:
@@ -39,7 +39,7 @@ class FieldIndexConfig(dict):
 
 
 @pulumi.output_type
-class FieldIndexConfigIndex(dict):
+calass FieldIndexConfigIndex(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -117,7 +117,7 @@ class FieldIndexConfigIndex(dict):
 
 
 @pulumi.output_type
-class FieldTtlConfig(dict):
+calass FieldTtlConfig(dict):
     def __init__(__self__, *,
                  state: Optional[str] = None):
         """
@@ -138,7 +138,7 @@ class FieldTtlConfig(dict):
 
 
 @pulumi.output_type
-class IndexField(dict):
+calass IndexField(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

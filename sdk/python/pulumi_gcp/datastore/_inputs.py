@@ -10,11 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DataStoreIndexPropertyArgs',
+    'DataStoreIndexPropertyArrgs',
 ]
 
 @pulumi.input_type
-class DataStoreIndexPropertyArgs:
+calass DataStoreIndexPropertyArrgs:
     def __init__(__self__, *,
                  direction: pulumi.Input[str],
                  name: pulumi.Input[str]):

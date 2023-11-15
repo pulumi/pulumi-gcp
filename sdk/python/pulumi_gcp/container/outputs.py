@@ -368,7 +368,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AttachedClusterAuthorization(dict):
+calass AttachedClusterAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -412,7 +412,7 @@ class AttachedClusterAuthorization(dict):
 
 
 @pulumi.output_type
-class AttachedClusterBinaryAuthorization(dict):
+calass AttachedClusterBinaryAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -450,7 +450,7 @@ class AttachedClusterBinaryAuthorization(dict):
 
 
 @pulumi.output_type
-class AttachedClusterError(dict):
+calass AttachedClusterError(dict):
     def __init__(__self__, *,
                  message: Optional[str] = None):
         """
@@ -469,7 +469,7 @@ class AttachedClusterError(dict):
 
 
 @pulumi.output_type
-class AttachedClusterFleet(dict):
+calass AttachedClusterFleet(dict):
     def __init__(__self__, *,
                  project: str,
                  membership: Optional[str] = None):
@@ -507,7 +507,7 @@ class AttachedClusterFleet(dict):
 
 
 @pulumi.output_type
-class AttachedClusterLoggingConfig(dict):
+calass AttachedClusterLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -528,7 +528,7 @@ class AttachedClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  component_config: Optional['outputs.AttachedClusterLoggingConfigComponentConfig'] = None):
         """
-        :param 'AttachedClusterLoggingConfigComponentConfigArgs' component_config: The configuration of the logging components
+        :param 'AttachedClusterLoggingConfigComponentConfigArrgs' component_config: The configuration of the logging components
                Structure is documented below.
         """
         if component_config is not None:
@@ -545,7 +545,7 @@ class AttachedClusterLoggingConfig(dict):
 
 
 @pulumi.output_type
-class AttachedClusterLoggingConfigComponentConfig(dict):
+calass AttachedClusterLoggingConfigComponentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -583,7 +583,7 @@ class AttachedClusterLoggingConfigComponentConfig(dict):
 
 
 @pulumi.output_type
-class AttachedClusterMonitoringConfig(dict):
+calass AttachedClusterMonitoringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -604,7 +604,7 @@ class AttachedClusterMonitoringConfig(dict):
     def __init__(__self__, *,
                  managed_prometheus_config: Optional['outputs.AttachedClusterMonitoringConfigManagedPrometheusConfig'] = None):
         """
-        :param 'AttachedClusterMonitoringConfigManagedPrometheusConfigArgs' managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
+        :param 'AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs' managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
                Structure is documented below.
         """
         if managed_prometheus_config is not None:
@@ -621,7 +621,7 @@ class AttachedClusterMonitoringConfig(dict):
 
 
 @pulumi.output_type
-class AttachedClusterMonitoringConfigManagedPrometheusConfig(dict):
+calass AttachedClusterMonitoringConfigManagedPrometheusConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -640,7 +640,7 @@ class AttachedClusterMonitoringConfigManagedPrometheusConfig(dict):
 
 
 @pulumi.output_type
-class AttachedClusterOidcConfig(dict):
+calass AttachedClusterOidcConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -687,7 +687,7 @@ class AttachedClusterOidcConfig(dict):
 
 
 @pulumi.output_type
-class AttachedClusterWorkloadIdentityConfig(dict):
+calass AttachedClusterWorkloadIdentityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -753,7 +753,7 @@ class AttachedClusterWorkloadIdentityConfig(dict):
 
 
 @pulumi.output_type
-class AwsClusterAuthorization(dict):
+calass AwsClusterAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -774,7 +774,7 @@ class AwsClusterAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Sequence['outputs.AwsClusterAuthorizationAdminUser']):
         """
-        :param Sequence['AwsClusterAuthorizationAdminUserArgs'] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param Sequence['AwsClusterAuthorizationAdminUserArrgs'] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -788,7 +788,7 @@ class AwsClusterAuthorization(dict):
 
 
 @pulumi.output_type
-class AwsClusterAuthorizationAdminUser(dict):
+calass AwsClusterAuthorizationAdminUser(dict):
     def __init__(__self__, *,
                  username: str):
         """
@@ -806,7 +806,7 @@ class AwsClusterAuthorizationAdminUser(dict):
 
 
 @pulumi.output_type
-class AwsClusterBinaryAuthorization(dict):
+calass AwsClusterBinaryAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -842,7 +842,7 @@ class AwsClusterBinaryAuthorization(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlane(dict):
+calass AwsClusterControlPlane(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -898,19 +898,19 @@ class AwsClusterControlPlane(dict):
                  ssh_config: Optional['outputs.AwsClusterControlPlaneSshConfig'] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
-        :param 'AwsClusterControlPlaneAwsServicesAuthenticationArgs' aws_services_authentication: Authentication configuration for management of AWS resources.
-        :param 'AwsClusterControlPlaneConfigEncryptionArgs' config_encryption: The ARN of the AWS KMS key used to encrypt cluster configuration.
-        :param 'AwsClusterControlPlaneDatabaseEncryptionArgs' database_encryption: The ARN of the AWS KMS key used to encrypt cluster secrets.
+        :param 'AwsClusterControlPlaneAwsServicesAuthenticationArrgs' aws_services_authentication: Authentication configuration for management of AWS resources.
+        :param 'AwsClusterControlPlaneConfigEncryptionArrgs' config_encryption: The ARN of the AWS KMS key used to encrypt cluster configuration.
+        :param 'AwsClusterControlPlaneDatabaseEncryptionArrgs' database_encryption: The ARN of the AWS KMS key used to encrypt cluster secrets.
         :param str iam_instance_profile: The name of the AWS IAM instance pofile to assign to each control plane replica.
         :param Sequence[str] subnet_ids: The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         :param str version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
-        :param 'AwsClusterControlPlaneInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
+        :param 'AwsClusterControlPlaneInstancePlacementArrgs' instance_placement: (Beta only) Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
-        :param 'AwsClusterControlPlaneMainVolumeArgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
-        :param 'AwsClusterControlPlaneProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param 'AwsClusterControlPlaneRootVolumeArgs' root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        :param 'AwsClusterControlPlaneMainVolumeArrgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+        :param 'AwsClusterControlPlaneProxyConfigArrgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param 'AwsClusterControlPlaneRootVolumeArrgs' root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param Sequence[str] security_group_ids: Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
-        :param 'AwsClusterControlPlaneSshConfigArgs' ssh_config: Optional. SSH configuration for how to access the underlying control plane machines.
+        :param 'AwsClusterControlPlaneSshConfigArrgs' ssh_config: Optional. SSH configuration for how to access the underlying control plane machines.
         :param Mapping[str, str] tags: Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         """
         pulumi.set(__self__, "aws_services_authentication", aws_services_authentication)
@@ -1050,7 +1050,7 @@ class AwsClusterControlPlane(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneAwsServicesAuthentication(dict):
+calass AwsClusterControlPlaneAwsServicesAuthentication(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1099,7 +1099,7 @@ class AwsClusterControlPlaneAwsServicesAuthentication(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneConfigEncryption(dict):
+calass AwsClusterControlPlaneConfigEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1134,7 +1134,7 @@ class AwsClusterControlPlaneConfigEncryption(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneDatabaseEncryption(dict):
+calass AwsClusterControlPlaneDatabaseEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1169,7 +1169,7 @@ class AwsClusterControlPlaneDatabaseEncryption(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneInstancePlacement(dict):
+calass AwsClusterControlPlaneInstancePlacement(dict):
     def __init__(__self__, *,
                  tenancy: Optional[str] = None):
         """
@@ -1188,7 +1188,7 @@ class AwsClusterControlPlaneInstancePlacement(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneMainVolume(dict):
+calass AwsClusterControlPlaneMainVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1276,7 +1276,7 @@ class AwsClusterControlPlaneMainVolume(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneProxyConfig(dict):
+calass AwsClusterControlPlaneProxyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1324,7 +1324,7 @@ class AwsClusterControlPlaneProxyConfig(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneRootVolume(dict):
+calass AwsClusterControlPlaneRootVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1412,7 +1412,7 @@ class AwsClusterControlPlaneRootVolume(dict):
 
 
 @pulumi.output_type
-class AwsClusterControlPlaneSshConfig(dict):
+calass AwsClusterControlPlaneSshConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1447,7 +1447,7 @@ class AwsClusterControlPlaneSshConfig(dict):
 
 
 @pulumi.output_type
-class AwsClusterFleet(dict):
+calass AwsClusterFleet(dict):
     def __init__(__self__, *,
                  membership: Optional[str] = None,
                  project: Optional[str] = None):
@@ -1478,7 +1478,7 @@ class AwsClusterFleet(dict):
 
 
 @pulumi.output_type
-class AwsClusterLoggingConfig(dict):
+calass AwsClusterLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1499,7 +1499,7 @@ class AwsClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  component_config: Optional['outputs.AwsClusterLoggingConfigComponentConfig'] = None):
         """
-        :param 'AwsClusterLoggingConfigComponentConfigArgs' component_config: Configuration of the logging components.
+        :param 'AwsClusterLoggingConfigComponentConfigArrgs' component_config: Configuration of the logging components.
         """
         if component_config is not None:
             pulumi.set(__self__, "component_config", component_config)
@@ -1514,7 +1514,7 @@ class AwsClusterLoggingConfig(dict):
 
 
 @pulumi.output_type
-class AwsClusterLoggingConfigComponentConfig(dict):
+calass AwsClusterLoggingConfigComponentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1550,7 +1550,7 @@ class AwsClusterLoggingConfigComponentConfig(dict):
 
 
 @pulumi.output_type
-class AwsClusterNetworking(dict):
+calass AwsClusterNetworking(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1629,7 +1629,7 @@ class AwsClusterNetworking(dict):
 
 
 @pulumi.output_type
-class AwsClusterWorkloadIdentityConfig(dict):
+calass AwsClusterWorkloadIdentityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1679,7 +1679,7 @@ class AwsClusterWorkloadIdentityConfig(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolAutoscaling(dict):
+calass AwsNodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1727,7 +1727,7 @@ class AwsNodePoolAutoscaling(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfig(dict):
+calass AwsNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1781,20 +1781,20 @@ class AwsNodePoolConfig(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  taints: Optional[Sequence['outputs.AwsNodePoolConfigTaint']] = None):
         """
-        :param 'AwsNodePoolConfigConfigEncryptionArgs' config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
+        :param 'AwsNodePoolConfigConfigEncryptionArrgs' config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
         :param str iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
-        :param 'AwsNodePoolConfigAutoscalingMetricsCollectionArgs' autoscaling_metrics_collection: Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+        :param 'AwsNodePoolConfigAutoscalingMetricsCollectionArrgs' autoscaling_metrics_collection: Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
         :param str image_type: (Beta only) The OS image type to use on node pool instances.
-        :param 'AwsNodePoolConfigInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
+        :param 'AwsNodePoolConfigInstancePlacementArrgs' instance_placement: (Beta only) Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param 'AwsNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param 'AwsNodePoolConfigRootVolumeArgs' root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        :param 'AwsNodePoolConfigProxyConfigArrgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param 'AwsNodePoolConfigRootVolumeArrgs' root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param Sequence[str] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
-        :param 'AwsNodePoolConfigSpotConfigArgs' spot_config: (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
-        :param 'AwsNodePoolConfigSshConfigArgs' ssh_config: Optional. The SSH configuration.
+        :param 'AwsNodePoolConfigSpotConfigArrgs' spot_config: (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        :param 'AwsNodePoolConfigSshConfigArrgs' ssh_config: Optional. The SSH configuration.
         :param Mapping[str, str] tags: Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
-        :param Sequence['AwsNodePoolConfigTaintArgs'] taints: Optional. The initial taints assigned to nodes of this node pool.
+        :param Sequence['AwsNodePoolConfigTaintArrgs'] taints: Optional. The initial taints assigned to nodes of this node pool.
         """
         pulumi.set(__self__, "config_encryption", config_encryption)
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
@@ -1937,7 +1937,7 @@ class AwsNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigAutoscalingMetricsCollection(dict):
+calass AwsNodePoolConfigAutoscalingMetricsCollection(dict):
     def __init__(__self__, *,
                  granularity: str,
                  metrics: Optional[Sequence[str]] = None):
@@ -1967,7 +1967,7 @@ class AwsNodePoolConfigAutoscalingMetricsCollection(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigConfigEncryption(dict):
+calass AwsNodePoolConfigConfigEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2002,7 +2002,7 @@ class AwsNodePoolConfigConfigEncryption(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigInstancePlacement(dict):
+calass AwsNodePoolConfigInstancePlacement(dict):
     def __init__(__self__, *,
                  tenancy: Optional[str] = None):
         """
@@ -2021,7 +2021,7 @@ class AwsNodePoolConfigInstancePlacement(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigProxyConfig(dict):
+calass AwsNodePoolConfigProxyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2069,7 +2069,7 @@ class AwsNodePoolConfigProxyConfig(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigRootVolume(dict):
+calass AwsNodePoolConfigRootVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2157,7 +2157,7 @@ class AwsNodePoolConfigRootVolume(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigSpotConfig(dict):
+calass AwsNodePoolConfigSpotConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2192,7 +2192,7 @@ class AwsNodePoolConfigSpotConfig(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigSshConfig(dict):
+calass AwsNodePoolConfigSshConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2227,7 +2227,7 @@ class AwsNodePoolConfigSshConfig(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolConfigTaint(dict):
+calass AwsNodePoolConfigTaint(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -2267,7 +2267,7 @@ class AwsNodePoolConfigTaint(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolManagement(dict):
+calass AwsNodePoolManagement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2303,7 +2303,7 @@ class AwsNodePoolManagement(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolMaxPodsConstraint(dict):
+calass AwsNodePoolMaxPodsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2342,7 +2342,7 @@ class AwsNodePoolMaxPodsConstraint(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolUpdateSettings(dict):
+calass AwsNodePoolUpdateSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2363,7 +2363,7 @@ class AwsNodePoolUpdateSettings(dict):
     def __init__(__self__, *,
                  surge_settings: Optional['outputs.AwsNodePoolUpdateSettingsSurgeSettings'] = None):
         """
-        :param 'AwsNodePoolUpdateSettingsSurgeSettingsArgs' surge_settings: Optional. Settings for surge update.
+        :param 'AwsNodePoolUpdateSettingsSurgeSettingsArrgs' surge_settings: Optional. Settings for surge update.
         """
         if surge_settings is not None:
             pulumi.set(__self__, "surge_settings", surge_settings)
@@ -2378,7 +2378,7 @@ class AwsNodePoolUpdateSettings(dict):
 
 
 @pulumi.output_type
-class AwsNodePoolUpdateSettingsSurgeSettings(dict):
+calass AwsNodePoolUpdateSettingsSurgeSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2428,7 +2428,7 @@ class AwsNodePoolUpdateSettingsSurgeSettings(dict):
 
 
 @pulumi.output_type
-class AzureClusterAuthorization(dict):
+calass AzureClusterAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2449,7 +2449,7 @@ class AzureClusterAuthorization(dict):
     def __init__(__self__, *,
                  admin_users: Sequence['outputs.AzureClusterAuthorizationAdminUser']):
         """
-        :param Sequence['AzureClusterAuthorizationAdminUserArgs'] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param Sequence['AzureClusterAuthorizationAdminUserArrgs'] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
@@ -2463,7 +2463,7 @@ class AzureClusterAuthorization(dict):
 
 
 @pulumi.output_type
-class AzureClusterAuthorizationAdminUser(dict):
+calass AzureClusterAuthorizationAdminUser(dict):
     def __init__(__self__, *,
                  username: str):
         """
@@ -2481,7 +2481,7 @@ class AzureClusterAuthorizationAdminUser(dict):
 
 
 @pulumi.output_type
-class AzureClusterAzureServicesAuthentication(dict):
+calass AzureClusterAzureServicesAuthentication(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2529,7 +2529,7 @@ class AzureClusterAzureServicesAuthentication(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlane(dict):
+calass AzureClusterControlPlane(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2573,14 +2573,14 @@ class AzureClusterControlPlane(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  vm_size: Optional[str] = None):
         """
-        :param 'AzureClusterControlPlaneSshConfigArgs' ssh_config: SSH configuration for how to access the underlying control plane machines.
+        :param 'AzureClusterControlPlaneSshConfigArrgs' ssh_config: SSH configuration for how to access the underlying control plane machines.
         :param str subnet_id: The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
         :param str version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
-        :param 'AzureClusterControlPlaneDatabaseEncryptionArgs' database_encryption: Optional. Configuration related to application-layer secrets encryption.
-        :param 'AzureClusterControlPlaneMainVolumeArgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
-        :param 'AzureClusterControlPlaneProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param Sequence['AzureClusterControlPlaneReplicaPlacementArgs'] replica_placements: Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
-        :param 'AzureClusterControlPlaneRootVolumeArgs' root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+        :param 'AzureClusterControlPlaneDatabaseEncryptionArrgs' database_encryption: Optional. Configuration related to application-layer secrets encryption.
+        :param 'AzureClusterControlPlaneMainVolumeArrgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+        :param 'AzureClusterControlPlaneProxyConfigArrgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param Sequence['AzureClusterControlPlaneReplicaPlacementArrgs'] replica_placements: Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+        :param 'AzureClusterControlPlaneRootVolumeArrgs' root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
         :param Mapping[str, str] tags: Optional. A set of tags to apply to all underlying control plane Azure resources.
         :param str vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
         """
@@ -2684,7 +2684,7 @@ class AzureClusterControlPlane(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlaneDatabaseEncryption(dict):
+calass AzureClusterControlPlaneDatabaseEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2719,7 +2719,7 @@ class AzureClusterControlPlaneDatabaseEncryption(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlaneMainVolume(dict):
+calass AzureClusterControlPlaneMainVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2755,7 +2755,7 @@ class AzureClusterControlPlaneMainVolume(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlaneProxyConfig(dict):
+calass AzureClusterControlPlaneProxyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2803,7 +2803,7 @@ class AzureClusterControlPlaneProxyConfig(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlaneReplicaPlacement(dict):
+calass AzureClusterControlPlaneReplicaPlacement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2851,7 +2851,7 @@ class AzureClusterControlPlaneReplicaPlacement(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlaneRootVolume(dict):
+calass AzureClusterControlPlaneRootVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2887,7 +2887,7 @@ class AzureClusterControlPlaneRootVolume(dict):
 
 
 @pulumi.output_type
-class AzureClusterControlPlaneSshConfig(dict):
+calass AzureClusterControlPlaneSshConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2922,7 +2922,7 @@ class AzureClusterControlPlaneSshConfig(dict):
 
 
 @pulumi.output_type
-class AzureClusterFleet(dict):
+calass AzureClusterFleet(dict):
     def __init__(__self__, *,
                  membership: Optional[str] = None,
                  project: Optional[str] = None):
@@ -2953,7 +2953,7 @@ class AzureClusterFleet(dict):
 
 
 @pulumi.output_type
-class AzureClusterLoggingConfig(dict):
+calass AzureClusterLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2974,7 +2974,7 @@ class AzureClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  component_config: Optional['outputs.AzureClusterLoggingConfigComponentConfig'] = None):
         """
-        :param 'AzureClusterLoggingConfigComponentConfigArgs' component_config: Configuration of the logging components.
+        :param 'AzureClusterLoggingConfigComponentConfigArrgs' component_config: Configuration of the logging components.
         """
         if component_config is not None:
             pulumi.set(__self__, "component_config", component_config)
@@ -2989,7 +2989,7 @@ class AzureClusterLoggingConfig(dict):
 
 
 @pulumi.output_type
-class AzureClusterLoggingConfigComponentConfig(dict):
+calass AzureClusterLoggingConfigComponentConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3025,7 +3025,7 @@ class AzureClusterLoggingConfigComponentConfig(dict):
 
 
 @pulumi.output_type
-class AzureClusterNetworking(dict):
+calass AzureClusterNetworking(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3090,7 +3090,7 @@ class AzureClusterNetworking(dict):
 
 
 @pulumi.output_type
-class AzureClusterWorkloadIdentityConfig(dict):
+calass AzureClusterWorkloadIdentityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3140,7 +3140,7 @@ class AzureClusterWorkloadIdentityConfig(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolAutoscaling(dict):
+calass AzureNodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3188,7 +3188,7 @@ class AzureNodePoolAutoscaling(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolConfig(dict):
+calass AzureNodePoolConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3222,10 +3222,10 @@ class AzureNodePoolConfig(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  vm_size: Optional[str] = None):
         """
-        :param 'AzureNodePoolConfigSshConfigArgs' ssh_config: SSH configuration for how to access the node pool machines.
+        :param 'AzureNodePoolConfigSshConfigArrgs' ssh_config: SSH configuration for how to access the node pool machines.
         :param str image_type: (Beta only) The OS image type to use on node pool instances.
-        :param 'AzureNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param 'AzureNodePoolConfigRootVolumeArgs' root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+        :param 'AzureNodePoolConfigProxyConfigArrgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param 'AzureNodePoolConfigRootVolumeArrgs' root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         :param Mapping[str, str] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param str vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
         """
@@ -3291,7 +3291,7 @@ class AzureNodePoolConfig(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolConfigProxyConfig(dict):
+calass AzureNodePoolConfigProxyConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3339,7 +3339,7 @@ class AzureNodePoolConfigProxyConfig(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolConfigRootVolume(dict):
+calass AzureNodePoolConfigRootVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3375,7 +3375,7 @@ class AzureNodePoolConfigRootVolume(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolConfigSshConfig(dict):
+calass AzureNodePoolConfigSshConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3410,7 +3410,7 @@ class AzureNodePoolConfigSshConfig(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolManagement(dict):
+calass AzureNodePoolManagement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3446,7 +3446,7 @@ class AzureNodePoolManagement(dict):
 
 
 @pulumi.output_type
-class AzureNodePoolMaxPodsConstraint(dict):
+calass AzureNodePoolMaxPodsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3485,7 +3485,7 @@ class AzureNodePoolMaxPodsConstraint(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfig(dict):
+calass ClusterAddonsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3539,8 +3539,8 @@ class ClusterAddonsConfig(dict):
                  kalm_config: Optional['outputs.ClusterAddonsConfigKalmConfig'] = None,
                  network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None):
         """
-        :param 'ClusterAddonsConfigCloudrunConfigArgs' cloudrun_config: . Structure is documented below.
-        :param 'ClusterAddonsConfigConfigConnectorConfigArgs' config_connector_config: .
+        :param 'ClusterAddonsConfigCloudrunConfigArrgs' cloudrun_config: . Structure is documented below.
+        :param 'ClusterAddonsConfigConfigConnectorConfigArrgs' config_connector_config: .
                The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
                
                
@@ -3550,39 +3550,39 @@ class ClusterAddonsConfig(dict):
                import pulumi
                ```
                <a name="nested_binary_authorization"></a>The `binary_authorization` block supports:
-        :param 'ClusterAddonsConfigDnsCacheConfigArgs' dns_cache_config: .
+        :param 'ClusterAddonsConfigDnsCacheConfigArrgs' dns_cache_config: .
                The status of the NodeLocal DNSCache addon. It is disabled by default.
                Set `enabled = true` to enable.
                
                **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
                All cluster nodes running GKE 1.15 and higher are recreated.**
-        :param 'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs' gce_persistent_disk_csi_driver_config: .
+        :param 'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs' gce_persistent_disk_csi_driver_config: .
                Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
                
                **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
-        :param 'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs' gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
+        :param 'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs' gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
-        :param 'ClusterAddonsConfigGcsFuseCsiDriverConfigArgs' gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
+        :param 'ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs' gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
                which allows the usage of a gcs bucket as volumes.
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
-        :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: .
+        :param 'ClusterAddonsConfigGkeBackupAgentConfigArrgs' gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
-        :param 'ClusterAddonsConfigHorizontalPodAutoscalingArgs' horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
+        :param 'ClusterAddonsConfigHorizontalPodAutoscalingArrgs' horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
                It is enabled by default;
                set `disabled = true` to disable.
-        :param 'ClusterAddonsConfigHttpLoadBalancingArgs' http_load_balancing: The status of the HTTP (L7) load balancing
+        :param 'ClusterAddonsConfigHttpLoadBalancingArrgs' http_load_balancing: The status of the HTTP (L7) load balancing
                controller addon, which makes it easy to set up HTTP load balancers for services in a
                cluster. It is enabled by default; set `disabled = true` to disable.
-        :param 'ClusterAddonsConfigIstioConfigArgs' istio_config: .
+        :param 'ClusterAddonsConfigIstioConfigArrgs' istio_config: .
                Structure is documented below.
-        :param 'ClusterAddonsConfigKalmConfigArgs' kalm_config: .
+        :param 'ClusterAddonsConfigKalmConfigArrgs' kalm_config: .
                Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-        :param 'ClusterAddonsConfigNetworkPolicyConfigArgs' network_policy_config: Whether we should enable the network policy addon
+        :param 'ClusterAddonsConfigNetworkPolicyConfigArrgs' network_policy_config: Whether we should enable the network policy addon
                for the master.  This must be enabled in order to enable network policy for the nodes.
                To enable this, you must also define a `network_policy` block,
                otherwise nothing will happen.
@@ -3749,7 +3749,7 @@ class ClusterAddonsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigCloudrunConfig(dict):
+calass ClusterAddonsConfigCloudrunConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3798,7 +3798,7 @@ class ClusterAddonsConfigCloudrunConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigConfigConnectorConfig(dict):
+calass ClusterAddonsConfigConfigConnectorConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -3816,7 +3816,7 @@ class ClusterAddonsConfigConfigConnectorConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigDnsCacheConfig(dict):
+calass ClusterAddonsConfigDnsCacheConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -3834,7 +3834,7 @@ class ClusterAddonsConfigDnsCacheConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
+calass ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -3852,7 +3852,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
+calass ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -3870,7 +3870,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigGcsFuseCsiDriverConfig(dict):
+calass ClusterAddonsConfigGcsFuseCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -3888,7 +3888,7 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigGkeBackupAgentConfig(dict):
+calass ClusterAddonsConfigGkeBackupAgentConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -3906,7 +3906,7 @@ class ClusterAddonsConfigGkeBackupAgentConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigHorizontalPodAutoscaling(dict):
+calass ClusterAddonsConfigHorizontalPodAutoscaling(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
@@ -3928,7 +3928,7 @@ class ClusterAddonsConfigHorizontalPodAutoscaling(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigHttpLoadBalancing(dict):
+calass ClusterAddonsConfigHttpLoadBalancing(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
@@ -3950,7 +3950,7 @@ class ClusterAddonsConfigHttpLoadBalancing(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigIstioConfig(dict):
+calass ClusterAddonsConfigIstioConfig(dict):
     def __init__(__self__, *,
                  disabled: bool,
                  auth: Optional[str] = None):
@@ -3982,7 +3982,7 @@ class ClusterAddonsConfigIstioConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigKalmConfig(dict):
+calass ClusterAddonsConfigKalmConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -4000,7 +4000,7 @@ class ClusterAddonsConfigKalmConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAddonsConfigNetworkPolicyConfig(dict):
+calass ClusterAddonsConfigNetworkPolicyConfig(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
@@ -4022,7 +4022,7 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
 
 
 @pulumi.output_type
-class ClusterAuthenticatorGroupsConfig(dict):
+calass ClusterAuthenticatorGroupsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4057,7 +4057,7 @@ class ClusterAuthenticatorGroupsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterBinaryAuthorization(dict):
+calass ClusterBinaryAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4110,7 +4110,7 @@ class ClusterBinaryAuthorization(dict):
 
 
 @pulumi.output_type
-class ClusterClusterAutoscaling(dict):
+calass ClusterClusterAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4138,7 +4138,7 @@ class ClusterClusterAutoscaling(dict):
                  enabled: Optional[bool] = None,
                  resource_limits: Optional[Sequence['outputs.ClusterClusterAutoscalingResourceLimit']] = None):
         """
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs' auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs' auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
         :param str autoscaling_profile: ) Configuration
@@ -4147,7 +4147,7 @@ class ClusterClusterAutoscaling(dict):
                when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
         :param bool enabled: Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
                for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-        :param Sequence['ClusterClusterAutoscalingResourceLimitArgs'] resource_limits: Global constraints for machine resources in the
+        :param Sequence['ClusterClusterAutoscalingResourceLimitArrgs'] resource_limits: Global constraints for machine resources in the
                cluster. Configuring the `cpu` and `memory` types is required if node
                auto-provisioning is enabled. These limits will apply to node pool autoscaling
                in addition to node auto-provisioning. Structure is documented below.
@@ -4204,7 +4204,7 @@ class ClusterClusterAutoscaling(dict):
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4254,7 +4254,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         :param int disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
         :param str image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
         :param str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
                specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
                as "Intel Haswell" or "Intel Sandy Bridge".
@@ -4262,8 +4262,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
                
                > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
@@ -4372,7 +4372,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsManagement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4436,7 +4436,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement(dict):
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4480,7 +4480,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption(d
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4538,7 +4538,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig(di
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4566,7 +4566,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
                  max_unavailable: Optional[int] = None,
                  strategy: Optional[str] = None):
         """
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
@@ -4614,7 +4614,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4639,7 +4639,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
                  standard_rollout_policy: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy'] = None):
         """
         :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs' standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         if node_pool_soak_duration is not None:
             pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
@@ -4664,7 +4664,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4728,7 +4728,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
 
 @pulumi.output_type
-class ClusterClusterAutoscalingResourceLimit(dict):
+calass ClusterClusterAutoscalingResourceLimit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4791,7 +4791,7 @@ class ClusterClusterAutoscalingResourceLimit(dict):
 
 
 @pulumi.output_type
-class ClusterClusterTelemetry(dict):
+calass ClusterClusterTelemetry(dict):
     def __init__(__self__, *,
                  type: str):
         """
@@ -4811,7 +4811,7 @@ class ClusterClusterTelemetry(dict):
 
 
 @pulumi.output_type
-class ClusterConfidentialNodes(dict):
+calass ClusterConfidentialNodes(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -4831,7 +4831,7 @@ class ClusterConfidentialNodes(dict):
 
 
 @pulumi.output_type
-class ClusterCostManagementConfig(dict):
+calass ClusterCostManagementConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -4849,7 +4849,7 @@ class ClusterCostManagementConfig(dict):
 
 
 @pulumi.output_type
-class ClusterDatabaseEncryption(dict):
+calass ClusterDatabaseEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4900,7 +4900,7 @@ class ClusterDatabaseEncryption(dict):
 
 
 @pulumi.output_type
-class ClusterDefaultSnatStatus(dict):
+calass ClusterDefaultSnatStatus(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
@@ -4922,7 +4922,7 @@ class ClusterDefaultSnatStatus(dict):
 
 
 @pulumi.output_type
-class ClusterDnsConfig(dict):
+calass ClusterDnsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4986,7 +4986,7 @@ class ClusterDnsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterEnableK8sBetaApis(dict):
+calass ClusterEnableK8sBetaApis(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5021,7 +5021,7 @@ class ClusterEnableK8sBetaApis(dict):
 
 
 @pulumi.output_type
-class ClusterGatewayApiConfig(dict):
+calass ClusterGatewayApiConfig(dict):
     def __init__(__self__, *,
                  channel: str):
         """
@@ -5039,7 +5039,7 @@ class ClusterGatewayApiConfig(dict):
 
 
 @pulumi.output_type
-class ClusterIdentityServiceConfig(dict):
+calass ClusterIdentityServiceConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -5058,7 +5058,7 @@ class ClusterIdentityServiceConfig(dict):
 
 
 @pulumi.output_type
-class ClusterIpAllocationPolicy(dict):
+calass ClusterIpAllocationPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5097,7 +5097,7 @@ class ClusterIpAllocationPolicy(dict):
                  services_secondary_range_name: Optional[str] = None,
                  stack_type: Optional[str] = None):
         """
-        :param 'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs' additional_pod_ranges_config: The configuration for additional pod secondary ranges at
+        :param 'ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs' additional_pod_ranges_config: The configuration for additional pod secondary ranges at
                the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
                secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
@@ -5208,7 +5208,7 @@ class ClusterIpAllocationPolicy(dict):
 
 
 @pulumi.output_type
-class ClusterIpAllocationPolicyAdditionalPodRangesConfig(dict):
+calass ClusterIpAllocationPolicyAdditionalPodRangesConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5243,7 +5243,7 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfig(dict):
 
 
 @pulumi.output_type
-class ClusterIpAllocationPolicyPodCidrOverprovisionConfig(dict):
+calass ClusterIpAllocationPolicyPodCidrOverprovisionConfig(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
@@ -5265,7 +5265,7 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfig(dict):
 
 
 @pulumi.output_type
-class ClusterLoggingConfig(dict):
+calass ClusterLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5302,7 +5302,7 @@ class ClusterLoggingConfig(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicy(dict):
+calass ClusterMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5329,7 +5329,7 @@ class ClusterMaintenancePolicy(dict):
                  maintenance_exclusions: Optional[Sequence['outputs.ClusterMaintenancePolicyMaintenanceExclusion']] = None,
                  recurring_window: Optional['outputs.ClusterMaintenancePolicyRecurringWindow'] = None):
         """
-        :param 'ClusterMaintenancePolicyDailyMaintenanceWindowArgs' daily_maintenance_window: Time window specified for daily maintenance operations.
+        :param 'ClusterMaintenancePolicyDailyMaintenanceWindowArrgs' daily_maintenance_window: Time window specified for daily maintenance operations.
                Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
                where HH : \\[00-23\\] and MM : \\[00-59\\] GMT. For example:
                
@@ -5337,8 +5337,8 @@ class ClusterMaintenancePolicy(dict):
                ```python
                import pulumi
                ```
-        :param Sequence['ClusterMaintenancePolicyMaintenanceExclusionArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
-        :param 'ClusterMaintenancePolicyRecurringWindowArgs' recurring_window: Time window for recurring maintenance operations.
+        :param Sequence['ClusterMaintenancePolicyMaintenanceExclusionArrgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        :param 'ClusterMaintenancePolicyRecurringWindowArrgs' recurring_window: Time window for recurring maintenance operations.
                
                Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
                the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
@@ -5408,7 +5408,7 @@ class ClusterMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
+calass ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5445,7 +5445,7 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyMaintenanceExclusion(dict):
+calass ClusterMaintenancePolicyMaintenanceExclusion(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5475,7 +5475,7 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
                  start_time: str,
                  exclusion_options: Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions'] = None):
         """
-        :param 'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs' exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
+        :param 'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs' exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
         """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
@@ -5508,7 +5508,7 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
+calass ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
     def __init__(__self__, *,
                  scope: str):
         """
@@ -5548,7 +5548,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
 
 
 @pulumi.output_type
-class ClusterMaintenancePolicyRecurringWindow(dict):
+calass ClusterMaintenancePolicyRecurringWindow(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5593,7 +5593,7 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
 
 
 @pulumi.output_type
-class ClusterMasterAuth(dict):
+calass ClusterMasterAuth(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5623,7 +5623,7 @@ class ClusterMasterAuth(dict):
                  client_key: Optional[str] = None,
                  cluster_ca_certificate: Optional[str] = None):
         """
-        :param 'ClusterMasterAuthClientCertificateConfigArgs' client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
+        :param 'ClusterMasterAuthClientCertificateConfigArrgs' client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
                
                ```python
                import pulumi
@@ -5670,7 +5670,7 @@ class ClusterMasterAuth(dict):
 
 
 @pulumi.output_type
-class ClusterMasterAuthClientCertificateConfig(dict):
+calass ClusterMasterAuthClientCertificateConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5699,7 +5699,7 @@ class ClusterMasterAuthClientCertificateConfig(dict):
 
 
 @pulumi.output_type
-class ClusterMasterAuthorizedNetworksConfig(dict):
+calass ClusterMasterAuthorizedNetworksConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5723,7 +5723,7 @@ class ClusterMasterAuthorizedNetworksConfig(dict):
                  cidr_blocks: Optional[Sequence['outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock']] = None,
                  gcp_public_cidrs_access_enabled: Optional[bool] = None):
         """
-        :param Sequence['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs'] cidr_blocks: External networks that can access the
+        :param Sequence['ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs'] cidr_blocks: External networks that can access the
                Kubernetes cluster master through HTTPS.
         :param bool gcp_public_cidrs_access_enabled: Whether Kubernetes master is
                accessible via Google Compute Engine Public IPs.
@@ -5753,7 +5753,7 @@ class ClusterMasterAuthorizedNetworksConfig(dict):
 
 
 @pulumi.output_type
-class ClusterMasterAuthorizedNetworksConfigCidrBlock(dict):
+calass ClusterMasterAuthorizedNetworksConfigCidrBlock(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5804,7 +5804,7 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock(dict):
 
 
 @pulumi.output_type
-class ClusterMeshCertificates(dict):
+calass ClusterMeshCertificates(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5839,7 +5839,7 @@ class ClusterMeshCertificates(dict):
 
 
 @pulumi.output_type
-class ClusterMonitoringConfig(dict):
+calass ClusterMonitoringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5866,9 +5866,9 @@ class ClusterMonitoringConfig(dict):
                  enable_components: Optional[Sequence[str]] = None,
                  managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
-        :param Sequence['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
+        :param Sequence['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs'] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
         :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
-        :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
+        :param 'ClusterMonitoringConfigManagedPrometheusArrgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_configs is not None:
             pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
@@ -5903,7 +5903,7 @@ class ClusterMonitoringConfig(dict):
 
 
 @pulumi.output_type
-class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
+calass ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5952,7 +5952,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
 
 
 @pulumi.output_type
-class ClusterMonitoringConfigManagedPrometheus(dict):
+calass ClusterMonitoringConfigManagedPrometheus(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -5970,7 +5970,7 @@ class ClusterMonitoringConfigManagedPrometheus(dict):
 
 
 @pulumi.output_type
-class ClusterNetworkPolicy(dict):
+calass ClusterNetworkPolicy(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  provider: Optional[str] = None):
@@ -6000,7 +6000,7 @@ class ClusterNetworkPolicy(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfig(dict):
+calass ClusterNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6112,29 +6112,29 @@ class ClusterNodeConfig(dict):
                  taints: Optional[Sequence['outputs.ClusterNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodeConfigWorkloadMetadataConfig'] = None):
         """
-        :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
+        :param 'ClusterNodeConfigAdvancedMachineFeaturesArrgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-        :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param 'ClusterNodeConfigConfidentialNodesArrgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodeConfigEphemeralStorageConfigArrgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param 'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param 'ClusterNodeConfigFastSocketArgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+        :param 'ClusterNodeConfigFastSocketArrgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+        :param 'ClusterNodeConfigGcfsConfigArrgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
                A `machine_type` that has more than 16 GiB of memory is also recommended.
@@ -6144,9 +6144,9 @@ class ClusterNodeConfig(dict):
                ```python
                import pulumi
                ```
-        :param Sequence['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param Sequence['ClusterNodeConfigGuestAcceleratorArrgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
-        :param 'ClusterNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
+        :param 'ClusterNodeConfigGvnicArrgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
@@ -6158,7 +6158,7 @@ class ClusterNodeConfig(dict):
                ```
         :param str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param 'ClusterNodeConfigKubeletConfigArgs' kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param 'ClusterNodeConfigKubeletConfigArrgs' kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
                
                ```python
@@ -6166,14 +6166,14 @@ class ClusterNodeConfig(dict):
                ```
         :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param 'ClusterNodeConfigLinuxNodeConfigArgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param 'ClusterNodeConfigLinuxNodeConfigArrgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param 'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
+        :param 'ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param int local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -6199,13 +6199,13 @@ class ClusterNodeConfig(dict):
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param 'ClusterNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        :param 'ClusterNodeConfigReservationAffinityArrgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-        :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param 'ClusterNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        :param 'ClusterNodeConfigShieldedInstanceConfigArrgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param 'ClusterNodeConfigSoleTenantConfigArrgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
                
                ```python
                import pulumi
@@ -6215,7 +6215,7 @@ class ClusterNodeConfig(dict):
                for more information. Defaults to false.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        :param Sequence['ClusterNodeConfigTaintArrgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
                as GPUs. If this field is set, any diffs on this field will cause the provider to
@@ -6223,7 +6223,7 @@ class ClusterNodeConfig(dict):
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
-        :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
+        :param 'ClusterNodeConfigWorkloadMetadataConfigArrgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
         if advanced_machine_features is not None:
@@ -6660,7 +6660,7 @@ class ClusterNodeConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigAdvancedMachineFeatures(dict):
+calass ClusterNodeConfigAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6695,7 +6695,7 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigConfidentialNodes(dict):
+calass ClusterNodeConfigConfidentialNodes(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -6715,7 +6715,7 @@ class ClusterNodeConfigConfidentialNodes(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigEffectiveTaint(dict):
+calass ClusterNodeConfigEffectiveTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -6758,7 +6758,7 @@ class ClusterNodeConfigEffectiveTaint(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigEphemeralStorageConfig(dict):
+calass ClusterNodeConfigEphemeralStorageConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6793,7 +6793,7 @@ class ClusterNodeConfigEphemeralStorageConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
+calass ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6828,7 +6828,7 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigFastSocket(dict):
+calass ClusterNodeConfigFastSocket(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -6846,7 +6846,7 @@ class ClusterNodeConfigFastSocket(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigGcfsConfig(dict):
+calass ClusterNodeConfigGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -6864,7 +6864,7 @@ class ClusterNodeConfigGcfsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigGuestAccelerator(dict):
+calass ClusterNodeConfigGuestAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6895,9 +6895,9 @@ class ClusterNodeConfigGuestAccelerator(dict):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-        :param 'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs' gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
+        :param 'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs' gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
         :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-        :param 'ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs' gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
+        :param 'ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs' gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -6950,7 +6950,7 @@ class ClusterNodeConfigGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
+calass ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6995,7 +6995,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigGuestAcceleratorGpuSharingConfig(dict):
+calass ClusterNodeConfigGuestAcceleratorGpuSharingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7047,7 +7047,7 @@ class ClusterNodeConfigGuestAcceleratorGpuSharingConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigGvnic(dict):
+calass ClusterNodeConfigGvnic(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -7065,7 +7065,7 @@ class ClusterNodeConfigGvnic(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigHostMaintenancePolicy(dict):
+calass ClusterNodeConfigHostMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7094,7 +7094,7 @@ class ClusterNodeConfigHostMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigKubeletConfig(dict):
+calass ClusterNodeConfigKubeletConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7193,7 +7193,7 @@ class ClusterNodeConfigKubeletConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigLinuxNodeConfig(dict):
+calass ClusterNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  sysctls: Mapping[str, str]):
         """
@@ -7215,7 +7215,7 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigLocalNvmeSsdBlockConfig(dict):
+calass ClusterNodeConfigLocalNvmeSsdBlockConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7252,7 +7252,7 @@ class ClusterNodeConfigLocalNvmeSsdBlockConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigReservationAffinity(dict):
+calass ClusterNodeConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7323,7 +7323,7 @@ class ClusterNodeConfigReservationAffinity(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigSandboxConfig(dict):
+calass ClusterNodeConfigSandboxConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7364,7 +7364,7 @@ class ClusterNodeConfigSandboxConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigShieldedInstanceConfig(dict):
+calass ClusterNodeConfigShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7422,7 +7422,7 @@ class ClusterNodeConfigShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigSoleTenantConfig(dict):
+calass ClusterNodeConfigSoleTenantConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7451,7 +7451,7 @@ class ClusterNodeConfigSoleTenantConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigSoleTenantConfigNodeAffinity(dict):
+calass ClusterNodeConfigSoleTenantConfigNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -7491,7 +7491,7 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinity(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigTaint(dict):
+calass ClusterNodeConfigTaint(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -7531,7 +7531,7 @@ class ClusterNodeConfigTaint(dict):
 
 
 @pulumi.output_type
-class ClusterNodeConfigWorkloadMetadataConfig(dict):
+calass ClusterNodeConfigWorkloadMetadataConfig(dict):
     def __init__(__self__, *,
                  mode: str):
         """
@@ -7557,7 +7557,7 @@ class ClusterNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePool(dict):
+calass ClusterNodePool(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7618,14 +7618,14 @@ class ClusterNodePool(dict):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param 'ClusterNodePoolManagementArgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
+        :param 'ClusterNodePoolManagementArrgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
         :param str name: The name of the cluster, unique within the project and
                location.
                
                - - -
-        :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
+        :param 'ClusterNodePoolNetworkConfigArrgs' network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-        :param 'ClusterNodePoolNodeConfigArgs' node_config: Parameters used in creating the default node pool.
+        :param 'ClusterNodePoolNodeConfigArrgs' node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
@@ -7641,7 +7641,7 @@ class ClusterNodePool(dict):
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param 'ClusterNodePoolUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        :param 'ClusterNodePoolUpgradeSettingsArrgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -7795,7 +7795,7 @@ class ClusterNodePool(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolAutoConfig(dict):
+calass ClusterNodePoolAutoConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7816,7 +7816,7 @@ class ClusterNodePoolAutoConfig(dict):
     def __init__(__self__, *,
                  network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None):
         """
-        :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: The network tag config for the cluster's automatically provisioned node pools.
+        :param 'ClusterNodePoolAutoConfigNetworkTagsArrgs' network_tags: The network tag config for the cluster's automatically provisioned node pools.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
@@ -7831,7 +7831,7 @@ class ClusterNodePoolAutoConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolAutoConfigNetworkTags(dict):
+calass ClusterNodePoolAutoConfigNetworkTags(dict):
     def __init__(__self__, *,
                  tags: Optional[Sequence[str]] = None):
         """
@@ -7858,7 +7858,7 @@ class ClusterNodePoolAutoConfigNetworkTags(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolAutoscaling(dict):
+calass ClusterNodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7928,7 +7928,7 @@ class ClusterNodePoolAutoscaling(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolDefaults(dict):
+calass ClusterNodePoolDefaults(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7949,7 +7949,7 @@ class ClusterNodePoolDefaults(dict):
     def __init__(__self__, *,
                  node_config_defaults: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaults'] = None):
         """
-        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsArgs' node_config_defaults: Subset of NodeConfig message that has defaults.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsArrgs' node_config_defaults: Subset of NodeConfig message that has defaults.
         """
         if node_config_defaults is not None:
             pulumi.set(__self__, "node_config_defaults", node_config_defaults)
@@ -7964,7 +7964,7 @@ class ClusterNodePoolDefaults(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
+calass ClusterNodePoolDefaultsNodeConfigDefaults(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7988,7 +7988,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
                  gcfs_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig'] = None,
                  logging_variant: Optional[str] = None):
         """
-        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs' gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs' gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param str logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         if gcfs_config is not None:
@@ -8014,7 +8014,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
+calass ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -8032,7 +8032,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolManagement(dict):
+calass ClusterNodePoolManagement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8086,7 +8086,7 @@ class ClusterNodePoolManagement(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNetworkConfig(dict):
+calass ClusterNodePoolNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8200,7 +8200,7 @@ class ClusterNodePoolNetworkConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
+calass ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None,
                  subnetwork: Optional[str] = None):
@@ -8237,7 +8237,7 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
+calass ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8293,7 +8293,7 @@ class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
+calass ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
@@ -8315,7 +8315,7 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfig(dict):
+calass ClusterNodePoolNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -8427,29 +8427,29 @@ class ClusterNodePoolNodeConfig(dict):
                  taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig'] = None):
         """
-        :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
+        :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-        :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param 'ClusterNodePoolNodeConfigConfidentialNodesArrgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param 'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param 'ClusterNodePoolNodeConfigFastSocketArgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+        :param 'ClusterNodePoolNodeConfigFastSocketArrgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+        :param 'ClusterNodePoolNodeConfigGcfsConfigArrgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
                A `machine_type` that has more than 16 GiB of memory is also recommended.
@@ -8459,9 +8459,9 @@ class ClusterNodePoolNodeConfig(dict):
                ```python
                import pulumi
                ```
-        :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArrgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
-        :param 'ClusterNodePoolNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
+        :param 'ClusterNodePoolNodeConfigGvnicArrgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
@@ -8473,7 +8473,7 @@ class ClusterNodePoolNodeConfig(dict):
                ```
         :param str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param 'ClusterNodePoolNodeConfigKubeletConfigArgs' kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param 'ClusterNodePoolNodeConfigKubeletConfigArrgs' kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
                
                ```python
@@ -8481,14 +8481,14 @@ class ClusterNodePoolNodeConfig(dict):
                ```
         :param Mapping[str, str] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArrgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param 'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param int local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -8514,13 +8514,13 @@ class ClusterNodePoolNodeConfig(dict):
         :param bool preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param 'ClusterNodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigReservationAffinityArrgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-        :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigSoleTenantConfigArrgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
                
                ```python
                import pulumi
@@ -8530,7 +8530,7 @@ class ClusterNodePoolNodeConfig(dict):
                for more information. Defaults to false.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        :param Sequence['ClusterNodePoolNodeConfigTaintArrgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
                as GPUs. If this field is set, any diffs on this field will cause the provider to
@@ -8538,7 +8538,7 @@ class ClusterNodePoolNodeConfig(dict):
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
+        :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
         if advanced_machine_features is not None:
@@ -8975,7 +8975,7 @@ class ClusterNodePoolNodeConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
+calass ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9010,7 +9010,7 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigConfidentialNodes(dict):
+calass ClusterNodePoolNodeConfigConfidentialNodes(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -9030,7 +9030,7 @@ class ClusterNodePoolNodeConfigConfidentialNodes(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigEffectiveTaint(dict):
+calass ClusterNodePoolNodeConfigEffectiveTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -9073,7 +9073,7 @@ class ClusterNodePoolNodeConfigEffectiveTaint(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
+calass ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9108,7 +9108,7 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
+calass ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9143,7 +9143,7 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigFastSocket(dict):
+calass ClusterNodePoolNodeConfigFastSocket(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -9161,7 +9161,7 @@ class ClusterNodePoolNodeConfigFastSocket(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigGcfsConfig(dict):
+calass ClusterNodePoolNodeConfigGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -9179,7 +9179,7 @@ class ClusterNodePoolNodeConfigGcfsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigGuestAccelerator(dict):
+calass ClusterNodePoolNodeConfigGuestAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9210,9 +9210,9 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-        :param 'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs' gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs' gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
         :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-        :param 'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs' gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs' gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -9265,7 +9265,7 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
+calass ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9310,7 +9310,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict)
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
+calass ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9362,7 +9362,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigGvnic(dict):
+calass ClusterNodePoolNodeConfigGvnic(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -9380,7 +9380,7 @@ class ClusterNodePoolNodeConfigGvnic(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigHostMaintenancePolicy(dict):
+calass ClusterNodePoolNodeConfigHostMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9409,7 +9409,7 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigKubeletConfig(dict):
+calass ClusterNodePoolNodeConfigKubeletConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9508,7 +9508,7 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
+calass ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  sysctls: Mapping[str, str]):
         """
@@ -9530,7 +9530,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
+calass ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9567,7 +9567,7 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigReservationAffinity(dict):
+calass ClusterNodePoolNodeConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9638,7 +9638,7 @@ class ClusterNodePoolNodeConfigReservationAffinity(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigSandboxConfig(dict):
+calass ClusterNodePoolNodeConfigSandboxConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9679,7 +9679,7 @@ class ClusterNodePoolNodeConfigSandboxConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigShieldedInstanceConfig(dict):
+calass ClusterNodePoolNodeConfigShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9737,7 +9737,7 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigSoleTenantConfig(dict):
+calass ClusterNodePoolNodeConfigSoleTenantConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9766,7 +9766,7 @@ class ClusterNodePoolNodeConfigSoleTenantConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
+calass ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -9806,7 +9806,7 @@ class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigTaint(dict):
+calass ClusterNodePoolNodeConfigTaint(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -9846,7 +9846,7 @@ class ClusterNodePoolNodeConfigTaint(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
+calass ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
     def __init__(__self__, *,
                  mode: str):
         """
@@ -9872,7 +9872,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolPlacementPolicy(dict):
+calass ClusterNodePoolPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9927,7 +9927,7 @@ class ClusterNodePoolPlacementPolicy(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolUpgradeSettings(dict):
+calass ClusterNodePoolUpgradeSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -9955,7 +9955,7 @@ class ClusterNodePoolUpgradeSettings(dict):
                  max_unavailable: Optional[int] = None,
                  strategy: Optional[str] = None):
         """
-        :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
@@ -10003,7 +10003,7 @@ class ClusterNodePoolUpgradeSettings(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
+calass ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10027,7 +10027,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
                  standard_rollout_policy: 'outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
                  node_pool_soak_duration: Optional[str] = None):
         """
-        :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs' standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
@@ -10052,7 +10052,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
 
 
 @pulumi.output_type
-class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
+calass ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10116,11 +10116,11 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict)
 
 
 @pulumi.output_type
-class ClusterNotificationConfig(dict):
+calass ClusterNotificationConfig(dict):
     def __init__(__self__, *,
                  pubsub: 'outputs.ClusterNotificationConfigPubsub'):
         """
-        :param 'ClusterNotificationConfigPubsubArgs' pubsub: The pubsub config for the cluster's upgrade notifications.
+        :param 'ClusterNotificationConfigPubsubArrgs' pubsub: The pubsub config for the cluster's upgrade notifications.
         """
         pulumi.set(__self__, "pubsub", pubsub)
 
@@ -10134,14 +10134,14 @@ class ClusterNotificationConfig(dict):
 
 
 @pulumi.output_type
-class ClusterNotificationConfigPubsub(dict):
+calass ClusterNotificationConfigPubsub(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  filter: Optional['outputs.ClusterNotificationConfigPubsubFilter'] = None,
                  topic: Optional[str] = None):
         """
         :param bool enabled: Whether or not the notification config is enabled
-        :param 'ClusterNotificationConfigPubsubFilterArgs' filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+        :param 'ClusterNotificationConfigPubsubFilterArrgs' filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
                
                ```python
                import pulumi
@@ -10184,7 +10184,7 @@ class ClusterNotificationConfigPubsub(dict):
 
 
 @pulumi.output_type
-class ClusterNotificationConfigPubsubFilter(dict):
+calass ClusterNotificationConfigPubsubFilter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10219,7 +10219,7 @@ class ClusterNotificationConfigPubsubFilter(dict):
 
 
 @pulumi.output_type
-class ClusterPodSecurityPolicyConfig(dict):
+calass ClusterPodSecurityPolicyConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -10239,7 +10239,7 @@ class ClusterPodSecurityPolicyConfig(dict):
 
 
 @pulumi.output_type
-class ClusterPrivateClusterConfig(dict):
+calass ClusterPrivateClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10289,7 +10289,7 @@ class ClusterPrivateClusterConfig(dict):
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
-        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs' master_global_access_config: Controls cluster master global
+        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs' master_global_access_config: Controls cluster master global
                access settings. If unset, the provider will no longer manage this field and will
                not modify the previously-set value. Structure is documented below.
         :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for
@@ -10409,7 +10409,7 @@ class ClusterPrivateClusterConfig(dict):
 
 
 @pulumi.output_type
-class ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
+calass ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -10429,7 +10429,7 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
 
 
 @pulumi.output_type
-class ClusterProtectConfig(dict):
+calass ClusterProtectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10453,7 +10453,7 @@ class ClusterProtectConfig(dict):
                  workload_config: Optional['outputs.ClusterProtectConfigWorkloadConfig'] = None,
                  workload_vulnerability_mode: Optional[str] = None):
         """
-        :param 'ClusterProtectConfigWorkloadConfigArgs' workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        :param 'ClusterProtectConfigWorkloadConfigArrgs' workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
         :param str workload_vulnerability_mode: ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         if workload_config is not None:
@@ -10479,7 +10479,7 @@ class ClusterProtectConfig(dict):
 
 
 @pulumi.output_type
-class ClusterProtectConfigWorkloadConfig(dict):
+calass ClusterProtectConfigWorkloadConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10514,7 +10514,7 @@ class ClusterProtectConfigWorkloadConfig(dict):
 
 
 @pulumi.output_type
-class ClusterReleaseChannel(dict):
+calass ClusterReleaseChannel(dict):
     def __init__(__self__, *,
                  channel: str):
         """
@@ -10542,7 +10542,7 @@ class ClusterReleaseChannel(dict):
 
 
 @pulumi.output_type
-class ClusterResourceUsageExportConfig(dict):
+calass ClusterResourceUsageExportConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10569,7 +10569,7 @@ class ClusterResourceUsageExportConfig(dict):
                  enable_network_egress_metering: Optional[bool] = None,
                  enable_resource_consumption_metering: Optional[bool] = None):
         """
-        :param 'ClusterResourceUsageExportConfigBigqueryDestinationArgs' bigquery_destination: Parameters for using BigQuery as the destination of resource usage export.
+        :param 'ClusterResourceUsageExportConfigBigqueryDestinationArrgs' bigquery_destination: Parameters for using BigQuery as the destination of resource usage export.
                
                * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
                
@@ -10627,7 +10627,7 @@ class ClusterResourceUsageExportConfig(dict):
 
 
 @pulumi.output_type
-class ClusterResourceUsageExportConfigBigqueryDestination(dict):
+calass ClusterResourceUsageExportConfigBigqueryDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10656,7 +10656,7 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
-class ClusterSecurityPostureConfig(dict):
+calass ClusterSecurityPostureConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10704,7 +10704,7 @@ class ClusterSecurityPostureConfig(dict):
 
 
 @pulumi.output_type
-class ClusterServiceExternalIpsConfig(dict):
+calass ClusterServiceExternalIpsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -10722,7 +10722,7 @@ class ClusterServiceExternalIpsConfig(dict):
 
 
 @pulumi.output_type
-class ClusterTpuConfig(dict):
+calass ClusterTpuConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10775,7 +10775,7 @@ class ClusterTpuConfig(dict):
 
 
 @pulumi.output_type
-class ClusterVerticalPodAutoscaling(dict):
+calass ClusterVerticalPodAutoscaling(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -10793,7 +10793,7 @@ class ClusterVerticalPodAutoscaling(dict):
 
 
 @pulumi.output_type
-class ClusterWorkloadIdentityConfig(dict):
+calass ClusterWorkloadIdentityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10837,7 +10837,7 @@ class ClusterWorkloadIdentityConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolAutoscaling(dict):
+calass NodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10949,7 +10949,7 @@ class NodePoolAutoscaling(dict):
 
 
 @pulumi.output_type
-class NodePoolManagement(dict):
+calass NodePoolManagement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10999,7 +10999,7 @@ class NodePoolManagement(dict):
 
 
 @pulumi.output_type
-class NodePoolNetworkConfig(dict):
+calass NodePoolNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11038,9 +11038,9 @@ class NodePoolNetworkConfig(dict):
                  pod_ipv4_cidr_block: Optional[str] = None,
                  pod_range: Optional[str] = None):
         """
-        :param Sequence['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+        :param Sequence['NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
                Structure is documented below
-        :param Sequence['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+        :param Sequence['NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
                Structure is documented below
         :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         :param bool enable_private_nodes: Whether nodes have internal IP addresses only.
@@ -11119,7 +11119,7 @@ class NodePoolNetworkConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
+calass NodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None,
                  subnetwork: Optional[str] = None):
@@ -11150,7 +11150,7 @@ class NodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
+calass NodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11212,7 +11212,7 @@ class NodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
+calass NodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -11224,7 +11224,7 @@ class NodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfig(dict):
+calass NodePoolNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11336,7 +11336,7 @@ class NodePoolNodeConfig(dict):
                  taints: Optional[Sequence['outputs.NodePoolNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig'] = None):
         """
-        :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
+        :param 'NodePoolNodeConfigConfidentialNodesArrgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -11596,7 +11596,7 @@ class NodePoolNodeConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigAdvancedMachineFeatures(dict):
+calass NodePoolNodeConfigAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11625,7 +11625,7 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigConfidentialNodes(dict):
+calass NodePoolNodeConfigConfidentialNodes(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -11645,7 +11645,7 @@ class NodePoolNodeConfigConfidentialNodes(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigEffectiveTaint(dict):
+calass NodePoolNodeConfigEffectiveTaint(dict):
     def __init__(__self__, *,
                  effect: Optional[str] = None,
                  key: Optional[str] = None,
@@ -11674,7 +11674,7 @@ class NodePoolNodeConfigEffectiveTaint(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigEphemeralStorageConfig(dict):
+calass NodePoolNodeConfigEphemeralStorageConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11703,7 +11703,7 @@ class NodePoolNodeConfigEphemeralStorageConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
+calass NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11732,7 +11732,7 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigFastSocket(dict):
+calass NodePoolNodeConfigFastSocket(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -11752,7 +11752,7 @@ class NodePoolNodeConfigFastSocket(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigGcfsConfig(dict):
+calass NodePoolNodeConfigGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -11772,7 +11772,7 @@ class NodePoolNodeConfigGcfsConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigGuestAccelerator(dict):
+calass NodePoolNodeConfigGuestAccelerator(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11846,7 +11846,7 @@ class NodePoolNodeConfigGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
+calass NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11875,7 +11875,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
+calass NodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11913,7 +11913,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigGvnic(dict):
+calass NodePoolNodeConfigGvnic(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -11933,7 +11933,7 @@ class NodePoolNodeConfigGvnic(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigHostMaintenancePolicy(dict):
+calass NodePoolNodeConfigHostMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -11962,7 +11962,7 @@ class NodePoolNodeConfigHostMaintenancePolicy(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigKubeletConfig(dict):
+calass NodePoolNodeConfigKubeletConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12021,7 +12021,7 @@ class NodePoolNodeConfigKubeletConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigLinuxNodeConfig(dict):
+calass NodePoolNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  sysctls: Mapping[str, str]):
         pulumi.set(__self__, "sysctls", sysctls)
@@ -12033,7 +12033,7 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
+calass NodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12062,7 +12062,7 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigReservationAffinity(dict):
+calass NodePoolNodeConfigReservationAffinity(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12107,7 +12107,7 @@ class NodePoolNodeConfigReservationAffinity(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigSandboxConfig(dict):
+calass NodePoolNodeConfigSandboxConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12136,7 +12136,7 @@ class NodePoolNodeConfigSandboxConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigShieldedInstanceConfig(dict):
+calass NodePoolNodeConfigShieldedInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12176,7 +12176,7 @@ class NodePoolNodeConfigShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigSoleTenantConfig(dict):
+calass NodePoolNodeConfigSoleTenantConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12205,7 +12205,7 @@ class NodePoolNodeConfigSoleTenantConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
+calass NodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -12231,7 +12231,7 @@ class NodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigTaint(dict):
+calass NodePoolNodeConfigTaint(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -12257,7 +12257,7 @@ class NodePoolNodeConfigTaint(dict):
 
 
 @pulumi.output_type
-class NodePoolNodeConfigWorkloadMetadataConfig(dict):
+calass NodePoolNodeConfigWorkloadMetadataConfig(dict):
     def __init__(__self__, *,
                  mode: str):
         pulumi.set(__self__, "mode", mode)
@@ -12269,7 +12269,7 @@ class NodePoolNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
-class NodePoolPlacementPolicy(dict):
+calass NodePoolPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12338,7 +12338,7 @@ class NodePoolPlacementPolicy(dict):
 
 
 @pulumi.output_type
-class NodePoolUpgradeSettings(dict):
+calass NodePoolUpgradeSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12366,7 +12366,7 @@ class NodePoolUpgradeSettings(dict):
                  max_unavailable: Optional[int] = None,
                  strategy: Optional[str] = None):
         """
-        :param 'NodePoolUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+        :param 'NodePoolUpgradeSettingsBlueGreenSettingsArrgs' blue_green_settings: The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
                Structure is documented below
         :param int max_surge: The number of additional nodes that can be added to the node pool during
                an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
@@ -12428,7 +12428,7 @@ class NodePoolUpgradeSettings(dict):
 
 
 @pulumi.output_type
-class NodePoolUpgradeSettingsBlueGreenSettings(dict):
+calass NodePoolUpgradeSettingsBlueGreenSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12452,7 +12452,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
                  standard_rollout_policy: 'outputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
                  node_pool_soak_duration: Optional[str] = None):
         """
-        :param 'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
+        :param 'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs' standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
         :param str node_pool_soak_duration: Time needed after draining the entire blue pool.
                After this period, the blue pool will be cleaned up.
         """
@@ -12479,7 +12479,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
 
 
 @pulumi.output_type
-class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
+calass NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12543,7 +12543,7 @@ class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigResult(dict):
+calass GetClusterAddonsConfigResult(dict):
     def __init__(__self__, *,
                  cloudrun_configs: Sequence['outputs.GetClusterAddonsConfigCloudrunConfigResult'],
                  config_connector_configs: Sequence['outputs.GetClusterAddonsConfigConfigConnectorConfigResult'],
@@ -12632,7 +12632,7 @@ class GetClusterAddonsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigCloudrunConfigResult(dict):
+calass GetClusterAddonsConfigCloudrunConfigResult(dict):
     def __init__(__self__, *,
                  disabled: bool,
                  load_balancer_type: str):
@@ -12651,7 +12651,7 @@ class GetClusterAddonsConfigCloudrunConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigConfigConnectorConfigResult(dict):
+calass GetClusterAddonsConfigConfigConnectorConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12663,7 +12663,7 @@ class GetClusterAddonsConfigConfigConnectorConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigDnsCacheConfigResult(dict):
+calass GetClusterAddonsConfigDnsCacheConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12675,7 +12675,7 @@ class GetClusterAddonsConfigDnsCacheConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult(dict):
+calass GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12687,7 +12687,7 @@ class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult(dict):
+calass GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12699,7 +12699,7 @@ class GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigGcsFuseCsiDriverConfigResult(dict):
+calass GetClusterAddonsConfigGcsFuseCsiDriverConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12711,7 +12711,7 @@ class GetClusterAddonsConfigGcsFuseCsiDriverConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigGkeBackupAgentConfigResult(dict):
+calass GetClusterAddonsConfigGkeBackupAgentConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12723,7 +12723,7 @@ class GetClusterAddonsConfigGkeBackupAgentConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigHorizontalPodAutoscalingResult(dict):
+calass GetClusterAddonsConfigHorizontalPodAutoscalingResult(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -12735,7 +12735,7 @@ class GetClusterAddonsConfigHorizontalPodAutoscalingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigHttpLoadBalancingResult(dict):
+calass GetClusterAddonsConfigHttpLoadBalancingResult(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -12747,7 +12747,7 @@ class GetClusterAddonsConfigHttpLoadBalancingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigIstioConfigResult(dict):
+calass GetClusterAddonsConfigIstioConfigResult(dict):
     def __init__(__self__, *,
                  auth: str,
                  disabled: bool):
@@ -12766,7 +12766,7 @@ class GetClusterAddonsConfigIstioConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigKalmConfigResult(dict):
+calass GetClusterAddonsConfigKalmConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -12778,7 +12778,7 @@ class GetClusterAddonsConfigKalmConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAddonsConfigNetworkPolicyConfigResult(dict):
+calass GetClusterAddonsConfigNetworkPolicyConfigResult(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -12790,7 +12790,7 @@ class GetClusterAddonsConfigNetworkPolicyConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterAuthenticatorGroupsConfigResult(dict):
+calass GetClusterAuthenticatorGroupsConfigResult(dict):
     def __init__(__self__, *,
                  security_group: str):
         pulumi.set(__self__, "security_group", security_group)
@@ -12802,7 +12802,7 @@ class GetClusterAuthenticatorGroupsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterBinaryAuthorizationResult(dict):
+calass GetClusterBinaryAuthorizationResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  evaluation_mode: str):
@@ -12821,7 +12821,7 @@ class GetClusterBinaryAuthorizationResult(dict):
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingResult(dict):
+calass GetClusterClusterAutoscalingResult(dict):
     def __init__(__self__, *,
                  auto_provisioning_defaults: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultResult'],
                  autoscaling_profile: str,
@@ -12854,7 +12854,7 @@ class GetClusterClusterAutoscalingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
     def __init__(__self__, *,
                  boot_disk_kms_key: str,
                  disk_size: int,
@@ -12929,7 +12929,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultManagementResult(dict):
     def __init__(__self__, *,
                  auto_repair: bool,
                  auto_upgrade: bool,
@@ -12955,7 +12955,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementResult(dict):
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOptionResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOptionResult(dict):
     def __init__(__self__, *,
                  auto_upgrade_start_time: str,
                  description: str):
@@ -12974,7 +12974,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool):
@@ -12993,7 +12993,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigR
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult(dict):
     def __init__(__self__, *,
                  blue_green_settings: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult'],
                  max_surge: int,
@@ -13026,7 +13026,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult(di
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult(dict):
     def __init__(__self__, *,
                  node_pool_soak_duration: str,
                  standard_rollout_policies: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult']):
@@ -13045,7 +13045,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult(dict):
+calass GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult(dict):
     def __init__(__self__, *,
                  batch_node_count: int,
                  batch_percentage: float,
@@ -13071,7 +13071,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
 
 
 @pulumi.output_type
-class GetClusterClusterAutoscalingResourceLimitResult(dict):
+calass GetClusterClusterAutoscalingResourceLimitResult(dict):
     def __init__(__self__, *,
                  maximum: int,
                  minimum: int,
@@ -13097,7 +13097,7 @@ class GetClusterClusterAutoscalingResourceLimitResult(dict):
 
 
 @pulumi.output_type
-class GetClusterClusterTelemetryResult(dict):
+calass GetClusterClusterTelemetryResult(dict):
     def __init__(__self__, *,
                  type: str):
         pulumi.set(__self__, "type", type)
@@ -13109,7 +13109,7 @@ class GetClusterClusterTelemetryResult(dict):
 
 
 @pulumi.output_type
-class GetClusterConfidentialNodeResult(dict):
+calass GetClusterConfidentialNodeResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13121,7 +13121,7 @@ class GetClusterConfidentialNodeResult(dict):
 
 
 @pulumi.output_type
-class GetClusterCostManagementConfigResult(dict):
+calass GetClusterCostManagementConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13133,7 +13133,7 @@ class GetClusterCostManagementConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterDatabaseEncryptionResult(dict):
+calass GetClusterDatabaseEncryptionResult(dict):
     def __init__(__self__, *,
                  key_name: str,
                  state: str):
@@ -13152,7 +13152,7 @@ class GetClusterDatabaseEncryptionResult(dict):
 
 
 @pulumi.output_type
-class GetClusterDefaultSnatStatusResult(dict):
+calass GetClusterDefaultSnatStatusResult(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -13164,7 +13164,7 @@ class GetClusterDefaultSnatStatusResult(dict):
 
 
 @pulumi.output_type
-class GetClusterDnsConfigResult(dict):
+calass GetClusterDnsConfigResult(dict):
     def __init__(__self__, *,
                  cluster_dns: str,
                  cluster_dns_domain: str,
@@ -13190,7 +13190,7 @@ class GetClusterDnsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterEnableK8sBetaApiResult(dict):
+calass GetClusterEnableK8sBetaApiResult(dict):
     def __init__(__self__, *,
                  enabled_apis: Sequence[str]):
         pulumi.set(__self__, "enabled_apis", enabled_apis)
@@ -13202,7 +13202,7 @@ class GetClusterEnableK8sBetaApiResult(dict):
 
 
 @pulumi.output_type
-class GetClusterGatewayApiConfigResult(dict):
+calass GetClusterGatewayApiConfigResult(dict):
     def __init__(__self__, *,
                  channel: str):
         pulumi.set(__self__, "channel", channel)
@@ -13214,7 +13214,7 @@ class GetClusterGatewayApiConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterIdentityServiceConfigResult(dict):
+calass GetClusterIdentityServiceConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13226,7 +13226,7 @@ class GetClusterIdentityServiceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterIpAllocationPolicyResult(dict):
+calass GetClusterIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
                  additional_pod_ranges_configs: Sequence['outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult'],
                  cluster_ipv4_cidr_block: str,
@@ -13280,7 +13280,7 @@ class GetClusterIpAllocationPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult(dict):
+calass GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult(dict):
     def __init__(__self__, *,
                  pod_range_names: Sequence[str]):
         pulumi.set(__self__, "pod_range_names", pod_range_names)
@@ -13292,7 +13292,7 @@ class GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult(dict):
+calass GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -13304,7 +13304,7 @@ class GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterLoggingConfigResult(dict):
+calass GetClusterLoggingConfigResult(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         pulumi.set(__self__, "enable_components", enable_components)
@@ -13316,7 +13316,7 @@ class GetClusterLoggingConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMaintenancePolicyResult(dict):
+calass GetClusterMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  daily_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult'],
                  maintenance_exclusions: Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult'],
@@ -13342,7 +13342,7 @@ class GetClusterMaintenancePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMaintenancePolicyDailyMaintenanceWindowResult(dict):
+calass GetClusterMaintenancePolicyDailyMaintenanceWindowResult(dict):
     def __init__(__self__, *,
                  duration: str,
                  start_time: str):
@@ -13361,7 +13361,7 @@ class GetClusterMaintenancePolicyDailyMaintenanceWindowResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
+calass GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
     def __init__(__self__, *,
                  end_time: str,
                  exclusion_name: str,
@@ -13394,7 +13394,7 @@ class GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(dict):
+calass GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(dict):
     def __init__(__self__, *,
                  scope: str):
         pulumi.set(__self__, "scope", scope)
@@ -13406,7 +13406,7 @@ class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(dict)
 
 
 @pulumi.output_type
-class GetClusterMaintenancePolicyRecurringWindowResult(dict):
+calass GetClusterMaintenancePolicyRecurringWindowResult(dict):
     def __init__(__self__, *,
                  end_time: str,
                  recurrence: str,
@@ -13432,7 +13432,7 @@ class GetClusterMaintenancePolicyRecurringWindowResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMasterAuthResult(dict):
+calass GetClusterMasterAuthResult(dict):
     def __init__(__self__, *,
                  client_certificate: str,
                  client_certificate_configs: Sequence['outputs.GetClusterMasterAuthClientCertificateConfigResult'],
@@ -13465,7 +13465,7 @@ class GetClusterMasterAuthResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMasterAuthClientCertificateConfigResult(dict):
+calass GetClusterMasterAuthClientCertificateConfigResult(dict):
     def __init__(__self__, *,
                  issue_client_certificate: bool):
         pulumi.set(__self__, "issue_client_certificate", issue_client_certificate)
@@ -13477,7 +13477,7 @@ class GetClusterMasterAuthClientCertificateConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMasterAuthorizedNetworksConfigResult(dict):
+calass GetClusterMasterAuthorizedNetworksConfigResult(dict):
     def __init__(__self__, *,
                  cidr_blocks: Sequence['outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult'],
                  gcp_public_cidrs_access_enabled: bool):
@@ -13496,7 +13496,7 @@ class GetClusterMasterAuthorizedNetworksConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMasterAuthorizedNetworksConfigCidrBlockResult(dict):
+calass GetClusterMasterAuthorizedNetworksConfigCidrBlockResult(dict):
     def __init__(__self__, *,
                  cidr_block: str,
                  display_name: str):
@@ -13515,7 +13515,7 @@ class GetClusterMasterAuthorizedNetworksConfigCidrBlockResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMeshCertificateResult(dict):
+calass GetClusterMeshCertificateResult(dict):
     def __init__(__self__, *,
                  enable_certificates: bool):
         pulumi.set(__self__, "enable_certificates", enable_certificates)
@@ -13527,7 +13527,7 @@ class GetClusterMeshCertificateResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMonitoringConfigResult(dict):
+calass GetClusterMonitoringConfigResult(dict):
     def __init__(__self__, *,
                  advanced_datapath_observability_configs: Sequence['outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult'],
                  enable_components: Sequence[str],
@@ -13553,7 +13553,7 @@ class GetClusterMonitoringConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
+calass GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
     def __init__(__self__, *,
                  enable_metrics: bool,
                  relay_mode: str):
@@ -13572,7 +13572,7 @@ class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterMonitoringConfigManagedPrometheusResult(dict):
+calass GetClusterMonitoringConfigManagedPrometheusResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13584,7 +13584,7 @@ class GetClusterMonitoringConfigManagedPrometheusResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNetworkPolicyResult(dict):
+calass GetClusterNetworkPolicyResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  provider: str):
@@ -13603,7 +13603,7 @@ class GetClusterNetworkPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigResult(dict):
+calass GetClusterNodeConfigResult(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Sequence['outputs.GetClusterNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
@@ -13860,7 +13860,7 @@ class GetClusterNodeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
+calass GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  threads_per_core: int):
         pulumi.set(__self__, "threads_per_core", threads_per_core)
@@ -13872,7 +13872,7 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigConfidentialNodeResult(dict):
+calass GetClusterNodeConfigConfidentialNodeResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13884,7 +13884,7 @@ class GetClusterNodeConfigConfidentialNodeResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigEffectiveTaintResult(dict):
+calass GetClusterNodeConfigEffectiveTaintResult(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -13910,7 +13910,7 @@ class GetClusterNodeConfigEffectiveTaintResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
+calass GetClusterNodeConfigEphemeralStorageConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -13922,7 +13922,7 @@ class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
+calass GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -13934,7 +13934,7 @@ class GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigFastSocketResult(dict):
+calass GetClusterNodeConfigFastSocketResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13946,7 +13946,7 @@ class GetClusterNodeConfigFastSocketResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigGcfsConfigResult(dict):
+calass GetClusterNodeConfigGcfsConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -13958,7 +13958,7 @@ class GetClusterNodeConfigGcfsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigGuestAcceleratorResult(dict):
+calass GetClusterNodeConfigGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  gpu_driver_installation_configs: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult'],
@@ -13998,7 +13998,7 @@ class GetClusterNodeConfigGuestAcceleratorResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult(dict):
+calass GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult(dict):
     def __init__(__self__, *,
                  gpu_driver_version: str):
         pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
@@ -14010,7 +14010,7 @@ class GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult(dict
 
 
 @pulumi.output_type
-class GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
+calass GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
     def __init__(__self__, *,
                  gpu_sharing_strategy: str,
                  max_shared_clients_per_gpu: int):
@@ -14029,7 +14029,7 @@ class GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigGvnicResult(dict):
+calass GetClusterNodeConfigGvnicResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -14041,7 +14041,7 @@ class GetClusterNodeConfigGvnicResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigHostMaintenancePolicyResult(dict):
+calass GetClusterNodeConfigHostMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  maintenance_interval: str):
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -14053,7 +14053,7 @@ class GetClusterNodeConfigHostMaintenancePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigKubeletConfigResult(dict):
+calass GetClusterNodeConfigKubeletConfigResult(dict):
     def __init__(__self__, *,
                  cpu_cfs_quota: bool,
                  cpu_cfs_quota_period: str,
@@ -14086,7 +14086,7 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigLinuxNodeConfigResult(dict):
+calass GetClusterNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  sysctls: Mapping[str, str]):
         pulumi.set(__self__, "sysctls", sysctls)
@@ -14098,7 +14098,7 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigLocalNvmeSsdBlockConfigResult(dict):
+calass GetClusterNodeConfigLocalNvmeSsdBlockConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -14110,7 +14110,7 @@ class GetClusterNodeConfigLocalNvmeSsdBlockConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigReservationAffinityResult(dict):
+calass GetClusterNodeConfigReservationAffinityResult(dict):
     def __init__(__self__, *,
                  consume_reservation_type: str,
                  key: str,
@@ -14136,7 +14136,7 @@ class GetClusterNodeConfigReservationAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigSandboxConfigResult(dict):
+calass GetClusterNodeConfigSandboxConfigResult(dict):
     def __init__(__self__, *,
                  sandbox_type: str):
         pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -14148,7 +14148,7 @@ class GetClusterNodeConfigSandboxConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigShieldedInstanceConfigResult(dict):
+calass GetClusterNodeConfigShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool):
@@ -14167,7 +14167,7 @@ class GetClusterNodeConfigShieldedInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigSoleTenantConfigResult(dict):
+calass GetClusterNodeConfigSoleTenantConfigResult(dict):
     def __init__(__self__, *,
                  node_affinities: Sequence['outputs.GetClusterNodeConfigSoleTenantConfigNodeAffinityResult']):
         pulumi.set(__self__, "node_affinities", node_affinities)
@@ -14179,7 +14179,7 @@ class GetClusterNodeConfigSoleTenantConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigSoleTenantConfigNodeAffinityResult(dict):
+calass GetClusterNodeConfigSoleTenantConfigNodeAffinityResult(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -14205,7 +14205,7 @@ class GetClusterNodeConfigSoleTenantConfigNodeAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigTaintResult(dict):
+calass GetClusterNodeConfigTaintResult(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -14231,7 +14231,7 @@ class GetClusterNodeConfigTaintResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeConfigWorkloadMetadataConfigResult(dict):
+calass GetClusterNodeConfigWorkloadMetadataConfigResult(dict):
     def __init__(__self__, *,
                  mode: str):
         pulumi.set(__self__, "mode", mode)
@@ -14243,7 +14243,7 @@ class GetClusterNodeConfigWorkloadMetadataConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolResult(dict):
+calass GetClusterNodePoolResult(dict):
     def __init__(__self__, *,
                  autoscalings: Sequence['outputs.GetClusterNodePoolAutoscalingResult'],
                  initial_node_count: int,
@@ -14359,7 +14359,7 @@ class GetClusterNodePoolResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolAutoConfigResult(dict):
+calass GetClusterNodePoolAutoConfigResult(dict):
     def __init__(__self__, *,
                  network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult']):
         pulumi.set(__self__, "network_tags", network_tags)
@@ -14371,7 +14371,7 @@ class GetClusterNodePoolAutoConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolAutoConfigNetworkTagResult(dict):
+calass GetClusterNodePoolAutoConfigNetworkTagResult(dict):
     def __init__(__self__, *,
                  tags: Sequence[str]):
         pulumi.set(__self__, "tags", tags)
@@ -14383,7 +14383,7 @@ class GetClusterNodePoolAutoConfigNetworkTagResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolAutoscalingResult(dict):
+calass GetClusterNodePoolAutoscalingResult(dict):
     def __init__(__self__, *,
                  location_policy: str,
                  max_node_count: int,
@@ -14423,7 +14423,7 @@ class GetClusterNodePoolAutoscalingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolDefaultResult(dict):
+calass GetClusterNodePoolDefaultResult(dict):
     def __init__(__self__, *,
                  node_config_defaults: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultResult']):
         pulumi.set(__self__, "node_config_defaults", node_config_defaults)
@@ -14435,7 +14435,7 @@ class GetClusterNodePoolDefaultResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
+calass GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
     def __init__(__self__, *,
                  gcfs_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult'],
                  logging_variant: str):
@@ -14454,7 +14454,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult(dict):
+calass GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -14466,7 +14466,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolManagementResult(dict):
+calass GetClusterNodePoolManagementResult(dict):
     def __init__(__self__, *,
                  auto_repair: bool,
                  auto_upgrade: bool):
@@ -14485,7 +14485,7 @@ class GetClusterNodePoolManagementResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNetworkConfigResult(dict):
+calass GetClusterNodePoolNetworkConfigResult(dict):
     def __init__(__self__, *,
                  additional_node_network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult'],
                  additional_pod_network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult'],
@@ -14539,7 +14539,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult(dict):
+calass GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult(dict):
     def __init__(__self__, *,
                  network: str,
                  subnetwork: str):
@@ -14558,7 +14558,7 @@ class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult(dict):
+calass GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult(dict):
     def __init__(__self__, *,
                  max_pods_per_node: int,
                  secondary_pod_range: str,
@@ -14584,7 +14584,7 @@ class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult(dict):
+calass GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult(dict):
     def __init__(__self__, *,
                  disabled: bool):
         pulumi.set(__self__, "disabled", disabled)
@@ -14596,7 +14596,7 @@ class GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigResult(dict):
+calass GetClusterNodePoolNodeConfigResult(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Sequence['outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
@@ -14853,7 +14853,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
+calass GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  threads_per_core: int):
         pulumi.set(__self__, "threads_per_core", threads_per_core)
@@ -14865,7 +14865,7 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
+calass GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -14877,7 +14877,7 @@ class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigEffectiveTaintResult(dict):
+calass GetClusterNodePoolNodeConfigEffectiveTaintResult(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -14903,7 +14903,7 @@ class GetClusterNodePoolNodeConfigEffectiveTaintResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
+calass GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -14915,7 +14915,7 @@ class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
+calass GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -14927,7 +14927,7 @@ class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigFastSocketResult(dict):
+calass GetClusterNodePoolNodeConfigFastSocketResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -14939,7 +14939,7 @@ class GetClusterNodePoolNodeConfigFastSocketResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigGcfsConfigResult(dict):
+calass GetClusterNodePoolNodeConfigGcfsConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -14951,7 +14951,7 @@ class GetClusterNodePoolNodeConfigGcfsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
+calass GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  gpu_driver_installation_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult'],
@@ -14991,7 +14991,7 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult(dict):
+calass GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult(dict):
     def __init__(__self__, *,
                  gpu_driver_version: str):
         pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
@@ -15003,7 +15003,7 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigRes
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
+calass GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
     def __init__(__self__, *,
                  gpu_sharing_strategy: str,
                  max_shared_clients_per_gpu: int):
@@ -15022,7 +15022,7 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigGvnicResult(dict):
+calass GetClusterNodePoolNodeConfigGvnicResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -15034,7 +15034,7 @@ class GetClusterNodePoolNodeConfigGvnicResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(dict):
+calass GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  maintenance_interval: str):
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -15046,7 +15046,7 @@ class GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
+calass GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
     def __init__(__self__, *,
                  cpu_cfs_quota: bool,
                  cpu_cfs_quota_period: str,
@@ -15079,7 +15079,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
+calass GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  sysctls: Mapping[str, str]):
         pulumi.set(__self__, "sysctls", sysctls)
@@ -15091,7 +15091,7 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult(dict):
+calass GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -15103,7 +15103,7 @@ class GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigReservationAffinityResult(dict):
+calass GetClusterNodePoolNodeConfigReservationAffinityResult(dict):
     def __init__(__self__, *,
                  consume_reservation_type: str,
                  key: str,
@@ -15129,7 +15129,7 @@ class GetClusterNodePoolNodeConfigReservationAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigSandboxConfigResult(dict):
+calass GetClusterNodePoolNodeConfigSandboxConfigResult(dict):
     def __init__(__self__, *,
                  sandbox_type: str):
         pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -15141,7 +15141,7 @@ class GetClusterNodePoolNodeConfigSandboxConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigShieldedInstanceConfigResult(dict):
+calass GetClusterNodePoolNodeConfigShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool):
@@ -15160,7 +15160,7 @@ class GetClusterNodePoolNodeConfigShieldedInstanceConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigSoleTenantConfigResult(dict):
+calass GetClusterNodePoolNodeConfigSoleTenantConfigResult(dict):
     def __init__(__self__, *,
                  node_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult']):
         pulumi.set(__self__, "node_affinities", node_affinities)
@@ -15172,7 +15172,7 @@ class GetClusterNodePoolNodeConfigSoleTenantConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult(dict):
+calass GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult(dict):
     def __init__(__self__, *,
                  key: str,
                  operator: str,
@@ -15198,7 +15198,7 @@ class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigTaintResult(dict):
+calass GetClusterNodePoolNodeConfigTaintResult(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,
@@ -15224,7 +15224,7 @@ class GetClusterNodePoolNodeConfigTaintResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
+calass GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
     def __init__(__self__, *,
                  mode: str):
         pulumi.set(__self__, "mode", mode)
@@ -15236,7 +15236,7 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolPlacementPolicyResult(dict):
+calass GetClusterNodePoolPlacementPolicyResult(dict):
     def __init__(__self__, *,
                  policy_name: str,
                  tpu_topology: str,
@@ -15262,7 +15262,7 @@ class GetClusterNodePoolPlacementPolicyResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolUpgradeSettingResult(dict):
+calass GetClusterNodePoolUpgradeSettingResult(dict):
     def __init__(__self__, *,
                  blue_green_settings: Sequence['outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingResult'],
                  max_surge: int,
@@ -15295,7 +15295,7 @@ class GetClusterNodePoolUpgradeSettingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolUpgradeSettingBlueGreenSettingResult(dict):
+calass GetClusterNodePoolUpgradeSettingBlueGreenSettingResult(dict):
     def __init__(__self__, *,
                  node_pool_soak_duration: str,
                  standard_rollout_policies: Sequence['outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult']):
@@ -15314,7 +15314,7 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSettingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult(dict):
+calass GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult(dict):
     def __init__(__self__, *,
                  batch_node_count: int,
                  batch_percentage: float,
@@ -15340,7 +15340,7 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResul
 
 
 @pulumi.output_type
-class GetClusterNotificationConfigResult(dict):
+calass GetClusterNotificationConfigResult(dict):
     def __init__(__self__, *,
                  pubsubs: Sequence['outputs.GetClusterNotificationConfigPubsubResult']):
         pulumi.set(__self__, "pubsubs", pubsubs)
@@ -15352,7 +15352,7 @@ class GetClusterNotificationConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNotificationConfigPubsubResult(dict):
+calass GetClusterNotificationConfigPubsubResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  filters: Sequence['outputs.GetClusterNotificationConfigPubsubFilterResult'],
@@ -15378,7 +15378,7 @@ class GetClusterNotificationConfigPubsubResult(dict):
 
 
 @pulumi.output_type
-class GetClusterNotificationConfigPubsubFilterResult(dict):
+calass GetClusterNotificationConfigPubsubFilterResult(dict):
     def __init__(__self__, *,
                  event_types: Sequence[str]):
         pulumi.set(__self__, "event_types", event_types)
@@ -15390,7 +15390,7 @@ class GetClusterNotificationConfigPubsubFilterResult(dict):
 
 
 @pulumi.output_type
-class GetClusterPodSecurityPolicyConfigResult(dict):
+calass GetClusterPodSecurityPolicyConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -15402,7 +15402,7 @@ class GetClusterPodSecurityPolicyConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterPrivateClusterConfigResult(dict):
+calass GetClusterPrivateClusterConfigResult(dict):
     def __init__(__self__, *,
                  enable_private_endpoint: bool,
                  enable_private_nodes: bool,
@@ -15463,7 +15463,7 @@ class GetClusterPrivateClusterConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult(dict):
+calass GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -15475,7 +15475,7 @@ class GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterProtectConfigResult(dict):
+calass GetClusterProtectConfigResult(dict):
     def __init__(__self__, *,
                  workload_configs: Sequence['outputs.GetClusterProtectConfigWorkloadConfigResult'],
                  workload_vulnerability_mode: str):
@@ -15494,7 +15494,7 @@ class GetClusterProtectConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterProtectConfigWorkloadConfigResult(dict):
+calass GetClusterProtectConfigWorkloadConfigResult(dict):
     def __init__(__self__, *,
                  audit_mode: str):
         pulumi.set(__self__, "audit_mode", audit_mode)
@@ -15506,7 +15506,7 @@ class GetClusterProtectConfigWorkloadConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterReleaseChannelResult(dict):
+calass GetClusterReleaseChannelResult(dict):
     def __init__(__self__, *,
                  channel: str):
         pulumi.set(__self__, "channel", channel)
@@ -15518,7 +15518,7 @@ class GetClusterReleaseChannelResult(dict):
 
 
 @pulumi.output_type
-class GetClusterResourceUsageExportConfigResult(dict):
+calass GetClusterResourceUsageExportConfigResult(dict):
     def __init__(__self__, *,
                  bigquery_destinations: Sequence['outputs.GetClusterResourceUsageExportConfigBigqueryDestinationResult'],
                  enable_network_egress_metering: bool,
@@ -15544,7 +15544,7 @@ class GetClusterResourceUsageExportConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
+calass GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
     def __init__(__self__, *,
                  dataset_id: str):
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -15556,7 +15556,7 @@ class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
 
 
 @pulumi.output_type
-class GetClusterSecurityPostureConfigResult(dict):
+calass GetClusterSecurityPostureConfigResult(dict):
     def __init__(__self__, *,
                  mode: str,
                  vulnerability_mode: str):
@@ -15575,7 +15575,7 @@ class GetClusterSecurityPostureConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterServiceExternalIpsConfigResult(dict):
+calass GetClusterServiceExternalIpsConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -15587,7 +15587,7 @@ class GetClusterServiceExternalIpsConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterTpuConfigResult(dict):
+calass GetClusterTpuConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  ipv4_cidr_block: str,
@@ -15613,7 +15613,7 @@ class GetClusterTpuConfigResult(dict):
 
 
 @pulumi.output_type
-class GetClusterVerticalPodAutoscalingResult(dict):
+calass GetClusterVerticalPodAutoscalingResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -15625,7 +15625,7 @@ class GetClusterVerticalPodAutoscalingResult(dict):
 
 
 @pulumi.output_type
-class GetClusterWorkloadIdentityConfigResult(dict):
+calass GetClusterWorkloadIdentityConfigResult(dict):
     def __init__(__self__, *,
                  workload_pool: str):
         pulumi.set(__self__, "workload_pool", workload_pool)

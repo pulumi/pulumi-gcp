@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AiFeatureStoreIamPolicyArgs', 'AiFeatureStoreIamPolicy']
+__all__ = ['AiFeatureStoreIamPolicyArrgs', 'AiFeatureStoreIamPolicy']
 
 @pulumi.input_type
-class AiFeatureStoreIamPolicyArgs:
+calass AiFeatureStoreIamPolicyArrgs:
     def __init__(__self__, *,
                  featurestore: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -114,7 +114,7 @@ class AiFeatureStoreIamPolicyArgs:
 
 
 @pulumi.input_type
-class _AiFeatureStoreIamPolicyState:
+calass _AiFeatureStoreIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
@@ -233,7 +233,7 @@ class _AiFeatureStoreIamPolicyState:
         pulumi.set(self, "region", value)
 
 
-class AiFeatureStoreIamPolicy(pulumi.CustomResource):
+calass AiFeatureStoreIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -295,7 +295,7 @@ class AiFeatureStoreIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiFeatureStoreIamPolicyArgs,
+                 args: AiFeatureStoreIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -323,12 +323,12 @@ class AiFeatureStoreIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AiFeatureStoreIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AiFeatureStoreIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiFeatureStoreIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -348,7 +348,7 @@ class AiFeatureStoreIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiFeatureStoreIamPolicyArgs.__new__(AiFeatureStoreIamPolicyArgs)
+            __props__ = AiFeatureStoreIamPolicyArrgs.__new__(AiFeatureStoreIamPolicyArrgs)
 
             if featurestore is None and not opts.urn:
                 raise TypeError("Missing required property 'featurestore'")

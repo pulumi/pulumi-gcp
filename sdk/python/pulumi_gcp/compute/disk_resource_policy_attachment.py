@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DiskResourcePolicyAttachmentArgs', 'DiskResourcePolicyAttachment']
+__all__ = ['DiskResourcePolicyAttachmentArrgs', 'DiskResourcePolicyAttachment']
 
 @pulumi.input_type
-class DiskResourcePolicyAttachmentArgs:
+calass DiskResourcePolicyAttachmentArrgs:
     def __init__(__self__, *,
                  disk: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -93,7 +93,7 @@ class DiskResourcePolicyAttachmentArgs:
 
 
 @pulumi.input_type
-class _DiskResourcePolicyAttachmentState:
+calass _DiskResourcePolicyAttachmentState:
     def __init__(__self__, *,
                  disk: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -174,7 +174,7 @@ class _DiskResourcePolicyAttachmentState:
         pulumi.set(self, "zone", value)
 
 
-class DiskResourcePolicyAttachment(pulumi.CustomResource):
+calass DiskResourcePolicyAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -209,9 +209,9 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
             zone="us-central1-a")
         policy = gcp.compute.ResourcePolicy("policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArrgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArrgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs(
                         days_in_cycle=1,
                         start_time="04:00",
                     ),
@@ -255,7 +255,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DiskResourcePolicyAttachmentArgs,
+                 args: DiskResourcePolicyAttachmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Adds existing resource policies to a disk. You can only add one policy
@@ -282,9 +282,9 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
             zone="us-central1-a")
         policy = gcp.compute.ResourcePolicy("policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArrgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArrgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrgs(
                         days_in_cycle=1,
                         start_time="04:00",
                     ),
@@ -313,12 +313,12 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DiskResourcePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param DiskResourcePolicyAttachmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DiskResourcePolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DiskResourcePolicyAttachmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -338,7 +338,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DiskResourcePolicyAttachmentArgs.__new__(DiskResourcePolicyAttachmentArgs)
+            __props__ = DiskResourcePolicyAttachmentArrgs.__new__(DiskResourcePolicyAttachmentArrgs)
 
             if disk is None and not opts.urn:
                 raise TypeError("Missing required property 'disk'")

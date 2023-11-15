@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A set of network endpoints belonging to a network endpoint group (NEG). A
@@ -313,12 +312,6 @@ func (i *NetworkEndpointList) ToNetworkEndpointListOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointListOutput)
 }
 
-func (i *NetworkEndpointList) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointList] {
-	return pulumix.Output[*NetworkEndpointList]{
-		OutputState: i.ToNetworkEndpointListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkEndpointListArrayInput is an input type that accepts NetworkEndpointListArray and NetworkEndpointListArrayOutput values.
 // You can construct a concrete instance of `NetworkEndpointListArrayInput` via:
 //
@@ -342,12 +335,6 @@ func (i NetworkEndpointListArray) ToNetworkEndpointListArrayOutput() NetworkEndp
 
 func (i NetworkEndpointListArray) ToNetworkEndpointListArrayOutputWithContext(ctx context.Context) NetworkEndpointListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointListArrayOutput)
-}
-
-func (i NetworkEndpointListArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEndpointList] {
-	return pulumix.Output[[]*NetworkEndpointList]{
-		OutputState: i.ToNetworkEndpointListArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkEndpointListMapInput is an input type that accepts NetworkEndpointListMap and NetworkEndpointListMapOutput values.
@@ -375,12 +362,6 @@ func (i NetworkEndpointListMap) ToNetworkEndpointListMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointListMapOutput)
 }
 
-func (i NetworkEndpointListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEndpointList] {
-	return pulumix.Output[map[string]*NetworkEndpointList]{
-		OutputState: i.ToNetworkEndpointListMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkEndpointListOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointListOutput) ElementType() reflect.Type {
@@ -393,12 +374,6 @@ func (o NetworkEndpointListOutput) ToNetworkEndpointListOutput() NetworkEndpoint
 
 func (o NetworkEndpointListOutput) ToNetworkEndpointListOutputWithContext(ctx context.Context) NetworkEndpointListOutput {
 	return o
-}
-
-func (o NetworkEndpointListOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointList] {
-	return pulumix.Output[*NetworkEndpointList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network endpoint group these endpoints are part of.
@@ -441,12 +416,6 @@ func (o NetworkEndpointListArrayOutput) ToNetworkEndpointListArrayOutputWithCont
 	return o
 }
 
-func (o NetworkEndpointListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEndpointList] {
-	return pulumix.Output[[]*NetworkEndpointList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkEndpointListArrayOutput) Index(i pulumi.IntInput) NetworkEndpointListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkEndpointList {
 		return vs[0].([]*NetworkEndpointList)[vs[1].(int)]
@@ -465,12 +434,6 @@ func (o NetworkEndpointListMapOutput) ToNetworkEndpointListMapOutput() NetworkEn
 
 func (o NetworkEndpointListMapOutput) ToNetworkEndpointListMapOutputWithContext(ctx context.Context) NetworkEndpointListMapOutput {
 	return o
-}
-
-func (o NetworkEndpointListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEndpointList] {
-	return pulumix.Output[map[string]*NetworkEndpointList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkEndpointListMapOutput) MapIndex(k pulumi.StringInput) NetworkEndpointListOutput {

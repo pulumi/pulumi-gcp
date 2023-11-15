@@ -23,7 +23,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GCPolicyMaxAge(dict):
+calass GCPolicyMaxAge(dict):
     def __init__(__self__, *,
                  days: Optional[int] = None,
                  duration: Optional[str] = None):
@@ -61,7 +61,7 @@ class GCPolicyMaxAge(dict):
 
 
 @pulumi.output_type
-class GCPolicyMaxVersion(dict):
+calass GCPolicyMaxVersion(dict):
     def __init__(__self__, *,
                  number: int):
         """
@@ -85,7 +85,7 @@ class GCPolicyMaxVersion(dict):
 
 
 @pulumi.output_type
-class InstanceCluster(dict):
+calass InstanceCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -121,7 +121,7 @@ class InstanceCluster(dict):
                  zone: Optional[str] = None):
         """
         :param str cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
-        :param 'InstanceClusterAutoscalingConfigArgs' autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+        :param 'InstanceClusterAutoscalingConfigArrgs' autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
                
                > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
@@ -222,7 +222,7 @@ class InstanceCluster(dict):
 
 
 @pulumi.output_type
-class InstanceClusterAutoscalingConfig(dict):
+calass InstanceClusterAutoscalingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -301,7 +301,7 @@ class InstanceClusterAutoscalingConfig(dict):
 
 
 @pulumi.output_type
-class InstanceIamBindingCondition(dict):
+calass InstanceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -328,7 +328,7 @@ class InstanceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIamMemberCondition(dict):
+calass InstanceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -355,7 +355,7 @@ class InstanceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TableColumnFamily(dict):
+calass TableColumnFamily(dict):
     def __init__(__self__, *,
                  family: str):
         """
@@ -373,7 +373,7 @@ class TableColumnFamily(dict):
 
 
 @pulumi.output_type
-class TableIamBindingCondition(dict):
+calass TableIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -400,7 +400,7 @@ class TableIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TableIamMemberCondition(dict):
+calass TableIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

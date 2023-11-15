@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['WorkforcePoolArgs', 'WorkforcePool']
+__all__ = ['WorkforcePoolArrgs', 'WorkforcePool']
 
 @pulumi.input_type
-class WorkforcePoolArgs:
+calass WorkforcePoolArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  parent: pulumi.Input[str],
@@ -149,7 +149,7 @@ class WorkforcePoolArgs:
 
 
 @pulumi.input_type
-class _WorkforcePoolState:
+calass _WorkforcePoolState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -340,7 +340,7 @@ class _WorkforcePoolState:
         pulumi.set(self, "workforce_pool_id", value)
 
 
-class WorkforcePool(pulumi.CustomResource):
+calass WorkforcePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -430,7 +430,7 @@ class WorkforcePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkforcePoolArgs,
+                 args: WorkforcePoolArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a collection of external workforces. Provides namespaces for
@@ -486,12 +486,12 @@ class WorkforcePool(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkforcePoolArgs args: The arguments to use to populate this resource's properties.
+        :param WorkforcePoolArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkforcePoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkforcePoolArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -514,7 +514,7 @@ class WorkforcePool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkforcePoolArgs.__new__(WorkforcePoolArgs)
+            __props__ = WorkforcePoolArrgs.__new__(WorkforcePoolArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled

@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CertificateTemplateIamMemberArgs', 'CertificateTemplateIamMember']
+__all__ = ['CertificateTemplateIamMemberArrgs', 'CertificateTemplateIamMember']
 
 @pulumi.input_type
-class CertificateTemplateIamMemberArgs:
+calass CertificateTemplateIamMemberArrgs:
     def __init__(__self__, *,
                  certificate_template: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -28,7 +28,7 @@ class CertificateTemplateIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `certificateauthority.CertificateTemplateIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['CertificateTemplateIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CertificateTemplateIamMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -92,7 +92,7 @@ class CertificateTemplateIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['CertificateTemplateIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['CertificateTemplateIamMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -100,7 +100,7 @@ class CertificateTemplateIamMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -139,10 +139,10 @@ class CertificateTemplateIamMemberArgs:
 
 
 @pulumi.input_type
-class _CertificateTemplateIamMemberState:
+calass _CertificateTemplateIamMemberState:
     def __init__(__self__, *,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class _CertificateTemplateIamMemberState:
         """
         Input properties used for looking up and filtering CertificateTemplateIamMember resources.
         :param pulumi.Input[str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input['CertificateTemplateIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CertificateTemplateIamMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -201,7 +201,7 @@ class _CertificateTemplateIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['CertificateTemplateIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['CertificateTemplateIamMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -209,7 +209,7 @@ class _CertificateTemplateIamMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['CertificateTemplateIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -282,13 +282,13 @@ class _CertificateTemplateIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class CertificateTemplateIamMember(pulumi.CustomResource):
+calass CertificateTemplateIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -317,7 +317,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
         )])
@@ -332,10 +332,10 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -367,7 +367,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -395,7 +395,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -429,7 +429,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -453,7 +453,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CertificateTemplateIamMemberArgs,
+                 args: CertificateTemplateIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Certificate Authority Service CertificateTemplate. Each of these resources serves a different use case:
@@ -478,7 +478,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
         )])
@@ -493,10 +493,10 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -528,7 +528,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -556,7 +556,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=google_privateca_certificate_template["default"]["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
+            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -588,12 +588,12 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param CertificateTemplateIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param CertificateTemplateIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CertificateTemplateIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateTemplateIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -603,7 +603,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -615,7 +615,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CertificateTemplateIamMemberArgs.__new__(CertificateTemplateIamMemberArgs)
+            __props__ = CertificateTemplateIamMemberArrgs.__new__(CertificateTemplateIamMemberArrgs)
 
             if certificate_template is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_template'")
@@ -641,7 +641,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_template: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
@@ -655,7 +655,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

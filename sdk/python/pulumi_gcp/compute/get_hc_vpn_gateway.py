@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetHcVpnGatewayResult:
+calass GetHcVpnGatewayResult:
     """
     A collection of values returned by getHcVpnGateway.
     """
@@ -100,7 +100,7 @@ class GetHcVpnGatewayResult:
         return pulumi.get(self, "vpn_interfaces")
 
 
-class AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
+calass AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
