@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.composer.EnvironmentArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentState;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfig;
+import com.pulumi.gcp.composer.outputs.EnvironmentStorageConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,15 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Environment can be imported using any of these accepted formats
+ * Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{region}}/environments/{{name}}&#34;
+ * 
+ *  to = google_composer_environment.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
@@ -148,6 +157,20 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * Configuration options for storage used by Composer environment.
+     * 
+     */
+    @Export(name="storageConfig", refs={EnvironmentStorageConfig.class}, tree="[0]")
+    private Output<EnvironmentStorageConfig> storageConfig;
+
+    /**
+     * @return Configuration options for storage used by Composer environment.
+     * 
+     */
+    public Output<EnvironmentStorageConfig> storageConfig() {
+        return this.storageConfig;
     }
 
     /**

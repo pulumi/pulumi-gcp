@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
@@ -63,6 +64,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> availabilityType() {
         return Optional.ofNullable(this.availabilityType);
+    }
+
+    /**
+     * Client connection specific configurations.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="clientConnectionConfig")
+    private @Nullable Output<InstanceClientConnectionConfigArgs> clientConnectionConfig;
+
+    /**
+     * @return Client connection specific configurations.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceClientConnectionConfigArgs>> clientConnectionConfig() {
+        return Optional.ofNullable(this.clientConnectionConfig);
     }
 
     /**
@@ -147,16 +165,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-     * Possible values are: `PRIMARY`, `READ_POOL`.
+     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+     * &#39;depends_on&#39; meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+     * secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+     * google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+     * type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+     * instead. Use deletion_policy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete
+     * the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+     * importing the deleted secondary instance by calling terraform import. Possible values: [&#34;PRIMARY&#34;, &#34;READ_POOL&#34;,
+     * &#34;SECONDARY&#34;]
      * 
      */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
     /**
-     * @return The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-     * Possible values are: `PRIMARY`, `READ_POOL`.
+     * @return The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+     * &#39;depends_on&#39; meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+     * secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+     * google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+     * type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+     * instead. Use deletion_policy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete
+     * the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+     * importing the deleted secondary instance by calling terraform import. Possible values: [&#34;PRIMARY&#34;, &#34;READ_POOL&#34;,
+     * &#34;SECONDARY&#34;]
      * 
      */
     public Output<String> instanceType() {
@@ -238,6 +270,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs(InstanceArgs $) {
         this.annotations = $.annotations;
         this.availabilityType = $.availabilityType;
+        this.clientConnectionConfig = $.clientConnectionConfig;
         this.cluster = $.cluster;
         this.databaseFlags = $.databaseFlags;
         this.displayName = $.displayName;
@@ -324,6 +357,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder availabilityType(String availabilityType) {
             return availabilityType(Output.of(availabilityType));
+        }
+
+        /**
+         * @param clientConnectionConfig Client connection specific configurations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientConnectionConfig(@Nullable Output<InstanceClientConnectionConfigArgs> clientConnectionConfig) {
+            $.clientConnectionConfig = clientConnectionConfig;
+            return this;
+        }
+
+        /**
+         * @param clientConnectionConfig Client connection specific configurations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientConnectionConfig(InstanceClientConnectionConfigArgs clientConnectionConfig) {
+            return clientConnectionConfig(Output.of(clientConnectionConfig));
         }
 
         /**
@@ -438,8 +494,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-         * Possible values are: `PRIMARY`, `READ_POOL`.
+         * @param instanceType The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+         * &#39;depends_on&#39; meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+         * secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+         * google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+         * type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+         * instead. Use deletion_policy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete
+         * the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+         * importing the deleted secondary instance by calling terraform import. Possible values: [&#34;PRIMARY&#34;, &#34;READ_POOL&#34;,
+         * &#34;SECONDARY&#34;]
          * 
          * @return builder
          * 
@@ -450,8 +513,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-         * Possible values are: `PRIMARY`, `READ_POOL`.
+         * @param instanceType The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+         * &#39;depends_on&#39; meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+         * secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+         * google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+         * type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+         * instead. Use deletion_policy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete
+         * the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+         * importing the deleted secondary instance by calling terraform import. Possible values: [&#34;PRIMARY&#34;, &#34;READ_POOL&#34;,
+         * &#34;SECONDARY&#34;]
          * 
          * @return builder
          * 

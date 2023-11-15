@@ -17,6 +17,23 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
     public static final InstanceScratchDiskArgs Empty = new InstanceScratchDiskArgs();
 
     /**
+     * Name with which the attached disk will be accessible
+     * under `/dev/disk/by-id/google-*`
+     * 
+     */
+    @Import(name="deviceName")
+    private @Nullable Output<String> deviceName;
+
+    /**
+     * @return Name with which the attached disk will be accessible
+     * under `/dev/disk/by-id/google-*`
+     * 
+     */
+    public Optional<Output<String>> deviceName() {
+        return Optional.ofNullable(this.deviceName);
+    }
+
+    /**
      * The disk interface to use for attaching this disk; either SCSI or NVME.
      * 
      */
@@ -51,6 +68,7 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
     private InstanceScratchDiskArgs() {}
 
     private InstanceScratchDiskArgs(InstanceScratchDiskArgs $) {
+        this.deviceName = $.deviceName;
         this.interface_ = $.interface_;
         this.size = $.size;
     }
@@ -71,6 +89,29 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
 
         public Builder(InstanceScratchDiskArgs defaults) {
             $ = new InstanceScratchDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deviceName Name with which the attached disk will be accessible
+         * under `/dev/disk/by-id/google-*`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deviceName(@Nullable Output<String> deviceName) {
+            $.deviceName = deviceName;
+            return this;
+        }
+
+        /**
+         * @param deviceName Name with which the attached disk will be accessible
+         * under `/dev/disk/by-id/google-*`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deviceName(String deviceName) {
+            return deviceName(Output.of(deviceName));
         }
 
         /**

@@ -240,42 +240,18 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// ## Import
     /// 
-    /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+    /// ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g* `"folder/{{folder_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
     /// 
-    /// This member resource can be imported using the `folder`, role, and member e.g.
+    ///  id = "folder/{{folder_id}} foo.googleapis.com"
+    /// 
+    ///  to = google_folder_iam_audit_config.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
     /// ```
     /// 
-    ///  IAM binding imports use space-delimited identifiers; the resource in question and the role.
-    /// 
-    /// This binding resource can be imported using the `folder` and role, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer"
-    /// ```
-    /// 
-    ///  IAM policy imports use the identifier of the resource in question.
-    /// 
-    /// This policy resource can be imported using the `folder`.
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder folder
-    /// ```
-    /// 
-    ///  IAM audit config imports use the identifier of the resource in question and the service, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder foo.googleapis.com"
-    /// ```
-    /// 
-    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
-    /// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"
     /// ```
     /// </summary>
     [GcpResourceType("gcp:folder/iamAuditConfig:IamAuditConfig")]

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+        /// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
         /// </summary>
         [Input("vulnerabilityMode")]
         public Input<string>? VulnerabilityMode { get; set; }

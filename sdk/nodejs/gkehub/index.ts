@@ -30,6 +30,11 @@ export type FeatureMembership = import("./featureMembership").FeatureMembership;
 export const FeatureMembership: typeof import("./featureMembership").FeatureMembership = null as any;
 utilities.lazyLoad(exports, ["FeatureMembership"], () => require("./featureMembership"));
 
+export { FleetArgs, FleetState } from "./fleet";
+export type Fleet = import("./fleet").Fleet;
+export const Fleet: typeof import("./fleet").Fleet = null as any;
+utilities.lazyLoad(exports, ["Fleet"], () => require("./fleet"));
+
 export { GetFeatureIamPolicyArgs, GetFeatureIamPolicyResult, GetFeatureIamPolicyOutputArgs } from "./getFeatureIamPolicy";
 export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeatureIamPolicy = null as any;
 export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;
@@ -120,6 +125,8 @@ const _module = {
                 return new FeatureIamPolicy(name, <any>undefined, { urn })
             case "gcp:gkehub/featureMembership:FeatureMembership":
                 return new FeatureMembership(name, <any>undefined, { urn })
+            case "gcp:gkehub/fleet:Fleet":
+                return new Fleet(name, <any>undefined, { urn })
             case "gcp:gkehub/membership:Membership":
                 return new Membership(name, <any>undefined, { urn })
             case "gcp:gkehub/membershipBinding:MembershipBinding":
@@ -154,6 +161,7 @@ pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamBinding", _module
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureMembership", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/fleet", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membership", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamBinding", _module)

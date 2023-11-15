@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
@@ -98,11 +97,21 @@ import (
 //
 // ## Import
 //
-// Storage notifications can be imported using the notification `id` in the format `<bucket_name>/notificationConfigs/<id>` e.g.
+// Storage notifications can be imported using any of these accepted formats* `{{bucket_name}}/notificationConfigs/{{id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage notifications using one of the formats above. For exampletf import {
+//
+//	id = "{{bucket_name}}/notificationConfigs/{{id}}"
+//
+//	to = google_storage_notification.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+//	$ pulumi import gcp:storage/notification:Notification When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage notifications can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/notification:Notification default {{bucket_name}}/notificationConfigs/{{id}}
 //
 // ```
 type Notification struct {
@@ -285,12 +294,6 @@ func (i *Notification) ToNotificationOutputWithContext(ctx context.Context) Noti
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
-func (i *Notification) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
-	return pulumix.Output[*Notification]{
-		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NotificationArrayInput is an input type that accepts NotificationArray and NotificationArrayOutput values.
 // You can construct a concrete instance of `NotificationArrayInput` via:
 //
@@ -314,12 +317,6 @@ func (i NotificationArray) ToNotificationArrayOutput() NotificationArrayOutput {
 
 func (i NotificationArray) ToNotificationArrayOutputWithContext(ctx context.Context) NotificationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationArrayOutput)
-}
-
-func (i NotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Notification] {
-	return pulumix.Output[[]*Notification]{
-		OutputState: i.ToNotificationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
@@ -347,12 +344,6 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
-func (i NotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notification] {
-	return pulumix.Output[map[string]*Notification]{
-		OutputState: i.ToNotificationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationOutput struct{ *pulumi.OutputState }
 
 func (NotificationOutput) ElementType() reflect.Type {
@@ -365,12 +356,6 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
-}
-
-func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
-	return pulumix.Output[*Notification]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the bucket.
@@ -432,12 +417,6 @@ func (o NotificationArrayOutput) ToNotificationArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o NotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Notification] {
-	return pulumix.Output[[]*Notification]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotificationArrayOutput) Index(i pulumi.IntInput) NotificationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Notification {
 		return vs[0].([]*Notification)[vs[1].(int)]
@@ -456,12 +435,6 @@ func (o NotificationMapOutput) ToNotificationMapOutput() NotificationMapOutput {
 
 func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Context) NotificationMapOutput {
 	return o
-}
-
-func (o NotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notification] {
-	return pulumix.Output[map[string]*Notification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {

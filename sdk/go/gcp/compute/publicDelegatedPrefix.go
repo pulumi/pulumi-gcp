@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a PublicDelegatedPrefix for use with bring your own IP addresses (BYOIP).
@@ -61,7 +60,17 @@ import (
 //
 // ## Import
 //
-// # PublicDelegatedPrefix can be imported using any of these accepted formats
+// PublicDelegatedPrefix can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PublicDelegatedPrefix using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}"
+//
+//	to = google_compute_public_delegated_prefix.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PublicDelegatedPrefix can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -285,12 +294,6 @@ func (i *PublicDelegatedPrefix) ToPublicDelegatedPrefixOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PublicDelegatedPrefixOutput)
 }
 
-func (i *PublicDelegatedPrefix) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefix] {
-	return pulumix.Output[*PublicDelegatedPrefix]{
-		OutputState: i.ToPublicDelegatedPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PublicDelegatedPrefixArrayInput is an input type that accepts PublicDelegatedPrefixArray and PublicDelegatedPrefixArrayOutput values.
 // You can construct a concrete instance of `PublicDelegatedPrefixArrayInput` via:
 //
@@ -314,12 +317,6 @@ func (i PublicDelegatedPrefixArray) ToPublicDelegatedPrefixArrayOutput() PublicD
 
 func (i PublicDelegatedPrefixArray) ToPublicDelegatedPrefixArrayOutputWithContext(ctx context.Context) PublicDelegatedPrefixArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicDelegatedPrefixArrayOutput)
-}
-
-func (i PublicDelegatedPrefixArray) ToOutput(ctx context.Context) pulumix.Output[[]*PublicDelegatedPrefix] {
-	return pulumix.Output[[]*PublicDelegatedPrefix]{
-		OutputState: i.ToPublicDelegatedPrefixArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PublicDelegatedPrefixMapInput is an input type that accepts PublicDelegatedPrefixMap and PublicDelegatedPrefixMapOutput values.
@@ -347,12 +344,6 @@ func (i PublicDelegatedPrefixMap) ToPublicDelegatedPrefixMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PublicDelegatedPrefixMapOutput)
 }
 
-func (i PublicDelegatedPrefixMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicDelegatedPrefix] {
-	return pulumix.Output[map[string]*PublicDelegatedPrefix]{
-		OutputState: i.ToPublicDelegatedPrefixMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
 
 func (PublicDelegatedPrefixOutput) ElementType() reflect.Type {
@@ -365,12 +356,6 @@ func (o PublicDelegatedPrefixOutput) ToPublicDelegatedPrefixOutput() PublicDeleg
 
 func (o PublicDelegatedPrefixOutput) ToPublicDelegatedPrefixOutputWithContext(ctx context.Context) PublicDelegatedPrefixOutput {
 	return o
-}
-
-func (o PublicDelegatedPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicDelegatedPrefix] {
-	return pulumix.Output[*PublicDelegatedPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of this resource.
@@ -435,12 +420,6 @@ func (o PublicDelegatedPrefixArrayOutput) ToPublicDelegatedPrefixArrayOutputWith
 	return o
 }
 
-func (o PublicDelegatedPrefixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PublicDelegatedPrefix] {
-	return pulumix.Output[[]*PublicDelegatedPrefix]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicDelegatedPrefixArrayOutput) Index(i pulumi.IntInput) PublicDelegatedPrefixOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PublicDelegatedPrefix {
 		return vs[0].([]*PublicDelegatedPrefix)[vs[1].(int)]
@@ -459,12 +438,6 @@ func (o PublicDelegatedPrefixMapOutput) ToPublicDelegatedPrefixMapOutput() Publi
 
 func (o PublicDelegatedPrefixMapOutput) ToPublicDelegatedPrefixMapOutputWithContext(ctx context.Context) PublicDelegatedPrefixMapOutput {
 	return o
-}
-
-func (o PublicDelegatedPrefixMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicDelegatedPrefix] {
-	return pulumix.Output[map[string]*PublicDelegatedPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicDelegatedPrefixMapOutput) MapIndex(k pulumi.StringInput) PublicDelegatedPrefixOutput {

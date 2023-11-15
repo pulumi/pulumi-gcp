@@ -157,6 +157,26 @@ import * as utilities from "../utilities";
  * const connection = new gcp.bigquery.Connection("connection", {
  *     cloudSpanner: {
  *         database: "projects/project/instances/instance/databases/database",
+ *         databaseRole: "database_role",
+ *     },
+ *     connectionId: "my-connection",
+ *     description: "a riveting description",
+ *     friendlyName: "👋",
+ *     location: "US",
+ * });
+ * ```
+ * ### Bigquery Connection Cloudspanner Databoost
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     cloudSpanner: {
+ *         database: "projects/project/instances/instance/databases/database",
+ *         maxParallelism: 100,
+ *         useDataBoost: true,
+ *         useParallelism: true,
  *     },
  *     connectionId: "my-connection",
  *     description: "a riveting description",
@@ -167,7 +187,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Connection can be imported using any of these accepted formats
+ * Connection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}` * `{{project}}/{{location}}/{{connection_id}}` * `{{location}}/{{connection_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Connection using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/connections/{{connection_id}}"
+ *
+ *  to = google_bigquery_connection.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/connection:Connection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Connection can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}

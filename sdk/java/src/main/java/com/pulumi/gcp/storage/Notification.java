@@ -96,10 +96,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Storage notifications can be imported using the notification `id` in the format `&lt;bucket_name&gt;/notificationConfigs/&lt;id&gt;` e.g.
+ * Storage notifications can be imported using any of these accepted formats* `{{bucket_name}}/notificationConfigs/{{id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage notifications using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{bucket_name}}/notificationConfigs/{{id}}&#34;
+ * 
+ *  to = google_storage_notification.default }
  * 
  * ```sh
- *  $ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+ *  $ pulumi import gcp:storage/notification:Notification When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage notifications can be imported using one of the formats above. For example
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:storage/notification:Notification default {{bucket_name}}/notificationConfigs/{{id}}
  * ```
  * 
  */

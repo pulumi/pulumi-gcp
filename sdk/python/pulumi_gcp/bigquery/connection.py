@@ -587,6 +587,25 @@ class Connection(pulumi.CustomResource):
         connection = gcp.bigquery.Connection("connection",
             cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
                 database="projects/project/instances/instance/databases/database",
+                database_role="database_role",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
+        ### Bigquery Connection Cloudspanner Databoost
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+                database="projects/project/instances/instance/databases/database",
+                max_parallelism=100,
+                use_data_boost=True,
+                use_parallelism=True,
             ),
             connection_id="my-connection",
             description="a riveting description",
@@ -596,7 +615,15 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        Connection can be imported using any of these accepted formats
+        Connection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}` * `{{project}}/{{location}}/{{connection_id}}` * `{{location}}/{{connection_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Connection using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/connections/{{connection_id}}"
+
+         to = google_bigquery_connection.default }
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Connection can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
@@ -781,6 +808,25 @@ class Connection(pulumi.CustomResource):
         connection = gcp.bigquery.Connection("connection",
             cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
                 database="projects/project/instances/instance/databases/database",
+                database_role="database_role",
+            ),
+            connection_id="my-connection",
+            description="a riveting description",
+            friendly_name="👋",
+            location="US")
+        ```
+        ### Bigquery Connection Cloudspanner Databoost
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        connection = gcp.bigquery.Connection("connection",
+            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
+                database="projects/project/instances/instance/databases/database",
+                max_parallelism=100,
+                use_data_boost=True,
+                use_parallelism=True,
             ),
             connection_id="my-connection",
             description="a riveting description",
@@ -790,7 +836,15 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        Connection can be imported using any of these accepted formats
+        Connection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}` * `{{project}}/{{location}}/{{connection_id}}` * `{{location}}/{{connection_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Connection using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/connections/{{connection_id}}"
+
+         to = google_bigquery_connection.default }
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Connection can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}

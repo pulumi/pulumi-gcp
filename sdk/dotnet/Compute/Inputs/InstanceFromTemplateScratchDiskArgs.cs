@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateScratchDiskArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
+
         [Input("interface", required: true)]
         public Input<string> Interface { get; set; } = null!;
 

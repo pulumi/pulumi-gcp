@@ -29,9 +29,13 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         public readonly string? Body;
         /// <summary>
         /// The content type to use for the check.
-        /// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
         /// </summary>
         public readonly string? ContentType;
+        /// <summary>
+        /// A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        /// </summary>
+        public readonly string? CustomContentType;
         /// <summary>
         /// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         /// </summary>
@@ -44,6 +48,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
         /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// Contains information needed to add pings to an HTTP check.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.UptimeCheckConfigHttpCheckPingConfig? PingConfig;
         /// <summary>
         /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         /// </summary>
@@ -73,11 +82,15 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             string? contentType,
 
+            string? customContentType,
+
             ImmutableDictionary<string, string>? headers,
 
             bool? maskHeaders,
 
             string? path,
+
+            Outputs.UptimeCheckConfigHttpCheckPingConfig? pingConfig,
 
             int? port,
 
@@ -91,9 +104,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             AuthInfo = authInfo;
             Body = body;
             ContentType = contentType;
+            CustomContentType = customContentType;
             Headers = headers;
             MaskHeaders = maskHeaders;
             Path = path;
+            PingConfig = pingConfig;
             Port = port;
             RequestMethod = requestMethod;
             UseSsl = useSsl;

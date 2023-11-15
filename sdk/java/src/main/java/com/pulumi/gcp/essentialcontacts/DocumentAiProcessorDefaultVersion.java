@@ -58,7 +58,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ProcessorDefaultVersion can be imported using any of these accepted formats:
+ * ProcessorDefaultVersion can be imported using any of these accepted formats* `{{processor}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ProcessorDefaultVersion using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{processor}}&#34;
+ * 
+ *  to = google_document_ai_processor_default_version.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ProcessorDefaultVersion can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}

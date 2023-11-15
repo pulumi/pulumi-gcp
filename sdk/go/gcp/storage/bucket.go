@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new bucket in Google cloud storage service (GCS).
@@ -150,17 +149,27 @@ import (
 //
 // # Storage buckets can be imported using the `name` or
 //
-// `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+// `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). * `{{project_id}}/{{bucket}}` * `{{bucket}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage buckets using one of the formats above. For exampletf import {
+//
+//	id = "{{project_id}}/{{bucket}}"
+//
+//	to = google_storage_bucket.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+//	$ pulumi import gcp:storage/bucket:Bucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage buckets can be imported using one of the formats above. For example
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+//	$ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
 //
 // ```
 //
@@ -179,6 +188,8 @@ type Bucket struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
 	// clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+	EnableObjectRetention pulumi.BoolPtrOutput `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -271,6 +282,8 @@ type bucketState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
 	// clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -326,6 +339,8 @@ type BucketState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
 	// clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+	EnableObjectRetention pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
@@ -382,6 +397,8 @@ type bucketArgs struct {
 	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+	EnableObjectRetention *bool `pulumi:"enableObjectRetention"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -429,6 +446,8 @@ type BucketArgs struct {
 	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
+	// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+	EnableObjectRetention pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
@@ -489,12 +508,6 @@ func (i *Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
 }
 
-func (i *Bucket) ToOutput(ctx context.Context) pulumix.Output[*Bucket] {
-	return pulumix.Output[*Bucket]{
-		OutputState: i.ToBucketOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BucketArrayInput is an input type that accepts BucketArray and BucketArrayOutput values.
 // You can construct a concrete instance of `BucketArrayInput` via:
 //
@@ -518,12 +531,6 @@ func (i BucketArray) ToBucketArrayOutput() BucketArrayOutput {
 
 func (i BucketArray) ToBucketArrayOutputWithContext(ctx context.Context) BucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketArrayOutput)
-}
-
-func (i BucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*Bucket] {
-	return pulumix.Output[[]*Bucket]{
-		OutputState: i.ToBucketArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BucketMapInput is an input type that accepts BucketMap and BucketMapOutput values.
@@ -551,12 +558,6 @@ func (i BucketMap) ToBucketMapOutputWithContext(ctx context.Context) BucketMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BucketMapOutput)
 }
 
-func (i BucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Bucket] {
-	return pulumix.Output[map[string]*Bucket]{
-		OutputState: i.ToBucketMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BucketOutput struct{ *pulumi.OutputState }
 
 func (BucketOutput) ElementType() reflect.Type {
@@ -569,12 +570,6 @@ func (o BucketOutput) ToBucketOutput() BucketOutput {
 
 func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return o
-}
-
-func (o BucketOutput) ToOutput(ctx context.Context) pulumix.Output[*Bucket] {
-	return pulumix.Output[*Bucket]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
@@ -601,6 +596,11 @@ func (o BucketOutput) DefaultEventBasedHold() pulumi.BoolPtrOutput {
 // clients and services.
 func (o BucketOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+func (o BucketOutput) EnableObjectRetention() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.EnableObjectRetention }).(pulumi.BoolPtrOutput)
 }
 
 // The bucket's encryption configuration. Structure is documented below.
@@ -712,12 +712,6 @@ func (o BucketArrayOutput) ToBucketArrayOutputWithContext(ctx context.Context) B
 	return o
 }
 
-func (o BucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Bucket] {
-	return pulumix.Output[[]*Bucket]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BucketArrayOutput) Index(i pulumi.IntInput) BucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Bucket {
 		return vs[0].([]*Bucket)[vs[1].(int)]
@@ -736,12 +730,6 @@ func (o BucketMapOutput) ToBucketMapOutput() BucketMapOutput {
 
 func (o BucketMapOutput) ToBucketMapOutputWithContext(ctx context.Context) BucketMapOutput {
 	return o
-}
-
-func (o BucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Bucket] {
-	return pulumix.Output[map[string]*Bucket]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketMapOutput) MapIndex(k pulumi.StringInput) BucketOutput {

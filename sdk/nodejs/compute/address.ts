@@ -110,7 +110,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Address can be imported using any of these accepted formats
+ * Address can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/addresses/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Address using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/regions/{{region}}/addresses/{{name}}"
+ *
+ *  to = google_compute_address.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/address:Address When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Address can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
@@ -178,8 +186,7 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -195,7 +202,8 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly ipv6EndpointType!: pulumi.Output<string | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -240,7 +248,8 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -370,8 +379,7 @@ export interface AddressState {
      */
     description?: pulumi.Input<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -387,7 +395,8 @@ export interface AddressState {
      */
     ipv6EndpointType?: pulumi.Input<string>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
@@ -432,7 +441,8 @@ export interface AddressState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

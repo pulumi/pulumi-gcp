@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A collection of resources that are deployed and managed together using
@@ -76,7 +75,17 @@ import (
 //
 // ## Import
 //
-// # Deployment can be imported using any of these accepted formats
+// Deployment can be imported using any of these accepted formats* `projects/{{project}}/deployments/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Deployment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/deployments/{{name}}"
+//
+//	to = google_deployment_manager_deployment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:deploymentmanager/deployment:Deployment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Deployment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -393,12 +402,6 @@ func (i *Deployment) ToDeploymentOutputWithContext(ctx context.Context) Deployme
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOutput)
 }
 
-func (i *Deployment) ToOutput(ctx context.Context) pulumix.Output[*Deployment] {
-	return pulumix.Output[*Deployment]{
-		OutputState: i.ToDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeploymentArrayInput is an input type that accepts DeploymentArray and DeploymentArrayOutput values.
 // You can construct a concrete instance of `DeploymentArrayInput` via:
 //
@@ -422,12 +425,6 @@ func (i DeploymentArray) ToDeploymentArrayOutput() DeploymentArrayOutput {
 
 func (i DeploymentArray) ToDeploymentArrayOutputWithContext(ctx context.Context) DeploymentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArrayOutput)
-}
-
-func (i DeploymentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Deployment] {
-	return pulumix.Output[[]*Deployment]{
-		OutputState: i.ToDeploymentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeploymentMapInput is an input type that accepts DeploymentMap and DeploymentMapOutput values.
@@ -455,12 +452,6 @@ func (i DeploymentMap) ToDeploymentMapOutputWithContext(ctx context.Context) Dep
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentMapOutput)
 }
 
-func (i DeploymentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Deployment] {
-	return pulumix.Output[map[string]*Deployment]{
-		OutputState: i.ToDeploymentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentOutput struct{ *pulumi.OutputState }
 
 func (DeploymentOutput) ElementType() reflect.Type {
@@ -473,12 +464,6 @@ func (o DeploymentOutput) ToDeploymentOutput() DeploymentOutput {
 
 func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
 	return o
-}
-
-func (o DeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*Deployment] {
-	return pulumix.Output[*Deployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set the policy to use for creating new resources. Only used on
@@ -575,12 +560,6 @@ func (o DeploymentArrayOutput) ToDeploymentArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DeploymentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Deployment] {
-	return pulumix.Output[[]*Deployment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeploymentArrayOutput) Index(i pulumi.IntInput) DeploymentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Deployment {
 		return vs[0].([]*Deployment)[vs[1].(int)]
@@ -599,12 +578,6 @@ func (o DeploymentMapOutput) ToDeploymentMapOutput() DeploymentMapOutput {
 
 func (o DeploymentMapOutput) ToDeploymentMapOutputWithContext(ctx context.Context) DeploymentMapOutput {
 	return o
-}
-
-func (o DeploymentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Deployment] {
-	return pulumix.Output[map[string]*Deployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentMapOutput) MapIndex(k pulumi.StringInput) DeploymentOutput {

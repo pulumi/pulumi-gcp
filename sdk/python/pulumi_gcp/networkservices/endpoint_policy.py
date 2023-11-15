@@ -506,7 +506,15 @@ class EndpointPolicy(pulumi.CustomResource):
 
         ## Import
 
-        EndpointPolicy can be imported using any of these accepted formats
+        EndpointPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/global/endpointPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EndpointPolicy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/global/endpointPolicies/{{name}}"
+
+         to = google_network_services_endpoint_policy.default }
+
+        ```sh
+         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EndpointPolicy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
@@ -598,7 +606,15 @@ class EndpointPolicy(pulumi.CustomResource):
 
         ## Import
 
-        EndpointPolicy can be imported using any of these accepted formats
+        EndpointPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/global/endpointPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EndpointPolicy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/global/endpointPolicies/{{name}}"
+
+         to = google_network_services_endpoint_policy.default }
+
+        ```sh
+         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EndpointPolicy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}

@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("git")]
         public Input<Inputs.FeatureMembershipConfigmanagementConfigSyncGitGetArgs>? Git { get; set; }
 
+        [Input("metricsGcpServiceAccountEmail")]
+        public Input<string>? MetricsGcpServiceAccountEmail { get; set; }
+
         /// <summary>
         /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         /// 

@@ -18,6 +18,7 @@ class SubnetworkArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  network: pulumi.Input[str],
+                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
@@ -41,6 +42,9 @@ class SubnetworkArgs:
                
                
                - - -
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+               BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -92,6 +96,8 @@ class SubnetworkArgs:
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "network", network)
+        if allow_subnet_cidr_routes_overlap is not None:
+            pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ipv6_access_type is not None:
@@ -147,6 +153,20 @@ class SubnetworkArgs:
     @network.setter
     def network(self, value: pulumi.Input[str]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
+    def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+        prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+        BGP even if their destinations match existing subnet ranges.
+        """
+        return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
+
+    @allow_subnet_cidr_routes_overlap.setter
+    def allow_subnet_cidr_routes_overlap(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_subnet_cidr_routes_overlap", value)
 
     @property
     @pulumi.getter
@@ -332,6 +352,7 @@ class SubnetworkArgs:
 @pulumi.input_type
 class _SubnetworkState:
     def __init__(__self__, *,
+                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
@@ -355,6 +376,9 @@ class _SubnetworkState:
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+               BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
@@ -421,6 +445,8 @@ class _SubnetworkState:
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
+        if allow_subnet_cidr_routes_overlap is not None:
+            pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -466,6 +492,20 @@ class _SubnetworkState:
             pulumi.set(__self__, "self_link", self_link)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+
+    @property
+    @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
+    def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+        prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+        BGP even if their destinations match existing subnet ranges.
+        """
+        return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
+
+    @allow_subnet_cidr_routes_overlap.setter
+    def allow_subnet_cidr_routes_overlap(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_subnet_cidr_routes_overlap", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -772,6 +812,7 @@ class Subnetwork(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
@@ -913,10 +954,33 @@ class Subnetwork(pulumi.CustomResource):
             network=custom_test.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Subnetwork Cidr Overlap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net_cidr_overlap = gcp.compute.Network("net-cidr-overlap", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        subnetwork_cidr_overlap = gcp.compute.Subnetwork("subnetwork-cidr-overlap",
+            region="us-west2",
+            ip_cidr_range="192.168.1.0/24",
+            allow_subnet_cidr_routes_overlap=True,
+            network=net_cidr_overlap.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
-        Subnetwork can be imported using any of these accepted formats
+        Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
+
+         to = google_compute_subnetwork.default }
+
+        ```sh
+         $ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
@@ -936,6 +1000,9 @@ class Subnetwork(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+               BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -1126,10 +1193,33 @@ class Subnetwork(pulumi.CustomResource):
             network=custom_test.id,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Subnetwork Cidr Overlap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net_cidr_overlap = gcp.compute.Network("net-cidr-overlap", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        subnetwork_cidr_overlap = gcp.compute.Subnetwork("subnetwork-cidr-overlap",
+            region="us-west2",
+            ip_cidr_range="192.168.1.0/24",
+            allow_subnet_cidr_routes_overlap=True,
+            network=net_cidr_overlap.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
-        Subnetwork can be imported using any of these accepted formats
+        Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
+
+         to = google_compute_subnetwork.default }
+
+        ```sh
+         $ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
@@ -1162,6 +1252,7 @@ class Subnetwork(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
@@ -1185,6 +1276,7 @@ class Subnetwork(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SubnetworkArgs.__new__(SubnetworkArgs)
 
+            __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
             __props__.__dict__["description"] = description
             if ip_cidr_range is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_cidr_range'")
@@ -1220,6 +1312,7 @@ class Subnetwork(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
@@ -1248,6 +1341,9 @@ class Subnetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+               BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
@@ -1318,6 +1414,7 @@ class Subnetwork(pulumi.CustomResource):
 
         __props__ = _SubnetworkState.__new__(_SubnetworkState)
 
+        __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
@@ -1340,6 +1437,16 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stack_type"] = stack_type
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
+    def allow_subnet_cidr_routes_overlap(self) -> pulumi.Output[bool]:
+        """
+        Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+        prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+        BGP even if their destinations match existing subnet ranges.
+        """
+        return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
     @property
     @pulumi.getter(name="creationTimestamp")

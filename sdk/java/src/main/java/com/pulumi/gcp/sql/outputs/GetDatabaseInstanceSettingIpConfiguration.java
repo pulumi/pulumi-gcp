@@ -20,6 +20,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     private String privateNetwork;
     private List<GetDatabaseInstanceSettingIpConfigurationPscConfig> pscConfigs;
     private Boolean requireSsl;
+    private String sslMode;
 
     private GetDatabaseInstanceSettingIpConfiguration() {}
     public String allocatedIpRange() {
@@ -43,6 +44,9 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     public Boolean requireSsl() {
         return this.requireSsl;
     }
+    public String sslMode() {
+        return this.sslMode;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -60,6 +64,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         private String privateNetwork;
         private List<GetDatabaseInstanceSettingIpConfigurationPscConfig> pscConfigs;
         private Boolean requireSsl;
+        private String sslMode;
         public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,6 +75,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.requireSsl = defaults.requireSsl;
+    	      this.sslMode = defaults.sslMode;
         }
 
         @CustomType.Setter
@@ -113,6 +119,11 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
             this.requireSsl = Objects.requireNonNull(requireSsl);
             return this;
         }
+        @CustomType.Setter
+        public Builder sslMode(String sslMode) {
+            this.sslMode = Objects.requireNonNull(sslMode);
+            return this;
+        }
         public GetDatabaseInstanceSettingIpConfiguration build() {
             final var o = new GetDatabaseInstanceSettingIpConfiguration();
             o.allocatedIpRange = allocatedIpRange;
@@ -122,6 +133,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
             o.privateNetwork = privateNetwork;
             o.pscConfigs = pscConfigs;
             o.requireSsl = requireSsl;
+            o.sslMode = sslMode;
             return o;
         }
     }

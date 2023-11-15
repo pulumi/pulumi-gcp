@@ -1,14 +1,11 @@
-From 6a7f1d72ed3cb93328e71eb83a5605791f96b543 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:57:44 +0000
 Subject: [PATCH 4/9] Add flattening of self managed certificates
 
----
- ...esource_certificate_manager_certificate.go | 27 +++++++++++++++++++
- 1 file changed, 27 insertions(+)
 
 diff --git a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
-index b0ea6c393..f77dd87e8 100644
+index 4a02b4530..4657f4c05 100644
 --- a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
 +++ b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
 @@ -435,6 +435,9 @@ func resourceCertificateManagerCertificateRead(d *schema.ResourceData, meta inte
@@ -21,7 +18,7 @@ index b0ea6c393..f77dd87e8 100644
  	if err := d.Set("managed", flattenCertificateManagerCertificateManaged(res["managed"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Certificate: %s", err)
  	}
-@@ -627,6 +630,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
+@@ -630,6 +633,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
  	return v
  }
  
@@ -52,6 +49,3 @@ index b0ea6c393..f77dd87e8 100644
  func flattenCertificateManagerCertificateManaged(v interface{}, d *schema.ResourceData, config *transport_tpg.Config) interface{} {
  	if v == nil {
  		return nil
--- 
-2.40.0
-

@@ -58,7 +58,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PublicAdvertisedPrefix can be imported using any of these accepted formats
+ * PublicAdvertisedPrefix can be imported using any of these accepted formats* `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PublicAdvertisedPrefix using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}&#34;
+ * 
+ *  to = google_compute_public_advertised_prefix.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PublicAdvertisedPrefix can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}

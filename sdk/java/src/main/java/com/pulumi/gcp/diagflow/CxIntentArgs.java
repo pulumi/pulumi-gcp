@@ -56,8 +56,51 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+     * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     * 
+     */
+    @Import(name="isDefaultNegativeIntent")
+    private @Nullable Output<Boolean> isDefaultNegativeIntent;
+
+    /**
+     * @return Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+     * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefaultNegativeIntent() {
+        return Optional.ofNullable(this.isDefaultNegativeIntent);
+    }
+
+    /**
+     * Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+     * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     * 
+     */
+    @Import(name="isDefaultWelcomeIntent")
+    private @Nullable Output<Boolean> isDefaultWelcomeIntent;
+
+    /**
+     * @return Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+     * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefaultWelcomeIntent() {
+        return Optional.ofNullable(this.isDefaultWelcomeIntent);
+    }
+
+    /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+     * To manage the fallback intent, set `is_default_negative_intent = true`
      * 
      */
     @Import(name="isFallback")
@@ -66,6 +109,7 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+     * To manage the fallback intent, set `is_default_negative_intent = true`
      * 
      */
     public Optional<Output<Boolean>> isFallback() {
@@ -191,6 +235,8 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
     private CxIntentArgs(CxIntentArgs $) {
         this.description = $.description;
         this.displayName = $.displayName;
+        this.isDefaultNegativeIntent = $.isDefaultNegativeIntent;
+        this.isDefaultWelcomeIntent = $.isDefaultWelcomeIntent;
         this.isFallback = $.isFallback;
         this.labels = $.labels;
         this.languageCode = $.languageCode;
@@ -265,8 +311,63 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param isDefaultNegativeIntent Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+         * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+         * 
+         * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultNegativeIntent(@Nullable Output<Boolean> isDefaultNegativeIntent) {
+            $.isDefaultNegativeIntent = isDefaultNegativeIntent;
+            return this;
+        }
+
+        /**
+         * @param isDefaultNegativeIntent Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+         * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+         * 
+         * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultNegativeIntent(Boolean isDefaultNegativeIntent) {
+            return isDefaultNegativeIntent(Output.of(isDefaultNegativeIntent));
+        }
+
+        /**
+         * @param isDefaultWelcomeIntent Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+         * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+         * 
+         * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultWelcomeIntent(@Nullable Output<Boolean> isDefaultWelcomeIntent) {
+            $.isDefaultWelcomeIntent = isDefaultWelcomeIntent;
+            return this;
+        }
+
+        /**
+         * @param isDefaultWelcomeIntent Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+         * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+         * 
+         * &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultWelcomeIntent(Boolean isDefaultWelcomeIntent) {
+            return isDefaultWelcomeIntent(Output.of(isDefaultWelcomeIntent));
+        }
+
+        /**
          * @param isFallback Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
          * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+         * To manage the fallback intent, set `is_default_negative_intent = true`
          * 
          * @return builder
          * 
@@ -279,6 +380,7 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param isFallback Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
          * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+         * To manage the fallback intent, set `is_default_negative_intent = true`
          * 
          * @return builder
          * 

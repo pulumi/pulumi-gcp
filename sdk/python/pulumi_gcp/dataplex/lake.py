@@ -459,7 +459,15 @@ class Lake(pulumi.CustomResource):
 
         ## Import
 
-        Lake can be imported using any of these accepted formats
+        Lake can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Lake using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/lakes/{{name}}"
+
+         to = google_dataplex_lake.default }
+
+        ```sh
+         $ pulumi import gcp:dataplex/lake:Lake When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Lake can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}
@@ -518,7 +526,15 @@ class Lake(pulumi.CustomResource):
 
         ## Import
 
-        Lake can be imported using any of these accepted formats
+        Lake can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Lake using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/lakes/{{name}}"
+
+         to = google_dataplex_lake.default }
+
+        ```sh
+         $ pulumi import gcp:dataplex/lake:Lake When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Lake can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}

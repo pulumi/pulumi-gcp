@@ -464,6 +464,14 @@ class Cluster(pulumi.CustomResource):
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Google Cloud Redis Cluster instance.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+
         ## Example Usage
         ### Redis Cluster Ha
 
@@ -471,13 +479,11 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
         producer_subnet = gcp.compute.Subnetwork("producerSubnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             location="us-central1",
             service_class="gcp-memorystore-redis",
@@ -485,8 +491,7 @@ class Cluster(pulumi.CustomResource):
             network=producer_net.id,
             psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
                 subnetworks=[producer_subnet.id],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             shard_count=3,
             psc_configs=[gcp.redis.ClusterPscConfigArgs(
@@ -496,13 +501,20 @@ class Cluster(pulumi.CustomResource):
             replica_count=1,
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
             authorization_mode="AUTH_MODE_DISABLED",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default]))
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/clusters/{{name}}"
+
+         to = google_redis_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:redis/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}
@@ -548,6 +560,14 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Redis Cluster instance.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+
         ## Example Usage
         ### Redis Cluster Ha
 
@@ -555,13 +575,11 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        producer_net = gcp.compute.Network("producerNet", auto_create_subnetworks=False)
         producer_subnet = gcp.compute.Subnetwork("producerSubnet",
             ip_cidr_range="10.0.0.248/29",
             region="us-central1",
-            network=producer_net.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             location="us-central1",
             service_class="gcp-memorystore-redis",
@@ -569,8 +587,7 @@ class Cluster(pulumi.CustomResource):
             network=producer_net.id,
             psc_config=gcp.networkconnectivity.ServiceConnectionPolicyPscConfigArgs(
                 subnetworks=[producer_subnet.id],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         cluster_ha = gcp.redis.Cluster("cluster-ha",
             shard_count=3,
             psc_configs=[gcp.redis.ClusterPscConfigArgs(
@@ -580,13 +597,20 @@ class Cluster(pulumi.CustomResource):
             replica_count=1,
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
             authorization_mode="AUTH_MODE_DISABLED",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default]))
+            opts=pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/clusters/{{name}}"
+
+         to = google_redis_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:redis/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}

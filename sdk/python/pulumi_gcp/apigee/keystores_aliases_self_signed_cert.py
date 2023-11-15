@@ -452,7 +452,15 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
 
         ## Import
 
-        KeystoresAliasesSelfSignedCert can be imported using any of these accepted formats
+        KeystoresAliasesSelfSignedCert can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}` * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeystoresAliasesSelfSignedCert using one of the formats above. For exampletf import {
+
+         id = "organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}"
+
+         to = google_apigee_keystores_aliases_self_signed_cert.default }
+
+        ```sh
+         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeystoresAliasesSelfSignedCert can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
@@ -560,7 +568,15 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
 
         ## Import
 
-        KeystoresAliasesSelfSignedCert can be imported using any of these accepted formats
+        KeystoresAliasesSelfSignedCert can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}` * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeystoresAliasesSelfSignedCert using one of the formats above. For exampletf import {
+
+         id = "organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}"
+
+         to = google_apigee_keystores_aliases_self_signed_cert.default }
+
+        ```sh
+         $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeystoresAliasesSelfSignedCert can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}

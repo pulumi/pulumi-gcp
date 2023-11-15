@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents the settings related to security issues, such as data redaction and data retention. It may take hours for updates on the settings to propagate to all the related components and take effect.
@@ -142,7 +141,17 @@ import (
 //
 // ## Import
 //
-// # SecuritySettings can be imported using any of these accepted formats
+// SecuritySettings can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SecuritySettings using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/securitySettings/{{name}}"
+//
+//	to = google_dialogflow_cx_security_settings.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SecuritySettings can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -480,12 +489,6 @@ func (i *CxSecuritySettings) ToCxSecuritySettingsOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsOutput)
 }
 
-func (i *CxSecuritySettings) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettings] {
-	return pulumix.Output[*CxSecuritySettings]{
-		OutputState: i.ToCxSecuritySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxSecuritySettingsArrayInput is an input type that accepts CxSecuritySettingsArray and CxSecuritySettingsArrayOutput values.
 // You can construct a concrete instance of `CxSecuritySettingsArrayInput` via:
 //
@@ -509,12 +512,6 @@ func (i CxSecuritySettingsArray) ToCxSecuritySettingsArrayOutput() CxSecuritySet
 
 func (i CxSecuritySettingsArray) ToCxSecuritySettingsArrayOutputWithContext(ctx context.Context) CxSecuritySettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsArrayOutput)
-}
-
-func (i CxSecuritySettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxSecuritySettings] {
-	return pulumix.Output[[]*CxSecuritySettings]{
-		OutputState: i.ToCxSecuritySettingsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxSecuritySettingsMapInput is an input type that accepts CxSecuritySettingsMap and CxSecuritySettingsMapOutput values.
@@ -542,12 +539,6 @@ func (i CxSecuritySettingsMap) ToCxSecuritySettingsMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsMapOutput)
 }
 
-func (i CxSecuritySettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxSecuritySettings] {
-	return pulumix.Output[map[string]*CxSecuritySettings]{
-		OutputState: i.ToCxSecuritySettingsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxSecuritySettingsOutput struct{ *pulumi.OutputState }
 
 func (CxSecuritySettingsOutput) ElementType() reflect.Type {
@@ -560,12 +551,6 @@ func (o CxSecuritySettingsOutput) ToCxSecuritySettingsOutput() CxSecuritySetting
 
 func (o CxSecuritySettingsOutput) ToCxSecuritySettingsOutputWithContext(ctx context.Context) CxSecuritySettingsOutput {
 	return o
-}
-
-func (o CxSecuritySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettings] {
-	return pulumix.Output[*CxSecuritySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
@@ -674,12 +659,6 @@ func (o CxSecuritySettingsArrayOutput) ToCxSecuritySettingsArrayOutputWithContex
 	return o
 }
 
-func (o CxSecuritySettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxSecuritySettings] {
-	return pulumix.Output[[]*CxSecuritySettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxSecuritySettingsArrayOutput) Index(i pulumi.IntInput) CxSecuritySettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxSecuritySettings {
 		return vs[0].([]*CxSecuritySettings)[vs[1].(int)]
@@ -698,12 +677,6 @@ func (o CxSecuritySettingsMapOutput) ToCxSecuritySettingsMapOutput() CxSecurityS
 
 func (o CxSecuritySettingsMapOutput) ToCxSecuritySettingsMapOutputWithContext(ctx context.Context) CxSecuritySettingsMapOutput {
 	return o
-}
-
-func (o CxSecuritySettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxSecuritySettings] {
-	return pulumix.Output[map[string]*CxSecuritySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxSecuritySettingsMapOutput) MapIndex(k pulumi.StringInput) CxSecuritySettingsOutput {

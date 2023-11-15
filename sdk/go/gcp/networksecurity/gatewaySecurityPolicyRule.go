@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
@@ -102,7 +101,17 @@ import (
 //
 // ## Import
 //
-// # GatewaySecurityPolicyRule can be imported using any of these accepted formats
+// GatewaySecurityPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}` * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}` * `{{location}}/{{gateway_security_policy}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicyRule using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}"
+//
+//	to = google_network_security_gateway_security_policy_rule.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicyRule can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -383,12 +392,6 @@ func (i *GatewaySecurityPolicyRule) ToGatewaySecurityPolicyRuleOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityPolicyRuleOutput)
 }
 
-func (i *GatewaySecurityPolicyRule) ToOutput(ctx context.Context) pulumix.Output[*GatewaySecurityPolicyRule] {
-	return pulumix.Output[*GatewaySecurityPolicyRule]{
-		OutputState: i.ToGatewaySecurityPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewaySecurityPolicyRuleArrayInput is an input type that accepts GatewaySecurityPolicyRuleArray and GatewaySecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GatewaySecurityPolicyRuleArrayInput` via:
 //
@@ -412,12 +415,6 @@ func (i GatewaySecurityPolicyRuleArray) ToGatewaySecurityPolicyRuleArrayOutput()
 
 func (i GatewaySecurityPolicyRuleArray) ToGatewaySecurityPolicyRuleArrayOutputWithContext(ctx context.Context) GatewaySecurityPolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityPolicyRuleArrayOutput)
-}
-
-func (i GatewaySecurityPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewaySecurityPolicyRule] {
-	return pulumix.Output[[]*GatewaySecurityPolicyRule]{
-		OutputState: i.ToGatewaySecurityPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewaySecurityPolicyRuleMapInput is an input type that accepts GatewaySecurityPolicyRuleMap and GatewaySecurityPolicyRuleMapOutput values.
@@ -445,12 +442,6 @@ func (i GatewaySecurityPolicyRuleMap) ToGatewaySecurityPolicyRuleMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySecurityPolicyRuleMapOutput)
 }
 
-func (i GatewaySecurityPolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewaySecurityPolicyRule] {
-	return pulumix.Output[map[string]*GatewaySecurityPolicyRule]{
-		OutputState: i.ToGatewaySecurityPolicyRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewaySecurityPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (GatewaySecurityPolicyRuleOutput) ElementType() reflect.Type {
@@ -463,12 +454,6 @@ func (o GatewaySecurityPolicyRuleOutput) ToGatewaySecurityPolicyRuleOutput() Gat
 
 func (o GatewaySecurityPolicyRuleOutput) ToGatewaySecurityPolicyRuleOutputWithContext(ctx context.Context) GatewaySecurityPolicyRuleOutput {
 	return o
-}
-
-func (o GatewaySecurityPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewaySecurityPolicyRule] {
-	return pulumix.Output[*GatewaySecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CEL expression for matching on L7/application level criteria.
@@ -565,12 +550,6 @@ func (o GatewaySecurityPolicyRuleArrayOutput) ToGatewaySecurityPolicyRuleArrayOu
 	return o
 }
 
-func (o GatewaySecurityPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewaySecurityPolicyRule] {
-	return pulumix.Output[[]*GatewaySecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewaySecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) GatewaySecurityPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewaySecurityPolicyRule {
 		return vs[0].([]*GatewaySecurityPolicyRule)[vs[1].(int)]
@@ -589,12 +568,6 @@ func (o GatewaySecurityPolicyRuleMapOutput) ToGatewaySecurityPolicyRuleMapOutput
 
 func (o GatewaySecurityPolicyRuleMapOutput) ToGatewaySecurityPolicyRuleMapOutputWithContext(ctx context.Context) GatewaySecurityPolicyRuleMapOutput {
 	return o
-}
-
-func (o GatewaySecurityPolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewaySecurityPolicyRule] {
-	return pulumix.Output[map[string]*GatewaySecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewaySecurityPolicyRuleMapOutput) MapIndex(k pulumi.StringInput) GatewaySecurityPolicyRuleOutput {

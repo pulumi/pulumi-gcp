@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -76,7 +75,17 @@ import (
 //
 // ## Import
 //
-// # ManagementServer can be imported using any of these accepted formats
+// ManagementServer can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/managementServers/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ManagementServer using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/managementServers/{{name}}"
+//
+//	to = google_backup_dr_management_server.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ManagementServer can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -260,12 +269,6 @@ func (i *ManagementServer) ToManagementServerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerOutput)
 }
 
-func (i *ManagementServer) ToOutput(ctx context.Context) pulumix.Output[*ManagementServer] {
-	return pulumix.Output[*ManagementServer]{
-		OutputState: i.ToManagementServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementServerArrayInput is an input type that accepts ManagementServerArray and ManagementServerArrayOutput values.
 // You can construct a concrete instance of `ManagementServerArrayInput` via:
 //
@@ -289,12 +292,6 @@ func (i ManagementServerArray) ToManagementServerArrayOutput() ManagementServerA
 
 func (i ManagementServerArray) ToManagementServerArrayOutputWithContext(ctx context.Context) ManagementServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerArrayOutput)
-}
-
-func (i ManagementServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*ManagementServer] {
-	return pulumix.Output[[]*ManagementServer]{
-		OutputState: i.ToManagementServerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ManagementServerMapInput is an input type that accepts ManagementServerMap and ManagementServerMapOutput values.
@@ -322,12 +319,6 @@ func (i ManagementServerMap) ToManagementServerMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerMapOutput)
 }
 
-func (i ManagementServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagementServer] {
-	return pulumix.Output[map[string]*ManagementServer]{
-		OutputState: i.ToManagementServerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementServerOutput struct{ *pulumi.OutputState }
 
 func (ManagementServerOutput) ElementType() reflect.Type {
@@ -340,12 +331,6 @@ func (o ManagementServerOutput) ToManagementServerOutput() ManagementServerOutpu
 
 func (o ManagementServerOutput) ToManagementServerOutputWithContext(ctx context.Context) ManagementServerOutput {
 	return o
-}
-
-func (o ManagementServerOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementServer] {
-	return pulumix.Output[*ManagementServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location for the management server (management console)
@@ -402,12 +387,6 @@ func (o ManagementServerArrayOutput) ToManagementServerArrayOutputWithContext(ct
 	return o
 }
 
-func (o ManagementServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ManagementServer] {
-	return pulumix.Output[[]*ManagementServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagementServerArrayOutput) Index(i pulumi.IntInput) ManagementServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ManagementServer {
 		return vs[0].([]*ManagementServer)[vs[1].(int)]
@@ -426,12 +405,6 @@ func (o ManagementServerMapOutput) ToManagementServerMapOutput() ManagementServe
 
 func (o ManagementServerMapOutput) ToManagementServerMapOutputWithContext(ctx context.Context) ManagementServerMapOutput {
 	return o
-}
-
-func (o ManagementServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagementServer] {
-	return pulumix.Output[map[string]*ManagementServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementServerMapOutput) MapIndex(k pulumi.StringInput) ManagementServerOutput {

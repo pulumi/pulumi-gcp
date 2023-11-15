@@ -265,7 +265,15 @@ class EntryGroup(pulumi.CustomResource):
 
         ## Import
 
-        EntryGroup can be imported using any of these accepted formats:
+        EntryGroup can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EntryGroup using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_data_catalog_entry_group.default }
+
+        ```sh
+         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EntryGroup can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
@@ -322,7 +330,15 @@ class EntryGroup(pulumi.CustomResource):
 
         ## Import
 
-        EntryGroup can be imported using any of these accepted formats:
+        EntryGroup can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EntryGroup using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_data_catalog_entry_group.default }
+
+        ```sh
+         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EntryGroup can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}

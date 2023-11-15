@@ -21,6 +21,7 @@ import com.pulumi.gcp.container.outputs.ClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.ClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.ClusterDnsConfig;
 import com.pulumi.gcp.container.outputs.ClusterEnableK8sBetaApis;
+import com.pulumi.gcp.container.outputs.ClusterFleet;
 import com.pulumi.gcp.container.outputs.ClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicy;
@@ -213,18 +214,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}&#34;
+ * 
+ *  to = google_container_cluster.default }
  * 
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+ *  $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+ *  $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+ *  $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
  * ```
  * 
  *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
@@ -675,6 +684,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpoint() {
         return this.endpoint;
+    }
+    /**
+     * Fleet configuration for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Export(name="fleet", refs={ClusterFleet.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterFleet> fleet;
+
+    /**
+     * @return Fleet configuration for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Output<Optional<ClusterFleet>> fleet() {
+        return Codegen.optional(this.fleet);
     }
     /**
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
@@ -1389,16 +1416,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Export(name="securityPostureConfig", refs={ClusterSecurityPostureConfig.class}, tree="[0]")
     private Output<ClusterSecurityPostureConfig> securityPostureConfig;
 
     /**
      * @return Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<ClusterSecurityPostureConfig> securityPostureConfig() {

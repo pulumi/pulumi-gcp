@@ -21,7 +21,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, description=None, gateway_ipv4=None, id=None, name=None, project=None, self_link=None, subnetworks_self_links=None):
+    def __init__(__self__, description=None, gateway_ipv4=None, id=None, internal_ipv6_range=None, name=None, project=None, self_link=None, subnetworks_self_links=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -31,6 +31,9 @@ class GetNetworkResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if internal_ipv6_range and not isinstance(internal_ipv6_range, str):
+            raise TypeError("Expected argument 'internal_ipv6_range' to be a str")
+        pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -69,6 +72,14 @@ class GetNetworkResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> str:
+        """
+        The ula internal ipv6 range assigned to this network.
+        """
+        return pulumi.get(self, "internal_ipv6_range")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -104,6 +115,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             description=self.description,
             gateway_ipv4=self.gateway_ipv4,
             id=self.id,
+            internal_ipv6_range=self.internal_ipv6_range,
             name=self.name,
             project=self.project,
             self_link=self.self_link,
@@ -143,6 +155,7 @@ def get_network(name: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         gateway_ipv4=pulumi.get(__ret__, 'gateway_ipv4'),
         id=pulumi.get(__ret__, 'id'),
+        internal_ipv6_range=pulumi.get(__ret__, 'internal_ipv6_range'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),

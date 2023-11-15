@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud Identity resource representing a Group.
@@ -64,7 +63,17 @@ import (
 //
 // ## Import
 //
-// Group can be imported using any of these accepted formats:
+// Group can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Group using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_cloud_identity_group.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:cloudidentity/group:Group When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Group can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -74,6 +83,9 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// Additional group keys associated with the Group
+	// Structure is documented below.
+	AdditionalGroupKeys GroupAdditionalGroupKeyArrayOutput `pulumi:"additionalGroupKeys"`
 	// The time when the Group was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a Group.
@@ -148,6 +160,9 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// Additional group keys associated with the Group
+	// Structure is documented below.
+	AdditionalGroupKeys []GroupAdditionalGroupKey `pulumi:"additionalGroupKeys"`
 	// The time when the Group was created.
 	CreateTime *string `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a Group.
@@ -184,6 +199,9 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// Additional group keys associated with the Group
+	// Structure is documented below.
+	AdditionalGroupKeys GroupAdditionalGroupKeyArrayInput
 	// The time when the Group was created.
 	CreateTime pulumi.StringPtrInput
 	// An extended description to help users determine the purpose of a Group.
@@ -305,12 +323,6 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupOutput)
 }
 
-func (i *Group) ToOutput(ctx context.Context) pulumix.Output[*Group] {
-	return pulumix.Output[*Group]{
-		OutputState: i.ToGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
@@ -334,12 +346,6 @@ func (i GroupArray) ToGroupArrayOutput() GroupArrayOutput {
 
 func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupArrayOutput)
-}
-
-func (i GroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*Group] {
-	return pulumix.Output[[]*Group]{
-		OutputState: i.ToGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
@@ -367,12 +373,6 @@ func (i GroupMap) ToGroupMapOutputWithContext(ctx context.Context) GroupMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMapOutput)
 }
 
-func (i GroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Group] {
-	return pulumix.Output[map[string]*Group]{
-		OutputState: i.ToGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupOutput struct{ *pulumi.OutputState }
 
 func (GroupOutput) ElementType() reflect.Type {
@@ -387,10 +387,10 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
-func (o GroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Group] {
-	return pulumix.Output[*Group]{
-		OutputState: o.OutputState,
-	}
+// Additional group keys associated with the Group
+// Structure is documented below.
+func (o GroupOutput) AdditionalGroupKeys() GroupAdditionalGroupKeyArrayOutput {
+	return o.ApplyT(func(v *Group) GroupAdditionalGroupKeyArrayOutput { return v.AdditionalGroupKeys }).(GroupAdditionalGroupKeyArrayOutput)
 }
 
 // The time when the Group was created.
@@ -467,12 +467,6 @@ func (o GroupArrayOutput) ToGroupArrayOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
-func (o GroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Group] {
-	return pulumix.Output[[]*Group]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupArrayOutput) Index(i pulumi.IntInput) GroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Group {
 		return vs[0].([]*Group)[vs[1].(int)]
@@ -491,12 +485,6 @@ func (o GroupMapOutput) ToGroupMapOutput() GroupMapOutput {
 
 func (o GroupMapOutput) ToGroupMapOutputWithContext(ctx context.Context) GroupMapOutput {
 	return o
-}
-
-func (o GroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Group] {
-	return pulumix.Output[map[string]*Group]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMapOutput) MapIndex(k pulumi.StringInput) GroupOutput {

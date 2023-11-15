@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
@@ -84,7 +83,17 @@ import (
 //
 // ## Import
 //
-// # UrlLists can be imported using any of these accepted formats
+// UrlLists can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/urlLists/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UrlLists using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/urlLists/{{name}}"
+//
+//	to = google_network_security_url_lists.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networksecurity/urlList:UrlList When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UrlLists can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -277,12 +286,6 @@ func (i *UrlList) ToUrlListOutputWithContext(ctx context.Context) UrlListOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(UrlListOutput)
 }
 
-func (i *UrlList) ToOutput(ctx context.Context) pulumix.Output[*UrlList] {
-	return pulumix.Output[*UrlList]{
-		OutputState: i.ToUrlListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UrlListArrayInput is an input type that accepts UrlListArray and UrlListArrayOutput values.
 // You can construct a concrete instance of `UrlListArrayInput` via:
 //
@@ -306,12 +309,6 @@ func (i UrlListArray) ToUrlListArrayOutput() UrlListArrayOutput {
 
 func (i UrlListArray) ToUrlListArrayOutputWithContext(ctx context.Context) UrlListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UrlListArrayOutput)
-}
-
-func (i UrlListArray) ToOutput(ctx context.Context) pulumix.Output[[]*UrlList] {
-	return pulumix.Output[[]*UrlList]{
-		OutputState: i.ToUrlListArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UrlListMapInput is an input type that accepts UrlListMap and UrlListMapOutput values.
@@ -339,12 +336,6 @@ func (i UrlListMap) ToUrlListMapOutputWithContext(ctx context.Context) UrlListMa
 	return pulumi.ToOutputWithContext(ctx, i).(UrlListMapOutput)
 }
 
-func (i UrlListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UrlList] {
-	return pulumix.Output[map[string]*UrlList]{
-		OutputState: i.ToUrlListMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UrlListOutput struct{ *pulumi.OutputState }
 
 func (UrlListOutput) ElementType() reflect.Type {
@@ -357,12 +348,6 @@ func (o UrlListOutput) ToUrlListOutput() UrlListOutput {
 
 func (o UrlListOutput) ToUrlListOutputWithContext(ctx context.Context) UrlListOutput {
 	return o
-}
-
-func (o UrlListOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlList] {
-	return pulumix.Output[*UrlList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. Time when the security policy was created.
@@ -422,12 +407,6 @@ func (o UrlListArrayOutput) ToUrlListArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o UrlListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UrlList] {
-	return pulumix.Output[[]*UrlList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UrlListArrayOutput) Index(i pulumi.IntInput) UrlListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UrlList {
 		return vs[0].([]*UrlList)[vs[1].(int)]
@@ -446,12 +425,6 @@ func (o UrlListMapOutput) ToUrlListMapOutput() UrlListMapOutput {
 
 func (o UrlListMapOutput) ToUrlListMapOutputWithContext(ctx context.Context) UrlListMapOutput {
 	return o
-}
-
-func (o UrlListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UrlList] {
-	return pulumix.Output[map[string]*UrlList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UrlListMapOutput) MapIndex(k pulumi.StringInput) UrlListOutput {

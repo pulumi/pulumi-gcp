@@ -74,7 +74,15 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Import
     /// 
-    /// EntityType can be imported using any of these accepted formats:
+    /// EntityType can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EntityType using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_dialogflow_entity_type.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:diagflow/entityType:EntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EntityType can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}

@@ -115,6 +115,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIAMMember{}
 	case "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy":
 		r = &InstanceIAMPolicy{}
+	case "gcp:compute/instanceSettings:InstanceSettings":
+		r = &InstanceSettings{}
 	case "gcp:compute/instanceTemplate:InstanceTemplate":
 		r = &InstanceTemplate{}
 	case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -541,6 +543,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/instanceIAMPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/instanceSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

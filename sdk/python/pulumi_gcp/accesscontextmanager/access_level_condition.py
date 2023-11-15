@@ -22,7 +22,8 @@ class AccessLevelConditionArgs:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
         """
         The set of arguments for constructing a AccessLevelCondition resource.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
@@ -61,6 +62,8 @@ class AccessLevelConditionArgs:
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+               Structure is documented below.
         """
         pulumi.set(__self__, "access_level", access_level)
         if device_policy is not None:
@@ -75,6 +78,8 @@ class AccessLevelConditionArgs:
             pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
             pulumi.set(__self__, "required_access_levels", required_access_levels)
+        if vpc_network_sources is not None:
+            pulumi.set(__self__, "vpc_network_sources", vpc_network_sources)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -189,6 +194,19 @@ class AccessLevelConditionArgs:
     def required_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "required_access_levels", value)
 
+    @property
+    @pulumi.getter(name="vpcNetworkSources")
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
+        """
+        The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network_sources")
+
+    @vpc_network_sources.setter
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
+        pulumi.set(self, "vpc_network_sources", value)
+
 
 @pulumi.input_type
 class _AccessLevelConditionState:
@@ -199,7 +217,8 @@ class _AccessLevelConditionState:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering AccessLevelCondition resources.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
@@ -238,6 +257,8 @@ class _AccessLevelConditionState:
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+               Structure is documented below.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -253,6 +274,8 @@ class _AccessLevelConditionState:
             pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
             pulumi.set(__self__, "required_access_levels", required_access_levels)
+        if vpc_network_sources is not None:
+            pulumi.set(__self__, "vpc_network_sources", vpc_network_sources)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -367,6 +390,19 @@ class _AccessLevelConditionState:
     def required_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "required_access_levels", value)
 
+    @property
+    @pulumi.getter(name="vpcNetworkSources")
+    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
+        """
+        The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network_sources")
+
+    @vpc_network_sources.setter
+    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
+        pulumi.set(self, "vpc_network_sources", value)
+
 
 class AccessLevelCondition(pulumi.CustomResource):
     @overload
@@ -380,6 +416,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]]] = None,
                  __props__=None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -497,6 +534,8 @@ class AccessLevelCondition(pulumi.CustomResource):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+               Structure is documented below.
         """
         ...
     @overload
@@ -604,6 +643,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  negate: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -622,6 +662,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             __props__.__dict__["negate"] = negate
             __props__.__dict__["regions"] = regions
             __props__.__dict__["required_access_levels"] = required_access_levels
+            __props__.__dict__["vpc_network_sources"] = vpc_network_sources
         super(AccessLevelCondition, __self__).__init__(
             'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
             resource_name,
@@ -638,7 +679,8 @@ class AccessLevelCondition(pulumi.CustomResource):
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             negate: Optional[pulumi.Input[bool]] = None,
             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AccessLevelCondition':
+            required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]]] = None) -> 'AccessLevelCondition':
         """
         Get an existing AccessLevelCondition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -682,6 +724,8 @@ class AccessLevelCondition(pulumi.CustomResource):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelConditionVpcNetworkSourceArgs']]]] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -694,6 +738,7 @@ class AccessLevelCondition(pulumi.CustomResource):
         __props__.__dict__["negate"] = negate
         __props__.__dict__["regions"] = regions
         __props__.__dict__["required_access_levels"] = required_access_levels
+        __props__.__dict__["vpc_network_sources"] = vpc_network_sources
         return AccessLevelCondition(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -780,4 +825,13 @@ class AccessLevelCondition(pulumi.CustomResource):
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
         return pulumi.get(self, "required_access_levels")
+
+    @property
+    @pulumi.getter(name="vpcNetworkSources")
+    def vpc_network_sources(self) -> pulumi.Output[Optional[Sequence['outputs.AccessLevelConditionVpcNetworkSource']]]:
+        """
+        The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network_sources")
 

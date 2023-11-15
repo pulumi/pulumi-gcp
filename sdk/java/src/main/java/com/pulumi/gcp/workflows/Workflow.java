@@ -93,6 +93,79 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Workflow Beta
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.workflows.Workflow;
+ * import com.pulumi.gcp.workflows.WorkflowArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testAccount = new Account(&#34;testAccount&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-account&#34;)
+ *             .displayName(&#34;Test Service Account&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var exampleBeta = new Workflow(&#34;exampleBeta&#34;, WorkflowArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;Magic&#34;)
+ *             .serviceAccount(testAccount.id())
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .userEnvVars(Map.of(&#34;foo&#34;, &#34;BAR&#34;))
+ *             .sourceContents(&#34;&#34;&#34;
+ * # This is a sample workflow. You can replace it with your source code.
+ * #
+ * # This workflow does the following:
+ * # - reads current time and date information from an external API and stores
+ * #   the response in currentTime variable
+ * # - retrieves a list of Wikipedia articles related to the day of the week
+ * #   from currentTime
+ * # - returns the list of articles as an output of the workflow
+ * #
+ * # Note: In Terraform you need to escape the $$ or it will cause errors.
+ * 
+ * - getCurrentTime:
+ *     call: http.get
+ *     args:
+ *         url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+ *     result: currentTime
+ * - readWikipedia:
+ *     call: http.get
+ *     args:
+ *         url: https://en.wikipedia.org/w/api.php
+ *         query:
+ *             action: opensearch
+ *             search: %s
+ *     result: wikiResult
+ * - returnOutput:
+ *     return: %s
+ * &#34;, currentTime.body().dayOfWeek(),wikiResult.body()[1]))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -336,6 +409,22 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * 
+     */
+    @Export(name="userEnvVars", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> userEnvVars;
+
+    /**
+     * @return User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> userEnvVars() {
+        return Codegen.optional(this.userEnvVars);
     }
 
     /**

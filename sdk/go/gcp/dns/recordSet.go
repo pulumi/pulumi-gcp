@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -388,23 +387,33 @@ import (
 //
 // ## Import
 //
-// # DNS record sets can be imported using either of these accepted formats
+// DNS record sets can be imported using either of these accepted formats* `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}` * `{{project}}/{{zone}}/{{name}}/{{type}}` * `{{zone}}/{{name}}/{{type}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DNS record sets using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}"
+//
+//	to = google_dns_record_set.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:dns/recordSet:RecordSet frontend projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
+//	$ pulumi import gcp:dns/recordSet:RecordSet When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DNS record sets can be imported using one of the formats above. For example
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
+//	$ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
+//	$ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
 //
 // ```
 //
@@ -607,12 +616,6 @@ func (i *RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetO
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
 }
 
-func (i *RecordSet) ToOutput(ctx context.Context) pulumix.Output[*RecordSet] {
-	return pulumix.Output[*RecordSet]{
-		OutputState: i.ToRecordSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RecordSetArrayInput is an input type that accepts RecordSetArray and RecordSetArrayOutput values.
 // You can construct a concrete instance of `RecordSetArrayInput` via:
 //
@@ -636,12 +639,6 @@ func (i RecordSetArray) ToRecordSetArrayOutput() RecordSetArrayOutput {
 
 func (i RecordSetArray) ToRecordSetArrayOutputWithContext(ctx context.Context) RecordSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetArrayOutput)
-}
-
-func (i RecordSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*RecordSet] {
-	return pulumix.Output[[]*RecordSet]{
-		OutputState: i.ToRecordSetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RecordSetMapInput is an input type that accepts RecordSetMap and RecordSetMapOutput values.
@@ -669,12 +666,6 @@ func (i RecordSetMap) ToRecordSetMapOutputWithContext(ctx context.Context) Recor
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetMapOutput)
 }
 
-func (i RecordSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RecordSet] {
-	return pulumix.Output[map[string]*RecordSet]{
-		OutputState: i.ToRecordSetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RecordSetOutput struct{ *pulumi.OutputState }
 
 func (RecordSetOutput) ElementType() reflect.Type {
@@ -687,12 +678,6 @@ func (o RecordSetOutput) ToRecordSetOutput() RecordSetOutput {
 
 func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
 	return o
-}
-
-func (o RecordSetOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSet] {
-	return pulumix.Output[*RecordSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the zone in which this record set will
@@ -753,12 +738,6 @@ func (o RecordSetArrayOutput) ToRecordSetArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RecordSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RecordSet] {
-	return pulumix.Output[[]*RecordSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecordSetArrayOutput) Index(i pulumi.IntInput) RecordSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RecordSet {
 		return vs[0].([]*RecordSet)[vs[1].(int)]
@@ -777,12 +756,6 @@ func (o RecordSetMapOutput) ToRecordSetMapOutput() RecordSetMapOutput {
 
 func (o RecordSetMapOutput) ToRecordSetMapOutputWithContext(ctx context.Context) RecordSetMapOutput {
 	return o
-}
-
-func (o RecordSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RecordSet] {
-	return pulumix.Output[map[string]*RecordSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecordSetMapOutput) MapIndex(k pulumi.StringInput) RecordSetOutput {

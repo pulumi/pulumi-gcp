@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.FeatureArgs;
+import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfig;
 import com.pulumi.gcp.gkehub.outputs.FeatureResourceState;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpec;
 import com.pulumi.gcp.gkehub.outputs.FeatureState;
@@ -274,10 +275,92 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Enable Fleet Default Member Config Service Mesh
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
+ *                 .mesh(FeatureFleetDefaultMemberConfigMeshArgs.builder()
+ *                     .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Enable Fleet Default Member Config Configmanagement
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
+ *                 .configmanagement(FeatureFleetDefaultMemberConfigConfigmanagementArgs.builder()
+ *                     .configSync(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs.builder()
+ *                         .git(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs.builder()
+ *                             .syncRepo(&#34;https://github.com/hashicorp/terraform&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * Feature can be imported using any of these accepted formats
+ * Feature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Feature using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/features/{{name}}&#34;
+ * 
+ *  to = google_gke_hub_feature.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:gkehub/feature:Feature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Feature can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
@@ -335,6 +418,22 @@ public class Feature extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="fleetDefaultMemberConfig", refs={FeatureFleetDefaultMemberConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureFleetDefaultMemberConfig> fleetDefaultMemberConfig;
+
+    /**
+     * @return Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FeatureFleetDefaultMemberConfig>> fleetDefaultMemberConfig() {
+        return Codegen.optional(this.fleetDefaultMemberConfig);
     }
     /**
      * GCP labels for this Feature.

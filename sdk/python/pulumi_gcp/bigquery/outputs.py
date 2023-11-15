@@ -78,6 +78,12 @@ __all__ = [
     'TableTableConstraintsPrimaryKey',
     'TableTimePartitioning',
     'TableView',
+    'GetDatasetAccessResult',
+    'GetDatasetAccessDatasetResult',
+    'GetDatasetAccessDatasetDatasetResult',
+    'GetDatasetAccessRoutineResult',
+    'GetDatasetAccessViewResult',
+    'GetDatasetDefaultEncryptionConfigurationResult',
 ]
 
 @pulumi.output_type
@@ -449,7 +455,13 @@ class ConnectionCloudSpanner(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "useParallelism":
+        if key == "databaseRole":
+            suggest = "database_role"
+        elif key == "maxParallelism":
+            suggest = "max_parallelism"
+        elif key == "useDataBoost":
+            suggest = "use_data_boost"
+        elif key == "useParallelism":
             suggest = "use_parallelism"
         elif key == "useServerlessAnalytics":
             suggest = "use_serverless_analytics"
@@ -467,14 +479,29 @@ class ConnectionCloudSpanner(dict):
 
     def __init__(__self__, *,
                  database: str,
+                 database_role: Optional[str] = None,
+                 max_parallelism: Optional[int] = None,
+                 use_data_boost: Optional[bool] = None,
                  use_parallelism: Optional[bool] = None,
                  use_serverless_analytics: Optional[bool] = None):
         """
-        :param str database: Cloud Spanner database in the form `project/instance/database'
-        :param bool use_parallelism: If parallelism should be used when reading from Cloud Spanner
-        :param bool use_serverless_analytics: If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        :param str database: Cloud Spanner database in the form `project/instance/database'.
+        :param str database_role: Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        :param int max_parallelism: Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+        :param bool use_data_boost: If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+        :param bool use_parallelism: If parallelism should be used when reading from Cloud Spanner.
+        :param bool use_serverless_analytics: (Optional, Deprecated)
+               If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+               
+               > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         """
         pulumi.set(__self__, "database", database)
+        if database_role is not None:
+            pulumi.set(__self__, "database_role", database_role)
+        if max_parallelism is not None:
+            pulumi.set(__self__, "max_parallelism", max_parallelism)
+        if use_data_boost is not None:
+            pulumi.set(__self__, "use_data_boost", use_data_boost)
         if use_parallelism is not None:
             pulumi.set(__self__, "use_parallelism", use_parallelism)
         if use_serverless_analytics is not None:
@@ -484,15 +511,39 @@ class ConnectionCloudSpanner(dict):
     @pulumi.getter
     def database(self) -> str:
         """
-        Cloud Spanner database in the form `project/instance/database'
+        Cloud Spanner database in the form `project/instance/database'.
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="databaseRole")
+    def database_role(self) -> Optional[str]:
+        """
+        Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        """
+        return pulumi.get(self, "database_role")
+
+    @property
+    @pulumi.getter(name="maxParallelism")
+    def max_parallelism(self) -> Optional[int]:
+        """
+        Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+        """
+        return pulumi.get(self, "max_parallelism")
+
+    @property
+    @pulumi.getter(name="useDataBoost")
+    def use_data_boost(self) -> Optional[bool]:
+        """
+        If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+        """
+        return pulumi.get(self, "use_data_boost")
 
     @property
     @pulumi.getter(name="useParallelism")
     def use_parallelism(self) -> Optional[bool]:
         """
-        If parallelism should be used when reading from Cloud Spanner
+        If parallelism should be used when reading from Cloud Spanner.
         """
         return pulumi.get(self, "use_parallelism")
 
@@ -500,8 +551,14 @@ class ConnectionCloudSpanner(dict):
     @pulumi.getter(name="useServerlessAnalytics")
     def use_serverless_analytics(self) -> Optional[bool]:
         """
-        If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        (Optional, Deprecated)
+        If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+
+        > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         """
+        warnings.warn("""`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""", DeprecationWarning)
+        pulumi.log.warn("""use_serverless_analytics is deprecated: `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""")
+
         return pulumi.get(self, "use_serverless_analytics")
 
 
@@ -843,6 +900,8 @@ class DatasetAccess(dict):
         suggest = None
         if key == "groupByEmail":
             suggest = "group_by_email"
+        elif key == "iamMember":
+            suggest = "iam_member"
         elif key == "specialGroup":
             suggest = "special_group"
         elif key == "userByEmail":
@@ -863,6 +922,7 @@ class DatasetAccess(dict):
                  dataset: Optional['outputs.DatasetAccessDataset'] = None,
                  domain: Optional[str] = None,
                  group_by_email: Optional[str] = None,
+                 iam_member: Optional[str] = None,
                  role: Optional[str] = None,
                  routine: Optional['outputs.DatasetAccessRoutine'] = None,
                  special_group: Optional[str] = None,
@@ -874,6 +934,8 @@ class DatasetAccess(dict):
         :param str domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param str group_by_email: An email address of a Google Group to grant access to.
+        :param str iam_member: Some other type of member that appears in the IAM Policy but isn't a user,
+               group, domain, or special group. For example: `allUsers`
         :param str role: Describes the rights granted to the user specified by the other
                member of the access object. Basic, predefined, and custom roles
                are supported. Predefined roles that have equivalent basic roles
@@ -901,6 +963,8 @@ class DatasetAccess(dict):
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
             pulumi.set(__self__, "group_by_email", group_by_email)
+        if iam_member is not None:
+            pulumi.set(__self__, "iam_member", iam_member)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if routine is not None:
@@ -937,6 +1001,15 @@ class DatasetAccess(dict):
         An email address of a Google Group to grant access to.
         """
         return pulumi.get(self, "group_by_email")
+
+    @property
+    @pulumi.getter(name="iamMember")
+    def iam_member(self) -> Optional[str]:
+        """
+        Some other type of member that appears in the IAM Policy but isn't a user,
+        group, domain, or special group. For example: `allUsers`
+        """
+        return pulumi.get(self, "iam_member")
 
     @property
     @pulumi.getter
@@ -4920,7 +4993,8 @@ class TableTimePartitioning(dict):
                table is partitioned based on the load time.
         :param bool require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
-               specified.
+               specified. `require_partition_filter` is deprecated and will be removed in
+               a future major release. Use the top level field with the same name instead.
         """
         pulumi.set(__self__, "type", type)
         if expiration_ms is not None:
@@ -4964,8 +5038,12 @@ class TableTimePartitioning(dict):
         """
         If set to true, queries over this table
         require a partition filter that can be used for partition elimination to be
-        specified.
+        specified. `require_partition_filter` is deprecated and will be removed in
+        a future major release. Use the top level field with the same name instead.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""", DeprecationWarning)
+        pulumi.log.warn("""require_partition_filter is deprecated: This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""")
+
         return pulumi.get(self, "require_partition_filter")
 
 
@@ -5016,5 +5094,193 @@ class TableView(dict):
         The default value is true. If set to false, the view will use BigQuery's standard SQL.
         """
         return pulumi.get(self, "use_legacy_sql")
+
+
+@pulumi.output_type
+class GetDatasetAccessResult(dict):
+    def __init__(__self__, *,
+                 datasets: Sequence['outputs.GetDatasetAccessDatasetResult'],
+                 domain: str,
+                 group_by_email: str,
+                 iam_member: str,
+                 role: str,
+                 routines: Sequence['outputs.GetDatasetAccessRoutineResult'],
+                 special_group: str,
+                 user_by_email: str,
+                 views: Sequence['outputs.GetDatasetAccessViewResult']):
+        pulumi.set(__self__, "datasets", datasets)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "group_by_email", group_by_email)
+        pulumi.set(__self__, "iam_member", iam_member)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "routines", routines)
+        pulumi.set(__self__, "special_group", special_group)
+        pulumi.set(__self__, "user_by_email", user_by_email)
+        pulumi.set(__self__, "views", views)
+
+    @property
+    @pulumi.getter
+    def datasets(self) -> Sequence['outputs.GetDatasetAccessDatasetResult']:
+        return pulumi.get(self, "datasets")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="groupByEmail")
+    def group_by_email(self) -> str:
+        return pulumi.get(self, "group_by_email")
+
+    @property
+    @pulumi.getter(name="iamMember")
+    def iam_member(self) -> str:
+        return pulumi.get(self, "iam_member")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def routines(self) -> Sequence['outputs.GetDatasetAccessRoutineResult']:
+        return pulumi.get(self, "routines")
+
+    @property
+    @pulumi.getter(name="specialGroup")
+    def special_group(self) -> str:
+        return pulumi.get(self, "special_group")
+
+    @property
+    @pulumi.getter(name="userByEmail")
+    def user_by_email(self) -> str:
+        return pulumi.get(self, "user_by_email")
+
+    @property
+    @pulumi.getter
+    def views(self) -> Sequence['outputs.GetDatasetAccessViewResult']:
+        return pulumi.get(self, "views")
+
+
+@pulumi.output_type
+class GetDatasetAccessDatasetResult(dict):
+    def __init__(__self__, *,
+                 datasets: Sequence['outputs.GetDatasetAccessDatasetDatasetResult'],
+                 target_types: Sequence[str]):
+        pulumi.set(__self__, "datasets", datasets)
+        pulumi.set(__self__, "target_types", target_types)
+
+    @property
+    @pulumi.getter
+    def datasets(self) -> Sequence['outputs.GetDatasetAccessDatasetDatasetResult']:
+        return pulumi.get(self, "datasets")
+
+    @property
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> Sequence[str]:
+        return pulumi.get(self, "target_types")
+
+
+@pulumi.output_type
+class GetDatasetAccessDatasetDatasetResult(dict):
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str):
+        """
+        :param str dataset_id: The dataset ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The dataset ID.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetDatasetAccessRoutineResult(dict):
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str,
+                 routine_id: str):
+        """
+        :param str dataset_id: The dataset ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "routine_id", routine_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The dataset ID.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="routineId")
+    def routine_id(self) -> str:
+        return pulumi.get(self, "routine_id")
+
+
+@pulumi.output_type
+class GetDatasetAccessViewResult(dict):
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str,
+                 table_id: str):
+        """
+        :param str dataset_id: The dataset ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The dataset ID.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> str:
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class GetDatasetDefaultEncryptionConfigurationResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
 
 

@@ -297,6 +297,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('documentAiWarehouseCustomEndpoint')
 
     @property
+    def edgecontainer_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('edgecontainerCustomEndpoint')
+
+    @property
     def edgenetwork_custom_endpoint(self) -> Optional[str]:
         return __config__.get('edgenetworkCustomEndpoint')
 
@@ -403,6 +407,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def impersonate_service_account_delegates(self) -> Optional[str]:
         return __config__.get('impersonateServiceAccountDelegates')
+
+    @property
+    def integration_connectors_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('integrationConnectorsCustomEndpoint')
 
     @property
     def kms_custom_endpoint(self) -> Optional[str]:
@@ -587,6 +595,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def tpu_v2_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tpuV2CustomEndpoint')
+
+    @property
+    def universe_domain(self) -> Optional[str]:
+        return __config__.get('universeDomain')
 
     @property
     def user_project_override(self) -> Optional[bool]:

@@ -204,7 +204,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * StoredInfoType can be imported using any of these accepted formats
+ * StoredInfoType can be imported using any of these accepted formats* `{{parent}}/storedInfoTypes/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import StoredInfoType using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{parent}}/storedInfoTypes/{{name}}&#34;
+ * 
+ *  to = google_data_loss_prevention_stored_info_type.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), StoredInfoType can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}

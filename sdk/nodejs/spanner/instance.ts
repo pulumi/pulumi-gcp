@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -63,7 +65,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instance can be imported using any of these accepted formats
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/instances/{{name}}"
+ *
+ *  to = google_spanner_instance.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
@@ -105,6 +115,14 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     */
+    public readonly autoscalingConfig!: pulumi.Output<outputs.spanner.InstanceAutoscalingConfig | undefined>;
     /**
      * The name of the instance's configuration (similar but not
      * quite the same as a region) which defines the geographic placement and
@@ -185,6 +203,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["autoscalingConfig"] = state ? state.autoscalingConfig : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -204,6 +223,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["autoscalingConfig"] = args ? args.autoscalingConfig : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
@@ -227,6 +247,14 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     */
+    autoscalingConfig?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfig>;
     /**
      * The name of the instance's configuration (similar but not
      * quite the same as a region) which defines the geographic placement and
@@ -299,6 +327,14 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, numNodes and processingUnits are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     */
+    autoscalingConfig?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfig>;
     /**
      * The name of the instance's configuration (similar but not
      * quite the same as a region) which defines the geographic placement and

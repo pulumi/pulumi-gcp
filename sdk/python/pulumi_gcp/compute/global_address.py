@@ -594,7 +594,15 @@ class GlobalAddress(pulumi.CustomResource):
 
         ## Import
 
-        GlobalAddress can be imported using any of these accepted formats
+        GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalAddress using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/addresses/{{name}}"
+
+         to = google_compute_global_address.default }
+
+        ```sh
+         $ pulumi import gcp:compute/globalAddress:GlobalAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalAddress can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
@@ -692,7 +700,15 @@ class GlobalAddress(pulumi.CustomResource):
 
         ## Import
 
-        GlobalAddress can be imported using any of these accepted formats
+        GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalAddress using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/addresses/{{name}}"
+
+         to = google_compute_global_address.default }
+
+        ```sh
+         $ pulumi import gcp:compute/globalAddress:GlobalAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalAddress can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}

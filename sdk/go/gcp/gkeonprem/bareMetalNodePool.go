@@ -10,9 +10,10 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// A Google Bare Metal Node Pool.
+//
 // ## Example Usage
 // ### Gkeonprem Bare Metal Node Pool Basic
 //
@@ -105,7 +106,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -120,7 +121,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -220,7 +221,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -246,7 +247,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -258,7 +259,17 @@ import (
 //
 // ## Import
 //
-// # BareMetalNodePool can be imported using any of these accepted formats
+// BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalNodePool using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}"
+//
+//	to = google_gkeonprem_bare_metal_node_pool.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalNodePool can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -565,12 +576,6 @@ func (i *BareMetalNodePool) ToBareMetalNodePoolOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolOutput)
 }
 
-func (i *BareMetalNodePool) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePool] {
-	return pulumix.Output[*BareMetalNodePool]{
-		OutputState: i.ToBareMetalNodePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalNodePoolArrayInput is an input type that accepts BareMetalNodePoolArray and BareMetalNodePoolArrayOutput values.
 // You can construct a concrete instance of `BareMetalNodePoolArrayInput` via:
 //
@@ -594,12 +599,6 @@ func (i BareMetalNodePoolArray) ToBareMetalNodePoolArrayOutput() BareMetalNodePo
 
 func (i BareMetalNodePoolArray) ToBareMetalNodePoolArrayOutputWithContext(ctx context.Context) BareMetalNodePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolArrayOutput)
-}
-
-func (i BareMetalNodePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*BareMetalNodePool] {
-	return pulumix.Output[[]*BareMetalNodePool]{
-		OutputState: i.ToBareMetalNodePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BareMetalNodePoolMapInput is an input type that accepts BareMetalNodePoolMap and BareMetalNodePoolMapOutput values.
@@ -627,12 +626,6 @@ func (i BareMetalNodePoolMap) ToBareMetalNodePoolMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalNodePoolMapOutput)
 }
 
-func (i BareMetalNodePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BareMetalNodePool] {
-	return pulumix.Output[map[string]*BareMetalNodePool]{
-		OutputState: i.ToBareMetalNodePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalNodePoolOutput struct{ *pulumi.OutputState }
 
 func (BareMetalNodePoolOutput) ElementType() reflect.Type {
@@ -645,12 +638,6 @@ func (o BareMetalNodePoolOutput) ToBareMetalNodePoolOutput() BareMetalNodePoolOu
 
 func (o BareMetalNodePoolOutput) ToBareMetalNodePoolOutputWithContext(ctx context.Context) BareMetalNodePoolOutput {
 	return o
-}
-
-func (o BareMetalNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalNodePool] {
-	return pulumix.Output[*BareMetalNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations on the Bare Metal Node Pool.
@@ -766,12 +753,6 @@ func (o BareMetalNodePoolArrayOutput) ToBareMetalNodePoolArrayOutputWithContext(
 	return o
 }
 
-func (o BareMetalNodePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BareMetalNodePool] {
-	return pulumix.Output[[]*BareMetalNodePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalNodePoolArrayOutput) Index(i pulumi.IntInput) BareMetalNodePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BareMetalNodePool {
 		return vs[0].([]*BareMetalNodePool)[vs[1].(int)]
@@ -790,12 +771,6 @@ func (o BareMetalNodePoolMapOutput) ToBareMetalNodePoolMapOutput() BareMetalNode
 
 func (o BareMetalNodePoolMapOutput) ToBareMetalNodePoolMapOutputWithContext(ctx context.Context) BareMetalNodePoolMapOutput {
 	return o
-}
-
-func (o BareMetalNodePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BareMetalNodePool] {
-	return pulumix.Output[map[string]*BareMetalNodePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalNodePoolMapOutput) MapIndex(k pulumi.StringInput) BareMetalNodePoolOutput {

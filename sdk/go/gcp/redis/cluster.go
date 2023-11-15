@@ -10,9 +10,16 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// A Google Cloud Redis Cluster instance.
+//
+// To get more information about Cluster, see:
+//
+// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+//
 // ## Example Usage
 // ### Redis Cluster Ha
 //
@@ -32,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			producerNet, err := compute.NewNetwork(ctx, "producerNet", &compute.NetworkArgs{
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -40,7 +47,7 @@ import (
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     producerNet.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -54,7 +61,7 @@ import (
 //						producerSubnet.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -69,7 +76,7 @@ import (
 //				ReplicaCount:          pulumi.Int(1),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))
 //			if err != nil {
@@ -83,7 +90,17 @@ import (
 //
 // ## Import
 //
-// # Cluster can be imported using any of these accepted formats
+// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{region}}/clusters/{{name}}"
+//
+//	to = google_redis_cluster.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:redis/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -381,12 +398,6 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
 }
 
-func (i *Cluster) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
-	return pulumix.Output[*Cluster]{
-		OutputState: i.ToClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
@@ -410,12 +421,6 @@ func (i ClusterArray) ToClusterArrayOutput() ClusterArrayOutput {
 
 func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) ClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterArrayOutput)
-}
-
-func (i ClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*Cluster] {
-	return pulumix.Output[[]*Cluster]{
-		OutputState: i.ToClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
@@ -443,12 +448,6 @@ func (i ClusterMap) ToClusterMapOutputWithContext(ctx context.Context) ClusterMa
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMapOutput)
 }
 
-func (i ClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cluster] {
-	return pulumix.Output[map[string]*Cluster]{
-		OutputState: i.ToClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterOutput struct{ *pulumi.OutputState }
 
 func (ClusterOutput) ElementType() reflect.Type {
@@ -461,12 +460,6 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
-}
-
-func (o ClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
-	return pulumix.Output[*Cluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
@@ -575,12 +568,6 @@ func (o ClusterArrayOutput) ToClusterArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Cluster] {
-	return pulumix.Output[[]*Cluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterArrayOutput) Index(i pulumi.IntInput) ClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cluster {
 		return vs[0].([]*Cluster)[vs[1].(int)]
@@ -599,12 +586,6 @@ func (o ClusterMapOutput) ToClusterMapOutput() ClusterMapOutput {
 
 func (o ClusterMapOutput) ToClusterMapOutputWithContext(ctx context.Context) ClusterMapOutput {
 	return o
-}
-
-func (o ClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cluster] {
-	return pulumix.Output[map[string]*Cluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterMapOutput) MapIndex(k pulumi.StringInput) ClusterOutput {

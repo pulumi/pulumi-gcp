@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataform.outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,15 +13,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RepositoryGitRemoteSettings {
     /**
-     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
      * 
      */
-    private String authenticationTokenSecretVersion;
+    private @Nullable String authenticationTokenSecretVersion;
     /**
      * @return The Git remote&#39;s default branch name.
      * 
      */
     private String defaultBranch;
+    /**
+     * @return Authentication fields for remote uris using SSH protocol.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RepositoryGitRemoteSettingsSshAuthenticationConfig sshAuthenticationConfig;
     /**
      * @return (Output)
      * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
@@ -35,11 +42,11 @@ public final class RepositoryGitRemoteSettings {
 
     private RepositoryGitRemoteSettings() {}
     /**
-     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
      * 
      */
-    public String authenticationTokenSecretVersion() {
-        return this.authenticationTokenSecretVersion;
+    public Optional<String> authenticationTokenSecretVersion() {
+        return Optional.ofNullable(this.authenticationTokenSecretVersion);
     }
     /**
      * @return The Git remote&#39;s default branch name.
@@ -47,6 +54,14 @@ public final class RepositoryGitRemoteSettings {
      */
     public String defaultBranch() {
         return this.defaultBranch;
+    }
+    /**
+     * @return Authentication fields for remote uris using SSH protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RepositoryGitRemoteSettingsSshAuthenticationConfig> sshAuthenticationConfig() {
+        return Optional.ofNullable(this.sshAuthenticationConfig);
     }
     /**
      * @return (Output)
@@ -73,8 +88,9 @@ public final class RepositoryGitRemoteSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String authenticationTokenSecretVersion;
+        private @Nullable String authenticationTokenSecretVersion;
         private String defaultBranch;
+        private @Nullable RepositoryGitRemoteSettingsSshAuthenticationConfig sshAuthenticationConfig;
         private @Nullable String tokenStatus;
         private String url;
         public Builder() {}
@@ -82,18 +98,24 @@ public final class RepositoryGitRemoteSettings {
     	      Objects.requireNonNull(defaults);
     	      this.authenticationTokenSecretVersion = defaults.authenticationTokenSecretVersion;
     	      this.defaultBranch = defaults.defaultBranch;
+    	      this.sshAuthenticationConfig = defaults.sshAuthenticationConfig;
     	      this.tokenStatus = defaults.tokenStatus;
     	      this.url = defaults.url;
         }
 
         @CustomType.Setter
-        public Builder authenticationTokenSecretVersion(String authenticationTokenSecretVersion) {
-            this.authenticationTokenSecretVersion = Objects.requireNonNull(authenticationTokenSecretVersion);
+        public Builder authenticationTokenSecretVersion(@Nullable String authenticationTokenSecretVersion) {
+            this.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder defaultBranch(String defaultBranch) {
             this.defaultBranch = Objects.requireNonNull(defaultBranch);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sshAuthenticationConfig(@Nullable RepositoryGitRemoteSettingsSshAuthenticationConfig sshAuthenticationConfig) {
+            this.sshAuthenticationConfig = sshAuthenticationConfig;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +132,7 @@ public final class RepositoryGitRemoteSettings {
             final var o = new RepositoryGitRemoteSettings();
             o.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
             o.defaultBranch = defaultBranch;
+            o.sshAuthenticationConfig = sshAuthenticationConfig;
             o.tokenStatus = tokenStatus;
             o.url = url;
             return o;

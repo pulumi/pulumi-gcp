@@ -71,7 +71,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Release can be imported using any of these accepted formats:
+ * Release can be imported using any of these accepted formats* `projects/{{project}}/releases/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Release using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/releases/{{name}}"
+ *
+ *  to = google_firebaserules_release.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:firebaserules/release:Release When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Release can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}

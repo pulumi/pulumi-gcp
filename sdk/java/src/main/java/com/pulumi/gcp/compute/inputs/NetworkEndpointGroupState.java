@@ -106,9 +106,9 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
-     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     @Import(name="networkEndpointType")
@@ -122,9 +122,9 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
-     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     public Optional<Output<String>> networkEndpointType() {
@@ -355,9 +355,9 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
          * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
          * CONNECTION balancing modes.
-         * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
+         * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
          * Default value is `GCE_VM_IP_PORT`.
-         * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
+         * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
          * 
          * @return builder
          * 
@@ -375,9 +375,9 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
          * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
          * CONNECTION balancing modes.
-         * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
+         * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
          * Default value is `GCE_VM_IP_PORT`.
-         * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
+         * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
          * 
          * @return builder
          * 

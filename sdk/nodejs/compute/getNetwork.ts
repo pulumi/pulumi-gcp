@@ -61,6 +61,10 @@ export interface GetNetworkResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ula internal ipv6 range assigned to this network.
+     */
+    readonly internalIpv6Range: string;
     readonly name: string;
     readonly project?: string;
     /**

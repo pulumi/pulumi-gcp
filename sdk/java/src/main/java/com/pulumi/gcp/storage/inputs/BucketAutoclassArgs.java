@@ -6,7 +6,10 @@ package com.pulumi.gcp.storage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BucketAutoclassArgs extends com.pulumi.resources.ResourceArgs {
@@ -28,10 +31,26 @@ public final class BucketAutoclassArgs extends com.pulumi.resources.ResourceArgs
         return this.enabled;
     }
 
+    /**
+     * The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+     * 
+     */
+    @Import(name="terminalStorageClass")
+    private @Nullable Output<String> terminalStorageClass;
+
+    /**
+     * @return The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+     * 
+     */
+    public Optional<Output<String>> terminalStorageClass() {
+        return Optional.ofNullable(this.terminalStorageClass);
+    }
+
     private BucketAutoclassArgs() {}
 
     private BucketAutoclassArgs(BucketAutoclassArgs $) {
         this.enabled = $.enabled;
+        this.terminalStorageClass = $.terminalStorageClass;
     }
 
     public static Builder builder() {
@@ -71,6 +90,27 @@ public final class BucketAutoclassArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param terminalStorageClass The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminalStorageClass(@Nullable Output<String> terminalStorageClass) {
+            $.terminalStorageClass = terminalStorageClass;
+            return this;
+        }
+
+        /**
+         * @param terminalStorageClass The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminalStorageClass(String terminalStorageClass) {
+            return terminalStorageClass(Output.of(terminalStorageClass));
         }
 
         public BucketAutoclassArgs build() {

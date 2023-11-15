@@ -15,6 +15,20 @@ __all__ = [
     'ExtensionsInstanceRuntimeDataArgs',
     'ExtensionsInstanceRuntimeDataFatalErrorArgs',
     'ExtensionsInstanceRuntimeDataProcessingStateArgs',
+    'HostingCustomDomainCertArgs',
+    'HostingCustomDomainCertVerificationArgs',
+    'HostingCustomDomainCertVerificationDnsArgs',
+    'HostingCustomDomainCertVerificationDnsDesiredArgs',
+    'HostingCustomDomainCertVerificationDnsDesiredRecordArgs',
+    'HostingCustomDomainCertVerificationDnsDiscoveredArgs',
+    'HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs',
+    'HostingCustomDomainCertVerificationHttpArgs',
+    'HostingCustomDomainIssueArgs',
+    'HostingCustomDomainRequiredDnsUpdateArgs',
+    'HostingCustomDomainRequiredDnsUpdateDesiredArgs',
+    'HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs',
+    'HostingCustomDomainRequiredDnsUpdateDiscoveredArgs',
+    'HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs',
     'HostingVersionConfigArgs',
     'HostingVersionConfigRedirectArgs',
     'HostingVersionConfigRewriteArgs',
@@ -378,6 +392,870 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 verification: Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']] = None):
+        """
+        :param pulumi.Input[str] state: The state of the certificate. Only the `CERT_ACTIVE` and
+               `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+               state is `PROPAGATING` and Hosting had an active cert for the domain name
+               before, that formerly-active cert provides SSL coverage for the domain name
+               until the current cert propagates.
+        :param pulumi.Input[str] type: The record's type, which determines what data the record contains.
+        :param pulumi.Input['HostingCustomDomainCertVerificationArgs'] verification: A set of ACME challenges you can add to your DNS records or existing,
+               non-Hosting hosting provider to allow Hosting to create an SSL certificate
+               for your domain name before you point traffic toward hosting. You can use
+               thse challenges as part of a zero downtime transition from your old
+               provider to Hosting.
+               Structure is documented below.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if verification is not None:
+            pulumi.set(__self__, "verification", verification)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the certificate. Only the `CERT_ACTIVE` and
+        `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+        state is `PROPAGATING` and Hosting had an active cert for the domain name
+        before, that formerly-active cert provides SSL coverage for the domain name
+        until the current cert propagates.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The record's type, which determines what data the record contains.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def verification(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']]:
+        """
+        A set of ACME challenges you can add to your DNS records or existing,
+        non-Hosting hosting provider to allow Hosting to create an SSL certificate
+        for your domain name before you point traffic toward hosting. You can use
+        thse challenges as part of a zero downtime transition from your old
+        provider to Hosting.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "verification")
+
+    @verification.setter
+    def verification(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']]):
+        pulumi.set(self, "verification", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationArgs:
+    def __init__(__self__, *,
+                 dns: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']] = None,
+                 http: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']] = None):
+        """
+        :param pulumi.Input['HostingCustomDomainCertVerificationDnsArgs'] dns: A `TXT` record to add to your DNS records that confirms your intent to
+               let Hosting create an SSL cert for your domain name.
+               Structure is documented below.
+        :param pulumi.Input['HostingCustomDomainCertVerificationHttpArgs'] http: A file to add to your existing, non-Hosting hosting service that confirms
+               your intent to let Hosting create an SSL cert for your domain name.
+               Structure is documented below.
+        """
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+
+    @property
+    @pulumi.getter
+    def dns(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']]:
+        """
+        A `TXT` record to add to your DNS records that confirms your intent to
+        let Hosting create an SSL cert for your domain name.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns")
+
+    @dns.setter
+    def dns(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']]):
+        pulumi.set(self, "dns", value)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]:
+        """
+        A file to add to your existing, non-Hosting hosting service that confirms
+        your intent to let Hosting create an SSL cert for your domain name.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]):
+        pulumi.set(self, "http", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationDnsArgs:
+    def __init__(__self__, *,
+                 check_time: Optional[pulumi.Input[str]] = None,
+                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]] = None,
+                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]] = None):
+        """
+        :param pulumi.Input[str] check_time: (Output)
+               The last time Hosting checked your CustomDomain's DNS records.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]] desireds: A text string to serve at the path.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]] discovereds: Whether Hosting was able to find the required file contents on the
+               specified path during its last check.
+        """
+        if check_time is not None:
+            pulumi.set(__self__, "check_time", check_time)
+        if desireds is not None:
+            pulumi.set(__self__, "desireds", desireds)
+        if discovereds is not None:
+            pulumi.set(__self__, "discovereds", discovereds)
+
+    @property
+    @pulumi.getter(name="checkTime")
+    def check_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The last time Hosting checked your CustomDomain's DNS records.
+        """
+        return pulumi.get(self, "check_time")
+
+    @check_time.setter
+    def check_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "check_time", value)
+
+    @property
+    @pulumi.getter
+    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]:
+        """
+        A text string to serve at the path.
+        """
+        return pulumi.get(self, "desireds")
+
+    @desireds.setter
+    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]):
+        pulumi.set(self, "desireds", value)
+
+    @property
+    @pulumi.getter
+    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]:
+        """
+        Whether Hosting was able to find the required file contents on the
+        specified path during its last check.
+        """
+        return pulumi.get(self, "discovereds")
+
+    @discovereds.setter
+    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]):
+        pulumi.set(self, "discovereds", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationDnsDesiredArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]] records: Records on the domain
+               Structure is documented below.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if records is not None:
+            pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]:
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]):
+        pulumi.set(self, "records", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 rdata: Optional[pulumi.Input[str]] = None,
+                 required_action: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[str] rdata: The data of the record. The meaning of the value depends on record type:
+               - A and AAAA: IP addresses for the domain name.
+               - CNAME: Another domain to check for records.
+               - TXT: Arbitrary text strings associated with the domain name. Hosting
+               uses TXT records to determine a which Firebase Projects have
+               permission to act on the domain name's behalf.
+               - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param pulumi.Input[str] required_action: Indicates the a required action for this record.
+        :param pulumi.Input[str] type: The record's type, which determines what data the record contains.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if rdata is not None:
+            pulumi.set(__self__, "rdata", rdata)
+        if required_action is not None:
+            pulumi.set(__self__, "required_action", required_action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @rdata.setter
+    def rdata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdata", value)
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the a required action for this record.
+        """
+        return pulumi.get(self, "required_action")
+
+    @required_action.setter
+    def required_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_action", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The record's type, which determines what data the record contains.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]] records: Records on the domain
+               Structure is documented below.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if records is not None:
+            pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]:
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]):
+        pulumi.set(self, "records", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 rdata: Optional[pulumi.Input[str]] = None,
+                 required_action: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[str] rdata: The data of the record. The meaning of the value depends on record type:
+               - A and AAAA: IP addresses for the domain name.
+               - CNAME: Another domain to check for records.
+               - TXT: Arbitrary text strings associated with the domain name. Hosting
+               uses TXT records to determine a which Firebase Projects have
+               permission to act on the domain name's behalf.
+               - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param pulumi.Input[str] required_action: Indicates the a required action for this record.
+        :param pulumi.Input[str] type: The record's type, which determines what data the record contains.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if rdata is not None:
+            pulumi.set(__self__, "rdata", rdata)
+        if required_action is not None:
+            pulumi.set(__self__, "required_action", required_action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @rdata.setter
+    def rdata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdata", value)
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the a required action for this record.
+        """
+        return pulumi.get(self, "required_action")
+
+    @required_action.setter
+    def required_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_action", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The record's type, which determines what data the record contains.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainCertVerificationHttpArgs:
+    def __init__(__self__, *,
+                 desired: Optional[pulumi.Input[str]] = None,
+                 discovered: Optional[pulumi.Input[str]] = None,
+                 last_check_time: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] desired: A text string to serve at the path.
+        :param pulumi.Input[str] discovered: Whether Hosting was able to find the required file contents on the
+               specified path during its last check.
+        :param pulumi.Input[str] last_check_time: (Output)
+               The last time Hosting systems checked for the file contents.
+        :param pulumi.Input[str] path: The path to the file.
+        """
+        if desired is not None:
+            pulumi.set(__self__, "desired", desired)
+        if discovered is not None:
+            pulumi.set(__self__, "discovered", discovered)
+        if last_check_time is not None:
+            pulumi.set(__self__, "last_check_time", last_check_time)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def desired(self) -> Optional[pulumi.Input[str]]:
+        """
+        A text string to serve at the path.
+        """
+        return pulumi.get(self, "desired")
+
+    @desired.setter
+    def desired(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired", value)
+
+    @property
+    @pulumi.getter
+    def discovered(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether Hosting was able to find the required file contents on the
+        specified path during its last check.
+        """
+        return pulumi.get(self, "discovered")
+
+    @discovered.setter
+    def discovered(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovered", value)
+
+    @property
+    @pulumi.getter(name="lastCheckTime")
+    def last_check_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The last time Hosting systems checked for the file contents.
+        """
+        return pulumi.get(self, "last_check_time")
+
+    @last_check_time.setter
+    def last_check_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_check_time", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the file.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainIssueArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] code: The status code, which should be an enum value of `google.rpc.Code`
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
+        :param pulumi.Input[str] message: Error message
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code, which should be an enum value of `google.rpc.Code`
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Error message
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainRequiredDnsUpdateArgs:
+    def __init__(__self__, *,
+                 check_time: Optional[pulumi.Input[str]] = None,
+                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]] = None,
+                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]] = None):
+        """
+        :param pulumi.Input[str] check_time: (Output)
+               The last time Hosting checked your CustomDomain's DNS records.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]] desireds: A text string to serve at the path.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]] discovereds: Whether Hosting was able to find the required file contents on the
+               specified path during its last check.
+        """
+        if check_time is not None:
+            pulumi.set(__self__, "check_time", check_time)
+        if desireds is not None:
+            pulumi.set(__self__, "desireds", desireds)
+        if discovereds is not None:
+            pulumi.set(__self__, "discovereds", discovereds)
+
+    @property
+    @pulumi.getter(name="checkTime")
+    def check_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The last time Hosting checked your CustomDomain's DNS records.
+        """
+        return pulumi.get(self, "check_time")
+
+    @check_time.setter
+    def check_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "check_time", value)
+
+    @property
+    @pulumi.getter
+    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]:
+        """
+        A text string to serve at the path.
+        """
+        return pulumi.get(self, "desireds")
+
+    @desireds.setter
+    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]):
+        pulumi.set(self, "desireds", value)
+
+    @property
+    @pulumi.getter
+    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]:
+        """
+        Whether Hosting was able to find the required file contents on the
+        specified path during its last check.
+        """
+        return pulumi.get(self, "discovereds")
+
+    @discovereds.setter
+    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]):
+        pulumi.set(self, "discovereds", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]] records: Records on the domain
+               Structure is documented below.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if records is not None:
+            pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]:
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]):
+        pulumi.set(self, "records", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 rdata: Optional[pulumi.Input[str]] = None,
+                 required_action: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[str] rdata: The data of the record. The meaning of the value depends on record type:
+               - A and AAAA: IP addresses for the domain name.
+               - CNAME: Another domain to check for records.
+               - TXT: Arbitrary text strings associated with the domain name. Hosting
+               uses TXT records to determine a which Firebase Projects have
+               permission to act on the domain name's behalf.
+               - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param pulumi.Input[str] required_action: Indicates the a required action for this record.
+        :param pulumi.Input[str] type: The record's type, which determines what data the record contains.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if rdata is not None:
+            pulumi.set(__self__, "rdata", rdata)
+        if required_action is not None:
+            pulumi.set(__self__, "required_action", required_action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @rdata.setter
+    def rdata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdata", value)
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the a required action for this record.
+        """
+        return pulumi.get(self, "required_action")
+
+    @required_action.setter
+    def required_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_action", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The record's type, which determines what data the record contains.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]] records: Records on the domain
+               Structure is documented below.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if records is not None:
+            pulumi.set(__self__, "records", records)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]:
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]):
+        pulumi.set(self, "records", value)
+
+
+@pulumi.input_type
+class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 rdata: Optional[pulumi.Input[str]] = None,
+                 required_action: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
+        :param pulumi.Input[str] rdata: The data of the record. The meaning of the value depends on record type:
+               - A and AAAA: IP addresses for the domain name.
+               - CNAME: Another domain to check for records.
+               - TXT: Arbitrary text strings associated with the domain name. Hosting
+               uses TXT records to determine a which Firebase Projects have
+               permission to act on the domain name's behalf.
+               - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        :param pulumi.Input[str] required_action: Indicates the a required action for this record.
+        :param pulumi.Input[str] type: The record's type, which determines what data the record contains.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if rdata is not None:
+            pulumi.set(__self__, "rdata", rdata)
+        if required_action is not None:
+            pulumi.set(__self__, "required_action", required_action)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def rdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        return pulumi.get(self, "rdata")
+
+    @rdata.setter
+    def rdata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdata", value)
+
+    @property
+    @pulumi.getter(name="requiredAction")
+    def required_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the a required action for this record.
+        """
+        return pulumi.get(self, "required_action")
+
+    @required_action.setter
+    def required_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_action", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The record's type, which determines what data the record contains.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

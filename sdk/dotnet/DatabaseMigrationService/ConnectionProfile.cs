@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     * [Database Migration](https://cloud.google.com/database-migration/docs/)
     /// 
     /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+    /// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
     /// Read more about sensitive data in state.
     /// 
     /// ## Example Usage
@@ -223,10 +223,50 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// ### Database Migration Service Connection Profile Oracle
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oracleprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("oracleprofile", new()
+    ///     {
+    ///         ConnectionProfileId = "my-profileid",
+    ///         DisplayName = "my-profileid_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Location = "us-central1",
+    ///         Oracle = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileOracleArgs
+    ///         {
+    ///             DatabaseService = "dbprovider",
+    ///             Host = "host",
+    ///             Password = "password",
+    ///             Port = 1521,
+    ///             StaticServiceIpConnectivity = null,
+    ///             Username = "username",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// ConnectionProfile can be imported using any of these accepted formats
+    /// ConnectionProfile can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}` * `{{project}}/{{location}}/{{connection_profile_id}}` * `{{location}}/{{connection_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectionProfile using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}"
+    /// 
+    ///  to = google_database_migration_service_connection_profile.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectionProfile can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
@@ -324,6 +364,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies connection parameters required specifically for Oracle databases.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("oracle")]
+        public Output<Outputs.ConnectionProfileOracle?> Oracle { get; private set; } = null!;
 
         /// <summary>
         /// Specifies connection parameters required specifically for PostgreSQL databases.
@@ -461,6 +508,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<Inputs.ConnectionProfileMysqlArgs>? Mysql { get; set; }
 
         /// <summary>
+        /// Specifies connection parameters required specifically for Oracle databases.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("oracle")]
+        public Input<Inputs.ConnectionProfileOracleArgs>? Oracle { get; set; }
+
+        /// <summary>
         /// Specifies connection parameters required specifically for PostgreSQL databases.
         /// Structure is documented below.
         /// </summary>
@@ -585,6 +639,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies connection parameters required specifically for Oracle databases.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("oracle")]
+        public Input<Inputs.ConnectionProfileOracleGetArgs>? Oracle { get; set; }
 
         /// <summary>
         /// Specifies connection parameters required specifically for PostgreSQL databases.

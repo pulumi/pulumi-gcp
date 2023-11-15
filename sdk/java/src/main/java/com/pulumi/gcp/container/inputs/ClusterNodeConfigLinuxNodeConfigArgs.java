@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,27 +17,91 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
     public static final ClusterNodeConfigLinuxNodeConfigArgs Empty = new ClusterNodeConfigLinuxNodeConfigArgs();
 
     /**
-     * The Linux kernel parameters to be applied to the nodes
-     * and all pods running on the nodes. Specified as a map from the key, such as
-     * `net.core.wmem_max`, to a string value.
+     * Possible cgroup modes that can be used.
+     * Accepted values are:
      * 
      */
-    @Import(name="sysctls", required=true)
-    private Output<Map<String,String>> sysctls;
+    @Import(name="cgroupMode")
+    private @Nullable Output<String> cgroupMode;
+
+    /**
+     * @return Possible cgroup modes that can be used.
+     * Accepted values are:
+     * 
+     */
+    public Optional<Output<String>> cgroupMode() {
+        return Optional.ofNullable(this.cgroupMode);
+    }
+
+    /**
+     * The Linux kernel parameters to be applied to the nodes
+     * and all pods running on the nodes. Specified as a map from the key, such as
+     * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+     * Note that validations happen all server side. All attributes are optional.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    @Import(name="sysctls")
+    private @Nullable Output<Map<String,String>> sysctls;
 
     /**
      * @return The Linux kernel parameters to be applied to the nodes
      * and all pods running on the nodes. Specified as a map from the key, such as
-     * `net.core.wmem_max`, to a string value.
+     * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+     * Note that validations happen all server side. All attributes are optional.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
-    public Output<Map<String,String>> sysctls() {
-        return this.sysctls;
+    public Optional<Output<Map<String,String>>> sysctls() {
+        return Optional.ofNullable(this.sysctls);
     }
 
     private ClusterNodeConfigLinuxNodeConfigArgs() {}
 
     private ClusterNodeConfigLinuxNodeConfigArgs(ClusterNodeConfigLinuxNodeConfigArgs $) {
+        this.cgroupMode = $.cgroupMode;
         this.sysctls = $.sysctls;
     }
 
@@ -58,14 +124,60 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param sysctls The Linux kernel parameters to be applied to the nodes
-         * and all pods running on the nodes. Specified as a map from the key, such as
-         * `net.core.wmem_max`, to a string value.
+         * @param cgroupMode Possible cgroup modes that can be used.
+         * Accepted values are:
          * 
          * @return builder
          * 
          */
-        public Builder sysctls(Output<Map<String,String>> sysctls) {
+        public Builder cgroupMode(@Nullable Output<String> cgroupMode) {
+            $.cgroupMode = cgroupMode;
+            return this;
+        }
+
+        /**
+         * @param cgroupMode Possible cgroup modes that can be used.
+         * Accepted values are:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cgroupMode(String cgroupMode) {
+            return cgroupMode(Output.of(cgroupMode));
+        }
+
+        /**
+         * @param sysctls The Linux kernel parameters to be applied to the nodes
+         * and all pods running on the nodes. Specified as a map from the key, such as
+         * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Note that validations happen all server side. All attributes are optional.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sysctls(@Nullable Output<Map<String,String>> sysctls) {
             $.sysctls = sysctls;
             return this;
         }
@@ -73,7 +185,30 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
         /**
          * @param sysctls The Linux kernel parameters to be applied to the nodes
          * and all pods running on the nodes. Specified as a map from the key, such as
-         * `net.core.wmem_max`, to a string value.
+         * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Note that validations happen all server side. All attributes are optional.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -83,7 +218,6 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
         }
 
         public ClusterNodeConfigLinuxNodeConfigArgs build() {
-            $.sysctls = Objects.requireNonNull($.sysctls, "expected parameter 'sysctls' to be non-null");
             return $;
         }
     }

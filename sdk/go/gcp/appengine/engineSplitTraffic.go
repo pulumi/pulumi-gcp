@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
@@ -23,7 +22,17 @@ import (
 //
 // ## Import
 //
-// # ServiceSplitTraffic can be imported using any of these accepted formats
+// ServiceSplitTraffic can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}` * `{{project}}/{{service}}` * `{{service}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceSplitTraffic using one of the formats above. For exampletf import {
+//
+//	id = "apps/{{project}}/services/{{service}}"
+//
+//	to = google_app_engine_service_split_traffic.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceSplitTraffic can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -172,12 +181,6 @@ func (i *EngineSplitTraffic) ToEngineSplitTrafficOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficOutput)
 }
 
-func (i *EngineSplitTraffic) ToOutput(ctx context.Context) pulumix.Output[*EngineSplitTraffic] {
-	return pulumix.Output[*EngineSplitTraffic]{
-		OutputState: i.ToEngineSplitTrafficOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EngineSplitTrafficArrayInput is an input type that accepts EngineSplitTrafficArray and EngineSplitTrafficArrayOutput values.
 // You can construct a concrete instance of `EngineSplitTrafficArrayInput` via:
 //
@@ -201,12 +204,6 @@ func (i EngineSplitTrafficArray) ToEngineSplitTrafficArrayOutput() EngineSplitTr
 
 func (i EngineSplitTrafficArray) ToEngineSplitTrafficArrayOutputWithContext(ctx context.Context) EngineSplitTrafficArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficArrayOutput)
-}
-
-func (i EngineSplitTrafficArray) ToOutput(ctx context.Context) pulumix.Output[[]*EngineSplitTraffic] {
-	return pulumix.Output[[]*EngineSplitTraffic]{
-		OutputState: i.ToEngineSplitTrafficArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EngineSplitTrafficMapInput is an input type that accepts EngineSplitTrafficMap and EngineSplitTrafficMapOutput values.
@@ -234,12 +231,6 @@ func (i EngineSplitTrafficMap) ToEngineSplitTrafficMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficMapOutput)
 }
 
-func (i EngineSplitTrafficMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EngineSplitTraffic] {
-	return pulumix.Output[map[string]*EngineSplitTraffic]{
-		OutputState: i.ToEngineSplitTrafficMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EngineSplitTrafficOutput struct{ *pulumi.OutputState }
 
 func (EngineSplitTrafficOutput) ElementType() reflect.Type {
@@ -252,12 +243,6 @@ func (o EngineSplitTrafficOutput) ToEngineSplitTrafficOutput() EngineSplitTraffi
 
 func (o EngineSplitTrafficOutput) ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput {
 	return o
-}
-
-func (o EngineSplitTrafficOutput) ToOutput(ctx context.Context) pulumix.Output[*EngineSplitTraffic] {
-	return pulumix.Output[*EngineSplitTraffic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If set to true traffic will be migrated to this version.
@@ -296,12 +281,6 @@ func (o EngineSplitTrafficArrayOutput) ToEngineSplitTrafficArrayOutputWithContex
 	return o
 }
 
-func (o EngineSplitTrafficArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EngineSplitTraffic] {
-	return pulumix.Output[[]*EngineSplitTraffic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EngineSplitTrafficArrayOutput) Index(i pulumi.IntInput) EngineSplitTrafficOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EngineSplitTraffic {
 		return vs[0].([]*EngineSplitTraffic)[vs[1].(int)]
@@ -320,12 +299,6 @@ func (o EngineSplitTrafficMapOutput) ToEngineSplitTrafficMapOutput() EngineSplit
 
 func (o EngineSplitTrafficMapOutput) ToEngineSplitTrafficMapOutputWithContext(ctx context.Context) EngineSplitTrafficMapOutput {
 	return o
-}
-
-func (o EngineSplitTrafficMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EngineSplitTraffic] {
-	return pulumix.Output[map[string]*EngineSplitTraffic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EngineSplitTrafficMapOutput) MapIndex(k pulumi.StringInput) EngineSplitTrafficOutput {

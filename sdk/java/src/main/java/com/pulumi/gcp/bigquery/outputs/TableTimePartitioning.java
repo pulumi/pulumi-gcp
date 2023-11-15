@@ -29,9 +29,14 @@ public final class TableTimePartitioning {
     /**
      * @return If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
-     * specified.
+     * specified. `require_partition_filter` is deprecated and will be removed in
+     * a future major release. Use the top level field with the same name instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
     private @Nullable Boolean requirePartitionFilter;
     /**
      * @return The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -61,9 +66,14 @@ public final class TableTimePartitioning {
     /**
      * @return If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
-     * specified.
+     * specified. `require_partition_filter` is deprecated and will be removed in
+     * a future major release. Use the top level field with the same name instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
     public Optional<Boolean> requirePartitionFilter() {
         return Optional.ofNullable(this.requirePartitionFilter);
     }

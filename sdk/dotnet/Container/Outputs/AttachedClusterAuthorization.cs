@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AttachedClusterAuthorization
     {
         /// <summary>
+        /// Groups that can perform operations as a cluster admin. A managed
+        /// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+        /// to the groups. Up to ten admin groups can be provided.
+        /// For more info on RBAC, see
+        /// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        /// </summary>
+        public readonly ImmutableArray<string> AdminGroups;
+        /// <summary>
         /// Users that can perform operations as a cluster admin. A managed
         /// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
         /// to the users. Up to ten admin users can be provided.
@@ -23,8 +31,12 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<string> AdminUsers;
 
         [OutputConstructor]
-        private AttachedClusterAuthorization(ImmutableArray<string> adminUsers)
+        private AttachedClusterAuthorization(
+            ImmutableArray<string> adminGroups,
+
+            ImmutableArray<string> adminUsers)
         {
+            AdminGroups = adminGroups;
             AdminUsers = adminUsers;
         }
     }

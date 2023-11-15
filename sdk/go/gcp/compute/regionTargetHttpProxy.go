@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a RegionTargetHttpProxy resource, which is used by one or more
@@ -62,7 +61,17 @@ import (
 //
 // ## Import
 //
-// # RegionTargetHttpProxy can be imported using any of these accepted formats
+// RegionTargetHttpProxy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionTargetHttpProxy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}"
+//
+//	to = google_compute_region_target_http_proxy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionTargetHttpProxy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -287,12 +296,6 @@ func (i *RegionTargetHttpProxy) ToRegionTargetHttpProxyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpProxyOutput)
 }
 
-func (i *RegionTargetHttpProxy) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpProxy] {
-	return pulumix.Output[*RegionTargetHttpProxy]{
-		OutputState: i.ToRegionTargetHttpProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionTargetHttpProxyArrayInput is an input type that accepts RegionTargetHttpProxyArray and RegionTargetHttpProxyArrayOutput values.
 // You can construct a concrete instance of `RegionTargetHttpProxyArrayInput` via:
 //
@@ -316,12 +319,6 @@ func (i RegionTargetHttpProxyArray) ToRegionTargetHttpProxyArrayOutput() RegionT
 
 func (i RegionTargetHttpProxyArray) ToRegionTargetHttpProxyArrayOutputWithContext(ctx context.Context) RegionTargetHttpProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpProxyArrayOutput)
-}
-
-func (i RegionTargetHttpProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionTargetHttpProxy] {
-	return pulumix.Output[[]*RegionTargetHttpProxy]{
-		OutputState: i.ToRegionTargetHttpProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionTargetHttpProxyMapInput is an input type that accepts RegionTargetHttpProxyMap and RegionTargetHttpProxyMapOutput values.
@@ -349,12 +346,6 @@ func (i RegionTargetHttpProxyMap) ToRegionTargetHttpProxyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpProxyMapOutput)
 }
 
-func (i RegionTargetHttpProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionTargetHttpProxy] {
-	return pulumix.Output[map[string]*RegionTargetHttpProxy]{
-		OutputState: i.ToRegionTargetHttpProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionTargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (RegionTargetHttpProxyOutput) ElementType() reflect.Type {
@@ -367,12 +358,6 @@ func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutput() RegionTarge
 
 func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutputWithContext(ctx context.Context) RegionTargetHttpProxyOutput {
 	return o
-}
-
-func (o RegionTargetHttpProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpProxy] {
-	return pulumix.Output[*RegionTargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -440,12 +425,6 @@ func (o RegionTargetHttpProxyArrayOutput) ToRegionTargetHttpProxyArrayOutputWith
 	return o
 }
 
-func (o RegionTargetHttpProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionTargetHttpProxy] {
-	return pulumix.Output[[]*RegionTargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionTargetHttpProxyArrayOutput) Index(i pulumi.IntInput) RegionTargetHttpProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionTargetHttpProxy {
 		return vs[0].([]*RegionTargetHttpProxy)[vs[1].(int)]
@@ -464,12 +443,6 @@ func (o RegionTargetHttpProxyMapOutput) ToRegionTargetHttpProxyMapOutput() Regio
 
 func (o RegionTargetHttpProxyMapOutput) ToRegionTargetHttpProxyMapOutputWithContext(ctx context.Context) RegionTargetHttpProxyMapOutput {
 	return o
-}
-
-func (o RegionTargetHttpProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionTargetHttpProxy] {
-	return pulumix.Output[map[string]*RegionTargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionTargetHttpProxyMapOutput) MapIndex(k pulumi.StringInput) RegionTargetHttpProxyOutput {

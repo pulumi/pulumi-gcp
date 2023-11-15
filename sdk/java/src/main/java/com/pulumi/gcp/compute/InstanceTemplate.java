@@ -395,7 +395,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance templates can be imported using any of these accepted formats
+ * Instance templates can be imported using any of these accepted formats* `projects/{{project}}/global/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/instanceTemplates/{{name}}&#34;
+ * 
+ *  to = google_compute_instance_template.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
@@ -408,8 +416,6 @@ import javax.annotation.Nullable;
  * ```sh
  *  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
  * ```
- * 
- *  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
  * 
  */
 @ResourceType(type="gcp:compute/instanceTemplate:InstanceTemplate")
@@ -575,7 +581,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The machine type to create.
      * 
-     * To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      * 
      * ***
      * 
@@ -586,7 +592,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return The machine type to create.
      * 
-     * To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      * 
      * ***
      * 

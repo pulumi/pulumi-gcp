@@ -149,6 +149,30 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/global/securityPolicies/{{name}}"
+ *
+ *  to = google_compute_security_policy.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
+ * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {
     /**
@@ -217,7 +241,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.compute.SecurityPolicyRule[]>;
     /**
-     * The URI of the created resourc
+     * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
@@ -316,7 +340,7 @@ export interface SecurityPolicyState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
     /**
-     * The URI of the created resourc
+     * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
     /**

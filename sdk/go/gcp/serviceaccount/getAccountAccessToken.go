@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
@@ -178,12 +177,6 @@ func (o GetAccountAccessTokenResultOutput) ToGetAccountAccessTokenResultOutput()
 
 func (o GetAccountAccessTokenResultOutput) ToGetAccountAccessTokenResultOutputWithContext(ctx context.Context) GetAccountAccessTokenResultOutput {
 	return o
-}
-
-func (o GetAccountAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccessTokenResult] {
-	return pulumix.Output[GetAccountAccessTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The `accessToken` representing the new generated identity.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -69,10 +68,80 @@ import (
 //	}
 //
 // ```
+// ### Dataform Repository Ssh
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gitRepository, err := sourcerepo.NewRepository(ctx, "gitRepository", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: nil,
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secretVersion", &secretmanager.SecretVersionArgs{
+//				Secret:     secret.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataform.NewRepository(ctx, "dataformRespository", &dataform.RepositoryArgs{
+//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
+//					Url:           gitRepository.Url,
+//					DefaultBranch: pulumi.String("main"),
+//					SshAuthenticationConfig: &dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs{
+//						UserPrivateKeySecretVersion: secretVersion.ID(),
+//						HostPublicKey:               pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU"),
+//					},
+//				},
+//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
+//					DefaultDatabase: pulumi.String("database"),
+//					SchemaSuffix:    pulumi.String("_suffix"),
+//					TablePrefix:     pulumi.String("prefix_"),
+//				},
+//				ServiceAccount: pulumi.String("1234567890-compute@developer.gserviceaccount.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # Repository can be imported using any of these accepted formats
+// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{region}}/repositories/{{name}}"
+//
+//	to = google_dataform_repository.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataform/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -112,7 +181,9 @@ type Repository struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A reference to the region
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
+	// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 	// Structure is documented below.
 	WorkspaceCompilationOverrides RepositoryWorkspaceCompilationOverridesPtrOutput `pulumi:"workspaceCompilationOverrides"`
 }
@@ -159,7 +230,9 @@ type repositoryState struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region
 	Region *string `pulumi:"region"`
-	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// The service account to run workflow invocations under.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 	// Structure is documented below.
 	WorkspaceCompilationOverrides *RepositoryWorkspaceCompilationOverrides `pulumi:"workspaceCompilationOverrides"`
 }
@@ -177,7 +250,9 @@ type RepositoryState struct {
 	Project pulumi.StringPtrInput
 	// A reference to the region
 	Region pulumi.StringPtrInput
-	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringPtrInput
+	// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 	// Structure is documented below.
 	WorkspaceCompilationOverrides RepositoryWorkspaceCompilationOverridesPtrInput
 }
@@ -199,7 +274,9 @@ type repositoryArgs struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region
 	Region *string `pulumi:"region"`
-	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// The service account to run workflow invocations under.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 	// Structure is documented below.
 	WorkspaceCompilationOverrides *RepositoryWorkspaceCompilationOverrides `pulumi:"workspaceCompilationOverrides"`
 }
@@ -218,7 +295,9 @@ type RepositoryArgs struct {
 	Project pulumi.StringPtrInput
 	// A reference to the region
 	Region pulumi.StringPtrInput
-	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringPtrInput
+	// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 	// Structure is documented below.
 	WorkspaceCompilationOverrides RepositoryWorkspaceCompilationOverridesPtrInput
 }
@@ -246,12 +325,6 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
 }
 
-func (i *Repository) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
-	return pulumix.Output[*Repository]{
-		OutputState: i.ToRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryArrayInput is an input type that accepts RepositoryArray and RepositoryArrayOutput values.
 // You can construct a concrete instance of `RepositoryArrayInput` via:
 //
@@ -275,12 +348,6 @@ func (i RepositoryArray) ToRepositoryArrayOutput() RepositoryArrayOutput {
 
 func (i RepositoryArray) ToRepositoryArrayOutputWithContext(ctx context.Context) RepositoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryArrayOutput)
-}
-
-func (i RepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*Repository] {
-	return pulumix.Output[[]*Repository]{
-		OutputState: i.ToRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryMapInput is an input type that accepts RepositoryMap and RepositoryMapOutput values.
@@ -308,12 +375,6 @@ func (i RepositoryMap) ToRepositoryMapOutputWithContext(ctx context.Context) Rep
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryMapOutput)
 }
 
-func (i RepositoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repository] {
-	return pulumix.Output[map[string]*Repository]{
-		OutputState: i.ToRepositoryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryOutput) ElementType() reflect.Type {
@@ -326,12 +387,6 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
-}
-
-func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
-	return pulumix.Output[*Repository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. If set, configures this repository to be linked to a Git remote.
@@ -358,7 +413,12 @@ func (o RepositoryOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+// The service account to run workflow invocations under.
+func (o RepositoryOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 // Structure is documented below.
 func (o RepositoryOutput) WorkspaceCompilationOverrides() RepositoryWorkspaceCompilationOverridesPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryWorkspaceCompilationOverridesPtrOutput {
@@ -380,12 +440,6 @@ func (o RepositoryArrayOutput) ToRepositoryArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Repository] {
-	return pulumix.Output[[]*Repository]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryArrayOutput) Index(i pulumi.IntInput) RepositoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Repository {
 		return vs[0].([]*Repository)[vs[1].(int)]
@@ -404,12 +458,6 @@ func (o RepositoryMapOutput) ToRepositoryMapOutput() RepositoryMapOutput {
 
 func (o RepositoryMapOutput) ToRepositoryMapOutputWithContext(ctx context.Context) RepositoryMapOutput {
 	return o
-}
-
-func (o RepositoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repository] {
-	return pulumix.Output[map[string]*Repository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryMapOutput) MapIndex(k pulumi.StringInput) RepositoryOutput {

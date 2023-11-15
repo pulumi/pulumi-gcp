@@ -143,10 +143,67 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Alloydb Secondary Cluster Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {});
+ * const primaryCluster = new gcp.alloydb.Cluster("primaryCluster", {
+ *     clusterId: "alloydb-primary-cluster",
+ *     location: "us-central1",
+ *     network: _default.id,
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.id,
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
+ *     network: _default.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const primaryInstance = new gcp.alloydb.Instance("primaryInstance", {
+ *     cluster: primaryCluster.name,
+ *     instanceId: "alloydb-primary-instance",
+ *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const secondary = new gcp.alloydb.Cluster("secondary", {
+ *     clusterId: "alloydb-secondary-cluster",
+ *     location: "us-east1",
+ *     network: _default.id,
+ *     clusterType: "SECONDARY",
+ *     continuousBackupConfig: {
+ *         enabled: false,
+ *     },
+ *     secondaryConfig: {
+ *         primaryClusterName: primaryCluster.name,
+ *     },
+ * }, {
+ *     dependsOn: [primaryInstance],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  *
  * ## Import
  *
- * Cluster can be imported using any of these accepted formats
+ * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
+ *
+ *  to = google_alloydb_cluster.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -215,6 +272,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
+     * The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     */
+    public readonly clusterType!: pulumi.Output<string | undefined>;
+    /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
@@ -229,6 +292,12 @@ export class Cluster extends pulumi.CustomResource {
      * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
     public /*out*/ readonly databaseVersion!: pulumi.Output<string>;
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
@@ -326,6 +395,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly restoreContinuousBackupSource!: pulumi.Output<outputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
     /**
+     * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     */
+    public readonly secondaryConfig!: pulumi.Output<outputs.alloydb.ClusterSecondaryConfig | undefined>;
+    /**
      * Output only. The current serving state of the cluster.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -351,9 +425,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["automatedBackupPolicy"] = state ? state.automatedBackupPolicy : undefined;
             resourceInputs["backupSources"] = state ? state.backupSources : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
             resourceInputs["continuousBackupConfig"] = state ? state.continuousBackupConfig : undefined;
             resourceInputs["continuousBackupInfos"] = state ? state.continuousBackupInfos : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -372,6 +448,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
             resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
+            resourceInputs["secondaryConfig"] = state ? state.secondaryConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
@@ -385,7 +462,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
             resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
@@ -397,6 +476,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
+            resourceInputs["secondaryConfig"] = args ? args.secondaryConfig : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["databaseVersion"] = undefined /*out*/;
@@ -444,6 +524,12 @@ export interface ClusterState {
      */
     clusterId?: pulumi.Input<string>;
     /**
+     * The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     */
+    clusterType?: pulumi.Input<string>;
+    /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
@@ -458,6 +544,12 @@ export interface ClusterState {
      * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
     databaseVersion?: pulumi.Input<string>;
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
@@ -555,6 +647,11 @@ export interface ClusterState {
      */
     restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
     /**
+     * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     */
+    secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
+    /**
      * Output only. The current serving state of the cluster.
      */
     state?: pulumi.Input<string>;
@@ -586,11 +683,23 @@ export interface ClusterArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
+     * The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     */
+    clusterType?: pulumi.Input<string>;
+    /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
      */
     continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
@@ -652,4 +761,9 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
+    /**
+     * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     */
+    secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
 }

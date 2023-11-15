@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configures the add-ons for the Apigee organization. The existing add-on configuration will be fully replaced.
@@ -169,7 +168,17 @@ import (
 //
 // ## Import
 //
-// # AddonsConfig can be imported using any of these accepted formats
+// AddonsConfig can be imported using any of these accepted formats* `organizations/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AddonsConfig using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{name}}"
+//
+//	to = google_apigee_addons_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/addonsConfig:AddonsConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AddonsConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -294,12 +303,6 @@ func (i *AddonsConfig) ToAddonsConfigOutputWithContext(ctx context.Context) Addo
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigOutput)
 }
 
-func (i *AddonsConfig) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfig] {
-	return pulumix.Output[*AddonsConfig]{
-		OutputState: i.ToAddonsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AddonsConfigArrayInput is an input type that accepts AddonsConfigArray and AddonsConfigArrayOutput values.
 // You can construct a concrete instance of `AddonsConfigArrayInput` via:
 //
@@ -323,12 +326,6 @@ func (i AddonsConfigArray) ToAddonsConfigArrayOutput() AddonsConfigArrayOutput {
 
 func (i AddonsConfigArray) ToAddonsConfigArrayOutputWithContext(ctx context.Context) AddonsConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigArrayOutput)
-}
-
-func (i AddonsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*AddonsConfig] {
-	return pulumix.Output[[]*AddonsConfig]{
-		OutputState: i.ToAddonsConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AddonsConfigMapInput is an input type that accepts AddonsConfigMap and AddonsConfigMapOutput values.
@@ -356,12 +353,6 @@ func (i AddonsConfigMap) ToAddonsConfigMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigMapOutput)
 }
 
-func (i AddonsConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddonsConfig] {
-	return pulumix.Output[map[string]*AddonsConfig]{
-		OutputState: i.ToAddonsConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AddonsConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigOutput) ElementType() reflect.Type {
@@ -374,12 +365,6 @@ func (o AddonsConfigOutput) ToAddonsConfigOutput() AddonsConfigOutput {
 
 func (o AddonsConfigOutput) ToAddonsConfigOutputWithContext(ctx context.Context) AddonsConfigOutput {
 	return o
-}
-
-func (o AddonsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfig] {
-	return pulumix.Output[*AddonsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Addon configurations of the Apigee organization.
@@ -409,12 +394,6 @@ func (o AddonsConfigArrayOutput) ToAddonsConfigArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AddonsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AddonsConfig] {
-	return pulumix.Output[[]*AddonsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AddonsConfigArrayOutput) Index(i pulumi.IntInput) AddonsConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AddonsConfig {
 		return vs[0].([]*AddonsConfig)[vs[1].(int)]
@@ -433,12 +412,6 @@ func (o AddonsConfigMapOutput) ToAddonsConfigMapOutput() AddonsConfigMapOutput {
 
 func (o AddonsConfigMapOutput) ToAddonsConfigMapOutputWithContext(ctx context.Context) AddonsConfigMapOutput {
 	return o
-}
-
-func (o AddonsConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddonsConfig] {
-	return pulumix.Output[map[string]*AddonsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddonsConfigMapOutput) MapIndex(k pulumi.StringInput) AddonsConfigOutput {

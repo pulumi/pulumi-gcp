@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Persistent disks can be attached to a compute instance using the `attachedDisk`
@@ -73,7 +72,17 @@ import (
 //
 // ## Import
 //
-// # Attached Disk can be imported the following ways
+// Attached Disk can be imported the following ways* `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}` * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Attached Disk using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}"
+//
+//	to = google_compute_attached_disk.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/attachedDisk:AttachedDisk When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Attached Disk can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -331,12 +340,6 @@ func (i *AttachedDisk) ToAttachedDiskOutputWithContext(ctx context.Context) Atta
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskOutput)
 }
 
-func (i *AttachedDisk) ToOutput(ctx context.Context) pulumix.Output[*AttachedDisk] {
-	return pulumix.Output[*AttachedDisk]{
-		OutputState: i.ToAttachedDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttachedDiskArrayInput is an input type that accepts AttachedDiskArray and AttachedDiskArrayOutput values.
 // You can construct a concrete instance of `AttachedDiskArrayInput` via:
 //
@@ -360,12 +363,6 @@ func (i AttachedDiskArray) ToAttachedDiskArrayOutput() AttachedDiskArrayOutput {
 
 func (i AttachedDiskArray) ToAttachedDiskArrayOutputWithContext(ctx context.Context) AttachedDiskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskArrayOutput)
-}
-
-func (i AttachedDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]*AttachedDisk] {
-	return pulumix.Output[[]*AttachedDisk]{
-		OutputState: i.ToAttachedDiskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AttachedDiskMapInput is an input type that accepts AttachedDiskMap and AttachedDiskMapOutput values.
@@ -393,12 +390,6 @@ func (i AttachedDiskMap) ToAttachedDiskMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskMapOutput)
 }
 
-func (i AttachedDiskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttachedDisk] {
-	return pulumix.Output[map[string]*AttachedDisk]{
-		OutputState: i.ToAttachedDiskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AttachedDiskOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskOutput) ElementType() reflect.Type {
@@ -411,12 +402,6 @@ func (o AttachedDiskOutput) ToAttachedDiskOutput() AttachedDiskOutput {
 
 func (o AttachedDiskOutput) ToAttachedDiskOutputWithContext(ctx context.Context) AttachedDiskOutput {
 	return o
-}
-
-func (o AttachedDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedDisk] {
-	return pulumix.Output[*AttachedDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a unique device name of your choice that is
@@ -484,12 +469,6 @@ func (o AttachedDiskArrayOutput) ToAttachedDiskArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AttachedDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AttachedDisk] {
-	return pulumix.Output[[]*AttachedDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttachedDiskArrayOutput) Index(i pulumi.IntInput) AttachedDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AttachedDisk {
 		return vs[0].([]*AttachedDisk)[vs[1].(int)]
@@ -508,12 +487,6 @@ func (o AttachedDiskMapOutput) ToAttachedDiskMapOutput() AttachedDiskMapOutput {
 
 func (o AttachedDiskMapOutput) ToAttachedDiskMapOutputWithContext(ctx context.Context) AttachedDiskMapOutput {
 	return o
-}
-
-func (o AttachedDiskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttachedDisk] {
-	return pulumix.Output[map[string]*AttachedDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttachedDiskMapOutput) MapIndex(k pulumi.StringInput) AttachedDiskOutput {

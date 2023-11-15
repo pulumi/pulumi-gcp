@@ -114,7 +114,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BigQuery tables imported using any of these accepted formats
+ * BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}&#34;
+ * 
+ *  to = google_bigquery_table.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
@@ -404,14 +412,20 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.materializedView);
     }
     /**
-     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      * 
      */
     @Export(name="maxStaleness", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxStaleness;
 
     /**
-     * @return The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * @return The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      * 
      */
     public Output<Optional<String>> maxStaleness() {
@@ -504,6 +518,24 @@ public class Table extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TableRangePartitioning>> rangePartitioning() {
         return Codegen.optional(this.rangePartitioning);
+    }
+    /**
+     * If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     * 
+     */
+    @Export(name="requirePartitionFilter", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> requirePartitionFilter;
+
+    /**
+     * @return If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     * 
+     */
+    public Output<Optional<Boolean>> requirePartitionFilter() {
+        return Codegen.optional(this.requirePartitionFilter);
     }
     /**
      * A JSON schema for the external table. Schema is required

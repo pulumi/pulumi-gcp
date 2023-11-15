@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a VPN gateway running in GCP. This virtual device is managed
@@ -107,7 +106,17 @@ import (
 //
 // ## Import
 //
-// # VpnGateway can be imported using any of these accepted formats
+// VpnGateway can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VpnGateway using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}"
+//
+//	to = google_compute_vpn_gateway.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/vPNGateway:VPNGateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VpnGateway can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -322,12 +331,6 @@ func (i *VPNGateway) ToVPNGatewayOutputWithContext(ctx context.Context) VPNGatew
 	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayOutput)
 }
 
-func (i *VPNGateway) ToOutput(ctx context.Context) pulumix.Output[*VPNGateway] {
-	return pulumix.Output[*VPNGateway]{
-		OutputState: i.ToVPNGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VPNGatewayArrayInput is an input type that accepts VPNGatewayArray and VPNGatewayArrayOutput values.
 // You can construct a concrete instance of `VPNGatewayArrayInput` via:
 //
@@ -351,12 +354,6 @@ func (i VPNGatewayArray) ToVPNGatewayArrayOutput() VPNGatewayArrayOutput {
 
 func (i VPNGatewayArray) ToVPNGatewayArrayOutputWithContext(ctx context.Context) VPNGatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayArrayOutput)
-}
-
-func (i VPNGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*VPNGateway] {
-	return pulumix.Output[[]*VPNGateway]{
-		OutputState: i.ToVPNGatewayArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VPNGatewayMapInput is an input type that accepts VPNGatewayMap and VPNGatewayMapOutput values.
@@ -384,12 +381,6 @@ func (i VPNGatewayMap) ToVPNGatewayMapOutputWithContext(ctx context.Context) VPN
 	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayMapOutput)
 }
 
-func (i VPNGatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VPNGateway] {
-	return pulumix.Output[map[string]*VPNGateway]{
-		OutputState: i.ToVPNGatewayMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VPNGatewayOutput struct{ *pulumi.OutputState }
 
 func (VPNGatewayOutput) ElementType() reflect.Type {
@@ -402,12 +393,6 @@ func (o VPNGatewayOutput) ToVPNGatewayOutput() VPNGatewayOutput {
 
 func (o VPNGatewayOutput) ToVPNGatewayOutputWithContext(ctx context.Context) VPNGatewayOutput {
 	return o
-}
-
-func (o VPNGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*VPNGateway] {
-	return pulumix.Output[*VPNGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -473,12 +458,6 @@ func (o VPNGatewayArrayOutput) ToVPNGatewayArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o VPNGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VPNGateway] {
-	return pulumix.Output[[]*VPNGateway]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VPNGatewayArrayOutput) Index(i pulumi.IntInput) VPNGatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VPNGateway {
 		return vs[0].([]*VPNGateway)[vs[1].(int)]
@@ -497,12 +476,6 @@ func (o VPNGatewayMapOutput) ToVPNGatewayMapOutput() VPNGatewayMapOutput {
 
 func (o VPNGatewayMapOutput) ToVPNGatewayMapOutputWithContext(ctx context.Context) VPNGatewayMapOutput {
 	return o
-}
-
-func (o VPNGatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VPNGateway] {
-	return pulumix.Output[map[string]*VPNGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VPNGatewayMapOutput) MapIndex(k pulumi.StringInput) VPNGatewayOutput {

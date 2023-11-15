@@ -17,6 +17,7 @@ __all__ = ['FeatureArgs', 'Feature']
 class FeatureArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
+                 fleet_default_member_config: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,8 @@ class FeatureArgs:
                
                
                - - -
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigArgs'] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -37,6 +40,8 @@ class FeatureArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        if fleet_default_member_config is not None:
+            pulumi.set(__self__, "fleet_default_member_config", fleet_default_member_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -60,6 +65,19 @@ class FeatureArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="fleetDefaultMemberConfig")
+    def fleet_default_member_config(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]:
+        """
+        Optional. Fleet Default Membership Configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fleet_default_member_config")
+
+    @fleet_default_member_config.setter
+    def fleet_default_member_config(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]):
+        pulumi.set(self, "fleet_default_member_config", value)
 
     @property
     @pulumi.getter
@@ -120,6 +138,7 @@ class _FeatureState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 fleet_default_member_config: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -134,6 +153,8 @@ class _FeatureState:
         :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['FeatureFleetDefaultMemberConfigArgs'] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -162,6 +183,8 @@ class _FeatureState:
             pulumi.set(__self__, "delete_time", delete_time)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if fleet_default_member_config is not None:
+            pulumi.set(__self__, "fleet_default_member_config", fleet_default_member_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -216,6 +239,19 @@ class _FeatureState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="fleetDefaultMemberConfig")
+    def fleet_default_member_config(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]:
+        """
+        Optional. Fleet Default Membership Configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fleet_default_member_config")
+
+    @fleet_default_member_config.setter
+    def fleet_default_member_config(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigArgs']]):
+        pulumi.set(self, "fleet_default_member_config", value)
 
     @property
     @pulumi.getter
@@ -343,6 +379,7 @@ class Feature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -464,7 +501,15 @@ class Feature(pulumi.CustomResource):
 
         ## Import
 
-        Feature can be imported using any of these accepted formats
+        Feature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Feature using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/features/{{name}}"
+
+         to = google_gke_hub_feature.default }
+
+        ```sh
+         $ pulumi import gcp:gkehub/feature:Feature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Feature can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
@@ -480,6 +525,8 @@ class Feature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -614,7 +661,15 @@ class Feature(pulumi.CustomResource):
 
         ## Import
 
-        Feature can be imported using any of these accepted formats
+        Feature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Feature using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/features/{{name}}"
+
+         to = google_gke_hub_feature.default }
+
+        ```sh
+         $ pulumi import gcp:gkehub/feature:Feature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Feature can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
@@ -643,6 +698,7 @@ class Feature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -657,6 +713,7 @@ class Feature(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureArgs.__new__(FeatureArgs)
 
+            __props__.__dict__["fleet_default_member_config"] = fleet_default_member_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -686,6 +743,7 @@ class Feature(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -705,6 +763,8 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -734,6 +794,7 @@ class Feature(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["fleet_default_member_config"] = fleet_default_member_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -768,6 +829,15 @@ class Feature(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="fleetDefaultMemberConfig")
+    def fleet_default_member_config(self) -> pulumi.Output[Optional['outputs.FeatureFleetDefaultMemberConfig']]:
+        """
+        Optional. Fleet Default Membership Configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fleet_default_member_config")
 
     @property
     @pulumi.getter

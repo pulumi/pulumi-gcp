@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeOnPrem
 {
     /// <summary>
+    /// A Google VMware User Cluster.
+    /// 
     /// ## Example Usage
     /// ### Gkeonprem Vmware Cluster Basic
     /// 
@@ -23,69 +25,66 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var cluster_basic = new Gcp.GkeOnPrem.VMwareCluster("cluster-basic", new()
     ///     {
-    ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-    ///         Description = "test cluster",
-    ///         OnPremVersion = "1.13.1-gke.35",
     ///         Annotations = null,
-    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
-    ///         {
-    ///             ServiceAddressCidrBlocks = new[]
-    ///             {
-    ///                 "10.96.0.0/12",
-    ///             },
-    ///             PodAddressCidrBlocks = new[]
-    ///             {
-    ///                 "192.168.0.0/16",
-    ///             },
-    ///             DhcpIpConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
     ///         ControlPlaneNode = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeArgs
     ///         {
     ///             Cpus = 4,
     ///             Memory = 8192,
     ///             Replicas = 1,
     ///         },
+    ///         Description = "test cluster",
     ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerArgs
     ///         {
-    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerVipConfigArgs
-    ///             {
-    ///                 ControlPlaneVip = "10.251.133.5",
-    ///                 IngressVip = "10.251.135.19",
-    ///             },
     ///             MetalLbConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerMetalLbConfigArgs
     ///             {
     ///                 AddressPools = new[]
     ///                 {
     ///                     new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs
     ///                     {
-    ///                         Pool = "ingress-ip",
-    ///                         ManualAssign = true,
     ///                         Addresses = new[]
     ///                         {
     ///                             "10.251.135.19",
     ///                         },
     ///                         AvoidBuggyIps = true,
+    ///                         ManualAssign = true,
+    ///                         Pool = "ingress-ip",
     ///                     },
     ///                     new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs
     ///                     {
-    ///                         Pool = "lb-test-ip",
-    ///                         ManualAssign = true,
     ///                         Addresses = new[]
     ///                         {
     ///                             "10.251.135.19",
     ///                         },
     ///                         AvoidBuggyIps = true,
+    ///                         ManualAssign = true,
+    ///                         Pool = "lb-test-ip",
     ///                     },
     ///                 },
     ///             },
+    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerVipConfigArgs
+    ///             {
+    ///                 ControlPlaneVip = "10.251.133.5",
+    ///                 IngressVip = "10.251.135.19",
+    ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Location = "us-west1",
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
+    ///         {
+    ///             DhcpIpConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "192.168.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.96.0.0/12",
+    ///             },
+    ///         },
+    ///         OnPremVersion = "1.13.1-gke.35",
     ///     });
     /// 
     /// });
@@ -102,74 +101,12 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var cluster_f5lb = new Gcp.GkeOnPrem.VMwareCluster("cluster-f5lb", new()
     ///     {
-    ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-    ///         Description = "test cluster",
-    ///         OnPremVersion = "1.13.1-gke.35",
     ///         Annotations = null,
-    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
+    ///         AntiAffinityGroups = new Gcp.GkeOnPrem.Inputs.VMwareClusterAntiAffinityGroupsArgs
     ///         {
-    ///             ServiceAddressCidrBlocks = new[]
-    ///             {
-    ///                 "10.96.0.0/12",
-    ///             },
-    ///             PodAddressCidrBlocks = new[]
-    ///             {
-    ///                 "192.168.0.0/16",
-    ///             },
-    ///             DhcpIpConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///             ControlPlaneV2Config = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs
-    ///             {
-    ///                 ControlPlaneIpBlock = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs
-    ///                 {
-    ///                     Ips = new[]
-    ///                     {
-    ///                         new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs
-    ///                         {
-    ///                             Hostname = "test-hostname",
-    ///                             Ip = "10.0.0.1",
-    ///                         },
-    ///                     },
-    ///                     Netmask = "10.0.0.1/32",
-    ///                     Gateway = "test-gateway",
-    ///                 },
-    ///             },
+    ///             AagConfigDisabled = true,
     ///         },
-    ///         ControlPlaneNode = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeArgs
-    ///         {
-    ///             Cpus = 4,
-    ///             Memory = 8192,
-    ///             Replicas = 1,
-    ///             AutoResizeConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerArgs
-    ///         {
-    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerVipConfigArgs
-    ///             {
-    ///                 ControlPlaneVip = "10.251.133.5",
-    ///                 IngressVip = "10.251.135.19",
-    ///             },
-    ///             F5Config = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerF5ConfigArgs
-    ///             {
-    ///                 Address = "10.0.0.1",
-    ///                 Partition = "test-partition",
-    ///                 SnatPool = "test-snap-pool",
-    ///             },
-    ///         },
-    ///         DataplaneV2 = new Gcp.GkeOnPrem.Inputs.VMwareClusterDataplaneV2Args
-    ///         {
-    ///             DataplaneV2Enabled = true,
-    ///             WindowsDataplaneV2Enabled = true,
-    ///             AdvancedNetworking = true,
-    ///         },
-    ///         VmTrackingEnabled = true,
-    ///         EnableControlPlaneV2 = true,
     ///         Authorization = new Gcp.GkeOnPrem.Inputs.VMwareClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new[]
@@ -180,21 +117,80 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///         },
-    ///         AntiAffinityGroups = new Gcp.GkeOnPrem.Inputs.VMwareClusterAntiAffinityGroupsArgs
-    ///         {
-    ///             AagConfigDisabled = true,
-    ///         },
     ///         AutoRepairConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterAutoRepairConfigArgs
     ///         {
     ///             Enabled = true,
     ///         },
+    ///         ControlPlaneNode = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeArgs
+    ///         {
+    ///             AutoResizeConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Cpus = 4,
+    ///             Memory = 8192,
+    ///             Replicas = 1,
+    ///         },
+    ///         DataplaneV2 = new Gcp.GkeOnPrem.Inputs.VMwareClusterDataplaneV2Args
+    ///         {
+    ///             AdvancedNetworking = true,
+    ///             DataplaneV2Enabled = true,
+    ///             WindowsDataplaneV2Enabled = true,
+    ///         },
+    ///         Description = "test cluster",
+    ///         EnableControlPlaneV2 = true,
+    ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerArgs
+    ///         {
+    ///             F5Config = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerF5ConfigArgs
+    ///             {
+    ///                 Address = "10.0.0.1",
+    ///                 Partition = "test-partition",
+    ///                 SnatPool = "test-snap-pool",
+    ///             },
+    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerVipConfigArgs
+    ///             {
+    ///                 ControlPlaneVip = "10.251.133.5",
+    ///                 IngressVip = "10.251.135.19",
+    ///             },
+    ///         },
+    ///         Location = "us-west1",
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
+    ///         {
+    ///             ControlPlaneV2Config = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs
+    ///             {
+    ///                 ControlPlaneIpBlock = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs
+    ///                 {
+    ///                     Gateway = "test-gateway",
+    ///                     Ips = new[]
+    ///                     {
+    ///                         new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs
+    ///                         {
+    ///                             Hostname = "test-hostname",
+    ///                             Ip = "10.0.0.1",
+    ///                         },
+    ///                     },
+    ///                     Netmask = "10.0.0.1/32",
+    ///                 },
+    ///             },
+    ///             DhcpIpConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "192.168.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.96.0.0/12",
+    ///             },
+    ///         },
+    ///         OnPremVersion = "1.13.1-gke.35",
     ///         Storage = new Gcp.GkeOnPrem.Inputs.VMwareClusterStorageArgs
     ///         {
     ///             VsphereCsiDisabled = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         VmTrackingEnabled = true,
     ///     });
     /// 
     /// });
@@ -211,107 +207,11 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var cluster_manuallb = new Gcp.GkeOnPrem.VMwareCluster("cluster-manuallb", new()
     ///     {
-    ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
-    ///         Description = "test cluster",
-    ///         OnPremVersion = "1.13.1-gke.35",
     ///         Annotations = null,
-    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
+    ///         AntiAffinityGroups = new Gcp.GkeOnPrem.Inputs.VMwareClusterAntiAffinityGroupsArgs
     ///         {
-    ///             ServiceAddressCidrBlocks = new[]
-    ///             {
-    ///                 "10.96.0.0/12",
-    ///             },
-    ///             PodAddressCidrBlocks = new[]
-    ///             {
-    ///                 "192.168.0.0/16",
-    ///             },
-    ///             HostConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigHostConfigArgs
-    ///             {
-    ///                 DnsServers = new[]
-    ///                 {
-    ///                     "10.254.41.1",
-    ///                 },
-    ///                 NtpServers = new[]
-    ///                 {
-    ///                     "216.239.35.8",
-    ///                 },
-    ///                 DnsSearchDomains = new[]
-    ///                 {
-    ///                     "test-domain",
-    ///                 },
-    ///             },
-    ///             StaticIpConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigArgs
-    ///             {
-    ///                 IpBlocks = new[]
-    ///                 {
-    ///                     new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs
-    ///                     {
-    ///                         Netmask = "255.255.252.0",
-    ///                         Gateway = "10.251.31.254",
-    ///                         Ips = new[]
-    ///                         {
-    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
-    ///                             {
-    ///                                 Ip = "10.251.30.153",
-    ///                                 Hostname = "test-hostname1",
-    ///                             },
-    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
-    ///                             {
-    ///                                 Ip = "10.251.31.206",
-    ///                                 Hostname = "test-hostname2",
-    ///                             },
-    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
-    ///                             {
-    ///                                 Ip = "10.251.31.193",
-    ///                                 Hostname = "test-hostname3",
-    ///                             },
-    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
-    ///                             {
-    ///                                 Ip = "10.251.30.230",
-    ///                                 Hostname = "test-hostname4",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         ControlPlaneNode = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeArgs
-    ///         {
-    ///             Cpus = 4,
-    ///             Memory = 8192,
-    ///             Replicas = 1,
-    ///             AutoResizeConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerArgs
-    ///         {
-    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerVipConfigArgs
-    ///             {
-    ///                 ControlPlaneVip = "10.251.133.5",
-    ///                 IngressVip = "10.251.135.19",
-    ///             },
-    ///             ManualLbConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerManualLbConfigArgs
-    ///             {
-    ///                 IngressHttpNodePort = 30005,
-    ///                 IngressHttpsNodePort = 30006,
-    ///                 ControlPlaneNodePort = 30007,
-    ///                 KonnectivityServerNodePort = 30008,
-    ///             },
-    ///         },
-    ///         DataplaneV2 = new Gcp.GkeOnPrem.Inputs.VMwareClusterDataplaneV2Args
-    ///         {
-    ///             DataplaneV2Enabled = true,
-    ///             WindowsDataplaneV2Enabled = true,
-    ///             AdvancedNetworking = true,
-    ///         },
-    ///         VmTrackingEnabled = true,
-    ///         EnableControlPlaneV2 = true,
-    ///         UpgradePolicy = new Gcp.GkeOnPrem.Inputs.VMwareClusterUpgradePolicyArgs
-    ///         {
-    ///             ControlPlaneOnly = true,
+    ///             AagConfigDisabled = true,
     ///         },
     ///         Authorization = new Gcp.GkeOnPrem.Inputs.VMwareClusterAuthorizationArgs
     ///         {
@@ -323,17 +223,123 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///         },
-    ///         AntiAffinityGroups = new Gcp.GkeOnPrem.Inputs.VMwareClusterAntiAffinityGroupsArgs
-    ///         {
-    ///             AagConfigDisabled = true,
-    ///         },
     ///         AutoRepairConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterAutoRepairConfigArgs
     ///         {
     ///             Enabled = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         ControlPlaneNode = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeArgs
+    ///         {
+    ///             AutoResizeConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Cpus = 4,
+    ///             Memory = 8192,
+    ///             Replicas = 1,
+    ///         },
+    ///         DataplaneV2 = new Gcp.GkeOnPrem.Inputs.VMwareClusterDataplaneV2Args
+    ///         {
+    ///             AdvancedNetworking = true,
+    ///             DataplaneV2Enabled = true,
+    ///             WindowsDataplaneV2Enabled = true,
+    ///         },
+    ///         Description = "test cluster",
+    ///         EnableControlPlaneV2 = true,
+    ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerArgs
+    ///         {
+    ///             ManualLbConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerManualLbConfigArgs
+    ///             {
+    ///                 ControlPlaneNodePort = 30007,
+    ///                 IngressHttpNodePort = 30005,
+    ///                 IngressHttpsNodePort = 30006,
+    ///                 KonnectivityServerNodePort = 30008,
+    ///             },
+    ///             VipConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterLoadBalancerVipConfigArgs
+    ///             {
+    ///                 ControlPlaneVip = "10.251.133.5",
+    ///                 IngressVip = "10.251.135.19",
+    ///             },
+    ///         },
+    ///         Location = "us-west1",
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigArgs
+    ///         {
+    ///             HostConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigHostConfigArgs
+    ///             {
+    ///                 DnsSearchDomains = new[]
+    ///                 {
+    ///                     "test-domain",
+    ///                 },
+    ///                 DnsServers = new[]
+    ///                 {
+    ///                     "10.254.41.1",
+    ///                 },
+    ///                 NtpServers = new[]
+    ///                 {
+    ///                     "216.239.35.8",
+    ///                 },
+    ///             },
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "192.168.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.96.0.0/12",
+    ///             },
+    ///             StaticIpConfig = new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigArgs
+    ///             {
+    ///                 IpBlocks = new[]
+    ///                 {
+    ///                     new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs
+    ///                     {
+    ///                         Gateway = "10.251.31.254",
+    ///                         Ips = new[]
+    ///                         {
+    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
+    ///                             {
+    ///                                 Hostname = "test-hostname1",
+    ///                                 Ip = "10.251.30.153",
+    ///                             },
+    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
+    ///                             {
+    ///                                 Hostname = "test-hostname2",
+    ///                                 Ip = "10.251.31.206",
+    ///                             },
+    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
+    ///                             {
+    ///                                 Hostname = "test-hostname3",
+    ///                                 Ip = "10.251.31.193",
+    ///                             },
+    ///                             new Gcp.GkeOnPrem.Inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs
+    ///                             {
+    ///                                 Hostname = "test-hostname4",
+    ///                                 Ip = "10.251.30.230",
+    ///                             },
+    ///                         },
+    ///                         Netmask = "255.255.252.0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         OnPremVersion = "1.13.1-gke.35",
+    ///         UpgradePolicy = new Gcp.GkeOnPrem.Inputs.VMwareClusterUpgradePolicyArgs
+    ///         {
+    ///             ControlPlaneOnly = true,
+    ///         },
+    ///         Vcenters = new[]
+    ///         {
+    ///             new Gcp.GkeOnPrem.Inputs.VMwareClusterVcenterArgs
+    ///             {
+    ///                 CaCertData = "test-ca-cert-data",
+    ///                 Cluster = "test-cluster",
+    ///                 Datacenter = "test-datacenter",
+    ///                 Datastore = "test-datastore",
+    ///                 Folder = "test-folder",
+    ///                 ResourcePool = "test-resource-pool",
+    ///                 StoragePolicyName = "test-storage-policy-name",
+    ///             },
+    ///         },
+    ///         VmTrackingEnabled = true,
     ///     });
     /// 
     /// });
@@ -341,7 +347,15 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// ## Import
     /// 
-    /// VmwareCluster can be imported using any of these accepted formats
+    /// VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareCluster using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}"
+    /// 
+    ///  to = google_gkeonprem_vmware_cluster.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareCluster can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
@@ -772,6 +786,20 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("upgradePolicy")]
         public Input<Inputs.VMwareClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
+
+        [Input("vcenters")]
+        private InputList<Inputs.VMwareClusterVcenterArgs>? _vcenters;
+
+        /// <summary>
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster.
+        /// Inherited from the admin cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.VMwareClusterVcenterArgs> Vcenters
+        {
+            get => _vcenters ?? (_vcenters = new InputList<Inputs.VMwareClusterVcenterArgs>());
+            set => _vcenters = value;
+        }
 
         /// <summary>
         /// Enable VM tracking.

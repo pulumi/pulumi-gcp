@@ -194,7 +194,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Entry can be imported using any of these accepted formats:
+ * Entry can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Entry using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_data_catalog_entry.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:datacatalog/entry:Entry When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Entry can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:datacatalog/entry:Entry default {{name}}

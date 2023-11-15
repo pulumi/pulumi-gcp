@@ -204,7 +204,7 @@ class _SecurityPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        :param pulumi.Input[str] self_link: The URI of the created resourc
+        :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
                They filter requests before they hit the origin servers.
@@ -341,7 +341,7 @@ class _SecurityPolicyState:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the created resourc
+        The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
@@ -524,6 +524,30 @@ class SecurityPolicy(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/securityPolicies/{{name}}"
+
+         to = google_compute_security_policy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -695,6 +719,30 @@ class SecurityPolicy(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/securityPolicies/{{name}}"
+
+         to = google_compute_security_policy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param SecurityPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -778,7 +826,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        :param pulumi.Input[str] self_link: The URI of the created resourc
+        :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
                * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
                They filter requests before they hit the origin servers.
@@ -878,7 +926,7 @@ class SecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        The URI of the created resourc
+        The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 

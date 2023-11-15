@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
@@ -290,51 +289,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing Audit Configs An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g* `"{{project_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
 //
-// This member resource can be imported using the `project_id`, role, and member e.g.
+//	id = "{{project_id}} foo.googleapis.com"
+//
+//	to = google_project_iam_audit_config.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:projects/iAMMember:IAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `project_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `project_id`.
-//
-// ```sh
-//
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project your-project-id
-//
-// ```
-//
-//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id foo.googleapis.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
-//
-// ```sh
-//
-//	$ pulumi import gcp:projects/iAMMember:IAMMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:projects/iAMMember:IAMMember default "{{project_id}} foo.googleapis.com"
 //
 // ```
 type IAMMember struct {
@@ -481,12 +450,6 @@ func (i *IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberO
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberOutput)
 }
 
-func (i *IAMMember) ToOutput(ctx context.Context) pulumix.Output[*IAMMember] {
-	return pulumix.Output[*IAMMember]{
-		OutputState: i.ToIAMMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMMemberArrayInput is an input type that accepts IAMMemberArray and IAMMemberArrayOutput values.
 // You can construct a concrete instance of `IAMMemberArrayInput` via:
 //
@@ -510,12 +473,6 @@ func (i IAMMemberArray) ToIAMMemberArrayOutput() IAMMemberArrayOutput {
 
 func (i IAMMemberArray) ToIAMMemberArrayOutputWithContext(ctx context.Context) IAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberArrayOutput)
-}
-
-func (i IAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMMember] {
-	return pulumix.Output[[]*IAMMember]{
-		OutputState: i.ToIAMMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMMemberMapInput is an input type that accepts IAMMemberMap and IAMMemberMapOutput values.
@@ -543,12 +500,6 @@ func (i IAMMemberMap) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMe
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberMapOutput)
 }
 
-func (i IAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMMember] {
-	return pulumix.Output[map[string]*IAMMember]{
-		OutputState: i.ToIAMMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMMemberOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberOutput) ElementType() reflect.Type {
@@ -561,12 +512,6 @@ func (o IAMMemberOutput) ToIAMMemberOutput() IAMMemberOutput {
 
 func (o IAMMemberOutput) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
 	return o
-}
-
-func (o IAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMMember] {
-	return pulumix.Output[*IAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -611,12 +556,6 @@ func (o IAMMemberArrayOutput) ToIAMMemberArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMMember] {
-	return pulumix.Output[[]*IAMMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMMemberArrayOutput) Index(i pulumi.IntInput) IAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMMember {
 		return vs[0].([]*IAMMember)[vs[1].(int)]
@@ -635,12 +574,6 @@ func (o IAMMemberMapOutput) ToIAMMemberMapOutput() IAMMemberMapOutput {
 
 func (o IAMMemberMapOutput) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMemberMapOutput {
 	return o
-}
-
-func (o IAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMMember] {
-	return pulumix.Output[map[string]*IAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMMemberMapOutput) MapIndex(k pulumi.StringInput) IAMMemberOutput {

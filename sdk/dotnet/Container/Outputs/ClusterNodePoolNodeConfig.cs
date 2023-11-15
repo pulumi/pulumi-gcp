@@ -38,6 +38,11 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? DiskType;
         public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigEffectiveTaint> EffectiveTaints;
         /// <summary>
+        /// )
+        /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+        /// </summary>
+        public readonly bool? EnableConfidentialStorage;
+        /// <summary>
         /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
         /// ```csharp
@@ -142,19 +147,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-        /// Note that validations happen all server side. All attributes are optional.
-        /// Structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// Parameters that can be configured on Linux nodes. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigLinuxNodeConfig? LinuxNodeConfig;
         /// <summary>
@@ -285,6 +278,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints,
 
+            bool? enableConfidentialStorage,
+
             Outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig? ephemeralStorageConfig,
 
             Outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig? ephemeralStorageLocalSsdConfig,
@@ -351,6 +346,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EffectiveTaints = effectiveTaints;
+            EnableConfidentialStorage = enableConfidentialStorage;
             EphemeralStorageConfig = ephemeralStorageConfig;
             EphemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             FastSocket = fastSocket;

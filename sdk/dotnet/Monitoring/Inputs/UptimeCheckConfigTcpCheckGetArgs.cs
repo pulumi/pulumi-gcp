@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class UptimeCheckConfigTcpCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Contains information needed to add pings to a TCP check.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pingConfig")]
+        public Input<Inputs.UptimeCheckConfigTcpCheckPingConfigGetArgs>? PingConfig { get; set; }
+
+        /// <summary>
         /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         /// </summary>
         [Input("port", required: true)]

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
@@ -125,29 +124,23 @@ import (
 //
 // ## Import
 //
-// Instance IAM resources can be imported using the project, instance name, role and/or member.
+// ### Importing IAM policies IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example* `"projects/{project}/instances/{instance}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+//
+//	id = "projects/{project}/instances/{instance}"
+//
+//	to = google_bigtable_instance_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance}"
+//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor"
+//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember default projects/{project}/instances/{instance}
 //
 // ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor user:jane@example.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamMember struct {
 	pulumi.CustomResourceState
 
@@ -357,12 +350,6 @@ func (i *InstanceIamMember) ToInstanceIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberOutput)
 }
 
-func (i *InstanceIamMember) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMember] {
-	return pulumix.Output[*InstanceIamMember]{
-		OutputState: i.ToInstanceIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceIamMemberArrayInput is an input type that accepts InstanceIamMemberArray and InstanceIamMemberArrayOutput values.
 // You can construct a concrete instance of `InstanceIamMemberArrayInput` via:
 //
@@ -386,12 +373,6 @@ func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutput() InstanceIamMemb
 
 func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutputWithContext(ctx context.Context) InstanceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberArrayOutput)
-}
-
-func (i InstanceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamMember] {
-	return pulumix.Output[[]*InstanceIamMember]{
-		OutputState: i.ToInstanceIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceIamMemberMapInput is an input type that accepts InstanceIamMemberMap and InstanceIamMemberMapOutput values.
@@ -419,12 +400,6 @@ func (i InstanceIamMemberMap) ToInstanceIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberMapOutput)
 }
 
-func (i InstanceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamMember] {
-	return pulumix.Output[map[string]*InstanceIamMember]{
-		OutputState: i.ToInstanceIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberOutput) ElementType() reflect.Type {
@@ -437,12 +412,6 @@ func (o InstanceIamMemberOutput) ToInstanceIamMemberOutput() InstanceIamMemberOu
 
 func (o InstanceIamMemberOutput) ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput {
 	return o
-}
-
-func (o InstanceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMember] {
-	return pulumix.Output[*InstanceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamMemberOutput) Condition() InstanceIamMemberConditionPtrOutput {
@@ -503,12 +472,6 @@ func (o InstanceIamMemberArrayOutput) ToInstanceIamMemberArrayOutputWithContext(
 	return o
 }
 
-func (o InstanceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamMember] {
-	return pulumix.Output[[]*InstanceIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceIamMemberArrayOutput) Index(i pulumi.IntInput) InstanceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamMember {
 		return vs[0].([]*InstanceIamMember)[vs[1].(int)]
@@ -527,12 +490,6 @@ func (o InstanceIamMemberMapOutput) ToInstanceIamMemberMapOutput() InstanceIamMe
 
 func (o InstanceIamMemberMapOutput) ToInstanceIamMemberMapOutputWithContext(ctx context.Context) InstanceIamMemberMapOutput {
 	return o
-}
-
-func (o InstanceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamMember] {
-	return pulumix.Output[map[string]*InstanceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamMemberMapOutput) MapIndex(k pulumi.StringInput) InstanceIamMemberOutput {

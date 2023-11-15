@@ -64,6 +64,12 @@ public final class ClusterNodeConfig {
     private @Nullable String diskType;
     private @Nullable List<ClusterNodeConfigEffectiveTaint> effectiveTaints;
     /**
+     * @return )
+     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * 
+     */
+    private @Nullable Boolean enableConfidentialStorage;
+    /**
      * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
@@ -236,31 +242,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable Map<String,String> labels;
     /**
-     * @return Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Note that validations happen all server side. All attributes are optional.
-     * Structure is documented below.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return Parameters that can be configured on Linux nodes. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig;
@@ -449,6 +431,14 @@ public final class ClusterNodeConfig {
     }
     public List<ClusterNodeConfigEffectiveTaint> effectiveTaints() {
         return this.effectiveTaints == null ? List.of() : this.effectiveTaints;
+    }
+    /**
+     * @return )
+     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * 
+     */
+    public Optional<Boolean> enableConfidentialStorage() {
+        return Optional.ofNullable(this.enableConfidentialStorage);
     }
     /**
      * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -643,31 +633,7 @@ public final class ClusterNodeConfig {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Note that validations happen all server side. All attributes are optional.
-     * Structure is documented below.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return Parameters that can be configured on Linux nodes. Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigLinuxNodeConfig> linuxNodeConfig() {
@@ -870,6 +836,7 @@ public final class ClusterNodeConfig {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable List<ClusterNodeConfigEffectiveTaint> effectiveTaints;
+        private @Nullable Boolean enableConfidentialStorage;
         private @Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable ClusterNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable ClusterNodeConfigFastSocket fastSocket;
@@ -909,6 +876,7 @@ public final class ClusterNodeConfig {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
+    	      this.enableConfidentialStorage = defaults.enableConfidentialStorage;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.fastSocket = defaults.fastSocket;
@@ -973,6 +941,11 @@ public final class ClusterNodeConfig {
         }
         public Builder effectiveTaints(ClusterNodeConfigEffectiveTaint... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
+        }
+        @CustomType.Setter
+        public Builder enableConfidentialStorage(@Nullable Boolean enableConfidentialStorage) {
+            this.enableConfidentialStorage = enableConfidentialStorage;
+            return this;
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
@@ -1144,6 +1117,7 @@ public final class ClusterNodeConfig {
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.effectiveTaints = effectiveTaints;
+            o.enableConfidentialStorage = enableConfidentialStorage;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
             o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             o.fastSocket = fastSocket;

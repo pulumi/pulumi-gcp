@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int DiskSizeGb;
         public readonly string DiskType;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigEffectiveTaintResult> EffectiveTaints;
+        public readonly bool EnableConfidentialStorage;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigEphemeralStorageConfigResult> EphemeralStorageConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult> EphemeralStorageLocalSsdConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigFastSocketResult> FastSockets;
@@ -63,6 +64,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string diskType,
 
             ImmutableArray<Outputs.GetClusterNodeConfigEffectiveTaintResult> effectiveTaints,
+
+            bool enableConfidentialStorage,
 
             ImmutableArray<Outputs.GetClusterNodeConfigEphemeralStorageConfigResult> ephemeralStorageConfigs,
 
@@ -130,6 +133,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EffectiveTaints = effectiveTaints;
+            EnableConfidentialStorage = enableConfidentialStorage;
             EphemeralStorageConfigs = ephemeralStorageConfigs;
             EphemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             FastSockets = fastSockets;

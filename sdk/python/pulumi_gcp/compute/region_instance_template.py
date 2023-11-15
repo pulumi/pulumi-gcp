@@ -48,7 +48,7 @@ class RegionInstanceTemplateArgs:
                documented below.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
-               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
         :param pulumi.Input['RegionInstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -169,7 +169,7 @@ class RegionInstanceTemplateArgs:
         """
         The machine type to create.
 
-        To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 
         - - -
         """
@@ -537,7 +537,7 @@ class _RegionInstanceTemplateState:
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
-               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
@@ -774,7 +774,7 @@ class _RegionInstanceTemplateState:
         """
         The machine type to create.
 
-        To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 
         - - -
         """
@@ -1065,7 +1065,15 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         """
         ## Import
 
-        Instance templates can be imported using any of these accepted formats
+        Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}"
+
+         to = google_compute_region_instance_template.default }
+
+        ```sh
+         $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
@@ -1078,8 +1086,6 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         ```sh
          $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
         ```
-
-         [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1103,7 +1109,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
-               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
@@ -1149,7 +1155,15 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         """
         ## Import
 
-        Instance templates can be imported using any of these accepted formats
+        Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}"
+
+         to = google_compute_region_instance_template.default }
+
+        ```sh
+         $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
@@ -1162,8 +1176,6 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         ```sh
          $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
         ```
-
-         [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
 
         :param str resource_name: The name of the resource.
         :param RegionInstanceTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -1318,7 +1330,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
                
-               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
                
                - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
@@ -1490,7 +1502,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         """
         The machine type to create.
 
-        To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 
         - - -
         """

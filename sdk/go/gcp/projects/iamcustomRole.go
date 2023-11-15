@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows management of a customized Cloud IAM project role. For more information see
@@ -63,7 +62,17 @@ import (
 //
 // ## Import
 //
-// # Custom Roles can be imported using any of these accepted formats
+// Custom Roles can be imported using any of these accepted formats* `projects/{{project}}/roles/{{role_id}}` * `{{project}}/{{role_id}}` * `{{role_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Custom Roles using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/roles/{{role_id}}"
+//
+//	to = google_project_iam_custom_role.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Custom Roles can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -252,12 +261,6 @@ func (i *IAMCustomRole) ToIAMCustomRoleOutputWithContext(ctx context.Context) IA
 	return pulumi.ToOutputWithContext(ctx, i).(IAMCustomRoleOutput)
 }
 
-func (i *IAMCustomRole) ToOutput(ctx context.Context) pulumix.Output[*IAMCustomRole] {
-	return pulumix.Output[*IAMCustomRole]{
-		OutputState: i.ToIAMCustomRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMCustomRoleArrayInput is an input type that accepts IAMCustomRoleArray and IAMCustomRoleArrayOutput values.
 // You can construct a concrete instance of `IAMCustomRoleArrayInput` via:
 //
@@ -281,12 +284,6 @@ func (i IAMCustomRoleArray) ToIAMCustomRoleArrayOutput() IAMCustomRoleArrayOutpu
 
 func (i IAMCustomRoleArray) ToIAMCustomRoleArrayOutputWithContext(ctx context.Context) IAMCustomRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMCustomRoleArrayOutput)
-}
-
-func (i IAMCustomRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMCustomRole] {
-	return pulumix.Output[[]*IAMCustomRole]{
-		OutputState: i.ToIAMCustomRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMCustomRoleMapInput is an input type that accepts IAMCustomRoleMap and IAMCustomRoleMapOutput values.
@@ -314,12 +311,6 @@ func (i IAMCustomRoleMap) ToIAMCustomRoleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IAMCustomRoleMapOutput)
 }
 
-func (i IAMCustomRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMCustomRole] {
-	return pulumix.Output[map[string]*IAMCustomRole]{
-		OutputState: i.ToIAMCustomRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMCustomRoleOutput struct{ *pulumi.OutputState }
 
 func (IAMCustomRoleOutput) ElementType() reflect.Type {
@@ -332,12 +323,6 @@ func (o IAMCustomRoleOutput) ToIAMCustomRoleOutput() IAMCustomRoleOutput {
 
 func (o IAMCustomRoleOutput) ToIAMCustomRoleOutputWithContext(ctx context.Context) IAMCustomRoleOutput {
 	return o
-}
-
-func (o IAMCustomRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMCustomRole] {
-	return pulumix.Output[*IAMCustomRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Optional) The current deleted state of the role.
@@ -397,12 +382,6 @@ func (o IAMCustomRoleArrayOutput) ToIAMCustomRoleArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o IAMCustomRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMCustomRole] {
-	return pulumix.Output[[]*IAMCustomRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMCustomRoleArrayOutput) Index(i pulumi.IntInput) IAMCustomRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMCustomRole {
 		return vs[0].([]*IAMCustomRole)[vs[1].(int)]
@@ -421,12 +400,6 @@ func (o IAMCustomRoleMapOutput) ToIAMCustomRoleMapOutput() IAMCustomRoleMapOutpu
 
 func (o IAMCustomRoleMapOutput) ToIAMCustomRoleMapOutputWithContext(ctx context.Context) IAMCustomRoleMapOutput {
 	return o
-}
-
-func (o IAMCustomRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMCustomRole] {
-	return pulumix.Output[map[string]*IAMCustomRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMCustomRoleMapOutput) MapIndex(k pulumi.StringInput) IAMCustomRoleOutput {

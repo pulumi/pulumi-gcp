@@ -81,6 +81,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
         [Input("networkAttachment")]
         public Input<string>? NetworkAttachment { get; set; }
 

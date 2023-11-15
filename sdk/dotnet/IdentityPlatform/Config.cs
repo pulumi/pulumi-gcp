@@ -77,6 +77,17 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///                 },
     ///             },
     ///         },
+    ///         SmsRegionConfig = new Gcp.IdentityPlatform.Inputs.ConfigSmsRegionConfigArgs
+    ///         {
+    ///             AllowlistOnly = new Gcp.IdentityPlatform.Inputs.ConfigSmsRegionConfigAllowlistOnlyArgs
+    ///             {
+    ///                 AllowedRegions = new[]
+    ///                 {
+    ///                     "US",
+    ///                     "CA",
+    ///                 },
+    ///             },
+    ///         },
     ///         BlockingFunctions = new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsArgs
     ///         {
     ///             Triggers = new[]
@@ -116,7 +127,15 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ## Import
     /// 
-    /// Config can be imported using any of these accepted formats
+    /// Config can be imported using any of these accepted formats* `projects/{{project}}/config` * `projects/{{project}}` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Config using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/config"
+    /// 
+    ///  to = google_identity_platform_config.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/config:Config When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Config can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
@@ -178,6 +197,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Output("signIn")]
         public Output<Outputs.ConfigSignIn> SignIn { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("smsRegionConfig")]
+        public Output<Outputs.ConfigSmsRegionConfig?> SmsRegionConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -271,6 +297,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Input("signIn")]
         public Input<Inputs.ConfigSignInArgs>? SignIn { get; set; }
 
+        /// <summary>
+        /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("smsRegionConfig")]
+        public Input<Inputs.ConfigSmsRegionConfigArgs>? SmsRegionConfig { get; set; }
+
         public ConfigArgs()
         {
         }
@@ -330,6 +363,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("signIn")]
         public Input<Inputs.ConfigSignInGetArgs>? SignIn { get; set; }
+
+        /// <summary>
+        /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("smsRegionConfig")]
+        public Input<Inputs.ConfigSmsRegionConfigGetArgs>? SmsRegionConfig { get; set; }
 
         public ConfigState()
         {

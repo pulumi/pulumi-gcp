@@ -31,6 +31,7 @@ __all__ = [
     'AiFeatureStoreOnlineServingConfigArgs',
     'AiFeatureStoreOnlineServingConfigScalingArgs',
     'AiIndexDeployedIndexArgs',
+    'AiIndexEndpointPrivateServiceConnectConfigArgs',
     'AiIndexIndexStatArgs',
     'AiIndexMetadataArgs',
     'AiIndexMetadataConfigArgs',
@@ -1171,6 +1172,44 @@ class AiIndexDeployedIndexArgs:
     @index_endpoint.setter
     def index_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "index_endpoint", value)
+
+
+@pulumi.input_type
+class AiIndexEndpointPrivateServiceConnectConfigArgs:
+    def __init__(__self__, *,
+                 enable_private_service_connect: pulumi.Input[bool],
+                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] enable_private_service_connect: If set to true, the IndexEndpoint is created without private service access.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
+        if project_allowlists is not None:
+            pulumi.set(__self__, "project_allowlists", project_allowlists)
+
+    @property
+    @pulumi.getter(name="enablePrivateServiceConnect")
+    def enable_private_service_connect(self) -> pulumi.Input[bool]:
+        """
+        If set to true, the IndexEndpoint is created without private service access.
+        """
+        return pulumi.get(self, "enable_private_service_connect")
+
+    @enable_private_service_connect.setter
+    def enable_private_service_connect(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_private_service_connect", value)
+
+    @property
+    @pulumi.getter(name="projectAllowlists")
+    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        return pulumi.get(self, "project_allowlists")
+
+    @project_allowlists.setter
+    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "project_allowlists", value)
 
 
 @pulumi.input_type

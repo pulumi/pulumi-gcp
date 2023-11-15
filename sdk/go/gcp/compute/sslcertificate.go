@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An SslCertificate resource, used for HTTPS load balancing. This resource
@@ -127,7 +126,17 @@ import (
 //
 // ## Import
 //
-// # SslCertificate can be imported using any of these accepted formats
+// SslCertificate can be imported using any of these accepted formats* `projects/{{project}}/global/sslCertificates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SslCertificate using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/sslCertificates/{{name}}"
+//
+//	to = google_compute_ssl_certificate.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/sSLCertificate:SSLCertificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SslCertificate can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -401,12 +410,6 @@ func (i *SSLCertificate) ToSSLCertificateOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateOutput)
 }
 
-func (i *SSLCertificate) ToOutput(ctx context.Context) pulumix.Output[*SSLCertificate] {
-	return pulumix.Output[*SSLCertificate]{
-		OutputState: i.ToSSLCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSLCertificateArrayInput is an input type that accepts SSLCertificateArray and SSLCertificateArrayOutput values.
 // You can construct a concrete instance of `SSLCertificateArrayInput` via:
 //
@@ -430,12 +433,6 @@ func (i SSLCertificateArray) ToSSLCertificateArrayOutput() SSLCertificateArrayOu
 
 func (i SSLCertificateArray) ToSSLCertificateArrayOutputWithContext(ctx context.Context) SSLCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateArrayOutput)
-}
-
-func (i SSLCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*SSLCertificate] {
-	return pulumix.Output[[]*SSLCertificate]{
-		OutputState: i.ToSSLCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SSLCertificateMapInput is an input type that accepts SSLCertificateMap and SSLCertificateMapOutput values.
@@ -463,12 +460,6 @@ func (i SSLCertificateMap) ToSSLCertificateMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateMapOutput)
 }
 
-func (i SSLCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSLCertificate] {
-	return pulumix.Output[map[string]*SSLCertificate]{
-		OutputState: i.ToSSLCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SSLCertificateOutput struct{ *pulumi.OutputState }
 
 func (SSLCertificateOutput) ElementType() reflect.Type {
@@ -481,12 +472,6 @@ func (o SSLCertificateOutput) ToSSLCertificateOutput() SSLCertificateOutput {
 
 func (o SSLCertificateOutput) ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput {
 	return o
-}
-
-func (o SSLCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*SSLCertificate] {
-	return pulumix.Output[*SSLCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate in PEM format.
@@ -569,12 +554,6 @@ func (o SSLCertificateArrayOutput) ToSSLCertificateArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o SSLCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SSLCertificate] {
-	return pulumix.Output[[]*SSLCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SSLCertificateArrayOutput) Index(i pulumi.IntInput) SSLCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SSLCertificate {
 		return vs[0].([]*SSLCertificate)[vs[1].(int)]
@@ -593,12 +572,6 @@ func (o SSLCertificateMapOutput) ToSSLCertificateMapOutput() SSLCertificateMapOu
 
 func (o SSLCertificateMapOutput) ToSSLCertificateMapOutputWithContext(ctx context.Context) SSLCertificateMapOutput {
 	return o
-}
-
-func (o SSLCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSLCertificate] {
-	return pulumix.Output[map[string]*SSLCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SSLCertificateMapOutput) MapIndex(k pulumi.StringInput) SSLCertificateOutput {

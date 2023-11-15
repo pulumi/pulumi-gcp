@@ -72,7 +72,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * BigQuery tables imported using any of these accepted formats
+ * BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}"
+ *
+ *  to = google_bigquery_table.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
@@ -206,7 +214,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly materializedView!: pulumi.Output<outputs.bigquery.TableMaterializedView | undefined>;
     /**
-     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      */
     public readonly maxStaleness!: pulumi.Output<string | undefined>;
     /**
@@ -235,6 +246,12 @@ export class Table extends pulumi.CustomResource {
      * partitioning for this table. Structure is documented below.
      */
     public readonly rangePartitioning!: pulumi.Output<outputs.bigquery.TableRangePartitioning | undefined>;
+    /**
+     * If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     */
+    public readonly requirePartitionFilter!: pulumi.Output<boolean | undefined>;
     /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -318,6 +335,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
+            resourceInputs["requirePartitionFilter"] = state ? state.requirePartitionFilter : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
@@ -346,6 +364,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["maxStaleness"] = args ? args.maxStaleness : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
+            resourceInputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
@@ -466,7 +485,10 @@ export interface TableState {
      */
     materializedView?: pulumi.Input<inputs.bigquery.TableMaterializedView>;
     /**
-     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      */
     maxStaleness?: pulumi.Input<string>;
     /**
@@ -495,6 +517,12 @@ export interface TableState {
      * partitioning for this table. Structure is documented below.
      */
     rangePartitioning?: pulumi.Input<inputs.bigquery.TableRangePartitioning>;
+    /**
+     * If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     */
+    requirePartitionFilter?: pulumi.Input<boolean>;
     /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -605,7 +633,10 @@ export interface TableArgs {
      */
     materializedView?: pulumi.Input<inputs.bigquery.TableMaterializedView>;
     /**
-     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      */
     maxStaleness?: pulumi.Input<string>;
     /**
@@ -618,6 +649,12 @@ export interface TableArgs {
      * partitioning for this table. Structure is documented below.
      */
     rangePartitioning?: pulumi.Input<inputs.bigquery.TableRangePartitioning>;
+    /**
+     * If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     */
+    requirePartitionFilter?: pulumi.Input<boolean>;
     /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed

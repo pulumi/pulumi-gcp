@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>
         public readonly ImmutableArray<string> RequiredAccessLevels;
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSource> VpcNetworkSources;
 
         [OutputConstructor]
         private AccessLevelsAccessLevelBasicCondition(
@@ -76,7 +81,9 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
 
             ImmutableArray<string> regions,
 
-            ImmutableArray<string> requiredAccessLevels)
+            ImmutableArray<string> requiredAccessLevels,
+
+            ImmutableArray<Outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources)
         {
             DevicePolicy = devicePolicy;
             IpSubnetworks = ipSubnetworks;
@@ -84,6 +91,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
             Negate = negate;
             Regions = regions;
             RequiredAccessLevels = requiredAccessLevels;
+            VpcNetworkSources = vpcNetworkSources;
         }
     }
 }

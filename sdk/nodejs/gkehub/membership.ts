@@ -16,6 +16,27 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ * ### Gkehub Membership Regional
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     deletionProtection: false,
+ *     initialNodeCount: 1,
+ *     location: "us-central1-a",
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
+ *         },
+ *     },
+ *     location: "us-west1",
+ *     membershipId: "basic",
+ * });
+ * ```
  * ### Gkehub Membership Basic
  *
  * ```typescript
@@ -68,18 +89,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Membership can be imported using any of these accepted formats
+ * Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
+ *
+ *  to = google_gke_hub_membership.default }
  *
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+ *  $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+ *  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+ *  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
  * ```
  */
 export class Membership extends pulumi.CustomResource {
@@ -143,6 +172,11 @@ export class Membership extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Location of the membership.
+     * The default value is `global`.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
+    /**
      * The client-provided identifier of the membership.
      *
      *
@@ -182,6 +216,7 @@ export class Membership extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["membershipId"] = state ? state.membershipId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -195,6 +230,7 @@ export class Membership extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["membershipId"] = args ? args.membershipId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -244,6 +280,11 @@ export interface MembershipState {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     */
+    location?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the membership.
      *
@@ -299,6 +340,11 @@ export interface MembershipArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     */
+    location?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the membership.
      *

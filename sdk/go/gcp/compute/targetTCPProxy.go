@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a TargetTcpProxy resource, which is used by one or more
@@ -27,7 +26,17 @@ import (
 //
 // ## Import
 //
-// # TargetTcpProxy can be imported using any of these accepted formats
+// TargetTcpProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetTcpProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetTcpProxy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/targetTcpProxies/{{name}}"
+//
+//	to = google_compute_target_tcp_proxy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetTcpProxy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -266,12 +275,6 @@ func (i *TargetTCPProxy) ToTargetTCPProxyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyOutput)
 }
 
-func (i *TargetTCPProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetTCPProxy] {
-	return pulumix.Output[*TargetTCPProxy]{
-		OutputState: i.ToTargetTCPProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetTCPProxyArrayInput is an input type that accepts TargetTCPProxyArray and TargetTCPProxyArrayOutput values.
 // You can construct a concrete instance of `TargetTCPProxyArrayInput` via:
 //
@@ -295,12 +298,6 @@ func (i TargetTCPProxyArray) ToTargetTCPProxyArrayOutput() TargetTCPProxyArrayOu
 
 func (i TargetTCPProxyArray) ToTargetTCPProxyArrayOutputWithContext(ctx context.Context) TargetTCPProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyArrayOutput)
-}
-
-func (i TargetTCPProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetTCPProxy] {
-	return pulumix.Output[[]*TargetTCPProxy]{
-		OutputState: i.ToTargetTCPProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetTCPProxyMapInput is an input type that accepts TargetTCPProxyMap and TargetTCPProxyMapOutput values.
@@ -328,12 +325,6 @@ func (i TargetTCPProxyMap) ToTargetTCPProxyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyMapOutput)
 }
 
-func (i TargetTCPProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetTCPProxy] {
-	return pulumix.Output[map[string]*TargetTCPProxy]{
-		OutputState: i.ToTargetTCPProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetTCPProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetTCPProxyOutput) ElementType() reflect.Type {
@@ -346,12 +337,6 @@ func (o TargetTCPProxyOutput) ToTargetTCPProxyOutput() TargetTCPProxyOutput {
 
 func (o TargetTCPProxyOutput) ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput {
 	return o
-}
-
-func (o TargetTCPProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetTCPProxy] {
-	return pulumix.Output[*TargetTCPProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the BackendService resource.
@@ -426,12 +411,6 @@ func (o TargetTCPProxyArrayOutput) ToTargetTCPProxyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TargetTCPProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetTCPProxy] {
-	return pulumix.Output[[]*TargetTCPProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetTCPProxyArrayOutput) Index(i pulumi.IntInput) TargetTCPProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetTCPProxy {
 		return vs[0].([]*TargetTCPProxy)[vs[1].(int)]
@@ -450,12 +429,6 @@ func (o TargetTCPProxyMapOutput) ToTargetTCPProxyMapOutput() TargetTCPProxyMapOu
 
 func (o TargetTCPProxyMapOutput) ToTargetTCPProxyMapOutputWithContext(ctx context.Context) TargetTCPProxyMapOutput {
 	return o
-}
-
-func (o TargetTCPProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetTCPProxy] {
-	return pulumix.Output[map[string]*TargetTCPProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetTCPProxyMapOutput) MapIndex(k pulumi.StringInput) TargetTCPProxyOutput {

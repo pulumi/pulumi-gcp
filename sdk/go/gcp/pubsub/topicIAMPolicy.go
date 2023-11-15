@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
@@ -344,12 +343,6 @@ func (i *TopicIAMPolicy) ToTopicIAMPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyOutput)
 }
 
-func (i *TopicIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*TopicIAMPolicy] {
-	return pulumix.Output[*TopicIAMPolicy]{
-		OutputState: i.ToTopicIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TopicIAMPolicyArrayInput is an input type that accepts TopicIAMPolicyArray and TopicIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `TopicIAMPolicyArrayInput` via:
 //
@@ -373,12 +366,6 @@ func (i TopicIAMPolicyArray) ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOu
 
 func (i TopicIAMPolicyArray) ToTopicIAMPolicyArrayOutputWithContext(ctx context.Context) TopicIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyArrayOutput)
-}
-
-func (i TopicIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TopicIAMPolicy] {
-	return pulumix.Output[[]*TopicIAMPolicy]{
-		OutputState: i.ToTopicIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TopicIAMPolicyMapInput is an input type that accepts TopicIAMPolicyMap and TopicIAMPolicyMapOutput values.
@@ -406,12 +393,6 @@ func (i TopicIAMPolicyMap) ToTopicIAMPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyMapOutput)
 }
 
-func (i TopicIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TopicIAMPolicy] {
-	return pulumix.Output[map[string]*TopicIAMPolicy]{
-		OutputState: i.ToTopicIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TopicIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMPolicyOutput) ElementType() reflect.Type {
@@ -424,12 +405,6 @@ func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
 
 func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput {
 	return o
-}
-
-func (o TopicIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TopicIAMPolicy] {
-	return pulumix.Output[*TopicIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -480,12 +455,6 @@ func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TopicIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TopicIAMPolicy] {
-	return pulumix.Output[[]*TopicIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TopicIAMPolicyArrayOutput) Index(i pulumi.IntInput) TopicIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIAMPolicy {
 		return vs[0].([]*TopicIAMPolicy)[vs[1].(int)]
@@ -504,12 +473,6 @@ func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOu
 
 func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutputWithContext(ctx context.Context) TopicIAMPolicyMapOutput {
 	return o
-}
-
-func (o TopicIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TopicIAMPolicy] {
-	return pulumix.Output[map[string]*TopicIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TopicIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TopicIAMPolicyOutput {

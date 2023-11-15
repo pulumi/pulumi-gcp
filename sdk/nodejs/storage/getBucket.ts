@@ -50,6 +50,7 @@ export interface GetBucketResult {
     readonly customPlacementConfigs: outputs.storage.GetBucketCustomPlacementConfig[];
     readonly defaultEventBasedHold: boolean;
     readonly effectiveLabels: {[key: string]: string};
+    readonly enableObjectRetention: boolean;
     readonly encryptions: outputs.storage.GetBucketEncryption[];
     readonly forceDestroy: boolean;
     /**

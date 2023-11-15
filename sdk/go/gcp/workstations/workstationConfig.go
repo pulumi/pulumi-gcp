@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -439,7 +438,7 @@ import (
 //						DisablePublicIpAddresses: pulumi.Bool(true),
 //						Accelerators: workstations.WorkstationConfigHostGceInstanceAcceleratorArray{
 //							&workstations.WorkstationConfigHostGceInstanceAcceleratorArgs{
-//								Type:  pulumi.String("nvidia-tesla-p100"),
+//								Type:  pulumi.String("nvidia-tesla-t4"),
 //								Count: pulumi.Int(1),
 //							},
 //						},
@@ -550,7 +549,17 @@ import (
 //
 // ## Import
 //
-// # WorkstationConfig can be imported using any of these accepted formats
+// WorkstationConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}` * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationConfig using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}"
+//
+//	to = google_workstations_workstation_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:workstations/workstationConfig:WorkstationConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -958,12 +967,6 @@ func (i *WorkstationConfig) ToWorkstationConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigOutput)
 }
 
-func (i *WorkstationConfig) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfig] {
-	return pulumix.Output[*WorkstationConfig]{
-		OutputState: i.ToWorkstationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkstationConfigArrayInput is an input type that accepts WorkstationConfigArray and WorkstationConfigArrayOutput values.
 // You can construct a concrete instance of `WorkstationConfigArrayInput` via:
 //
@@ -987,12 +990,6 @@ func (i WorkstationConfigArray) ToWorkstationConfigArrayOutput() WorkstationConf
 
 func (i WorkstationConfigArray) ToWorkstationConfigArrayOutputWithContext(ctx context.Context) WorkstationConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigArrayOutput)
-}
-
-func (i WorkstationConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationConfig] {
-	return pulumix.Output[[]*WorkstationConfig]{
-		OutputState: i.ToWorkstationConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkstationConfigMapInput is an input type that accepts WorkstationConfigMap and WorkstationConfigMapOutput values.
@@ -1020,12 +1017,6 @@ func (i WorkstationConfigMap) ToWorkstationConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigMapOutput)
 }
 
-func (i WorkstationConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationConfig] {
-	return pulumix.Output[map[string]*WorkstationConfig]{
-		OutputState: i.ToWorkstationConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkstationConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigOutput) ElementType() reflect.Type {
@@ -1038,12 +1029,6 @@ func (o WorkstationConfigOutput) ToWorkstationConfigOutput() WorkstationConfigOu
 
 func (o WorkstationConfigOutput) ToWorkstationConfigOutputWithContext(ctx context.Context) WorkstationConfigOutput {
 	return o
-}
-
-func (o WorkstationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfig] {
-	return pulumix.Output[*WorkstationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client-specified annotations. This is distinct from labels.
@@ -1203,12 +1188,6 @@ func (o WorkstationConfigArrayOutput) ToWorkstationConfigArrayOutputWithContext(
 	return o
 }
 
-func (o WorkstationConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationConfig] {
-	return pulumix.Output[[]*WorkstationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkstationConfigArrayOutput) Index(i pulumi.IntInput) WorkstationConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkstationConfig {
 		return vs[0].([]*WorkstationConfig)[vs[1].(int)]
@@ -1227,12 +1206,6 @@ func (o WorkstationConfigMapOutput) ToWorkstationConfigMapOutput() WorkstationCo
 
 func (o WorkstationConfigMapOutput) ToWorkstationConfigMapOutputWithContext(ctx context.Context) WorkstationConfigMapOutput {
 	return o
-}
-
-func (o WorkstationConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationConfig] {
-	return pulumix.Output[map[string]*WorkstationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkstationConfigMapOutput) MapIndex(k pulumi.StringInput) WorkstationConfigOutput {

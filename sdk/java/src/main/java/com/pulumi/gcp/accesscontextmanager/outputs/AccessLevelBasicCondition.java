@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelBasicConditionDevicePolicy;
+import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelBasicConditionVpcNetworkSource;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -70,6 +71,12 @@ public final class AccessLevelBasicCondition {
      * 
      */
     private @Nullable List<String> requiredAccessLevels;
+    /**
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources;
 
     private AccessLevelBasicCondition() {}
     /**
@@ -140,6 +147,14 @@ public final class AccessLevelBasicCondition {
     public List<String> requiredAccessLevels() {
         return this.requiredAccessLevels == null ? List.of() : this.requiredAccessLevels;
     }
+    /**
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    public List<AccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources() {
+        return this.vpcNetworkSources == null ? List.of() : this.vpcNetworkSources;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -156,6 +171,7 @@ public final class AccessLevelBasicCondition {
         private @Nullable Boolean negate;
         private @Nullable List<String> regions;
         private @Nullable List<String> requiredAccessLevels;
+        private @Nullable List<AccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources;
         public Builder() {}
         public Builder(AccessLevelBasicCondition defaults) {
     	      Objects.requireNonNull(defaults);
@@ -165,6 +181,7 @@ public final class AccessLevelBasicCondition {
     	      this.negate = defaults.negate;
     	      this.regions = defaults.regions;
     	      this.requiredAccessLevels = defaults.requiredAccessLevels;
+    	      this.vpcNetworkSources = defaults.vpcNetworkSources;
         }
 
         @CustomType.Setter
@@ -209,6 +226,14 @@ public final class AccessLevelBasicCondition {
         public Builder requiredAccessLevels(String... requiredAccessLevels) {
             return requiredAccessLevels(List.of(requiredAccessLevels));
         }
+        @CustomType.Setter
+        public Builder vpcNetworkSources(@Nullable List<AccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources) {
+            this.vpcNetworkSources = vpcNetworkSources;
+            return this;
+        }
+        public Builder vpcNetworkSources(AccessLevelBasicConditionVpcNetworkSource... vpcNetworkSources) {
+            return vpcNetworkSources(List.of(vpcNetworkSources));
+        }
         public AccessLevelBasicCondition build() {
             final var o = new AccessLevelBasicCondition();
             o.devicePolicy = devicePolicy;
@@ -217,6 +242,7 @@ public final class AccessLevelBasicCondition {
             o.negate = negate;
             o.regions = regions;
             o.requiredAccessLevels = requiredAccessLevels;
+            o.vpcNetworkSources = vpcNetworkSources;
             return o;
         }
     }

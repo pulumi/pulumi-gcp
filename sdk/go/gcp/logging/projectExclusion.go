@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a project-level logging exclusion. For more information see:
@@ -50,11 +49,21 @@ import (
 //
 // ## Import
 //
-// Project-level logging exclusions can be imported using their URI, e.g.
+// Project-level logging exclusions can be imported using their URI, e.g. * `projects/{{project_id}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging exclusions using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project_id}}/exclusions/{{name}}"
+//
+//	to = google_logging_project_exclusion.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:logging/projectExclusion:ProjectExclusion my_exclusion projects/my-project/exclusions/my-exclusion
+//	$ pulumi import gcp:logging/projectExclusion:ProjectExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging exclusions can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}
 //
 // ```
 type ProjectExclusion struct {
@@ -204,12 +213,6 @@ func (i *ProjectExclusion) ToProjectExclusionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionOutput)
 }
 
-func (i *ProjectExclusion) ToOutput(ctx context.Context) pulumix.Output[*ProjectExclusion] {
-	return pulumix.Output[*ProjectExclusion]{
-		OutputState: i.ToProjectExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectExclusionArrayInput is an input type that accepts ProjectExclusionArray and ProjectExclusionArrayOutput values.
 // You can construct a concrete instance of `ProjectExclusionArrayInput` via:
 //
@@ -233,12 +236,6 @@ func (i ProjectExclusionArray) ToProjectExclusionArrayOutput() ProjectExclusionA
 
 func (i ProjectExclusionArray) ToProjectExclusionArrayOutputWithContext(ctx context.Context) ProjectExclusionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionArrayOutput)
-}
-
-func (i ProjectExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectExclusion] {
-	return pulumix.Output[[]*ProjectExclusion]{
-		OutputState: i.ToProjectExclusionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectExclusionMapInput is an input type that accepts ProjectExclusionMap and ProjectExclusionMapOutput values.
@@ -266,12 +263,6 @@ func (i ProjectExclusionMap) ToProjectExclusionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionMapOutput)
 }
 
-func (i ProjectExclusionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectExclusion] {
-	return pulumix.Output[map[string]*ProjectExclusion]{
-		OutputState: i.ToProjectExclusionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectExclusionOutput struct{ *pulumi.OutputState }
 
 func (ProjectExclusionOutput) ElementType() reflect.Type {
@@ -284,12 +275,6 @@ func (o ProjectExclusionOutput) ToProjectExclusionOutput() ProjectExclusionOutpu
 
 func (o ProjectExclusionOutput) ToProjectExclusionOutputWithContext(ctx context.Context) ProjectExclusionOutput {
 	return o
-}
-
-func (o ProjectExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectExclusion] {
-	return pulumix.Output[*ProjectExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description.
@@ -335,12 +320,6 @@ func (o ProjectExclusionArrayOutput) ToProjectExclusionArrayOutputWithContext(ct
 	return o
 }
 
-func (o ProjectExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectExclusion] {
-	return pulumix.Output[[]*ProjectExclusion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectExclusionArrayOutput) Index(i pulumi.IntInput) ProjectExclusionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectExclusion {
 		return vs[0].([]*ProjectExclusion)[vs[1].(int)]
@@ -359,12 +338,6 @@ func (o ProjectExclusionMapOutput) ToProjectExclusionMapOutput() ProjectExclusio
 
 func (o ProjectExclusionMapOutput) ToProjectExclusionMapOutputWithContext(ctx context.Context) ProjectExclusionMapOutput {
 	return o
-}
-
-func (o ProjectExclusionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectExclusion] {
-	return pulumix.Output[map[string]*ProjectExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectExclusionMapOutput) MapIndex(k pulumi.StringInput) ProjectExclusionOutput {

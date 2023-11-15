@@ -9,6 +9,7 @@ import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbAr
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileErrorArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileMysqlArgs;
+import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
 import java.lang.String;
 import java.util.List;
@@ -221,6 +222,23 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="oracle")
+    private @Nullable Output<ConnectionProfileOracleArgs> oracle;
+
+    /**
+     * @return Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfileOracleArgs>> oracle() {
+        return Optional.ofNullable(this.oracle);
+    }
+
+    /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.
      * 
@@ -301,6 +319,7 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
         this.location = $.location;
         this.mysql = $.mysql;
         this.name = $.name;
+        this.oracle = $.oracle;
         this.postgresql = $.postgresql;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -604,6 +623,29 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oracle Specifies connection parameters required specifically for Oracle databases.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oracle(@Nullable Output<ConnectionProfileOracleArgs> oracle) {
+            $.oracle = oracle;
+            return this;
+        }
+
+        /**
+         * @param oracle Specifies connection parameters required specifically for Oracle databases.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oracle(ConnectionProfileOracleArgs oracle) {
+            return oracle(Output.of(oracle));
         }
 
         /**

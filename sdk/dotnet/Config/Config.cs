@@ -522,6 +522,13 @@ namespace Pulumi.Gcp
             set => _documentAiWarehouseCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _edgecontainerCustomEndpoint = new __Value<string?>(() => __config.Get("edgecontainerCustomEndpoint"));
+        public static string? EdgecontainerCustomEndpoint
+        {
+            get => _edgecontainerCustomEndpoint.Get();
+            set => _edgecontainerCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _edgenetworkCustomEndpoint = new __Value<string?>(() => __config.Get("edgenetworkCustomEndpoint"));
         public static string? EdgenetworkCustomEndpoint
         {
@@ -709,6 +716,13 @@ namespace Pulumi.Gcp
         {
             get => _impersonateServiceAccountDelegates.Get();
             set => _impersonateServiceAccountDelegates.Set(value);
+        }
+
+        private static readonly __Value<string?> _integrationConnectorsCustomEndpoint = new __Value<string?>(() => __config.Get("integrationConnectorsCustomEndpoint"));
+        public static string? IntegrationConnectorsCustomEndpoint
+        {
+            get => _integrationConnectorsCustomEndpoint.Get();
+            set => _integrationConnectorsCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _kmsCustomEndpoint = new __Value<string?>(() => __config.Get("kmsCustomEndpoint"));
@@ -1031,6 +1045,13 @@ namespace Pulumi.Gcp
         {
             get => _tpuV2CustomEndpoint.Get();
             set => _tpuV2CustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _universeDomain = new __Value<string?>(() => __config.Get("universeDomain"));
+        public static string? UniverseDomain
+        {
+            get => _universeDomain.Get();
+            set => _universeDomain.Set(value);
         }
 
         private static readonly __Value<bool?> _userProjectOverride = new __Value<bool?>(() => __config.GetBoolean("userProjectOverride"));

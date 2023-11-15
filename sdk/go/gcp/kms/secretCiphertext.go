@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
@@ -248,12 +247,6 @@ func (i *SecretCiphertext) ToSecretCiphertextOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextOutput)
 }
 
-func (i *SecretCiphertext) ToOutput(ctx context.Context) pulumix.Output[*SecretCiphertext] {
-	return pulumix.Output[*SecretCiphertext]{
-		OutputState: i.ToSecretCiphertextOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretCiphertextArrayInput is an input type that accepts SecretCiphertextArray and SecretCiphertextArrayOutput values.
 // You can construct a concrete instance of `SecretCiphertextArrayInput` via:
 //
@@ -277,12 +270,6 @@ func (i SecretCiphertextArray) ToSecretCiphertextArrayOutput() SecretCiphertextA
 
 func (i SecretCiphertextArray) ToSecretCiphertextArrayOutputWithContext(ctx context.Context) SecretCiphertextArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextArrayOutput)
-}
-
-func (i SecretCiphertextArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecretCiphertext] {
-	return pulumix.Output[[]*SecretCiphertext]{
-		OutputState: i.ToSecretCiphertextArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecretCiphertextMapInput is an input type that accepts SecretCiphertextMap and SecretCiphertextMapOutput values.
@@ -310,12 +297,6 @@ func (i SecretCiphertextMap) ToSecretCiphertextMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextMapOutput)
 }
 
-func (i SecretCiphertextMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretCiphertext] {
-	return pulumix.Output[map[string]*SecretCiphertext]{
-		OutputState: i.ToSecretCiphertextMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretCiphertextOutput struct{ *pulumi.OutputState }
 
 func (SecretCiphertextOutput) ElementType() reflect.Type {
@@ -328,12 +309,6 @@ func (o SecretCiphertextOutput) ToSecretCiphertextOutput() SecretCiphertextOutpu
 
 func (o SecretCiphertextOutput) ToSecretCiphertextOutputWithContext(ctx context.Context) SecretCiphertextOutput {
 	return o
-}
-
-func (o SecretCiphertextOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretCiphertext] {
-	return pulumix.Output[*SecretCiphertext]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The additional authenticated data used for integrity checks during encryption and decryption.
@@ -375,12 +350,6 @@ func (o SecretCiphertextArrayOutput) ToSecretCiphertextArrayOutputWithContext(ct
 	return o
 }
 
-func (o SecretCiphertextArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretCiphertext] {
-	return pulumix.Output[[]*SecretCiphertext]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecretCiphertextArrayOutput) Index(i pulumi.IntInput) SecretCiphertextOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretCiphertext {
 		return vs[0].([]*SecretCiphertext)[vs[1].(int)]
@@ -399,12 +368,6 @@ func (o SecretCiphertextMapOutput) ToSecretCiphertextMapOutput() SecretCiphertex
 
 func (o SecretCiphertextMapOutput) ToSecretCiphertextMapOutputWithContext(ctx context.Context) SecretCiphertextMapOutput {
 	return o
-}
-
-func (o SecretCiphertextMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretCiphertext] {
-	return pulumix.Output[map[string]*SecretCiphertext]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretCiphertextMapOutput) MapIndex(k pulumi.StringInput) SecretCiphertextOutput {

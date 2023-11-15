@@ -293,23 +293,19 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
+        ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+
+         id = projects/{project}/regions/{region}/clusters/{cluster}
+
+         to = google_dataproc_cluster_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
+         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
         ```
-
-        ```sh
-         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
-        ```
-
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -393,23 +389,19 @@ class ClusterIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
+        ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+
+         id = projects/{project}/regions/{region}/clusters/{cluster}
+
+         to = google_dataproc_cluster_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
+         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
         ```
-
-        ```sh
-         $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
-        ```
-
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param ClusterIAMPolicyArgs args: The arguments to use to populate this resource's properties.

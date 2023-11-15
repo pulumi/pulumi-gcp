@@ -12,6 +12,22 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class AttachedClusterAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("adminGroups")]
+        private InputList<string>? _adminGroups;
+
+        /// <summary>
+        /// Groups that can perform operations as a cluster admin. A managed
+        /// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+        /// to the groups. Up to ten admin groups can be provided.
+        /// For more info on RBAC, see
+        /// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        /// </summary>
+        public InputList<string> AdminGroups
+        {
+            get => _adminGroups ?? (_adminGroups = new InputList<string>());
+            set => _adminGroups = value;
+        }
+
         [Input("adminUsers")]
         private InputList<string>? _adminUsers;
 

@@ -74,7 +74,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TrustConfig can be imported using any of these accepted formats
+ * TrustConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TrustConfig using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}&#34;
+ * 
+ *  to = google_certificate_manager_trust_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TrustConfig can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}

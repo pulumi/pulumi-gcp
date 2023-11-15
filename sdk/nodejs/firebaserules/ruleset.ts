@@ -47,7 +47,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ruleset can be imported using any of these accepted formats
+ * Ruleset can be imported using any of these accepted formats* `projects/{{project}}/rulesets/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Ruleset using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/rulesets/{{name}}"
+ *
+ *  to = google_firebaserules_ruleset.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:firebaserules/ruleset:Ruleset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Ruleset can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:firebaserules/ruleset:Ruleset default projects/{{project}}/rulesets/{{name}}

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provider type for the google-beta package. By default, resources use package-wide configuration
@@ -86,6 +85,7 @@ type Provider struct {
 	DnsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint               pulumi.StringPtrOutput `pulumi:"documentAiCustomEndpoint"`
 	DocumentAiWarehouseCustomEndpoint      pulumi.StringPtrOutput `pulumi:"documentAiWarehouseCustomEndpoint"`
+	EdgecontainerCustomEndpoint            pulumi.StringPtrOutput `pulumi:"edgecontainerCustomEndpoint"`
 	EdgenetworkCustomEndpoint              pulumi.StringPtrOutput `pulumi:"edgenetworkCustomEndpoint"`
 	EssentialContactsCustomEndpoint        pulumi.StringPtrOutput `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
@@ -112,6 +112,7 @@ type Provider struct {
 	IapCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"iapCustomEndpoint"`
 	IdentityPlatformCustomEndpoint         pulumi.StringPtrOutput `pulumi:"identityPlatformCustomEndpoint"`
 	ImpersonateServiceAccount              pulumi.StringPtrOutput `pulumi:"impersonateServiceAccount"`
+	IntegrationConnectorsCustomEndpoint    pulumi.StringPtrOutput `pulumi:"integrationConnectorsCustomEndpoint"`
 	KmsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
@@ -157,6 +158,7 @@ type Provider struct {
 	TagsLocationCustomEndpoint             pulumi.StringPtrOutput `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"tpuCustomEndpoint"`
 	TpuV2CustomEndpoint                    pulumi.StringPtrOutput `pulumi:"tpuV2CustomEndpoint"`
+	UniverseDomain                         pulumi.StringPtrOutput `pulumi:"universeDomain"`
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
@@ -267,6 +269,7 @@ type providerArgs struct {
 	DnsCustomEndpoint                      *string           `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint               *string           `pulumi:"documentAiCustomEndpoint"`
 	DocumentAiWarehouseCustomEndpoint      *string           `pulumi:"documentAiWarehouseCustomEndpoint"`
+	EdgecontainerCustomEndpoint            *string           `pulumi:"edgecontainerCustomEndpoint"`
 	EdgenetworkCustomEndpoint              *string           `pulumi:"edgenetworkCustomEndpoint"`
 	EssentialContactsCustomEndpoint        *string           `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint                 *string           `pulumi:"eventarcCustomEndpoint"`
@@ -294,6 +297,7 @@ type providerArgs struct {
 	IdentityPlatformCustomEndpoint         *string           `pulumi:"identityPlatformCustomEndpoint"`
 	ImpersonateServiceAccount              *string           `pulumi:"impersonateServiceAccount"`
 	ImpersonateServiceAccountDelegates     []string          `pulumi:"impersonateServiceAccountDelegates"`
+	IntegrationConnectorsCustomEndpoint    *string           `pulumi:"integrationConnectorsCustomEndpoint"`
 	KmsCustomEndpoint                      *string           `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                  *string           `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   *string           `pulumi:"lookerCustomEndpoint"`
@@ -340,6 +344,7 @@ type providerArgs struct {
 	TagsLocationCustomEndpoint             *string           `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      *string           `pulumi:"tpuCustomEndpoint"`
 	TpuV2CustomEndpoint                    *string           `pulumi:"tpuV2CustomEndpoint"`
+	UniverseDomain                         *string           `pulumi:"universeDomain"`
 	UserProjectOverride                    *bool             `pulumi:"userProjectOverride"`
 	VertexAiCustomEndpoint                 *string           `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             *string           `pulumi:"vmwareengineCustomEndpoint"`
@@ -421,6 +426,7 @@ type ProviderArgs struct {
 	DnsCustomEndpoint                      pulumi.StringPtrInput
 	DocumentAiCustomEndpoint               pulumi.StringPtrInput
 	DocumentAiWarehouseCustomEndpoint      pulumi.StringPtrInput
+	EdgecontainerCustomEndpoint            pulumi.StringPtrInput
 	EdgenetworkCustomEndpoint              pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint        pulumi.StringPtrInput
 	EventarcCustomEndpoint                 pulumi.StringPtrInput
@@ -448,6 +454,7 @@ type ProviderArgs struct {
 	IdentityPlatformCustomEndpoint         pulumi.StringPtrInput
 	ImpersonateServiceAccount              pulumi.StringPtrInput
 	ImpersonateServiceAccountDelegates     pulumi.StringArrayInput
+	IntegrationConnectorsCustomEndpoint    pulumi.StringPtrInput
 	KmsCustomEndpoint                      pulumi.StringPtrInput
 	LoggingCustomEndpoint                  pulumi.StringPtrInput
 	LookerCustomEndpoint                   pulumi.StringPtrInput
@@ -494,6 +501,7 @@ type ProviderArgs struct {
 	TagsLocationCustomEndpoint             pulumi.StringPtrInput
 	TpuCustomEndpoint                      pulumi.StringPtrInput
 	TpuV2CustomEndpoint                    pulumi.StringPtrInput
+	UniverseDomain                         pulumi.StringPtrInput
 	UserProjectOverride                    pulumi.BoolPtrInput
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
 	VmwareengineCustomEndpoint             pulumi.StringPtrInput
@@ -526,12 +534,6 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
-func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -544,12 +546,6 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
-}
-
-func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderOutput) AccessApprovalCustomEndpoint() pulumi.StringPtrOutput {
@@ -820,6 +816,10 @@ func (o ProviderOutput) DocumentAiWarehouseCustomEndpoint() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DocumentAiWarehouseCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) EdgecontainerCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EdgecontainerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) EdgenetworkCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EdgenetworkCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -922,6 +922,10 @@ func (o ProviderOutput) IdentityPlatformCustomEndpoint() pulumi.StringPtrOutput 
 
 func (o ProviderOutput) ImpersonateServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ImpersonateServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) IntegrationConnectorsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.IntegrationConnectorsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) KmsCustomEndpoint() pulumi.StringPtrOutput {
@@ -1102,6 +1106,10 @@ func (o ProviderOutput) TpuCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) TpuV2CustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TpuV2CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) UniverseDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UniverseDomain }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) VertexAiCustomEndpoint() pulumi.StringPtrOutput {

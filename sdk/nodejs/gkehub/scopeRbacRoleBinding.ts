@@ -19,7 +19,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ScopeRBACRoleBinding can be imported using any of these accepted formats
+ * ScopeRBACRoleBinding can be imported using any of these accepted formats* `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}` * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}` * `{{scope_id}}/{{scope_rbac_role_binding_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ScopeRBACRoleBinding using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}"
+ *
+ *  to = google_gke_hub_scope_rbac_role_binding.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ScopeRBACRoleBinding can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}

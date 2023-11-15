@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Health Checks determine whether instances are responsive and able to do work.
@@ -458,7 +457,17 @@ import (
 //
 // ## Import
 //
-// # HealthCheck can be imported using any of these accepted formats
+// HealthCheck can be imported using any of these accepted formats* `projects/{{project}}/global/healthChecks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HealthCheck using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/healthChecks/{{name}}"
+//
+//	to = google_compute_health_check.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/healthCheck:HealthCheck When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HealthCheck can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -819,12 +828,6 @@ func (i *HealthCheck) ToHealthCheckOutputWithContext(ctx context.Context) Health
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckOutput)
 }
 
-func (i *HealthCheck) ToOutput(ctx context.Context) pulumix.Output[*HealthCheck] {
-	return pulumix.Output[*HealthCheck]{
-		OutputState: i.ToHealthCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HealthCheckArrayInput is an input type that accepts HealthCheckArray and HealthCheckArrayOutput values.
 // You can construct a concrete instance of `HealthCheckArrayInput` via:
 //
@@ -848,12 +851,6 @@ func (i HealthCheckArray) ToHealthCheckArrayOutput() HealthCheckArrayOutput {
 
 func (i HealthCheckArray) ToHealthCheckArrayOutputWithContext(ctx context.Context) HealthCheckArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckArrayOutput)
-}
-
-func (i HealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]*HealthCheck] {
-	return pulumix.Output[[]*HealthCheck]{
-		OutputState: i.ToHealthCheckArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HealthCheckMapInput is an input type that accepts HealthCheckMap and HealthCheckMapOutput values.
@@ -881,12 +878,6 @@ func (i HealthCheckMap) ToHealthCheckMapOutputWithContext(ctx context.Context) H
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckMapOutput)
 }
 
-func (i HealthCheckMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HealthCheck] {
-	return pulumix.Output[map[string]*HealthCheck]{
-		OutputState: i.ToHealthCheckMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckOutput) ElementType() reflect.Type {
@@ -899,12 +890,6 @@ func (o HealthCheckOutput) ToHealthCheckOutput() HealthCheckOutput {
 
 func (o HealthCheckOutput) ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput {
 	return o
-}
-
-func (o HealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthCheck] {
-	return pulumix.Output[*HealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How often (in seconds) to send a health check. The default value is 5
@@ -1028,12 +1013,6 @@ func (o HealthCheckArrayOutput) ToHealthCheckArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o HealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HealthCheck] {
-	return pulumix.Output[[]*HealthCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HealthCheckArrayOutput) Index(i pulumi.IntInput) HealthCheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HealthCheck {
 		return vs[0].([]*HealthCheck)[vs[1].(int)]
@@ -1052,12 +1031,6 @@ func (o HealthCheckMapOutput) ToHealthCheckMapOutput() HealthCheckMapOutput {
 
 func (o HealthCheckMapOutput) ToHealthCheckMapOutputWithContext(ctx context.Context) HealthCheckMapOutput {
 	return o
-}
-
-func (o HealthCheckMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HealthCheck] {
-	return pulumix.Output[map[string]*HealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthCheckMapOutput) MapIndex(k pulumi.StringInput) HealthCheckOutput {

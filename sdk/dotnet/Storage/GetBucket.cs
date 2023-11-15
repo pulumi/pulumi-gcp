@@ -114,6 +114,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> CustomPlacementConfigs;
         public readonly bool DefaultEventBasedHold;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly bool EnableObjectRetention;
         public readonly ImmutableArray<Outputs.GetBucketEncryptionResult> Encryptions;
         public readonly bool ForceDestroy;
         /// <summary>
@@ -148,6 +149,8 @@ namespace Pulumi.Gcp.Storage
             bool defaultEventBasedHold,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            bool enableObjectRetention,
 
             ImmutableArray<Outputs.GetBucketEncryptionResult> encryptions,
 
@@ -192,6 +195,7 @@ namespace Pulumi.Gcp.Storage
             CustomPlacementConfigs = customPlacementConfigs;
             DefaultEventBasedHold = defaultEventBasedHold;
             EffectiveLabels = effectiveLabels;
+            EnableObjectRetention = enableObjectRetention;
             Encryptions = encryptions;
             ForceDestroy = forceDestroy;
             Id = id;

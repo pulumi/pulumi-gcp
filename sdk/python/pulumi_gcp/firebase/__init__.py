@@ -17,6 +17,7 @@ from .get_hosting_channel import *
 from .get_web_app import *
 from .get_web_app_config import *
 from .hosting_channel import *
+from .hosting_custom_domain import *
 from .hosting_release import *
 from .hosting_site import *
 from .hosting_version import *

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a NodeGroup resource to manage a group of sole-tenant nodes.
@@ -54,6 +53,42 @@ import (
 //				InitialSize:  pulumi.Int(1),
 //				NodeTemplate: soletenant_tmpl.ID(),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Node Group Maintenance Interval
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("c2-node-60-240"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
+//				Zone:                pulumi.String("us-central1-a"),
+//				Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
+//				InitialSize:         pulumi.Int(1),
+//				NodeTemplate:        soletenant_tmpl.ID(),
+//				MaintenanceInterval: pulumi.String("RECURRENT"),
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -161,7 +196,17 @@ import (
 //
 // ## Import
 //
-// # NodeGroup can be imported using any of these accepted formats
+// NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
+//
+//	to = google_compute_node_group.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -200,6 +245,12 @@ type NodeGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrOutput `pulumi:"initialSize"`
+	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	MaintenanceInterval pulumi.StringOutput `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrOutput `pulumi:"maintenancePolicy"`
 	// contains properties for the timeframe of maintenance
@@ -269,6 +320,12 @@ type nodeGroupState struct {
 	Description *string `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
+	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	MaintenanceInterval *string `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// contains properties for the timeframe of maintenance
@@ -306,6 +363,12 @@ type NodeGroupState struct {
 	Description pulumi.StringPtrInput
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
+	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	MaintenanceInterval pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
 	// contains properties for the timeframe of maintenance
@@ -345,6 +408,12 @@ type nodeGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
+	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	MaintenanceInterval *string `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// contains properties for the timeframe of maintenance
@@ -377,6 +446,12 @@ type NodeGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
+	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	MaintenanceInterval pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
 	// contains properties for the timeframe of maintenance
@@ -421,12 +496,6 @@ func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupOutput)
 }
 
-func (i *NodeGroup) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup] {
-	return pulumix.Output[*NodeGroup]{
-		OutputState: i.ToNodeGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeGroupArrayInput is an input type that accepts NodeGroupArray and NodeGroupArrayOutput values.
 // You can construct a concrete instance of `NodeGroupArrayInput` via:
 //
@@ -450,12 +519,6 @@ func (i NodeGroupArray) ToNodeGroupArrayOutput() NodeGroupArrayOutput {
 
 func (i NodeGroupArray) ToNodeGroupArrayOutputWithContext(ctx context.Context) NodeGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupArrayOutput)
-}
-
-func (i NodeGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*NodeGroup] {
-	return pulumix.Output[[]*NodeGroup]{
-		OutputState: i.ToNodeGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeGroupMapInput is an input type that accepts NodeGroupMap and NodeGroupMapOutput values.
@@ -483,12 +546,6 @@ func (i NodeGroupMap) ToNodeGroupMapOutputWithContext(ctx context.Context) NodeG
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupMapOutput)
 }
 
-func (i NodeGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeGroup] {
-	return pulumix.Output[map[string]*NodeGroup]{
-		OutputState: i.ToNodeGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeGroupOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupOutput) ElementType() reflect.Type {
@@ -501,12 +558,6 @@ func (o NodeGroupOutput) ToNodeGroupOutput() NodeGroupOutput {
 
 func (o NodeGroupOutput) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput {
 	return o
-}
-
-func (o NodeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup] {
-	return pulumix.Output[*NodeGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If you use sole-tenant nodes for your workloads, you can use the node
@@ -530,6 +581,15 @@ func (o NodeGroupOutput) Description() pulumi.StringPtrOutput {
 // The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 func (o NodeGroupOutput) InitialSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.IntPtrOutput { return v.InitialSize }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+func (o NodeGroupOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
 // Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
@@ -596,12 +656,6 @@ func (o NodeGroupArrayOutput) ToNodeGroupArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o NodeGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NodeGroup] {
-	return pulumix.Output[[]*NodeGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeGroupArrayOutput) Index(i pulumi.IntInput) NodeGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeGroup {
 		return vs[0].([]*NodeGroup)[vs[1].(int)]
@@ -620,12 +674,6 @@ func (o NodeGroupMapOutput) ToNodeGroupMapOutput() NodeGroupMapOutput {
 
 func (o NodeGroupMapOutput) ToNodeGroupMapOutputWithContext(ctx context.Context) NodeGroupMapOutput {
 	return o
-}
-
-func (o NodeGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeGroup] {
-	return pulumix.Output[map[string]*NodeGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeGroupMapOutput) MapIndex(k pulumi.StringInput) NodeGroupOutput {

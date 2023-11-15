@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An `Environment Group attachment` in Apigee.
@@ -142,7 +141,17 @@ import (
 //
 // ## Import
 //
-// # EnvgroupAttachment can be imported using any of these accepted formats
+// EnvgroupAttachment can be imported using any of these accepted formats* `{{envgroup_id}}/attachments/{{name}}` * `{{envgroup_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EnvgroupAttachment using one of the formats above. For exampletf import {
+//
+//	id = "{{envgroup_id}}/attachments/{{name}}"
+//
+//	to = google_apigee_envgroup_attachment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EnvgroupAttachment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -276,12 +285,6 @@ func (i *EnvGroupAttachment) ToEnvGroupAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupAttachmentOutput)
 }
 
-func (i *EnvGroupAttachment) ToOutput(ctx context.Context) pulumix.Output[*EnvGroupAttachment] {
-	return pulumix.Output[*EnvGroupAttachment]{
-		OutputState: i.ToEnvGroupAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvGroupAttachmentArrayInput is an input type that accepts EnvGroupAttachmentArray and EnvGroupAttachmentArrayOutput values.
 // You can construct a concrete instance of `EnvGroupAttachmentArrayInput` via:
 //
@@ -305,12 +308,6 @@ func (i EnvGroupAttachmentArray) ToEnvGroupAttachmentArrayOutput() EnvGroupAttac
 
 func (i EnvGroupAttachmentArray) ToEnvGroupAttachmentArrayOutputWithContext(ctx context.Context) EnvGroupAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupAttachmentArrayOutput)
-}
-
-func (i EnvGroupAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvGroupAttachment] {
-	return pulumix.Output[[]*EnvGroupAttachment]{
-		OutputState: i.ToEnvGroupAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvGroupAttachmentMapInput is an input type that accepts EnvGroupAttachmentMap and EnvGroupAttachmentMapOutput values.
@@ -338,12 +335,6 @@ func (i EnvGroupAttachmentMap) ToEnvGroupAttachmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupAttachmentMapOutput)
 }
 
-func (i EnvGroupAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvGroupAttachment] {
-	return pulumix.Output[map[string]*EnvGroupAttachment]{
-		OutputState: i.ToEnvGroupAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvGroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupAttachmentOutput) ElementType() reflect.Type {
@@ -356,12 +347,6 @@ func (o EnvGroupAttachmentOutput) ToEnvGroupAttachmentOutput() EnvGroupAttachmen
 
 func (o EnvGroupAttachmentOutput) ToEnvGroupAttachmentOutputWithContext(ctx context.Context) EnvGroupAttachmentOutput {
 	return o
-}
-
-func (o EnvGroupAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvGroupAttachment] {
-	return pulumix.Output[*EnvGroupAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Apigee environment group associated with the Apigee environment,
@@ -396,12 +381,6 @@ func (o EnvGroupAttachmentArrayOutput) ToEnvGroupAttachmentArrayOutputWithContex
 	return o
 }
 
-func (o EnvGroupAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvGroupAttachment] {
-	return pulumix.Output[[]*EnvGroupAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvGroupAttachmentArrayOutput) Index(i pulumi.IntInput) EnvGroupAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvGroupAttachment {
 		return vs[0].([]*EnvGroupAttachment)[vs[1].(int)]
@@ -420,12 +399,6 @@ func (o EnvGroupAttachmentMapOutput) ToEnvGroupAttachmentMapOutput() EnvGroupAtt
 
 func (o EnvGroupAttachmentMapOutput) ToEnvGroupAttachmentMapOutputWithContext(ctx context.Context) EnvGroupAttachmentMapOutput {
 	return o
-}
-
-func (o EnvGroupAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvGroupAttachment] {
-	return pulumix.Output[map[string]*EnvGroupAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvGroupAttachmentMapOutput) MapIndex(k pulumi.StringInput) EnvGroupAttachmentOutput {

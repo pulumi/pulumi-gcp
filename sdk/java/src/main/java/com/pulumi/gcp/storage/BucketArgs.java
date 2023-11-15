@@ -88,6 +88,21 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     * 
+     */
+    @Import(name="enableObjectRetention")
+    private @Nullable Output<Boolean> enableObjectRetention;
+
+    /**
+     * @return Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     * 
+     */
+    public Optional<Output<Boolean>> enableObjectRetention() {
+        return Optional.ofNullable(this.enableObjectRetention);
+    }
+
+    /**
      * The bucket&#39;s encryption configuration. Structure is documented below.
      * 
      */
@@ -329,6 +344,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         this.cors = $.cors;
         this.customPlacementConfig = $.customPlacementConfig;
         this.defaultEventBasedHold = $.defaultEventBasedHold;
+        this.enableObjectRetention = $.enableObjectRetention;
         this.encryption = $.encryption;
         this.forceDestroy = $.forceDestroy;
         this.labels = $.labels;
@@ -456,6 +472,27 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
             return defaultEventBasedHold(Output.of(defaultEventBasedHold));
+        }
+
+        /**
+         * @param enableObjectRetention Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableObjectRetention(@Nullable Output<Boolean> enableObjectRetention) {
+            $.enableObjectRetention = enableObjectRetention;
+            return this;
+        }
+
+        /**
+         * @param enableObjectRetention Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableObjectRetention(Boolean enableObjectRetention) {
+            return enableObjectRetention(Output.of(enableObjectRetention));
         }
 
         /**

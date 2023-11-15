@@ -44,10 +44,18 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     private @Nullable String privateNetwork;
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
     /**
-     * @return Whether SSL connections over IP are enforced or not.
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
      * 
      */
     private @Nullable Boolean requireSsl;
+    /**
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+     * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+     * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+     * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+     * 
+     */
+    private @Nullable String sslMode;
 
     private DatabaseInstanceSettingsIpConfiguration() {}
     /**
@@ -91,11 +99,21 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return this.pscConfigs == null ? List.of() : this.pscConfigs;
     }
     /**
-     * @return Whether SSL connections over IP are enforced or not.
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
      * 
      */
     public Optional<Boolean> requireSsl() {
         return Optional.ofNullable(this.requireSsl);
+    }
+    /**
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+     * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+     * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+     * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+     * 
+     */
+    public Optional<String> sslMode() {
+        return Optional.ofNullable(this.sslMode);
     }
 
     public static Builder builder() {
@@ -114,6 +132,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         private @Nullable String privateNetwork;
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
         private @Nullable Boolean requireSsl;
+        private @Nullable String sslMode;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,6 +143,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.requireSsl = defaults.requireSsl;
+    	      this.sslMode = defaults.sslMode;
         }
 
         @CustomType.Setter
@@ -167,6 +187,11 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             this.requireSsl = requireSsl;
             return this;
         }
+        @CustomType.Setter
+        public Builder sslMode(@Nullable String sslMode) {
+            this.sslMode = sslMode;
+            return this;
+        }
         public DatabaseInstanceSettingsIpConfiguration build() {
             final var o = new DatabaseInstanceSettingsIpConfiguration();
             o.allocatedIpRange = allocatedIpRange;
@@ -176,6 +201,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             o.privateNetwork = privateNetwork;
             o.pscConfigs = pscConfigs;
             o.requireSsl = requireSsl;
+            o.sslMode = sslMode;
             return o;
         }
     }

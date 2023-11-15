@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "gcp:alloydb/instance:Instance":
 		r = &Instance{}
+	case "gcp:alloydb/user:User":
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"alloydb/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"alloydb/user",
 		&module{version},
 	)
 }

@@ -253,7 +253,15 @@ class HmacKey(pulumi.CustomResource):
 
         ## Import
 
-        HmacKey can be imported using any of these accepted formats
+        HmacKey can be imported using any of these accepted formats* `projects/{{project}}/hmacKeys/{{access_id}}` * `{{project}}/{{access_id}}` * `{{access_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HmacKey using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/hmacKeys/{{access_id}}"
+
+         to = google_storage_hmac_key.default }
+
+        ```sh
+         $ pulumi import gcp:storage/hmacKey:HmacKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HmacKey can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
@@ -317,7 +325,15 @@ class HmacKey(pulumi.CustomResource):
 
         ## Import
 
-        HmacKey can be imported using any of these accepted formats
+        HmacKey can be imported using any of these accepted formats* `projects/{{project}}/hmacKeys/{{access_id}}` * `{{project}}/{{access_id}}` * `{{access_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HmacKey using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/hmacKeys/{{access_id}}"
+
+         to = google_storage_hmac_key.default }
+
+        ```sh
+         $ pulumi import gcp:storage/hmacKey:HmacKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HmacKey can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Persistent disks are durable storage devices that function similarly to
@@ -181,7 +180,17 @@ import (
 //
 // ## Import
 //
-// # RegionDisk can be imported using any of these accepted formats
+// RegionDisk can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/disks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionDisk using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/disks/{{name}}"
+//
+//	to = google_compute_region_disk.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/regionDisk:RegionDisk When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionDisk can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -818,12 +827,6 @@ func (i *RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDi
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskOutput)
 }
 
-func (i *RegionDisk) ToOutput(ctx context.Context) pulumix.Output[*RegionDisk] {
-	return pulumix.Output[*RegionDisk]{
-		OutputState: i.ToRegionDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionDiskArrayInput is an input type that accepts RegionDiskArray and RegionDiskArrayOutput values.
 // You can construct a concrete instance of `RegionDiskArrayInput` via:
 //
@@ -847,12 +850,6 @@ func (i RegionDiskArray) ToRegionDiskArrayOutput() RegionDiskArrayOutput {
 
 func (i RegionDiskArray) ToRegionDiskArrayOutputWithContext(ctx context.Context) RegionDiskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskArrayOutput)
-}
-
-func (i RegionDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDisk] {
-	return pulumix.Output[[]*RegionDisk]{
-		OutputState: i.ToRegionDiskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionDiskMapInput is an input type that accepts RegionDiskMap and RegionDiskMapOutput values.
@@ -880,12 +877,6 @@ func (i RegionDiskMap) ToRegionDiskMapOutputWithContext(ctx context.Context) Reg
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskMapOutput)
 }
 
-func (i RegionDiskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDisk] {
-	return pulumix.Output[map[string]*RegionDisk]{
-		OutputState: i.ToRegionDiskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionDiskOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskOutput) ElementType() reflect.Type {
@@ -898,12 +889,6 @@ func (o RegionDiskOutput) ToRegionDiskOutput() RegionDiskOutput {
 
 func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
 	return o
-}
-
-func (o RegionDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionDisk] {
-	return pulumix.Output[*RegionDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A nested object resource
@@ -1121,12 +1106,6 @@ func (o RegionDiskArrayOutput) ToRegionDiskArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RegionDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionDisk] {
-	return pulumix.Output[[]*RegionDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionDiskArrayOutput) Index(i pulumi.IntInput) RegionDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionDisk {
 		return vs[0].([]*RegionDisk)[vs[1].(int)]
@@ -1145,12 +1124,6 @@ func (o RegionDiskMapOutput) ToRegionDiskMapOutput() RegionDiskMapOutput {
 
 func (o RegionDiskMapOutput) ToRegionDiskMapOutputWithContext(ctx context.Context) RegionDiskMapOutput {
 	return o
-}
-
-func (o RegionDiskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionDisk] {
-	return pulumix.Output[map[string]*RegionDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionDiskMapOutput) MapIndex(k pulumi.StringInput) RegionDiskOutput {

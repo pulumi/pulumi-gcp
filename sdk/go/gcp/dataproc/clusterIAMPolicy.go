@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
@@ -126,29 +125,23 @@ import (
 //
 // ## Import
 //
-// Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
+// ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+//
+//	id = projects/{project}/regions/{region}/clusters/{cluster}
+//
+//	to = google_dataproc_cluster_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
+//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
 //
 // ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ClusterIAMPolicy struct {
 	pulumi.CustomResourceState
 
@@ -350,12 +343,6 @@ func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyOutput)
 }
 
-func (i *ClusterIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMPolicy] {
-	return pulumix.Output[*ClusterIAMPolicy]{
-		OutputState: i.ToClusterIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterIAMPolicyArrayInput is an input type that accepts ClusterIAMPolicyArray and ClusterIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `ClusterIAMPolicyArrayInput` via:
 //
@@ -379,12 +366,6 @@ func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyA
 
 func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutputWithContext(ctx context.Context) ClusterIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyArrayOutput)
-}
-
-func (i ClusterIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterIAMPolicy] {
-	return pulumix.Output[[]*ClusterIAMPolicy]{
-		OutputState: i.ToClusterIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterIAMPolicyMapInput is an input type that accepts ClusterIAMPolicyMap and ClusterIAMPolicyMapOutput values.
@@ -412,12 +393,6 @@ func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyMapOutput)
 }
 
-func (i ClusterIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterIAMPolicy] {
-	return pulumix.Output[map[string]*ClusterIAMPolicy]{
-		OutputState: i.ToClusterIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyOutput) ElementType() reflect.Type {
@@ -430,12 +405,6 @@ func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutpu
 
 func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutputWithContext(ctx context.Context) ClusterIAMPolicyOutput {
 	return o
-}
-
-func (o ClusterIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMPolicy] {
-	return pulumix.Output[*ClusterIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
@@ -492,12 +461,6 @@ func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutputWithContext(ct
 	return o
 }
 
-func (o ClusterIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterIAMPolicy] {
-	return pulumix.Output[[]*ClusterIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterIAMPolicyArrayOutput) Index(i pulumi.IntInput) ClusterIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMPolicy {
 		return vs[0].([]*ClusterIAMPolicy)[vs[1].(int)]
@@ -516,12 +479,6 @@ func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutput() ClusterIAMPolic
 
 func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutputWithContext(ctx context.Context) ClusterIAMPolicyMapOutput {
 	return o
-}
-
-func (o ClusterIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterIAMPolicy] {
-	return pulumix.Output[map[string]*ClusterIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMPolicyOutput {

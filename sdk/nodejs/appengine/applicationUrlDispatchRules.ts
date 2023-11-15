@@ -58,7 +58,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ApplicationUrlDispatchRules can be imported using any of these accepted formats:
+ * ApplicationUrlDispatchRules can be imported using any of these accepted formats* `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ApplicationUrlDispatchRules using one of the formats above. For exampletf import {
+ *
+ *  id = "{{project}}"
+ *
+ *  to = google_app_engine_application_url_dispatch_rules.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ApplicationUrlDispatchRules can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}

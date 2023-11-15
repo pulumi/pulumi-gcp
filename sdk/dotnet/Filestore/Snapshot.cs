@@ -108,7 +108,15 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// ## Import
     /// 
-    /// Snapshot can be imported using any of these accepted formats
+    /// Snapshot can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}` * `{{project}}/{{location}}/{{instance}}/{{name}}` * `{{location}}/{{instance}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Snapshot using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}"
+    /// 
+    ///  to = google_filestore_snapshot.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:filestore/snapshot:Snapshot When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Snapshot can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:filestore/snapshot:Snapshot default projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}

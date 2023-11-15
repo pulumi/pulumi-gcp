@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
@@ -124,33 +123,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+//	id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
+//
+//	to = google_healthcare_hl7_v2_store_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `hl7_v2_store_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
+//	$ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
 //
 // ```
 type Hl7StoreIamPolicy struct {
@@ -324,12 +311,6 @@ func (i *Hl7StoreIamPolicy) ToHl7StoreIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyOutput)
 }
 
-func (i *Hl7StoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamPolicy] {
-	return pulumix.Output[*Hl7StoreIamPolicy]{
-		OutputState: i.ToHl7StoreIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hl7StoreIamPolicyArrayInput is an input type that accepts Hl7StoreIamPolicyArray and Hl7StoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreIamPolicyArrayInput` via:
 //
@@ -353,12 +334,6 @@ func (i Hl7StoreIamPolicyArray) ToHl7StoreIamPolicyArrayOutput() Hl7StoreIamPoli
 
 func (i Hl7StoreIamPolicyArray) ToHl7StoreIamPolicyArrayOutputWithContext(ctx context.Context) Hl7StoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyArrayOutput)
-}
-
-func (i Hl7StoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamPolicy] {
-	return pulumix.Output[[]*Hl7StoreIamPolicy]{
-		OutputState: i.ToHl7StoreIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Hl7StoreIamPolicyMapInput is an input type that accepts Hl7StoreIamPolicyMap and Hl7StoreIamPolicyMapOutput values.
@@ -386,12 +361,6 @@ func (i Hl7StoreIamPolicyMap) ToHl7StoreIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamPolicyMapOutput)
 }
 
-func (i Hl7StoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamPolicy] {
-	return pulumix.Output[map[string]*Hl7StoreIamPolicy]{
-		OutputState: i.ToHl7StoreIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamPolicyOutput) ElementType() reflect.Type {
@@ -404,12 +373,6 @@ func (o Hl7StoreIamPolicyOutput) ToHl7StoreIamPolicyOutput() Hl7StoreIamPolicyOu
 
 func (o Hl7StoreIamPolicyOutput) ToHl7StoreIamPolicyOutputWithContext(ctx context.Context) Hl7StoreIamPolicyOutput {
 	return o
-}
-
-func (o Hl7StoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamPolicy] {
-	return pulumix.Output[*Hl7StoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the HL7v2 store's IAM policy.
@@ -454,12 +417,6 @@ func (o Hl7StoreIamPolicyArrayOutput) ToHl7StoreIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o Hl7StoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamPolicy] {
-	return pulumix.Output[[]*Hl7StoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Hl7StoreIamPolicyArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7StoreIamPolicy {
 		return vs[0].([]*Hl7StoreIamPolicy)[vs[1].(int)]
@@ -478,12 +435,6 @@ func (o Hl7StoreIamPolicyMapOutput) ToHl7StoreIamPolicyMapOutput() Hl7StoreIamPo
 
 func (o Hl7StoreIamPolicyMapOutput) ToHl7StoreIamPolicyMapOutputWithContext(ctx context.Context) Hl7StoreIamPolicyMapOutput {
 	return o
-}
-
-func (o Hl7StoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamPolicy] {
-	return pulumix.Output[map[string]*Hl7StoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamPolicyOutput {

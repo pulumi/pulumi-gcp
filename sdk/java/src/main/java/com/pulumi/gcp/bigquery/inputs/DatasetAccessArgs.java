@@ -68,6 +68,23 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+     * group, domain, or special group. For example: `allUsers`
+     * 
+     */
+    @Import(name="iamMember")
+    private @Nullable Output<String> iamMember;
+
+    /**
+     * @return Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+     * group, domain, or special group. For example: `allUsers`
+     * 
+     */
+    public Optional<Output<String>> iamMember() {
+        return Optional.ofNullable(this.iamMember);
+    }
+
+    /**
      * Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles
      * are supported. Predefined roles that have equivalent basic roles
@@ -178,6 +195,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
         this.dataset = $.dataset;
         this.domain = $.domain;
         this.groupByEmail = $.groupByEmail;
+        this.iamMember = $.iamMember;
         this.role = $.role;
         this.routine = $.routine;
         this.specialGroup = $.specialGroup;
@@ -268,6 +286,29 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupByEmail(String groupByEmail) {
             return groupByEmail(Output.of(groupByEmail));
+        }
+
+        /**
+         * @param iamMember Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+         * group, domain, or special group. For example: `allUsers`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamMember(@Nullable Output<String> iamMember) {
+            $.iamMember = iamMember;
+            return this;
+        }
+
+        /**
+         * @param iamMember Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+         * group, domain, or special group. For example: `allUsers`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamMember(String iamMember) {
+            return iamMember(Output.of(iamMember));
         }
 
         /**

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a VM instance resource within GCE. For more information see
@@ -34,14 +33,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultAccount, err := serviceaccount.NewAccount(ctx, "defaultAccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("service_account_id"),
-//				DisplayName: pulumi.String("Service Account"),
+//				AccountId:   pulumi.String("my-custom-sa"),
+//				DisplayName: pulumi.String("Custom SA for VM Instance"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
-//				MachineType: pulumi.String("e2-medium"),
+//				MachineType: pulumi.String("n2-standard-2"),
 //				Zone:        pulumi.String("us-central1-a"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo"),
@@ -57,7 +56,7 @@ import (
 //				},
 //				ScratchDisks: compute.InstanceScratchDiskArray{
 //					&compute.InstanceScratchDiskArgs{
-//						Interface: pulumi.String("SCSI"),
+//						Interface: pulumi.String("NVME"),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -90,7 +89,17 @@ import (
 //
 // ## Import
 //
-// # Instances can be imported using any of these accepted formats
+// Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instances using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/instances/{{name}}"
+//
+//	to = google_compute_instance.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instances can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -109,8 +118,6 @@ import (
 //	$ pulumi import gcp:compute/instance:Instance default {{name}}
 //
 // ```
-//
-//	[custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -166,9 +173,9 @@ type Instance struct {
 	//
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
-	// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
-	// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -348,9 +355,9 @@ type instanceState struct {
 	//
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
-	// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
-	// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType *string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -487,9 +494,9 @@ type InstanceState struct {
 	//
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
-	// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
-	// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -620,9 +627,9 @@ type instanceArgs struct {
 	//
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
-	// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
-	// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -742,9 +749,9 @@ type InstanceArgs struct {
 	//
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
-	// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
-	// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType pulumi.StringInput
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -843,12 +850,6 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
 }
 
-func (i *Instance) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: i.ToInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
@@ -872,12 +873,6 @@ func (i InstanceArray) ToInstanceArrayOutput() InstanceArrayOutput {
 
 func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) InstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceArrayOutput)
-}
-
-func (i InstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: i.ToInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
@@ -905,12 +900,6 @@ func (i InstanceMap) ToInstanceMapOutputWithContext(ctx context.Context) Instanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMapOutput)
 }
 
-func (i InstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: i.ToInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceOutput struct{ *pulumi.OutputState }
 
 func (InstanceOutput) ElementType() reflect.Type {
@@ -923,12 +912,6 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
-}
-
-func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
@@ -1037,9 +1020,9 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 //
 // **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 //
-// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
 //
-// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 func (o InstanceOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -1198,12 +1181,6 @@ func (o InstanceArrayOutput) ToInstanceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceArrayOutput) Index(i pulumi.IntInput) InstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Instance {
 		return vs[0].([]*Instance)[vs[1].(int)]
@@ -1222,12 +1199,6 @@ func (o InstanceMapOutput) ToInstanceMapOutput() InstanceMapOutput {
 
 func (o InstanceMapOutput) ToInstanceMapOutputWithContext(ctx context.Context) InstanceMapOutput {
 	return o
-}
-
-func (o InstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMapOutput) MapIndex(k pulumi.StringInput) InstanceOutput {

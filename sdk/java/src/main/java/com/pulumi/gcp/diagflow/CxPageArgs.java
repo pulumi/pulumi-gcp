@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageFormArgs;
@@ -19,6 +20,25 @@ import javax.annotation.Nullable;
 public final class CxPageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxPageArgs Empty = new CxPageArgs();
+
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedSettings")
+    private @Nullable Output<CxPageAdvancedSettingsArgs> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxPageAdvancedSettingsArgs>> advancedSettings() {
+        return Optional.ofNullable(this.advancedSettings);
+    }
 
     /**
      * The human-readable name of the page, unique within the agent.
@@ -199,6 +219,7 @@ public final class CxPageArgs extends com.pulumi.resources.ResourceArgs {
     private CxPageArgs() {}
 
     private CxPageArgs(CxPageArgs $) {
+        this.advancedSettings = $.advancedSettings;
         this.displayName = $.displayName;
         this.entryFulfillment = $.entryFulfillment;
         this.eventHandlers = $.eventHandlers;
@@ -225,6 +246,31 @@ public final class CxPageArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CxPageArgs defaults) {
             $ = new CxPageArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(@Nullable Output<CxPageAdvancedSettingsArgs> advancedSettings) {
+            $.advancedSettings = advancedSettings;
+            return this;
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(CxPageAdvancedSettingsArgs advancedSettings) {
+            return advancedSettings(Output.of(advancedSettings));
         }
 
         /**

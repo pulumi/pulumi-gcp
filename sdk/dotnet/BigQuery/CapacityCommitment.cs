@@ -45,7 +45,15 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// CapacityCommitment can be imported using any of these accepted formats
+    /// CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CapacityCommitment using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}"
+    /// 
+    ///  to = google_bigquery_capacity_commitment.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CapacityCommitment can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
@@ -125,7 +133,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         /// </summary>
         [Output("renewalPlan")]
         public Output<string?> RenewalPlan { get; private set; } = null!;
@@ -233,7 +241,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         /// </summary>
         [Input("renewalPlan")]
         public Input<string>? RenewalPlan { get; set; }
@@ -315,7 +323,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         /// </summary>
         [Input("renewalPlan")]
         public Input<string>? RenewalPlan { get; set; }

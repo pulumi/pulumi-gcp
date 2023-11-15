@@ -15,8 +15,12 @@ __all__ = [
     'AccessLevelBasicCondition',
     'AccessLevelBasicConditionDevicePolicy',
     'AccessLevelBasicConditionDevicePolicyOsConstraint',
+    'AccessLevelBasicConditionVpcNetworkSource',
+    'AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork',
     'AccessLevelConditionDevicePolicy',
     'AccessLevelConditionDevicePolicyOsConstraint',
+    'AccessLevelConditionVpcNetworkSource',
+    'AccessLevelConditionVpcNetworkSourceVpcSubnetwork',
     'AccessLevelCustom',
     'AccessLevelCustomExpr',
     'AccessLevelsAccessLevel',
@@ -24,11 +28,14 @@ __all__ = [
     'AccessLevelsAccessLevelBasicCondition',
     'AccessLevelsAccessLevelBasicConditionDevicePolicy',
     'AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint',
+    'AccessLevelsAccessLevelBasicConditionVpcNetworkSource',
+    'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork',
     'AccessLevelsAccessLevelCustom',
     'AccessLevelsAccessLevelCustomExpr',
     'AccessPolicyIamBindingCondition',
     'AccessPolicyIamMemberCondition',
     'ServicePerimeterEgressPolicyEgressFrom',
+    'ServicePerimeterEgressPolicyEgressFromSource',
     'ServicePerimeterEgressPolicyEgressTo',
     'ServicePerimeterEgressPolicyEgressToOperation',
     'ServicePerimeterEgressPolicyEgressToOperationMethodSelector',
@@ -40,6 +47,7 @@ __all__ = [
     'ServicePerimeterSpec',
     'ServicePerimeterSpecEgressPolicy',
     'ServicePerimeterSpecEgressPolicyEgressFrom',
+    'ServicePerimeterSpecEgressPolicyEgressFromSource',
     'ServicePerimeterSpecEgressPolicyEgressTo',
     'ServicePerimeterSpecEgressPolicyEgressToOperation',
     'ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector',
@@ -53,6 +61,7 @@ __all__ = [
     'ServicePerimeterStatus',
     'ServicePerimeterStatusEgressPolicy',
     'ServicePerimeterStatusEgressPolicyEgressFrom',
+    'ServicePerimeterStatusEgressPolicyEgressFromSource',
     'ServicePerimeterStatusEgressPolicyEgressTo',
     'ServicePerimeterStatusEgressPolicyEgressToOperation',
     'ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector',
@@ -67,6 +76,7 @@ __all__ = [
     'ServicePerimetersServicePerimeterSpec',
     'ServicePerimetersServicePerimeterSpecEgressPolicy',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector',
@@ -80,6 +90,7 @@ __all__ = [
     'ServicePerimetersServicePerimeterStatus',
     'ServicePerimetersServicePerimeterStatusEgressPolicy',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector',
@@ -164,6 +175,8 @@ class AccessLevelBasicCondition(dict):
             suggest = "ip_subnetworks"
         elif key == "requiredAccessLevels":
             suggest = "required_access_levels"
+        elif key == "vpcNetworkSources":
+            suggest = "vpc_network_sources"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasicCondition. Access the value via the '{suggest}' property getter instead.")
@@ -182,7 +195,8 @@ class AccessLevelBasicCondition(dict):
                  members: Optional[Sequence[str]] = None,
                  negate: Optional[bool] = None,
                  regions: Optional[Sequence[str]] = None,
-                 required_access_levels: Optional[Sequence[str]] = None):
+                 required_access_levels: Optional[Sequence[str]] = None,
+                 vpc_network_sources: Optional[Sequence['outputs.AccessLevelBasicConditionVpcNetworkSource']] = None):
         """
         :param 'AccessLevelBasicConditionDevicePolicyArgs' device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
@@ -216,6 +230,8 @@ class AccessLevelBasicCondition(dict):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param Sequence['AccessLevelBasicConditionVpcNetworkSourceArgs'] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+               Structure is documented below.
         """
         if device_policy is not None:
             pulumi.set(__self__, "device_policy", device_policy)
@@ -229,6 +245,8 @@ class AccessLevelBasicCondition(dict):
             pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
             pulumi.set(__self__, "required_access_levels", required_access_levels)
+        if vpc_network_sources is not None:
+            pulumi.set(__self__, "vpc_network_sources", vpc_network_sources)
 
     @property
     @pulumi.getter(name="devicePolicy")
@@ -303,6 +321,15 @@ class AccessLevelBasicCondition(dict):
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
         return pulumi.get(self, "required_access_levels")
+
+    @property
+    @pulumi.getter(name="vpcNetworkSources")
+    def vpc_network_sources(self) -> Optional[Sequence['outputs.AccessLevelBasicConditionVpcNetworkSource']]:
+        """
+        The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network_sources")
 
 
 @pulumi.output_type
@@ -495,6 +522,91 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
 
 
 @pulumi.output_type
+class AccessLevelBasicConditionVpcNetworkSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcSubnetwork":
+            suggest = "vpc_subnetwork"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasicConditionVpcNetworkSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelBasicConditionVpcNetworkSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelBasicConditionVpcNetworkSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vpc_subnetwork: Optional['outputs.AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork'] = None):
+        """
+        :param 'AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs' vpc_subnetwork: Sub networks within a VPC network.
+               Structure is documented below.
+        """
+        if vpc_subnetwork is not None:
+            pulumi.set(__self__, "vpc_subnetwork", vpc_subnetwork)
+
+    @property
+    @pulumi.getter(name="vpcSubnetwork")
+    def vpc_subnetwork(self) -> Optional['outputs.AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork']:
+        """
+        Sub networks within a VPC network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_subnetwork")
+
+
+@pulumi.output_type
+class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcIpSubnetworks":
+            suggest = "vpc_ip_subnetworks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: str,
+                 vpc_ip_subnetworks: Optional[Sequence[str]] = None):
+        """
+        :param str network: Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+        :param Sequence[str] vpc_ip_subnetworks: CIDR block IP subnetwork specification. Must be IPv4.
+        """
+        pulumi.set(__self__, "network", network)
+        if vpc_ip_subnetworks is not None:
+            pulumi.set(__self__, "vpc_ip_subnetworks", vpc_ip_subnetworks)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="vpcIpSubnetworks")
+    def vpc_ip_subnetworks(self) -> Optional[Sequence[str]]:
+        """
+        CIDR block IP subnetwork specification. Must be IPv4.
+        """
+        return pulumi.get(self, "vpc_ip_subnetworks")
+
+
+@pulumi.output_type
 class AccessLevelConditionDevicePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -667,6 +779,91 @@ class AccessLevelConditionDevicePolicyOsConstraint(dict):
         Format: "major.minor.patch" such as "10.5.301", "9.2.1".
         """
         return pulumi.get(self, "minimum_version")
+
+
+@pulumi.output_type
+class AccessLevelConditionVpcNetworkSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcSubnetwork":
+            suggest = "vpc_subnetwork"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelConditionVpcNetworkSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelConditionVpcNetworkSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelConditionVpcNetworkSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vpc_subnetwork: Optional['outputs.AccessLevelConditionVpcNetworkSourceVpcSubnetwork'] = None):
+        """
+        :param 'AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs' vpc_subnetwork: Sub networks within a VPC network.
+               Structure is documented below.
+        """
+        if vpc_subnetwork is not None:
+            pulumi.set(__self__, "vpc_subnetwork", vpc_subnetwork)
+
+    @property
+    @pulumi.getter(name="vpcSubnetwork")
+    def vpc_subnetwork(self) -> Optional['outputs.AccessLevelConditionVpcNetworkSourceVpcSubnetwork']:
+        """
+        Sub networks within a VPC network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_subnetwork")
+
+
+@pulumi.output_type
+class AccessLevelConditionVpcNetworkSourceVpcSubnetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcIpSubnetworks":
+            suggest = "vpc_ip_subnetworks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelConditionVpcNetworkSourceVpcSubnetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelConditionVpcNetworkSourceVpcSubnetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelConditionVpcNetworkSourceVpcSubnetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: str,
+                 vpc_ip_subnetworks: Optional[Sequence[str]] = None):
+        """
+        :param str network: Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+        :param Sequence[str] vpc_ip_subnetworks: CIDR block IP subnetwork specification. Must be IPv4.
+        """
+        pulumi.set(__self__, "network", network)
+        if vpc_ip_subnetworks is not None:
+            pulumi.set(__self__, "vpc_ip_subnetworks", vpc_ip_subnetworks)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="vpcIpSubnetworks")
+    def vpc_ip_subnetworks(self) -> Optional[Sequence[str]]:
+        """
+        CIDR block IP subnetwork specification. Must be IPv4.
+        """
+        return pulumi.get(self, "vpc_ip_subnetworks")
 
 
 @pulumi.output_type
@@ -894,6 +1091,8 @@ class AccessLevelsAccessLevelBasicCondition(dict):
             suggest = "ip_subnetworks"
         elif key == "requiredAccessLevels":
             suggest = "required_access_levels"
+        elif key == "vpcNetworkSources":
+            suggest = "vpc_network_sources"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasicCondition. Access the value via the '{suggest}' property getter instead.")
@@ -912,7 +1111,8 @@ class AccessLevelsAccessLevelBasicCondition(dict):
                  members: Optional[Sequence[str]] = None,
                  negate: Optional[bool] = None,
                  regions: Optional[Sequence[str]] = None,
-                 required_access_levels: Optional[Sequence[str]] = None):
+                 required_access_levels: Optional[Sequence[str]] = None,
+                 vpc_network_sources: Optional[Sequence['outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSource']] = None):
         """
         :param 'AccessLevelsAccessLevelBasicConditionDevicePolicyArgs' device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
@@ -946,6 +1146,8 @@ class AccessLevelsAccessLevelBasicCondition(dict):
                does not exist is an error. All access levels listed must be
                granted for the Condition to be true.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param Sequence['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs'] vpc_network_sources: The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+               Structure is documented below.
         """
         if device_policy is not None:
             pulumi.set(__self__, "device_policy", device_policy)
@@ -959,6 +1161,8 @@ class AccessLevelsAccessLevelBasicCondition(dict):
             pulumi.set(__self__, "regions", regions)
         if required_access_levels is not None:
             pulumi.set(__self__, "required_access_levels", required_access_levels)
+        if vpc_network_sources is not None:
+            pulumi.set(__self__, "vpc_network_sources", vpc_network_sources)
 
     @property
     @pulumi.getter(name="devicePolicy")
@@ -1033,6 +1237,15 @@ class AccessLevelsAccessLevelBasicCondition(dict):
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
         return pulumi.get(self, "required_access_levels")
+
+    @property
+    @pulumi.getter(name="vpcNetworkSources")
+    def vpc_network_sources(self) -> Optional[Sequence['outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSource']]:
+        """
+        The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network_sources")
 
 
 @pulumi.output_type
@@ -1211,6 +1424,91 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
 
 
 @pulumi.output_type
+class AccessLevelsAccessLevelBasicConditionVpcNetworkSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcSubnetwork":
+            suggest = "vpc_subnetwork"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasicConditionVpcNetworkSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelsAccessLevelBasicConditionVpcNetworkSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelsAccessLevelBasicConditionVpcNetworkSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vpc_subnetwork: Optional['outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork'] = None):
+        """
+        :param 'AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs' vpc_subnetwork: Sub networks within a VPC network.
+               Structure is documented below.
+        """
+        if vpc_subnetwork is not None:
+            pulumi.set(__self__, "vpc_subnetwork", vpc_subnetwork)
+
+    @property
+    @pulumi.getter(name="vpcSubnetwork")
+    def vpc_subnetwork(self) -> Optional['outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork']:
+        """
+        Sub networks within a VPC network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_subnetwork")
+
+
+@pulumi.output_type
+class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcIpSubnetworks":
+            suggest = "vpc_ip_subnetworks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: str,
+                 vpc_ip_subnetworks: Optional[Sequence[str]] = None):
+        """
+        :param str network: Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+        :param Sequence[str] vpc_ip_subnetworks: CIDR block IP subnetwork specification. Must be IPv4.
+        """
+        pulumi.set(__self__, "network", network)
+        if vpc_ip_subnetworks is not None:
+            pulumi.set(__self__, "vpc_ip_subnetworks", vpc_ip_subnetworks)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="vpcIpSubnetworks")
+    def vpc_ip_subnetworks(self) -> Optional[Sequence[str]]:
+        """
+        CIDR block IP subnetwork specification. Must be IPv4.
+        """
+        return pulumi.get(self, "vpc_ip_subnetworks")
+
+
+@pulumi.output_type
 class AccessLevelsAccessLevelCustom(dict):
     def __init__(__self__, *,
                  expr: 'outputs.AccessLevelsAccessLevelCustomExpr'):
@@ -1349,6 +1647,8 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
         suggest = None
         if key == "identityType":
             suggest = "identity_type"
+        elif key == "sourceRestriction":
+            suggest = "source_restriction"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
@@ -1363,7 +1663,9 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
 
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
-                 identity_type: Optional[str] = None):
+                 identity_type: Optional[str] = None,
+                 source_restriction: Optional[str] = None,
+                 sources: Optional[Sequence['outputs.ServicePerimeterEgressPolicyEgressFromSource']] = None):
         """
         :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -1372,11 +1674,19 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
                Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+               Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        :param Sequence['ServicePerimeterEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+               Structure is documented below.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
+        if source_restriction is not None:
+            pulumi.set(__self__, "source_restriction", source_restriction)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -1398,6 +1708,60 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
         Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
+
+    @property
+    @pulumi.getter(name="sourceRestriction")
+    def source_restriction(self) -> Optional[str]:
+        """
+        Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        """
+        return pulumi.get(self, "source_restriction")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.ServicePerimeterEgressPolicyEgressFromSource']]:
+        """
+        Sources that this EgressPolicy authorizes access from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class ServicePerimeterEgressPolicyEgressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterEgressPolicyEgressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterEgressPolicyEgressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterEgressPolicyEgressFromSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None):
+        """
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        return pulumi.get(self, "access_level")
 
 
 @pulumi.output_type
@@ -2082,6 +2446,8 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
         suggest = None
         if key == "identityType":
             suggest = "identity_type"
+        elif key == "sourceRestriction":
+            suggest = "source_restriction"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
@@ -2096,7 +2462,9 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
 
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
-                 identity_type: Optional[str] = None):
+                 identity_type: Optional[str] = None,
+                 source_restriction: Optional[str] = None,
+                 sources: Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressFromSource']] = None):
         """
         :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -2105,11 +2473,19 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+               Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        :param Sequence['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+               Structure is documented below.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
+        if source_restriction is not None:
+            pulumi.set(__self__, "source_restriction", source_restriction)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -2131,6 +2507,60 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
         Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
+
+    @property
+    @pulumi.getter(name="sourceRestriction")
+    def source_restriction(self) -> Optional[str]:
+        """
+        Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        """
+        return pulumi.get(self, "source_restriction")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.ServicePerimeterSpecEgressPolicyEgressFromSource']]:
+        """
+        Sources that this EgressPolicy authorizes access from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class ServicePerimeterSpecEgressPolicyEgressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterSpecEgressPolicyEgressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterSpecEgressPolicyEgressFromSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None):
+        """
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        return pulumi.get(self, "access_level")
 
 
 @pulumi.output_type
@@ -2461,14 +2891,7 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
         """
-        :param str access_level: An `AccessLevel` resource name that allow resources within the
-               `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-               must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-               `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-               resources within the perimeter can only be accessed via Google Cloud calls
-               with request origins within the perimeter.
-               Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-               If * is specified, then all IngressSources will be allowed.
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
                Currently only projects are allowed. Format `projects/{project_number}`
@@ -2485,14 +2908,7 @@ class ServicePerimeterSpecIngressPolicyIngressFromSource(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        An `AccessLevel` resource name that allow resources within the
-        `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-        must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-        `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-        resources within the perimeter can only be accessed via Google Cloud calls
-        with request origins within the perimeter.
-        Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-        If * is specified, then all IngressSources will be allowed.
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
 
@@ -2927,6 +3343,8 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
         suggest = None
         if key == "identityType":
             suggest = "identity_type"
+        elif key == "sourceRestriction":
+            suggest = "source_restriction"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
@@ -2941,7 +3359,9 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
 
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
-                 identity_type: Optional[str] = None):
+                 identity_type: Optional[str] = None,
+                 source_restriction: Optional[str] = None,
+                 sources: Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressFromSource']] = None):
         """
         :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -2950,11 +3370,19 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+               Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        :param Sequence['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+               Structure is documented below.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
+        if source_restriction is not None:
+            pulumi.set(__self__, "source_restriction", source_restriction)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -2976,6 +3404,60 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
         Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
+
+    @property
+    @pulumi.getter(name="sourceRestriction")
+    def source_restriction(self) -> Optional[str]:
+        """
+        Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        """
+        return pulumi.get(self, "source_restriction")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.ServicePerimeterStatusEgressPolicyEgressFromSource']]:
+        """
+        Sources that this EgressPolicy authorizes access from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class ServicePerimeterStatusEgressPolicyEgressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterStatusEgressPolicyEgressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterStatusEgressPolicyEgressFromSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None):
+        """
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        return pulumi.get(self, "access_level")
 
 
 @pulumi.output_type
@@ -3306,14 +3788,7 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
         """
-        :param str access_level: An `AccessLevel` resource name that allow resources within the
-               `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-               must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-               `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-               resources within the perimeter can only be accessed via Google Cloud calls
-               with request origins within the perimeter.
-               Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-               If * is specified, then all IngressSources will be allowed.
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
                Currently only projects are allowed. Format `projects/{project_number}`
@@ -3330,14 +3805,7 @@ class ServicePerimeterStatusIngressPolicyIngressFromSource(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        An `AccessLevel` resource name that allow resources within the
-        `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-        must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-        `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-        resources within the perimeter can only be accessed via Google Cloud calls
-        with request origins within the perimeter.
-        Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-        If * is specified, then all IngressSources will be allowed.
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
 
@@ -3978,6 +4446,8 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
         suggest = None
         if key == "identityType":
             suggest = "identity_type"
+        elif key == "sourceRestriction":
+            suggest = "source_restriction"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
@@ -3992,7 +4462,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
 
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
-                 identity_type: Optional[str] = None):
+                 identity_type: Optional[str] = None,
+                 source_restriction: Optional[str] = None,
+                 sources: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource']] = None):
         """
         :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -4001,11 +4473,19 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+               Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        :param Sequence['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+               Structure is documented below.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
+        if source_restriction is not None:
+            pulumi.set(__self__, "source_restriction", source_restriction)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -4027,6 +4507,60 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
         Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
+
+    @property
+    @pulumi.getter(name="sourceRestriction")
+    def source_restriction(self) -> Optional[str]:
+        """
+        Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        """
+        return pulumi.get(self, "source_restriction")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource']]:
+        """
+        Sources that this EgressPolicy authorizes access from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None):
+        """
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        return pulumi.get(self, "access_level")
 
 
 @pulumi.output_type
@@ -4357,14 +4891,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
         """
-        :param str access_level: An `AccessLevel` resource name that allow resources within the
-               `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-               must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-               `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-               resources within the perimeter can only be accessed via Google Cloud calls
-               with request origins within the perimeter.
-               Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-               If * is specified, then all IngressSources will be allowed.
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
                Currently only projects are allowed. Format `projects/{project_number}`
@@ -4381,14 +4908,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        An `AccessLevel` resource name that allow resources within the
-        `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-        must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-        `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-        resources within the perimeter can only be accessed via Google Cloud calls
-        with request origins within the perimeter.
-        Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-        If * is specified, then all IngressSources will be allowed.
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
 
@@ -4823,6 +5343,8 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
         suggest = None
         if key == "identityType":
             suggest = "identity_type"
+        elif key == "sourceRestriction":
+            suggest = "source_restriction"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom. Access the value via the '{suggest}' property getter instead.")
@@ -4837,7 +5359,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
 
     def __init__(__self__, *,
                  identities: Optional[Sequence[str]] = None,
-                 identity_type: Optional[str] = None):
+                 identity_type: Optional[str] = None,
+                 source_restriction: Optional[str] = None,
+                 sources: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource']] = None):
         """
         :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
                Should be in the format of email address. The email address should
@@ -4846,11 +5370,19 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
                Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        :param str source_restriction: Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+               Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        :param Sequence['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs'] sources: Sources that this EgressPolicy authorizes access from.
+               Structure is documented below.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
+        if source_restriction is not None:
+            pulumi.set(__self__, "source_restriction", source_restriction)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
 
     @property
     @pulumi.getter
@@ -4872,6 +5404,60 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
         Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
+
+    @property
+    @pulumi.getter(name="sourceRestriction")
+    def source_restriction(self) -> Optional[str]:
+        """
+        Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        """
+        return pulumi.get(self, "source_restriction")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource']]:
+        """
+        Sources that this EgressPolicy authorizes access from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[str] = None):
+        """
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[str]:
+        """
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        """
+        return pulumi.get(self, "access_level")
 
 
 @pulumi.output_type
@@ -5202,14 +5788,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
                  access_level: Optional[str] = None,
                  resource: Optional[str] = None):
         """
-        :param str access_level: An `AccessLevel` resource name that allow resources within the
-               `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-               must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-               `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-               resources within the perimeter can only be accessed via Google Cloud calls
-               with request origins within the perimeter.
-               Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-               If * is specified, then all IngressSources will be allowed.
+        :param str access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         :param str resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
                Currently only projects are allowed. Format `projects/{project_number}`
@@ -5226,14 +5805,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource(dict
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[str]:
         """
-        An `AccessLevel` resource name that allow resources within the
-        `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-        must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-        `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-        resources within the perimeter can only be accessed via Google Cloud calls
-        with request origins within the perimeter.
-        Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-        If * is specified, then all IngressSources will be allowed.
+        An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         """
         return pulumi.get(self, "access_level")
 

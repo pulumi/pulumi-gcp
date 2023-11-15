@@ -9,16 +9,18 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type RepositoryGitRemoteSettings struct {
-	// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
-	AuthenticationTokenSecretVersion string `pulumi:"authenticationTokenSecretVersion"`
+	// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*/secrets/*/versions/*.
+	AuthenticationTokenSecretVersion *string `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch string `pulumi:"defaultBranch"`
+	// Authentication fields for remote uris using SSH protocol.
+	// Structure is documented below.
+	SshAuthenticationConfig *RepositoryGitRemoteSettingsSshAuthenticationConfig `pulumi:"sshAuthenticationConfig"`
 	// (Output)
 	// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
 	TokenStatus *string `pulumi:"tokenStatus"`
@@ -38,10 +40,13 @@ type RepositoryGitRemoteSettingsInput interface {
 }
 
 type RepositoryGitRemoteSettingsArgs struct {
-	// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
-	AuthenticationTokenSecretVersion pulumi.StringInput `pulumi:"authenticationTokenSecretVersion"`
+	// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*/secrets/*/versions/*.
+	AuthenticationTokenSecretVersion pulumi.StringPtrInput `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
+	// Authentication fields for remote uris using SSH protocol.
+	// Structure is documented below.
+	SshAuthenticationConfig RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput `pulumi:"sshAuthenticationConfig"`
 	// (Output)
 	// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
 	TokenStatus pulumi.StringPtrInput `pulumi:"tokenStatus"`
@@ -59,12 +64,6 @@ func (i RepositoryGitRemoteSettingsArgs) ToRepositoryGitRemoteSettingsOutput() R
 
 func (i RepositoryGitRemoteSettingsArgs) ToRepositoryGitRemoteSettingsOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsOutput)
-}
-
-func (i RepositoryGitRemoteSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryGitRemoteSettings] {
-	return pulumix.Output[RepositoryGitRemoteSettings]{
-		OutputState: i.ToRepositoryGitRemoteSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RepositoryGitRemoteSettingsArgs) ToRepositoryGitRemoteSettingsPtrOutput() RepositoryGitRemoteSettingsPtrOutput {
@@ -108,12 +107,6 @@ func (i *repositoryGitRemoteSettingsPtrType) ToRepositoryGitRemoteSettingsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsPtrOutput)
 }
 
-func (i *repositoryGitRemoteSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryGitRemoteSettings] {
-	return pulumix.Output[*RepositoryGitRemoteSettings]{
-		OutputState: i.ToRepositoryGitRemoteSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryGitRemoteSettingsOutput struct{ *pulumi.OutputState }
 
 func (RepositoryGitRemoteSettingsOutput) ElementType() reflect.Type {
@@ -138,20 +131,22 @@ func (o RepositoryGitRemoteSettingsOutput) ToRepositoryGitRemoteSettingsPtrOutpu
 	}).(RepositoryGitRemoteSettingsPtrOutput)
 }
 
-func (o RepositoryGitRemoteSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryGitRemoteSettings] {
-	return pulumix.Output[RepositoryGitRemoteSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
-func (o RepositoryGitRemoteSettingsOutput) AuthenticationTokenSecretVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v RepositoryGitRemoteSettings) string { return v.AuthenticationTokenSecretVersion }).(pulumi.StringOutput)
+// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*/secrets/*/versions/*.
+func (o RepositoryGitRemoteSettingsOutput) AuthenticationTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryGitRemoteSettings) *string { return v.AuthenticationTokenSecretVersion }).(pulumi.StringPtrOutput)
 }
 
 // The Git remote's default branch name.
 func (o RepositoryGitRemoteSettingsOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryGitRemoteSettings) string { return v.DefaultBranch }).(pulumi.StringOutput)
+}
+
+// Authentication fields for remote uris using SSH protocol.
+// Structure is documented below.
+func (o RepositoryGitRemoteSettingsOutput) SshAuthenticationConfig() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v RepositoryGitRemoteSettings) *RepositoryGitRemoteSettingsSshAuthenticationConfig {
+		return v.SshAuthenticationConfig
+	}).(RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput)
 }
 
 // (Output)
@@ -179,12 +174,6 @@ func (o RepositoryGitRemoteSettingsPtrOutput) ToRepositoryGitRemoteSettingsPtrOu
 	return o
 }
 
-func (o RepositoryGitRemoteSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryGitRemoteSettings] {
-	return pulumix.Output[*RepositoryGitRemoteSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryGitRemoteSettingsPtrOutput) Elem() RepositoryGitRemoteSettingsOutput {
 	return o.ApplyT(func(v *RepositoryGitRemoteSettings) RepositoryGitRemoteSettings {
 		if v != nil {
@@ -195,13 +184,13 @@ func (o RepositoryGitRemoteSettingsPtrOutput) Elem() RepositoryGitRemoteSettings
 	}).(RepositoryGitRemoteSettingsOutput)
 }
 
-// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*/secrets/*/versions/*.
 func (o RepositoryGitRemoteSettingsPtrOutput) AuthenticationTokenSecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryGitRemoteSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.AuthenticationTokenSecretVersion
+		return v.AuthenticationTokenSecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -213,6 +202,17 @@ func (o RepositoryGitRemoteSettingsPtrOutput) DefaultBranch() pulumi.StringPtrOu
 		}
 		return &v.DefaultBranch
 	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication fields for remote uris using SSH protocol.
+// Structure is documented below.
+func (o RepositoryGitRemoteSettingsPtrOutput) SshAuthenticationConfig() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return o.ApplyT(func(v *RepositoryGitRemoteSettings) *RepositoryGitRemoteSettingsSshAuthenticationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SshAuthenticationConfig
+	}).(RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput)
 }
 
 // (Output)
@@ -233,6 +233,164 @@ func (o RepositoryGitRemoteSettingsPtrOutput) Url() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryGitRemoteSettingsSshAuthenticationConfig struct {
+	// Content of a public SSH key to verify an identity of a remote Git host.
+	HostPublicKey string `pulumi:"hostPublicKey"`
+	// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+	UserPrivateKeySecretVersion string `pulumi:"userPrivateKeySecretVersion"`
+}
+
+// RepositoryGitRemoteSettingsSshAuthenticationConfigInput is an input type that accepts RepositoryGitRemoteSettingsSshAuthenticationConfigArgs and RepositoryGitRemoteSettingsSshAuthenticationConfigOutput values.
+// You can construct a concrete instance of `RepositoryGitRemoteSettingsSshAuthenticationConfigInput` via:
+//
+//	RepositoryGitRemoteSettingsSshAuthenticationConfigArgs{...}
+type RepositoryGitRemoteSettingsSshAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigOutput
+	ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutputWithContext(context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigOutput
+}
+
+type RepositoryGitRemoteSettingsSshAuthenticationConfigArgs struct {
+	// Content of a public SSH key to verify an identity of a remote Git host.
+	HostPublicKey pulumi.StringInput `pulumi:"hostPublicKey"`
+	// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+	UserPrivateKeySecretVersion pulumi.StringInput `pulumi:"userPrivateKeySecretVersion"`
+}
+
+func (RepositoryGitRemoteSettingsSshAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryGitRemoteSettingsSshAuthenticationConfig)(nil)).Elem()
+}
+
+func (i RepositoryGitRemoteSettingsSshAuthenticationConfigArgs) ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigOutput {
+	return i.ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryGitRemoteSettingsSshAuthenticationConfigArgs) ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsSshAuthenticationConfigOutput)
+}
+
+func (i RepositoryGitRemoteSettingsSshAuthenticationConfigArgs) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return i.ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryGitRemoteSettingsSshAuthenticationConfigArgs) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsSshAuthenticationConfigOutput).ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput is an input type that accepts RepositoryGitRemoteSettingsSshAuthenticationConfigArgs, RepositoryGitRemoteSettingsSshAuthenticationConfigPtr and RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput` via:
+//
+//	        RepositoryGitRemoteSettingsSshAuthenticationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput
+	ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput
+}
+
+type repositoryGitRemoteSettingsSshAuthenticationConfigPtrType RepositoryGitRemoteSettingsSshAuthenticationConfigArgs
+
+func RepositoryGitRemoteSettingsSshAuthenticationConfigPtr(v *RepositoryGitRemoteSettingsSshAuthenticationConfigArgs) RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput {
+	return (*repositoryGitRemoteSettingsSshAuthenticationConfigPtrType)(v)
+}
+
+func (*repositoryGitRemoteSettingsSshAuthenticationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryGitRemoteSettingsSshAuthenticationConfig)(nil)).Elem()
+}
+
+func (i *repositoryGitRemoteSettingsSshAuthenticationConfigPtrType) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return i.ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryGitRemoteSettingsSshAuthenticationConfigPtrType) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput)
+}
+
+type RepositoryGitRemoteSettingsSshAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryGitRemoteSettingsSshAuthenticationConfig)(nil)).Elem()
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigOutput {
+	return o
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) ToRepositoryGitRemoteSettingsSshAuthenticationConfigOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigOutput {
+	return o
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return o.ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryGitRemoteSettingsSshAuthenticationConfig) *RepositoryGitRemoteSettingsSshAuthenticationConfig {
+		return &v
+	}).(RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput)
+}
+
+// Content of a public SSH key to verify an identity of a remote Git host.
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) HostPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryGitRemoteSettingsSshAuthenticationConfig) string { return v.HostPublicKey }).(pulumi.StringOutput)
+}
+
+// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigOutput) UserPrivateKeySecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryGitRemoteSettingsSshAuthenticationConfig) string {
+		return v.UserPrivateKeySecretVersion
+	}).(pulumi.StringOutput)
+}
+
+type RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryGitRemoteSettingsSshAuthenticationConfig)(nil)).Elem()
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput) ToRepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput) Elem() RepositoryGitRemoteSettingsSshAuthenticationConfigOutput {
+	return o.ApplyT(func(v *RepositoryGitRemoteSettingsSshAuthenticationConfig) RepositoryGitRemoteSettingsSshAuthenticationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryGitRemoteSettingsSshAuthenticationConfig
+		return ret
+	}).(RepositoryGitRemoteSettingsSshAuthenticationConfigOutput)
+}
+
+// Content of a public SSH key to verify an identity of a remote Git host.
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput) HostPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryGitRemoteSettingsSshAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+func (o RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput) UserPrivateKeySecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryGitRemoteSettingsSshAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserPrivateKeySecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -303,12 +461,6 @@ func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseCon
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigOutput)
 }
 
-func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: i.ToRepositoryReleaseConfigCodeCompilationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
 	return i.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(context.Background())
 }
@@ -350,12 +502,6 @@ func (i *repositoryReleaseConfigCodeCompilationConfigPtrType) ToRepositoryReleas
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigPtrOutput)
 }
 
-func (i *repositoryReleaseConfigCodeCompilationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: i.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigCodeCompilationConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigCodeCompilationConfigOutput) ElementType() reflect.Type {
@@ -378,12 +524,6 @@ func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToRepositoryReleaseC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryReleaseConfigCodeCompilationConfig) *RepositoryReleaseConfigCodeCompilationConfig {
 		return &v
 	}).(RepositoryReleaseConfigCodeCompilationConfigPtrOutput)
-}
-
-func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The default schema (BigQuery dataset ID) for assertions.
@@ -441,12 +581,6 @@ func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToRepositoryRelea
 
 func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) Elem() RepositoryReleaseConfigCodeCompilationConfigOutput {
@@ -591,12 +725,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ToRepositoryRel
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordArray and RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput values.
 // You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput` via:
 //
@@ -622,12 +750,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ToRepositoryRe
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigRecentScheduledReleaseRecordOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ElementType() reflect.Type {
@@ -640,12 +762,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToRepositoryR
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -681,12 +797,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToReposi
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
@@ -736,12 +846,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ToRe
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray and RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput values.
 // You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput` via:
 //
@@ -767,12 +871,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ToR
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ElementType() reflect.Type {
@@ -785,12 +883,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) To
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -817,12 +909,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutpu
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
@@ -886,12 +972,6 @@ func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfig
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigOutput)
 }
 
-func (i RepositoryWorkflowConfigInvocationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput {
 	return i.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(context.Background())
 }
@@ -933,12 +1013,6 @@ func (i *repositoryWorkflowConfigInvocationConfigPtrType) ToRepositoryWorkflowCo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigPtrOutput)
 }
 
-func (i *repositoryWorkflowConfigInvocationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[*RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigInvocationConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigInvocationConfigOutput) ElementType() reflect.Type {
@@ -961,12 +1035,6 @@ func (o RepositoryWorkflowConfigInvocationConfigOutput) ToRepositoryWorkflowConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryWorkflowConfigInvocationConfig) *RepositoryWorkflowConfigInvocationConfig {
 		return &v
 	}).(RepositoryWorkflowConfigInvocationConfigPtrOutput)
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. When set to true, any incremental tables will be fully refreshed.
@@ -1014,12 +1082,6 @@ func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToRepositoryWorkflowC
 
 func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[*RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) Elem() RepositoryWorkflowConfigInvocationConfigOutput {
@@ -1134,12 +1196,6 @@ func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ToRepository
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput)
 }
 
-func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput is an input type that accepts RepositoryWorkflowConfigInvocationConfigIncludedTargetArray and RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput` via:
 //
@@ -1165,12 +1221,6 @@ func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ToRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput)
 }
 
-func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ElementType() reflect.Type {
@@ -1183,12 +1233,6 @@ func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToReposito
 
 func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action's database (Google Cloud project ID).
@@ -1218,12 +1262,6 @@ func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToRep
 
 func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
@@ -1281,12 +1319,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ToRepository
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordArray and RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput` via:
 //
@@ -1312,12 +1344,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ToRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ElementType() reflect.Type {
@@ -1330,12 +1356,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToReposito
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1371,12 +1391,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToRep
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
@@ -1426,12 +1440,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray and RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput` via:
 //
@@ -1457,12 +1465,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ElementType() reflect.Type {
@@ -1475,12 +1477,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput)
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1509,12 +1505,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOu
 	return o
 }
 
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus {
 		return vs[0].([]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus)[vs[1].(int)]
@@ -1522,11 +1512,11 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOu
 }
 
 type RepositoryWorkspaceCompilationOverrides struct {
-	// Optional. The default database (Google Cloud project ID).
+	// The default database (Google Cloud project ID).
 	DefaultDatabase *string `pulumi:"defaultDatabase"`
-	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	// The suffix that should be appended to all schema (BigQuery dataset ID) names.
 	SchemaSuffix *string `pulumi:"schemaSuffix"`
-	// Optional. The prefix that should be prepended to all table names.
+	// The prefix that should be prepended to all table names.
 	TablePrefix *string `pulumi:"tablePrefix"`
 }
 
@@ -1542,11 +1532,11 @@ type RepositoryWorkspaceCompilationOverridesInput interface {
 }
 
 type RepositoryWorkspaceCompilationOverridesArgs struct {
-	// Optional. The default database (Google Cloud project ID).
+	// The default database (Google Cloud project ID).
 	DefaultDatabase pulumi.StringPtrInput `pulumi:"defaultDatabase"`
-	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	// The suffix that should be appended to all schema (BigQuery dataset ID) names.
 	SchemaSuffix pulumi.StringPtrInput `pulumi:"schemaSuffix"`
-	// Optional. The prefix that should be prepended to all table names.
+	// The prefix that should be prepended to all table names.
 	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
 }
 
@@ -1560,12 +1550,6 @@ func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompil
 
 func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesOutput)
-}
-
-func (i RepositoryWorkspaceCompilationOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[RepositoryWorkspaceCompilationOverrides]{
-		OutputState: i.ToRepositoryWorkspaceCompilationOverridesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput {
@@ -1609,12 +1593,6 @@ func (i *repositoryWorkspaceCompilationOverridesPtrType) ToRepositoryWorkspaceCo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesPtrOutput)
 }
 
-func (i *repositoryWorkspaceCompilationOverridesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[*RepositoryWorkspaceCompilationOverrides]{
-		OutputState: i.ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkspaceCompilationOverridesOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkspaceCompilationOverridesOutput) ElementType() reflect.Type {
@@ -1639,23 +1617,17 @@ func (o RepositoryWorkspaceCompilationOverridesOutput) ToRepositoryWorkspaceComp
 	}).(RepositoryWorkspaceCompilationOverridesPtrOutput)
 }
 
-func (o RepositoryWorkspaceCompilationOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[RepositoryWorkspaceCompilationOverrides]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Optional. The default database (Google Cloud project ID).
+// The default database (Google Cloud project ID).
 func (o RepositoryWorkspaceCompilationOverridesOutput) DefaultDatabase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryWorkspaceCompilationOverrides) *string { return v.DefaultDatabase }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+// The suffix that should be appended to all schema (BigQuery dataset ID) names.
 func (o RepositoryWorkspaceCompilationOverridesOutput) SchemaSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryWorkspaceCompilationOverrides) *string { return v.SchemaSuffix }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The prefix that should be prepended to all table names.
+// The prefix that should be prepended to all table names.
 func (o RepositoryWorkspaceCompilationOverridesOutput) TablePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryWorkspaceCompilationOverrides) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
 }
@@ -1674,12 +1646,6 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToRepositoryWorkspaceC
 	return o
 }
 
-func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[*RepositoryWorkspaceCompilationOverrides]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryWorkspaceCompilationOverridesPtrOutput) Elem() RepositoryWorkspaceCompilationOverridesOutput {
 	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) RepositoryWorkspaceCompilationOverrides {
 		if v != nil {
@@ -1690,7 +1656,7 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) Elem() RepositoryWorks
 	}).(RepositoryWorkspaceCompilationOverridesOutput)
 }
 
-// Optional. The default database (Google Cloud project ID).
+// The default database (Google Cloud project ID).
 func (o RepositoryWorkspaceCompilationOverridesPtrOutput) DefaultDatabase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) *string {
 		if v == nil {
@@ -1700,7 +1666,7 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) DefaultDatabase() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+// The suffix that should be appended to all schema (BigQuery dataset ID) names.
 func (o RepositoryWorkspaceCompilationOverridesPtrOutput) SchemaSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) *string {
 		if v == nil {
@@ -1710,7 +1676,7 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) SchemaSuffix() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The prefix that should be prepended to all table names.
+// The prefix that should be prepended to all table names.
 func (o RepositoryWorkspaceCompilationOverridesPtrOutput) TablePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) *string {
 		if v == nil {
@@ -1723,6 +1689,8 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) TablePrefix() pulumi.S
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsInput)(nil)).Elem(), RepositoryGitRemoteSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsPtrInput)(nil)).Elem(), RepositoryGitRemoteSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsSshAuthenticationConfigInput)(nil)).Elem(), RepositoryGitRemoteSettingsSshAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput)(nil)).Elem(), RepositoryGitRemoteSettingsSshAuthenticationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigCodeCompilationConfigInput)(nil)).Elem(), RepositoryReleaseConfigCodeCompilationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigCodeCompilationConfigPtrInput)(nil)).Elem(), RepositoryReleaseConfigCodeCompilationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordArgs{})
@@ -1741,6 +1709,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesPtrInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsOutput{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsSshAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryReleaseConfigCodeCompilationConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryReleaseConfigCodeCompilationConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordOutput{})

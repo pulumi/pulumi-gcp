@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? SizeGib { get; set; }
 
         /// <summary>
-        /// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        /// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         /// </summary>
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }

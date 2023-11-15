@@ -18,6 +18,7 @@ class IndexArgs:
     def __init__(__self__, *,
                  collection: pulumi.Input[str],
                  fields: pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]],
+                 api_scope: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None):
@@ -31,15 +32,20 @@ class IndexArgs:
                in a composite index is not directional, the `__name__` will be
                ordered `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         pulumi.set(__self__, "collection", collection)
         pulumi.set(__self__, "fields", fields)
+        if api_scope is not None:
+            pulumi.set(__self__, "api_scope", api_scope)
         if database is not None:
             pulumi.set(__self__, "database", database)
         if project is not None:
@@ -78,6 +84,20 @@ class IndexArgs:
         pulumi.set(self, "fields", value)
 
     @property
+    @pulumi.getter(name="apiScope")
+    def api_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API scope at which a query is run.
+        Default value is `ANY_API`.
+        Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        """
+        return pulumi.get(self, "api_scope")
+
+    @api_scope.setter
+    def api_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_scope", value)
+
+    @property
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[str]]:
         """
@@ -108,7 +128,7 @@ class IndexArgs:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
-        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
 
@@ -120,6 +140,7 @@ class IndexArgs:
 @pulumi.input_type
 class _IndexState:
     def __init__(__self__, *,
+                 api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]] = None,
@@ -128,6 +149,9 @@ class _IndexState:
                  query_scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Index resources.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last field entry is always for
@@ -143,8 +167,10 @@ class _IndexState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
+        if api_scope is not None:
+            pulumi.set(__self__, "api_scope", api_scope)
         if collection is not None:
             pulumi.set(__self__, "collection", collection)
         if database is not None:
@@ -157,6 +183,20 @@ class _IndexState:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+
+    @property
+    @pulumi.getter(name="apiScope")
+    def api_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API scope at which a query is run.
+        Default value is `ANY_API`.
+        Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        """
+        return pulumi.get(self, "api_scope")
+
+    @api_scope.setter
+    def api_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_scope", value)
 
     @property
     @pulumi.getter
@@ -232,7 +272,7 @@ class _IndexState:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
-        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
 
@@ -246,6 +286,7 @@ class Index(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
@@ -265,12 +306,11 @@ class Index(pulumi.CustomResource):
 
         > **Warning:** This resource creates a Firestore Index on a project that already has
         a Firestore database. If you haven't already created it, you may
-        create a `firestore.Database` resource with `type` set to
-        `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
-        If you wish to use App Engine, you may instead create a
-        `appengine.Application` resource with `database_type` set to
-        `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
-        the App Engine location specified.
+        create a `firestore.Database` resource and `location_id` set
+        to your chosen location. If you wish to use App Engine, you may
+        instead create a `appengine.Application` resource with
+        `database_type` set to `"CLOUD_FIRESTORE"`. Your Firestore location
+        will be the same as the App Engine location specified.
 
         ## Example Usage
         ### Firestore Index Basic
@@ -293,10 +333,40 @@ class Index(pulumi.CustomResource):
             ],
             project="my-project-name")
         ```
+        ### Firestore Index Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_datastore_mode_index = gcp.firestore.Index("my-datastore-mode-index",
+            api_scope="DATASTORE_MODE_API",
+            collection="chatrooms",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    order="DESCENDING",
+                ),
+            ],
+            project="my-project-name",
+            query_scope="COLLECTION_RECURSIVE")
+        ```
 
         ## Import
 
-        Index can be imported using any of these accepted formats:
+        Index can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_firestore_index.default }
+
+        ```sh
+         $ pulumi import gcp:firestore/index:Index When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:firestore/index:Index default {{name}}
@@ -304,6 +374,9 @@ class Index(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
@@ -317,7 +390,7 @@ class Index(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         ...
     @overload
@@ -338,12 +411,11 @@ class Index(pulumi.CustomResource):
 
         > **Warning:** This resource creates a Firestore Index on a project that already has
         a Firestore database. If you haven't already created it, you may
-        create a `firestore.Database` resource with `type` set to
-        `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
-        If you wish to use App Engine, you may instead create a
-        `appengine.Application` resource with `database_type` set to
-        `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
-        the App Engine location specified.
+        create a `firestore.Database` resource and `location_id` set
+        to your chosen location. If you wish to use App Engine, you may
+        instead create a `appengine.Application` resource with
+        `database_type` set to `"CLOUD_FIRESTORE"`. Your Firestore location
+        will be the same as the App Engine location specified.
 
         ## Example Usage
         ### Firestore Index Basic
@@ -366,10 +438,40 @@ class Index(pulumi.CustomResource):
             ],
             project="my-project-name")
         ```
+        ### Firestore Index Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_datastore_mode_index = gcp.firestore.Index("my-datastore-mode-index",
+            api_scope="DATASTORE_MODE_API",
+            collection="chatrooms",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    order="DESCENDING",
+                ),
+            ],
+            project="my-project-name",
+            query_scope="COLLECTION_RECURSIVE")
+        ```
 
         ## Import
 
-        Index can be imported using any of these accepted formats:
+        Index can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_firestore_index.default }
+
+        ```sh
+         $ pulumi import gcp:firestore/index:Index When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:firestore/index:Index default {{name}}
@@ -390,6 +492,7 @@ class Index(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_scope: Optional[pulumi.Input[str]] = None,
                  collection: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
@@ -404,6 +507,7 @@ class Index(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IndexArgs.__new__(IndexArgs)
 
+            __props__.__dict__["api_scope"] = api_scope
             if collection is None and not opts.urn:
                 raise TypeError("Missing required property 'collection'")
             __props__.__dict__["collection"] = collection
@@ -424,6 +528,7 @@ class Index(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_scope: Optional[pulumi.Input[str]] = None,
             collection: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]]] = None,
@@ -437,6 +542,9 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
@@ -452,12 +560,13 @@ class Index(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _IndexState.__new__(_IndexState)
 
+        __props__.__dict__["api_scope"] = api_scope
         __props__.__dict__["collection"] = collection
         __props__.__dict__["database"] = database
         __props__.__dict__["fields"] = fields
@@ -465,6 +574,16 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["query_scope"] = query_scope
         return Index(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiScope")
+    def api_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The API scope at which a query is run.
+        Default value is `ANY_API`.
+        Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        """
+        return pulumi.get(self, "api_scope")
 
     @property
     @pulumi.getter
@@ -520,7 +639,7 @@ class Index(pulumi.CustomResource):
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
-        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
 

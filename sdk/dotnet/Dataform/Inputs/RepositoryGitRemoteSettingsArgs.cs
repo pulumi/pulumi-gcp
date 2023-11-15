@@ -13,16 +13,23 @@ namespace Pulumi.Gcp.Dataform.Inputs
     public sealed class RepositoryGitRemoteSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
         /// </summary>
-        [Input("authenticationTokenSecretVersion", required: true)]
-        public Input<string> AuthenticationTokenSecretVersion { get; set; } = null!;
+        [Input("authenticationTokenSecretVersion")]
+        public Input<string>? AuthenticationTokenSecretVersion { get; set; }
 
         /// <summary>
         /// The Git remote's default branch name.
         /// </summary>
         [Input("defaultBranch", required: true)]
         public Input<string> DefaultBranch { get; set; } = null!;
+
+        /// <summary>
+        /// Authentication fields for remote uris using SSH protocol.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sshAuthenticationConfig")]
+        public Input<Inputs.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs>? SshAuthenticationConfig { get; set; }
 
         /// <summary>
         /// (Output)

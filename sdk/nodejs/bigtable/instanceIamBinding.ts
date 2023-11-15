@@ -64,23 +64,19 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instance IAM resources can be imported using the project, instance name, role and/or member.
+ * ### Importing IAM policies IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example* `"projects/{project}/instances/{instance}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ *
+ *  id = "projects/{project}/instances/{instance}"
+ *
+ *  to = google_bigtable_instance_iam_policy.default }
  *
  * ```sh
- *  $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding editor "projects/{project}/instances/{instance}"
+ *  $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding editor "projects/{project}/instances/{instance} roles/editor"
+ *  $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding default projects/{project}/instances/{instance}
  * ```
- *
- * ```sh
- *  $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding editor "projects/{project}/instances/{instance} roles/editor user:jane@example.com"
- * ```
- *
- *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
- *
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceIamBinding extends pulumi.CustomResource {
     /**

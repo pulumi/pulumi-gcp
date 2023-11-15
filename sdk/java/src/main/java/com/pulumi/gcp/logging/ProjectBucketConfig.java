@@ -11,9 +11,11 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigState;
 import com.pulumi.gcp.logging.outputs.ProjectBucketConfigCmekSettings;
+import com.pulumi.gcp.logging.outputs.ProjectBucketConfigIndexConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -198,9 +200,56 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * Create logging bucket with index configs
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.logging.ProjectBucketConfig;
+ * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
+ * import com.pulumi.gcp.logging.inputs.ProjectBucketConfigIndexConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example_project_bucket_index_configs = new ProjectBucketConfig(&#34;example-project-bucket-index-configs&#34;, ProjectBucketConfigArgs.builder()        
+ *             .bucketId(&#34;custom-bucket&#34;)
+ *             .indexConfigs(ProjectBucketConfigIndexConfigArgs.builder()
+ *                 .filePath(&#34;jsonPayload.request.status&#34;)
+ *                 .type(&#34;INDEX_TYPE_STRING&#34;)
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .project(&#34;project_id&#34;)
+ *             .retentionDays(30)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
- * This resource can be imported using the following format:
+ * This resource can be imported using the following format* `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}&#34;
+ * 
+ *  to = google_logging_project_bucket_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -264,6 +313,20 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableAnalytics() {
         return Codegen.optional(this.enableAnalytics);
+    }
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    @Export(name="indexConfigs", refs={List.class,ProjectBucketConfigIndexConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ProjectBucketConfigIndexConfig>> indexConfigs;
+
+    /**
+     * @return A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<ProjectBucketConfigIndexConfig>>> indexConfigs() {
+        return Codegen.optional(this.indexConfigs);
     }
     /**
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

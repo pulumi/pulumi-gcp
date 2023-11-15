@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // To get more information about Snapshot, see:
@@ -143,12 +142,6 @@ func (o LookupRouterNatResultOutput) ToLookupRouterNatResultOutput() LookupRoute
 
 func (o LookupRouterNatResultOutput) ToLookupRouterNatResultOutputWithContext(ctx context.Context) LookupRouterNatResultOutput {
 	return o
-}
-
-func (o LookupRouterNatResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRouterNatResult] {
-	return pulumix.Output[LookupRouterNatResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRouterNatResultOutput) DrainNatIps() pulumi.StringArrayOutput {

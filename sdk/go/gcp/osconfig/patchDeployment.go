@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Patch deployments are configurations that individual patch jobs use to complete a patch.
@@ -357,7 +356,17 @@ import (
 //
 // ## Import
 //
-// # PatchDeployment can be imported using any of these accepted formats
+// PatchDeployment can be imported using any of these accepted formats* `projects/{{project}}/patchDeployments/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PatchDeployment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/patchDeployments/{{name}}"
+//
+//	to = google_os_config_patch_deployment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:osconfig/patchDeployment:PatchDeployment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PatchDeployment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -645,12 +654,6 @@ func (i *PatchDeployment) ToPatchDeploymentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOutput)
 }
 
-func (i *PatchDeployment) ToOutput(ctx context.Context) pulumix.Output[*PatchDeployment] {
-	return pulumix.Output[*PatchDeployment]{
-		OutputState: i.ToPatchDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PatchDeploymentArrayInput is an input type that accepts PatchDeploymentArray and PatchDeploymentArrayOutput values.
 // You can construct a concrete instance of `PatchDeploymentArrayInput` via:
 //
@@ -674,12 +677,6 @@ func (i PatchDeploymentArray) ToPatchDeploymentArrayOutput() PatchDeploymentArra
 
 func (i PatchDeploymentArray) ToPatchDeploymentArrayOutputWithContext(ctx context.Context) PatchDeploymentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentArrayOutput)
-}
-
-func (i PatchDeploymentArray) ToOutput(ctx context.Context) pulumix.Output[[]*PatchDeployment] {
-	return pulumix.Output[[]*PatchDeployment]{
-		OutputState: i.ToPatchDeploymentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PatchDeploymentMapInput is an input type that accepts PatchDeploymentMap and PatchDeploymentMapOutput values.
@@ -707,12 +704,6 @@ func (i PatchDeploymentMap) ToPatchDeploymentMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentMapOutput)
 }
 
-func (i PatchDeploymentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PatchDeployment] {
-	return pulumix.Output[map[string]*PatchDeployment]{
-		OutputState: i.ToPatchDeploymentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (PatchDeploymentOutput) ElementType() reflect.Type {
@@ -725,12 +716,6 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutput() PatchDeploymentOutput {
 
 func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Context) PatchDeploymentOutput {
 	return o
-}
-
-func (o PatchDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchDeployment] {
-	return pulumix.Output[*PatchDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the patch deployment was created. Timestamp is in RFC3339 text format.
@@ -829,12 +814,6 @@ func (o PatchDeploymentArrayOutput) ToPatchDeploymentArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o PatchDeploymentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PatchDeployment] {
-	return pulumix.Output[[]*PatchDeployment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PatchDeploymentArrayOutput) Index(i pulumi.IntInput) PatchDeploymentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PatchDeployment {
 		return vs[0].([]*PatchDeployment)[vs[1].(int)]
@@ -853,12 +832,6 @@ func (o PatchDeploymentMapOutput) ToPatchDeploymentMapOutput() PatchDeploymentMa
 
 func (o PatchDeploymentMapOutput) ToPatchDeploymentMapOutputWithContext(ctx context.Context) PatchDeploymentMapOutput {
 	return o
-}
-
-func (o PatchDeploymentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PatchDeployment] {
-	return pulumix.Output[map[string]*PatchDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchDeploymentMapOutput) MapIndex(k pulumi.StringInput) PatchDeploymentOutput {

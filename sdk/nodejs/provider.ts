@@ -94,6 +94,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dnsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly documentAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly documentAiWarehouseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly edgecontainerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly edgenetworkCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly essentialContactsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -120,6 +121,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly iapCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly identityPlatformCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly impersonateServiceAccount!: pulumi.Output<string | undefined>;
+    public readonly integrationConnectorsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly kmsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly loggingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly lookerCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -165,6 +167,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuV2CustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly universeDomain!: pulumi.Output<string | undefined>;
     public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vmwareengineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vpcAccessCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -253,6 +256,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["documentAiWarehouseCustomEndpoint"] = args ? args.documentAiWarehouseCustomEndpoint : undefined;
+            resourceInputs["edgecontainerCustomEndpoint"] = args ? args.edgecontainerCustomEndpoint : undefined;
             resourceInputs["edgenetworkCustomEndpoint"] = args ? args.edgenetworkCustomEndpoint : undefined;
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
@@ -280,6 +284,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["identityPlatformCustomEndpoint"] = args ? args.identityPlatformCustomEndpoint : undefined;
             resourceInputs["impersonateServiceAccount"] = args ? args.impersonateServiceAccount : undefined;
             resourceInputs["impersonateServiceAccountDelegates"] = pulumi.output(args ? args.impersonateServiceAccountDelegates : undefined).apply(JSON.stringify);
+            resourceInputs["integrationConnectorsCustomEndpoint"] = args ? args.integrationConnectorsCustomEndpoint : undefined;
             resourceInputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             resourceInputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
             resourceInputs["lookerCustomEndpoint"] = args ? args.lookerCustomEndpoint : undefined;
@@ -326,6 +331,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
+            resourceInputs["universeDomain"] = args ? args.universeDomain : undefined;
             resourceInputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
             resourceInputs["vmwareengineCustomEndpoint"] = args ? args.vmwareengineCustomEndpoint : undefined;
@@ -413,6 +419,7 @@ export interface ProviderArgs {
     dnsCustomEndpoint?: pulumi.Input<string>;
     documentAiCustomEndpoint?: pulumi.Input<string>;
     documentAiWarehouseCustomEndpoint?: pulumi.Input<string>;
+    edgecontainerCustomEndpoint?: pulumi.Input<string>;
     edgenetworkCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
@@ -440,6 +447,7 @@ export interface ProviderArgs {
     identityPlatformCustomEndpoint?: pulumi.Input<string>;
     impersonateServiceAccount?: pulumi.Input<string>;
     impersonateServiceAccountDelegates?: pulumi.Input<pulumi.Input<string>[]>;
+    integrationConnectorsCustomEndpoint?: pulumi.Input<string>;
     kmsCustomEndpoint?: pulumi.Input<string>;
     loggingCustomEndpoint?: pulumi.Input<string>;
     lookerCustomEndpoint?: pulumi.Input<string>;
@@ -486,6 +494,7 @@ export interface ProviderArgs {
     tagsLocationCustomEndpoint?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
     tpuV2CustomEndpoint?: pulumi.Input<string>;
+    universeDomain?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
     vertexAiCustomEndpoint?: pulumi.Input<string>;
     vmwareengineCustomEndpoint?: pulumi.Input<string>;

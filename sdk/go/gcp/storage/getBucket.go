@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing bucket in Google Cloud Storage service (GCS).
@@ -65,6 +64,7 @@ type LookupBucketResult struct {
 	CustomPlacementConfigs []GetBucketCustomPlacementConfig `pulumi:"customPlacementConfigs"`
 	DefaultEventBasedHold  bool                             `pulumi:"defaultEventBasedHold"`
 	EffectiveLabels        map[string]string                `pulumi:"effectiveLabels"`
+	EnableObjectRetention  bool                             `pulumi:"enableObjectRetention"`
 	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
 	ForceDestroy           bool                             `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
@@ -125,12 +125,6 @@ func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx cont
 	return o
 }
 
-func (o LookupBucketResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBucketResult] {
-	return pulumix.Output[LookupBucketResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LookupBucketResultOutput) Autoclasses() GetBucketAutoclassArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []GetBucketAutoclass { return v.Autoclasses }).(GetBucketAutoclassArrayOutput)
 }
@@ -149,6 +143,10 @@ func (o LookupBucketResultOutput) DefaultEventBasedHold() pulumi.BoolOutput {
 
 func (o LookupBucketResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupBucketResultOutput) EnableObjectRetention() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBucketResult) bool { return v.EnableObjectRetention }).(pulumi.BoolOutput)
 }
 
 func (o LookupBucketResultOutput) Encryptions() GetBucketEncryptionArrayOutput {

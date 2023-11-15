@@ -18,6 +18,7 @@ import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigSyntheticMonitor;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigTcpCheck;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -46,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckPingConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -73,8 +75,12 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;http-uptime-check&#34;)
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
  *                 .body(&#34;Zm9vJTI1M0RiYXI=&#34;)
- *                 .contentType(&#34;URL_ENCODED&#34;)
+ *                 .contentType(&#34;USER_PROVIDED&#34;)
+ *                 .customContentType(&#34;application/json&#34;)
  *                 .path(&#34;some-path&#34;)
+ *                 .pingConfig(UptimeCheckConfigHttpCheckPingConfigArgs.builder()
+ *                     .pingsCount(1)
+ *                     .build())
  *                 .port(&#34;8010&#34;)
  *                 .requestMethod(&#34;POST&#34;)
  *                 .build())
@@ -86,6 +92,7 @@ import javax.annotation.Nullable;
  *                 .type(&#34;uptime_url&#34;)
  *                 .build())
  *             .timeout(&#34;60s&#34;)
+ *             .userLabels(Map.of(&#34;example-key&#34;, &#34;example-value&#34;))
  *             .build());
  * 
  *     }
@@ -225,6 +232,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
  * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckPingConfigArgs;
  * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigResourceGroupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -249,6 +257,9 @@ import javax.annotation.Nullable;
  *             .timeout(&#34;60s&#34;)
  *             .tcpCheck(UptimeCheckConfigTcpCheckArgs.builder()
  *                 .port(888)
+ *                 .pingConfig(UptimeCheckConfigTcpCheckPingConfigArgs.builder()
+ *                     .pingsCount(2)
+ *                     .build())
  *                 .build())
  *             .resourceGroup(UptimeCheckConfigResourceGroupArgs.builder()
  *                 .resourceType(&#34;INSTANCE&#34;)
@@ -339,7 +350,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * UptimeCheckConfig can be imported using any of these accepted formats:
+ * UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_monitoring_uptime_check_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -563,6 +582,20 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uptimeCheckId() {
         return this.uptimeCheckId;
+    }
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     * 
+     */
+    @Export(name="userLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> userLabels;
+
+    /**
+     * @return User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> userLabels() {
+        return Codegen.optional(this.userLabels);
     }
 
     /**

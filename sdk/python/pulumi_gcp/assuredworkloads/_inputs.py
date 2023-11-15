@@ -10,10 +10,84 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'WorkloadComplianceStatusArgs',
+    'WorkloadEkmProvisioningResponseArgs',
     'WorkloadKmsSettingsArgs',
+    'WorkloadPartnerPermissionsArgs',
     'WorkloadResourceArgs',
     'WorkloadResourceSettingArgs',
+    'WorkloadSaaEnrollmentResponseArgs',
 ]
+
+@pulumi.input_type
+class WorkloadComplianceStatusArgs:
+    def __init__(__self__, *,
+                 acknowledged_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 active_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        if acknowledged_violation_counts is not None:
+            pulumi.set(__self__, "acknowledged_violation_counts", acknowledged_violation_counts)
+        if active_violation_counts is not None:
+            pulumi.set(__self__, "active_violation_counts", active_violation_counts)
+
+    @property
+    @pulumi.getter(name="acknowledgedViolationCounts")
+    def acknowledged_violation_counts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "acknowledged_violation_counts")
+
+    @acknowledged_violation_counts.setter
+    def acknowledged_violation_counts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "acknowledged_violation_counts", value)
+
+    @property
+    @pulumi.getter(name="activeViolationCounts")
+    def active_violation_counts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "active_violation_counts")
+
+    @active_violation_counts.setter
+    def active_violation_counts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "active_violation_counts", value)
+
+
+@pulumi.input_type
+class WorkloadEkmProvisioningResponseArgs:
+    def __init__(__self__, *,
+                 ekm_provisioning_error_domain: Optional[pulumi.Input[str]] = None,
+                 ekm_provisioning_error_mapping: Optional[pulumi.Input[str]] = None,
+                 ekm_provisioning_state: Optional[pulumi.Input[str]] = None):
+        if ekm_provisioning_error_domain is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
+        if ekm_provisioning_error_mapping is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_mapping", ekm_provisioning_error_mapping)
+        if ekm_provisioning_state is not None:
+            pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorDomain")
+    def ekm_provisioning_error_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ekm_provisioning_error_domain")
+
+    @ekm_provisioning_error_domain.setter
+    def ekm_provisioning_error_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_provisioning_error_domain", value)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorMapping")
+    def ekm_provisioning_error_mapping(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ekm_provisioning_error_mapping")
+
+    @ekm_provisioning_error_mapping.setter
+    def ekm_provisioning_error_mapping(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_provisioning_error_mapping", value)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningState")
+    def ekm_provisioning_state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ekm_provisioning_state")
+
+    @ekm_provisioning_state.setter
+    def ekm_provisioning_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_provisioning_state", value)
+
 
 @pulumi.input_type
 class WorkloadKmsSettingsArgs:
@@ -53,12 +127,67 @@ class WorkloadKmsSettingsArgs:
 
 
 @pulumi.input_type
+class WorkloadPartnerPermissionsArgs:
+    def __init__(__self__, *,
+                 assured_workloads_monitoring: Optional[pulumi.Input[bool]] = None,
+                 data_logs_viewer: Optional[pulumi.Input[bool]] = None,
+                 service_access_approver: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] assured_workloads_monitoring: Optional. Allow partner to view violation alerts.
+        :param pulumi.Input[bool] data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
+        :param pulumi.Input[bool] service_access_approver: Optional. Allow partner to view access approval logs.
+        """
+        if assured_workloads_monitoring is not None:
+            pulumi.set(__self__, "assured_workloads_monitoring", assured_workloads_monitoring)
+        if data_logs_viewer is not None:
+            pulumi.set(__self__, "data_logs_viewer", data_logs_viewer)
+        if service_access_approver is not None:
+            pulumi.set(__self__, "service_access_approver", service_access_approver)
+
+    @property
+    @pulumi.getter(name="assuredWorkloadsMonitoring")
+    def assured_workloads_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Allow partner to view violation alerts.
+        """
+        return pulumi.get(self, "assured_workloads_monitoring")
+
+    @assured_workloads_monitoring.setter
+    def assured_workloads_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assured_workloads_monitoring", value)
+
+    @property
+    @pulumi.getter(name="dataLogsViewer")
+    def data_logs_viewer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow the partner to view inspectability logs and monitoring violations.
+        """
+        return pulumi.get(self, "data_logs_viewer")
+
+    @data_logs_viewer.setter
+    def data_logs_viewer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_logs_viewer", value)
+
+    @property
+    @pulumi.getter(name="serviceAccessApprover")
+    def service_access_approver(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Allow partner to view access approval logs.
+        """
+        return pulumi.get(self, "service_access_approver")
+
+    @service_access_approver.setter
+    def service_access_approver(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_access_approver", value)
+
+
+@pulumi.input_type
 class WorkloadResourceArgs:
     def __init__(__self__, *,
                  resource_id: Optional[pulumi.Input[int]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] resource_id: Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        :param pulumi.Input[int] resource_id: Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         :param pulumi.Input[str] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
         if resource_id is not None:
@@ -70,7 +199,7 @@ class WorkloadResourceArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         """
         return pulumi.get(self, "resource_id")
 
@@ -94,22 +223,38 @@ class WorkloadResourceArgs:
 @pulumi.input_type
 class WorkloadResourceSettingArgs:
     def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        :param pulumi.Input[str] display_name: User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         :param pulumi.Input[str] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         """
         return pulumi.get(self, "resource_id")
 
@@ -128,5 +273,34 @@ class WorkloadResourceSettingArgs:
     @resource_type.setter
     def resource_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class WorkloadSaaEnrollmentResponseArgs:
+    def __init__(__self__, *,
+                 setup_errors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 setup_status: Optional[pulumi.Input[str]] = None):
+        if setup_errors is not None:
+            pulumi.set(__self__, "setup_errors", setup_errors)
+        if setup_status is not None:
+            pulumi.set(__self__, "setup_status", setup_status)
+
+    @property
+    @pulumi.getter(name="setupErrors")
+    def setup_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "setup_errors")
+
+    @setup_errors.setter
+    def setup_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "setup_errors", value)
+
+    @property
+    @pulumi.getter(name="setupStatus")
+    def setup_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "setup_status")
+
+    @setup_status.setter
+    def setup_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "setup_status", value)
 
 

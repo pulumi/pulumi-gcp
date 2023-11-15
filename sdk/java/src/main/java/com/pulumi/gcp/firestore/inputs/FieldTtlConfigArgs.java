@@ -17,7 +17,7 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * (Output)
-     * The state of the TTL configuration.
+     * The state of TTL (time-to-live) configuration for documents that have this Field set.
      * 
      */
     @Import(name="state")
@@ -25,7 +25,7 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return (Output)
-     * The state of the TTL configuration.
+     * The state of TTL (time-to-live) configuration for documents that have this Field set.
      * 
      */
     public Optional<Output<String>> state() {
@@ -58,7 +58,7 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param state (Output)
-         * The state of the TTL configuration.
+         * The state of TTL (time-to-live) configuration for documents that have this Field set.
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class FieldTtlConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param state (Output)
-         * The state of the TTL configuration.
+         * The state of TTL (time-to-live) configuration for documents that have this Field set.
          * 
          * @return builder
          * 

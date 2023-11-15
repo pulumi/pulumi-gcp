@@ -63,7 +63,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CapacityCommitment can be imported using any of these accepted formats
+ * CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CapacityCommitment using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}&#34;
+ * 
+ *  to = google_bigquery_capacity_commitment.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CapacityCommitment can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
@@ -221,14 +229,14 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      * 
      */
     @Export(name="renewalPlan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalPlan;
 
     /**
-     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      * 
      */
     public Output<Optional<String>> renewalPlan() {

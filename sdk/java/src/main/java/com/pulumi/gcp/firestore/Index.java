@@ -29,12 +29,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Warning:** This resource creates a Firestore Index on a project that already has
  * a Firestore database. If you haven&#39;t already created it, you may
- * create a `gcp.firestore.Database` resource with `type` set to
- * `&#34;FIRESTORE_NATIVE&#34;` and `location_id` set to your chosen location.
- * If you wish to use App Engine, you may instead create a
- * `gcp.appengine.Application` resource with `database_type` set to
- * `&#34;CLOUD_FIRESTORE&#34;`. Your Firestore location will be the same as
- * the App Engine location specified.
+ * create a `gcp.firestore.Database` resource and `location_id` set
+ * to your chosen location. If you wish to use App Engine, you may
+ * instead create a `gcp.appengine.Application` resource with
+ * `database_type` set to `&#34;CLOUD_FIRESTORE&#34;`. Your Firestore location
+ * will be the same as the App Engine location specified.
  * 
  * ## Example Usage
  * ### Firestore Index Basic
@@ -77,10 +76,60 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Firestore Index Datastore Mode
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_datastore_mode_index = new Index(&#34;my-datastore-mode-index&#34;, IndexArgs.builder()        
+ *             .apiScope(&#34;DATASTORE_MODE_API&#34;)
+ *             .collection(&#34;chatrooms&#34;)
+ *             .fields(            
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;name&#34;)
+ *                     .order(&#34;ASCENDING&#34;)
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;description&#34;)
+ *                     .order(&#34;DESCENDING&#34;)
+ *                     .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .queryScope(&#34;COLLECTION_RECURSIVE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * Index can be imported using any of these accepted formats:
+ * Index can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_firestore_index.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:firestore/index:Index When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:firestore/index:Index default {{name}}
@@ -89,6 +138,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:firestore/index:Index")
 public class Index extends com.pulumi.resources.CustomResource {
+    /**
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * 
+     */
+    @Export(name="apiScope", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiScope;
+
+    /**
+     * @return The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * 
+     */
+    public Output<Optional<String>> apiScope() {
+        return Codegen.optional(this.apiScope);
+    }
     /**
      * The collection being indexed.
      * 
@@ -178,7 +245,7 @@ public class Index extends com.pulumi.resources.CustomResource {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     @Export(name="queryScope", refs={String.class}, tree="[0]")
@@ -187,7 +254,7 @@ public class Index extends com.pulumi.resources.CustomResource {
     /**
      * @return The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     public Output<Optional<String>> queryScope() {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A `CryptoKey` represents a logical key that can be used for cryptographic operations.
@@ -100,7 +99,17 @@ import (
 //
 // ## Import
 //
-// # CryptoKey can be imported using any of these accepted formats
+// CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CryptoKey using one of the formats above. For exampletf import {
+//
+//	id = "{{key_ring}}/cryptoKeys/{{name}}"
+//
+//	to = google_kms_crypto_key.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:kms/cryptoKey:CryptoKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CryptoKey can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -375,12 +384,6 @@ func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyOutput)
 }
 
-func (i *CryptoKey) ToOutput(ctx context.Context) pulumix.Output[*CryptoKey] {
-	return pulumix.Output[*CryptoKey]{
-		OutputState: i.ToCryptoKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CryptoKeyArrayInput is an input type that accepts CryptoKeyArray and CryptoKeyArrayOutput values.
 // You can construct a concrete instance of `CryptoKeyArrayInput` via:
 //
@@ -404,12 +407,6 @@ func (i CryptoKeyArray) ToCryptoKeyArrayOutput() CryptoKeyArrayOutput {
 
 func (i CryptoKeyArray) ToCryptoKeyArrayOutputWithContext(ctx context.Context) CryptoKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyArrayOutput)
-}
-
-func (i CryptoKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKey] {
-	return pulumix.Output[[]*CryptoKey]{
-		OutputState: i.ToCryptoKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CryptoKeyMapInput is an input type that accepts CryptoKeyMap and CryptoKeyMapOutput values.
@@ -437,12 +434,6 @@ func (i CryptoKeyMap) ToCryptoKeyMapOutputWithContext(ctx context.Context) Crypt
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyMapOutput)
 }
 
-func (i CryptoKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKey] {
-	return pulumix.Output[map[string]*CryptoKey]{
-		OutputState: i.ToCryptoKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
@@ -455,12 +446,6 @@ func (o CryptoKeyOutput) ToCryptoKeyOutput() CryptoKeyOutput {
 
 func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput {
 	return o
-}
-
-func (o CryptoKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKey] {
-	return pulumix.Output[*CryptoKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -548,12 +533,6 @@ func (o CryptoKeyArrayOutput) ToCryptoKeyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CryptoKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKey] {
-	return pulumix.Output[[]*CryptoKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CryptoKeyArrayOutput) Index(i pulumi.IntInput) CryptoKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKey {
 		return vs[0].([]*CryptoKey)[vs[1].(int)]
@@ -572,12 +551,6 @@ func (o CryptoKeyMapOutput) ToCryptoKeyMapOutput() CryptoKeyMapOutput {
 
 func (o CryptoKeyMapOutput) ToCryptoKeyMapOutputWithContext(ctx context.Context) CryptoKeyMapOutput {
 	return o
-}
-
-func (o CryptoKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKey] {
-	return pulumix.Output[map[string]*CryptoKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CryptoKeyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyOutput {

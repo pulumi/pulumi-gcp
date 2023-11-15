@@ -12,6 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttachedClusterAuthorization {
     /**
+     * @return Groups that can perform operations as a cluster admin. A managed
+     * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+     * to the groups. Up to ten admin groups can be provided.
+     * For more info on RBAC, see
+     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    private @Nullable List<String> adminGroups;
+    /**
      * @return Users that can perform operations as a cluster admin. A managed
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
      * to the users. Up to ten admin users can be provided.
@@ -22,6 +31,17 @@ public final class AttachedClusterAuthorization {
     private @Nullable List<String> adminUsers;
 
     private AttachedClusterAuthorization() {}
+    /**
+     * @return Groups that can perform operations as a cluster admin. A managed
+     * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+     * to the groups. Up to ten admin groups can be provided.
+     * For more info on RBAC, see
+     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    public List<String> adminGroups() {
+        return this.adminGroups == null ? List.of() : this.adminGroups;
+    }
     /**
      * @return Users that can perform operations as a cluster admin. A managed
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
@@ -43,13 +63,23 @@ public final class AttachedClusterAuthorization {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> adminGroups;
         private @Nullable List<String> adminUsers;
         public Builder() {}
         public Builder(AttachedClusterAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.adminGroups = defaults.adminGroups;
     	      this.adminUsers = defaults.adminUsers;
         }
 
+        @CustomType.Setter
+        public Builder adminGroups(@Nullable List<String> adminGroups) {
+            this.adminGroups = adminGroups;
+            return this;
+        }
+        public Builder adminGroups(String... adminGroups) {
+            return adminGroups(List.of(adminGroups));
+        }
         @CustomType.Setter
         public Builder adminUsers(@Nullable List<String> adminUsers) {
             this.adminUsers = adminUsers;
@@ -60,6 +90,7 @@ public final class AttachedClusterAuthorization {
         }
         public AttachedClusterAuthorization build() {
             final var o = new AttachedClusterAuthorization();
+            o.adminGroups = adminGroups;
             o.adminUsers = adminUsers;
             return o;
         }

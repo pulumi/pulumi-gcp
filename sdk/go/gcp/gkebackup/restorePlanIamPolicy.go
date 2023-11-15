@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Restore Plan instance.
@@ -505,7 +504,17 @@ import (
 //
 // ## Import
 //
-// # RestorePlan can be imported using any of these accepted formats
+// RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RestorePlan using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/restorePlans/{{name}}"
+//
+//	to = google_gke_backup_restore_plan.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RestorePlan can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -644,12 +653,6 @@ func (i *RestorePlanIamPolicy) ToRestorePlanIamPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamPolicyOutput)
 }
 
-func (i *RestorePlanIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamPolicy] {
-	return pulumix.Output[*RestorePlanIamPolicy]{
-		OutputState: i.ToRestorePlanIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanIamPolicyArrayInput is an input type that accepts RestorePlanIamPolicyArray and RestorePlanIamPolicyArrayOutput values.
 // You can construct a concrete instance of `RestorePlanIamPolicyArrayInput` via:
 //
@@ -673,12 +676,6 @@ func (i RestorePlanIamPolicyArray) ToRestorePlanIamPolicyArrayOutput() RestorePl
 
 func (i RestorePlanIamPolicyArray) ToRestorePlanIamPolicyArrayOutputWithContext(ctx context.Context) RestorePlanIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamPolicyArrayOutput)
-}
-
-func (i RestorePlanIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlanIamPolicy] {
-	return pulumix.Output[[]*RestorePlanIamPolicy]{
-		OutputState: i.ToRestorePlanIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RestorePlanIamPolicyMapInput is an input type that accepts RestorePlanIamPolicyMap and RestorePlanIamPolicyMapOutput values.
@@ -706,12 +703,6 @@ func (i RestorePlanIamPolicyMap) ToRestorePlanIamPolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamPolicyMapOutput)
 }
 
-func (i RestorePlanIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlanIamPolicy] {
-	return pulumix.Output[map[string]*RestorePlanIamPolicy]{
-		OutputState: i.ToRestorePlanIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanIamPolicyOutput) ElementType() reflect.Type {
@@ -724,12 +715,6 @@ func (o RestorePlanIamPolicyOutput) ToRestorePlanIamPolicyOutput() RestorePlanIa
 
 func (o RestorePlanIamPolicyOutput) ToRestorePlanIamPolicyOutputWithContext(ctx context.Context) RestorePlanIamPolicyOutput {
 	return o
-}
-
-func (o RestorePlanIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamPolicy] {
-	return pulumix.Output[*RestorePlanIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamPolicyOutput) Etag() pulumi.StringOutput {
@@ -770,12 +755,6 @@ func (o RestorePlanIamPolicyArrayOutput) ToRestorePlanIamPolicyArrayOutputWithCo
 	return o
 }
 
-func (o RestorePlanIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlanIamPolicy] {
-	return pulumix.Output[[]*RestorePlanIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestorePlanIamPolicyArrayOutput) Index(i pulumi.IntInput) RestorePlanIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RestorePlanIamPolicy {
 		return vs[0].([]*RestorePlanIamPolicy)[vs[1].(int)]
@@ -794,12 +773,6 @@ func (o RestorePlanIamPolicyMapOutput) ToRestorePlanIamPolicyMapOutput() Restore
 
 func (o RestorePlanIamPolicyMapOutput) ToRestorePlanIamPolicyMapOutputWithContext(ctx context.Context) RestorePlanIamPolicyMapOutput {
 	return o
-}
-
-func (o RestorePlanIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlanIamPolicy] {
-	return pulumix.Output[map[string]*RestorePlanIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RestorePlanIamPolicyOutput {

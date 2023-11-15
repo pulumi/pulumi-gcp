@@ -14,8 +14,10 @@ import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStorageArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
+import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterVcenterArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -330,6 +332,25 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * VmwareVCenterConfig specifies vCenter config for the user cluster.
+     * Inherited from the admin cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vcenters")
+    private @Nullable Output<List<VMwareClusterVcenterArgs>> vcenters;
+
+    /**
+     * @return VmwareVCenterConfig specifies vCenter config for the user cluster.
+     * Inherited from the admin cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<VMwareClusterVcenterArgs>>> vcenters() {
+        return Optional.ofNullable(this.vcenters);
+    }
+
+    /**
      * Enable VM tracking.
      * 
      */
@@ -364,6 +385,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.storage = $.storage;
         this.upgradePolicy = $.upgradePolicy;
+        this.vcenters = $.vcenters;
         this.vmTrackingEnabled = $.vmTrackingEnabled;
     }
 
@@ -788,6 +810,43 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder upgradePolicy(VMwareClusterUpgradePolicyArgs upgradePolicy) {
             return upgradePolicy(Output.of(upgradePolicy));
+        }
+
+        /**
+         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster.
+         * Inherited from the admin cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vcenters(@Nullable Output<List<VMwareClusterVcenterArgs>> vcenters) {
+            $.vcenters = vcenters;
+            return this;
+        }
+
+        /**
+         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster.
+         * Inherited from the admin cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vcenters(List<VMwareClusterVcenterArgs> vcenters) {
+            return vcenters(Output.of(vcenters));
+        }
+
+        /**
+         * @param vcenters VmwareVCenterConfig specifies vCenter config for the user cluster.
+         * Inherited from the admin cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vcenters(VMwareClusterVcenterArgs... vcenters) {
+            return vcenters(List.of(vcenters));
         }
 
         /**

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A named resource to which messages are sent by publishers.
@@ -175,7 +174,17 @@ import (
 //
 // ## Import
 //
-// # Topic can be imported using any of these accepted formats
+// Topic can be imported using any of these accepted formats* `projects/{{project}}/topics/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Topic using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/topics/{{name}}"
+//
+//	to = google_pubsub_topic.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:pubsub/topic:Topic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Topic can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -216,7 +225,8 @@ type Topic struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 31 days or less than 10 minutes.
+	// The rotation period has the format of a decimal number, followed by the
+	// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrOutput `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -292,7 +302,8 @@ type topicState struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 31 days or less than 10 minutes.
+	// The rotation period has the format of a decimal number, followed by the
+	// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -334,7 +345,8 @@ type TopicState struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 31 days or less than 10 minutes.
+	// The rotation period has the format of a decimal number, followed by the
+	// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -378,7 +390,8 @@ type topicArgs struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 31 days or less than 10 minutes.
+	// The rotation period has the format of a decimal number, followed by the
+	// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -416,7 +429,8 @@ type TopicArgs struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 31 days or less than 10 minutes.
+	// The rotation period has the format of a decimal number, followed by the
+	// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -458,12 +472,6 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicOutput)
 }
 
-func (i *Topic) ToOutput(ctx context.Context) pulumix.Output[*Topic] {
-	return pulumix.Output[*Topic]{
-		OutputState: i.ToTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
@@ -487,12 +495,6 @@ func (i TopicArray) ToTopicArrayOutput() TopicArrayOutput {
 
 func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicArrayOutput)
-}
-
-func (i TopicArray) ToOutput(ctx context.Context) pulumix.Output[[]*Topic] {
-	return pulumix.Output[[]*Topic]{
-		OutputState: i.ToTopicArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
@@ -520,12 +522,6 @@ func (i TopicMap) ToTopicMapOutputWithContext(ctx context.Context) TopicMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TopicMapOutput)
 }
 
-func (i TopicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Topic] {
-	return pulumix.Output[map[string]*Topic]{
-		OutputState: i.ToTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TopicOutput struct{ *pulumi.OutputState }
 
 func (TopicOutput) ElementType() reflect.Type {
@@ -538,12 +534,6 @@ func (o TopicOutput) ToTopicOutput() TopicOutput {
 
 func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
-}
-
-func (o TopicOutput) ToOutput(ctx context.Context) pulumix.Output[*Topic] {
-	return pulumix.Output[*Topic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -574,7 +564,8 @@ func (o TopicOutput) Labels() pulumi.StringMapOutput {
 // For instance, it allows any attached subscription to seek to a timestamp
 // that is up to messageRetentionDuration in the past. If this field is not
 // set, message retention is controlled by settings on individual subscriptions.
-// Cannot be more than 31 days or less than 10 minutes.
+// The rotation period has the format of a decimal number, followed by the
+// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
 func (o TopicOutput) MessageRetentionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.MessageRetentionDuration }).(pulumi.StringPtrOutput)
 }
@@ -626,12 +617,6 @@ func (o TopicArrayOutput) ToTopicArrayOutputWithContext(ctx context.Context) Top
 	return o
 }
 
-func (o TopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Topic] {
-	return pulumix.Output[[]*Topic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TopicArrayOutput) Index(i pulumi.IntInput) TopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Topic {
 		return vs[0].([]*Topic)[vs[1].(int)]
@@ -650,12 +635,6 @@ func (o TopicMapOutput) ToTopicMapOutput() TopicMapOutput {
 
 func (o TopicMapOutput) ToTopicMapOutputWithContext(ctx context.Context) TopicMapOutput {
 	return o
-}
-
-func (o TopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Topic] {
-	return pulumix.Output[map[string]*Topic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TopicMapOutput) MapIndex(k pulumi.StringInput) TopicOutput {

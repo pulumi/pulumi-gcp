@@ -93,14 +93,22 @@ import * as utilities from "../utilities";
  *
  * Storage buckets can be imported using the `name` or
  *
- * `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+ * `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). * `{{project_id}}/{{bucket}}` * `{{bucket}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage buckets using one of the formats above. For exampletf import {
+ *
+ *  id = "{{project_id}}/{{bucket}}"
+ *
+ *  to = google_storage_bucket.default }
  *
  * ```sh
- *  $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+ *  $ pulumi import gcp:storage/bucket:Bucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage buckets can be imported using one of the formats above. For example
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+ *  $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
  * ```
  *
  *  `false` in state. If you've set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
@@ -154,6 +162,10 @@ export class Bucket extends pulumi.CustomResource {
      * clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     */
+    public readonly enableObjectRetention!: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
      */
@@ -250,6 +262,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["customPlacementConfig"] = state ? state.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["enableObjectRetention"] = state ? state.enableObjectRetention : undefined;
             resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -277,6 +290,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["cors"] = args ? args.cors : undefined;
             resourceInputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
+            resourceInputs["enableObjectRetention"] = args ? args.enableObjectRetention : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -329,6 +343,10 @@ export interface BucketState {
      * clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     */
+    enableObjectRetention?: pulumi.Input<boolean>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
      */
@@ -428,6 +446,10 @@ export interface BucketArgs {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean>;
+    /**
+     * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     */
+    enableObjectRetention?: pulumi.Input<boolean>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
      */

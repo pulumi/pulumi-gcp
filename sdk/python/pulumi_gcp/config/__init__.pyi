@@ -150,6 +150,8 @@ documentAiCustomEndpoint: Optional[str]
 
 documentAiWarehouseCustomEndpoint: Optional[str]
 
+edgecontainerCustomEndpoint: Optional[str]
+
 edgenetworkCustomEndpoint: Optional[str]
 
 essentialContactsCustomEndpoint: Optional[str]
@@ -203,6 +205,8 @@ identityPlatformCustomEndpoint: Optional[str]
 impersonateServiceAccount: Optional[str]
 
 impersonateServiceAccountDelegates: Optional[str]
+
+integrationConnectorsCustomEndpoint: Optional[str]
 
 kmsCustomEndpoint: Optional[str]
 
@@ -295,6 +299,8 @@ tagsLocationCustomEndpoint: Optional[str]
 tpuCustomEndpoint: Optional[str]
 
 tpuV2CustomEndpoint: Optional[str]
+
+universeDomain: Optional[str]
 
 userProjectOverride: Optional[bool]
 

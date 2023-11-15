@@ -470,6 +470,8 @@ class BareMetalNodePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Google Bare Metal Node Pool.
+
         ## Example Usage
         ### Gkeonprem Bare Metal Node Pool Basic
 
@@ -543,8 +545,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                         username="admin@hashicorptest.com",
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         nodepool_basic = gcp.gkeonprem.BareMetalNodePool("nodepool-basic",
             bare_metal_cluster=default_basic.name,
             location="us-west1",
@@ -553,8 +554,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 node_configs=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs(
                     node_ip="10.200.0.11",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkeonprem Bare Metal Node Pool Full
 
@@ -628,8 +628,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                         username="admin@hashicorptest.com",
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         nodepool_full = gcp.gkeonprem.BareMetalNodePool("nodepool-full",
             display_name="test-name",
             bare_metal_cluster=default_full.name,
@@ -647,13 +646,20 @@ class BareMetalNodePool(pulumi.CustomResource):
                     value="test-value",
                     effect="NO_EXECUTE",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
 
-        BareMetalNodePool can be imported using any of these accepted formats
+        BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalNodePool using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}"
+
+         to = google_gkeonprem_bare_metal_node_pool.default }
+
+        ```sh
+         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalNodePool can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}
@@ -696,6 +702,8 @@ class BareMetalNodePool(pulumi.CustomResource):
                  args: BareMetalNodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Bare Metal Node Pool.
+
         ## Example Usage
         ### Gkeonprem Bare Metal Node Pool Basic
 
@@ -769,8 +777,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                         username="admin@hashicorptest.com",
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         nodepool_basic = gcp.gkeonprem.BareMetalNodePool("nodepool-basic",
             bare_metal_cluster=default_basic.name,
             location="us-west1",
@@ -779,8 +786,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 node_configs=[gcp.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs(
                     node_ip="10.200.0.11",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Gkeonprem Bare Metal Node Pool Full
 
@@ -854,8 +860,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                         username="admin@hashicorptest.com",
                     )],
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         nodepool_full = gcp.gkeonprem.BareMetalNodePool("nodepool-full",
             display_name="test-name",
             bare_metal_cluster=default_full.name,
@@ -873,13 +878,20 @@ class BareMetalNodePool(pulumi.CustomResource):
                     value="test-value",
                     effect="NO_EXECUTE",
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
 
-        BareMetalNodePool can be imported using any of these accepted formats
+        BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalNodePool using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}"
+
+         to = google_gkeonprem_bare_metal_node_pool.default }
+
+        ```sh
+         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalNodePool can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}

@@ -160,6 +160,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The internal IPv6 address range that is assigned to this subnetwork.
+        /// </summary>
+        public readonly string InternalIpv6Prefix;
+        /// <summary>
         /// The range of IP addresses belonging to this subnetwork
         /// secondary range.
         /// </summary>
@@ -193,6 +197,8 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            string internalIpv6Prefix,
+
             string ipCidrRange,
 
             string? name,
@@ -212,6 +218,7 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             GatewayAddress = gatewayAddress;
             Id = id;
+            InternalIpv6Prefix = internalIpv6Prefix;
             IpCidrRange = ipCidrRange;
             Name = name;
             Network = network;

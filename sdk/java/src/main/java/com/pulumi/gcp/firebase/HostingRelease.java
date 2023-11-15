@@ -190,7 +190,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Release can be imported using any of these accepted formats
+ * Release can be imported using any of these accepted formats* `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}` * `sites/{{site_id}}/releases/{{release_id}}` * `{{site_id}}/{{channel_id}}/{{release_id}}` * `{{site_id}}/{{release_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Release using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}&#34;
+ * 
+ *  to = google_firebase_hosting_release.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:firebase/hostingRelease:HostingRelease When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Release can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}

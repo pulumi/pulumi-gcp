@@ -66,7 +66,15 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Import
     /// 
-    /// Webhook can be imported using any of these accepted formats
+    /// Webhook can be imported using any of these accepted formats* `{{parent}}/webhooks/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Webhook using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{parent}}/webhooks/{{name}}"
+    /// 
+    ///  to = google_dialogflow_cx_webhook.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:diagflow/cxWebhook:CxWebhook When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Webhook can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}

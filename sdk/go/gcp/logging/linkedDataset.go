@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a BigQuery linked dataset
@@ -101,7 +100,17 @@ import (
 //
 // ## Import
 //
-// LinkedDataset can be imported using any of these accepted formats:
+// LinkedDataset can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import LinkedDataset using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}"
+//
+//	to = google_logging_linked_dataset.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/linkedDataset:LinkedDataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), LinkedDataset can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -300,12 +309,6 @@ func (i *LinkedDataset) ToLinkedDatasetOutputWithContext(ctx context.Context) Li
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetOutput)
 }
 
-func (i *LinkedDataset) ToOutput(ctx context.Context) pulumix.Output[*LinkedDataset] {
-	return pulumix.Output[*LinkedDataset]{
-		OutputState: i.ToLinkedDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LinkedDatasetArrayInput is an input type that accepts LinkedDatasetArray and LinkedDatasetArrayOutput values.
 // You can construct a concrete instance of `LinkedDatasetArrayInput` via:
 //
@@ -329,12 +332,6 @@ func (i LinkedDatasetArray) ToLinkedDatasetArrayOutput() LinkedDatasetArrayOutpu
 
 func (i LinkedDatasetArray) ToLinkedDatasetArrayOutputWithContext(ctx context.Context) LinkedDatasetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetArrayOutput)
-}
-
-func (i LinkedDatasetArray) ToOutput(ctx context.Context) pulumix.Output[[]*LinkedDataset] {
-	return pulumix.Output[[]*LinkedDataset]{
-		OutputState: i.ToLinkedDatasetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LinkedDatasetMapInput is an input type that accepts LinkedDatasetMap and LinkedDatasetMapOutput values.
@@ -362,12 +359,6 @@ func (i LinkedDatasetMap) ToLinkedDatasetMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetMapOutput)
 }
 
-func (i LinkedDatasetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LinkedDataset] {
-	return pulumix.Output[map[string]*LinkedDataset]{
-		OutputState: i.ToLinkedDatasetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LinkedDatasetOutput struct{ *pulumi.OutputState }
 
 func (LinkedDatasetOutput) ElementType() reflect.Type {
@@ -380,12 +371,6 @@ func (o LinkedDatasetOutput) ToLinkedDatasetOutput() LinkedDatasetOutput {
 
 func (o LinkedDatasetOutput) ToLinkedDatasetOutputWithContext(ctx context.Context) LinkedDatasetOutput {
 	return o
-}
-
-func (o LinkedDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedDataset] {
-	return pulumix.Output[*LinkedDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
@@ -455,12 +440,6 @@ func (o LinkedDatasetArrayOutput) ToLinkedDatasetArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o LinkedDatasetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LinkedDataset] {
-	return pulumix.Output[[]*LinkedDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LinkedDatasetArrayOutput) Index(i pulumi.IntInput) LinkedDatasetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LinkedDataset {
 		return vs[0].([]*LinkedDataset)[vs[1].(int)]
@@ -479,12 +458,6 @@ func (o LinkedDatasetMapOutput) ToLinkedDatasetMapOutput() LinkedDatasetMapOutpu
 
 func (o LinkedDatasetMapOutput) ToLinkedDatasetMapOutputWithContext(ctx context.Context) LinkedDatasetMapOutput {
 	return o
-}
-
-func (o LinkedDatasetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LinkedDataset] {
-	return pulumix.Output[map[string]*LinkedDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedDatasetMapOutput) MapIndex(k pulumi.StringInput) LinkedDatasetOutput {

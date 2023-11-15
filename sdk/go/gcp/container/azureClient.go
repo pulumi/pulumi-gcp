@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AzureClient resources hold client authentication information needed by the Anthos Multi-Cloud API to manage Azure resources on your Azure subscription.When an AzureCluster is created, an AzureClient resource needs to be provided and all operations on Azure resources associated to that cluster will authenticate to Azure services using the given client.AzureClient resources are immutable and cannot be modified upon creation.Each AzureClient resource is bound to a single Azure Active Directory Application and tenant.
@@ -49,7 +48,17 @@ import (
 //
 // ## Import
 //
-// # Client can be imported using any of these accepted formats
+// Client can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/azureClients/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Client using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/azureClients/{{name}}"
+//
+//	to = google_container_azure_client.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:container/azureClient:AzureClient When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Client can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -229,12 +238,6 @@ func (i *AzureClient) ToAzureClientOutputWithContext(ctx context.Context) AzureC
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClientOutput)
 }
 
-func (i *AzureClient) ToOutput(ctx context.Context) pulumix.Output[*AzureClient] {
-	return pulumix.Output[*AzureClient]{
-		OutputState: i.ToAzureClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureClientArrayInput is an input type that accepts AzureClientArray and AzureClientArrayOutput values.
 // You can construct a concrete instance of `AzureClientArrayInput` via:
 //
@@ -258,12 +261,6 @@ func (i AzureClientArray) ToAzureClientArrayOutput() AzureClientArrayOutput {
 
 func (i AzureClientArray) ToAzureClientArrayOutputWithContext(ctx context.Context) AzureClientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClientArrayOutput)
-}
-
-func (i AzureClientArray) ToOutput(ctx context.Context) pulumix.Output[[]*AzureClient] {
-	return pulumix.Output[[]*AzureClient]{
-		OutputState: i.ToAzureClientArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AzureClientMapInput is an input type that accepts AzureClientMap and AzureClientMapOutput values.
@@ -291,12 +288,6 @@ func (i AzureClientMap) ToAzureClientMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AzureClientMapOutput)
 }
 
-func (i AzureClientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureClient] {
-	return pulumix.Output[map[string]*AzureClient]{
-		OutputState: i.ToAzureClientMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzureClientOutput struct{ *pulumi.OutputState }
 
 func (AzureClientOutput) ElementType() reflect.Type {
@@ -309,12 +300,6 @@ func (o AzureClientOutput) ToAzureClientOutput() AzureClientOutput {
 
 func (o AzureClientOutput) ToAzureClientOutputWithContext(ctx context.Context) AzureClientOutput {
 	return o
-}
-
-func (o AzureClientOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureClient] {
-	return pulumix.Output[*AzureClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Azure Active Directory Application ID.
@@ -373,12 +358,6 @@ func (o AzureClientArrayOutput) ToAzureClientArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o AzureClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AzureClient] {
-	return pulumix.Output[[]*AzureClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AzureClientArrayOutput) Index(i pulumi.IntInput) AzureClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AzureClient {
 		return vs[0].([]*AzureClient)[vs[1].(int)]
@@ -397,12 +376,6 @@ func (o AzureClientMapOutput) ToAzureClientMapOutput() AzureClientMapOutput {
 
 func (o AzureClientMapOutput) ToAzureClientMapOutputWithContext(ctx context.Context) AzureClientMapOutput {
 	return o
-}
-
-func (o AzureClientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AzureClient] {
-	return pulumix.Output[map[string]*AzureClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureClientMapOutput) MapIndex(k pulumi.StringInput) AzureClientOutput {

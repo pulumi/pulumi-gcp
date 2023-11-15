@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class CxPageFormParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxPageFormParameterAdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         [Input("defaultValue")]

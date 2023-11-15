@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AiDatasetEncryptionSpecArgs) ToAiDatasetEncryptionSpecOutput() AiDataset
 
 func (i AiDatasetEncryptionSpecArgs) ToAiDatasetEncryptionSpecOutputWithContext(ctx context.Context) AiDatasetEncryptionSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetEncryptionSpecOutput)
-}
-
-func (i AiDatasetEncryptionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiDatasetEncryptionSpec] {
-	return pulumix.Output[AiDatasetEncryptionSpec]{
-		OutputState: i.ToAiDatasetEncryptionSpecOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AiDatasetEncryptionSpecArgs) ToAiDatasetEncryptionSpecPtrOutput() AiDatasetEncryptionSpecPtrOutput {
@@ -96,12 +89,6 @@ func (i *aiDatasetEncryptionSpecPtrType) ToAiDatasetEncryptionSpecPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetEncryptionSpecPtrOutput)
 }
 
-func (i *aiDatasetEncryptionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiDatasetEncryptionSpec] {
-	return pulumix.Output[*AiDatasetEncryptionSpec]{
-		OutputState: i.ToAiDatasetEncryptionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiDatasetEncryptionSpecOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetEncryptionSpecOutput) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o AiDatasetEncryptionSpecOutput) ToAiDatasetEncryptionSpecPtrOutputWithCon
 	}).(AiDatasetEncryptionSpecPtrOutput)
 }
 
-func (o AiDatasetEncryptionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiDatasetEncryptionSpec] {
-	return pulumix.Output[AiDatasetEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 // Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
 func (o AiDatasetEncryptionSpecOutput) KmsKeyName() pulumi.StringPtrOutput {
@@ -150,12 +131,6 @@ func (o AiDatasetEncryptionSpecPtrOutput) ToAiDatasetEncryptionSpecPtrOutput() A
 
 func (o AiDatasetEncryptionSpecPtrOutput) ToAiDatasetEncryptionSpecPtrOutputWithContext(ctx context.Context) AiDatasetEncryptionSpecPtrOutput {
 	return o
-}
-
-func (o AiDatasetEncryptionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiDatasetEncryptionSpec] {
-	return pulumix.Output[*AiDatasetEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiDatasetEncryptionSpecPtrOutput) Elem() AiDatasetEncryptionSpecOutput {
@@ -284,12 +259,6 @@ func (i AiEndpointDeployedModelArgs) ToAiEndpointDeployedModelOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelOutput)
 }
 
-func (i AiEndpointDeployedModelArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModel] {
-	return pulumix.Output[AiEndpointDeployedModel]{
-		OutputState: i.ToAiEndpointDeployedModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiEndpointDeployedModelArrayInput is an input type that accepts AiEndpointDeployedModelArray and AiEndpointDeployedModelArrayOutput values.
 // You can construct a concrete instance of `AiEndpointDeployedModelArrayInput` via:
 //
@@ -315,12 +284,6 @@ func (i AiEndpointDeployedModelArray) ToAiEndpointDeployedModelArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelArrayOutput)
 }
 
-func (i AiEndpointDeployedModelArray) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModel] {
-	return pulumix.Output[[]AiEndpointDeployedModel]{
-		OutputState: i.ToAiEndpointDeployedModelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointDeployedModelOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointDeployedModelOutput) ElementType() reflect.Type {
@@ -333,12 +296,6 @@ func (o AiEndpointDeployedModelOutput) ToAiEndpointDeployedModelOutput() AiEndpo
 
 func (o AiEndpointDeployedModelOutput) ToAiEndpointDeployedModelOutputWithContext(ctx context.Context) AiEndpointDeployedModelOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModel] {
-	return pulumix.Output[AiEndpointDeployedModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -433,12 +390,6 @@ func (o AiEndpointDeployedModelArrayOutput) ToAiEndpointDeployedModelArrayOutput
 	return o
 }
 
-func (o AiEndpointDeployedModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModel] {
-	return pulumix.Output[[]AiEndpointDeployedModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiEndpointDeployedModelArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModel {
 		return vs[0].([]AiEndpointDeployedModel)[vs[1].(int)]
@@ -486,12 +437,6 @@ func (i AiEndpointDeployedModelAutomaticResourceArgs) ToAiEndpointDeployedModelA
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelAutomaticResourceOutput)
 }
 
-func (i AiEndpointDeployedModelAutomaticResourceArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelAutomaticResource] {
-	return pulumix.Output[AiEndpointDeployedModelAutomaticResource]{
-		OutputState: i.ToAiEndpointDeployedModelAutomaticResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiEndpointDeployedModelAutomaticResourceArrayInput is an input type that accepts AiEndpointDeployedModelAutomaticResourceArray and AiEndpointDeployedModelAutomaticResourceArrayOutput values.
 // You can construct a concrete instance of `AiEndpointDeployedModelAutomaticResourceArrayInput` via:
 //
@@ -517,12 +462,6 @@ func (i AiEndpointDeployedModelAutomaticResourceArray) ToAiEndpointDeployedModel
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelAutomaticResourceArrayOutput)
 }
 
-func (i AiEndpointDeployedModelAutomaticResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelAutomaticResource] {
-	return pulumix.Output[[]AiEndpointDeployedModelAutomaticResource]{
-		OutputState: i.ToAiEndpointDeployedModelAutomaticResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointDeployedModelAutomaticResourceOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointDeployedModelAutomaticResourceOutput) ElementType() reflect.Type {
@@ -535,12 +474,6 @@ func (o AiEndpointDeployedModelAutomaticResourceOutput) ToAiEndpointDeployedMode
 
 func (o AiEndpointDeployedModelAutomaticResourceOutput) ToAiEndpointDeployedModelAutomaticResourceOutputWithContext(ctx context.Context) AiEndpointDeployedModelAutomaticResourceOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelAutomaticResourceOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelAutomaticResource] {
-	return pulumix.Output[AiEndpointDeployedModelAutomaticResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -567,12 +500,6 @@ func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) ToAiEndpointDeploye
 
 func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) ToAiEndpointDeployedModelAutomaticResourceArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelAutomaticResourceArrayOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelAutomaticResource] {
-	return pulumix.Output[[]AiEndpointDeployedModelAutomaticResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelAutomaticResourceOutput {
@@ -638,12 +565,6 @@ func (i AiEndpointDeployedModelDedicatedResourceArgs) ToAiEndpointDeployedModelD
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceOutput)
 }
 
-func (i AiEndpointDeployedModelDedicatedResourceArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelDedicatedResource] {
-	return pulumix.Output[AiEndpointDeployedModelDedicatedResource]{
-		OutputState: i.ToAiEndpointDeployedModelDedicatedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiEndpointDeployedModelDedicatedResourceArrayInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceArray and AiEndpointDeployedModelDedicatedResourceArrayOutput values.
 // You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceArrayInput` via:
 //
@@ -669,12 +590,6 @@ func (i AiEndpointDeployedModelDedicatedResourceArray) ToAiEndpointDeployedModel
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceArrayOutput)
 }
 
-func (i AiEndpointDeployedModelDedicatedResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelDedicatedResource] {
-	return pulumix.Output[[]AiEndpointDeployedModelDedicatedResource]{
-		OutputState: i.ToAiEndpointDeployedModelDedicatedResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointDeployedModelDedicatedResourceOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointDeployedModelDedicatedResourceOutput) ElementType() reflect.Type {
@@ -687,12 +602,6 @@ func (o AiEndpointDeployedModelDedicatedResourceOutput) ToAiEndpointDeployedMode
 
 func (o AiEndpointDeployedModelDedicatedResourceOutput) ToAiEndpointDeployedModelDedicatedResourceOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelDedicatedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelDedicatedResource] {
-	return pulumix.Output[AiEndpointDeployedModelDedicatedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -737,12 +646,6 @@ func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) ToAiEndpointDeploye
 
 func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) ToAiEndpointDeployedModelDedicatedResourceArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceArrayOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelDedicatedResource] {
-	return pulumix.Output[[]AiEndpointDeployedModelDedicatedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelDedicatedResourceOutput {
@@ -792,12 +695,6 @@ func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs) ToAiE
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput)
 }
 
-func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec] {
-	return pulumix.Output[AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec]{
-		OutputState: i.ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray and AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput values.
 // You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput` via:
 //
@@ -823,12 +720,6 @@ func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray) ToAi
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput)
 }
 
-func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec] {
-	return pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec]{
-		OutputState: i.ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ElementType() reflect.Type {
@@ -841,12 +732,6 @@ func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ToA
 
 func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec] {
-	return pulumix.Output[AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -873,12 +758,6 @@ func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput
 
 func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec] {
-	return pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
@@ -934,12 +813,6 @@ func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArgs) ToAiEndpointDep
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceMachineSpecOutput)
 }
 
-func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelDedicatedResourceMachineSpec] {
-	return pulumix.Output[AiEndpointDeployedModelDedicatedResourceMachineSpec]{
-		OutputState: i.ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceMachineSpecArray and AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput values.
 // You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput` via:
 //
@@ -965,12 +838,6 @@ func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArray) ToAiEndpointDe
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput)
 }
 
-func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceMachineSpec] {
-	return pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceMachineSpec]{
-		OutputState: i.ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointDeployedModelDedicatedResourceMachineSpecOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ElementType() reflect.Type {
@@ -983,12 +850,6 @@ func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ToAiEndpointD
 
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelDedicatedResourceMachineSpec] {
-	return pulumix.Output[AiEndpointDeployedModelDedicatedResourceMachineSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1021,12 +882,6 @@ func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) ToAiEndp
 
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceMachineSpec] {
-	return pulumix.Output[[]AiEndpointDeployedModelDedicatedResourceMachineSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
@@ -1088,12 +943,6 @@ func (i AiEndpointDeployedModelPrivateEndpointArgs) ToAiEndpointDeployedModelPri
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelPrivateEndpointOutput)
 }
 
-func (i AiEndpointDeployedModelPrivateEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelPrivateEndpoint] {
-	return pulumix.Output[AiEndpointDeployedModelPrivateEndpoint]{
-		OutputState: i.ToAiEndpointDeployedModelPrivateEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiEndpointDeployedModelPrivateEndpointArrayInput is an input type that accepts AiEndpointDeployedModelPrivateEndpointArray and AiEndpointDeployedModelPrivateEndpointArrayOutput values.
 // You can construct a concrete instance of `AiEndpointDeployedModelPrivateEndpointArrayInput` via:
 //
@@ -1119,12 +968,6 @@ func (i AiEndpointDeployedModelPrivateEndpointArray) ToAiEndpointDeployedModelPr
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelPrivateEndpointArrayOutput)
 }
 
-func (i AiEndpointDeployedModelPrivateEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelPrivateEndpoint] {
-	return pulumix.Output[[]AiEndpointDeployedModelPrivateEndpoint]{
-		OutputState: i.ToAiEndpointDeployedModelPrivateEndpointArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointDeployedModelPrivateEndpointOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointDeployedModelPrivateEndpointOutput) ElementType() reflect.Type {
@@ -1137,12 +980,6 @@ func (o AiEndpointDeployedModelPrivateEndpointOutput) ToAiEndpointDeployedModelP
 
 func (o AiEndpointDeployedModelPrivateEndpointOutput) ToAiEndpointDeployedModelPrivateEndpointOutputWithContext(ctx context.Context) AiEndpointDeployedModelPrivateEndpointOutput {
 	return o
-}
-
-func (o AiEndpointDeployedModelPrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointDeployedModelPrivateEndpoint] {
-	return pulumix.Output[AiEndpointDeployedModelPrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1183,12 +1020,6 @@ func (o AiEndpointDeployedModelPrivateEndpointArrayOutput) ToAiEndpointDeployedM
 	return o
 }
 
-func (o AiEndpointDeployedModelPrivateEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiEndpointDeployedModelPrivateEndpoint] {
-	return pulumix.Output[[]AiEndpointDeployedModelPrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiEndpointDeployedModelPrivateEndpointArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelPrivateEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModelPrivateEndpoint {
 		return vs[0].([]AiEndpointDeployedModelPrivateEndpoint)[vs[1].(int)]
@@ -1226,12 +1057,6 @@ func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecOutput() AiEndpo
 
 func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointEncryptionSpecOutput)
-}
-
-func (i AiEndpointEncryptionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiEndpointEncryptionSpec] {
-	return pulumix.Output[AiEndpointEncryptionSpec]{
-		OutputState: i.ToAiEndpointEncryptionSpecOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecPtrOutput() AiEndpointEncryptionSpecPtrOutput {
@@ -1275,12 +1100,6 @@ func (i *aiEndpointEncryptionSpecPtrType) ToAiEndpointEncryptionSpecPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointEncryptionSpecPtrOutput)
 }
 
-func (i *aiEndpointEncryptionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiEndpointEncryptionSpec] {
-	return pulumix.Output[*AiEndpointEncryptionSpec]{
-		OutputState: i.ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiEndpointEncryptionSpecOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointEncryptionSpecOutput) ElementType() reflect.Type {
@@ -1305,12 +1124,6 @@ func (o AiEndpointEncryptionSpecOutput) ToAiEndpointEncryptionSpecPtrOutputWithC
 	}).(AiEndpointEncryptionSpecPtrOutput)
 }
 
-func (o AiEndpointEncryptionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiEndpointEncryptionSpec] {
-	return pulumix.Output[AiEndpointEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
 func (o AiEndpointEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v AiEndpointEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -1328,12 +1141,6 @@ func (o AiEndpointEncryptionSpecPtrOutput) ToAiEndpointEncryptionSpecPtrOutput()
 
 func (o AiEndpointEncryptionSpecPtrOutput) ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecPtrOutput {
 	return o
-}
-
-func (o AiEndpointEncryptionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiEndpointEncryptionSpec] {
-	return pulumix.Output[*AiEndpointEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiEndpointEncryptionSpecPtrOutput) Elem() AiEndpointEncryptionSpecOutput {
@@ -1389,12 +1196,6 @@ func (i AiFeatureStoreEncryptionSpecArgs) ToAiFeatureStoreEncryptionSpecOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEncryptionSpecOutput)
 }
 
-func (i AiFeatureStoreEncryptionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEncryptionSpec] {
-	return pulumix.Output[AiFeatureStoreEncryptionSpec]{
-		OutputState: i.ToAiFeatureStoreEncryptionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEncryptionSpecArgs) ToAiFeatureStoreEncryptionSpecPtrOutput() AiFeatureStoreEncryptionSpecPtrOutput {
 	return i.ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(context.Background())
 }
@@ -1436,12 +1237,6 @@ func (i *aiFeatureStoreEncryptionSpecPtrType) ToAiFeatureStoreEncryptionSpecPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEncryptionSpecPtrOutput)
 }
 
-func (i *aiFeatureStoreEncryptionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEncryptionSpec] {
-	return pulumix.Output[*AiFeatureStoreEncryptionSpec]{
-		OutputState: i.ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEncryptionSpecOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEncryptionSpecOutput) ElementType() reflect.Type {
@@ -1466,12 +1261,6 @@ func (o AiFeatureStoreEncryptionSpecOutput) ToAiFeatureStoreEncryptionSpecPtrOut
 	}).(AiFeatureStoreEncryptionSpecPtrOutput)
 }
 
-func (o AiFeatureStoreEncryptionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEncryptionSpec] {
-	return pulumix.Output[AiFeatureStoreEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
 func (o AiFeatureStoreEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v AiFeatureStoreEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -1489,12 +1278,6 @@ func (o AiFeatureStoreEncryptionSpecPtrOutput) ToAiFeatureStoreEncryptionSpecPtr
 
 func (o AiFeatureStoreEncryptionSpecPtrOutput) ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEncryptionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEncryptionSpec] {
-	return pulumix.Output[*AiFeatureStoreEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEncryptionSpecPtrOutput) Elem() AiFeatureStoreEncryptionSpecOutput {
@@ -1552,12 +1335,6 @@ func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToAiFeatureStoreEntityT
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingConditionOutput)
 }
 
-func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeIamBindingCondition] {
-	return pulumix.Output[AiFeatureStoreEntityTypeIamBindingCondition]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutput() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1599,12 +1376,6 @@ func (i *aiFeatureStoreEntityTypeIamBindingConditionPtrType) ToAiFeatureStoreEnt
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingConditionPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamBindingCondition] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeIamBindingCondition]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1627,12 +1398,6 @@ func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) ToAiFeatureStoreEntit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeIamBindingCondition) *AiFeatureStoreEntityTypeIamBindingCondition {
 		return &v
 	}).(AiFeatureStoreEntityTypeIamBindingConditionPtrOutput)
-}
-
-func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeIamBindingCondition] {
-	return pulumix.Output[AiFeatureStoreEntityTypeIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1659,12 +1424,6 @@ func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) ToAiFeatureStoreEn
 
 func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamBindingCondition] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) Elem() AiFeatureStoreEntityTypeIamBindingConditionOutput {
@@ -1739,12 +1498,6 @@ func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToAiFeatureStoreEntityTy
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberConditionOutput)
 }
 
-func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeIamMemberCondition] {
-	return pulumix.Output[AiFeatureStoreEntityTypeIamMemberCondition]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutput() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1786,12 +1539,6 @@ func (i *aiFeatureStoreEntityTypeIamMemberConditionPtrType) ToAiFeatureStoreEnti
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberConditionPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamMemberCondition] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeIamMemberCondition]{
-		OutputState: i.ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1814,12 +1561,6 @@ func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) ToAiFeatureStoreEntity
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeIamMemberCondition) *AiFeatureStoreEntityTypeIamMemberCondition {
 		return &v
 	}).(AiFeatureStoreEntityTypeIamMemberConditionPtrOutput)
-}
-
-func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeIamMemberCondition] {
-	return pulumix.Output[AiFeatureStoreEntityTypeIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1846,12 +1587,6 @@ func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) ToAiFeatureStoreEnt
 
 func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamMemberCondition] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) Elem() AiFeatureStoreEntityTypeIamMemberConditionOutput {
@@ -1944,12 +1679,6 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityType
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigOutput)
 }
 
-func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfig] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfig]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeMonitoringConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(context.Background())
 }
@@ -1991,12 +1720,6 @@ func (i *aiFeatureStoreEntityTypeMonitoringConfigPtrType) ToAiFeatureStoreEntity
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeMonitoringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfig] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfig]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeMonitoringConfigOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigOutput) ElementType() reflect.Type {
@@ -2019,12 +1742,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTy
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfig {
 		return &v
 	}).(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput)
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfig] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
@@ -2071,12 +1788,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ToAiFeatureStoreEntit
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfig] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigOutput {
@@ -2166,12 +1877,6 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput)
 }
 
-func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(context.Background())
 }
@@ -2213,12 +1918,6 @@ func (i *aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ElementType() reflect.Type {
@@ -2243,12 +1942,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput
 	}).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput)
 }
 
-func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
 func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig) float64 { return v.Value }).(pulumi.Float64Output)
@@ -2266,12 +1959,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOut
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput {
@@ -2343,12 +2030,6 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToAi
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput)
 }
 
-func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(context.Background())
 }
@@ -2390,12 +2071,6 @@ func (i *aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ElementType() reflect.Type {
@@ -2418,12 +2093,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) To
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
 		return &v
 	}).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
@@ -2456,12 +2125,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput {
@@ -2533,12 +2196,6 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput)
 }
 
-func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(context.Background())
 }
@@ -2580,12 +2237,6 @@ func (i *aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ElementType() reflect.Type {
@@ -2610,12 +2261,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) 
 	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
 }
 
-func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
 func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) float64 { return v.Value }).(pulumi.Float64Output)
@@ -2633,12 +2278,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutpu
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput {
@@ -2708,12 +2347,6 @@ func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatur
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput)
 }
 
-func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
 	return i.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(context.Background())
 }
@@ -2755,12 +2388,6 @@ func (i *aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType) ToAiFe
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
 }
 
-func (i *aiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis]{
-		OutputState: i.ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ElementType() reflect.Type {
@@ -2783,12 +2410,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToAiFeat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
 		return &v
 	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
@@ -2824,12 +2445,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ToAiF
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis] {
-	return pulumix.Output[*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput {
@@ -2918,12 +2533,6 @@ func (i AiFeatureStoreIamBindingConditionArgs) ToAiFeatureStoreIamBindingConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamBindingConditionOutput)
 }
 
-func (i AiFeatureStoreIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreIamBindingCondition] {
-	return pulumix.Output[AiFeatureStoreIamBindingCondition]{
-		OutputState: i.ToAiFeatureStoreIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreIamBindingConditionArgs) ToAiFeatureStoreIamBindingConditionPtrOutput() AiFeatureStoreIamBindingConditionPtrOutput {
 	return i.ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -2965,12 +2574,6 @@ func (i *aiFeatureStoreIamBindingConditionPtrType) ToAiFeatureStoreIamBindingCon
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamBindingConditionPtrOutput)
 }
 
-func (i *aiFeatureStoreIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreIamBindingCondition] {
-	return pulumix.Output[*AiFeatureStoreIamBindingCondition]{
-		OutputState: i.ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreIamBindingConditionOutput) ElementType() reflect.Type {
@@ -2993,12 +2596,6 @@ func (o AiFeatureStoreIamBindingConditionOutput) ToAiFeatureStoreIamBindingCondi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreIamBindingCondition) *AiFeatureStoreIamBindingCondition {
 		return &v
 	}).(AiFeatureStoreIamBindingConditionPtrOutput)
-}
-
-func (o AiFeatureStoreIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreIamBindingCondition] {
-	return pulumix.Output[AiFeatureStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -3025,12 +2622,6 @@ func (o AiFeatureStoreIamBindingConditionPtrOutput) ToAiFeatureStoreIamBindingCo
 
 func (o AiFeatureStoreIamBindingConditionPtrOutput) ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreIamBindingCondition] {
-	return pulumix.Output[*AiFeatureStoreIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreIamBindingConditionPtrOutput) Elem() AiFeatureStoreIamBindingConditionOutput {
@@ -3105,12 +2696,6 @@ func (i AiFeatureStoreIamMemberConditionArgs) ToAiFeatureStoreIamMemberCondition
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamMemberConditionOutput)
 }
 
-func (i AiFeatureStoreIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreIamMemberCondition] {
-	return pulumix.Output[AiFeatureStoreIamMemberCondition]{
-		OutputState: i.ToAiFeatureStoreIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreIamMemberConditionArgs) ToAiFeatureStoreIamMemberConditionPtrOutput() AiFeatureStoreIamMemberConditionPtrOutput {
 	return i.ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -3152,12 +2737,6 @@ func (i *aiFeatureStoreIamMemberConditionPtrType) ToAiFeatureStoreIamMemberCondi
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamMemberConditionPtrOutput)
 }
 
-func (i *aiFeatureStoreIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreIamMemberCondition] {
-	return pulumix.Output[*AiFeatureStoreIamMemberCondition]{
-		OutputState: i.ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreIamMemberConditionOutput) ElementType() reflect.Type {
@@ -3180,12 +2759,6 @@ func (o AiFeatureStoreIamMemberConditionOutput) ToAiFeatureStoreIamMemberConditi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreIamMemberCondition) *AiFeatureStoreIamMemberCondition {
 		return &v
 	}).(AiFeatureStoreIamMemberConditionPtrOutput)
-}
-
-func (o AiFeatureStoreIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreIamMemberCondition] {
-	return pulumix.Output[AiFeatureStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -3212,12 +2785,6 @@ func (o AiFeatureStoreIamMemberConditionPtrOutput) ToAiFeatureStoreIamMemberCond
 
 func (o AiFeatureStoreIamMemberConditionPtrOutput) ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreIamMemberCondition] {
-	return pulumix.Output[*AiFeatureStoreIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreIamMemberConditionPtrOutput) Elem() AiFeatureStoreIamMemberConditionOutput {
@@ -3296,12 +2863,6 @@ func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConf
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigOutput)
 }
 
-func (i AiFeatureStoreOnlineServingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreOnlineServingConfig] {
-	return pulumix.Output[AiFeatureStoreOnlineServingConfig]{
-		OutputState: i.ToAiFeatureStoreOnlineServingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreOnlineServingConfigArgs) ToAiFeatureStoreOnlineServingConfigPtrOutput() AiFeatureStoreOnlineServingConfigPtrOutput {
 	return i.ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(context.Background())
 }
@@ -3343,12 +2904,6 @@ func (i *aiFeatureStoreOnlineServingConfigPtrType) ToAiFeatureStoreOnlineServing
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigPtrOutput)
 }
 
-func (i *aiFeatureStoreOnlineServingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreOnlineServingConfig] {
-	return pulumix.Output[*AiFeatureStoreOnlineServingConfig]{
-		OutputState: i.ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreOnlineServingConfigOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreOnlineServingConfigOutput) ElementType() reflect.Type {
@@ -3371,12 +2926,6 @@ func (o AiFeatureStoreOnlineServingConfigOutput) ToAiFeatureStoreOnlineServingCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreOnlineServingConfig) *AiFeatureStoreOnlineServingConfig {
 		return &v
 	}).(AiFeatureStoreOnlineServingConfigPtrOutput)
-}
-
-func (o AiFeatureStoreOnlineServingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreOnlineServingConfig] {
-	return pulumix.Output[AiFeatureStoreOnlineServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
@@ -3402,12 +2951,6 @@ func (o AiFeatureStoreOnlineServingConfigPtrOutput) ToAiFeatureStoreOnlineServin
 
 func (o AiFeatureStoreOnlineServingConfigPtrOutput) ToAiFeatureStoreOnlineServingConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreOnlineServingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreOnlineServingConfig] {
-	return pulumix.Output[*AiFeatureStoreOnlineServingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreOnlineServingConfigPtrOutput) Elem() AiFeatureStoreOnlineServingConfigOutput {
@@ -3478,12 +3021,6 @@ func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToAiFeatureStoreOnlineServ
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigScalingOutput)
 }
 
-func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreOnlineServingConfigScaling] {
-	return pulumix.Output[AiFeatureStoreOnlineServingConfigScaling]{
-		OutputState: i.ToAiFeatureStoreOnlineServingConfigScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiFeatureStoreOnlineServingConfigScalingArgs) ToAiFeatureStoreOnlineServingConfigScalingPtrOutput() AiFeatureStoreOnlineServingConfigScalingPtrOutput {
 	return i.ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(context.Background())
 }
@@ -3525,12 +3062,6 @@ func (i *aiFeatureStoreOnlineServingConfigScalingPtrType) ToAiFeatureStoreOnline
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreOnlineServingConfigScalingPtrOutput)
 }
 
-func (i *aiFeatureStoreOnlineServingConfigScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreOnlineServingConfigScaling] {
-	return pulumix.Output[*AiFeatureStoreOnlineServingConfigScaling]{
-		OutputState: i.ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiFeatureStoreOnlineServingConfigScalingOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreOnlineServingConfigScalingOutput) ElementType() reflect.Type {
@@ -3555,12 +3086,6 @@ func (o AiFeatureStoreOnlineServingConfigScalingOutput) ToAiFeatureStoreOnlineSe
 	}).(AiFeatureStoreOnlineServingConfigScalingPtrOutput)
 }
 
-func (o AiFeatureStoreOnlineServingConfigScalingOutput) ToOutput(ctx context.Context) pulumix.Output[AiFeatureStoreOnlineServingConfigScaling] {
-	return pulumix.Output[AiFeatureStoreOnlineServingConfigScaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
 func (o AiFeatureStoreOnlineServingConfigScalingOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v AiFeatureStoreOnlineServingConfigScaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
@@ -3583,12 +3108,6 @@ func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) ToAiFeatureStoreOnlin
 
 func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) ToAiFeatureStoreOnlineServingConfigScalingPtrOutputWithContext(ctx context.Context) AiFeatureStoreOnlineServingConfigScalingPtrOutput {
 	return o
-}
-
-func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreOnlineServingConfigScaling] {
-	return pulumix.Output[*AiFeatureStoreOnlineServingConfigScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) Elem() AiFeatureStoreOnlineServingConfigScalingOutput {
@@ -3662,12 +3181,6 @@ func (i AiIndexDeployedIndexArgs) ToAiIndexDeployedIndexOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexDeployedIndexOutput)
 }
 
-func (i AiIndexDeployedIndexArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexDeployedIndex] {
-	return pulumix.Output[AiIndexDeployedIndex]{
-		OutputState: i.ToAiIndexDeployedIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiIndexDeployedIndexArrayInput is an input type that accepts AiIndexDeployedIndexArray and AiIndexDeployedIndexArrayOutput values.
 // You can construct a concrete instance of `AiIndexDeployedIndexArrayInput` via:
 //
@@ -3693,12 +3206,6 @@ func (i AiIndexDeployedIndexArray) ToAiIndexDeployedIndexArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexDeployedIndexArrayOutput)
 }
 
-func (i AiIndexDeployedIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]AiIndexDeployedIndex] {
-	return pulumix.Output[[]AiIndexDeployedIndex]{
-		OutputState: i.ToAiIndexDeployedIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexDeployedIndexOutput struct{ *pulumi.OutputState }
 
 func (AiIndexDeployedIndexOutput) ElementType() reflect.Type {
@@ -3711,12 +3218,6 @@ func (o AiIndexDeployedIndexOutput) ToAiIndexDeployedIndexOutput() AiIndexDeploy
 
 func (o AiIndexDeployedIndexOutput) ToAiIndexDeployedIndexOutputWithContext(ctx context.Context) AiIndexDeployedIndexOutput {
 	return o
-}
-
-func (o AiIndexDeployedIndexOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexDeployedIndex] {
-	return pulumix.Output[AiIndexDeployedIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3745,16 +3246,166 @@ func (o AiIndexDeployedIndexArrayOutput) ToAiIndexDeployedIndexArrayOutputWithCo
 	return o
 }
 
-func (o AiIndexDeployedIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiIndexDeployedIndex] {
-	return pulumix.Output[[]AiIndexDeployedIndex]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) AiIndexDeployedIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexDeployedIndex {
 		return vs[0].([]AiIndexDeployedIndex)[vs[1].(int)]
 	}).(AiIndexDeployedIndexOutput)
+}
+
+type AiIndexEndpointPrivateServiceConnectConfig struct {
+	// If set to true, the IndexEndpoint is created without private service access.
+	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists []string `pulumi:"projectAllowlists"`
+}
+
+// AiIndexEndpointPrivateServiceConnectConfigInput is an input type that accepts AiIndexEndpointPrivateServiceConnectConfigArgs and AiIndexEndpointPrivateServiceConnectConfigOutput values.
+// You can construct a concrete instance of `AiIndexEndpointPrivateServiceConnectConfigInput` via:
+//
+//	AiIndexEndpointPrivateServiceConnectConfigArgs{...}
+type AiIndexEndpointPrivateServiceConnectConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointPrivateServiceConnectConfigOutput() AiIndexEndpointPrivateServiceConnectConfigOutput
+	ToAiIndexEndpointPrivateServiceConnectConfigOutputWithContext(context.Context) AiIndexEndpointPrivateServiceConnectConfigOutput
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigArgs struct {
+	// If set to true, the IndexEndpoint is created without private service access.
+	EnablePrivateServiceConnect pulumi.BoolInput `pulumi:"enablePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists pulumi.StringArrayInput `pulumi:"projectAllowlists"`
+}
+
+func (AiIndexEndpointPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigArgs) ToAiIndexEndpointPrivateServiceConnectConfigOutput() AiIndexEndpointPrivateServiceConnectConfigOutput {
+	return i.ToAiIndexEndpointPrivateServiceConnectConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigArgs) ToAiIndexEndpointPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointPrivateServiceConnectConfigOutput)
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigArgs) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutput() AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigArgs) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointPrivateServiceConnectConfigOutput).ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointPrivateServiceConnectConfigPtrInput is an input type that accepts AiIndexEndpointPrivateServiceConnectConfigArgs, AiIndexEndpointPrivateServiceConnectConfigPtr and AiIndexEndpointPrivateServiceConnectConfigPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointPrivateServiceConnectConfigPtrInput` via:
+//
+//	        AiIndexEndpointPrivateServiceConnectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointPrivateServiceConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointPrivateServiceConnectConfigPtrOutput() AiIndexEndpointPrivateServiceConnectConfigPtrOutput
+	ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Context) AiIndexEndpointPrivateServiceConnectConfigPtrOutput
+}
+
+type aiIndexEndpointPrivateServiceConnectConfigPtrType AiIndexEndpointPrivateServiceConnectConfigArgs
+
+func AiIndexEndpointPrivateServiceConnectConfigPtr(v *AiIndexEndpointPrivateServiceConnectConfigArgs) AiIndexEndpointPrivateServiceConnectConfigPtrInput {
+	return (*aiIndexEndpointPrivateServiceConnectConfigPtrType)(v)
+}
+
+func (*aiIndexEndpointPrivateServiceConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointPrivateServiceConnectConfigPtrType) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutput() AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointPrivateServiceConnectConfigPtrType) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointPrivateServiceConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) ToAiIndexEndpointPrivateServiceConnectConfigOutput() AiIndexEndpointPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) ToAiIndexEndpointPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutput() AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointPrivateServiceConnectConfig) *AiIndexEndpointPrivateServiceConnectConfig {
+		return &v
+	}).(AiIndexEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+// If set to true, the IndexEndpoint is created without private service access.
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) EnablePrivateServiceConnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v AiIndexEndpointPrivateServiceConnectConfig) bool { return v.EnablePrivateServiceConnect }).(pulumi.BoolOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiIndexEndpointPrivateServiceConnectConfig) []string { return v.ProjectAllowlists }).(pulumi.StringArrayOutput)
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutput() AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) ToAiIndexEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) Elem() AiIndexEndpointPrivateServiceConnectConfigOutput {
+	return o.ApplyT(func(v *AiIndexEndpointPrivateServiceConnectConfig) AiIndexEndpointPrivateServiceConnectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointPrivateServiceConnectConfig
+		return ret
+	}).(AiIndexEndpointPrivateServiceConnectConfigOutput)
+}
+
+// If set to true, the IndexEndpoint is created without private service access.
+func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) EnablePrivateServiceConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointPrivateServiceConnectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnablePrivateServiceConnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiIndexEndpointPrivateServiceConnectConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectAllowlists
+	}).(pulumi.StringArrayOutput)
 }
 
 type AiIndexIndexStat struct {
@@ -3798,12 +3449,6 @@ func (i AiIndexIndexStatArgs) ToAiIndexIndexStatOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexIndexStatOutput)
 }
 
-func (i AiIndexIndexStatArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexIndexStat] {
-	return pulumix.Output[AiIndexIndexStat]{
-		OutputState: i.ToAiIndexIndexStatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiIndexIndexStatArrayInput is an input type that accepts AiIndexIndexStatArray and AiIndexIndexStatArrayOutput values.
 // You can construct a concrete instance of `AiIndexIndexStatArrayInput` via:
 //
@@ -3829,12 +3474,6 @@ func (i AiIndexIndexStatArray) ToAiIndexIndexStatArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexIndexStatArrayOutput)
 }
 
-func (i AiIndexIndexStatArray) ToOutput(ctx context.Context) pulumix.Output[[]AiIndexIndexStat] {
-	return pulumix.Output[[]AiIndexIndexStat]{
-		OutputState: i.ToAiIndexIndexStatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexIndexStatOutput struct{ *pulumi.OutputState }
 
 func (AiIndexIndexStatOutput) ElementType() reflect.Type {
@@ -3847,12 +3486,6 @@ func (o AiIndexIndexStatOutput) ToAiIndexIndexStatOutput() AiIndexIndexStatOutpu
 
 func (o AiIndexIndexStatOutput) ToAiIndexIndexStatOutputWithContext(ctx context.Context) AiIndexIndexStatOutput {
 	return o
-}
-
-func (o AiIndexIndexStatOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexIndexStat] {
-	return pulumix.Output[AiIndexIndexStat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3879,12 +3512,6 @@ func (o AiIndexIndexStatArrayOutput) ToAiIndexIndexStatArrayOutput() AiIndexInde
 
 func (o AiIndexIndexStatArrayOutput) ToAiIndexIndexStatArrayOutputWithContext(ctx context.Context) AiIndexIndexStatArrayOutput {
 	return o
-}
-
-func (o AiIndexIndexStatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiIndexIndexStat] {
-	return pulumix.Output[[]AiIndexIndexStat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexIndexStatArrayOutput) Index(i pulumi.IntInput) AiIndexIndexStatOutput {
@@ -3948,12 +3575,6 @@ func (i AiIndexMetadataArgs) ToAiIndexMetadataOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataOutput)
 }
 
-func (i AiIndexMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadata] {
-	return pulumix.Output[AiIndexMetadata]{
-		OutputState: i.ToAiIndexMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiIndexMetadataArgs) ToAiIndexMetadataPtrOutput() AiIndexMetadataPtrOutput {
 	return i.ToAiIndexMetadataPtrOutputWithContext(context.Background())
 }
@@ -3995,12 +3616,6 @@ func (i *aiIndexMetadataPtrType) ToAiIndexMetadataPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataPtrOutput)
 }
 
-func (i *aiIndexMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadata] {
-	return pulumix.Output[*AiIndexMetadata]{
-		OutputState: i.ToAiIndexMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexMetadataOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataOutput) ElementType() reflect.Type {
@@ -4023,12 +3638,6 @@ func (o AiIndexMetadataOutput) ToAiIndexMetadataPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadata) *AiIndexMetadata {
 		return &v
 	}).(AiIndexMetadataPtrOutput)
-}
-
-func (o AiIndexMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadata] {
-	return pulumix.Output[AiIndexMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration of the Matching Engine Index.
@@ -4065,12 +3674,6 @@ func (o AiIndexMetadataPtrOutput) ToAiIndexMetadataPtrOutput() AiIndexMetadataPt
 
 func (o AiIndexMetadataPtrOutput) ToAiIndexMetadataPtrOutputWithContext(ctx context.Context) AiIndexMetadataPtrOutput {
 	return o
-}
-
-func (o AiIndexMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadata] {
-	return pulumix.Output[*AiIndexMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexMetadataPtrOutput) Elem() AiIndexMetadataOutput {
@@ -4201,12 +3804,6 @@ func (i AiIndexMetadataConfigArgs) ToAiIndexMetadataConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigOutput)
 }
 
-func (i AiIndexMetadataConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfig] {
-	return pulumix.Output[AiIndexMetadataConfig]{
-		OutputState: i.ToAiIndexMetadataConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiIndexMetadataConfigArgs) ToAiIndexMetadataConfigPtrOutput() AiIndexMetadataConfigPtrOutput {
 	return i.ToAiIndexMetadataConfigPtrOutputWithContext(context.Background())
 }
@@ -4248,12 +3845,6 @@ func (i *aiIndexMetadataConfigPtrType) ToAiIndexMetadataConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigPtrOutput)
 }
 
-func (i *aiIndexMetadataConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfig] {
-	return pulumix.Output[*AiIndexMetadataConfig]{
-		OutputState: i.ToAiIndexMetadataConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataConfigOutput) ElementType() reflect.Type {
@@ -4276,12 +3867,6 @@ func (o AiIndexMetadataConfigOutput) ToAiIndexMetadataConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfig) *AiIndexMetadataConfig {
 		return &v
 	}).(AiIndexMetadataConfigPtrOutput)
-}
-
-func (o AiIndexMetadataConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfig] {
-	return pulumix.Output[AiIndexMetadataConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration with regard to the algorithms used for efficient search.
@@ -4340,12 +3925,6 @@ func (o AiIndexMetadataConfigPtrOutput) ToAiIndexMetadataConfigPtrOutput() AiInd
 
 func (o AiIndexMetadataConfigPtrOutput) ToAiIndexMetadataConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigPtrOutput {
 	return o
-}
-
-func (o AiIndexMetadataConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfig] {
-	return pulumix.Output[*AiIndexMetadataConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexMetadataConfigPtrOutput) Elem() AiIndexMetadataConfigOutput {
@@ -4475,12 +4054,6 @@ func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToAiIndexMetadataConfigAlgorit
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigOutput)
 }
 
-func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[AiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: i.ToAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
 	return i.ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(context.Background())
 }
@@ -4522,12 +4095,6 @@ func (i *aiIndexMetadataConfigAlgorithmConfigPtrType) ToAiIndexMetadataConfigAlg
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
 }
 
-func (i *aiIndexMetadataConfigAlgorithmConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[*AiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: i.ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexMetadataConfigAlgorithmConfigOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataConfigAlgorithmConfigOutput) ElementType() reflect.Type {
@@ -4550,12 +4117,6 @@ func (o AiIndexMetadataConfigAlgorithmConfigOutput) ToAiIndexMetadataConfigAlgor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfig {
 		return &v
 	}).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
-}
-
-func (o AiIndexMetadataConfigAlgorithmConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[AiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration options for using brute force search, which simply implements the
@@ -4587,12 +4148,6 @@ func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) ToAiIndexMetadataConfigAl
 
 func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigPtrOutput {
 	return o
-}
-
-func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[*AiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) Elem() AiIndexMetadataConfigAlgorithmConfigOutput {
@@ -4657,12 +4212,6 @@ func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToAiIndexMetad
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput)
 }
 
-func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[AiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: i.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
 	return i.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(context.Background())
 }
@@ -4704,12 +4253,6 @@ func (i *aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType) ToAiIndexM
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput)
 }
 
-func (i *aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: i.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ElementType() reflect.Type {
@@ -4734,12 +4277,6 @@ func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToAiIndexMet
 	}).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput)
 }
 
-func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[AiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ElementType() reflect.Type {
@@ -4752,12 +4289,6 @@ func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ToAiIndex
 
 func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
 	return o
-}
-
-func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) Elem() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
@@ -4809,12 +4340,6 @@ func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToAiIndexMetadataC
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
 }
 
-func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[AiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: i.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
 	return i.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(context.Background())
 }
@@ -4856,12 +4381,6 @@ func (i *aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType) ToAiIndexMetad
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
 }
 
-func (i *aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: i.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ElementType() reflect.Type {
@@ -4884,12 +4403,6 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToAiIndexMetadat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 		return &v
 	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
-}
-
-func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[AiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of embeddings on each leaf node. The default value is 1000 if not set.
@@ -4915,12 +4428,6 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) ToAiIndexMeta
 
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
 	return o
-}
-
-func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[*AiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) Elem() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
@@ -4989,12 +4496,6 @@ func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreEncryptionSpecOutput)
 }
 
-func (i AiMetadataStoreEncryptionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiMetadataStoreEncryptionSpec] {
-	return pulumix.Output[AiMetadataStoreEncryptionSpec]{
-		OutputState: i.ToAiMetadataStoreEncryptionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiMetadataStoreEncryptionSpecArgs) ToAiMetadataStoreEncryptionSpecPtrOutput() AiMetadataStoreEncryptionSpecPtrOutput {
 	return i.ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(context.Background())
 }
@@ -5036,12 +4537,6 @@ func (i *aiMetadataStoreEncryptionSpecPtrType) ToAiMetadataStoreEncryptionSpecPt
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreEncryptionSpecPtrOutput)
 }
 
-func (i *aiMetadataStoreEncryptionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiMetadataStoreEncryptionSpec] {
-	return pulumix.Output[*AiMetadataStoreEncryptionSpec]{
-		OutputState: i.ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiMetadataStoreEncryptionSpecOutput struct{ *pulumi.OutputState }
 
 func (AiMetadataStoreEncryptionSpecOutput) ElementType() reflect.Type {
@@ -5066,12 +4561,6 @@ func (o AiMetadataStoreEncryptionSpecOutput) ToAiMetadataStoreEncryptionSpecPtrO
 	}).(AiMetadataStoreEncryptionSpecPtrOutput)
 }
 
-func (o AiMetadataStoreEncryptionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiMetadataStoreEncryptionSpec] {
-	return pulumix.Output[AiMetadataStoreEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 // Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
 func (o AiMetadataStoreEncryptionSpecOutput) KmsKeyName() pulumi.StringPtrOutput {
@@ -5090,12 +4579,6 @@ func (o AiMetadataStoreEncryptionSpecPtrOutput) ToAiMetadataStoreEncryptionSpecP
 
 func (o AiMetadataStoreEncryptionSpecPtrOutput) ToAiMetadataStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiMetadataStoreEncryptionSpecPtrOutput {
 	return o
-}
-
-func (o AiMetadataStoreEncryptionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiMetadataStoreEncryptionSpec] {
-	return pulumix.Output[*AiMetadataStoreEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiMetadataStoreEncryptionSpecPtrOutput) Elem() AiMetadataStoreEncryptionSpecOutput {
@@ -5154,12 +4637,6 @@ func (i AiMetadataStoreStateTypeArgs) ToAiMetadataStoreStateTypeOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreStateTypeOutput)
 }
 
-func (i AiMetadataStoreStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[AiMetadataStoreStateType] {
-	return pulumix.Output[AiMetadataStoreStateType]{
-		OutputState: i.ToAiMetadataStoreStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AiMetadataStoreStateTypeArrayInput is an input type that accepts AiMetadataStoreStateTypeArray and AiMetadataStoreStateTypeArrayOutput values.
 // You can construct a concrete instance of `AiMetadataStoreStateTypeArrayInput` via:
 //
@@ -5185,12 +4662,6 @@ func (i AiMetadataStoreStateTypeArray) ToAiMetadataStoreStateTypeArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreStateTypeArrayOutput)
 }
 
-func (i AiMetadataStoreStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]AiMetadataStoreStateType] {
-	return pulumix.Output[[]AiMetadataStoreStateType]{
-		OutputState: i.ToAiMetadataStoreStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiMetadataStoreStateTypeOutput struct{ *pulumi.OutputState }
 
 func (AiMetadataStoreStateTypeOutput) ElementType() reflect.Type {
@@ -5203,12 +4674,6 @@ func (o AiMetadataStoreStateTypeOutput) ToAiMetadataStoreStateTypeOutput() AiMet
 
 func (o AiMetadataStoreStateTypeOutput) ToAiMetadataStoreStateTypeOutputWithContext(ctx context.Context) AiMetadataStoreStateTypeOutput {
 	return o
-}
-
-func (o AiMetadataStoreStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AiMetadataStoreStateType] {
-	return pulumix.Output[AiMetadataStoreStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -5229,12 +4694,6 @@ func (o AiMetadataStoreStateTypeArrayOutput) ToAiMetadataStoreStateTypeArrayOutp
 
 func (o AiMetadataStoreStateTypeArrayOutput) ToAiMetadataStoreStateTypeArrayOutputWithContext(ctx context.Context) AiMetadataStoreStateTypeArrayOutput {
 	return o
-}
-
-func (o AiMetadataStoreStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AiMetadataStoreStateType] {
-	return pulumix.Output[[]AiMetadataStoreStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadataStoreStateTypeOutput {
@@ -5278,12 +4737,6 @@ func (i AiTensorboardEncryptionSpecArgs) ToAiTensorboardEncryptionSpecOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardEncryptionSpecOutput)
 }
 
-func (i AiTensorboardEncryptionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[AiTensorboardEncryptionSpec] {
-	return pulumix.Output[AiTensorboardEncryptionSpec]{
-		OutputState: i.ToAiTensorboardEncryptionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AiTensorboardEncryptionSpecArgs) ToAiTensorboardEncryptionSpecPtrOutput() AiTensorboardEncryptionSpecPtrOutput {
 	return i.ToAiTensorboardEncryptionSpecPtrOutputWithContext(context.Background())
 }
@@ -5325,12 +4778,6 @@ func (i *aiTensorboardEncryptionSpecPtrType) ToAiTensorboardEncryptionSpecPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardEncryptionSpecPtrOutput)
 }
 
-func (i *aiTensorboardEncryptionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*AiTensorboardEncryptionSpec] {
-	return pulumix.Output[*AiTensorboardEncryptionSpec]{
-		OutputState: i.ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AiTensorboardEncryptionSpecOutput struct{ *pulumi.OutputState }
 
 func (AiTensorboardEncryptionSpecOutput) ElementType() reflect.Type {
@@ -5355,12 +4802,6 @@ func (o AiTensorboardEncryptionSpecOutput) ToAiTensorboardEncryptionSpecPtrOutpu
 	}).(AiTensorboardEncryptionSpecPtrOutput)
 }
 
-func (o AiTensorboardEncryptionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[AiTensorboardEncryptionSpec] {
-	return pulumix.Output[AiTensorboardEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 // Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
 func (o AiTensorboardEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
@@ -5379,12 +4820,6 @@ func (o AiTensorboardEncryptionSpecPtrOutput) ToAiTensorboardEncryptionSpecPtrOu
 
 func (o AiTensorboardEncryptionSpecPtrOutput) ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecPtrOutput {
 	return o
-}
-
-func (o AiTensorboardEncryptionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AiTensorboardEncryptionSpec] {
-	return pulumix.Output[*AiTensorboardEncryptionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AiTensorboardEncryptionSpecPtrOutput) Elem() AiTensorboardEncryptionSpecOutput {
@@ -5441,12 +4876,6 @@ func (i GetAiIndexDeployedIndexArgs) ToGetAiIndexDeployedIndexOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexDeployedIndexOutput)
 }
 
-func (i GetAiIndexDeployedIndexArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexDeployedIndex] {
-	return pulumix.Output[GetAiIndexDeployedIndex]{
-		OutputState: i.ToGetAiIndexDeployedIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexDeployedIndexArrayInput is an input type that accepts GetAiIndexDeployedIndexArray and GetAiIndexDeployedIndexArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexDeployedIndexArrayInput` via:
 //
@@ -5472,12 +4901,6 @@ func (i GetAiIndexDeployedIndexArray) ToGetAiIndexDeployedIndexArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexDeployedIndexArrayOutput)
 }
 
-func (i GetAiIndexDeployedIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexDeployedIndex] {
-	return pulumix.Output[[]GetAiIndexDeployedIndex]{
-		OutputState: i.ToGetAiIndexDeployedIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexDeployedIndexOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexDeployedIndexOutput) ElementType() reflect.Type {
@@ -5490,12 +4913,6 @@ func (o GetAiIndexDeployedIndexOutput) ToGetAiIndexDeployedIndexOutput() GetAiIn
 
 func (o GetAiIndexDeployedIndexOutput) ToGetAiIndexDeployedIndexOutputWithContext(ctx context.Context) GetAiIndexDeployedIndexOutput {
 	return o
-}
-
-func (o GetAiIndexDeployedIndexOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexDeployedIndex] {
-	return pulumix.Output[GetAiIndexDeployedIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexDeployedIndexOutput) DeployedIndexId() pulumi.StringOutput {
@@ -5518,12 +4935,6 @@ func (o GetAiIndexDeployedIndexArrayOutput) ToGetAiIndexDeployedIndexArrayOutput
 
 func (o GetAiIndexDeployedIndexArrayOutput) ToGetAiIndexDeployedIndexArrayOutputWithContext(ctx context.Context) GetAiIndexDeployedIndexArrayOutput {
 	return o
-}
-
-func (o GetAiIndexDeployedIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexDeployedIndex] {
-	return pulumix.Output[[]GetAiIndexDeployedIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) GetAiIndexDeployedIndexOutput {
@@ -5565,12 +4976,6 @@ func (i GetAiIndexIndexStatArgs) ToGetAiIndexIndexStatOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexIndexStatOutput)
 }
 
-func (i GetAiIndexIndexStatArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexIndexStat] {
-	return pulumix.Output[GetAiIndexIndexStat]{
-		OutputState: i.ToGetAiIndexIndexStatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexIndexStatArrayInput is an input type that accepts GetAiIndexIndexStatArray and GetAiIndexIndexStatArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexIndexStatArrayInput` via:
 //
@@ -5596,12 +5001,6 @@ func (i GetAiIndexIndexStatArray) ToGetAiIndexIndexStatArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexIndexStatArrayOutput)
 }
 
-func (i GetAiIndexIndexStatArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexIndexStat] {
-	return pulumix.Output[[]GetAiIndexIndexStat]{
-		OutputState: i.ToGetAiIndexIndexStatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexIndexStatOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexIndexStatOutput) ElementType() reflect.Type {
@@ -5614,12 +5013,6 @@ func (o GetAiIndexIndexStatOutput) ToGetAiIndexIndexStatOutput() GetAiIndexIndex
 
 func (o GetAiIndexIndexStatOutput) ToGetAiIndexIndexStatOutputWithContext(ctx context.Context) GetAiIndexIndexStatOutput {
 	return o
-}
-
-func (o GetAiIndexIndexStatOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexIndexStat] {
-	return pulumix.Output[GetAiIndexIndexStat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexIndexStatOutput) ShardsCount() pulumi.IntOutput {
@@ -5642,12 +5035,6 @@ func (o GetAiIndexIndexStatArrayOutput) ToGetAiIndexIndexStatArrayOutput() GetAi
 
 func (o GetAiIndexIndexStatArrayOutput) ToGetAiIndexIndexStatArrayOutputWithContext(ctx context.Context) GetAiIndexIndexStatArrayOutput {
 	return o
-}
-
-func (o GetAiIndexIndexStatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexIndexStat] {
-	return pulumix.Output[[]GetAiIndexIndexStat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexIndexStatArrayOutput) Index(i pulumi.IntInput) GetAiIndexIndexStatOutput {
@@ -5691,12 +5078,6 @@ func (i GetAiIndexMetadataArgs) ToGetAiIndexMetadataOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataOutput)
 }
 
-func (i GetAiIndexMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadata] {
-	return pulumix.Output[GetAiIndexMetadata]{
-		OutputState: i.ToGetAiIndexMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexMetadataArrayInput is an input type that accepts GetAiIndexMetadataArray and GetAiIndexMetadataArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexMetadataArrayInput` via:
 //
@@ -5722,12 +5103,6 @@ func (i GetAiIndexMetadataArray) ToGetAiIndexMetadataArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataArrayOutput)
 }
 
-func (i GetAiIndexMetadataArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadata] {
-	return pulumix.Output[[]GetAiIndexMetadata]{
-		OutputState: i.ToGetAiIndexMetadataArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexMetadataOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexMetadataOutput) ElementType() reflect.Type {
@@ -5740,12 +5115,6 @@ func (o GetAiIndexMetadataOutput) ToGetAiIndexMetadataOutput() GetAiIndexMetadat
 
 func (o GetAiIndexMetadataOutput) ToGetAiIndexMetadataOutputWithContext(ctx context.Context) GetAiIndexMetadataOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadata] {
-	return pulumix.Output[GetAiIndexMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataOutput) Configs() GetAiIndexMetadataConfigArrayOutput {
@@ -5772,12 +5141,6 @@ func (o GetAiIndexMetadataArrayOutput) ToGetAiIndexMetadataArrayOutput() GetAiIn
 
 func (o GetAiIndexMetadataArrayOutput) ToGetAiIndexMetadataArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataArrayOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadata] {
-	return pulumix.Output[[]GetAiIndexMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataOutput {
@@ -5827,12 +5190,6 @@ func (i GetAiIndexMetadataConfigArgs) ToGetAiIndexMetadataConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigOutput)
 }
 
-func (i GetAiIndexMetadataConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexMetadataConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigArray and GetAiIndexMetadataConfigArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexMetadataConfigArrayInput` via:
 //
@@ -5858,12 +5215,6 @@ func (i GetAiIndexMetadataConfigArray) ToGetAiIndexMetadataConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigArrayOutput)
 }
 
-func (i GetAiIndexMetadataConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexMetadataConfigOutput) ElementType() reflect.Type {
@@ -5876,12 +5227,6 @@ func (o GetAiIndexMetadataConfigOutput) ToGetAiIndexMetadataConfigOutput() GetAi
 
 func (o GetAiIndexMetadataConfigOutput) ToGetAiIndexMetadataConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigOutput) AlgorithmConfigs() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
@@ -5920,12 +5265,6 @@ func (o GetAiIndexMetadataConfigArrayOutput) ToGetAiIndexMetadataConfigArrayOutp
 
 func (o GetAiIndexMetadataConfigArrayOutput) ToGetAiIndexMetadataConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigArrayOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigOutput {
@@ -5967,12 +5306,6 @@ func (i GetAiIndexMetadataConfigAlgorithmConfigArgs) ToGetAiIndexMetadataConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigOutput)
 }
 
-func (i GetAiIndexMetadataConfigAlgorithmConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexMetadataConfigAlgorithmConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigArray and GetAiIndexMetadataConfigAlgorithmConfigArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigArrayInput` via:
 //
@@ -5998,12 +5331,6 @@ func (i GetAiIndexMetadataConfigAlgorithmConfigArray) ToGetAiIndexMetadataConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigArrayOutput)
 }
 
-func (i GetAiIndexMetadataConfigAlgorithmConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexMetadataConfigAlgorithmConfigOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexMetadataConfigAlgorithmConfigOutput) ElementType() reflect.Type {
@@ -6016,12 +5343,6 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) ToGetAiIndexMetadataConfi
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) BruteForceConfigs() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
@@ -6048,12 +5369,6 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) ToGetAiIndexMetadata
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigAlgorithmConfigOutput {
@@ -6091,12 +5406,6 @@ func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToGetAiInde
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput)
 }
 
-func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray and GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput` via:
 //
@@ -6122,12 +5431,6 @@ func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray) ToGetAiInd
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput)
 }
 
-func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ElementType() reflect.Type {
@@ -6142,12 +5445,6 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToGetAiIn
 	return o
 }
 
-func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ElementType() reflect.Type {
@@ -6160,12 +5457,6 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ToGe
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
@@ -6207,12 +5498,6 @@ func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToGetAiIndexMet
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
 }
 
-func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray and GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput values.
 // You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput` via:
 //
@@ -6238,12 +5523,6 @@ func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray) ToGetAiIndexMe
 	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput)
 }
 
-func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: i.ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput struct{ *pulumi.OutputState }
 
 func (GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ElementType() reflect.Type {
@@ -6256,12 +5535,6 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToGetAiIndexM
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.IntOutput {
@@ -6284,12 +5557,6 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) ToGetAiI
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
 	return o
-}
-
-func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig] {
-	return pulumix.Output[[]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
@@ -6341,6 +5608,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScalingPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexInput)(nil)).Elem(), AiIndexDeployedIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexArrayInput)(nil)).Elem(), AiIndexDeployedIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatInput)(nil)).Elem(), AiIndexIndexStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatArrayInput)(nil)).Elem(), AiIndexIndexStatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataInput)(nil)).Elem(), AiIndexMetadataArgs{})
@@ -6415,6 +5684,8 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigScalingPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatArrayOutput{})
 	pulumi.RegisterOutputType(AiIndexMetadataOutput{})

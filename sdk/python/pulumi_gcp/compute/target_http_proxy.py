@@ -372,7 +372,15 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         ## Import
 
-        TargetHttpProxy can be imported using any of these accepted formats
+        TargetHttpProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpProxy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/targetHttpProxies/{{name}}"
+
+         to = google_compute_target_http_proxy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpProxy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
@@ -444,7 +452,15 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         ## Import
 
-        TargetHttpProxy can be imported using any of these accepted formats
+        TargetHttpProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpProxy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/targetHttpProxies/{{name}}"
+
+         to = google_compute_target_http_proxy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpProxy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}

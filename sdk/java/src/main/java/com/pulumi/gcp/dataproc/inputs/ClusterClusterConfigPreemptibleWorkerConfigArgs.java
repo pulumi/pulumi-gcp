@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,21 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
      */
     public Optional<Output<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs>> diskConfig() {
         return Optional.ofNullable(this.diskConfig);
+    }
+
+    /**
+     * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+     * 
+     */
+    @Import(name="instanceFlexibilityPolicy")
+    private @Nullable Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy;
+
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs>> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
 
     @Import(name="instanceNames")
@@ -84,6 +100,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
 
     private ClusterClusterConfigPreemptibleWorkerConfigArgs(ClusterClusterConfigPreemptibleWorkerConfigArgs $) {
         this.diskConfig = $.diskConfig;
+        this.instanceFlexibilityPolicy = $.instanceFlexibilityPolicy;
         this.instanceNames = $.instanceNames;
         this.numInstances = $.numInstances;
         this.preemptibility = $.preemptibility;
@@ -126,6 +143,27 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
          */
         public Builder diskConfig(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs diskConfig) {
             return diskConfig(Output.of(diskConfig));
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(@Nullable Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy) {
+            $.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
+            return this;
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs instanceFlexibilityPolicy) {
+            return instanceFlexibilityPolicy(Output.of(instanceFlexibilityPolicy));
         }
 
         public Builder instanceNames(@Nullable Output<List<String>> instanceNames) {

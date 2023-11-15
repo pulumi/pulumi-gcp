@@ -91,9 +91,16 @@ def get_keys(managed_zone: Optional[str] = None,
              project: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeysResult:
     """
-    Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+    Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+
+    For more information see the
     [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
     and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+
+    > A dns.ManagedZone resource must have DNSSEC enabled in order
+    to contain any DNSKEYs. Queries to managed zones without this setting
+    enabled will result in a 404 error as the collection of DNSKEYs does
+    not exist in the DNS API.
 
     ## Example Usage
 
@@ -134,9 +141,16 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
                     project: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
     """
-    Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+    Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+
+    For more information see the
     [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
     and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+
+    > A dns.ManagedZone resource must have DNSSEC enabled in order
+    to contain any DNSKEYs. Queries to managed zones without this setting
+    enabled will result in a 404 error as the collection of DNSKEYs does
+    not exist in the DNS API.
 
     ## Example Usage
 

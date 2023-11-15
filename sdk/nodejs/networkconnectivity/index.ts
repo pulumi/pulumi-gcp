@@ -10,6 +10,11 @@ export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
 utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
 
+export { PolicyBasedRouteArgs, PolicyBasedRouteState } from "./policyBasedRoute";
+export type PolicyBasedRoute = import("./policyBasedRoute").PolicyBasedRoute;
+export const PolicyBasedRoute: typeof import("./policyBasedRoute").PolicyBasedRoute = null as any;
+utilities.lazyLoad(exports, ["PolicyBasedRoute"], () => require("./policyBasedRoute"));
+
 export { ServiceConnectionPolicyArgs, ServiceConnectionPolicyState } from "./serviceConnectionPolicy";
 export type ServiceConnectionPolicy = import("./serviceConnectionPolicy").ServiceConnectionPolicy;
 export const ServiceConnectionPolicy: typeof import("./serviceConnectionPolicy").ServiceConnectionPolicy = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "gcp:networkconnectivity/hub:Hub":
                 return new Hub(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute":
+                return new PolicyBasedRoute(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy":
                 return new ServiceConnectionPolicy(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/spoke:Spoke":
@@ -37,5 +44,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/policyBasedRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/serviceConnectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/spoke", _module)

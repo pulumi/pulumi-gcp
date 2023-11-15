@@ -144,6 +144,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly outputName!: pulumi.Output<string>;
     /**
+     * The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     */
+    public readonly retention!: pulumi.Output<outputs.storage.BucketObjectRetention | undefined>;
+    /**
      * (Computed) A url reference to this object.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -195,6 +199,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["outputName"] = state ? state.outputName : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
             resourceInputs["storageClass"] = state ? state.storageClass : undefined;
@@ -217,6 +222,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["temporaryHold"] = args ? args.temporaryHold : undefined;
@@ -308,6 +314,10 @@ export interface BucketObjectState {
      */
     outputName?: pulumi.Input<string>;
     /**
+     * The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     */
+    retention?: pulumi.Input<inputs.storage.BucketObjectRetention>;
+    /**
      * (Computed) A url reference to this object.
      */
     selfLink?: pulumi.Input<string>;
@@ -387,6 +397,10 @@ export interface BucketObjectArgs {
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     */
+    retention?: pulumi.Input<inputs.storage.BucketObjectRetention>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.

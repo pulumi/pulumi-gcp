@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
@@ -115,7 +114,17 @@ import (
 //
 // ## Import
 //
-// # AccessLevels can be imported using any of these accepted formats
+// AccessLevels can be imported using any of these accepted formats* `{{parent}}/accessLevels` * `{{parent}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AccessLevels using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/accessLevels"
+//
+//	to = google_access_context_manager_access_levels.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AccessLevels can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -245,12 +254,6 @@ func (i *AccessLevels) ToAccessLevelsOutputWithContext(ctx context.Context) Acce
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsOutput)
 }
 
-func (i *AccessLevels) ToOutput(ctx context.Context) pulumix.Output[*AccessLevels] {
-	return pulumix.Output[*AccessLevels]{
-		OutputState: i.ToAccessLevelsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelsArrayInput is an input type that accepts AccessLevelsArray and AccessLevelsArrayOutput values.
 // You can construct a concrete instance of `AccessLevelsArrayInput` via:
 //
@@ -274,12 +277,6 @@ func (i AccessLevelsArray) ToAccessLevelsArrayOutput() AccessLevelsArrayOutput {
 
 func (i AccessLevelsArray) ToAccessLevelsArrayOutputWithContext(ctx context.Context) AccessLevelsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsArrayOutput)
-}
-
-func (i AccessLevelsArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevels] {
-	return pulumix.Output[[]*AccessLevels]{
-		OutputState: i.ToAccessLevelsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessLevelsMapInput is an input type that accepts AccessLevelsMap and AccessLevelsMapOutput values.
@@ -307,12 +304,6 @@ func (i AccessLevelsMap) ToAccessLevelsMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsMapOutput)
 }
 
-func (i AccessLevelsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevels] {
-	return pulumix.Output[map[string]*AccessLevels]{
-		OutputState: i.ToAccessLevelsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsOutput) ElementType() reflect.Type {
@@ -325,12 +316,6 @@ func (o AccessLevelsOutput) ToAccessLevelsOutput() AccessLevelsOutput {
 
 func (o AccessLevelsOutput) ToAccessLevelsOutputWithContext(ctx context.Context) AccessLevelsOutput {
 	return o
-}
-
-func (o AccessLevelsOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevels] {
-	return pulumix.Output[*AccessLevels]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired Access Levels that should replace all existing Access Levels in the Access Policy.
@@ -361,12 +346,6 @@ func (o AccessLevelsArrayOutput) ToAccessLevelsArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AccessLevelsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevels] {
-	return pulumix.Output[[]*AccessLevels]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessLevelsArrayOutput) Index(i pulumi.IntInput) AccessLevelsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessLevels {
 		return vs[0].([]*AccessLevels)[vs[1].(int)]
@@ -385,12 +364,6 @@ func (o AccessLevelsMapOutput) ToAccessLevelsMapOutput() AccessLevelsMapOutput {
 
 func (o AccessLevelsMapOutput) ToAccessLevelsMapOutputWithContext(ctx context.Context) AccessLevelsMapOutput {
 	return o
-}
-
-func (o AccessLevelsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevels] {
-	return pulumix.Output[map[string]*AccessLevels]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsMapOutput) MapIndex(k pulumi.StringInput) AccessLevelsOutput {

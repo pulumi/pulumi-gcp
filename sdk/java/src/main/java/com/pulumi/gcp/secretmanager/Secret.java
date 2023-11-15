@@ -169,7 +169,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Secret can be imported using any of these accepted formats
+ * Secret can be imported using any of these accepted formats* `projects/{{project}}/secrets/{{secret_id}}` * `{{project}}/{{secret_id}}` * `{{secret_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Secret using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/secrets/{{secret_id}}&#34;
+ * 
+ *  to = google_secret_manager_secret.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:secretmanager/secret:Secret When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Secret can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
@@ -271,6 +279,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Only one of `expire_time` or `ttl` can be provided.
      * 
      */
     @Export(name="expireTime", refs={String.class}, tree="[0]")
@@ -279,6 +288,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
     /**
      * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Only one of `expire_time` or `ttl` can be provided.
      * 
      */
     public Output<String> expireTime() {
@@ -433,6 +443,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
     /**
      * The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of `ttl` or `expire_time` can be provided.
      * 
      */
     @Export(name="ttl", refs={String.class}, tree="[0]")
@@ -441,6 +452,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
     /**
      * @return The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of `ttl` or `expire_time` can be provided.
      * 
      */
     public Output<Optional<String>> ttl() {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a ServiceAttachment resource.
@@ -25,7 +24,17 @@ import (
 //
 // ## Import
 //
-// # ServiceAttachment can be imported using any of these accepted formats
+// ServiceAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceAttachment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}"
+//
+//	to = google_compute_service_attachment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/serviceAttachment:ServiceAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceAttachment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -383,12 +392,6 @@ func (i *ServiceAttachment) ToServiceAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentOutput)
 }
 
-func (i *ServiceAttachment) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachment] {
-	return pulumix.Output[*ServiceAttachment]{
-		OutputState: i.ToServiceAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceAttachmentArrayInput is an input type that accepts ServiceAttachmentArray and ServiceAttachmentArrayOutput values.
 // You can construct a concrete instance of `ServiceAttachmentArrayInput` via:
 //
@@ -412,12 +415,6 @@ func (i ServiceAttachmentArray) ToServiceAttachmentArrayOutput() ServiceAttachme
 
 func (i ServiceAttachmentArray) ToServiceAttachmentArrayOutputWithContext(ctx context.Context) ServiceAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentArrayOutput)
-}
-
-func (i ServiceAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceAttachment] {
-	return pulumix.Output[[]*ServiceAttachment]{
-		OutputState: i.ToServiceAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceAttachmentMapInput is an input type that accepts ServiceAttachmentMap and ServiceAttachmentMapOutput values.
@@ -445,12 +442,6 @@ func (i ServiceAttachmentMap) ToServiceAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentMapOutput)
 }
 
-func (i ServiceAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceAttachment] {
-	return pulumix.Output[map[string]*ServiceAttachment]{
-		OutputState: i.ToServiceAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentOutput) ElementType() reflect.Type {
@@ -463,12 +454,6 @@ func (o ServiceAttachmentOutput) ToServiceAttachmentOutput() ServiceAttachmentOu
 
 func (o ServiceAttachmentOutput) ToServiceAttachmentOutputWithContext(ctx context.Context) ServiceAttachmentOutput {
 	return o
-}
-
-func (o ServiceAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAttachment] {
-	return pulumix.Output[*ServiceAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An array of the consumer forwarding rules connected to this service
@@ -585,12 +570,6 @@ func (o ServiceAttachmentArrayOutput) ToServiceAttachmentArrayOutputWithContext(
 	return o
 }
 
-func (o ServiceAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceAttachment] {
-	return pulumix.Output[[]*ServiceAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceAttachmentArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceAttachment {
 		return vs[0].([]*ServiceAttachment)[vs[1].(int)]
@@ -609,12 +588,6 @@ func (o ServiceAttachmentMapOutput) ToServiceAttachmentMapOutput() ServiceAttach
 
 func (o ServiceAttachmentMapOutput) ToServiceAttachmentMapOutputWithContext(ctx context.Context) ServiceAttachmentMapOutput {
 	return o
-}
-
-func (o ServiceAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceAttachment] {
-	return pulumix.Output[map[string]*ServiceAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAttachmentMapOutput) MapIndex(k pulumi.StringInput) ServiceAttachmentOutput {

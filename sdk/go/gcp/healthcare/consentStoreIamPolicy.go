@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
@@ -352,12 +351,6 @@ func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyOutput)
 }
 
-func (i *ConsentStoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamPolicy] {
-	return pulumix.Output[*ConsentStoreIamPolicy]{
-		OutputState: i.ToConsentStoreIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConsentStoreIamPolicyArrayInput is an input type that accepts ConsentStoreIamPolicyArray and ConsentStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ConsentStoreIamPolicyArrayInput` via:
 //
@@ -381,12 +374,6 @@ func (i ConsentStoreIamPolicyArray) ToConsentStoreIamPolicyArrayOutput() Consent
 
 func (i ConsentStoreIamPolicyArray) ToConsentStoreIamPolicyArrayOutputWithContext(ctx context.Context) ConsentStoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyArrayOutput)
-}
-
-func (i ConsentStoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsentStoreIamPolicy] {
-	return pulumix.Output[[]*ConsentStoreIamPolicy]{
-		OutputState: i.ToConsentStoreIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConsentStoreIamPolicyMapInput is an input type that accepts ConsentStoreIamPolicyMap and ConsentStoreIamPolicyMapOutput values.
@@ -414,12 +401,6 @@ func (i ConsentStoreIamPolicyMap) ToConsentStoreIamPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyMapOutput)
 }
 
-func (i ConsentStoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsentStoreIamPolicy] {
-	return pulumix.Output[map[string]*ConsentStoreIamPolicy]{
-		OutputState: i.ToConsentStoreIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsentStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamPolicyOutput) ElementType() reflect.Type {
@@ -432,12 +413,6 @@ func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyOutput() ConsentStor
 
 func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyOutputWithContext(ctx context.Context) ConsentStoreIamPolicyOutput {
 	return o
-}
-
-func (o ConsentStoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamPolicy] {
-	return pulumix.Output[*ConsentStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -489,12 +464,6 @@ func (o ConsentStoreIamPolicyArrayOutput) ToConsentStoreIamPolicyArrayOutputWith
 	return o
 }
 
-func (o ConsentStoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsentStoreIamPolicy] {
-	return pulumix.Output[[]*ConsentStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConsentStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) ConsentStoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsentStoreIamPolicy {
 		return vs[0].([]*ConsentStoreIamPolicy)[vs[1].(int)]
@@ -513,12 +482,6 @@ func (o ConsentStoreIamPolicyMapOutput) ToConsentStoreIamPolicyMapOutput() Conse
 
 func (o ConsentStoreIamPolicyMapOutput) ToConsentStoreIamPolicyMapOutputWithContext(ctx context.Context) ConsentStoreIamPolicyMapOutput {
 	return o
-}
-
-func (o ConsentStoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsentStoreIamPolicy] {
-	return pulumix.Output[map[string]*ConsentStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsentStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreIamPolicyOutput {

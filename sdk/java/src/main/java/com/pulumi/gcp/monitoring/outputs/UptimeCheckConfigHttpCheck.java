@@ -6,6 +6,7 @@ package com.pulumi.gcp.monitoring.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCode;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckAuthInfo;
+import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheckPingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -36,10 +37,15 @@ public final class UptimeCheckConfigHttpCheck {
     private @Nullable String body;
     /**
      * @return The content type to use for the check.
-     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
      * 
      */
     private @Nullable String contentType;
+    /**
+     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+     * 
+     */
+    private @Nullable String customContentType;
     /**
      * @return The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
      * 
@@ -55,6 +61,12 @@ public final class UptimeCheckConfigHttpCheck {
      * 
      */
     private @Nullable String path;
+    /**
+     * @return Contains information needed to add pings to an HTTP check.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable UptimeCheckConfigHttpCheckPingConfig pingConfig;
     /**
      * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
      * 
@@ -104,11 +116,18 @@ public final class UptimeCheckConfigHttpCheck {
     }
     /**
      * @return The content type to use for the check.
-     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
      * 
      */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
+    }
+    /**
+     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+     * 
+     */
+    public Optional<String> customContentType() {
+        return Optional.ofNullable(this.customContentType);
     }
     /**
      * @return The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
@@ -130,6 +149,14 @@ public final class UptimeCheckConfigHttpCheck {
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
+    }
+    /**
+     * @return Contains information needed to add pings to an HTTP check.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<UptimeCheckConfigHttpCheckPingConfig> pingConfig() {
+        return Optional.ofNullable(this.pingConfig);
     }
     /**
      * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
@@ -175,9 +202,11 @@ public final class UptimeCheckConfigHttpCheck {
         private @Nullable UptimeCheckConfigHttpCheckAuthInfo authInfo;
         private @Nullable String body;
         private @Nullable String contentType;
+        private @Nullable String customContentType;
         private @Nullable Map<String,String> headers;
         private @Nullable Boolean maskHeaders;
         private @Nullable String path;
+        private @Nullable UptimeCheckConfigHttpCheckPingConfig pingConfig;
         private @Nullable Integer port;
         private @Nullable String requestMethod;
         private @Nullable Boolean useSsl;
@@ -189,9 +218,11 @@ public final class UptimeCheckConfigHttpCheck {
     	      this.authInfo = defaults.authInfo;
     	      this.body = defaults.body;
     	      this.contentType = defaults.contentType;
+    	      this.customContentType = defaults.customContentType;
     	      this.headers = defaults.headers;
     	      this.maskHeaders = defaults.maskHeaders;
     	      this.path = defaults.path;
+    	      this.pingConfig = defaults.pingConfig;
     	      this.port = defaults.port;
     	      this.requestMethod = defaults.requestMethod;
     	      this.useSsl = defaults.useSsl;
@@ -222,6 +253,11 @@ public final class UptimeCheckConfigHttpCheck {
             return this;
         }
         @CustomType.Setter
+        public Builder customContentType(@Nullable String customContentType) {
+            this.customContentType = customContentType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
             this.headers = headers;
             return this;
@@ -234,6 +270,11 @@ public final class UptimeCheckConfigHttpCheck {
         @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pingConfig(@Nullable UptimeCheckConfigHttpCheckPingConfig pingConfig) {
+            this.pingConfig = pingConfig;
             return this;
         }
         @CustomType.Setter
@@ -262,9 +303,11 @@ public final class UptimeCheckConfigHttpCheck {
             o.authInfo = authInfo;
             o.body = body;
             o.contentType = contentType;
+            o.customContentType = customContentType;
             o.headers = headers;
             o.maskHeaders = maskHeaders;
             o.path = path;
+            o.pingConfig = pingConfig;
             o.port = port;
             o.requestMethod = requestMethod;
             o.useSsl = useSsl;

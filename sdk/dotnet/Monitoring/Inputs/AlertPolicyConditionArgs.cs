@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.AlertPolicyConditionConditionMonitoringQueryLanguageArgs>? ConditionMonitoringQueryLanguage { get; set; }
 
         /// <summary>
-        /// A Monitoring Query Language query that outputs a boolean stream
         /// A condition type that allows alert policies to be defined using
         /// Prometheus Query Language (PromQL).
         /// The PrometheusQueryLanguageCondition message contains information

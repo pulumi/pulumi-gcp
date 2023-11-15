@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
@@ -57,6 +56,7 @@ import (
 //			}
 //			_, err = gkehub.NewMembershipIamPolicy(ctx, "policy", &gkehub.MembershipIamPolicyArgs{
 //				Project:      pulumi.Any(google_gke_hub_membership.Membership.Project),
+//				Location:     pulumi.Any(google_gke_hub_membership.Membership.Location),
 //				MembershipId: pulumi.Any(google_gke_hub_membership.Membership.Membership_id),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
@@ -85,6 +85,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewMembershipIamBinding(ctx, "binding", &gkehub.MembershipIamBindingArgs{
 //				Project:      pulumi.Any(google_gke_hub_membership.Membership.Project),
+//				Location:     pulumi.Any(google_gke_hub_membership.Membership.Location),
 //				MembershipId: pulumi.Any(google_gke_hub_membership.Membership.Membership_id),
 //				Role:         pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
@@ -116,6 +117,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewMembershipIamMember(ctx, "member", &gkehub.MembershipIamMemberArgs{
 //				Project:      pulumi.Any(google_gke_hub_membership.Membership.Project),
+//				Location:     pulumi.Any(google_gke_hub_membership.Membership.Location),
 //				MembershipId: pulumi.Any(google_gke_hub_membership.Membership.Membership_id),
 //				Role:         pulumi.String("roles/viewer"),
 //				Member:       pulumi.String("user:jane@example.com"),
@@ -163,7 +165,11 @@ type MembershipIamMember struct {
 
 	Condition MembershipIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag         pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Location of the membership.
+	// The default value is `global`.
+	// Used to find the parent resource to bind the IAM policy to
+	Location     pulumi.StringOutput `pulumi:"location"`
 	Member       pulumi.StringOutput `pulumi:"member"`
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
@@ -228,7 +234,11 @@ func GetMembershipIamMember(ctx *pulumi.Context,
 type membershipIamMemberState struct {
 	Condition *MembershipIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag         *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Location of the membership.
+	// The default value is `global`.
+	// Used to find the parent resource to bind the IAM policy to
+	Location     *string `pulumi:"location"`
 	Member       *string `pulumi:"member"`
 	MembershipId *string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
@@ -255,7 +265,11 @@ type membershipIamMemberState struct {
 type MembershipIamMemberState struct {
 	Condition MembershipIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag         pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Location of the membership.
+	// The default value is `global`.
+	// Used to find the parent resource to bind the IAM policy to
+	Location     pulumi.StringPtrInput
 	Member       pulumi.StringPtrInput
 	MembershipId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -284,9 +298,13 @@ func (MembershipIamMemberState) ElementType() reflect.Type {
 }
 
 type membershipIamMemberArgs struct {
-	Condition    *MembershipIamMemberCondition `pulumi:"condition"`
-	Member       string                        `pulumi:"member"`
-	MembershipId string                        `pulumi:"membershipId"`
+	Condition *MembershipIamMemberCondition `pulumi:"condition"`
+	// Location of the membership.
+	// The default value is `global`.
+	// Used to find the parent resource to bind the IAM policy to
+	Location     *string `pulumi:"location"`
+	Member       string  `pulumi:"member"`
+	MembershipId string  `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	//
@@ -310,7 +328,11 @@ type membershipIamMemberArgs struct {
 
 // The set of arguments for constructing a MembershipIamMember resource.
 type MembershipIamMemberArgs struct {
-	Condition    MembershipIamMemberConditionPtrInput
+	Condition MembershipIamMemberConditionPtrInput
+	// Location of the membership.
+	// The default value is `global`.
+	// Used to find the parent resource to bind the IAM policy to
+	Location     pulumi.StringPtrInput
 	Member       pulumi.StringInput
 	MembershipId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -357,12 +379,6 @@ func (i *MembershipIamMember) ToMembershipIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberOutput)
 }
 
-func (i *MembershipIamMember) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamMember] {
-	return pulumix.Output[*MembershipIamMember]{
-		OutputState: i.ToMembershipIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipIamMemberArrayInput is an input type that accepts MembershipIamMemberArray and MembershipIamMemberArrayOutput values.
 // You can construct a concrete instance of `MembershipIamMemberArrayInput` via:
 //
@@ -386,12 +402,6 @@ func (i MembershipIamMemberArray) ToMembershipIamMemberArrayOutput() MembershipI
 
 func (i MembershipIamMemberArray) ToMembershipIamMemberArrayOutputWithContext(ctx context.Context) MembershipIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberArrayOutput)
-}
-
-func (i MembershipIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipIamMember] {
-	return pulumix.Output[[]*MembershipIamMember]{
-		OutputState: i.ToMembershipIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MembershipIamMemberMapInput is an input type that accepts MembershipIamMemberMap and MembershipIamMemberMapOutput values.
@@ -419,12 +429,6 @@ func (i MembershipIamMemberMap) ToMembershipIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberMapOutput)
 }
 
-func (i MembershipIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipIamMember] {
-	return pulumix.Output[map[string]*MembershipIamMember]{
-		OutputState: i.ToMembershipIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipIamMemberOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamMemberOutput) ElementType() reflect.Type {
@@ -439,12 +443,6 @@ func (o MembershipIamMemberOutput) ToMembershipIamMemberOutputWithContext(ctx co
 	return o
 }
 
-func (o MembershipIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamMember] {
-	return pulumix.Output[*MembershipIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipIamMemberOutput) Condition() MembershipIamMemberConditionPtrOutput {
 	return o.ApplyT(func(v *MembershipIamMember) MembershipIamMemberConditionPtrOutput { return v.Condition }).(MembershipIamMemberConditionPtrOutput)
 }
@@ -452,6 +450,13 @@ func (o MembershipIamMemberOutput) Condition() MembershipIamMemberConditionPtrOu
 // (Computed) The etag of the IAM policy.
 func (o MembershipIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Location of the membership.
+// The default value is `global`.
+// Used to find the parent resource to bind the IAM policy to
+func (o MembershipIamMemberOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *MembershipIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 func (o MembershipIamMemberOutput) Member() pulumi.StringOutput {
@@ -501,12 +506,6 @@ func (o MembershipIamMemberArrayOutput) ToMembershipIamMemberArrayOutputWithCont
 	return o
 }
 
-func (o MembershipIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipIamMember] {
-	return pulumix.Output[[]*MembershipIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipIamMemberArrayOutput) Index(i pulumi.IntInput) MembershipIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MembershipIamMember {
 		return vs[0].([]*MembershipIamMember)[vs[1].(int)]
@@ -525,12 +524,6 @@ func (o MembershipIamMemberMapOutput) ToMembershipIamMemberMapOutput() Membershi
 
 func (o MembershipIamMemberMapOutput) ToMembershipIamMemberMapOutputWithContext(ctx context.Context) MembershipIamMemberMapOutput {
 	return o
-}
-
-func (o MembershipIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipIamMember] {
-	return pulumix.Output[map[string]*MembershipIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamMemberMapOutput) MapIndex(k pulumi.StringInput) MembershipIamMemberOutput {

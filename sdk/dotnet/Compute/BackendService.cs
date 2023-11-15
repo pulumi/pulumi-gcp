@@ -152,7 +152,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// BackendService can be imported using any of these accepted formats
+    /// BackendService can be imported using any of these accepted formats* `projects/{{project}}/global/backendServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackendService using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/global/backendServices/{{name}}"
+    /// 
+    ///  to = google_compute_backend_service.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/backendService:BackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackendService can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
@@ -353,8 +361,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        /// This field is applicable only when the load_balancing_scheme is set
-        /// to INTERNAL_SELF_MANAGED.
+        /// Applicable backend service types can be a global backend service with the
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
         /// Structure is documented below.
         /// </summary>
         [Output("outlierDetection")]
@@ -658,8 +666,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        /// This field is applicable only when the load_balancing_scheme is set
-        /// to INTERNAL_SELF_MANAGED.
+        /// Applicable backend service types can be a global backend service with the
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
         /// Structure is documented below.
         /// </summary>
         [Input("outlierDetection")]
@@ -938,8 +946,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        /// This field is applicable only when the load_balancing_scheme is set
-        /// to INTERNAL_SELF_MANAGED.
+        /// Applicable backend service types can be a global backend service with the
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
         /// Structure is documented below.
         /// </summary>
         [Input("outlierDetection")]

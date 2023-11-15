@@ -28,7 +28,7 @@ public final class AwsClusterControlPlaneRootVolume {
      */
     private @Nullable Integer sizeGib;
     /**
-     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
      * 
      */
     private @Nullable Integer throughput;
@@ -61,7 +61,7 @@ public final class AwsClusterControlPlaneRootVolume {
         return Optional.ofNullable(this.sizeGib);
     }
     /**
-     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
      * 
      */
     public Optional<Integer> throughput() {

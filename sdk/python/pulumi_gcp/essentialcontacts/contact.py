@@ -221,7 +221,15 @@ class Contact(pulumi.CustomResource):
 
         ## Import
 
-        Contact can be imported using any of these accepted formats:
+        Contact can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Contact using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_essential_contacts_contact.default }
+
+        ```sh
+         $ pulumi import gcp:essentialcontacts/contact:Contact When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Contact can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}
@@ -275,7 +283,15 @@ class Contact(pulumi.CustomResource):
 
         ## Import
 
-        Contact can be imported using any of these accepted formats:
+        Contact can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Contact using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_essential_contacts_contact.default }
+
+        ```sh
+         $ pulumi import gcp:essentialcontacts/contact:Contact When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Contact can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}

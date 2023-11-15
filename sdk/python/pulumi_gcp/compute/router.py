@@ -391,7 +391,15 @@ class Router(pulumi.CustomResource):
 
         ## Import
 
-        Router can be imported using any of these accepted formats
+        Router can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Router using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/routers/{{name}}"
+
+         to = google_compute_router.default }
+
+        ```sh
+         $ pulumi import gcp:compute/router:Router When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Router can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
@@ -486,7 +494,15 @@ class Router(pulumi.CustomResource):
 
         ## Import
 
-        Router can be imported using any of these accepted formats
+        Router can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Router using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/routers/{{name}}"
+
+         to = google_compute_router.default }
+
+        ```sh
+         $ pulumi import gcp:compute/router:Router When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Router can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}

@@ -21,13 +21,16 @@ class GetMembershipIamPolicyResult:
     """
     A collection of values returned by getMembershipIamPolicy.
     """
-    def __init__(__self__, etag=None, id=None, membership_id=None, policy_data=None, project=None):
+    def __init__(__self__, etag=None, id=None, location=None, membership_id=None, policy_data=None, project=None):
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if location and not isinstance(location, str):
+            raise TypeError("Expected argument 'location' to be a str")
+        pulumi.set(__self__, "location", location)
         if membership_id and not isinstance(membership_id, str):
             raise TypeError("Expected argument 'membership_id' to be a str")
         pulumi.set(__self__, "membership_id", membership_id)
@@ -53,6 +56,11 @@ class GetMembershipIamPolicyResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="membershipId")
@@ -82,12 +90,14 @@ class AwaitableGetMembershipIamPolicyResult(GetMembershipIamPolicyResult):
         return GetMembershipIamPolicyResult(
             etag=self.etag,
             id=self.id,
+            location=self.location,
             membership_id=self.membership_id,
             policy_data=self.policy_data,
             project=self.project)
 
 
-def get_membership_iam_policy(membership_id: Optional[str] = None,
+def get_membership_iam_policy(location: Optional[str] = None,
+                              membership_id: Optional[str] = None,
                               project: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMembershipIamPolicyResult:
     """
@@ -100,14 +110,19 @@ def get_membership_iam_policy(membership_id: Optional[str] = None,
     import pulumi_gcp as gcp
 
     policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
+        location=google_gke_hub_membership["membership"]["location"],
         membership_id=google_gke_hub_membership["membership"]["membership_id"])
     ```
 
 
+    :param str location: Location of the membership.
+           The default value is `global`.
+           Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
     __args__ = dict()
+    __args__['location'] = location
     __args__['membershipId'] = membership_id
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,13 +131,15 @@ def get_membership_iam_policy(membership_id: Optional[str] = None,
     return AwaitableGetMembershipIamPolicyResult(
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
         membership_id=pulumi.get(__ret__, 'membership_id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_membership_iam_policy)
-def get_membership_iam_policy_output(membership_id: Optional[pulumi.Input[str]] = None,
+def get_membership_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
+                                     membership_id: Optional[pulumi.Input[str]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMembershipIamPolicyResult]:
     """
@@ -135,10 +152,14 @@ def get_membership_iam_policy_output(membership_id: Optional[pulumi.Input[str]] 
     import pulumi_gcp as gcp
 
     policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
+        location=google_gke_hub_membership["membership"]["location"],
         membership_id=google_gke_hub_membership["membership"]["membership_id"])
     ```
 
 
+    :param str location: Location of the membership.
+           The default value is `global`.
+           Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """

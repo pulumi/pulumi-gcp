@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i NodeNetworkEndpointArgs) ToNodeNetworkEndpointOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkEndpointOutput)
 }
 
-func (i NodeNetworkEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[NodeNetworkEndpoint] {
-	return pulumix.Output[NodeNetworkEndpoint]{
-		OutputState: i.ToNodeNetworkEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeNetworkEndpointArrayInput is an input type that accepts NodeNetworkEndpointArray and NodeNetworkEndpointArrayOutput values.
 // You can construct a concrete instance of `NodeNetworkEndpointArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i NodeNetworkEndpointArray) ToNodeNetworkEndpointArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkEndpointArrayOutput)
 }
 
-func (i NodeNetworkEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeNetworkEndpoint] {
-	return pulumix.Output[[]NodeNetworkEndpoint]{
-		OutputState: i.ToNodeNetworkEndpointArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeNetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (NodeNetworkEndpointOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o NodeNetworkEndpointOutput) ToNodeNetworkEndpointOutput() NodeNetworkEndp
 
 func (o NodeNetworkEndpointOutput) ToNodeNetworkEndpointOutputWithContext(ctx context.Context) NodeNetworkEndpointOutput {
 	return o
-}
-
-func (o NodeNetworkEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[NodeNetworkEndpoint] {
-	return pulumix.Output[NodeNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -136,12 +117,6 @@ func (o NodeNetworkEndpointArrayOutput) ToNodeNetworkEndpointArrayOutput() NodeN
 
 func (o NodeNetworkEndpointArrayOutput) ToNodeNetworkEndpointArrayOutputWithContext(ctx context.Context) NodeNetworkEndpointArrayOutput {
 	return o
-}
-
-func (o NodeNetworkEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeNetworkEndpoint] {
-	return pulumix.Output[[]NodeNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeNetworkEndpointArrayOutput) Index(i pulumi.IntInput) NodeNetworkEndpointOutput {
@@ -181,12 +156,6 @@ func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigOutput() NodeSchedulingC
 
 func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigOutputWithContext(ctx context.Context) NodeSchedulingConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSchedulingConfigOutput)
-}
-
-func (i NodeSchedulingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NodeSchedulingConfig] {
-	return pulumix.Output[NodeSchedulingConfig]{
-		OutputState: i.ToNodeSchedulingConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i NodeSchedulingConfigArgs) ToNodeSchedulingConfigPtrOutput() NodeSchedulingConfigPtrOutput {
@@ -230,12 +199,6 @@ func (i *nodeSchedulingConfigPtrType) ToNodeSchedulingConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSchedulingConfigPtrOutput)
 }
 
-func (i *nodeSchedulingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeSchedulingConfig] {
-	return pulumix.Output[*NodeSchedulingConfig]{
-		OutputState: i.ToNodeSchedulingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeSchedulingConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeSchedulingConfigOutput) ElementType() reflect.Type {
@@ -260,12 +223,6 @@ func (o NodeSchedulingConfigOutput) ToNodeSchedulingConfigPtrOutputWithContext(c
 	}).(NodeSchedulingConfigPtrOutput)
 }
 
-func (o NodeSchedulingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NodeSchedulingConfig] {
-	return pulumix.Output[NodeSchedulingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether the TPU instance is preemptible.
 func (o NodeSchedulingConfigOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeSchedulingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
@@ -283,12 +240,6 @@ func (o NodeSchedulingConfigPtrOutput) ToNodeSchedulingConfigPtrOutput() NodeSch
 
 func (o NodeSchedulingConfigPtrOutput) ToNodeSchedulingConfigPtrOutputWithContext(ctx context.Context) NodeSchedulingConfigPtrOutput {
 	return o
-}
-
-func (o NodeSchedulingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeSchedulingConfig] {
-	return pulumix.Output[*NodeSchedulingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeSchedulingConfigPtrOutput) Elem() NodeSchedulingConfigOutput {
@@ -311,13 +262,1369 @@ func (o NodeSchedulingConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type V2VmAcceleratorConfig struct {
+	// Topology of TPU in chips.
+	Topology string `pulumi:"topology"`
+	// Type of TPU.
+	// Possible values are: `V2`, `V3`, `V4`.
+	Type string `pulumi:"type"`
+}
+
+// V2VmAcceleratorConfigInput is an input type that accepts V2VmAcceleratorConfigArgs and V2VmAcceleratorConfigOutput values.
+// You can construct a concrete instance of `V2VmAcceleratorConfigInput` via:
+//
+//	V2VmAcceleratorConfigArgs{...}
+type V2VmAcceleratorConfigInput interface {
+	pulumi.Input
+
+	ToV2VmAcceleratorConfigOutput() V2VmAcceleratorConfigOutput
+	ToV2VmAcceleratorConfigOutputWithContext(context.Context) V2VmAcceleratorConfigOutput
+}
+
+type V2VmAcceleratorConfigArgs struct {
+	// Topology of TPU in chips.
+	Topology pulumi.StringInput `pulumi:"topology"`
+	// Type of TPU.
+	// Possible values are: `V2`, `V3`, `V4`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (V2VmAcceleratorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmAcceleratorConfig)(nil)).Elem()
+}
+
+func (i V2VmAcceleratorConfigArgs) ToV2VmAcceleratorConfigOutput() V2VmAcceleratorConfigOutput {
+	return i.ToV2VmAcceleratorConfigOutputWithContext(context.Background())
+}
+
+func (i V2VmAcceleratorConfigArgs) ToV2VmAcceleratorConfigOutputWithContext(ctx context.Context) V2VmAcceleratorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmAcceleratorConfigOutput)
+}
+
+func (i V2VmAcceleratorConfigArgs) ToV2VmAcceleratorConfigPtrOutput() V2VmAcceleratorConfigPtrOutput {
+	return i.ToV2VmAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2VmAcceleratorConfigArgs) ToV2VmAcceleratorConfigPtrOutputWithContext(ctx context.Context) V2VmAcceleratorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmAcceleratorConfigOutput).ToV2VmAcceleratorConfigPtrOutputWithContext(ctx)
+}
+
+// V2VmAcceleratorConfigPtrInput is an input type that accepts V2VmAcceleratorConfigArgs, V2VmAcceleratorConfigPtr and V2VmAcceleratorConfigPtrOutput values.
+// You can construct a concrete instance of `V2VmAcceleratorConfigPtrInput` via:
+//
+//	        V2VmAcceleratorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2VmAcceleratorConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2VmAcceleratorConfigPtrOutput() V2VmAcceleratorConfigPtrOutput
+	ToV2VmAcceleratorConfigPtrOutputWithContext(context.Context) V2VmAcceleratorConfigPtrOutput
+}
+
+type v2vmAcceleratorConfigPtrType V2VmAcceleratorConfigArgs
+
+func V2VmAcceleratorConfigPtr(v *V2VmAcceleratorConfigArgs) V2VmAcceleratorConfigPtrInput {
+	return (*v2vmAcceleratorConfigPtrType)(v)
+}
+
+func (*v2vmAcceleratorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmAcceleratorConfig)(nil)).Elem()
+}
+
+func (i *v2vmAcceleratorConfigPtrType) ToV2VmAcceleratorConfigPtrOutput() V2VmAcceleratorConfigPtrOutput {
+	return i.ToV2VmAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2vmAcceleratorConfigPtrType) ToV2VmAcceleratorConfigPtrOutputWithContext(ctx context.Context) V2VmAcceleratorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmAcceleratorConfigPtrOutput)
+}
+
+type V2VmAcceleratorConfigOutput struct{ *pulumi.OutputState }
+
+func (V2VmAcceleratorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmAcceleratorConfig)(nil)).Elem()
+}
+
+func (o V2VmAcceleratorConfigOutput) ToV2VmAcceleratorConfigOutput() V2VmAcceleratorConfigOutput {
+	return o
+}
+
+func (o V2VmAcceleratorConfigOutput) ToV2VmAcceleratorConfigOutputWithContext(ctx context.Context) V2VmAcceleratorConfigOutput {
+	return o
+}
+
+func (o V2VmAcceleratorConfigOutput) ToV2VmAcceleratorConfigPtrOutput() V2VmAcceleratorConfigPtrOutput {
+	return o.ToV2VmAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2VmAcceleratorConfigOutput) ToV2VmAcceleratorConfigPtrOutputWithContext(ctx context.Context) V2VmAcceleratorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2VmAcceleratorConfig) *V2VmAcceleratorConfig {
+		return &v
+	}).(V2VmAcceleratorConfigPtrOutput)
+}
+
+// Topology of TPU in chips.
+func (o V2VmAcceleratorConfigOutput) Topology() pulumi.StringOutput {
+	return o.ApplyT(func(v V2VmAcceleratorConfig) string { return v.Topology }).(pulumi.StringOutput)
+}
+
+// Type of TPU.
+// Possible values are: `V2`, `V3`, `V4`.
+func (o V2VmAcceleratorConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v V2VmAcceleratorConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type V2VmAcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2VmAcceleratorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmAcceleratorConfig)(nil)).Elem()
+}
+
+func (o V2VmAcceleratorConfigPtrOutput) ToV2VmAcceleratorConfigPtrOutput() V2VmAcceleratorConfigPtrOutput {
+	return o
+}
+
+func (o V2VmAcceleratorConfigPtrOutput) ToV2VmAcceleratorConfigPtrOutputWithContext(ctx context.Context) V2VmAcceleratorConfigPtrOutput {
+	return o
+}
+
+func (o V2VmAcceleratorConfigPtrOutput) Elem() V2VmAcceleratorConfigOutput {
+	return o.ApplyT(func(v *V2VmAcceleratorConfig) V2VmAcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2VmAcceleratorConfig
+		return ret
+	}).(V2VmAcceleratorConfigOutput)
+}
+
+// Topology of TPU in chips.
+func (o V2VmAcceleratorConfigPtrOutput) Topology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2VmAcceleratorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topology
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of TPU.
+// Possible values are: `V2`, `V3`, `V4`.
+func (o V2VmAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2VmAcceleratorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2VmDataDisk struct {
+	// The mode in which to attach this disk. If not specified, the default is READ_WRITE
+	// mode. Only applicable to dataDisks.
+	// Default value is `READ_WRITE`.
+	// Possible values are: `READ_WRITE`, `READ_ONLY`.
+	Mode *string `pulumi:"mode"`
+	// Specifies the full path to an existing disk. For example:
+	// "projects/my-project/zones/us-central1-c/disks/my-disk".
+	SourceDisk string `pulumi:"sourceDisk"`
+}
+
+// V2VmDataDiskInput is an input type that accepts V2VmDataDiskArgs and V2VmDataDiskOutput values.
+// You can construct a concrete instance of `V2VmDataDiskInput` via:
+//
+//	V2VmDataDiskArgs{...}
+type V2VmDataDiskInput interface {
+	pulumi.Input
+
+	ToV2VmDataDiskOutput() V2VmDataDiskOutput
+	ToV2VmDataDiskOutputWithContext(context.Context) V2VmDataDiskOutput
+}
+
+type V2VmDataDiskArgs struct {
+	// The mode in which to attach this disk. If not specified, the default is READ_WRITE
+	// mode. Only applicable to dataDisks.
+	// Default value is `READ_WRITE`.
+	// Possible values are: `READ_WRITE`, `READ_ONLY`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Specifies the full path to an existing disk. For example:
+	// "projects/my-project/zones/us-central1-c/disks/my-disk".
+	SourceDisk pulumi.StringInput `pulumi:"sourceDisk"`
+}
+
+func (V2VmDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmDataDisk)(nil)).Elem()
+}
+
+func (i V2VmDataDiskArgs) ToV2VmDataDiskOutput() V2VmDataDiskOutput {
+	return i.ToV2VmDataDiskOutputWithContext(context.Background())
+}
+
+func (i V2VmDataDiskArgs) ToV2VmDataDiskOutputWithContext(ctx context.Context) V2VmDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmDataDiskOutput)
+}
+
+// V2VmDataDiskArrayInput is an input type that accepts V2VmDataDiskArray and V2VmDataDiskArrayOutput values.
+// You can construct a concrete instance of `V2VmDataDiskArrayInput` via:
+//
+//	V2VmDataDiskArray{ V2VmDataDiskArgs{...} }
+type V2VmDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToV2VmDataDiskArrayOutput() V2VmDataDiskArrayOutput
+	ToV2VmDataDiskArrayOutputWithContext(context.Context) V2VmDataDiskArrayOutput
+}
+
+type V2VmDataDiskArray []V2VmDataDiskInput
+
+func (V2VmDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmDataDisk)(nil)).Elem()
+}
+
+func (i V2VmDataDiskArray) ToV2VmDataDiskArrayOutput() V2VmDataDiskArrayOutput {
+	return i.ToV2VmDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i V2VmDataDiskArray) ToV2VmDataDiskArrayOutputWithContext(ctx context.Context) V2VmDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmDataDiskArrayOutput)
+}
+
+type V2VmDataDiskOutput struct{ *pulumi.OutputState }
+
+func (V2VmDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmDataDisk)(nil)).Elem()
+}
+
+func (o V2VmDataDiskOutput) ToV2VmDataDiskOutput() V2VmDataDiskOutput {
+	return o
+}
+
+func (o V2VmDataDiskOutput) ToV2VmDataDiskOutputWithContext(ctx context.Context) V2VmDataDiskOutput {
+	return o
+}
+
+// The mode in which to attach this disk. If not specified, the default is READ_WRITE
+// mode. Only applicable to dataDisks.
+// Default value is `READ_WRITE`.
+// Possible values are: `READ_WRITE`, `READ_ONLY`.
+func (o V2VmDataDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmDataDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the full path to an existing disk. For example:
+// "projects/my-project/zones/us-central1-c/disks/my-disk".
+func (o V2VmDataDiskOutput) SourceDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v V2VmDataDisk) string { return v.SourceDisk }).(pulumi.StringOutput)
+}
+
+type V2VmDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (V2VmDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmDataDisk)(nil)).Elem()
+}
+
+func (o V2VmDataDiskArrayOutput) ToV2VmDataDiskArrayOutput() V2VmDataDiskArrayOutput {
+	return o
+}
+
+func (o V2VmDataDiskArrayOutput) ToV2VmDataDiskArrayOutputWithContext(ctx context.Context) V2VmDataDiskArrayOutput {
+	return o
+}
+
+func (o V2VmDataDiskArrayOutput) Index(i pulumi.IntInput) V2VmDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2VmDataDisk {
+		return vs[0].([]V2VmDataDisk)[vs[1].(int)]
+	}).(V2VmDataDiskOutput)
+}
+
+type V2VmNetworkConfig struct {
+	// Allows the TPU node to send and receive packets with non-matching destination or source
+	// IPs. This is required if you plan to use the TPU workers to forward routes.
+	CanIpForward *bool `pulumi:"canIpForward"`
+	// Indicates that external IP addresses would be associated with the TPU workers. If set to
+	// false, the specified subnetwork or network should have Private Google Access enabled.
+	EnableExternalIps *bool `pulumi:"enableExternalIps"`
+	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+	// network. If both network and subnetwork are specified, the given subnetwork must belong
+	// to the given network. If network is not specified, it will be looked up from the
+	// subnetwork if one is provided, or otherwise use "default".
+	Network *string `pulumi:"network"`
+	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+	// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+	// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+	// same name as the network will be used.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// V2VmNetworkConfigInput is an input type that accepts V2VmNetworkConfigArgs and V2VmNetworkConfigOutput values.
+// You can construct a concrete instance of `V2VmNetworkConfigInput` via:
+//
+//	V2VmNetworkConfigArgs{...}
+type V2VmNetworkConfigInput interface {
+	pulumi.Input
+
+	ToV2VmNetworkConfigOutput() V2VmNetworkConfigOutput
+	ToV2VmNetworkConfigOutputWithContext(context.Context) V2VmNetworkConfigOutput
+}
+
+type V2VmNetworkConfigArgs struct {
+	// Allows the TPU node to send and receive packets with non-matching destination or source
+	// IPs. This is required if you plan to use the TPU workers to forward routes.
+	CanIpForward pulumi.BoolPtrInput `pulumi:"canIpForward"`
+	// Indicates that external IP addresses would be associated with the TPU workers. If set to
+	// false, the specified subnetwork or network should have Private Google Access enabled.
+	EnableExternalIps pulumi.BoolPtrInput `pulumi:"enableExternalIps"`
+	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+	// network. If both network and subnetwork are specified, the given subnetwork must belong
+	// to the given network. If network is not specified, it will be looked up from the
+	// subnetwork if one is provided, or otherwise use "default".
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+	// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+	// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+	// same name as the network will be used.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (V2VmNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmNetworkConfig)(nil)).Elem()
+}
+
+func (i V2VmNetworkConfigArgs) ToV2VmNetworkConfigOutput() V2VmNetworkConfigOutput {
+	return i.ToV2VmNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i V2VmNetworkConfigArgs) ToV2VmNetworkConfigOutputWithContext(ctx context.Context) V2VmNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkConfigOutput)
+}
+
+func (i V2VmNetworkConfigArgs) ToV2VmNetworkConfigPtrOutput() V2VmNetworkConfigPtrOutput {
+	return i.ToV2VmNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2VmNetworkConfigArgs) ToV2VmNetworkConfigPtrOutputWithContext(ctx context.Context) V2VmNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkConfigOutput).ToV2VmNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// V2VmNetworkConfigPtrInput is an input type that accepts V2VmNetworkConfigArgs, V2VmNetworkConfigPtr and V2VmNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `V2VmNetworkConfigPtrInput` via:
+//
+//	        V2VmNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2VmNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2VmNetworkConfigPtrOutput() V2VmNetworkConfigPtrOutput
+	ToV2VmNetworkConfigPtrOutputWithContext(context.Context) V2VmNetworkConfigPtrOutput
+}
+
+type v2vmNetworkConfigPtrType V2VmNetworkConfigArgs
+
+func V2VmNetworkConfigPtr(v *V2VmNetworkConfigArgs) V2VmNetworkConfigPtrInput {
+	return (*v2vmNetworkConfigPtrType)(v)
+}
+
+func (*v2vmNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmNetworkConfig)(nil)).Elem()
+}
+
+func (i *v2vmNetworkConfigPtrType) ToV2VmNetworkConfigPtrOutput() V2VmNetworkConfigPtrOutput {
+	return i.ToV2VmNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2vmNetworkConfigPtrType) ToV2VmNetworkConfigPtrOutputWithContext(ctx context.Context) V2VmNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkConfigPtrOutput)
+}
+
+type V2VmNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (V2VmNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmNetworkConfig)(nil)).Elem()
+}
+
+func (o V2VmNetworkConfigOutput) ToV2VmNetworkConfigOutput() V2VmNetworkConfigOutput {
+	return o
+}
+
+func (o V2VmNetworkConfigOutput) ToV2VmNetworkConfigOutputWithContext(ctx context.Context) V2VmNetworkConfigOutput {
+	return o
+}
+
+func (o V2VmNetworkConfigOutput) ToV2VmNetworkConfigPtrOutput() V2VmNetworkConfigPtrOutput {
+	return o.ToV2VmNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2VmNetworkConfigOutput) ToV2VmNetworkConfigPtrOutputWithContext(ctx context.Context) V2VmNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2VmNetworkConfig) *V2VmNetworkConfig {
+		return &v
+	}).(V2VmNetworkConfigPtrOutput)
+}
+
+// Allows the TPU node to send and receive packets with non-matching destination or source
+// IPs. This is required if you plan to use the TPU workers to forward routes.
+func (o V2VmNetworkConfigOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkConfig) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that external IP addresses would be associated with the TPU workers. If set to
+// false, the specified subnetwork or network should have Private Google Access enabled.
+func (o V2VmNetworkConfigOutput) EnableExternalIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkConfig) *bool { return v.EnableExternalIps }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+// network. If both network and subnetwork are specified, the given subnetwork must belong
+// to the given network. If network is not specified, it will be looked up from the
+// subnetwork if one is provided, or otherwise use "default".
+func (o V2VmNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+// same name as the network will be used.
+func (o V2VmNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type V2VmNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2VmNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmNetworkConfig)(nil)).Elem()
+}
+
+func (o V2VmNetworkConfigPtrOutput) ToV2VmNetworkConfigPtrOutput() V2VmNetworkConfigPtrOutput {
+	return o
+}
+
+func (o V2VmNetworkConfigPtrOutput) ToV2VmNetworkConfigPtrOutputWithContext(ctx context.Context) V2VmNetworkConfigPtrOutput {
+	return o
+}
+
+func (o V2VmNetworkConfigPtrOutput) Elem() V2VmNetworkConfigOutput {
+	return o.ApplyT(func(v *V2VmNetworkConfig) V2VmNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2VmNetworkConfig
+		return ret
+	}).(V2VmNetworkConfigOutput)
+}
+
+// Allows the TPU node to send and receive packets with non-matching destination or source
+// IPs. This is required if you plan to use the TPU workers to forward routes.
+func (o V2VmNetworkConfigPtrOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2VmNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanIpForward
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that external IP addresses would be associated with the TPU workers. If set to
+// false, the specified subnetwork or network should have Private Google Access enabled.
+func (o V2VmNetworkConfigPtrOutput) EnableExternalIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2VmNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableExternalIps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+// network. If both network and subnetwork are specified, the given subnetwork must belong
+// to the given network. If network is not specified, it will be looked up from the
+// subnetwork if one is provided, or otherwise use "default".
+func (o V2VmNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2VmNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+// same name as the network will be used.
+func (o V2VmNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2VmNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2VmNetworkEndpoint struct {
+	// (Output)
+	// The access config for the TPU worker.
+	// Structure is documented below.
+	AccessConfigs []V2VmNetworkEndpointAccessConfig `pulumi:"accessConfigs"`
+	// (Output)
+	// The internal IP address of this network endpoint.
+	IpAddress *string `pulumi:"ipAddress"`
+	// (Output)
+	// The port of this network endpoint.
+	Port *int `pulumi:"port"`
+}
+
+// V2VmNetworkEndpointInput is an input type that accepts V2VmNetworkEndpointArgs and V2VmNetworkEndpointOutput values.
+// You can construct a concrete instance of `V2VmNetworkEndpointInput` via:
+//
+//	V2VmNetworkEndpointArgs{...}
+type V2VmNetworkEndpointInput interface {
+	pulumi.Input
+
+	ToV2VmNetworkEndpointOutput() V2VmNetworkEndpointOutput
+	ToV2VmNetworkEndpointOutputWithContext(context.Context) V2VmNetworkEndpointOutput
+}
+
+type V2VmNetworkEndpointArgs struct {
+	// (Output)
+	// The access config for the TPU worker.
+	// Structure is documented below.
+	AccessConfigs V2VmNetworkEndpointAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// (Output)
+	// The internal IP address of this network endpoint.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Output)
+	// The port of this network endpoint.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (V2VmNetworkEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmNetworkEndpoint)(nil)).Elem()
+}
+
+func (i V2VmNetworkEndpointArgs) ToV2VmNetworkEndpointOutput() V2VmNetworkEndpointOutput {
+	return i.ToV2VmNetworkEndpointOutputWithContext(context.Background())
+}
+
+func (i V2VmNetworkEndpointArgs) ToV2VmNetworkEndpointOutputWithContext(ctx context.Context) V2VmNetworkEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkEndpointOutput)
+}
+
+// V2VmNetworkEndpointArrayInput is an input type that accepts V2VmNetworkEndpointArray and V2VmNetworkEndpointArrayOutput values.
+// You can construct a concrete instance of `V2VmNetworkEndpointArrayInput` via:
+//
+//	V2VmNetworkEndpointArray{ V2VmNetworkEndpointArgs{...} }
+type V2VmNetworkEndpointArrayInput interface {
+	pulumi.Input
+
+	ToV2VmNetworkEndpointArrayOutput() V2VmNetworkEndpointArrayOutput
+	ToV2VmNetworkEndpointArrayOutputWithContext(context.Context) V2VmNetworkEndpointArrayOutput
+}
+
+type V2VmNetworkEndpointArray []V2VmNetworkEndpointInput
+
+func (V2VmNetworkEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmNetworkEndpoint)(nil)).Elem()
+}
+
+func (i V2VmNetworkEndpointArray) ToV2VmNetworkEndpointArrayOutput() V2VmNetworkEndpointArrayOutput {
+	return i.ToV2VmNetworkEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i V2VmNetworkEndpointArray) ToV2VmNetworkEndpointArrayOutputWithContext(ctx context.Context) V2VmNetworkEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkEndpointArrayOutput)
+}
+
+type V2VmNetworkEndpointOutput struct{ *pulumi.OutputState }
+
+func (V2VmNetworkEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmNetworkEndpoint)(nil)).Elem()
+}
+
+func (o V2VmNetworkEndpointOutput) ToV2VmNetworkEndpointOutput() V2VmNetworkEndpointOutput {
+	return o
+}
+
+func (o V2VmNetworkEndpointOutput) ToV2VmNetworkEndpointOutputWithContext(ctx context.Context) V2VmNetworkEndpointOutput {
+	return o
+}
+
+// (Output)
+// The access config for the TPU worker.
+// Structure is documented below.
+func (o V2VmNetworkEndpointOutput) AccessConfigs() V2VmNetworkEndpointAccessConfigArrayOutput {
+	return o.ApplyT(func(v V2VmNetworkEndpoint) []V2VmNetworkEndpointAccessConfig { return v.AccessConfigs }).(V2VmNetworkEndpointAccessConfigArrayOutput)
+}
+
+// (Output)
+// The internal IP address of this network endpoint.
+func (o V2VmNetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The port of this network endpoint.
+func (o V2VmNetworkEndpointOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type V2VmNetworkEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (V2VmNetworkEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmNetworkEndpoint)(nil)).Elem()
+}
+
+func (o V2VmNetworkEndpointArrayOutput) ToV2VmNetworkEndpointArrayOutput() V2VmNetworkEndpointArrayOutput {
+	return o
+}
+
+func (o V2VmNetworkEndpointArrayOutput) ToV2VmNetworkEndpointArrayOutputWithContext(ctx context.Context) V2VmNetworkEndpointArrayOutput {
+	return o
+}
+
+func (o V2VmNetworkEndpointArrayOutput) Index(i pulumi.IntInput) V2VmNetworkEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2VmNetworkEndpoint {
+		return vs[0].([]V2VmNetworkEndpoint)[vs[1].(int)]
+	}).(V2VmNetworkEndpointOutput)
+}
+
+type V2VmNetworkEndpointAccessConfig struct {
+	// (Output)
+	// An external IP address associated with the TPU worker.
+	ExternalIp *string `pulumi:"externalIp"`
+}
+
+// V2VmNetworkEndpointAccessConfigInput is an input type that accepts V2VmNetworkEndpointAccessConfigArgs and V2VmNetworkEndpointAccessConfigOutput values.
+// You can construct a concrete instance of `V2VmNetworkEndpointAccessConfigInput` via:
+//
+//	V2VmNetworkEndpointAccessConfigArgs{...}
+type V2VmNetworkEndpointAccessConfigInput interface {
+	pulumi.Input
+
+	ToV2VmNetworkEndpointAccessConfigOutput() V2VmNetworkEndpointAccessConfigOutput
+	ToV2VmNetworkEndpointAccessConfigOutputWithContext(context.Context) V2VmNetworkEndpointAccessConfigOutput
+}
+
+type V2VmNetworkEndpointAccessConfigArgs struct {
+	// (Output)
+	// An external IP address associated with the TPU worker.
+	ExternalIp pulumi.StringPtrInput `pulumi:"externalIp"`
+}
+
+func (V2VmNetworkEndpointAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmNetworkEndpointAccessConfig)(nil)).Elem()
+}
+
+func (i V2VmNetworkEndpointAccessConfigArgs) ToV2VmNetworkEndpointAccessConfigOutput() V2VmNetworkEndpointAccessConfigOutput {
+	return i.ToV2VmNetworkEndpointAccessConfigOutputWithContext(context.Background())
+}
+
+func (i V2VmNetworkEndpointAccessConfigArgs) ToV2VmNetworkEndpointAccessConfigOutputWithContext(ctx context.Context) V2VmNetworkEndpointAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkEndpointAccessConfigOutput)
+}
+
+// V2VmNetworkEndpointAccessConfigArrayInput is an input type that accepts V2VmNetworkEndpointAccessConfigArray and V2VmNetworkEndpointAccessConfigArrayOutput values.
+// You can construct a concrete instance of `V2VmNetworkEndpointAccessConfigArrayInput` via:
+//
+//	V2VmNetworkEndpointAccessConfigArray{ V2VmNetworkEndpointAccessConfigArgs{...} }
+type V2VmNetworkEndpointAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToV2VmNetworkEndpointAccessConfigArrayOutput() V2VmNetworkEndpointAccessConfigArrayOutput
+	ToV2VmNetworkEndpointAccessConfigArrayOutputWithContext(context.Context) V2VmNetworkEndpointAccessConfigArrayOutput
+}
+
+type V2VmNetworkEndpointAccessConfigArray []V2VmNetworkEndpointAccessConfigInput
+
+func (V2VmNetworkEndpointAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmNetworkEndpointAccessConfig)(nil)).Elem()
+}
+
+func (i V2VmNetworkEndpointAccessConfigArray) ToV2VmNetworkEndpointAccessConfigArrayOutput() V2VmNetworkEndpointAccessConfigArrayOutput {
+	return i.ToV2VmNetworkEndpointAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i V2VmNetworkEndpointAccessConfigArray) ToV2VmNetworkEndpointAccessConfigArrayOutputWithContext(ctx context.Context) V2VmNetworkEndpointAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkEndpointAccessConfigArrayOutput)
+}
+
+type V2VmNetworkEndpointAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (V2VmNetworkEndpointAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmNetworkEndpointAccessConfig)(nil)).Elem()
+}
+
+func (o V2VmNetworkEndpointAccessConfigOutput) ToV2VmNetworkEndpointAccessConfigOutput() V2VmNetworkEndpointAccessConfigOutput {
+	return o
+}
+
+func (o V2VmNetworkEndpointAccessConfigOutput) ToV2VmNetworkEndpointAccessConfigOutputWithContext(ctx context.Context) V2VmNetworkEndpointAccessConfigOutput {
+	return o
+}
+
+// (Output)
+// An external IP address associated with the TPU worker.
+func (o V2VmNetworkEndpointAccessConfigOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmNetworkEndpointAccessConfig) *string { return v.ExternalIp }).(pulumi.StringPtrOutput)
+}
+
+type V2VmNetworkEndpointAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (V2VmNetworkEndpointAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmNetworkEndpointAccessConfig)(nil)).Elem()
+}
+
+func (o V2VmNetworkEndpointAccessConfigArrayOutput) ToV2VmNetworkEndpointAccessConfigArrayOutput() V2VmNetworkEndpointAccessConfigArrayOutput {
+	return o
+}
+
+func (o V2VmNetworkEndpointAccessConfigArrayOutput) ToV2VmNetworkEndpointAccessConfigArrayOutputWithContext(ctx context.Context) V2VmNetworkEndpointAccessConfigArrayOutput {
+	return o
+}
+
+func (o V2VmNetworkEndpointAccessConfigArrayOutput) Index(i pulumi.IntInput) V2VmNetworkEndpointAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2VmNetworkEndpointAccessConfig {
+		return vs[0].([]V2VmNetworkEndpointAccessConfig)[vs[1].(int)]
+	}).(V2VmNetworkEndpointAccessConfigOutput)
+}
+
+type V2VmSchedulingConfig struct {
+	// Defines whether the node is preemptible.
+	Preemptible *bool `pulumi:"preemptible"`
+	// Whether the node is created under a reservation.
+	Reserved *bool `pulumi:"reserved"`
+}
+
+// V2VmSchedulingConfigInput is an input type that accepts V2VmSchedulingConfigArgs and V2VmSchedulingConfigOutput values.
+// You can construct a concrete instance of `V2VmSchedulingConfigInput` via:
+//
+//	V2VmSchedulingConfigArgs{...}
+type V2VmSchedulingConfigInput interface {
+	pulumi.Input
+
+	ToV2VmSchedulingConfigOutput() V2VmSchedulingConfigOutput
+	ToV2VmSchedulingConfigOutputWithContext(context.Context) V2VmSchedulingConfigOutput
+}
+
+type V2VmSchedulingConfigArgs struct {
+	// Defines whether the node is preemptible.
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// Whether the node is created under a reservation.
+	Reserved pulumi.BoolPtrInput `pulumi:"reserved"`
+}
+
+func (V2VmSchedulingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmSchedulingConfig)(nil)).Elem()
+}
+
+func (i V2VmSchedulingConfigArgs) ToV2VmSchedulingConfigOutput() V2VmSchedulingConfigOutput {
+	return i.ToV2VmSchedulingConfigOutputWithContext(context.Background())
+}
+
+func (i V2VmSchedulingConfigArgs) ToV2VmSchedulingConfigOutputWithContext(ctx context.Context) V2VmSchedulingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmSchedulingConfigOutput)
+}
+
+func (i V2VmSchedulingConfigArgs) ToV2VmSchedulingConfigPtrOutput() V2VmSchedulingConfigPtrOutput {
+	return i.ToV2VmSchedulingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2VmSchedulingConfigArgs) ToV2VmSchedulingConfigPtrOutputWithContext(ctx context.Context) V2VmSchedulingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmSchedulingConfigOutput).ToV2VmSchedulingConfigPtrOutputWithContext(ctx)
+}
+
+// V2VmSchedulingConfigPtrInput is an input type that accepts V2VmSchedulingConfigArgs, V2VmSchedulingConfigPtr and V2VmSchedulingConfigPtrOutput values.
+// You can construct a concrete instance of `V2VmSchedulingConfigPtrInput` via:
+//
+//	        V2VmSchedulingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2VmSchedulingConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2VmSchedulingConfigPtrOutput() V2VmSchedulingConfigPtrOutput
+	ToV2VmSchedulingConfigPtrOutputWithContext(context.Context) V2VmSchedulingConfigPtrOutput
+}
+
+type v2vmSchedulingConfigPtrType V2VmSchedulingConfigArgs
+
+func V2VmSchedulingConfigPtr(v *V2VmSchedulingConfigArgs) V2VmSchedulingConfigPtrInput {
+	return (*v2vmSchedulingConfigPtrType)(v)
+}
+
+func (*v2vmSchedulingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmSchedulingConfig)(nil)).Elem()
+}
+
+func (i *v2vmSchedulingConfigPtrType) ToV2VmSchedulingConfigPtrOutput() V2VmSchedulingConfigPtrOutput {
+	return i.ToV2VmSchedulingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2vmSchedulingConfigPtrType) ToV2VmSchedulingConfigPtrOutputWithContext(ctx context.Context) V2VmSchedulingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmSchedulingConfigPtrOutput)
+}
+
+type V2VmSchedulingConfigOutput struct{ *pulumi.OutputState }
+
+func (V2VmSchedulingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmSchedulingConfig)(nil)).Elem()
+}
+
+func (o V2VmSchedulingConfigOutput) ToV2VmSchedulingConfigOutput() V2VmSchedulingConfigOutput {
+	return o
+}
+
+func (o V2VmSchedulingConfigOutput) ToV2VmSchedulingConfigOutputWithContext(ctx context.Context) V2VmSchedulingConfigOutput {
+	return o
+}
+
+func (o V2VmSchedulingConfigOutput) ToV2VmSchedulingConfigPtrOutput() V2VmSchedulingConfigPtrOutput {
+	return o.ToV2VmSchedulingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2VmSchedulingConfigOutput) ToV2VmSchedulingConfigPtrOutputWithContext(ctx context.Context) V2VmSchedulingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2VmSchedulingConfig) *V2VmSchedulingConfig {
+		return &v
+	}).(V2VmSchedulingConfigPtrOutput)
+}
+
+// Defines whether the node is preemptible.
+func (o V2VmSchedulingConfigOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2VmSchedulingConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the node is created under a reservation.
+func (o V2VmSchedulingConfigOutput) Reserved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2VmSchedulingConfig) *bool { return v.Reserved }).(pulumi.BoolPtrOutput)
+}
+
+type V2VmSchedulingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2VmSchedulingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmSchedulingConfig)(nil)).Elem()
+}
+
+func (o V2VmSchedulingConfigPtrOutput) ToV2VmSchedulingConfigPtrOutput() V2VmSchedulingConfigPtrOutput {
+	return o
+}
+
+func (o V2VmSchedulingConfigPtrOutput) ToV2VmSchedulingConfigPtrOutputWithContext(ctx context.Context) V2VmSchedulingConfigPtrOutput {
+	return o
+}
+
+func (o V2VmSchedulingConfigPtrOutput) Elem() V2VmSchedulingConfigOutput {
+	return o.ApplyT(func(v *V2VmSchedulingConfig) V2VmSchedulingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2VmSchedulingConfig
+		return ret
+	}).(V2VmSchedulingConfigOutput)
+}
+
+// Defines whether the node is preemptible.
+func (o V2VmSchedulingConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2VmSchedulingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the node is created under a reservation.
+func (o V2VmSchedulingConfigPtrOutput) Reserved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2VmSchedulingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reserved
+	}).(pulumi.BoolPtrOutput)
+}
+
+type V2VmServiceAccount struct {
+	// Email address of the service account. If empty, default Compute service account will be used.
+	Email *string `pulumi:"email"`
+	// The list of scopes to be made available for this service account. If empty, access to all
+	// Cloud APIs will be allowed.
+	Scopes []string `pulumi:"scopes"`
+}
+
+// V2VmServiceAccountInput is an input type that accepts V2VmServiceAccountArgs and V2VmServiceAccountOutput values.
+// You can construct a concrete instance of `V2VmServiceAccountInput` via:
+//
+//	V2VmServiceAccountArgs{...}
+type V2VmServiceAccountInput interface {
+	pulumi.Input
+
+	ToV2VmServiceAccountOutput() V2VmServiceAccountOutput
+	ToV2VmServiceAccountOutputWithContext(context.Context) V2VmServiceAccountOutput
+}
+
+type V2VmServiceAccountArgs struct {
+	// Email address of the service account. If empty, default Compute service account will be used.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The list of scopes to be made available for this service account. If empty, access to all
+	// Cloud APIs will be allowed.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (V2VmServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmServiceAccount)(nil)).Elem()
+}
+
+func (i V2VmServiceAccountArgs) ToV2VmServiceAccountOutput() V2VmServiceAccountOutput {
+	return i.ToV2VmServiceAccountOutputWithContext(context.Background())
+}
+
+func (i V2VmServiceAccountArgs) ToV2VmServiceAccountOutputWithContext(ctx context.Context) V2VmServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmServiceAccountOutput)
+}
+
+func (i V2VmServiceAccountArgs) ToV2VmServiceAccountPtrOutput() V2VmServiceAccountPtrOutput {
+	return i.ToV2VmServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i V2VmServiceAccountArgs) ToV2VmServiceAccountPtrOutputWithContext(ctx context.Context) V2VmServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmServiceAccountOutput).ToV2VmServiceAccountPtrOutputWithContext(ctx)
+}
+
+// V2VmServiceAccountPtrInput is an input type that accepts V2VmServiceAccountArgs, V2VmServiceAccountPtr and V2VmServiceAccountPtrOutput values.
+// You can construct a concrete instance of `V2VmServiceAccountPtrInput` via:
+//
+//	        V2VmServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2VmServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToV2VmServiceAccountPtrOutput() V2VmServiceAccountPtrOutput
+	ToV2VmServiceAccountPtrOutputWithContext(context.Context) V2VmServiceAccountPtrOutput
+}
+
+type v2vmServiceAccountPtrType V2VmServiceAccountArgs
+
+func V2VmServiceAccountPtr(v *V2VmServiceAccountArgs) V2VmServiceAccountPtrInput {
+	return (*v2vmServiceAccountPtrType)(v)
+}
+
+func (*v2vmServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmServiceAccount)(nil)).Elem()
+}
+
+func (i *v2vmServiceAccountPtrType) ToV2VmServiceAccountPtrOutput() V2VmServiceAccountPtrOutput {
+	return i.ToV2VmServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *v2vmServiceAccountPtrType) ToV2VmServiceAccountPtrOutputWithContext(ctx context.Context) V2VmServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmServiceAccountPtrOutput)
+}
+
+type V2VmServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (V2VmServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmServiceAccount)(nil)).Elem()
+}
+
+func (o V2VmServiceAccountOutput) ToV2VmServiceAccountOutput() V2VmServiceAccountOutput {
+	return o
+}
+
+func (o V2VmServiceAccountOutput) ToV2VmServiceAccountOutputWithContext(ctx context.Context) V2VmServiceAccountOutput {
+	return o
+}
+
+func (o V2VmServiceAccountOutput) ToV2VmServiceAccountPtrOutput() V2VmServiceAccountPtrOutput {
+	return o.ToV2VmServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o V2VmServiceAccountOutput) ToV2VmServiceAccountPtrOutputWithContext(ctx context.Context) V2VmServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2VmServiceAccount) *V2VmServiceAccount {
+		return &v
+	}).(V2VmServiceAccountPtrOutput)
+}
+
+// Email address of the service account. If empty, default Compute service account will be used.
+func (o V2VmServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The list of scopes to be made available for this service account. If empty, access to all
+// Cloud APIs will be allowed.
+func (o V2VmServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2VmServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type V2VmServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (V2VmServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmServiceAccount)(nil)).Elem()
+}
+
+func (o V2VmServiceAccountPtrOutput) ToV2VmServiceAccountPtrOutput() V2VmServiceAccountPtrOutput {
+	return o
+}
+
+func (o V2VmServiceAccountPtrOutput) ToV2VmServiceAccountPtrOutputWithContext(ctx context.Context) V2VmServiceAccountPtrOutput {
+	return o
+}
+
+func (o V2VmServiceAccountPtrOutput) Elem() V2VmServiceAccountOutput {
+	return o.ApplyT(func(v *V2VmServiceAccount) V2VmServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret V2VmServiceAccount
+		return ret
+	}).(V2VmServiceAccountOutput)
+}
+
+// Email address of the service account. If empty, default Compute service account will be used.
+func (o V2VmServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2VmServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of scopes to be made available for this service account. If empty, access to all
+// Cloud APIs will be allowed.
+func (o V2VmServiceAccountPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2VmServiceAccount) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2VmShieldedInstanceConfig struct {
+	// Defines whether the instance has Secure Boot enabled.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+}
+
+// V2VmShieldedInstanceConfigInput is an input type that accepts V2VmShieldedInstanceConfigArgs and V2VmShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `V2VmShieldedInstanceConfigInput` via:
+//
+//	V2VmShieldedInstanceConfigArgs{...}
+type V2VmShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToV2VmShieldedInstanceConfigOutput() V2VmShieldedInstanceConfigOutput
+	ToV2VmShieldedInstanceConfigOutputWithContext(context.Context) V2VmShieldedInstanceConfigOutput
+}
+
+type V2VmShieldedInstanceConfigArgs struct {
+	// Defines whether the instance has Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+}
+
+func (V2VmShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i V2VmShieldedInstanceConfigArgs) ToV2VmShieldedInstanceConfigOutput() V2VmShieldedInstanceConfigOutput {
+	return i.ToV2VmShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i V2VmShieldedInstanceConfigArgs) ToV2VmShieldedInstanceConfigOutputWithContext(ctx context.Context) V2VmShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmShieldedInstanceConfigOutput)
+}
+
+func (i V2VmShieldedInstanceConfigArgs) ToV2VmShieldedInstanceConfigPtrOutput() V2VmShieldedInstanceConfigPtrOutput {
+	return i.ToV2VmShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2VmShieldedInstanceConfigArgs) ToV2VmShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) V2VmShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmShieldedInstanceConfigOutput).ToV2VmShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// V2VmShieldedInstanceConfigPtrInput is an input type that accepts V2VmShieldedInstanceConfigArgs, V2VmShieldedInstanceConfigPtr and V2VmShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `V2VmShieldedInstanceConfigPtrInput` via:
+//
+//	        V2VmShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2VmShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2VmShieldedInstanceConfigPtrOutput() V2VmShieldedInstanceConfigPtrOutput
+	ToV2VmShieldedInstanceConfigPtrOutputWithContext(context.Context) V2VmShieldedInstanceConfigPtrOutput
+}
+
+type v2vmShieldedInstanceConfigPtrType V2VmShieldedInstanceConfigArgs
+
+func V2VmShieldedInstanceConfigPtr(v *V2VmShieldedInstanceConfigArgs) V2VmShieldedInstanceConfigPtrInput {
+	return (*v2vmShieldedInstanceConfigPtrType)(v)
+}
+
+func (*v2vmShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *v2vmShieldedInstanceConfigPtrType) ToV2VmShieldedInstanceConfigPtrOutput() V2VmShieldedInstanceConfigPtrOutput {
+	return i.ToV2VmShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2vmShieldedInstanceConfigPtrType) ToV2VmShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) V2VmShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmShieldedInstanceConfigPtrOutput)
+}
+
+type V2VmShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (V2VmShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o V2VmShieldedInstanceConfigOutput) ToV2VmShieldedInstanceConfigOutput() V2VmShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o V2VmShieldedInstanceConfigOutput) ToV2VmShieldedInstanceConfigOutputWithContext(ctx context.Context) V2VmShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o V2VmShieldedInstanceConfigOutput) ToV2VmShieldedInstanceConfigPtrOutput() V2VmShieldedInstanceConfigPtrOutput {
+	return o.ToV2VmShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2VmShieldedInstanceConfigOutput) ToV2VmShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) V2VmShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2VmShieldedInstanceConfig) *V2VmShieldedInstanceConfig {
+		return &v
+	}).(V2VmShieldedInstanceConfigPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled.
+func (o V2VmShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v V2VmShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+type V2VmShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2VmShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2VmShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o V2VmShieldedInstanceConfigPtrOutput) ToV2VmShieldedInstanceConfigPtrOutput() V2VmShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o V2VmShieldedInstanceConfigPtrOutput) ToV2VmShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) V2VmShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o V2VmShieldedInstanceConfigPtrOutput) Elem() V2VmShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *V2VmShieldedInstanceConfig) V2VmShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2VmShieldedInstanceConfig
+		return ret
+	}).(V2VmShieldedInstanceConfigOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled.
+func (o V2VmShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2VmShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+type V2VmSymptom struct {
+	// (Output)
+	// Timestamp when the Symptom is created.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Detailed information of the current Symptom.
+	Details *string `pulumi:"details"`
+	// (Output)
+	// Type of the Symptom.
+	SymptomType *string `pulumi:"symptomType"`
+	// (Output)
+	// A string used to uniquely distinguish a worker within a TPU node.
+	WorkerId *string `pulumi:"workerId"`
+}
+
+// V2VmSymptomInput is an input type that accepts V2VmSymptomArgs and V2VmSymptomOutput values.
+// You can construct a concrete instance of `V2VmSymptomInput` via:
+//
+//	V2VmSymptomArgs{...}
+type V2VmSymptomInput interface {
+	pulumi.Input
+
+	ToV2VmSymptomOutput() V2VmSymptomOutput
+	ToV2VmSymptomOutputWithContext(context.Context) V2VmSymptomOutput
+}
+
+type V2VmSymptomArgs struct {
+	// (Output)
+	// Timestamp when the Symptom is created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Detailed information of the current Symptom.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// (Output)
+	// Type of the Symptom.
+	SymptomType pulumi.StringPtrInput `pulumi:"symptomType"`
+	// (Output)
+	// A string used to uniquely distinguish a worker within a TPU node.
+	WorkerId pulumi.StringPtrInput `pulumi:"workerId"`
+}
+
+func (V2VmSymptomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmSymptom)(nil)).Elem()
+}
+
+func (i V2VmSymptomArgs) ToV2VmSymptomOutput() V2VmSymptomOutput {
+	return i.ToV2VmSymptomOutputWithContext(context.Background())
+}
+
+func (i V2VmSymptomArgs) ToV2VmSymptomOutputWithContext(ctx context.Context) V2VmSymptomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmSymptomOutput)
+}
+
+// V2VmSymptomArrayInput is an input type that accepts V2VmSymptomArray and V2VmSymptomArrayOutput values.
+// You can construct a concrete instance of `V2VmSymptomArrayInput` via:
+//
+//	V2VmSymptomArray{ V2VmSymptomArgs{...} }
+type V2VmSymptomArrayInput interface {
+	pulumi.Input
+
+	ToV2VmSymptomArrayOutput() V2VmSymptomArrayOutput
+	ToV2VmSymptomArrayOutputWithContext(context.Context) V2VmSymptomArrayOutput
+}
+
+type V2VmSymptomArray []V2VmSymptomInput
+
+func (V2VmSymptomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmSymptom)(nil)).Elem()
+}
+
+func (i V2VmSymptomArray) ToV2VmSymptomArrayOutput() V2VmSymptomArrayOutput {
+	return i.ToV2VmSymptomArrayOutputWithContext(context.Background())
+}
+
+func (i V2VmSymptomArray) ToV2VmSymptomArrayOutputWithContext(ctx context.Context) V2VmSymptomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2VmSymptomArrayOutput)
+}
+
+type V2VmSymptomOutput struct{ *pulumi.OutputState }
+
+func (V2VmSymptomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2VmSymptom)(nil)).Elem()
+}
+
+func (o V2VmSymptomOutput) ToV2VmSymptomOutput() V2VmSymptomOutput {
+	return o
+}
+
+func (o V2VmSymptomOutput) ToV2VmSymptomOutputWithContext(ctx context.Context) V2VmSymptomOutput {
+	return o
+}
+
+// (Output)
+// Timestamp when the Symptom is created.
+func (o V2VmSymptomOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmSymptom) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Detailed information of the current Symptom.
+func (o V2VmSymptomOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmSymptom) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Type of the Symptom.
+func (o V2VmSymptomOutput) SymptomType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmSymptom) *string { return v.SymptomType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A string used to uniquely distinguish a worker within a TPU node.
+func (o V2VmSymptomOutput) WorkerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2VmSymptom) *string { return v.WorkerId }).(pulumi.StringPtrOutput)
+}
+
+type V2VmSymptomArrayOutput struct{ *pulumi.OutputState }
+
+func (V2VmSymptomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2VmSymptom)(nil)).Elem()
+}
+
+func (o V2VmSymptomArrayOutput) ToV2VmSymptomArrayOutput() V2VmSymptomArrayOutput {
+	return o
+}
+
+func (o V2VmSymptomArrayOutput) ToV2VmSymptomArrayOutputWithContext(ctx context.Context) V2VmSymptomArrayOutput {
+	return o
+}
+
+func (o V2VmSymptomArrayOutput) Index(i pulumi.IntInput) V2VmSymptomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2VmSymptom {
+		return vs[0].([]V2VmSymptom)[vs[1].(int)]
+	}).(V2VmSymptomOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkEndpointInput)(nil)).Elem(), NodeNetworkEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkEndpointArrayInput)(nil)).Elem(), NodeNetworkEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeSchedulingConfigInput)(nil)).Elem(), NodeSchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeSchedulingConfigPtrInput)(nil)).Elem(), NodeSchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmAcceleratorConfigInput)(nil)).Elem(), V2VmAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmAcceleratorConfigPtrInput)(nil)).Elem(), V2VmAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmDataDiskInput)(nil)).Elem(), V2VmDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmDataDiskArrayInput)(nil)).Elem(), V2VmDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkConfigInput)(nil)).Elem(), V2VmNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkConfigPtrInput)(nil)).Elem(), V2VmNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointInput)(nil)).Elem(), V2VmNetworkEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointArrayInput)(nil)).Elem(), V2VmNetworkEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointAccessConfigInput)(nil)).Elem(), V2VmNetworkEndpointAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointAccessConfigArrayInput)(nil)).Elem(), V2VmNetworkEndpointAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmSchedulingConfigInput)(nil)).Elem(), V2VmSchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmSchedulingConfigPtrInput)(nil)).Elem(), V2VmSchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmServiceAccountInput)(nil)).Elem(), V2VmServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmServiceAccountPtrInput)(nil)).Elem(), V2VmServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmShieldedInstanceConfigInput)(nil)).Elem(), V2VmShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmShieldedInstanceConfigPtrInput)(nil)).Elem(), V2VmShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmSymptomInput)(nil)).Elem(), V2VmSymptomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2VmSymptomArrayInput)(nil)).Elem(), V2VmSymptomArray{})
 	pulumi.RegisterOutputType(NodeNetworkEndpointOutput{})
 	pulumi.RegisterOutputType(NodeNetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(NodeSchedulingConfigOutput{})
 	pulumi.RegisterOutputType(NodeSchedulingConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2VmAcceleratorConfigOutput{})
+	pulumi.RegisterOutputType(V2VmAcceleratorConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2VmDataDiskOutput{})
+	pulumi.RegisterOutputType(V2VmDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(V2VmNetworkConfigOutput{})
+	pulumi.RegisterOutputType(V2VmNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2VmNetworkEndpointOutput{})
+	pulumi.RegisterOutputType(V2VmNetworkEndpointArrayOutput{})
+	pulumi.RegisterOutputType(V2VmNetworkEndpointAccessConfigOutput{})
+	pulumi.RegisterOutputType(V2VmNetworkEndpointAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(V2VmSchedulingConfigOutput{})
+	pulumi.RegisterOutputType(V2VmSchedulingConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2VmServiceAccountOutput{})
+	pulumi.RegisterOutputType(V2VmServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(V2VmShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(V2VmShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2VmSymptomOutput{})
+	pulumi.RegisterOutputType(V2VmSymptomArrayOutput{})
 }

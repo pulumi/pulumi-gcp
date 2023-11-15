@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
@@ -57,7 +56,17 @@ import (
 //
 // ## Import
 //
-// ProcessorDefaultVersion can be imported using any of these accepted formats:
+// ProcessorDefaultVersion can be imported using any of these accepted formats* `{{processor}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ProcessorDefaultVersion using one of the formats above. For exampletf import {
+//
+//	id = "{{processor}}"
+//
+//	to = google_document_ai_processor_default_version.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ProcessorDefaultVersion can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -179,12 +188,6 @@ func (i *DocumentAiProcessorDefaultVersion) ToDocumentAiProcessorDefaultVersionO
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiProcessorDefaultVersionOutput)
 }
 
-func (i *DocumentAiProcessorDefaultVersion) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiProcessorDefaultVersion] {
-	return pulumix.Output[*DocumentAiProcessorDefaultVersion]{
-		OutputState: i.ToDocumentAiProcessorDefaultVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DocumentAiProcessorDefaultVersionArrayInput is an input type that accepts DocumentAiProcessorDefaultVersionArray and DocumentAiProcessorDefaultVersionArrayOutput values.
 // You can construct a concrete instance of `DocumentAiProcessorDefaultVersionArrayInput` via:
 //
@@ -208,12 +211,6 @@ func (i DocumentAiProcessorDefaultVersionArray) ToDocumentAiProcessorDefaultVers
 
 func (i DocumentAiProcessorDefaultVersionArray) ToDocumentAiProcessorDefaultVersionArrayOutputWithContext(ctx context.Context) DocumentAiProcessorDefaultVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiProcessorDefaultVersionArrayOutput)
-}
-
-func (i DocumentAiProcessorDefaultVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*DocumentAiProcessorDefaultVersion] {
-	return pulumix.Output[[]*DocumentAiProcessorDefaultVersion]{
-		OutputState: i.ToDocumentAiProcessorDefaultVersionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DocumentAiProcessorDefaultVersionMapInput is an input type that accepts DocumentAiProcessorDefaultVersionMap and DocumentAiProcessorDefaultVersionMapOutput values.
@@ -241,12 +238,6 @@ func (i DocumentAiProcessorDefaultVersionMap) ToDocumentAiProcessorDefaultVersio
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiProcessorDefaultVersionMapOutput)
 }
 
-func (i DocumentAiProcessorDefaultVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DocumentAiProcessorDefaultVersion] {
-	return pulumix.Output[map[string]*DocumentAiProcessorDefaultVersion]{
-		OutputState: i.ToDocumentAiProcessorDefaultVersionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentAiProcessorDefaultVersionOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiProcessorDefaultVersionOutput) ElementType() reflect.Type {
@@ -259,12 +250,6 @@ func (o DocumentAiProcessorDefaultVersionOutput) ToDocumentAiProcessorDefaultVer
 
 func (o DocumentAiProcessorDefaultVersionOutput) ToDocumentAiProcessorDefaultVersionOutputWithContext(ctx context.Context) DocumentAiProcessorDefaultVersionOutput {
 	return o
-}
-
-func (o DocumentAiProcessorDefaultVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiProcessorDefaultVersion] {
-	return pulumix.Output[*DocumentAiProcessorDefaultVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The processor to set the version on.
@@ -294,12 +279,6 @@ func (o DocumentAiProcessorDefaultVersionArrayOutput) ToDocumentAiProcessorDefau
 	return o
 }
 
-func (o DocumentAiProcessorDefaultVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DocumentAiProcessorDefaultVersion] {
-	return pulumix.Output[[]*DocumentAiProcessorDefaultVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DocumentAiProcessorDefaultVersionArrayOutput) Index(i pulumi.IntInput) DocumentAiProcessorDefaultVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DocumentAiProcessorDefaultVersion {
 		return vs[0].([]*DocumentAiProcessorDefaultVersion)[vs[1].(int)]
@@ -318,12 +297,6 @@ func (o DocumentAiProcessorDefaultVersionMapOutput) ToDocumentAiProcessorDefault
 
 func (o DocumentAiProcessorDefaultVersionMapOutput) ToDocumentAiProcessorDefaultVersionMapOutputWithContext(ctx context.Context) DocumentAiProcessorDefaultVersionMapOutput {
 	return o
-}
-
-func (o DocumentAiProcessorDefaultVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DocumentAiProcessorDefaultVersion] {
-	return pulumix.Output[map[string]*DocumentAiProcessorDefaultVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentAiProcessorDefaultVersionMapOutput) MapIndex(k pulumi.StringInput) DocumentAiProcessorDefaultVersionOutput {

@@ -16,16 +16,14 @@ public final class DatabaseInstanceSettingsDataCacheConfigArgs extends com.pulum
     public static final DatabaseInstanceSettingsDataCacheConfigArgs Empty = new DatabaseInstanceSettingsDataCacheConfigArgs();
 
     /**
-     * Whether data cache is enabled for the instance. Defaults to `false`
-     * Can only be used with MYSQL.
+     * Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
      * 
      */
     @Import(name="dataCacheEnabled")
     private @Nullable Output<Boolean> dataCacheEnabled;
 
     /**
-     * @return Whether data cache is enabled for the instance. Defaults to `false`
-     * Can only be used with MYSQL.
+     * @return Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
      * 
      */
     public Optional<Output<Boolean>> dataCacheEnabled() {
@@ -57,8 +55,7 @@ public final class DatabaseInstanceSettingsDataCacheConfigArgs extends com.pulum
         }
 
         /**
-         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `false`
-         * Can only be used with MYSQL.
+         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
          * 
          * @return builder
          * 
@@ -69,8 +66,7 @@ public final class DatabaseInstanceSettingsDataCacheConfigArgs extends com.pulum
         }
 
         /**
-         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `false`
-         * Can only be used with MYSQL.
+         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
          * 
          * @return builder
          * 

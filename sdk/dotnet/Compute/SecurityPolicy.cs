@@ -235,6 +235,30 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/global/securityPolicies/{{name}}"
+    /// 
+    ///  to = google_compute_security_policy.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
     public partial class SecurityPolicy : global::Pulumi.CustomResource
@@ -294,7 +318,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.SecurityPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The URI of the created resourc
+        /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -494,7 +518,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The URI of the created resourc
+        /// The URI of the created resource.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A zone is a subtree of the DNS namespace under one administrative
@@ -398,7 +397,17 @@ import (
 //
 // ## Import
 //
-// # ManagedZone can be imported using any of these accepted formats
+// ManagedZone can be imported using any of these accepted formats* `projects/{{project}}/managedZones/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ManagedZone using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/managedZones/{{name}}"
+//
+//	to = google_dns_managed_zone.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dns/managedZone:ManagedZone When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ManagedZone can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -791,12 +800,6 @@ func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) Manage
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneOutput)
 }
 
-func (i *ManagedZone) ToOutput(ctx context.Context) pulumix.Output[*ManagedZone] {
-	return pulumix.Output[*ManagedZone]{
-		OutputState: i.ToManagedZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedZoneArrayInput is an input type that accepts ManagedZoneArray and ManagedZoneArrayOutput values.
 // You can construct a concrete instance of `ManagedZoneArrayInput` via:
 //
@@ -820,12 +823,6 @@ func (i ManagedZoneArray) ToManagedZoneArrayOutput() ManagedZoneArrayOutput {
 
 func (i ManagedZoneArray) ToManagedZoneArrayOutputWithContext(ctx context.Context) ManagedZoneArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneArrayOutput)
-}
-
-func (i ManagedZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]*ManagedZone] {
-	return pulumix.Output[[]*ManagedZone]{
-		OutputState: i.ToManagedZoneArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ManagedZoneMapInput is an input type that accepts ManagedZoneMap and ManagedZoneMapOutput values.
@@ -853,12 +850,6 @@ func (i ManagedZoneMap) ToManagedZoneMapOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneMapOutput)
 }
 
-func (i ManagedZoneMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagedZone] {
-	return pulumix.Output[map[string]*ManagedZone]{
-		OutputState: i.ToManagedZoneMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedZoneOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
@@ -871,12 +862,6 @@ func (o ManagedZoneOutput) ToManagedZoneOutput() ManagedZoneOutput {
 
 func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput {
 	return o
-}
-
-func (o ManagedZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZone] {
-	return pulumix.Output[*ManagedZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cloud logging configuration
@@ -1013,12 +998,6 @@ func (o ManagedZoneArrayOutput) ToManagedZoneArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ManagedZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ManagedZone] {
-	return pulumix.Output[[]*ManagedZone]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedZoneArrayOutput) Index(i pulumi.IntInput) ManagedZoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ManagedZone {
 		return vs[0].([]*ManagedZone)[vs[1].(int)]
@@ -1037,12 +1016,6 @@ func (o ManagedZoneMapOutput) ToManagedZoneMapOutput() ManagedZoneMapOutput {
 
 func (o ManagedZoneMapOutput) ToManagedZoneMapOutputWithContext(ctx context.Context) ManagedZoneMapOutput {
 	return o
-}
-
-func (o ManagedZoneMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagedZone] {
-	return pulumix.Output[map[string]*ManagedZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedZoneMapOutput) MapIndex(k pulumi.StringInput) ManagedZoneOutput {

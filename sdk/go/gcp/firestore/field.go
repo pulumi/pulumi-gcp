@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a single field in the database.
@@ -60,8 +59,7 @@ import (
 //						},
 //					},
 //				},
-//				Project:   pulumi.String("my-project-name"),
-//				TtlConfig: nil,
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -143,7 +141,17 @@ import (
 //
 // ## Import
 //
-// Field can be imported using any of these accepted formats:
+// Field can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Field using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_firestore_field.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:firestore/field:Field When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Field can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -173,7 +181,7 @@ type Field struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If set, this field is configured for TTL deletion.
+	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrOutput `pulumi:"ttlConfig"`
 }
@@ -234,7 +242,7 @@ type fieldState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// If set, this field is configured for TTL deletion.
+	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig *FieldTtlConfig `pulumi:"ttlConfig"`
 }
@@ -260,7 +268,7 @@ type FieldState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// If set, this field is configured for TTL deletion.
+	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrInput
 }
@@ -287,7 +295,7 @@ type fieldArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// If set, this field is configured for TTL deletion.
+	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig *FieldTtlConfig `pulumi:"ttlConfig"`
 }
@@ -311,7 +319,7 @@ type FieldArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// If set, this field is configured for TTL deletion.
+	// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrInput
 }
@@ -339,12 +347,6 @@ func (i *Field) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldOutput)
 }
 
-func (i *Field) ToOutput(ctx context.Context) pulumix.Output[*Field] {
-	return pulumix.Output[*Field]{
-		OutputState: i.ToFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FieldArrayInput is an input type that accepts FieldArray and FieldArrayOutput values.
 // You can construct a concrete instance of `FieldArrayInput` via:
 //
@@ -368,12 +370,6 @@ func (i FieldArray) ToFieldArrayOutput() FieldArrayOutput {
 
 func (i FieldArray) ToFieldArrayOutputWithContext(ctx context.Context) FieldArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldArrayOutput)
-}
-
-func (i FieldArray) ToOutput(ctx context.Context) pulumix.Output[[]*Field] {
-	return pulumix.Output[[]*Field]{
-		OutputState: i.ToFieldArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FieldMapInput is an input type that accepts FieldMap and FieldMapOutput values.
@@ -401,12 +397,6 @@ func (i FieldMap) ToFieldMapOutputWithContext(ctx context.Context) FieldMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FieldMapOutput)
 }
 
-func (i FieldMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Field] {
-	return pulumix.Output[map[string]*Field]{
-		OutputState: i.ToFieldMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldOutput struct{ *pulumi.OutputState }
 
 func (FieldOutput) ElementType() reflect.Type {
@@ -419,12 +409,6 @@ func (o FieldOutput) ToFieldOutput() FieldOutput {
 
 func (o FieldOutput) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 	return o
-}
-
-func (o FieldOutput) ToOutput(ctx context.Context) pulumix.Output[*Field] {
-	return pulumix.Output[*Field]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the collection group to configure.
@@ -465,7 +449,7 @@ func (o FieldOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If set, this field is configured for TTL deletion.
+// The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 // Structure is documented below.
 func (o FieldOutput) TtlConfig() FieldTtlConfigPtrOutput {
 	return o.ApplyT(func(v *Field) FieldTtlConfigPtrOutput { return v.TtlConfig }).(FieldTtlConfigPtrOutput)
@@ -483,12 +467,6 @@ func (o FieldArrayOutput) ToFieldArrayOutput() FieldArrayOutput {
 
 func (o FieldArrayOutput) ToFieldArrayOutputWithContext(ctx context.Context) FieldArrayOutput {
 	return o
-}
-
-func (o FieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Field] {
-	return pulumix.Output[[]*Field]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
@@ -509,12 +487,6 @@ func (o FieldMapOutput) ToFieldMapOutput() FieldMapOutput {
 
 func (o FieldMapOutput) ToFieldMapOutputWithContext(ctx context.Context) FieldMapOutput {
 	return o
-}
-
-func (o FieldMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Field] {
-	return pulumix.Output[map[string]*Field]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldMapOutput) MapIndex(k pulumi.StringInput) FieldOutput {

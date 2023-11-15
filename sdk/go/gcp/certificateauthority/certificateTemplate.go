@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization.  A certificate template can essentially become a full-fledged vertical certificate issuance framework.
@@ -22,7 +21,17 @@ import (
 //
 // ## Import
 //
-// # CertificateTemplate can be imported using any of these accepted formats
+// CertificateTemplate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CertificateTemplate using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}"
+//
+//	to = google_privateca_certificate_template.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CertificateTemplate can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -242,12 +251,6 @@ func (i *CertificateTemplate) ToCertificateTemplateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateOutput)
 }
 
-func (i *CertificateTemplate) ToOutput(ctx context.Context) pulumix.Output[*CertificateTemplate] {
-	return pulumix.Output[*CertificateTemplate]{
-		OutputState: i.ToCertificateTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CertificateTemplateArrayInput is an input type that accepts CertificateTemplateArray and CertificateTemplateArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplateArrayInput` via:
 //
@@ -271,12 +274,6 @@ func (i CertificateTemplateArray) ToCertificateTemplateArrayOutput() Certificate
 
 func (i CertificateTemplateArray) ToCertificateTemplateArrayOutputWithContext(ctx context.Context) CertificateTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateArrayOutput)
-}
-
-func (i CertificateTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateTemplate] {
-	return pulumix.Output[[]*CertificateTemplate]{
-		OutputState: i.ToCertificateTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CertificateTemplateMapInput is an input type that accepts CertificateTemplateMap and CertificateTemplateMapOutput values.
@@ -304,12 +301,6 @@ func (i CertificateTemplateMap) ToCertificateTemplateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateMapOutput)
 }
 
-func (i CertificateTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateTemplate] {
-	return pulumix.Output[map[string]*CertificateTemplate]{
-		OutputState: i.ToCertificateTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateTemplateOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateOutput) ElementType() reflect.Type {
@@ -322,12 +313,6 @@ func (o CertificateTemplateOutput) ToCertificateTemplateOutput() CertificateTemp
 
 func (o CertificateTemplateOutput) ToCertificateTemplateOutputWithContext(ctx context.Context) CertificateTemplateOutput {
 	return o
-}
-
-func (o CertificateTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateTemplate] {
-	return pulumix.Output[*CertificateTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. The time at which this CertificateTemplate was created.
@@ -411,12 +396,6 @@ func (o CertificateTemplateArrayOutput) ToCertificateTemplateArrayOutputWithCont
 	return o
 }
 
-func (o CertificateTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateTemplate] {
-	return pulumix.Output[[]*CertificateTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateTemplateArrayOutput) Index(i pulumi.IntInput) CertificateTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateTemplate {
 		return vs[0].([]*CertificateTemplate)[vs[1].(int)]
@@ -435,12 +414,6 @@ func (o CertificateTemplateMapOutput) ToCertificateTemplateMapOutput() Certifica
 
 func (o CertificateTemplateMapOutput) ToCertificateTemplateMapOutputWithContext(ctx context.Context) CertificateTemplateMapOutput {
 	return o
-}
-
-func (o CertificateTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateTemplate] {
-	return pulumix.Output[map[string]*CertificateTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateTemplateMapOutput) MapIndex(k pulumi.StringInput) CertificateTemplateOutput {

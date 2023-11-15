@@ -46,7 +46,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Database can be imported using any of these accepted formats:
+ * Database can be imported using any of these accepted formats* `{{catalog}}/databases/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Database using one of the formats above. For exampletf import {
+ *
+ *  id = "{{catalog}}/databases/{{name}}"
+ *
+ *  to = google_biglake_database.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:biglake/database:Database When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Database can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}

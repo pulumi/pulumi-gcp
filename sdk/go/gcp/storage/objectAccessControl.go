@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The ObjectAccessControls resources represent the Access Control Lists
@@ -77,7 +76,17 @@ import (
 //
 // ## Import
 //
-// ObjectAccessControl can be imported using any of these accepted formats:
+// ObjectAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{object}}/{{entity}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ObjectAccessControl using one of the formats above. For exampletf import {
+//
+//	id = "{{bucket}}/{{object}}/{{entity}}"
+//
+//	to = google_storage_object_access_control.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ObjectAccessControl can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -298,12 +307,6 @@ func (i *ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlOutput)
 }
 
-func (i *ObjectAccessControl) ToOutput(ctx context.Context) pulumix.Output[*ObjectAccessControl] {
-	return pulumix.Output[*ObjectAccessControl]{
-		OutputState: i.ToObjectAccessControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ObjectAccessControlArrayInput is an input type that accepts ObjectAccessControlArray and ObjectAccessControlArrayOutput values.
 // You can construct a concrete instance of `ObjectAccessControlArrayInput` via:
 //
@@ -327,12 +330,6 @@ func (i ObjectAccessControlArray) ToObjectAccessControlArrayOutput() ObjectAcces
 
 func (i ObjectAccessControlArray) ToObjectAccessControlArrayOutputWithContext(ctx context.Context) ObjectAccessControlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlArrayOutput)
-}
-
-func (i ObjectAccessControlArray) ToOutput(ctx context.Context) pulumix.Output[[]*ObjectAccessControl] {
-	return pulumix.Output[[]*ObjectAccessControl]{
-		OutputState: i.ToObjectAccessControlArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ObjectAccessControlMapInput is an input type that accepts ObjectAccessControlMap and ObjectAccessControlMapOutput values.
@@ -360,12 +357,6 @@ func (i ObjectAccessControlMap) ToObjectAccessControlMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlMapOutput)
 }
 
-func (i ObjectAccessControlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObjectAccessControl] {
-	return pulumix.Output[map[string]*ObjectAccessControl]{
-		OutputState: i.ToObjectAccessControlMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ObjectAccessControlOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlOutput) ElementType() reflect.Type {
@@ -378,12 +369,6 @@ func (o ObjectAccessControlOutput) ToObjectAccessControlOutput() ObjectAccessCon
 
 func (o ObjectAccessControlOutput) ToObjectAccessControlOutputWithContext(ctx context.Context) ObjectAccessControlOutput {
 	return o
-}
-
-func (o ObjectAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectAccessControl] {
-	return pulumix.Output[*ObjectAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the bucket.
@@ -457,12 +442,6 @@ func (o ObjectAccessControlArrayOutput) ToObjectAccessControlArrayOutputWithCont
 	return o
 }
 
-func (o ObjectAccessControlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ObjectAccessControl] {
-	return pulumix.Output[[]*ObjectAccessControl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ObjectAccessControlArrayOutput) Index(i pulumi.IntInput) ObjectAccessControlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObjectAccessControl {
 		return vs[0].([]*ObjectAccessControl)[vs[1].(int)]
@@ -481,12 +460,6 @@ func (o ObjectAccessControlMapOutput) ToObjectAccessControlMapOutput() ObjectAcc
 
 func (o ObjectAccessControlMapOutput) ToObjectAccessControlMapOutputWithContext(ctx context.Context) ObjectAccessControlMapOutput {
 	return o
-}
-
-func (o ObjectAccessControlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObjectAccessControl] {
-	return pulumix.Output[map[string]*ObjectAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ObjectAccessControlMapOutput) MapIndex(k pulumi.StringInput) ObjectAccessControlOutput {

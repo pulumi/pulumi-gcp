@@ -130,28 +130,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ * ### Importing IAM policies IAM policy imports use the identifier of the Healthcare DICOM store resource. For example* `&#34;{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
  * 
- * This member resource can be imported using the `dicom_store_id`, role, and account e.g.
+ *  id = &#34;{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}&#34;
+ * 
+ *  to = google_healthcare_dicom_store_iam_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam &#34;your-project-id/location-name/dataset-name/dicom-store-name roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
- * 
- * This binding resource can be imported using the `dicom_store_id` and role, e.g.
- * 
  * ```sh
- *  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam &#34;your-project-id/location-name/dataset-name/dicom-store-name roles/viewer&#34;
- * ```
- * 
- *  IAM policy imports use the identifier of the resource in question.
- * 
- * This policy resource can be imported using the `dicom_store_id`, role, and account e.g.
- * 
- * ```sh
- *  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
+ *  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
  * ```
  * 
  */

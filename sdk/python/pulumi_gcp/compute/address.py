@@ -363,15 +363,15 @@ class _AddressState:
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
                used for deciding which type of endpoint this address can be used after
                the external IPv6 address reservation.
                Possible values are: `VM`, `NETLB`.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -395,7 +395,8 @@ class _AddressState:
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
                ranges, load balancers, and similar resources.
@@ -517,8 +518,7 @@ class _AddressState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -558,7 +558,8 @@ class _AddressState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -659,7 +660,8 @@ class _AddressState:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -864,7 +866,15 @@ class Address(pulumi.CustomResource):
 
         ## Import
 
-        Address can be imported using any of these accepted formats
+        Address can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/addresses/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Address using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/addresses/{{name}}"
+
+         to = google_compute_address.default }
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Address can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
@@ -1047,7 +1057,15 @@ class Address(pulumi.CustomResource):
 
         ## Import
 
-        Address can be imported using any of these accepted formats
+        Address can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/addresses/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Address using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/addresses/{{name}}"
+
+         to = google_compute_address.default }
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Address can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
@@ -1171,15 +1189,15 @@ class Address(pulumi.CustomResource):
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
                used for deciding which type of endpoint this address can be used after
                the external IPv6 address reservation.
                Possible values are: `VM`, `NETLB`.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1203,7 +1221,8 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
                ranges, load balancers, and similar resources.
@@ -1294,8 +1313,7 @@ class Address(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1323,7 +1341,8 @@ class Address(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -1396,7 +1415,8 @@ class Address(pulumi.CustomResource):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

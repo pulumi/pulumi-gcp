@@ -17,8 +17,10 @@ __all__ = ['CxFlowArgs', 'CxFlow']
 class CxFlowArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 advanced_settings: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
+                 is_default_start_flow: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input['CxFlowNluSettingsArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -30,12 +32,19 @@ class CxFlowArgs:
                
                
                - - -
+        :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
                Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
                Structure is documented below.
+        :param pulumi.Input[bool] is_default_start_flow: Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+               The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
         :param pulumi.Input[str] language_code: The language of the following fields in flow:
                Flow.event_handlers.trigger_fulfillment.messages
                Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -60,10 +69,14 @@ class CxFlowArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_handlers is not None:
             pulumi.set(__self__, "event_handlers", event_handlers)
+        if is_default_start_flow is not None:
+            pulumi.set(__self__, "is_default_start_flow", is_default_start_flow)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if nlu_settings is not None:
@@ -89,6 +102,20 @@ class CxFlowArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
 
     @property
     @pulumi.getter
@@ -117,6 +144,21 @@ class CxFlowArgs:
     @event_handlers.setter
     def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]):
         pulumi.set(self, "event_handlers", value)
+
+    @property
+    @pulumi.getter(name="isDefaultStartFlow")
+    def is_default_start_flow(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+        The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        """
+        return pulumi.get(self, "is_default_start_flow")
+
+    @is_default_start_flow.setter
+    def is_default_start_flow(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default_start_flow", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -199,9 +241,11 @@ class CxFlowArgs:
 @pulumi.input_type
 class _CxFlowState:
     def __init__(__self__, *,
+                 advanced_settings: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
+                 is_default_start_flow: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input['CxFlowNluSettingsArgs']] = None,
@@ -210,6 +254,9 @@ class _CxFlowState:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxFlow resources.
+        :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
                
@@ -220,6 +267,10 @@ class _CxFlowState:
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
                Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
                Structure is documented below.
+        :param pulumi.Input[bool] is_default_start_flow: Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+               The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
         :param pulumi.Input[str] language_code: The language of the following fields in flow:
                Flow.event_handlers.trigger_fulfillment.messages
                Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -245,12 +296,16 @@ class _CxFlowState:
                TransitionRoutes with intent specified are inherited by pages in the flow.
                Structure is documented below.
         """
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if event_handlers is not None:
             pulumi.set(__self__, "event_handlers", event_handlers)
+        if is_default_start_flow is not None:
+            pulumi.set(__self__, "is_default_start_flow", is_default_start_flow)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
@@ -263,6 +318,20 @@ class _CxFlowState:
             pulumi.set(__self__, "transition_route_groups", transition_route_groups)
         if transition_routes is not None:
             pulumi.set(__self__, "transition_routes", transition_routes)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
 
     @property
     @pulumi.getter
@@ -306,6 +375,21 @@ class _CxFlowState:
     @event_handlers.setter
     def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]):
         pulumi.set(self, "event_handlers", value)
+
+    @property
+    @pulumi.getter(name="isDefaultStartFlow")
+    def is_default_start_flow(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+        The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        """
+        return pulumi.get(self, "is_default_start_flow")
+
+    @is_default_start_flow.setter
+    def is_default_start_flow(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default_start_flow", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -403,9 +487,11 @@ class CxFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]]] = None,
+                 is_default_start_flow: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -422,6 +508,73 @@ class CxFlow(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Flow Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+            parent=agent.id,
+            display_name="MyFlow",
+            description="Test Flow",
+            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
+                classification_threshold=0.3,
+                model_type="MODEL_TYPE_STANDARD",
+            ),
+            event_handlers=[
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="custom-event",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["I didn't get that. Can you say it again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-match-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["Sorry, could you say that again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-input-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["One more time?"],
+                            ),
+                        )],
+                    ),
+                ),
+            ])
+        ```
         ### Dialogflowcx Flow Full
 
         ```python
@@ -446,6 +599,9 @@ class CxFlow(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
         basic_flow = gcp.diagflow.CxFlow("basicFlow",
             parent=agent.id,
             display_name="MyFlow",
@@ -689,12 +845,30 @@ class CxFlow(pulumi.CustomResource):
                     )],
                 ),
                 target_flow=agent.start_flow,
-            )])
+            )],
+            advanced_settings=gcp.diagflow.CxFlowAdvancedSettingsArgs(
+                audio_export_gcs_destination=gcp.diagflow.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs(
+                    uri=bucket.url.apply(lambda url: f"{url}/prefix-"),
+                ),
+                dtmf_settings=gcp.diagflow.CxFlowAdvancedSettingsDtmfSettingsArgs(
+                    enabled=True,
+                    max_digits=1,
+                    finish_digit="#",
+                ),
+            ))
         ```
 
         ## Import
 
-        Flow can be imported using any of these accepted formats
+        Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/flows/{{name}}"
+
+         to = google_dialogflow_cx_flow.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
@@ -706,6 +880,9 @@ class CxFlow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
                
@@ -716,6 +893,10 @@ class CxFlow(pulumi.CustomResource):
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
                Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
                Structure is documented below.
+        :param pulumi.Input[bool] is_default_start_flow: Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+               The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
         :param pulumi.Input[str] language_code: The language of the following fields in flow:
                Flow.event_handlers.trigger_fulfillment.messages
                Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -755,6 +936,73 @@ class CxFlow(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+        ### Dialogflowcx Flow Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+                enable_speech_adaptation=True,
+            ))
+        basic_flow = gcp.diagflow.CxFlow("basicFlow",
+            parent=agent.id,
+            display_name="MyFlow",
+            description="Test Flow",
+            nlu_settings=gcp.diagflow.CxFlowNluSettingsArgs(
+                classification_threshold=0.3,
+                model_type="MODEL_TYPE_STANDARD",
+            ),
+            event_handlers=[
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="custom-event",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["I didn't get that. Can you say it again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-match-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["Sorry, could you say that again?"],
+                            ),
+                        )],
+                    ),
+                ),
+                gcp.diagflow.CxFlowEventHandlerArgs(
+                    event="sys.no-input-default",
+                    trigger_fulfillment=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentArgs(
+                        return_partial_responses=False,
+                        messages=[gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs(
+                            text=gcp.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs(
+                                texts=["One more time?"],
+                            ),
+                        )],
+                    ),
+                ),
+            ])
+        ```
         ### Dialogflowcx Flow Full
 
         ```python
@@ -779,6 +1027,9 @@ class CxFlow(pulumi.CustomResource):
             speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
                 enable_speech_adaptation=True,
             ))
+        bucket = gcp.storage.Bucket("bucket",
+            location="US",
+            uniform_bucket_level_access=True)
         basic_flow = gcp.diagflow.CxFlow("basicFlow",
             parent=agent.id,
             display_name="MyFlow",
@@ -1022,12 +1273,30 @@ class CxFlow(pulumi.CustomResource):
                     )],
                 ),
                 target_flow=agent.start_flow,
-            )])
+            )],
+            advanced_settings=gcp.diagflow.CxFlowAdvancedSettingsArgs(
+                audio_export_gcs_destination=gcp.diagflow.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs(
+                    uri=bucket.url.apply(lambda url: f"{url}/prefix-"),
+                ),
+                dtmf_settings=gcp.diagflow.CxFlowAdvancedSettingsDtmfSettingsArgs(
+                    enabled=True,
+                    max_digits=1,
+                    finish_digit="#",
+                ),
+            ))
         ```
 
         ## Import
 
-        Flow can be imported using any of these accepted formats
+        Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/flows/{{name}}"
+
+         to = google_dialogflow_cx_flow.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
@@ -1052,9 +1321,11 @@ class CxFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]]] = None,
+                 is_default_start_flow: Optional[pulumi.Input[bool]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -1069,11 +1340,13 @@ class CxFlow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxFlowArgs.__new__(CxFlowArgs)
 
+            __props__.__dict__["advanced_settings"] = advanced_settings
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["event_handlers"] = event_handlers
+            __props__.__dict__["is_default_start_flow"] = is_default_start_flow
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["nlu_settings"] = nlu_settings
             __props__.__dict__["parent"] = parent
@@ -1090,9 +1363,11 @@ class CxFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]]] = None,
+            is_default_start_flow: Optional[pulumi.Input[bool]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nlu_settings: Optional[pulumi.Input[pulumi.InputType['CxFlowNluSettingsArgs']]] = None,
@@ -1106,6 +1381,9 @@ class CxFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CxFlowAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
                
@@ -1116,6 +1394,10 @@ class CxFlow(pulumi.CustomResource):
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
                Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
                Structure is documented below.
+        :param pulumi.Input[bool] is_default_start_flow: Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+               The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
         :param pulumi.Input[str] language_code: The language of the following fields in flow:
                Flow.event_handlers.trigger_fulfillment.messages
                Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -1145,9 +1427,11 @@ class CxFlow(pulumi.CustomResource):
 
         __props__ = _CxFlowState.__new__(_CxFlowState)
 
+        __props__.__dict__["advanced_settings"] = advanced_settings
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["event_handlers"] = event_handlers
+        __props__.__dict__["is_default_start_flow"] = is_default_start_flow
         __props__.__dict__["language_code"] = language_code
         __props__.__dict__["name"] = name
         __props__.__dict__["nlu_settings"] = nlu_settings
@@ -1155,6 +1439,16 @@ class CxFlow(pulumi.CustomResource):
         __props__.__dict__["transition_route_groups"] = transition_route_groups
         __props__.__dict__["transition_routes"] = transition_routes
         return CxFlow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> pulumi.Output[Optional['outputs.CxFlowAdvancedSettings']]:
+        """
+        Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter
@@ -1186,6 +1480,17 @@ class CxFlow(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "event_handlers")
+
+    @property
+    @pulumi.getter(name="isDefaultStartFlow")
+    def is_default_start_flow(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+        The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        """
+        return pulumi.get(self, "is_default_start_flow")
 
     @property
     @pulumi.getter(name="languageCode")

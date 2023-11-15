@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -125,10 +124,80 @@ import (
 //	}
 //
 // ```
+// ### Workstation Cluster Custom Domain
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.Name,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationCluster(ctx, "defaultWorkstationCluster", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster-custom-domain"),
+//				Network:              defaultNetwork.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//				PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
+//					EnablePrivateEndpoint: pulumi.Bool(true),
+//				},
+//				DomainConfig: &workstations.WorkstationClusterDomainConfigArgs{
+//					Domain: pulumi.String("workstations.example.com"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("key"),
+//				},
+//				Annotations: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # WorkstationCluster can be imported using any of these accepted formats
+// WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}"
+//
+//	to = google_workstations_workstation_cluster.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -164,6 +233,9 @@ type WorkstationCluster struct {
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Configuration options for a custom domain.
+	// Structure is documented below.
+	DomainConfig WorkstationClusterDomainConfigPtrOutput `pulumi:"domainConfig"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
@@ -261,6 +333,9 @@ type workstationClusterState struct {
 	Degraded *bool `pulumi:"degraded"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
+	// Configuration options for a custom domain.
+	// Structure is documented below.
+	DomainConfig *WorkstationClusterDomainConfig `pulumi:"domainConfig"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
@@ -315,6 +390,9 @@ type WorkstationClusterState struct {
 	Degraded pulumi.BoolPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
+	// Configuration options for a custom domain.
+	// Structure is documented below.
+	DomainConfig WorkstationClusterDomainConfigPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
@@ -365,6 +443,9 @@ type workstationClusterArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
+	// Configuration options for a custom domain.
+	// Structure is documented below.
+	DomainConfig *WorkstationClusterDomainConfig `pulumi:"domainConfig"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -397,6 +478,9 @@ type WorkstationClusterArgs struct {
 	Annotations pulumi.StringMapInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
+	// Configuration options for a custom domain.
+	// Structure is documented below.
+	DomainConfig WorkstationClusterDomainConfigPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -444,12 +528,6 @@ func (i *WorkstationCluster) ToWorkstationClusterOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterOutput)
 }
 
-func (i *WorkstationCluster) ToOutput(ctx context.Context) pulumix.Output[*WorkstationCluster] {
-	return pulumix.Output[*WorkstationCluster]{
-		OutputState: i.ToWorkstationClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkstationClusterArrayInput is an input type that accepts WorkstationClusterArray and WorkstationClusterArrayOutput values.
 // You can construct a concrete instance of `WorkstationClusterArrayInput` via:
 //
@@ -473,12 +551,6 @@ func (i WorkstationClusterArray) ToWorkstationClusterArrayOutput() WorkstationCl
 
 func (i WorkstationClusterArray) ToWorkstationClusterArrayOutputWithContext(ctx context.Context) WorkstationClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterArrayOutput)
-}
-
-func (i WorkstationClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationCluster] {
-	return pulumix.Output[[]*WorkstationCluster]{
-		OutputState: i.ToWorkstationClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkstationClusterMapInput is an input type that accepts WorkstationClusterMap and WorkstationClusterMapOutput values.
@@ -506,12 +578,6 @@ func (i WorkstationClusterMap) ToWorkstationClusterMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterMapOutput)
 }
 
-func (i WorkstationClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationCluster] {
-	return pulumix.Output[map[string]*WorkstationCluster]{
-		OutputState: i.ToWorkstationClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkstationClusterOutput struct{ *pulumi.OutputState }
 
 func (WorkstationClusterOutput) ElementType() reflect.Type {
@@ -524,12 +590,6 @@ func (o WorkstationClusterOutput) ToWorkstationClusterOutput() WorkstationCluste
 
 func (o WorkstationClusterOutput) ToWorkstationClusterOutputWithContext(ctx context.Context) WorkstationClusterOutput {
 	return o
-}
-
-func (o WorkstationClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationCluster] {
-	return pulumix.Output[*WorkstationCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client-specified annotations. This is distinct from labels.
@@ -559,6 +619,12 @@ func (o WorkstationClusterOutput) Degraded() pulumi.BoolOutput {
 // Human-readable name for this resource.
 func (o WorkstationClusterOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for a custom domain.
+// Structure is documented below.
+func (o WorkstationClusterOutput) DomainConfig() WorkstationClusterDomainConfigPtrOutput {
+	return o.ApplyT(func(v *WorkstationCluster) WorkstationClusterDomainConfigPtrOutput { return v.DomainConfig }).(WorkstationClusterDomainConfigPtrOutput)
 }
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -653,12 +719,6 @@ func (o WorkstationClusterArrayOutput) ToWorkstationClusterArrayOutputWithContex
 	return o
 }
 
-func (o WorkstationClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationCluster] {
-	return pulumix.Output[[]*WorkstationCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkstationClusterArrayOutput) Index(i pulumi.IntInput) WorkstationClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkstationCluster {
 		return vs[0].([]*WorkstationCluster)[vs[1].(int)]
@@ -677,12 +737,6 @@ func (o WorkstationClusterMapOutput) ToWorkstationClusterMapOutput() Workstation
 
 func (o WorkstationClusterMapOutput) ToWorkstationClusterMapOutputWithContext(ctx context.Context) WorkstationClusterMapOutput {
 	return o
-}
-
-func (o WorkstationClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationCluster] {
-	return pulumix.Output[map[string]*WorkstationCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkstationClusterMapOutput) MapIndex(k pulumi.StringInput) WorkstationClusterOutput {

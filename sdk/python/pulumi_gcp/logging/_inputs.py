@@ -11,9 +11,11 @@ from .. import _utilities
 
 __all__ = [
     'BillingAccountBucketConfigCmekSettingsArgs',
+    'BillingAccountBucketConfigIndexConfigArgs',
     'BillingAccountSinkBigqueryOptionsArgs',
     'BillingAccountSinkExclusionArgs',
     'FolderBucketConfigCmekSettingsArgs',
+    'FolderBucketConfigIndexConfigArgs',
     'FolderSinkBigqueryOptionsArgs',
     'FolderSinkExclusionArgs',
     'LinkedDatasetBigqueryDatasetArgs',
@@ -24,9 +26,11 @@ __all__ = [
     'MetricMetricDescriptorArgs',
     'MetricMetricDescriptorLabelArgs',
     'OrganizationBucketConfigCmekSettingsArgs',
+    'OrganizationBucketConfigIndexConfigArgs',
     'OrganizationSinkBigqueryOptionsArgs',
     'OrganizationSinkExclusionArgs',
     'ProjectBucketConfigCmekSettingsArgs',
+    'ProjectBucketConfigIndexConfigArgs',
     'ProjectSinkBigqueryOptionsArgs',
     'ProjectSinkExclusionArgs',
 ]
@@ -87,6 +91,45 @@ class BillingAccountBucketConfigCmekSettingsArgs:
     @service_account_id.setter
     def service_account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account_id", value)
+
+
+@pulumi.input_type
+class BillingAccountBucketConfigIndexConfigArgs:
+    def __init__(__self__, *,
+                 field_path: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> pulumi.Input[str]:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "field_path", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -244,6 +287,45 @@ class FolderBucketConfigCmekSettingsArgs:
     @service_account_id.setter
     def service_account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account_id", value)
+
+
+@pulumi.input_type
+class FolderBucketConfigIndexConfigArgs:
+    def __init__(__self__, *,
+                 field_path: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> pulumi.Input[str]:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "field_path", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -797,6 +879,45 @@ class OrganizationBucketConfigCmekSettingsArgs:
 
 
 @pulumi.input_type
+class OrganizationBucketConfigIndexConfigArgs:
+    def __init__(__self__, *,
+                 field_path: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> pulumi.Input[str]:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "field_path", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class OrganizationSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
                  use_partitioned_tables: pulumi.Input[bool]):
@@ -987,6 +1108,45 @@ class ProjectBucketConfigCmekSettingsArgs:
     @service_account_id.setter
     def service_account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account_id", value)
+
+
+@pulumi.input_type
+class ProjectBucketConfigIndexConfigArgs:
+    def __init__(__self__, *,
+                 field_path: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> pulumi.Input[str]:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @field_path.setter
+    def field_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "field_path", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

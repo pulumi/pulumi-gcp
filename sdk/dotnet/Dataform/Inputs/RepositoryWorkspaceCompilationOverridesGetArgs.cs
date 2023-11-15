@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.Dataform.Inputs
     public sealed class RepositoryWorkspaceCompilationOverridesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The default database (Google Cloud project ID).
+        /// The default database (Google Cloud project ID).
         /// </summary>
         [Input("defaultDatabase")]
         public Input<string>? DefaultDatabase { get; set; }
 
         /// <summary>
-        /// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        /// The suffix that should be appended to all schema (BigQuery dataset ID) names.
         /// </summary>
         [Input("schemaSuffix")]
         public Input<string>? SchemaSuffix { get; set; }
 
         /// <summary>
-        /// Optional. The prefix that should be prepended to all table names.
+        /// The prefix that should be prepended to all table names.
         /// </summary>
         [Input("tablePrefix")]
         public Input<string>? TablePrefix { get; set; }

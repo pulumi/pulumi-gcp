@@ -370,7 +370,15 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// ## Import
     /// 
-    /// PatchDeployment can be imported using any of these accepted formats
+    /// PatchDeployment can be imported using any of these accepted formats* `projects/{{project}}/patchDeployments/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PatchDeployment using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/patchDeployments/{{name}}"
+    /// 
+    ///  to = google_os_config_patch_deployment.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PatchDeployment can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}

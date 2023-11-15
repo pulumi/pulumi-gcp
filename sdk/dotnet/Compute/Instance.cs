@@ -27,13 +27,13 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new()
     ///     {
-    ///         AccountId = "service_account_id",
-    ///         DisplayName = "Service Account",
+    ///         AccountId = "my-custom-sa",
+    ///         DisplayName = "Custom SA for VM Instance",
     ///     });
     /// 
     ///     var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new()
     ///     {
-    ///         MachineType = "e2-medium",
+    ///         MachineType = "n2-standard-2",
     ///         Zone = "us-central1-a",
     ///         Tags = new[]
     ///         {
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceScratchDiskArgs
     ///             {
-    ///                 Interface = "SCSI",
+    ///                 Interface = "NVME",
     ///             },
     ///         },
     ///         NetworkInterfaces = new[]
@@ -89,7 +89,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Instances can be imported using any of these accepted formats
+    /// Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instances using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/zones/{{zone}}/instances/{{name}}"
+    /// 
+    ///  to = google_compute_instance.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instances can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
@@ -102,8 +110,6 @@ namespace Pulumi.Gcp.Compute
     /// ```sh
     ///  $ pulumi import gcp:compute/instance:Instance default {{name}}
     /// ```
-    /// 
-    ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
     /// </summary>
     [GcpResourceType("gcp:compute/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
@@ -233,9 +239,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
         /// 
-        /// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
         /// 
-        /// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+        /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -564,9 +570,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
         /// 
-        /// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
         /// 
-        /// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+        /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -892,9 +898,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
         /// 
-        /// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
         /// 
-        /// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+        /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

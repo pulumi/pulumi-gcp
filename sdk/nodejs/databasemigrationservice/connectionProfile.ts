@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *     * [Database Migration](https://cloud.google.com/database-migration/docs/)
  *
  * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+ * values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
  * Read more about sensitive data in state.
  *
  * ## Example Usage
@@ -150,10 +150,41 @@ import * as utilities from "../utilities";
  *     dependsOn: [sqldbUser],
  * });
  * ```
+ * ### Database Migration Service Connection Profile Oracle
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const oracleprofile = new gcp.databasemigrationservice.ConnectionProfile("oracleprofile", {
+ *     connectionProfileId: "my-profileid",
+ *     displayName: "my-profileid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     location: "us-central1",
+ *     oracle: {
+ *         databaseService: "dbprovider",
+ *         host: "host",
+ *         password: "password",
+ *         port: 1521,
+ *         staticServiceIpConnectivity: {},
+ *         username: "username",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
- * ConnectionProfile can be imported using any of these accepted formats
+ * ConnectionProfile can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}` * `{{project}}/{{location}}/{{connection_profile_id}}` * `{{location}}/{{connection_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectionProfile using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}"
+ *
+ *  to = google_database_migration_service_connection_profile.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectionProfile can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
@@ -254,6 +285,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     */
+    public readonly oracle!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileOracle | undefined>;
+    /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.
      */
@@ -298,6 +334,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["mysql"] = state ? state.mysql : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oracle"] = state ? state.oracle : undefined;
             resourceInputs["postgresql"] = state ? state.postgresql : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -314,6 +351,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mysql"] = args ? args.mysql : undefined;
+            resourceInputs["oracle"] = args ? args.oracle : undefined;
             resourceInputs["postgresql"] = args ? args.postgresql : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -394,6 +432,11 @@ export interface ConnectionProfileState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     */
+    oracle?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracle>;
+    /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.
      */
@@ -455,6 +498,11 @@ export interface ConnectionProfileArgs {
      * Structure is documented below.
      */
     mysql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileMysql>;
+    /**
+     * Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     */
+    oracle?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracle>;
     /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.

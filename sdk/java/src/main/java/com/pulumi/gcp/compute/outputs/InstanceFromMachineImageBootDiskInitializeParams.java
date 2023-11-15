@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageBootDiskInitializeParams {
+    private @Nullable Boolean enableConfidentialCompute;
     private @Nullable String image;
     private @Nullable Map<String,Object> labels;
     private @Nullable Map<String,Object> resourceManagerTags;
@@ -21,6 +23,9 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
     private @Nullable String type;
 
     private InstanceFromMachineImageBootDiskInitializeParams() {}
+    public Optional<Boolean> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
+    }
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
@@ -46,6 +51,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enableConfidentialCompute;
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
         private @Nullable Map<String,Object> resourceManagerTags;
@@ -54,6 +60,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
         public Builder() {}
         public Builder(InstanceFromMachineImageBootDiskInitializeParams defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
@@ -61,6 +68,11 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
+            this.enableConfidentialCompute = enableConfidentialCompute;
+            return this;
+        }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
@@ -88,6 +100,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
         }
         public InstanceFromMachineImageBootDiskInitializeParams build() {
             final var o = new InstanceFromMachineImageBootDiskInitializeParams();
+            o.enableConfidentialCompute = enableConfidentialCompute;
             o.image = image;
             o.labels = labels;
             o.resourceManagerTags = resourceManagerTags;

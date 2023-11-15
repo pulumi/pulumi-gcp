@@ -5,17 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
+ * A LocationTagBinding represents a connection between a TagValue and a non-global target such as a Cloud Run Service or Compute Instance. Once a LocationTagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
  *
- * To get more information about TagBinding, see:
+ * To get more information about LocationTagBinding, see:
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
+ * ### Cloud Run Service
  *
- * To bind a tag to a Cloud Run instance:
+ * To bind a tag to a Cloud Run service:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,8 +42,7 @@ import * as utilities from "../utilities";
  *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
  * });
  * ```
- *
- * To bind a (firewall) tag to compute instance:
+ * ### Compute Instance
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +71,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * TagBinding can be imported using any of these accepted formats:
+ * LocationTagBinding can be imported using any of these accepted formats* `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagBinding using one of the formats above. For exampletf import {
+ *
+ *  id = "{{location}}/{{name}}"
+ *
+ *  to = google_tags_location_tag_binding.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagBinding can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}
@@ -106,7 +114,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Location of the resource.
+     * Location of the target resource.
      *
      * - - -
      */
@@ -164,7 +172,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
  */
 export interface LocationTagBindingState {
     /**
-     * Location of the resource.
+     * Location of the target resource.
      *
      * - - -
      */
@@ -188,7 +196,7 @@ export interface LocationTagBindingState {
  */
 export interface LocationTagBindingArgs {
     /**
-     * Location of the resource.
+     * Location of the target resource.
      *
      * - - -
      */

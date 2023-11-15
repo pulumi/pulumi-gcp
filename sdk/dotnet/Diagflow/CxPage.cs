@@ -774,6 +774,15 @@ namespace Pulumi.Gcp.Diagflow
     ///                     },
     ///                     Required = true,
     ///                     Redact = true,
+    ///                     AdvancedSettings = new Gcp.Diagflow.Inputs.CxPageFormParameterAdvancedSettingsArgs
+    ///                     {
+    ///                         DtmfSettings = new Gcp.Diagflow.Inputs.CxPageFormParameterAdvancedSettingsDtmfSettingsArgs
+    ///                         {
+    ///                             Enabled = true,
+    ///                             MaxDigits = 1,
+    ///                             FinishDigit = "#",
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
     ///         },
@@ -950,6 +959,15 @@ namespace Pulumi.Gcp.Diagflow
     ///                 TargetPage = myPage2.Id,
     ///             },
     ///         },
+    ///         AdvancedSettings = new Gcp.Diagflow.Inputs.CxPageAdvancedSettingsArgs
+    ///         {
+    ///             DtmfSettings = new Gcp.Diagflow.Inputs.CxPageAdvancedSettingsDtmfSettingsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 MaxDigits = 1,
+    ///                 FinishDigit = "#",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -957,7 +975,15 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Import
     /// 
-    /// Page can be imported using any of these accepted formats
+    /// Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{parent}}/pages/{{name}}"
+    /// 
+    ///  to = google_dialogflow_cx_page.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
@@ -970,6 +996,14 @@ namespace Pulumi.Gcp.Diagflow
     [GcpResourceType("gcp:diagflow/cxPage:CxPage")]
     public partial class CxPage : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("advancedSettings")]
+        public Output<Outputs.CxPageAdvancedSettings?> AdvancedSettings { get; private set; } = null!;
+
         /// <summary>
         /// The human-readable name of the page, unique within the agent.
         /// 
@@ -1101,6 +1135,14 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxPageAdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The human-readable name of the page, unique within the agent.
         /// 
         /// 
@@ -1203,6 +1245,14 @@ namespace Pulumi.Gcp.Diagflow
 
     public sealed class CxPageState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxPageAdvancedSettingsGetArgs>? AdvancedSettings { get; set; }
+
         /// <summary>
         /// The human-readable name of the page, unique within the agent.
         /// 

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Backup Plan instance.
@@ -257,7 +256,17 @@ import (
 //
 // ## Import
 //
-// # BackupPlan can be imported using any of these accepted formats
+// BackupPlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackupPlan using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/backupPlans/{{name}}"
+//
+//	to = google_gke_backup_backup_plan.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkebackup/backupPlan:BackupPlan When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackupPlan can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -591,12 +600,6 @@ func (i *BackupPlan) ToBackupPlanOutputWithContext(ctx context.Context) BackupPl
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanOutput)
 }
 
-func (i *BackupPlan) ToOutput(ctx context.Context) pulumix.Output[*BackupPlan] {
-	return pulumix.Output[*BackupPlan]{
-		OutputState: i.ToBackupPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackupPlanArrayInput is an input type that accepts BackupPlanArray and BackupPlanArrayOutput values.
 // You can construct a concrete instance of `BackupPlanArrayInput` via:
 //
@@ -620,12 +623,6 @@ func (i BackupPlanArray) ToBackupPlanArrayOutput() BackupPlanArrayOutput {
 
 func (i BackupPlanArray) ToBackupPlanArrayOutputWithContext(ctx context.Context) BackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanArrayOutput)
-}
-
-func (i BackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlan] {
-	return pulumix.Output[[]*BackupPlan]{
-		OutputState: i.ToBackupPlanArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BackupPlanMapInput is an input type that accepts BackupPlanMap and BackupPlanMapOutput values.
@@ -653,12 +650,6 @@ func (i BackupPlanMap) ToBackupPlanMapOutputWithContext(ctx context.Context) Bac
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanMapOutput)
 }
 
-func (i BackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlan] {
-	return pulumix.Output[map[string]*BackupPlan]{
-		OutputState: i.ToBackupPlanMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanOutput) ElementType() reflect.Type {
@@ -671,12 +662,6 @@ func (o BackupPlanOutput) ToBackupPlanOutput() BackupPlanOutput {
 
 func (o BackupPlanOutput) ToBackupPlanOutputWithContext(ctx context.Context) BackupPlanOutput {
 	return o
-}
-
-func (o BackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlan] {
-	return pulumix.Output[*BackupPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the configuration of Backups created via this BackupPlan.
@@ -798,12 +783,6 @@ func (o BackupPlanArrayOutput) ToBackupPlanArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlan] {
-	return pulumix.Output[[]*BackupPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackupPlanArrayOutput) Index(i pulumi.IntInput) BackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPlan {
 		return vs[0].([]*BackupPlan)[vs[1].(int)]
@@ -822,12 +801,6 @@ func (o BackupPlanMapOutput) ToBackupPlanMapOutput() BackupPlanMapOutput {
 
 func (o BackupPlanMapOutput) ToBackupPlanMapOutputWithContext(ctx context.Context) BackupPlanMapOutput {
 	return o
-}
-
-func (o BackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlan] {
-	return pulumix.Output[map[string]*BackupPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanMapOutput) MapIndex(k pulumi.StringInput) BackupPlanOutput {

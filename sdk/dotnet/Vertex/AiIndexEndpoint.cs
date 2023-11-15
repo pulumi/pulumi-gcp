@@ -74,6 +74,39 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Index Endpoint With Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     {
+    ///         DisplayName = "sample-endpoint",
+    ///         Description = "A sample vertex endpoint",
+    ///         Region = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         PrivateServiceConnectConfig = new Gcp.Vertex.Inputs.AiIndexEndpointPrivateServiceConnectConfigArgs
+    ///         {
+    ///             EnablePrivateServiceConnect = true,
+    ///             ProjectAllowlists = new[]
+    ///             {
+    ///                 project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Index Endpoint With Public Endpoint
     /// 
     /// ```csharp
@@ -101,7 +134,15 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ## Import
     /// 
-    /// IndexEndpoint can be imported using any of these accepted formats
+    /// IndexEndpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import IndexEndpoint using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}"
+    /// 
+    ///  to = google_vertex_ai_index_endpoint.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), IndexEndpoint can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
@@ -177,6 +218,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("privateServiceConnectConfig")]
+        public Output<Outputs.AiIndexEndpointPrivateServiceConnectConfig> PrivateServiceConnectConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -306,6 +354,13 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateServiceConnectConfig")]
+        public Input<Inputs.AiIndexEndpointPrivateServiceConnectConfigArgs>? PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -403,6 +458,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateServiceConnectConfig")]
+        public Input<Inputs.AiIndexEndpointPrivateServiceConnectConfigGetArgs>? PrivateServiceConnectConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

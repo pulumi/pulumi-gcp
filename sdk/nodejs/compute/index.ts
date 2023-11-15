@@ -280,6 +280,11 @@ export const getNetworkPeering: typeof import("./getNetworkPeering").getNetworkP
 export const getNetworkPeeringOutput: typeof import("./getNetworkPeering").getNetworkPeeringOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkPeering","getNetworkPeeringOutput"], () => require("./getNetworkPeering"));
 
+export { GetNetworksArgs, GetNetworksResult, GetNetworksOutputArgs } from "./getNetworks";
+export const getNetworks: typeof import("./getNetworks").getNetworks = null as any;
+export const getNetworksOutput: typeof import("./getNetworks").getNetworksOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworks","getNetworksOutput"], () => require("./getNetworks"));
+
 export { GetNodeTypesArgs, GetNodeTypesResult, GetNodeTypesOutputArgs } from "./getNodeTypes";
 export const getNodeTypes: typeof import("./getNodeTypes").getNodeTypes = null as any;
 export const getNodeTypesOutput: typeof import("./getNodeTypes").getNodeTypesOutput = null as any;
@@ -479,6 +484,11 @@ export { InstanceIAMPolicyArgs, InstanceIAMPolicyState } from "./instanceIAMPoli
 export type InstanceIAMPolicy = import("./instanceIAMPolicy").InstanceIAMPolicy;
 export const InstanceIAMPolicy: typeof import("./instanceIAMPolicy").InstanceIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIAMPolicy"], () => require("./instanceIAMPolicy"));
+
+export { InstanceSettingsArgs, InstanceSettingsState } from "./instanceSettings";
+export type InstanceSettings = import("./instanceSettings").InstanceSettings;
+export const InstanceSettings: typeof import("./instanceSettings").InstanceSettings = null as any;
+utilities.lazyLoad(exports, ["InstanceSettings"], () => require("./instanceSettings"));
 
 export { InstanceTemplateArgs, InstanceTemplateState } from "./instanceTemplate";
 export type InstanceTemplate = import("./instanceTemplate").InstanceTemplate;
@@ -1034,6 +1044,8 @@ const _module = {
                 return new InstanceIAMMember(name, <any>undefined, { urn })
             case "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy":
                 return new InstanceIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/instanceSettings:InstanceSettings":
+                return new InstanceSettings(name, <any>undefined, { urn })
             case "gcp:compute/instanceTemplate:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
             case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -1266,6 +1278,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroupNamedPort", _
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImage", _module)

@@ -35,6 +35,26 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         [Input("identityType")]
         public Input<string>? IdentityType { get; set; }
 
+        /// <summary>
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        /// </summary>
+        [Input("sourceRestriction")]
+        public Input<string>? SourceRestriction { get; set; }
+
+        [Input("sources")]
+        private InputList<Inputs.ServicePerimeterStatusEgressPolicyEgressFromSourceArgs>? _sources;
+
+        /// <summary>
+        /// Sources that this EgressPolicy authorizes access from.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServicePerimeterStatusEgressPolicyEgressFromSourceArgs> Sources
+        {
+            get => _sources ?? (_sources = new InputList<Inputs.ServicePerimeterStatusEgressPolicyEgressFromSourceArgs>());
+            set => _sources = value;
+        }
+
         public ServicePerimeterStatusEgressPolicyEgressFromArgs()
         {
         }

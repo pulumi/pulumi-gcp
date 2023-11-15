@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -56,11 +57,47 @@ public final class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom
         return Optional.ofNullable(this.identityType);
     }
 
+    /**
+     * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+     * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+     * 
+     */
+    @Import(name="sourceRestriction")
+    private @Nullable Output<String> sourceRestriction;
+
+    /**
+     * @return Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+     * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> sourceRestriction() {
+        return Optional.ofNullable(this.sourceRestriction);
+    }
+
+    /**
+     * Sources that this EgressPolicy authorizes access from.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sources")
+    private @Nullable Output<List<ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs>> sources;
+
+    /**
+     * @return Sources that this EgressPolicy authorizes access from.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs>>> sources() {
+        return Optional.ofNullable(this.sources);
+    }
+
     private ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs() {}
 
     private ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs $) {
         this.identities = $.identities;
         this.identityType = $.identityType;
+        this.sourceRestriction = $.sourceRestriction;
+        this.sources = $.sources;
     }
 
     public static Builder builder() {
@@ -143,6 +180,63 @@ public final class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom
          */
         public Builder identityType(String identityType) {
             return identityType(Output.of(identityType));
+        }
+
+        /**
+         * @param sourceRestriction Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRestriction(@Nullable Output<String> sourceRestriction) {
+            $.sourceRestriction = sourceRestriction;
+            return this;
+        }
+
+        /**
+         * @param sourceRestriction Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRestriction(String sourceRestriction) {
+            return sourceRestriction(Output.of(sourceRestriction));
+        }
+
+        /**
+         * @param sources Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sources(@Nullable Output<List<ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs>> sources) {
+            $.sources = sources;
+            return this;
+        }
+
+        /**
+         * @param sources Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sources(List<ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs> sources) {
+            return sources(Output.of(sources));
+        }
+
+        /**
+         * @param sources Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sources(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs... sources) {
+            return sources(List.of(sources));
         }
 
         public ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs build() {

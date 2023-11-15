@@ -19,6 +19,38 @@ namespace Pulumi.Gcp.GkeHub
     ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
+    /// ### Gkehub Membership Regional
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         InitialNodeCount = 1,
+    ///         Location = "us-central1-a",
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = primary.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///         Location = "us-west1",
+    ///         MembershipId = "basic",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Gkehub Membership Basic
     /// 
     /// ```csharp
@@ -96,18 +128,26 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ## Import
     /// 
-    /// Membership can be imported using any of these accepted formats
+    /// Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
+    /// 
+    ///  to = google_gke_hub_membership.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+    ///  $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+    ///  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+    ///  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gkehub/membership:Membership")]
@@ -152,6 +192,13 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Location of the membership.
+        /// The default value is `global`.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// The client-provided identifier of the membership.
@@ -274,6 +321,13 @@ namespace Pulumi.Gcp.GkeHub
         }
 
         /// <summary>
+        /// Location of the membership.
+        /// The default value is `global`.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// The client-provided identifier of the membership.
         /// 
         /// 
@@ -352,6 +406,13 @@ namespace Pulumi.Gcp.GkeHub
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Location of the membership.
+        /// The default value is `global`.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The client-provided identifier of the membership.

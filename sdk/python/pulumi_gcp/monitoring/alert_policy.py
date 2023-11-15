@@ -574,10 +574,41 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Monitoring Alert Policy Promql Condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+            alert_strategy=gcp.monitoring.AlertPolicyAlertStrategyArgs(
+                auto_close="1800s",
+            ),
+            combiner="OR",
+            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+                condition_prometheus_query_language=gcp.monitoring.AlertPolicyConditionConditionPrometheusQueryLanguageArgs(
+                    alert_rule="AlwaysOn",
+                    duration="60s",
+                    evaluation_interval="60s",
+                    query="compute_googleapis_com:instance_cpu_usage_time > 0",
+                    rule_group="a test",
+                ),
+                display_name="test condition",
+            )],
+            display_name="My Alert Policy")
+        ```
 
         ## Import
 
-        AlertPolicy can be imported using any of these accepted formats:
+        AlertPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AlertPolicy using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_monitoring_alert_policy.default }
+
+        ```sh
+         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AlertPolicy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
@@ -718,10 +749,41 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Monitoring Alert Policy Promql Condition
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+            alert_strategy=gcp.monitoring.AlertPolicyAlertStrategyArgs(
+                auto_close="1800s",
+            ),
+            combiner="OR",
+            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+                condition_prometheus_query_language=gcp.monitoring.AlertPolicyConditionConditionPrometheusQueryLanguageArgs(
+                    alert_rule="AlwaysOn",
+                    duration="60s",
+                    evaluation_interval="60s",
+                    query="compute_googleapis_com:instance_cpu_usage_time > 0",
+                    rule_group="a test",
+                ),
+                display_name="test condition",
+            )],
+            display_name="My Alert Policy")
+        ```
 
         ## Import
 
-        AlertPolicy can be imported using any of these accepted formats:
+        AlertPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AlertPolicy using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_monitoring_alert_policy.default }
+
+        ```sh
+         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AlertPolicy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

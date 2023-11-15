@@ -166,7 +166,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FeaturestoreEntitytype can be imported using any of these accepted formats:
+ * FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeaturestoreEntitytype using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{featurestore}}/entityTypes/{{name}}&#34;
+ * 
+ *  to = google_vertex_ai_featurestore_entitytype.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeaturestoreEntitytype can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}

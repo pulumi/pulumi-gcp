@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Firestore.Outputs
     {
         /// <summary>
         /// (Output)
-        /// The state of the TTL configuration.
+        /// The state of TTL (time-to-live) configuration for documents that have this Field set.
         /// </summary>
         public readonly string? State;
 

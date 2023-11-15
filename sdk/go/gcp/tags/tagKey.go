@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A TagKey, used to group a set of TagValues.
@@ -52,7 +51,17 @@ import (
 //
 // ## Import
 //
-// # TagKey can be imported using any of these accepted formats
+// TagKey can be imported using any of these accepted formats* `tagKeys/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagKey using one of the formats above. For exampletf import {
+//
+//	id = "tagKeys/{{name}}"
+//
+//	to = google_tags_tag_key.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:tags/tagKey:TagKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagKey can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -255,12 +264,6 @@ func (i *TagKey) ToTagKeyOutputWithContext(ctx context.Context) TagKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyOutput)
 }
 
-func (i *TagKey) ToOutput(ctx context.Context) pulumix.Output[*TagKey] {
-	return pulumix.Output[*TagKey]{
-		OutputState: i.ToTagKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagKeyArrayInput is an input type that accepts TagKeyArray and TagKeyArrayOutput values.
 // You can construct a concrete instance of `TagKeyArrayInput` via:
 //
@@ -284,12 +287,6 @@ func (i TagKeyArray) ToTagKeyArrayOutput() TagKeyArrayOutput {
 
 func (i TagKeyArray) ToTagKeyArrayOutputWithContext(ctx context.Context) TagKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyArrayOutput)
-}
-
-func (i TagKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagKey] {
-	return pulumix.Output[[]*TagKey]{
-		OutputState: i.ToTagKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagKeyMapInput is an input type that accepts TagKeyMap and TagKeyMapOutput values.
@@ -317,12 +314,6 @@ func (i TagKeyMap) ToTagKeyMapOutputWithContext(ctx context.Context) TagKeyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyMapOutput)
 }
 
-func (i TagKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagKey] {
-	return pulumix.Output[map[string]*TagKey]{
-		OutputState: i.ToTagKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagKeyOutput struct{ *pulumi.OutputState }
 
 func (TagKeyOutput) ElementType() reflect.Type {
@@ -335,12 +326,6 @@ func (o TagKeyOutput) ToTagKeyOutput() TagKeyOutput {
 
 func (o TagKeyOutput) ToTagKeyOutputWithContext(ctx context.Context) TagKeyOutput {
 	return o
-}
-
-func (o TagKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKey] {
-	return pulumix.Output[*TagKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. Creation time.
@@ -410,12 +395,6 @@ func (o TagKeyArrayOutput) ToTagKeyArrayOutputWithContext(ctx context.Context) T
 	return o
 }
 
-func (o TagKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagKey] {
-	return pulumix.Output[[]*TagKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagKeyArrayOutput) Index(i pulumi.IntInput) TagKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagKey {
 		return vs[0].([]*TagKey)[vs[1].(int)]
@@ -434,12 +413,6 @@ func (o TagKeyMapOutput) ToTagKeyMapOutput() TagKeyMapOutput {
 
 func (o TagKeyMapOutput) ToTagKeyMapOutputWithContext(ctx context.Context) TagKeyMapOutput {
 	return o
-}
-
-func (o TagKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagKey] {
-	return pulumix.Output[map[string]*TagKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagKeyMapOutput) MapIndex(k pulumi.StringInput) TagKeyOutput {

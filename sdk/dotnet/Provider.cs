@@ -219,6 +219,9 @@ namespace Pulumi.Gcp
         [Output("documentAiWarehouseCustomEndpoint")]
         public Output<string?> DocumentAiWarehouseCustomEndpoint { get; private set; } = null!;
 
+        [Output("edgecontainerCustomEndpoint")]
+        public Output<string?> EdgecontainerCustomEndpoint { get; private set; } = null!;
+
         [Output("edgenetworkCustomEndpoint")]
         public Output<string?> EdgenetworkCustomEndpoint { get; private set; } = null!;
 
@@ -296,6 +299,9 @@ namespace Pulumi.Gcp
 
         [Output("impersonateServiceAccount")]
         public Output<string?> ImpersonateServiceAccount { get; private set; } = null!;
+
+        [Output("integrationConnectorsCustomEndpoint")]
+        public Output<string?> IntegrationConnectorsCustomEndpoint { get; private set; } = null!;
 
         [Output("kmsCustomEndpoint")]
         public Output<string?> KmsCustomEndpoint { get; private set; } = null!;
@@ -431,6 +437,9 @@ namespace Pulumi.Gcp
 
         [Output("tpuV2CustomEndpoint")]
         public Output<string?> TpuV2CustomEndpoint { get; private set; } = null!;
+
+        [Output("universeDomain")]
+        public Output<string?> UniverseDomain { get; private set; } = null!;
 
         [Output("vertexAiCustomEndpoint")]
         public Output<string?> VertexAiCustomEndpoint { get; private set; } = null!;
@@ -693,6 +702,9 @@ namespace Pulumi.Gcp
         [Input("documentAiWarehouseCustomEndpoint")]
         public Input<string>? DocumentAiWarehouseCustomEndpoint { get; set; }
 
+        [Input("edgecontainerCustomEndpoint")]
+        public Input<string>? EdgecontainerCustomEndpoint { get; set; }
+
         [Input("edgenetworkCustomEndpoint")]
         public Input<string>? EdgenetworkCustomEndpoint { get; set; }
 
@@ -778,6 +790,9 @@ namespace Pulumi.Gcp
             get => _impersonateServiceAccountDelegates ?? (_impersonateServiceAccountDelegates = new InputList<string>());
             set => _impersonateServiceAccountDelegates = value;
         }
+
+        [Input("integrationConnectorsCustomEndpoint")]
+        public Input<string>? IntegrationConnectorsCustomEndpoint { get; set; }
 
         [Input("kmsCustomEndpoint")]
         public Input<string>? KmsCustomEndpoint { get; set; }
@@ -921,6 +936,9 @@ namespace Pulumi.Gcp
 
         [Input("tpuV2CustomEndpoint")]
         public Input<string>? TpuV2CustomEndpoint { get; set; }
+
+        [Input("universeDomain")]
+        public Input<string>? UniverseDomain { get; set; }
 
         [Input("userProjectOverride", json: true)]
         public Input<bool>? UserProjectOverride { get; set; }

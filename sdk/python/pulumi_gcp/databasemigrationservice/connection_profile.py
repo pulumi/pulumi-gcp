@@ -23,6 +23,7 @@ class ConnectionProfileArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
+                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArgs']] = None,
                  postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -43,6 +44,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] location: The location where the connection profile should reside.
         :param pulumi.Input['ConnectionProfileMysqlArgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
+        :param pulumi.Input['ConnectionProfileOracleArgs'] oracle: Specifies connection parameters required specifically for Oracle databases.
+               Structure is documented below.
         :param pulumi.Input['ConnectionProfilePostgresqlArgs'] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -61,6 +64,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "location", location)
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if oracle is not None:
+            pulumi.set(__self__, "oracle", oracle)
         if postgresql is not None:
             pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
@@ -161,6 +166,19 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
+    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArgs']]:
+        """
+        Specifies connection parameters required specifically for Oracle databases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle")
+
+    @oracle.setter
+    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArgs']]):
+        pulumi.set(self, "oracle", value)
+
+    @property
+    @pulumi.getter
     def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]:
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
@@ -201,6 +219,7 @@ class _ConnectionProfileState:
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input['ConnectionProfileMysqlArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oracle: Optional[pulumi.Input['ConnectionProfileOracleArgs']] = None,
                  postgresql: Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -229,6 +248,8 @@ class _ConnectionProfileState:
         :param pulumi.Input['ConnectionProfileMysqlArgs'] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
+        :param pulumi.Input['ConnectionProfileOracleArgs'] oracle: Specifies connection parameters required specifically for Oracle databases.
+               Structure is documented below.
         :param pulumi.Input['ConnectionProfilePostgresqlArgs'] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -261,6 +282,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "mysql", mysql)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oracle is not None:
+            pulumi.set(__self__, "oracle", oracle)
         if postgresql is not None:
             pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
@@ -426,6 +449,19 @@ class _ConnectionProfileState:
 
     @property
     @pulumi.getter
+    def oracle(self) -> Optional[pulumi.Input['ConnectionProfileOracleArgs']]:
+        """
+        Specifies connection parameters required specifically for Oracle databases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle")
+
+    @oracle.setter
+    def oracle(self, value: Optional[pulumi.Input['ConnectionProfileOracleArgs']]):
+        pulumi.set(self, "oracle", value)
+
+    @property
+    @pulumi.getter
     def postgresql(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlArgs']]:
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
@@ -488,6 +524,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']]] = None,
+                 oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -501,7 +538,7 @@ class ConnectionProfile(pulumi.CustomResource):
             * [Database Migration](https://cloud.google.com/database-migration/docs/)
 
         > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+        values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
         Read more about sensitive data in state.
 
         ## Example Usage
@@ -619,10 +656,40 @@ class ConnectionProfile(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+        ### Database Migration Service Connection Profile Oracle
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oracleprofile = gcp.databasemigrationservice.ConnectionProfile("oracleprofile",
+            connection_profile_id="my-profileid",
+            display_name="my-profileid_display",
+            labels={
+                "foo": "bar",
+            },
+            location="us-central1",
+            oracle=gcp.databasemigrationservice.ConnectionProfileOracleArgs(
+                database_service="dbprovider",
+                host="host",
+                password="password",
+                port=1521,
+                static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
+                username="username",
+            ))
+        ```
 
         ## Import
 
-        ConnectionProfile can be imported using any of these accepted formats
+        ConnectionProfile can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}` * `{{project}}/{{location}}/{{connection_profile_id}}` * `{{location}}/{{connection_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectionProfile using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}"
+
+         to = google_database_migration_service_connection_profile.default }
+
+        ```sh
+         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectionProfile can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
@@ -654,6 +721,8 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location where the connection profile should reside.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']] oracle: Specifies connection parameters required specifically for Oracle databases.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -675,7 +744,7 @@ class ConnectionProfile(pulumi.CustomResource):
             * [Database Migration](https://cloud.google.com/database-migration/docs/)
 
         > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+        values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
         Read more about sensitive data in state.
 
         ## Example Usage
@@ -793,10 +862,40 @@ class ConnectionProfile(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
+        ### Database Migration Service Connection Profile Oracle
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oracleprofile = gcp.databasemigrationservice.ConnectionProfile("oracleprofile",
+            connection_profile_id="my-profileid",
+            display_name="my-profileid_display",
+            labels={
+                "foo": "bar",
+            },
+            location="us-central1",
+            oracle=gcp.databasemigrationservice.ConnectionProfileOracleArgs(
+                database_service="dbprovider",
+                host="host",
+                password="password",
+                port=1521,
+                static_service_ip_connectivity=gcp.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs(),
+                username="username",
+            ))
+        ```
 
         ## Import
 
-        ConnectionProfile can be imported using any of these accepted formats
+        ConnectionProfile can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}` * `{{project}}/{{location}}/{{connection_profile_id}}` * `{{location}}/{{connection_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectionProfile using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}"
+
+         to = google_database_migration_service_connection_profile.default }
+
+        ```sh
+         $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectionProfile can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
@@ -832,6 +931,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']]] = None,
+                 oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -852,6 +952,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["mysql"] = mysql
+            __props__.__dict__["oracle"] = oracle
             __props__.__dict__["postgresql"] = postgresql
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -885,6 +986,7 @@ class ConnectionProfile(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             mysql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            oracle: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']]] = None,
             postgresql: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -918,6 +1020,8 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlArgs']] mysql: Specifies connection parameters required specifically for MySQL databases.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleArgs']] oracle: Specifies connection parameters required specifically for Oracle databases.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlArgs']] postgresql: Specifies connection parameters required specifically for PostgreSQL databases.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -942,6 +1046,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["mysql"] = mysql
         __props__.__dict__["name"] = name
+        __props__.__dict__["oracle"] = oracle
         __props__.__dict__["postgresql"] = postgresql
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -1053,6 +1158,15 @@ class ConnectionProfile(pulumi.CustomResource):
         The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def oracle(self) -> pulumi.Output[Optional['outputs.ConnectionProfileOracle']]:
+        """
+        Specifies connection parameters required specifically for Oracle databases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle")
 
     @property
     @pulumi.getter

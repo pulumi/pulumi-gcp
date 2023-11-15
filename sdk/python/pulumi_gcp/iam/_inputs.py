@@ -434,6 +434,15 @@ class WorkforcePoolProviderOidcArgs:
         :param pulumi.Input[str] issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         :param pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs'] client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
                Structure is documented below.
+        :param pulumi.Input[str] jwks_json: OIDC JWKs in JSON String format. For details on definition of a
+               JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+               use the `jwks_uri` from the discovery document fetched from the
+               .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+               keys are supported. The JWK must use following format and include only
+               the following fields:
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs'] web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
                Structure is documented below.
         """
@@ -486,6 +495,17 @@ class WorkforcePoolProviderOidcArgs:
     @property
     @pulumi.getter(name="jwksJson")
     def jwks_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        OIDC JWKs in JSON String format. For details on definition of a
+        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+        use the `jwks_uri` from the discovery document fetched from the
+        .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+        keys are supported. The JWK must use following format and include only
+        the following fields:
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "jwks_json")
 
     @jwks_json.setter

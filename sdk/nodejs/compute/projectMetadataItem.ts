@@ -24,10 +24,18 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Project metadata items can be imported using the `key`, e.g.
+ * Project metadata items can be imported using the `key`, e.g. * `{{key}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project metadata items using one of the formats above. For exampletf import {
+ *
+ *  id = "{{key}}"
+ *
+ *  to = google_compute_project_metadata_item.default }
  *
  * ```sh
- *  $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default my_metadata
+ *  $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project metadata items can be imported using one of the formats above. For example
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default {{key}}
  * ```
  */
 export class ProjectMetadataItem extends pulumi.CustomResource {

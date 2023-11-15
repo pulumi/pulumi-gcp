@@ -75,6 +75,9 @@ import javax.annotation.Nullable;
  *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .authorization(AwsClusterAuthorizationArgs.builder()
+ *                 .adminGroups(AwsClusterAuthorizationAdminGroupArgs.builder()
+ *                     .group(&#34;group@domain.com&#34;)
+ *                     .build())
  *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;my@service-account.com&#34;)
  *                     .build())
@@ -356,7 +359,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cluster can be imported using any of these accepted formats
+ * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/awsClusters/{{name}}&#34;
+ * 
+ *  to = google_container_aws_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:container/awsCluster:AwsCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}

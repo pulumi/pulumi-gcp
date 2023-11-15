@@ -475,7 +475,15 @@ class CryptoKey(pulumi.CustomResource):
 
         ## Import
 
-        CryptoKey can be imported using any of these accepted formats
+        CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CryptoKey using one of the formats above. For exampletf import {
+
+         id = "{{key_ring}}/cryptoKeys/{{name}}"
+
+         to = google_kms_crypto_key.default }
+
+        ```sh
+         $ pulumi import gcp:kms/cryptoKey:CryptoKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CryptoKey can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
@@ -565,7 +573,15 @@ class CryptoKey(pulumi.CustomResource):
 
         ## Import
 
-        CryptoKey can be imported using any of these accepted formats
+        CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CryptoKey using one of the formats above. For exampletf import {
+
+         id = "{{key_ring}}/cryptoKeys/{{name}}"
+
+         to = google_kms_crypto_key.default }
+
+        ```sh
+         $ pulumi import gcp:kms/cryptoKey:CryptoKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CryptoKey can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}

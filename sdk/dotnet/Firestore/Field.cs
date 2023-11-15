@@ -57,7 +57,6 @@ namespace Pulumi.Gcp.Firestore
     ///             },
     ///         },
     ///         Project = "my-project-name",
-    ///         TtlConfig = null,
     ///     });
     /// 
     /// });
@@ -123,7 +122,15 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// ## Import
     /// 
-    /// Field can be imported using any of these accepted formats:
+    /// Field can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Field using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_firestore_field.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firestore/field:Field When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Field can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:firestore/field:Field default {{name}}
@@ -178,7 +185,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// If set, this field is configured for TTL deletion.
+        /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Output("ttlConfig")]
@@ -269,7 +276,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If set, this field is configured for TTL deletion.
+        /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Input("ttlConfig")]
@@ -329,7 +336,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If set, this field is configured for TTL deletion.
+        /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Input("ttlConfig")]

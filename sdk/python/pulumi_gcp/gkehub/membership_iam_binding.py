@@ -20,12 +20,16 @@ class MembershipIamBindingArgs:
                  membership_id: pulumi.Input[str],
                  role: pulumi.Input[str],
                  condition: Optional[pulumi.Input['MembershipIamBindingConditionArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MembershipIamBinding resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `gkehub.MembershipIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
                
@@ -46,6 +50,8 @@ class MembershipIamBindingArgs:
         pulumi.set(__self__, "role", role)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -92,6 +98,20 @@ class MembershipIamBindingArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the membership.
+        The default value is `global`.
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -121,6 +141,7 @@ class _MembershipIamBindingState:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['MembershipIamBindingConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -128,6 +149,9 @@ class _MembershipIamBindingState:
         """
         Input properties used for looking up and filtering MembershipIamBinding resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
                
@@ -150,6 +174,8 @@ class _MembershipIamBindingState:
             pulumi.set(__self__, "condition", condition)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if members is not None:
             pulumi.set(__self__, "members", members)
         if membership_id is not None:
@@ -179,6 +205,20 @@ class _MembershipIamBindingState:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the membership.
+        The default value is `global`.
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -244,6 +284,7 @@ class MembershipIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamBindingConditionArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -276,6 +317,7 @@ class MembershipIamBinding(pulumi.CustomResource):
         )])
         policy = gcp.gkehub.MembershipIamPolicy("policy",
             project=google_gke_hub_membership["membership"]["project"],
+            location=google_gke_hub_membership["membership"]["location"],
             membership_id=google_gke_hub_membership["membership"]["membership_id"],
             policy_data=admin.policy_data)
         ```
@@ -288,6 +330,7 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         binding = gcp.gkehub.MembershipIamBinding("binding",
             project=google_gke_hub_membership["membership"]["project"],
+            location=google_gke_hub_membership["membership"]["location"],
             membership_id=google_gke_hub_membership["membership"]["membership_id"],
             role="roles/viewer",
             members=["user:jane@example.com"])
@@ -301,6 +344,7 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         member = gcp.gkehub.MembershipIamMember("member",
             project=google_gke_hub_membership["membership"]["project"],
+            location=google_gke_hub_membership["membership"]["location"],
             membership_id=google_gke_hub_membership["membership"]["membership_id"],
             role="roles/viewer",
             member="user:jane@example.com")
@@ -332,6 +376,9 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
                
@@ -383,6 +430,7 @@ class MembershipIamBinding(pulumi.CustomResource):
         )])
         policy = gcp.gkehub.MembershipIamPolicy("policy",
             project=google_gke_hub_membership["membership"]["project"],
+            location=google_gke_hub_membership["membership"]["location"],
             membership_id=google_gke_hub_membership["membership"]["membership_id"],
             policy_data=admin.policy_data)
         ```
@@ -395,6 +443,7 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         binding = gcp.gkehub.MembershipIamBinding("binding",
             project=google_gke_hub_membership["membership"]["project"],
+            location=google_gke_hub_membership["membership"]["location"],
             membership_id=google_gke_hub_membership["membership"]["membership_id"],
             role="roles/viewer",
             members=["user:jane@example.com"])
@@ -408,6 +457,7 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         member = gcp.gkehub.MembershipIamMember("member",
             project=google_gke_hub_membership["membership"]["project"],
+            location=google_gke_hub_membership["membership"]["location"],
             membership_id=google_gke_hub_membership["membership"]["membership_id"],
             role="roles/viewer",
             member="user:jane@example.com")
@@ -453,6 +503,7 @@ class MembershipIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamBindingConditionArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -467,6 +518,7 @@ class MembershipIamBinding(pulumi.CustomResource):
             __props__ = MembershipIamBindingArgs.__new__(MembershipIamBindingArgs)
 
             __props__.__dict__["condition"] = condition
+            __props__.__dict__["location"] = location
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__.__dict__["members"] = members
@@ -490,6 +542,7 @@ class MembershipIamBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             condition: Optional[pulumi.Input[pulumi.InputType['MembershipIamBindingConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             membership_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -502,6 +555,9 @@ class MembershipIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
+               Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
                
@@ -526,6 +582,7 @@ class MembershipIamBinding(pulumi.CustomResource):
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["location"] = location
         __props__.__dict__["members"] = members
         __props__.__dict__["membership_id"] = membership_id
         __props__.__dict__["project"] = project
@@ -544,6 +601,16 @@ class MembershipIamBinding(pulumi.CustomResource):
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        Location of the membership.
+        The default value is `global`.
+        Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Anthos cluster running on AWS.
@@ -44,6 +43,11 @@ import (
 //					"label-one": pulumi.String("value-one"),
 //				},
 //				Authorization: &container.AwsClusterAuthorizationArgs{
+//					AdminGroups: container.AwsClusterAuthorizationAdminGroupArray{
+//						&container.AwsClusterAuthorizationAdminGroupArgs{
+//							Group: pulumi.String("group@domain.com"),
+//						},
+//					},
 //					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
 //						&container.AwsClusterAuthorizationAdminUserArgs{
 //							Username: pulumi.String("my@service-account.com"),
@@ -332,7 +336,17 @@ import (
 //
 // ## Import
 //
-// # Cluster can be imported using any of these accepted formats
+// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/awsClusters/{{name}}"
+//
+//	to = google_container_aws_cluster.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:container/awsCluster:AwsCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -635,12 +649,6 @@ func (i *AwsCluster) ToAwsClusterOutputWithContext(ctx context.Context) AwsClust
 	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterOutput)
 }
 
-func (i *AwsCluster) ToOutput(ctx context.Context) pulumix.Output[*AwsCluster] {
-	return pulumix.Output[*AwsCluster]{
-		OutputState: i.ToAwsClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AwsClusterArrayInput is an input type that accepts AwsClusterArray and AwsClusterArrayOutput values.
 // You can construct a concrete instance of `AwsClusterArrayInput` via:
 //
@@ -664,12 +672,6 @@ func (i AwsClusterArray) ToAwsClusterArrayOutput() AwsClusterArrayOutput {
 
 func (i AwsClusterArray) ToAwsClusterArrayOutputWithContext(ctx context.Context) AwsClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterArrayOutput)
-}
-
-func (i AwsClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*AwsCluster] {
-	return pulumix.Output[[]*AwsCluster]{
-		OutputState: i.ToAwsClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AwsClusterMapInput is an input type that accepts AwsClusterMap and AwsClusterMapOutput values.
@@ -697,12 +699,6 @@ func (i AwsClusterMap) ToAwsClusterMapOutputWithContext(ctx context.Context) Aws
 	return pulumi.ToOutputWithContext(ctx, i).(AwsClusterMapOutput)
 }
 
-func (i AwsClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsCluster] {
-	return pulumix.Output[map[string]*AwsCluster]{
-		OutputState: i.ToAwsClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AwsClusterOutput struct{ *pulumi.OutputState }
 
 func (AwsClusterOutput) ElementType() reflect.Type {
@@ -715,12 +711,6 @@ func (o AwsClusterOutput) ToAwsClusterOutput() AwsClusterOutput {
 
 func (o AwsClusterOutput) ToAwsClusterOutputWithContext(ctx context.Context) AwsClusterOutput {
 	return o
-}
-
-func (o AwsClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsCluster] {
-	return pulumix.Output[*AwsCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -846,12 +836,6 @@ func (o AwsClusterArrayOutput) ToAwsClusterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AwsClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AwsCluster] {
-	return pulumix.Output[[]*AwsCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AwsClusterArrayOutput) Index(i pulumi.IntInput) AwsClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsCluster {
 		return vs[0].([]*AwsCluster)[vs[1].(int)]
@@ -870,12 +854,6 @@ func (o AwsClusterMapOutput) ToAwsClusterMapOutput() AwsClusterMapOutput {
 
 func (o AwsClusterMapOutput) ToAwsClusterMapOutputWithContext(ctx context.Context) AwsClusterMapOutput {
 	return o
-}
-
-func (o AwsClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsCluster] {
-	return pulumix.Output[map[string]*AwsCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AwsClusterMapOutput) MapIndex(k pulumi.StringInput) AwsClusterOutput {

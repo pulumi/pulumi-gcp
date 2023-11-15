@@ -12,10 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateScratchDisk {
+    private @Nullable String deviceName;
     private String interface_;
     private @Nullable Integer size;
 
     private InstanceFromTemplateScratchDisk() {}
+    public Optional<String> deviceName() {
+        return Optional.ofNullable(this.deviceName);
+    }
     public String interface_() {
         return this.interface_;
     }
@@ -32,15 +36,22 @@ public final class InstanceFromTemplateScratchDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deviceName;
         private String interface_;
         private @Nullable Integer size;
         public Builder() {}
         public Builder(InstanceFromTemplateScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deviceName = defaults.deviceName;
     	      this.interface_ = defaults.interface_;
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
+        public Builder deviceName(@Nullable String deviceName) {
+            this.deviceName = deviceName;
+            return this;
+        }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
@@ -53,6 +64,7 @@ public final class InstanceFromTemplateScratchDisk {
         }
         public InstanceFromTemplateScratchDisk build() {
             final var o = new InstanceFromTemplateScratchDisk();
+            o.deviceName = deviceName;
             o.interface_ = interface_;
             o.size = size;
             return o;

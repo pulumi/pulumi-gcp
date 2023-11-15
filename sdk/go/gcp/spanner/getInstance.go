@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a spanner instance from Google Cloud by its name.
@@ -64,10 +63,11 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	Config          *string           `pulumi:"config"`
-	DisplayName     *string           `pulumi:"displayName"`
-	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	ForceDestroy    bool              `pulumi:"forceDestroy"`
+	AutoscalingConfigs []GetInstanceAutoscalingConfig `pulumi:"autoscalingConfigs"`
+	Config             *string                        `pulumi:"config"`
+	DisplayName        *string                        `pulumi:"displayName"`
+	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
+	ForceDestroy       bool                           `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string            `pulumi:"id"`
 	Labels          map[string]string `pulumi:"labels"`
@@ -124,10 +124,8 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
-func (o LookupInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceResult] {
-	return pulumix.Output[LookupInstanceResult]{
-		OutputState: o.OutputState,
-	}
+func (o LookupInstanceResultOutput) AutoscalingConfigs() GetInstanceAutoscalingConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAutoscalingConfig { return v.AutoscalingConfigs }).(GetInstanceAutoscalingConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) Config() pulumi.StringPtrOutput {

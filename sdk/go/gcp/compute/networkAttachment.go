@@ -10,14 +10,154 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
+// ### Network Attachment Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			rejectedProducerProject, err := organizations.NewProject(ctx, "rejectedProducerProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("prj-rejected"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			acceptedProducerProject, err := organizations.NewProject(ctx, "acceptedProducerProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("prj-accepted"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkAttachment(ctx, "defaultNetworkAttachment", &compute.NetworkAttachmentArgs{
+//				Region:               pulumi.String("us-central1"),
+//				Description:          pulumi.String("basic network attachment description"),
+//				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+//				Subnetworks: pulumi.StringArray{
+//					defaultSubnetwork.SelfLink,
+//				},
+//				ProducerAcceptLists: pulumi.StringArray{
+//					acceptedProducerProject.ProjectId,
+//				},
+//				ProducerRejectLists: pulumi.StringArray{
+//					rejectedProducerProject.ProjectId,
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Attachment Instance Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "defaultNetworkAttachment", &compute.NetworkAttachmentArgs{
+//				Region:      pulumi.String("us-central1"),
+//				Description: pulumi.String("my basic network attachment"),
+//				Subnetworks: pulumi.StringArray{
+//					defaultSubnetwork.ID(),
+//				},
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+//				Zone:        pulumi.String("us-central1-a"),
+//				MachineType: pulumi.String("e2-micro"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//					&compute.InstanceNetworkInterfaceArgs{
+//						NetworkAttachment: defaultNetworkAttachment.SelfLink,
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # NetworkAttachment can be imported using any of these accepted formats
+// NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkAttachment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}"
+//
+//	to = google_compute_network_attachment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/networkAttachment:NetworkAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkAttachment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -273,12 +413,6 @@ func (i *NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentOutput)
 }
 
-func (i *NetworkAttachment) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachment] {
-	return pulumix.Output[*NetworkAttachment]{
-		OutputState: i.ToNetworkAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkAttachmentArrayInput is an input type that accepts NetworkAttachmentArray and NetworkAttachmentArrayOutput values.
 // You can construct a concrete instance of `NetworkAttachmentArrayInput` via:
 //
@@ -302,12 +436,6 @@ func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutput() NetworkAttachme
 
 func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutputWithContext(ctx context.Context) NetworkAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentArrayOutput)
-}
-
-func (i NetworkAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAttachment] {
-	return pulumix.Output[[]*NetworkAttachment]{
-		OutputState: i.ToNetworkAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkAttachmentMapInput is an input type that accepts NetworkAttachmentMap and NetworkAttachmentMapOutput values.
@@ -335,12 +463,6 @@ func (i NetworkAttachmentMap) ToNetworkAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentMapOutput)
 }
 
-func (i NetworkAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAttachment] {
-	return pulumix.Output[map[string]*NetworkAttachment]{
-		OutputState: i.ToNetworkAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NetworkAttachmentOutput) ElementType() reflect.Type {
@@ -353,12 +475,6 @@ func (o NetworkAttachmentOutput) ToNetworkAttachmentOutput() NetworkAttachmentOu
 
 func (o NetworkAttachmentOutput) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
 	return o
-}
-
-func (o NetworkAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachment] {
-	return pulumix.Output[*NetworkAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An array of connections for all the producers connected to this network attachment.
@@ -459,12 +575,6 @@ func (o NetworkAttachmentArrayOutput) ToNetworkAttachmentArrayOutputWithContext(
 	return o
 }
 
-func (o NetworkAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAttachment] {
-	return pulumix.Output[[]*NetworkAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkAttachmentArrayOutput) Index(i pulumi.IntInput) NetworkAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkAttachment {
 		return vs[0].([]*NetworkAttachment)[vs[1].(int)]
@@ -483,12 +593,6 @@ func (o NetworkAttachmentMapOutput) ToNetworkAttachmentMapOutput() NetworkAttach
 
 func (o NetworkAttachmentMapOutput) ToNetworkAttachmentMapOutputWithContext(ctx context.Context) NetworkAttachmentMapOutput {
 	return o
-}
-
-func (o NetworkAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAttachment] {
-	return pulumix.Output[map[string]*NetworkAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkAttachmentMapOutput) MapIndex(k pulumi.StringInput) NetworkAttachmentOutput {

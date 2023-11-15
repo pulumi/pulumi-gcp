@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
@@ -130,33 +129,23 @@ import (
 //
 // ## Import
 //
-// For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
+// ### Importing IAM policies IAM policy imports use the identifier of the Spanner Database resource in question. For example* `{{project}}/{{instance}}/{{database}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+//
+//	id = {{project}}/{{instance}}/{{database}}
+//
+//	to = google_spanner_database_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
-//
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database "project-name/instance-name/database-name roles/viewer"
+//	$ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember default {{project}}/{{instance}}/{{database}}
 //
 // ```
-//
-//	IAM policy imports use the identifier of the resource in question, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database project-name/instance-name/database-name
-//
-// ```
-//
-//	-> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type DatabaseIAMMember struct {
 	pulumi.CustomResourceState
 
@@ -359,12 +348,6 @@ func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberOutput)
 }
 
-func (i *DatabaseIAMMember) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMMember] {
-	return pulumix.Output[*DatabaseIAMMember]{
-		OutputState: i.ToDatabaseIAMMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseIAMMemberArrayInput is an input type that accepts DatabaseIAMMemberArray and DatabaseIAMMemberArrayOutput values.
 // You can construct a concrete instance of `DatabaseIAMMemberArrayInput` via:
 //
@@ -388,12 +371,6 @@ func (i DatabaseIAMMemberArray) ToDatabaseIAMMemberArrayOutput() DatabaseIAMMemb
 
 func (i DatabaseIAMMemberArray) ToDatabaseIAMMemberArrayOutputWithContext(ctx context.Context) DatabaseIAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberArrayOutput)
-}
-
-func (i DatabaseIAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseIAMMember] {
-	return pulumix.Output[[]*DatabaseIAMMember]{
-		OutputState: i.ToDatabaseIAMMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DatabaseIAMMemberMapInput is an input type that accepts DatabaseIAMMemberMap and DatabaseIAMMemberMapOutput values.
@@ -421,12 +398,6 @@ func (i DatabaseIAMMemberMap) ToDatabaseIAMMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberMapOutput)
 }
 
-func (i DatabaseIAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseIAMMember] {
-	return pulumix.Output[map[string]*DatabaseIAMMember]{
-		OutputState: i.ToDatabaseIAMMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberOutput) ElementType() reflect.Type {
@@ -439,12 +410,6 @@ func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOu
 
 func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberOutputWithContext(ctx context.Context) DatabaseIAMMemberOutput {
 	return o
-}
-
-func (o DatabaseIAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMMember] {
-	return pulumix.Output[*DatabaseIAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMMemberOutput) Condition() DatabaseIAMMemberConditionPtrOutput {
@@ -506,12 +471,6 @@ func (o DatabaseIAMMemberArrayOutput) ToDatabaseIAMMemberArrayOutputWithContext(
 	return o
 }
 
-func (o DatabaseIAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseIAMMember] {
-	return pulumix.Output[[]*DatabaseIAMMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseIAMMemberArrayOutput) Index(i pulumi.IntInput) DatabaseIAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMMember {
 		return vs[0].([]*DatabaseIAMMember)[vs[1].(int)]
@@ -530,12 +489,6 @@ func (o DatabaseIAMMemberMapOutput) ToDatabaseIAMMemberMapOutput() DatabaseIAMMe
 
 func (o DatabaseIAMMemberMapOutput) ToDatabaseIAMMemberMapOutputWithContext(ctx context.Context) DatabaseIAMMemberMapOutput {
 	return o
-}
-
-func (o DatabaseIAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseIAMMember] {
-	return pulumix.Output[map[string]*DatabaseIAMMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMMemberMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMMemberOutput {

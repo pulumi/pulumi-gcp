@@ -124,7 +124,15 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Import
     /// 
-    /// OrganizationSettings can be imported using any of these accepted formats
+    /// OrganizationSettings can be imported using any of these accepted formats* `organizations/{{organization_id}}/accessApprovalSettings` * `{{organization_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationSettings using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "organizations/{{organization_id}}/accessApprovalSettings"
+    /// 
+    ///  to = google_organization_access_approval_settings.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationSettings can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings

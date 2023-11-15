@@ -150,7 +150,15 @@ class MonitoredProject(pulumi.CustomResource):
 
         ## Import
 
-        MonitoredProject can be imported using any of these accepted formats
+        MonitoredProject can be imported using any of these accepted formats* `v1/locations/global/metricsScopes/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MonitoredProject using one of the formats above. For exampletf import {
+
+         id = "v1/locations/global/metricsScopes/{{name}}"
+
+         to = google_monitoring_monitored_project.default }
+
+        ```sh
+         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MonitoredProject can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
@@ -198,7 +206,15 @@ class MonitoredProject(pulumi.CustomResource):
 
         ## Import
 
-        MonitoredProject can be imported using any of these accepted formats
+        MonitoredProject can be imported using any of these accepted formats* `v1/locations/global/metricsScopes/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MonitoredProject using one of the formats above. For exampletf import {
+
+         id = "v1/locations/global/metricsScopes/{{name}}"
+
+         to = google_monitoring_monitored_project.default }
+
+        ```sh
+         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MonitoredProject can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}

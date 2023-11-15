@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromMachineImageBootDiskInitializeParamsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("image")]
         public Input<string>? Image { get; set; }
 

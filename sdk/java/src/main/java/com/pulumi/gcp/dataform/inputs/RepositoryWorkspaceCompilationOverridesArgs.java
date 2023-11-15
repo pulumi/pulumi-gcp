@@ -16,14 +16,14 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
     public static final RepositoryWorkspaceCompilationOverridesArgs Empty = new RepositoryWorkspaceCompilationOverridesArgs();
 
     /**
-     * Optional. The default database (Google Cloud project ID).
+     * The default database (Google Cloud project ID).
      * 
      */
     @Import(name="defaultDatabase")
     private @Nullable Output<String> defaultDatabase;
 
     /**
-     * @return Optional. The default database (Google Cloud project ID).
+     * @return The default database (Google Cloud project ID).
      * 
      */
     public Optional<Output<String>> defaultDatabase() {
@@ -31,14 +31,14 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
     }
 
     /**
-     * Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+     * The suffix that should be appended to all schema (BigQuery dataset ID) names.
      * 
      */
     @Import(name="schemaSuffix")
     private @Nullable Output<String> schemaSuffix;
 
     /**
-     * @return Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+     * @return The suffix that should be appended to all schema (BigQuery dataset ID) names.
      * 
      */
     public Optional<Output<String>> schemaSuffix() {
@@ -46,14 +46,14 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
     }
 
     /**
-     * Optional. The prefix that should be prepended to all table names.
+     * The prefix that should be prepended to all table names.
      * 
      */
     @Import(name="tablePrefix")
     private @Nullable Output<String> tablePrefix;
 
     /**
-     * @return Optional. The prefix that should be prepended to all table names.
+     * @return The prefix that should be prepended to all table names.
      * 
      */
     public Optional<Output<String>> tablePrefix() {
@@ -87,7 +87,7 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
         }
 
         /**
-         * @param defaultDatabase Optional. The default database (Google Cloud project ID).
+         * @param defaultDatabase The default database (Google Cloud project ID).
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
         }
 
         /**
-         * @param defaultDatabase Optional. The default database (Google Cloud project ID).
+         * @param defaultDatabase The default database (Google Cloud project ID).
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
         }
 
         /**
-         * @param schemaSuffix Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+         * @param schemaSuffix The suffix that should be appended to all schema (BigQuery dataset ID) names.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
         }
 
         /**
-         * @param schemaSuffix Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+         * @param schemaSuffix The suffix that should be appended to all schema (BigQuery dataset ID) names.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
         }
 
         /**
-         * @param tablePrefix Optional. The prefix that should be prepended to all table names.
+         * @param tablePrefix The prefix that should be prepended to all table names.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RepositoryWorkspaceCompilationOverridesArgs extends com.pulum
         }
 
         /**
-         * @param tablePrefix Optional. The prefix that should be prepended to all table names.
+         * @param tablePrefix The prefix that should be prepended to all table names.
          * 
          * @return builder
          * 

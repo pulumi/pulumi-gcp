@@ -98,6 +98,19 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
             set => _requiredAccessLevels = value;
         }
 
+        [Input("vpcNetworkSources")]
+        private InputList<Inputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs>? _vpcNetworkSources;
+
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs> VpcNetworkSources
+        {
+            get => _vpcNetworkSources ?? (_vpcNetworkSources = new InputList<Inputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs>());
+            set => _vpcNetworkSources = value;
+        }
+
         public AccessLevelsAccessLevelBasicConditionArgs()
         {
         }

@@ -133,6 +133,10 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ula internal ipv6 range assigned to this network.
+        /// </summary>
+        public readonly string InternalIpv6Range;
         public readonly string Name;
         public readonly string? Project;
         /// <summary>
@@ -152,6 +156,8 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            string internalIpv6Range,
+
             string name,
 
             string? project,
@@ -163,6 +169,7 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             GatewayIpv4 = gatewayIpv4;
             Id = id;
+            InternalIpv6Range = internalIpv6Range;
             Name = name;
             Project = project;
             SelfLink = selfLink;

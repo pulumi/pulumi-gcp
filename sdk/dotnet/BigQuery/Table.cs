@@ -94,7 +94,15 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// BigQuery tables imported using any of these accepted formats
+    /// BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}"
+    /// 
+    ///  to = google_bigquery_table.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
@@ -233,7 +241,10 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.TableMaterializedView?> MaterializedView { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        /// The maximum staleness of data that could be
+        /// returned when the table (or stale MV) is queried. Staleness encoded as a
+        /// string encoding of [SQL IntervalValue
+        /// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         /// </summary>
         [Output("maxStaleness")]
         public Output<string?> MaxStaleness { get; private set; } = null!;
@@ -275,6 +286,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("rangePartitioning")]
         public Output<Outputs.TableRangePartitioning?> RangePartitioning { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
+        [Output("requirePartitionFilter")]
+        public Output<bool?> RequirePartitionFilter { get; private set; } = null!;
 
         /// <summary>
         /// A JSON schema for the external table. Schema is required
@@ -477,7 +496,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableMaterializedViewArgs>? MaterializedView { get; set; }
 
         /// <summary>
-        /// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        /// The maximum staleness of data that could be
+        /// returned when the table (or stale MV) is queried. Staleness encoded as a
+        /// string encoding of [SQL IntervalValue
+        /// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         /// </summary>
         [Input("maxStaleness")]
         public Input<string>? MaxStaleness { get; set; }
@@ -495,6 +517,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("rangePartitioning")]
         public Input<Inputs.TableRangePartitioningArgs>? RangePartitioning { get; set; }
+
+        /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
+        [Input("requirePartitionFilter")]
+        public Input<bool>? RequirePartitionFilter { get; set; }
 
         /// <summary>
         /// A JSON schema for the external table. Schema is required
@@ -696,7 +726,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableMaterializedViewGetArgs>? MaterializedView { get; set; }
 
         /// <summary>
-        /// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        /// The maximum staleness of data that could be
+        /// returned when the table (or stale MV) is queried. Staleness encoded as a
+        /// string encoding of [SQL IntervalValue
+        /// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         /// </summary>
         [Input("maxStaleness")]
         public Input<string>? MaxStaleness { get; set; }
@@ -748,6 +781,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("rangePartitioning")]
         public Input<Inputs.TableRangePartitioningGetArgs>? RangePartitioning { get; set; }
+
+        /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
+        [Input("requirePartitionFilter")]
+        public Input<bool>? RequirePartitionFilter { get; set; }
 
         /// <summary>
         /// A JSON schema for the external table. Schema is required

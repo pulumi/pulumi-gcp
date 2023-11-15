@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Restore Plan instance.
@@ -505,7 +504,17 @@ import (
 //
 // ## Import
 //
-// # RestorePlan can be imported using any of these accepted formats
+// RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RestorePlan using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/restorePlans/{{name}}"
+//
+//	to = google_gke_backup_restore_plan.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RestorePlan can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -657,12 +666,6 @@ func (i *RestorePlanIamBinding) ToRestorePlanIamBindingOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingOutput)
 }
 
-func (i *RestorePlanIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamBinding] {
-	return pulumix.Output[*RestorePlanIamBinding]{
-		OutputState: i.ToRestorePlanIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanIamBindingArrayInput is an input type that accepts RestorePlanIamBindingArray and RestorePlanIamBindingArrayOutput values.
 // You can construct a concrete instance of `RestorePlanIamBindingArrayInput` via:
 //
@@ -686,12 +689,6 @@ func (i RestorePlanIamBindingArray) ToRestorePlanIamBindingArrayOutput() Restore
 
 func (i RestorePlanIamBindingArray) ToRestorePlanIamBindingArrayOutputWithContext(ctx context.Context) RestorePlanIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingArrayOutput)
-}
-
-func (i RestorePlanIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlanIamBinding] {
-	return pulumix.Output[[]*RestorePlanIamBinding]{
-		OutputState: i.ToRestorePlanIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RestorePlanIamBindingMapInput is an input type that accepts RestorePlanIamBindingMap and RestorePlanIamBindingMapOutput values.
@@ -719,12 +716,6 @@ func (i RestorePlanIamBindingMap) ToRestorePlanIamBindingMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingMapOutput)
 }
 
-func (i RestorePlanIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlanIamBinding] {
-	return pulumix.Output[map[string]*RestorePlanIamBinding]{
-		OutputState: i.ToRestorePlanIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanIamBindingOutput) ElementType() reflect.Type {
@@ -737,12 +728,6 @@ func (o RestorePlanIamBindingOutput) ToRestorePlanIamBindingOutput() RestorePlan
 
 func (o RestorePlanIamBindingOutput) ToRestorePlanIamBindingOutputWithContext(ctx context.Context) RestorePlanIamBindingOutput {
 	return o
-}
-
-func (o RestorePlanIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamBinding] {
-	return pulumix.Output[*RestorePlanIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamBindingOutput) Condition() RestorePlanIamBindingConditionPtrOutput {
@@ -791,12 +776,6 @@ func (o RestorePlanIamBindingArrayOutput) ToRestorePlanIamBindingArrayOutputWith
 	return o
 }
 
-func (o RestorePlanIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlanIamBinding] {
-	return pulumix.Output[[]*RestorePlanIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestorePlanIamBindingArrayOutput) Index(i pulumi.IntInput) RestorePlanIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RestorePlanIamBinding {
 		return vs[0].([]*RestorePlanIamBinding)[vs[1].(int)]
@@ -815,12 +794,6 @@ func (o RestorePlanIamBindingMapOutput) ToRestorePlanIamBindingMapOutput() Resto
 
 func (o RestorePlanIamBindingMapOutput) ToRestorePlanIamBindingMapOutputWithContext(ctx context.Context) RestorePlanIamBindingMapOutput {
 	return o
-}
-
-func (o RestorePlanIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlanIamBinding] {
-	return pulumix.Output[map[string]*RestorePlanIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamBindingMapOutput) MapIndex(k pulumi.StringInput) RestorePlanIamBindingOutput {

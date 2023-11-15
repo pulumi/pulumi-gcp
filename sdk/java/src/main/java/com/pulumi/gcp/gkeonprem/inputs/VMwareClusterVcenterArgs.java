@@ -16,14 +16,16 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     public static final VMwareClusterVcenterArgs Empty = new VMwareClusterVcenterArgs();
 
     /**
-     * The load balancer&#39;s IP address.
+     * (Output)
+     * The vCenter IP address.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The load balancer&#39;s IP address.
+     * @return (Output)
+     * The vCenter IP address.
      * 
      */
     public Optional<Output<String>> address() {
@@ -31,7 +33,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
      * Contains the vCenter CA certificate public key for SSL verification.
      * 
      */
@@ -39,8 +40,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> caCertData;
 
     /**
-     * @return (Output)
-     * Contains the vCenter CA certificate public key for SSL verification.
+     * @return Contains the vCenter CA certificate public key for SSL verification.
      * 
      */
     public Optional<Output<String>> caCertData() {
@@ -48,7 +48,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
      * The name of the vCenter cluster for the user cluster.
      * 
      */
@@ -56,8 +55,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> cluster;
 
     /**
-     * @return (Output)
-     * The name of the vCenter cluster for the user cluster.
+     * @return The name of the vCenter cluster for the user cluster.
      * 
      */
     public Optional<Output<String>> cluster() {
@@ -65,7 +63,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
      * The name of the vCenter datacenter for the user cluster.
      * 
      */
@@ -73,8 +70,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return (Output)
-     * The name of the vCenter datacenter for the user cluster.
+     * @return The name of the vCenter datacenter for the user cluster.
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -82,16 +78,14 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * The name of the vCenter datastore for the user cluster.
      * 
      */
     @Import(name="datastore")
     private @Nullable Output<String> datastore;
 
     /**
-     * @return (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * @return The name of the vCenter datastore for the user cluster.
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -99,7 +93,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
      * The name of the vCenter folder for the user cluster.
      * 
      */
@@ -107,8 +100,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> folder;
 
     /**
-     * @return (Output)
-     * The name of the vCenter folder for the user cluster.
+     * @return The name of the vCenter folder for the user cluster.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -116,7 +108,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
      * The name of the vCenter resource pool for the user cluster.
      * 
      */
@@ -124,8 +115,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> resourcePool;
 
     /**
-     * @return (Output)
-     * The name of the vCenter resource pool for the user cluster.
+     * @return The name of the vCenter resource pool for the user cluster.
      * 
      */
     public Optional<Output<String>> resourcePool() {
@@ -133,20 +123,14 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * The name of the vCenter storage policy for the user cluster.
      * 
      */
     @Import(name="storagePolicyName")
     private @Nullable Output<String> storagePolicyName;
 
     /**
-     * @return (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * @return The name of the vCenter storage policy for the user cluster.
      * 
      */
     public Optional<Output<String>> storagePolicyName() {
@@ -185,7 +169,8 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param address The load balancer&#39;s IP address.
+         * @param address (Output)
+         * The vCenter IP address.
          * 
          * @return builder
          * 
@@ -196,7 +181,8 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param address The load balancer&#39;s IP address.
+         * @param address (Output)
+         * The vCenter IP address.
          * 
          * @return builder
          * 
@@ -206,8 +192,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param caCertData (Output)
-         * Contains the vCenter CA certificate public key for SSL verification.
+         * @param caCertData Contains the vCenter CA certificate public key for SSL verification.
          * 
          * @return builder
          * 
@@ -218,8 +203,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param caCertData (Output)
-         * Contains the vCenter CA certificate public key for SSL verification.
+         * @param caCertData Contains the vCenter CA certificate public key for SSL verification.
          * 
          * @return builder
          * 
@@ -229,8 +213,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cluster (Output)
-         * The name of the vCenter cluster for the user cluster.
+         * @param cluster The name of the vCenter cluster for the user cluster.
          * 
          * @return builder
          * 
@@ -241,8 +224,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cluster (Output)
-         * The name of the vCenter cluster for the user cluster.
+         * @param cluster The name of the vCenter cluster for the user cluster.
          * 
          * @return builder
          * 
@@ -252,8 +234,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datacenter (Output)
-         * The name of the vCenter datacenter for the user cluster.
+         * @param datacenter The name of the vCenter datacenter for the user cluster.
          * 
          * @return builder
          * 
@@ -264,8 +245,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datacenter (Output)
-         * The name of the vCenter datacenter for the user cluster.
+         * @param datacenter The name of the vCenter datacenter for the user cluster.
          * 
          * @return builder
          * 
@@ -275,8 +255,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datastore (Output)
-         * The Vsphere datastore used by the Control Plane Node.
+         * @param datastore The name of the vCenter datastore for the user cluster.
          * 
          * @return builder
          * 
@@ -287,8 +266,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datastore (Output)
-         * The Vsphere datastore used by the Control Plane Node.
+         * @param datastore The name of the vCenter datastore for the user cluster.
          * 
          * @return builder
          * 
@@ -298,8 +276,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param folder (Output)
-         * The name of the vCenter folder for the user cluster.
+         * @param folder The name of the vCenter folder for the user cluster.
          * 
          * @return builder
          * 
@@ -310,8 +287,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param folder (Output)
-         * The name of the vCenter folder for the user cluster.
+         * @param folder The name of the vCenter folder for the user cluster.
          * 
          * @return builder
          * 
@@ -321,8 +297,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourcePool (Output)
-         * The name of the vCenter resource pool for the user cluster.
+         * @param resourcePool The name of the vCenter resource pool for the user cluster.
          * 
          * @return builder
          * 
@@ -333,8 +308,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourcePool (Output)
-         * The name of the vCenter resource pool for the user cluster.
+         * @param resourcePool The name of the vCenter resource pool for the user cluster.
          * 
          * @return builder
          * 
@@ -344,10 +318,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param storagePolicyName (Output)
-         * The Vsphere storage policy used by the control plane Node.
-         * 
-         * ***
+         * @param storagePolicyName The name of the vCenter storage policy for the user cluster.
          * 
          * @return builder
          * 
@@ -358,10 +329,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param storagePolicyName (Output)
-         * The Vsphere storage policy used by the control plane Node.
-         * 
-         * ***
+         * @param storagePolicyName The name of the vCenter storage policy for the user cluster.
          * 
          * @return builder
          * 

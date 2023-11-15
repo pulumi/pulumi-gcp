@@ -19,6 +19,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
+    private @Nullable String metricsGcpServiceAccountEmail;
     /**
      * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
@@ -44,6 +45,9 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      */
     public Optional<FeatureMembershipConfigmanagementConfigSyncGit> git() {
         return Optional.ofNullable(this.git);
+    }
+    public Optional<String> metricsGcpServiceAccountEmail() {
+        return Optional.ofNullable(this.metricsGcpServiceAccountEmail);
     }
     /**
      * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -79,6 +83,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
+        private @Nullable String metricsGcpServiceAccountEmail;
         private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
         private @Nullable Boolean preventDrift;
         private @Nullable String sourceFormat;
@@ -86,6 +91,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         public Builder(FeatureMembershipConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.git = defaults.git;
+    	      this.metricsGcpServiceAccountEmail = defaults.metricsGcpServiceAccountEmail;
     	      this.oci = defaults.oci;
     	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
@@ -94,6 +100,11 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         @CustomType.Setter
         public Builder git(@Nullable FeatureMembershipConfigmanagementConfigSyncGit git) {
             this.git = git;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metricsGcpServiceAccountEmail(@Nullable String metricsGcpServiceAccountEmail) {
+            this.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +125,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         public FeatureMembershipConfigmanagementConfigSync build() {
             final var o = new FeatureMembershipConfigmanagementConfigSync();
             o.git = git;
+            o.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             o.oci = oci;
             o.preventDrift = preventDrift;
             o.sourceFormat = sourceFormat;

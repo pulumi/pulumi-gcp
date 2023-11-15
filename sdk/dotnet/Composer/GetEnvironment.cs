@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Composer
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
+        public readonly ImmutableArray<Outputs.GetEnvironmentStorageConfigResult> StorageConfigs;
 
         [OutputConstructor]
         private GetEnvironmentResult(
@@ -114,7 +115,9 @@ namespace Pulumi.Gcp.Composer
 
             ImmutableDictionary<string, string> pulumiLabels,
 
-            string? region)
+            string? region,
+
+            ImmutableArray<Outputs.GetEnvironmentStorageConfigResult> storageConfigs)
         {
             Configs = configs;
             EffectiveLabels = effectiveLabels;
@@ -124,6 +127,7 @@ namespace Pulumi.Gcp.Composer
             Project = project;
             PulumiLabels = pulumiLabels;
             Region = region;
+            StorageConfigs = storageConfigs;
         }
     }
 }

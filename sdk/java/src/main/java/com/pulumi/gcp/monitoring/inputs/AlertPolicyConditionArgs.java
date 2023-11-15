@@ -76,7 +76,6 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A Monitoring Query Language query that outputs a boolean stream
      * A condition type that allows alert policies to be defined using
      * Prometheus Query Language (PromQL).
      * The PrometheusQueryLanguageCondition message contains information
@@ -88,8 +87,7 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<AlertPolicyConditionConditionPrometheusQueryLanguageArgs> conditionPrometheusQueryLanguage;
 
     /**
-     * @return A Monitoring Query Language query that outputs a boolean stream
-     * A condition type that allows alert policies to be defined using
+     * @return A condition type that allows alert policies to be defined using
      * Prometheus Query Language (PromQL).
      * The PrometheusQueryLanguageCondition message contains information
      * from a Prometheus alerting rule and its associated rule group.
@@ -273,8 +271,7 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param conditionPrometheusQueryLanguage A Monitoring Query Language query that outputs a boolean stream
-         * A condition type that allows alert policies to be defined using
+         * @param conditionPrometheusQueryLanguage A condition type that allows alert policies to be defined using
          * Prometheus Query Language (PromQL).
          * The PrometheusQueryLanguageCondition message contains information
          * from a Prometheus alerting rule and its associated rule group.
@@ -289,8 +286,7 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param conditionPrometheusQueryLanguage A Monitoring Query Language query that outputs a boolean stream
-         * A condition type that allows alert policies to be defined using
+         * @param conditionPrometheusQueryLanguage A condition type that allows alert policies to be defined using
          * Prometheus Query Language (PromQL).
          * The PrometheusQueryLanguageCondition message contains information
          * from a Prometheus alerting rule and its associated rule group.

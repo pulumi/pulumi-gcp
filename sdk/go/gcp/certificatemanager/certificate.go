@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Certificate represents a HTTP-reachable backend for a Certificate.
@@ -259,10 +258,167 @@ import (
 //	}
 //
 // ```
+// ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := certificateauthority.NewCaPool(ctx, "pool", &certificateauthority.CaPoolArgs{
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			caAuthority, err := certificateauthority.NewAuthority(ctx, "caAuthority", &certificateauthority.AuthorityArgs{
+//				Location:               pulumi.String("us-central1"),
+//				Pool:                   pool.Name,
+//				CertificateAuthorityId: pulumi.String("ca-authority"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("HashiCorp"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//						SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+//							DnsNames: pulumi.StringArray{
+//								pulumi.String("hashicorp.com"),
+//							},
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
+//				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
+//				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
+//					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
+//						CaPool: pool.ID(),
+//					},
+//				},
+//				Lifetime:                 pulumi.String("1814400s"),
+//				RotationWindowPercentage: pulumi.Int(34),
+//				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				caAuthority,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Description: pulumi.String("sample google managed all_regions certificate with issuance config for terraform"),
+//				Scope:       pulumi.String("ALL_REGIONS"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						pulumi.String("terraform.subdomain1.com"),
+//					},
+//					IssuanceConfig: issuanceconfig.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Certificate Manager Google Managed Certificate Dns All Regions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain2.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Description: pulumi.String("The default cert"),
+//				Scope:       pulumi.String("ALL_REGIONS"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						instance.Domain,
+//						instance2.Domain,
+//					},
+//					DnsAuthorizations: pulumi.StringArray{
+//						instance.ID(),
+//						instance2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # Certificate can be imported using any of these accepted formats
+// Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/certificates/{{name}}"
+//
+//	to = google_certificate_manager_certificate.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -314,10 +470,10 @@ type Certificate struct {
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-	// served from non-core Google data centers.
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// see https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -391,10 +547,10 @@ type certificateState struct {
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-	// served from non-core Google data centers.
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// see https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -434,10 +590,10 @@ type CertificateState struct {
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-	// served from non-core Google data centers.
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// see https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -476,10 +632,10 @@ type certificateArgs struct {
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-	// served from non-core Google data centers.
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// see https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -515,10 +671,10 @@ type CertificateArgs struct {
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
-	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-	// served from non-core Google data centers.
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// see https://cloud.google.com/compute/docs/regions-zones
+	// See https://cloud.google.com/compute/docs/regions-zones
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -550,12 +706,6 @@ func (i *Certificate) ToCertificateOutputWithContext(ctx context.Context) Certif
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateOutput)
 }
 
-func (i *Certificate) ToOutput(ctx context.Context) pulumix.Output[*Certificate] {
-	return pulumix.Output[*Certificate]{
-		OutputState: i.ToCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CertificateArrayInput is an input type that accepts CertificateArray and CertificateArrayOutput values.
 // You can construct a concrete instance of `CertificateArrayInput` via:
 //
@@ -579,12 +729,6 @@ func (i CertificateArray) ToCertificateArrayOutput() CertificateArrayOutput {
 
 func (i CertificateArray) ToCertificateArrayOutputWithContext(ctx context.Context) CertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateArrayOutput)
-}
-
-func (i CertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*Certificate] {
-	return pulumix.Output[[]*Certificate]{
-		OutputState: i.ToCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CertificateMapInput is an input type that accepts CertificateMap and CertificateMapOutput values.
@@ -612,12 +756,6 @@ func (i CertificateMap) ToCertificateMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapOutput)
 }
 
-func (i CertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Certificate] {
-	return pulumix.Output[map[string]*Certificate]{
-		OutputState: i.ToCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CertificateOutput struct{ *pulumi.OutputState }
 
 func (CertificateOutput) ElementType() reflect.Type {
@@ -630,12 +768,6 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
-}
-
-func (o CertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*Certificate] {
-	return pulumix.Output[*Certificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description of the resource.
@@ -692,10 +824,10 @@ func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
 // The scope of the certificate.
 // DEFAULT: Certificates with default scope are served from core Google data centers.
 // If unsure, choose this option.
-// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-// served from non-core Google data centers.
+// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+// See https://cloud.google.com/vpc/docs/edge-locations.
 // ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-// see https://cloud.google.com/compute/docs/regions-zones
+// See https://cloud.google.com/compute/docs/regions-zones
 func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }
@@ -722,12 +854,6 @@ func (o CertificateArrayOutput) ToCertificateArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o CertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Certificate] {
-	return pulumix.Output[[]*Certificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateArrayOutput) Index(i pulumi.IntInput) CertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Certificate {
 		return vs[0].([]*Certificate)[vs[1].(int)]
@@ -746,12 +872,6 @@ func (o CertificateMapOutput) ToCertificateMapOutput() CertificateMapOutput {
 
 func (o CertificateMapOutput) ToCertificateMapOutputWithContext(ctx context.Context) CertificateMapOutput {
 	return o
-}
-
-func (o CertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Certificate] {
-	return pulumix.Output[map[string]*Certificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateMapOutput) MapIndex(k pulumi.StringInput) CertificateOutput {

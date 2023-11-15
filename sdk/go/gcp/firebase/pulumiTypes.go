@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -103,12 +102,6 @@ func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigOutput)
 }
 
-func (i ExtensionsInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceConfig] {
-	return pulumix.Output[ExtensionsInstanceConfig]{
-		OutputState: i.ToExtensionsInstanceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput {
 	return i.ToExtensionsInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -150,12 +143,6 @@ func (i *extensionsInstanceConfigPtrType) ToExtensionsInstanceConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigPtrOutput)
 }
 
-func (i *extensionsInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceConfig] {
-	return pulumix.Output[*ExtensionsInstanceConfig]{
-		OutputState: i.ToExtensionsInstanceConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionsInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceConfigOutput) ElementType() reflect.Type {
@@ -178,12 +165,6 @@ func (o ExtensionsInstanceConfigOutput) ToExtensionsInstanceConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceConfig) *ExtensionsInstanceConfig {
 		return &v
 	}).(ExtensionsInstanceConfigPtrOutput)
-}
-
-func (o ExtensionsInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceConfig] {
-	return pulumix.Output[ExtensionsInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of extension events selected by consumer that extension is allowed to
@@ -255,12 +236,6 @@ func (o ExtensionsInstanceConfigPtrOutput) ToExtensionsInstanceConfigPtrOutput()
 
 func (o ExtensionsInstanceConfigPtrOutput) ToExtensionsInstanceConfigPtrOutputWithContext(ctx context.Context) ExtensionsInstanceConfigPtrOutput {
 	return o
-}
-
-func (o ExtensionsInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceConfig] {
-	return pulumix.Output[*ExtensionsInstanceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionsInstanceConfigPtrOutput) Elem() ExtensionsInstanceConfigOutput {
@@ -416,12 +391,6 @@ func (i ExtensionsInstanceErrorStatusArgs) ToExtensionsInstanceErrorStatusOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceErrorStatusOutput)
 }
 
-func (i ExtensionsInstanceErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceErrorStatus] {
-	return pulumix.Output[ExtensionsInstanceErrorStatus]{
-		OutputState: i.ToExtensionsInstanceErrorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExtensionsInstanceErrorStatusArrayInput is an input type that accepts ExtensionsInstanceErrorStatusArray and ExtensionsInstanceErrorStatusArrayOutput values.
 // You can construct a concrete instance of `ExtensionsInstanceErrorStatusArrayInput` via:
 //
@@ -447,12 +416,6 @@ func (i ExtensionsInstanceErrorStatusArray) ToExtensionsInstanceErrorStatusArray
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceErrorStatusArrayOutput)
 }
 
-func (i ExtensionsInstanceErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceErrorStatus] {
-	return pulumix.Output[[]ExtensionsInstanceErrorStatus]{
-		OutputState: i.ToExtensionsInstanceErrorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionsInstanceErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceErrorStatusOutput) ElementType() reflect.Type {
@@ -465,12 +428,6 @@ func (o ExtensionsInstanceErrorStatusOutput) ToExtensionsInstanceErrorStatusOutp
 
 func (o ExtensionsInstanceErrorStatusOutput) ToExtensionsInstanceErrorStatusOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusOutput {
 	return o
-}
-
-func (o ExtensionsInstanceErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceErrorStatus] {
-	return pulumix.Output[ExtensionsInstanceErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -500,12 +457,6 @@ func (o ExtensionsInstanceErrorStatusArrayOutput) ToExtensionsInstanceErrorStatu
 
 func (o ExtensionsInstanceErrorStatusArrayOutput) ToExtensionsInstanceErrorStatusArrayOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusArrayOutput {
 	return o
-}
-
-func (o ExtensionsInstanceErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceErrorStatus] {
-	return pulumix.Output[[]ExtensionsInstanceErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionsInstanceErrorStatusArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceErrorStatusOutput {
@@ -559,12 +510,6 @@ func (i ExtensionsInstanceRuntimeDataArgs) ToExtensionsInstanceRuntimeDataOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataOutput)
 }
 
-func (i ExtensionsInstanceRuntimeDataArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeData] {
-	return pulumix.Output[ExtensionsInstanceRuntimeData]{
-		OutputState: i.ToExtensionsInstanceRuntimeDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExtensionsInstanceRuntimeDataArrayInput is an input type that accepts ExtensionsInstanceRuntimeDataArray and ExtensionsInstanceRuntimeDataArrayOutput values.
 // You can construct a concrete instance of `ExtensionsInstanceRuntimeDataArrayInput` via:
 //
@@ -590,12 +535,6 @@ func (i ExtensionsInstanceRuntimeDataArray) ToExtensionsInstanceRuntimeDataArray
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataArrayOutput)
 }
 
-func (i ExtensionsInstanceRuntimeDataArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceRuntimeData] {
-	return pulumix.Output[[]ExtensionsInstanceRuntimeData]{
-		OutputState: i.ToExtensionsInstanceRuntimeDataArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionsInstanceRuntimeDataOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceRuntimeDataOutput) ElementType() reflect.Type {
@@ -608,12 +547,6 @@ func (o ExtensionsInstanceRuntimeDataOutput) ToExtensionsInstanceRuntimeDataOutp
 
 func (o ExtensionsInstanceRuntimeDataOutput) ToExtensionsInstanceRuntimeDataOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataOutput {
 	return o
-}
-
-func (o ExtensionsInstanceRuntimeDataOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeData] {
-	return pulumix.Output[ExtensionsInstanceRuntimeData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fatal error state for the extension instance
@@ -647,12 +580,6 @@ func (o ExtensionsInstanceRuntimeDataArrayOutput) ToExtensionsInstanceRuntimeDat
 
 func (o ExtensionsInstanceRuntimeDataArrayOutput) ToExtensionsInstanceRuntimeDataArrayOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataArrayOutput {
 	return o
-}
-
-func (o ExtensionsInstanceRuntimeDataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceRuntimeData] {
-	return pulumix.Output[[]ExtensionsInstanceRuntimeData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionsInstanceRuntimeDataArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceRuntimeDataOutput {
@@ -698,12 +625,6 @@ func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntime
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorOutput)
 }
 
-func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataFatalError] {
-	return pulumix.Output[ExtensionsInstanceRuntimeDataFatalError]{
-		OutputState: i.ToExtensionsInstanceRuntimeDataFatalErrorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
 	return i.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(context.Background())
 }
@@ -745,12 +666,6 @@ func (i *extensionsInstanceRuntimeDataFatalErrorPtrType) ToExtensionsInstanceRun
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
 }
 
-func (i *extensionsInstanceRuntimeDataFatalErrorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError] {
-	return pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError]{
-		OutputState: i.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionsInstanceRuntimeDataFatalErrorOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceRuntimeDataFatalErrorOutput) ElementType() reflect.Type {
@@ -775,12 +690,6 @@ func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToExtensionsInstanceRunti
 	}).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
 }
 
-func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataFatalError] {
-	return pulumix.Output[ExtensionsInstanceRuntimeDataFatalError]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The error message. This is set by the extension developer to give
 // more detail on why the extension is unusable and must be re-installed
 // or reconfigured.
@@ -800,12 +709,6 @@ func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToExtensionsInstanceRu
 
 func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
 	return o
-}
-
-func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError] {
-	return pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) Elem() ExtensionsInstanceRuntimeDataFatalErrorOutput {
@@ -873,12 +776,6 @@ func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRu
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStateOutput)
 }
 
-func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState] {
-	return pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState]{
-		OutputState: i.ToExtensionsInstanceRuntimeDataProcessingStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
 	return i.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(context.Background())
 }
@@ -920,12 +817,6 @@ func (i *extensionsInstanceRuntimeDataProcessingStatePtrType) ToExtensionsInstan
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
 }
 
-func (i *extensionsInstanceRuntimeDataProcessingStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState] {
-	return pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState]{
-		OutputState: i.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionsInstanceRuntimeDataProcessingStateOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceRuntimeDataProcessingStateOutput) ElementType() reflect.Type {
@@ -948,12 +839,6 @@ func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToExtensionsInstance
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceRuntimeDataProcessingState) *ExtensionsInstanceRuntimeDataProcessingState {
 		return &v
 	}).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
-}
-
-func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState] {
-	return pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details about the processing. e.g. This could include the type of
@@ -981,12 +866,6 @@ func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToExtensionsInsta
 
 func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
 	return o
-}
-
-func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState] {
-	return pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) Elem() ExtensionsInstanceRuntimeDataProcessingStateOutput {
@@ -1020,6 +899,1961 @@ func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) State() pulumi.St
 		}
 		return v.State
 	}).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainCert struct {
+	// The state of the certificate. Only the `CERT_ACTIVE` and
+	// `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+	// state is `PROPAGATING` and Hosting had an active cert for the domain name
+	// before, that formerly-active cert provides SSL coverage for the domain name
+	// until the current cert propagates.
+	State *string `pulumi:"state"`
+	// The record's type, which determines what data the record contains.
+	Type *string `pulumi:"type"`
+	// A set of ACME challenges you can add to your DNS records or existing,
+	// non-Hosting hosting provider to allow Hosting to create an SSL certificate
+	// for your domain name before you point traffic toward hosting. You can use
+	// thse challenges as part of a zero downtime transition from your old
+	// provider to Hosting.
+	// Structure is documented below.
+	Verification *HostingCustomDomainCertVerification `pulumi:"verification"`
+}
+
+// HostingCustomDomainCertInput is an input type that accepts HostingCustomDomainCertArgs and HostingCustomDomainCertOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertInput` via:
+//
+//	HostingCustomDomainCertArgs{...}
+type HostingCustomDomainCertInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertOutput() HostingCustomDomainCertOutput
+	ToHostingCustomDomainCertOutputWithContext(context.Context) HostingCustomDomainCertOutput
+}
+
+type HostingCustomDomainCertArgs struct {
+	// The state of the certificate. Only the `CERT_ACTIVE` and
+	// `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+	// state is `PROPAGATING` and Hosting had an active cert for the domain name
+	// before, that formerly-active cert provides SSL coverage for the domain name
+	// until the current cert propagates.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The record's type, which determines what data the record contains.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// A set of ACME challenges you can add to your DNS records or existing,
+	// non-Hosting hosting provider to allow Hosting to create an SSL certificate
+	// for your domain name before you point traffic toward hosting. You can use
+	// thse challenges as part of a zero downtime transition from your old
+	// provider to Hosting.
+	// Structure is documented below.
+	Verification HostingCustomDomainCertVerificationPtrInput `pulumi:"verification"`
+}
+
+func (HostingCustomDomainCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCert)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertArgs) ToHostingCustomDomainCertOutput() HostingCustomDomainCertOutput {
+	return i.ToHostingCustomDomainCertOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertArgs) ToHostingCustomDomainCertOutputWithContext(ctx context.Context) HostingCustomDomainCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertOutput)
+}
+
+// HostingCustomDomainCertArrayInput is an input type that accepts HostingCustomDomainCertArray and HostingCustomDomainCertArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertArrayInput` via:
+//
+//	HostingCustomDomainCertArray{ HostingCustomDomainCertArgs{...} }
+type HostingCustomDomainCertArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertArrayOutput() HostingCustomDomainCertArrayOutput
+	ToHostingCustomDomainCertArrayOutputWithContext(context.Context) HostingCustomDomainCertArrayOutput
+}
+
+type HostingCustomDomainCertArray []HostingCustomDomainCertInput
+
+func (HostingCustomDomainCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCert)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertArray) ToHostingCustomDomainCertArrayOutput() HostingCustomDomainCertArrayOutput {
+	return i.ToHostingCustomDomainCertArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertArray) ToHostingCustomDomainCertArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertArrayOutput)
+}
+
+type HostingCustomDomainCertOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCert)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertOutput) ToHostingCustomDomainCertOutput() HostingCustomDomainCertOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertOutput) ToHostingCustomDomainCertOutputWithContext(ctx context.Context) HostingCustomDomainCertOutput {
+	return o
+}
+
+// The state of the certificate. Only the `CERT_ACTIVE` and
+// `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+// state is `PROPAGATING` and Hosting had an active cert for the domain name
+// before, that formerly-active cert provides SSL coverage for the domain name
+// until the current cert propagates.
+func (o HostingCustomDomainCertOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCert) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The record's type, which determines what data the record contains.
+func (o HostingCustomDomainCertOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCert) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// A set of ACME challenges you can add to your DNS records or existing,
+// non-Hosting hosting provider to allow Hosting to create an SSL certificate
+// for your domain name before you point traffic toward hosting. You can use
+// thse challenges as part of a zero downtime transition from your old
+// provider to Hosting.
+// Structure is documented below.
+func (o HostingCustomDomainCertOutput) Verification() HostingCustomDomainCertVerificationPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCert) *HostingCustomDomainCertVerification { return v.Verification }).(HostingCustomDomainCertVerificationPtrOutput)
+}
+
+type HostingCustomDomainCertArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCert)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertArrayOutput) ToHostingCustomDomainCertArrayOutput() HostingCustomDomainCertArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertArrayOutput) ToHostingCustomDomainCertArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainCert {
+		return vs[0].([]HostingCustomDomainCert)[vs[1].(int)]
+	}).(HostingCustomDomainCertOutput)
+}
+
+type HostingCustomDomainCertVerification struct {
+	// A `TXT` record to add to your DNS records that confirms your intent to
+	// let Hosting create an SSL cert for your domain name.
+	// Structure is documented below.
+	Dns *HostingCustomDomainCertVerificationDns `pulumi:"dns"`
+	// A file to add to your existing, non-Hosting hosting service that confirms
+	// your intent to let Hosting create an SSL cert for your domain name.
+	// Structure is documented below.
+	Http *HostingCustomDomainCertVerificationHttp `pulumi:"http"`
+}
+
+// HostingCustomDomainCertVerificationInput is an input type that accepts HostingCustomDomainCertVerificationArgs and HostingCustomDomainCertVerificationOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationInput` via:
+//
+//	HostingCustomDomainCertVerificationArgs{...}
+type HostingCustomDomainCertVerificationInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationOutput() HostingCustomDomainCertVerificationOutput
+	ToHostingCustomDomainCertVerificationOutputWithContext(context.Context) HostingCustomDomainCertVerificationOutput
+}
+
+type HostingCustomDomainCertVerificationArgs struct {
+	// A `TXT` record to add to your DNS records that confirms your intent to
+	// let Hosting create an SSL cert for your domain name.
+	// Structure is documented below.
+	Dns HostingCustomDomainCertVerificationDnsPtrInput `pulumi:"dns"`
+	// A file to add to your existing, non-Hosting hosting service that confirms
+	// your intent to let Hosting create an SSL cert for your domain name.
+	// Structure is documented below.
+	Http HostingCustomDomainCertVerificationHttpPtrInput `pulumi:"http"`
+}
+
+func (HostingCustomDomainCertVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerification)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationArgs) ToHostingCustomDomainCertVerificationOutput() HostingCustomDomainCertVerificationOutput {
+	return i.ToHostingCustomDomainCertVerificationOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationArgs) ToHostingCustomDomainCertVerificationOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationOutput)
+}
+
+func (i HostingCustomDomainCertVerificationArgs) ToHostingCustomDomainCertVerificationPtrOutput() HostingCustomDomainCertVerificationPtrOutput {
+	return i.ToHostingCustomDomainCertVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationArgs) ToHostingCustomDomainCertVerificationPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationOutput).ToHostingCustomDomainCertVerificationPtrOutputWithContext(ctx)
+}
+
+// HostingCustomDomainCertVerificationPtrInput is an input type that accepts HostingCustomDomainCertVerificationArgs, HostingCustomDomainCertVerificationPtr and HostingCustomDomainCertVerificationPtrOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationPtrInput` via:
+//
+//	        HostingCustomDomainCertVerificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HostingCustomDomainCertVerificationPtrInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationPtrOutput() HostingCustomDomainCertVerificationPtrOutput
+	ToHostingCustomDomainCertVerificationPtrOutputWithContext(context.Context) HostingCustomDomainCertVerificationPtrOutput
+}
+
+type hostingCustomDomainCertVerificationPtrType HostingCustomDomainCertVerificationArgs
+
+func HostingCustomDomainCertVerificationPtr(v *HostingCustomDomainCertVerificationArgs) HostingCustomDomainCertVerificationPtrInput {
+	return (*hostingCustomDomainCertVerificationPtrType)(v)
+}
+
+func (*hostingCustomDomainCertVerificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostingCustomDomainCertVerification)(nil)).Elem()
+}
+
+func (i *hostingCustomDomainCertVerificationPtrType) ToHostingCustomDomainCertVerificationPtrOutput() HostingCustomDomainCertVerificationPtrOutput {
+	return i.ToHostingCustomDomainCertVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i *hostingCustomDomainCertVerificationPtrType) ToHostingCustomDomainCertVerificationPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerification)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationOutput) ToHostingCustomDomainCertVerificationOutput() HostingCustomDomainCertVerificationOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationOutput) ToHostingCustomDomainCertVerificationOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationOutput) ToHostingCustomDomainCertVerificationPtrOutput() HostingCustomDomainCertVerificationPtrOutput {
+	return o.ToHostingCustomDomainCertVerificationPtrOutputWithContext(context.Background())
+}
+
+func (o HostingCustomDomainCertVerificationOutput) ToHostingCustomDomainCertVerificationPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostingCustomDomainCertVerification) *HostingCustomDomainCertVerification {
+		return &v
+	}).(HostingCustomDomainCertVerificationPtrOutput)
+}
+
+// A `TXT` record to add to your DNS records that confirms your intent to
+// let Hosting create an SSL cert for your domain name.
+// Structure is documented below.
+func (o HostingCustomDomainCertVerificationOutput) Dns() HostingCustomDomainCertVerificationDnsPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerification) *HostingCustomDomainCertVerificationDns { return v.Dns }).(HostingCustomDomainCertVerificationDnsPtrOutput)
+}
+
+// A file to add to your existing, non-Hosting hosting service that confirms
+// your intent to let Hosting create an SSL cert for your domain name.
+// Structure is documented below.
+func (o HostingCustomDomainCertVerificationOutput) Http() HostingCustomDomainCertVerificationHttpPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerification) *HostingCustomDomainCertVerificationHttp { return v.Http }).(HostingCustomDomainCertVerificationHttpPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationPtrOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostingCustomDomainCertVerification)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationPtrOutput) ToHostingCustomDomainCertVerificationPtrOutput() HostingCustomDomainCertVerificationPtrOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationPtrOutput) ToHostingCustomDomainCertVerificationPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationPtrOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationPtrOutput) Elem() HostingCustomDomainCertVerificationOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerification) HostingCustomDomainCertVerification {
+		if v != nil {
+			return *v
+		}
+		var ret HostingCustomDomainCertVerification
+		return ret
+	}).(HostingCustomDomainCertVerificationOutput)
+}
+
+// A `TXT` record to add to your DNS records that confirms your intent to
+// let Hosting create an SSL cert for your domain name.
+// Structure is documented below.
+func (o HostingCustomDomainCertVerificationPtrOutput) Dns() HostingCustomDomainCertVerificationDnsPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerification) *HostingCustomDomainCertVerificationDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(HostingCustomDomainCertVerificationDnsPtrOutput)
+}
+
+// A file to add to your existing, non-Hosting hosting service that confirms
+// your intent to let Hosting create an SSL cert for your domain name.
+// Structure is documented below.
+func (o HostingCustomDomainCertVerificationPtrOutput) Http() HostingCustomDomainCertVerificationHttpPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerification) *HostingCustomDomainCertVerificationHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(HostingCustomDomainCertVerificationHttpPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationDns struct {
+	// (Output)
+	// The last time Hosting checked your CustomDomain's DNS records.
+	CheckTime *string `pulumi:"checkTime"`
+	// A text string to serve at the path.
+	Desireds []HostingCustomDomainCertVerificationDnsDesired `pulumi:"desireds"`
+	// Whether Hosting was able to find the required file contents on the
+	// specified path during its last check.
+	Discovereds []HostingCustomDomainCertVerificationDnsDiscovered `pulumi:"discovereds"`
+}
+
+// HostingCustomDomainCertVerificationDnsInput is an input type that accepts HostingCustomDomainCertVerificationDnsArgs and HostingCustomDomainCertVerificationDnsOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsArgs{...}
+type HostingCustomDomainCertVerificationDnsInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsOutput() HostingCustomDomainCertVerificationDnsOutput
+	ToHostingCustomDomainCertVerificationDnsOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsOutput
+}
+
+type HostingCustomDomainCertVerificationDnsArgs struct {
+	// (Output)
+	// The last time Hosting checked your CustomDomain's DNS records.
+	CheckTime pulumi.StringPtrInput `pulumi:"checkTime"`
+	// A text string to serve at the path.
+	Desireds HostingCustomDomainCertVerificationDnsDesiredArrayInput `pulumi:"desireds"`
+	// Whether Hosting was able to find the required file contents on the
+	// specified path during its last check.
+	Discovereds HostingCustomDomainCertVerificationDnsDiscoveredArrayInput `pulumi:"discovereds"`
+}
+
+func (HostingCustomDomainCertVerificationDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDns)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsArgs) ToHostingCustomDomainCertVerificationDnsOutput() HostingCustomDomainCertVerificationDnsOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsArgs) ToHostingCustomDomainCertVerificationDnsOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsOutput)
+}
+
+func (i HostingCustomDomainCertVerificationDnsArgs) ToHostingCustomDomainCertVerificationDnsPtrOutput() HostingCustomDomainCertVerificationDnsPtrOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsArgs) ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsOutput).ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(ctx)
+}
+
+// HostingCustomDomainCertVerificationDnsPtrInput is an input type that accepts HostingCustomDomainCertVerificationDnsArgs, HostingCustomDomainCertVerificationDnsPtr and HostingCustomDomainCertVerificationDnsPtrOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsPtrInput` via:
+//
+//	        HostingCustomDomainCertVerificationDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type HostingCustomDomainCertVerificationDnsPtrInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsPtrOutput() HostingCustomDomainCertVerificationDnsPtrOutput
+	ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsPtrOutput
+}
+
+type hostingCustomDomainCertVerificationDnsPtrType HostingCustomDomainCertVerificationDnsArgs
+
+func HostingCustomDomainCertVerificationDnsPtr(v *HostingCustomDomainCertVerificationDnsArgs) HostingCustomDomainCertVerificationDnsPtrInput {
+	return (*hostingCustomDomainCertVerificationDnsPtrType)(v)
+}
+
+func (*hostingCustomDomainCertVerificationDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostingCustomDomainCertVerificationDns)(nil)).Elem()
+}
+
+func (i *hostingCustomDomainCertVerificationDnsPtrType) ToHostingCustomDomainCertVerificationDnsPtrOutput() HostingCustomDomainCertVerificationDnsPtrOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *hostingCustomDomainCertVerificationDnsPtrType) ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDns)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsOutput) ToHostingCustomDomainCertVerificationDnsOutput() HostingCustomDomainCertVerificationDnsOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsOutput) ToHostingCustomDomainCertVerificationDnsOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsOutput) ToHostingCustomDomainCertVerificationDnsPtrOutput() HostingCustomDomainCertVerificationDnsPtrOutput {
+	return o.ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(context.Background())
+}
+
+func (o HostingCustomDomainCertVerificationDnsOutput) ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostingCustomDomainCertVerificationDns) *HostingCustomDomainCertVerificationDns {
+		return &v
+	}).(HostingCustomDomainCertVerificationDnsPtrOutput)
+}
+
+// (Output)
+// The last time Hosting checked your CustomDomain's DNS records.
+func (o HostingCustomDomainCertVerificationDnsOutput) CheckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDns) *string { return v.CheckTime }).(pulumi.StringPtrOutput)
+}
+
+// A text string to serve at the path.
+func (o HostingCustomDomainCertVerificationDnsOutput) Desireds() HostingCustomDomainCertVerificationDnsDesiredArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDns) []HostingCustomDomainCertVerificationDnsDesired {
+		return v.Desireds
+	}).(HostingCustomDomainCertVerificationDnsDesiredArrayOutput)
+}
+
+// Whether Hosting was able to find the required file contents on the
+// specified path during its last check.
+func (o HostingCustomDomainCertVerificationDnsOutput) Discovereds() HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDns) []HostingCustomDomainCertVerificationDnsDiscovered {
+		return v.Discovereds
+	}).(HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostingCustomDomainCertVerificationDns)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsPtrOutput) ToHostingCustomDomainCertVerificationDnsPtrOutput() HostingCustomDomainCertVerificationDnsPtrOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsPtrOutput) ToHostingCustomDomainCertVerificationDnsPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsPtrOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsPtrOutput) Elem() HostingCustomDomainCertVerificationDnsOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationDns) HostingCustomDomainCertVerificationDns {
+		if v != nil {
+			return *v
+		}
+		var ret HostingCustomDomainCertVerificationDns
+		return ret
+	}).(HostingCustomDomainCertVerificationDnsOutput)
+}
+
+// (Output)
+// The last time Hosting checked your CustomDomain's DNS records.
+func (o HostingCustomDomainCertVerificationDnsPtrOutput) CheckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// A text string to serve at the path.
+func (o HostingCustomDomainCertVerificationDnsPtrOutput) Desireds() HostingCustomDomainCertVerificationDnsDesiredArrayOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationDns) []HostingCustomDomainCertVerificationDnsDesired {
+		if v == nil {
+			return nil
+		}
+		return v.Desireds
+	}).(HostingCustomDomainCertVerificationDnsDesiredArrayOutput)
+}
+
+// Whether Hosting was able to find the required file contents on the
+// specified path during its last check.
+func (o HostingCustomDomainCertVerificationDnsPtrOutput) Discovereds() HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationDns) []HostingCustomDomainCertVerificationDnsDiscovered {
+		if v == nil {
+			return nil
+		}
+		return v.Discovereds
+	}).(HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDesired struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records []HostingCustomDomainCertVerificationDnsDesiredRecord `pulumi:"records"`
+}
+
+// HostingCustomDomainCertVerificationDnsDesiredInput is an input type that accepts HostingCustomDomainCertVerificationDnsDesiredArgs and HostingCustomDomainCertVerificationDnsDesiredOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDesiredInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDesiredArgs{...}
+type HostingCustomDomainCertVerificationDnsDesiredInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDesiredOutput() HostingCustomDomainCertVerificationDnsDesiredOutput
+	ToHostingCustomDomainCertVerificationDnsDesiredOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDesiredOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records HostingCustomDomainCertVerificationDnsDesiredRecordArrayInput `pulumi:"records"`
+}
+
+func (HostingCustomDomainCertVerificationDnsDesiredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesired)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredArgs) ToHostingCustomDomainCertVerificationDnsDesiredOutput() HostingCustomDomainCertVerificationDnsDesiredOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDesiredOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredArgs) ToHostingCustomDomainCertVerificationDnsDesiredOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDesiredOutput)
+}
+
+// HostingCustomDomainCertVerificationDnsDesiredArrayInput is an input type that accepts HostingCustomDomainCertVerificationDnsDesiredArray and HostingCustomDomainCertVerificationDnsDesiredArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDesiredArrayInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDesiredArray{ HostingCustomDomainCertVerificationDnsDesiredArgs{...} }
+type HostingCustomDomainCertVerificationDnsDesiredArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDesiredArrayOutput() HostingCustomDomainCertVerificationDnsDesiredArrayOutput
+	ToHostingCustomDomainCertVerificationDnsDesiredArrayOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDesiredArrayOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredArray []HostingCustomDomainCertVerificationDnsDesiredInput
+
+func (HostingCustomDomainCertVerificationDnsDesiredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDesired)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredArray) ToHostingCustomDomainCertVerificationDnsDesiredArrayOutput() HostingCustomDomainCertVerificationDnsDesiredArrayOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDesiredArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredArray) ToHostingCustomDomainCertVerificationDnsDesiredArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDesiredArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDesiredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesired)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredOutput) ToHostingCustomDomainCertVerificationDnsDesiredOutput() HostingCustomDomainCertVerificationDnsDesiredOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredOutput) ToHostingCustomDomainCertVerificationDnsDesiredOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainCertVerificationDnsDesiredOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDesired) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Records on the domain
+// Structure is documented below.
+func (o HostingCustomDomainCertVerificationDnsDesiredOutput) Records() HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDesired) []HostingCustomDomainCertVerificationDnsDesiredRecord {
+		return v.Records
+	}).(HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDesiredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDesired)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredArrayOutput) ToHostingCustomDomainCertVerificationDnsDesiredArrayOutput() HostingCustomDomainCertVerificationDnsDesiredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredArrayOutput) ToHostingCustomDomainCertVerificationDnsDesiredArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainCertVerificationDnsDesiredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainCertVerificationDnsDesired {
+		return vs[0].([]HostingCustomDomainCertVerificationDnsDesired)[vs[1].(int)]
+	}).(HostingCustomDomainCertVerificationDnsDesiredOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredRecord struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata *string `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction *string `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type *string `pulumi:"type"`
+}
+
+// HostingCustomDomainCertVerificationDnsDesiredRecordInput is an input type that accepts HostingCustomDomainCertVerificationDnsDesiredRecordArgs and HostingCustomDomainCertVerificationDnsDesiredRecordOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDesiredRecordInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDesiredRecordArgs{...}
+type HostingCustomDomainCertVerificationDnsDesiredRecordInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDesiredRecordOutput() HostingCustomDomainCertVerificationDnsDesiredRecordOutput
+	ToHostingCustomDomainCertVerificationDnsDesiredRecordOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDesiredRecordOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredRecordArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata pulumi.StringPtrInput `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction pulumi.StringPtrInput `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (HostingCustomDomainCertVerificationDnsDesiredRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesiredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredRecordArgs) ToHostingCustomDomainCertVerificationDnsDesiredRecordOutput() HostingCustomDomainCertVerificationDnsDesiredRecordOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDesiredRecordOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredRecordArgs) ToHostingCustomDomainCertVerificationDnsDesiredRecordOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDesiredRecordOutput)
+}
+
+// HostingCustomDomainCertVerificationDnsDesiredRecordArrayInput is an input type that accepts HostingCustomDomainCertVerificationDnsDesiredRecordArray and HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDesiredRecordArrayInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDesiredRecordArray{ HostingCustomDomainCertVerificationDnsDesiredRecordArgs{...} }
+type HostingCustomDomainCertVerificationDnsDesiredRecordArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput() HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput
+	ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredRecordArray []HostingCustomDomainCertVerificationDnsDesiredRecordInput
+
+func (HostingCustomDomainCertVerificationDnsDesiredRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDesiredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredRecordArray) ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput() HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDesiredRecordArray) ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredRecordOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDesiredRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesiredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordOutput) ToHostingCustomDomainCertVerificationDnsDesiredRecordOutput() HostingCustomDomainCertVerificationDnsDesiredRecordOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordOutput) ToHostingCustomDomainCertVerificationDnsDesiredRecordOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredRecordOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDesiredRecord) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The data of the record. The meaning of the value depends on record type:
+//   - A and AAAA: IP addresses for the domain name.
+//   - CNAME: Another domain to check for records.
+//   - TXT: Arbitrary text strings associated with the domain name. Hosting
+//     uses TXT records to determine a which Firebase Projects have
+//     permission to act on the domain name's behalf.
+//   - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordOutput) Rdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDesiredRecord) *string { return v.Rdata }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the a required action for this record.
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordOutput) RequiredAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDesiredRecord) *string { return v.RequiredAction }).(pulumi.StringPtrOutput)
+}
+
+// The record's type, which determines what data the record contains.
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDesiredRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDesiredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput) ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput() HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput) ToHostingCustomDomainCertVerificationDnsDesiredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainCertVerificationDnsDesiredRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainCertVerificationDnsDesiredRecord {
+		return vs[0].([]HostingCustomDomainCertVerificationDnsDesiredRecord)[vs[1].(int)]
+	}).(HostingCustomDomainCertVerificationDnsDesiredRecordOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDiscovered struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records []HostingCustomDomainCertVerificationDnsDiscoveredRecord `pulumi:"records"`
+}
+
+// HostingCustomDomainCertVerificationDnsDiscoveredInput is an input type that accepts HostingCustomDomainCertVerificationDnsDiscoveredArgs and HostingCustomDomainCertVerificationDnsDiscoveredOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDiscoveredInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDiscoveredArgs{...}
+type HostingCustomDomainCertVerificationDnsDiscoveredInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDiscoveredOutput() HostingCustomDomainCertVerificationDnsDiscoveredOutput
+	ToHostingCustomDomainCertVerificationDnsDiscoveredOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDiscoveredOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayInput `pulumi:"records"`
+}
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscovered)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredArgs) ToHostingCustomDomainCertVerificationDnsDiscoveredOutput() HostingCustomDomainCertVerificationDnsDiscoveredOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDiscoveredOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredArgs) ToHostingCustomDomainCertVerificationDnsDiscoveredOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDiscoveredOutput)
+}
+
+// HostingCustomDomainCertVerificationDnsDiscoveredArrayInput is an input type that accepts HostingCustomDomainCertVerificationDnsDiscoveredArray and HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDiscoveredArrayInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDiscoveredArray{ HostingCustomDomainCertVerificationDnsDiscoveredArgs{...} }
+type HostingCustomDomainCertVerificationDnsDiscoveredArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutput() HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput
+	ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredArray []HostingCustomDomainCertVerificationDnsDiscoveredInput
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDiscovered)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredArray) ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutput() HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredArray) ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscovered)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredOutput() HostingCustomDomainCertVerificationDnsDiscoveredOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainCertVerificationDnsDiscoveredOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDiscovered) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Records on the domain
+// Structure is documented below.
+func (o HostingCustomDomainCertVerificationDnsDiscoveredOutput) Records() HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDiscovered) []HostingCustomDomainCertVerificationDnsDiscoveredRecord {
+		return v.Records
+	}).(HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDiscovered)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutput() HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainCertVerificationDnsDiscoveredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainCertVerificationDnsDiscovered {
+		return vs[0].([]HostingCustomDomainCertVerificationDnsDiscovered)[vs[1].(int)]
+	}).(HostingCustomDomainCertVerificationDnsDiscoveredOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredRecord struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata *string `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction *string `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type *string `pulumi:"type"`
+}
+
+// HostingCustomDomainCertVerificationDnsDiscoveredRecordInput is an input type that accepts HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs and HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDiscoveredRecordInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs{...}
+type HostingCustomDomainCertVerificationDnsDiscoveredRecordInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutput() HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput
+	ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata pulumi.StringPtrInput `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction pulumi.StringPtrInput `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscoveredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutput() HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput)
+}
+
+// HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayInput is an input type that accepts HostingCustomDomainCertVerificationDnsDiscoveredRecordArray and HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayInput` via:
+//
+//	HostingCustomDomainCertVerificationDnsDiscoveredRecordArray{ HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs{...} }
+type HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput() HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput
+	ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutputWithContext(context.Context) HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredRecordArray []HostingCustomDomainCertVerificationDnsDiscoveredRecordInput
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDiscoveredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredRecordArray) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput() HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput {
+	return i.ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationDnsDiscoveredRecordArray) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscoveredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutput() HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDiscoveredRecord) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The data of the record. The meaning of the value depends on record type:
+//   - A and AAAA: IP addresses for the domain name.
+//   - CNAME: Another domain to check for records.
+//   - TXT: Arbitrary text strings associated with the domain name. Hosting
+//     uses TXT records to determine a which Firebase Projects have
+//     permission to act on the domain name's behalf.
+//   - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) Rdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDiscoveredRecord) *string { return v.Rdata }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the a required action for this record.
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) RequiredAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDiscoveredRecord) *string { return v.RequiredAction }).(pulumi.StringPtrOutput)
+}
+
+// The record's type, which determines what data the record contains.
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationDnsDiscoveredRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainCertVerificationDnsDiscoveredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput() HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput) ToHostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainCertVerificationDnsDiscoveredRecord {
+		return vs[0].([]HostingCustomDomainCertVerificationDnsDiscoveredRecord)[vs[1].(int)]
+	}).(HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput)
+}
+
+type HostingCustomDomainCertVerificationHttp struct {
+	// A text string to serve at the path.
+	Desired *string `pulumi:"desired"`
+	// Whether Hosting was able to find the required file contents on the
+	// specified path during its last check.
+	Discovered *string `pulumi:"discovered"`
+	// (Output)
+	// The last time Hosting systems checked for the file contents.
+	LastCheckTime *string `pulumi:"lastCheckTime"`
+	// The path to the file.
+	Path *string `pulumi:"path"`
+}
+
+// HostingCustomDomainCertVerificationHttpInput is an input type that accepts HostingCustomDomainCertVerificationHttpArgs and HostingCustomDomainCertVerificationHttpOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationHttpInput` via:
+//
+//	HostingCustomDomainCertVerificationHttpArgs{...}
+type HostingCustomDomainCertVerificationHttpInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationHttpOutput() HostingCustomDomainCertVerificationHttpOutput
+	ToHostingCustomDomainCertVerificationHttpOutputWithContext(context.Context) HostingCustomDomainCertVerificationHttpOutput
+}
+
+type HostingCustomDomainCertVerificationHttpArgs struct {
+	// A text string to serve at the path.
+	Desired pulumi.StringPtrInput `pulumi:"desired"`
+	// Whether Hosting was able to find the required file contents on the
+	// specified path during its last check.
+	Discovered pulumi.StringPtrInput `pulumi:"discovered"`
+	// (Output)
+	// The last time Hosting systems checked for the file contents.
+	LastCheckTime pulumi.StringPtrInput `pulumi:"lastCheckTime"`
+	// The path to the file.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (HostingCustomDomainCertVerificationHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationHttp)(nil)).Elem()
+}
+
+func (i HostingCustomDomainCertVerificationHttpArgs) ToHostingCustomDomainCertVerificationHttpOutput() HostingCustomDomainCertVerificationHttpOutput {
+	return i.ToHostingCustomDomainCertVerificationHttpOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationHttpArgs) ToHostingCustomDomainCertVerificationHttpOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationHttpOutput)
+}
+
+func (i HostingCustomDomainCertVerificationHttpArgs) ToHostingCustomDomainCertVerificationHttpPtrOutput() HostingCustomDomainCertVerificationHttpPtrOutput {
+	return i.ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainCertVerificationHttpArgs) ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationHttpOutput).ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(ctx)
+}
+
+// HostingCustomDomainCertVerificationHttpPtrInput is an input type that accepts HostingCustomDomainCertVerificationHttpArgs, HostingCustomDomainCertVerificationHttpPtr and HostingCustomDomainCertVerificationHttpPtrOutput values.
+// You can construct a concrete instance of `HostingCustomDomainCertVerificationHttpPtrInput` via:
+//
+//	        HostingCustomDomainCertVerificationHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type HostingCustomDomainCertVerificationHttpPtrInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainCertVerificationHttpPtrOutput() HostingCustomDomainCertVerificationHttpPtrOutput
+	ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(context.Context) HostingCustomDomainCertVerificationHttpPtrOutput
+}
+
+type hostingCustomDomainCertVerificationHttpPtrType HostingCustomDomainCertVerificationHttpArgs
+
+func HostingCustomDomainCertVerificationHttpPtr(v *HostingCustomDomainCertVerificationHttpArgs) HostingCustomDomainCertVerificationHttpPtrInput {
+	return (*hostingCustomDomainCertVerificationHttpPtrType)(v)
+}
+
+func (*hostingCustomDomainCertVerificationHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostingCustomDomainCertVerificationHttp)(nil)).Elem()
+}
+
+func (i *hostingCustomDomainCertVerificationHttpPtrType) ToHostingCustomDomainCertVerificationHttpPtrOutput() HostingCustomDomainCertVerificationHttpPtrOutput {
+	return i.ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *hostingCustomDomainCertVerificationHttpPtrType) ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainCertVerificationHttpPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationHttpOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainCertVerificationHttp)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationHttpOutput) ToHostingCustomDomainCertVerificationHttpOutput() HostingCustomDomainCertVerificationHttpOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationHttpOutput) ToHostingCustomDomainCertVerificationHttpOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationHttpOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationHttpOutput) ToHostingCustomDomainCertVerificationHttpPtrOutput() HostingCustomDomainCertVerificationHttpPtrOutput {
+	return o.ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(context.Background())
+}
+
+func (o HostingCustomDomainCertVerificationHttpOutput) ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostingCustomDomainCertVerificationHttp) *HostingCustomDomainCertVerificationHttp {
+		return &v
+	}).(HostingCustomDomainCertVerificationHttpPtrOutput)
+}
+
+// A text string to serve at the path.
+func (o HostingCustomDomainCertVerificationHttpOutput) Desired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationHttp) *string { return v.Desired }).(pulumi.StringPtrOutput)
+}
+
+// Whether Hosting was able to find the required file contents on the
+// specified path during its last check.
+func (o HostingCustomDomainCertVerificationHttpOutput) Discovered() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationHttp) *string { return v.Discovered }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The last time Hosting systems checked for the file contents.
+func (o HostingCustomDomainCertVerificationHttpOutput) LastCheckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationHttp) *string { return v.LastCheckTime }).(pulumi.StringPtrOutput)
+}
+
+// The path to the file.
+func (o HostingCustomDomainCertVerificationHttpOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainCertVerificationHttp) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainCertVerificationHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainCertVerificationHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostingCustomDomainCertVerificationHttp)(nil)).Elem()
+}
+
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) ToHostingCustomDomainCertVerificationHttpPtrOutput() HostingCustomDomainCertVerificationHttpPtrOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) ToHostingCustomDomainCertVerificationHttpPtrOutputWithContext(ctx context.Context) HostingCustomDomainCertVerificationHttpPtrOutput {
+	return o
+}
+
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) Elem() HostingCustomDomainCertVerificationHttpOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationHttp) HostingCustomDomainCertVerificationHttp {
+		if v != nil {
+			return *v
+		}
+		var ret HostingCustomDomainCertVerificationHttp
+		return ret
+	}).(HostingCustomDomainCertVerificationHttpOutput)
+}
+
+// A text string to serve at the path.
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) Desired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Desired
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Hosting was able to find the required file contents on the
+// specified path during its last check.
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) Discovered() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Discovered
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The last time Hosting systems checked for the file contents.
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) LastCheckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastCheckTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the file.
+func (o HostingCustomDomainCertVerificationHttpPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostingCustomDomainCertVerificationHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainIssue struct {
+	// The status code, which should be an enum value of `google.rpc.Code`
+	Code *int `pulumi:"code"`
+	// A list of messages that carry the error details.
+	Details []map[string]interface{} `pulumi:"details"`
+	// Error message
+	Message *string `pulumi:"message"`
+}
+
+// HostingCustomDomainIssueInput is an input type that accepts HostingCustomDomainIssueArgs and HostingCustomDomainIssueOutput values.
+// You can construct a concrete instance of `HostingCustomDomainIssueInput` via:
+//
+//	HostingCustomDomainIssueArgs{...}
+type HostingCustomDomainIssueInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainIssueOutput() HostingCustomDomainIssueOutput
+	ToHostingCustomDomainIssueOutputWithContext(context.Context) HostingCustomDomainIssueOutput
+}
+
+type HostingCustomDomainIssueArgs struct {
+	// The status code, which should be an enum value of `google.rpc.Code`
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A list of messages that carry the error details.
+	Details pulumi.MapArrayInput `pulumi:"details"`
+	// Error message
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (HostingCustomDomainIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainIssue)(nil)).Elem()
+}
+
+func (i HostingCustomDomainIssueArgs) ToHostingCustomDomainIssueOutput() HostingCustomDomainIssueOutput {
+	return i.ToHostingCustomDomainIssueOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainIssueArgs) ToHostingCustomDomainIssueOutputWithContext(ctx context.Context) HostingCustomDomainIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainIssueOutput)
+}
+
+// HostingCustomDomainIssueArrayInput is an input type that accepts HostingCustomDomainIssueArray and HostingCustomDomainIssueArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainIssueArrayInput` via:
+//
+//	HostingCustomDomainIssueArray{ HostingCustomDomainIssueArgs{...} }
+type HostingCustomDomainIssueArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainIssueArrayOutput() HostingCustomDomainIssueArrayOutput
+	ToHostingCustomDomainIssueArrayOutputWithContext(context.Context) HostingCustomDomainIssueArrayOutput
+}
+
+type HostingCustomDomainIssueArray []HostingCustomDomainIssueInput
+
+func (HostingCustomDomainIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainIssue)(nil)).Elem()
+}
+
+func (i HostingCustomDomainIssueArray) ToHostingCustomDomainIssueArrayOutput() HostingCustomDomainIssueArrayOutput {
+	return i.ToHostingCustomDomainIssueArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainIssueArray) ToHostingCustomDomainIssueArrayOutputWithContext(ctx context.Context) HostingCustomDomainIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainIssueArrayOutput)
+}
+
+type HostingCustomDomainIssueOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainIssue)(nil)).Elem()
+}
+
+func (o HostingCustomDomainIssueOutput) ToHostingCustomDomainIssueOutput() HostingCustomDomainIssueOutput {
+	return o
+}
+
+func (o HostingCustomDomainIssueOutput) ToHostingCustomDomainIssueOutputWithContext(ctx context.Context) HostingCustomDomainIssueOutput {
+	return o
+}
+
+// The status code, which should be an enum value of `google.rpc.Code`
+func (o HostingCustomDomainIssueOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainIssue) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details.
+func (o HostingCustomDomainIssueOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainIssue) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+}
+
+// Error message
+func (o HostingCustomDomainIssueOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainIssue) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainIssue)(nil)).Elem()
+}
+
+func (o HostingCustomDomainIssueArrayOutput) ToHostingCustomDomainIssueArrayOutput() HostingCustomDomainIssueArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainIssueArrayOutput) ToHostingCustomDomainIssueArrayOutputWithContext(ctx context.Context) HostingCustomDomainIssueArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainIssueArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainIssue {
+		return vs[0].([]HostingCustomDomainIssue)[vs[1].(int)]
+	}).(HostingCustomDomainIssueOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdate struct {
+	// (Output)
+	// The last time Hosting checked your CustomDomain's DNS records.
+	CheckTime *string `pulumi:"checkTime"`
+	// A text string to serve at the path.
+	Desireds []HostingCustomDomainRequiredDnsUpdateDesired `pulumi:"desireds"`
+	// Whether Hosting was able to find the required file contents on the
+	// specified path during its last check.
+	Discovereds []HostingCustomDomainRequiredDnsUpdateDiscovered `pulumi:"discovereds"`
+}
+
+// HostingCustomDomainRequiredDnsUpdateInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateArgs and HostingCustomDomainRequiredDnsUpdateOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateArgs{...}
+type HostingCustomDomainRequiredDnsUpdateInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateOutput() HostingCustomDomainRequiredDnsUpdateOutput
+	ToHostingCustomDomainRequiredDnsUpdateOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateArgs struct {
+	// (Output)
+	// The last time Hosting checked your CustomDomain's DNS records.
+	CheckTime pulumi.StringPtrInput `pulumi:"checkTime"`
+	// A text string to serve at the path.
+	Desireds HostingCustomDomainRequiredDnsUpdateDesiredArrayInput `pulumi:"desireds"`
+	// Whether Hosting was able to find the required file contents on the
+	// specified path during its last check.
+	Discovereds HostingCustomDomainRequiredDnsUpdateDiscoveredArrayInput `pulumi:"discovereds"`
+}
+
+func (HostingCustomDomainRequiredDnsUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateArgs) ToHostingCustomDomainRequiredDnsUpdateOutput() HostingCustomDomainRequiredDnsUpdateOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateArgs) ToHostingCustomDomainRequiredDnsUpdateOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateOutput)
+}
+
+// HostingCustomDomainRequiredDnsUpdateArrayInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateArray and HostingCustomDomainRequiredDnsUpdateArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateArrayInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateArray{ HostingCustomDomainRequiredDnsUpdateArgs{...} }
+type HostingCustomDomainRequiredDnsUpdateArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateArrayOutput() HostingCustomDomainRequiredDnsUpdateArrayOutput
+	ToHostingCustomDomainRequiredDnsUpdateArrayOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateArrayOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateArray []HostingCustomDomainRequiredDnsUpdateInput
+
+func (HostingCustomDomainRequiredDnsUpdateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateArray) ToHostingCustomDomainRequiredDnsUpdateArrayOutput() HostingCustomDomainRequiredDnsUpdateArrayOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateArray) ToHostingCustomDomainRequiredDnsUpdateArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateOutput) ToHostingCustomDomainRequiredDnsUpdateOutput() HostingCustomDomainRequiredDnsUpdateOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateOutput) ToHostingCustomDomainRequiredDnsUpdateOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateOutput {
+	return o
+}
+
+// (Output)
+// The last time Hosting checked your CustomDomain's DNS records.
+func (o HostingCustomDomainRequiredDnsUpdateOutput) CheckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdate) *string { return v.CheckTime }).(pulumi.StringPtrOutput)
+}
+
+// A text string to serve at the path.
+func (o HostingCustomDomainRequiredDnsUpdateOutput) Desireds() HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdate) []HostingCustomDomainRequiredDnsUpdateDesired {
+		return v.Desireds
+	}).(HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput)
+}
+
+// Whether Hosting was able to find the required file contents on the
+// specified path during its last check.
+func (o HostingCustomDomainRequiredDnsUpdateOutput) Discovereds() HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdate) []HostingCustomDomainRequiredDnsUpdateDiscovered {
+		return v.Discovereds
+	}).(HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdate)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateArrayOutput) ToHostingCustomDomainRequiredDnsUpdateArrayOutput() HostingCustomDomainRequiredDnsUpdateArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateArrayOutput) ToHostingCustomDomainRequiredDnsUpdateArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainRequiredDnsUpdateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainRequiredDnsUpdate {
+		return vs[0].([]HostingCustomDomainRequiredDnsUpdate)[vs[1].(int)]
+	}).(HostingCustomDomainRequiredDnsUpdateOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesired struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records []HostingCustomDomainRequiredDnsUpdateDesiredRecord `pulumi:"records"`
+}
+
+// HostingCustomDomainRequiredDnsUpdateDesiredInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDesiredArgs and HostingCustomDomainRequiredDnsUpdateDesiredOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDesiredInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDesiredArgs{...}
+type HostingCustomDomainRequiredDnsUpdateDesiredInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDesiredOutput() HostingCustomDomainRequiredDnsUpdateDesiredOutput
+	ToHostingCustomDomainRequiredDnsUpdateDesiredOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDesiredOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayInput `pulumi:"records"`
+}
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredArgs) ToHostingCustomDomainRequiredDnsUpdateDesiredOutput() HostingCustomDomainRequiredDnsUpdateDesiredOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDesiredOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredArgs) ToHostingCustomDomainRequiredDnsUpdateDesiredOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDesiredOutput)
+}
+
+// HostingCustomDomainRequiredDnsUpdateDesiredArrayInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDesiredArray and HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDesiredArrayInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDesiredArray{ HostingCustomDomainRequiredDnsUpdateDesiredArgs{...} }
+type HostingCustomDomainRequiredDnsUpdateDesiredArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutput() HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput
+	ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredArray []HostingCustomDomainRequiredDnsUpdateDesiredInput
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredArray) ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutput() HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredArray) ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredOutput() HostingCustomDomainRequiredDnsUpdateDesiredOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainRequiredDnsUpdateDesiredOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDesired) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Records on the domain
+// Structure is documented below.
+func (o HostingCustomDomainRequiredDnsUpdateDesiredOutput) Records() HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDesired) []HostingCustomDomainRequiredDnsUpdateDesiredRecord {
+		return v.Records
+	}).(HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDesired)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutput() HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainRequiredDnsUpdateDesiredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainRequiredDnsUpdateDesired {
+		return vs[0].([]HostingCustomDomainRequiredDnsUpdateDesired)[vs[1].(int)]
+	}).(HostingCustomDomainRequiredDnsUpdateDesiredOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredRecord struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata *string `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction *string `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type *string `pulumi:"type"`
+}
+
+// HostingCustomDomainRequiredDnsUpdateDesiredRecordInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs and HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDesiredRecordInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs{...}
+type HostingCustomDomainRequiredDnsUpdateDesiredRecordInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutput() HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput
+	ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata pulumi.StringPtrInput `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction pulumi.StringPtrInput `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutput() HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput)
+}
+
+// HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDesiredRecordArray and HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDesiredRecordArray{ HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs{...} }
+type HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput() HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput
+	ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredRecordArray []HostingCustomDomainRequiredDnsUpdateDesiredRecordInput
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredRecordArray) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput() HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDesiredRecordArray) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutput() HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDesiredRecord) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The data of the record. The meaning of the value depends on record type:
+//   - A and AAAA: IP addresses for the domain name.
+//   - CNAME: Another domain to check for records.
+//   - TXT: Arbitrary text strings associated with the domain name. Hosting
+//     uses TXT records to determine a which Firebase Projects have
+//     permission to act on the domain name's behalf.
+//   - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) Rdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDesiredRecord) *string { return v.Rdata }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the a required action for this record.
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) RequiredAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDesiredRecord) *string { return v.RequiredAction }).(pulumi.StringPtrOutput)
+}
+
+// The record's type, which determines what data the record contains.
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDesiredRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDesiredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput() HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainRequiredDnsUpdateDesiredRecord {
+		return vs[0].([]HostingCustomDomainRequiredDnsUpdateDesiredRecord)[vs[1].(int)]
+	}).(HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscovered struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records []HostingCustomDomainRequiredDnsUpdateDiscoveredRecord `pulumi:"records"`
+}
+
+// HostingCustomDomainRequiredDnsUpdateDiscoveredInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDiscoveredArgs and HostingCustomDomainRequiredDnsUpdateDiscoveredOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDiscoveredInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDiscoveredArgs{...}
+type HostingCustomDomainRequiredDnsUpdateDiscoveredInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredOutput
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Records on the domain
+	// Structure is documented below.
+	Records HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayInput `pulumi:"records"`
+}
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredArgs) ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredArgs) ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDiscoveredOutput)
+}
+
+// HostingCustomDomainRequiredDnsUpdateDiscoveredArrayInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDiscoveredArray and HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDiscoveredArrayInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDiscoveredArray{ HostingCustomDomainRequiredDnsUpdateDiscoveredArgs{...} }
+type HostingCustomDomainRequiredDnsUpdateDiscoveredArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredArray []HostingCustomDomainRequiredDnsUpdateDiscoveredInput
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredArray) ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredArray) ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDiscovered) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Records on the domain
+// Structure is documented below.
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredOutput) Records() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDiscovered) []HostingCustomDomainRequiredDnsUpdateDiscoveredRecord {
+		return v.Records
+	}).(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDiscovered)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainRequiredDnsUpdateDiscoveredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainRequiredDnsUpdateDiscovered {
+		return vs[0].([]HostingCustomDomainRequiredDnsUpdateDiscovered)[vs[1].(int)]
+	}).(HostingCustomDomainRequiredDnsUpdateDiscoveredOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecord struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName *string `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata *string `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction *string `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type *string `pulumi:"type"`
+}
+
+// HostingCustomDomainRequiredDnsUpdateDiscoveredRecordInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs and HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDiscoveredRecordInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs{...}
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecordInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs struct {
+	// The domain name the record pertains to, e.g. `foo.bar.com.`.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// The data of the record. The meaning of the value depends on record type:
+	// - A and AAAA: IP addresses for the domain name.
+	// - CNAME: Another domain to check for records.
+	// - TXT: Arbitrary text strings associated with the domain name. Hosting
+	//   uses TXT records to determine a which Firebase Projects have
+	//   permission to act on the domain name's behalf.
+	// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+	Rdata pulumi.StringPtrInput `pulumi:"rdata"`
+	// Indicates the a required action for this record.
+	RequiredAction pulumi.StringPtrInput `pulumi:"requiredAction"`
+	// The record's type, which determines what data the record contains.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput)
+}
+
+// HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayInput is an input type that accepts HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray and HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput values.
+// You can construct a concrete instance of `HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayInput` via:
+//
+//	HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray{ HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs{...} }
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayInput interface {
+	pulumi.Input
+
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput
+	ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray []HostingCustomDomainRequiredDnsUpdateDiscoveredRecordInput
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return i.ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(context.Background())
+}
+
+func (i HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput {
+	return o
+}
+
+// The domain name the record pertains to, e.g. `foo.bar.com.`.
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDiscoveredRecord) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The data of the record. The meaning of the value depends on record type:
+//   - A and AAAA: IP addresses for the domain name.
+//   - CNAME: Another domain to check for records.
+//   - TXT: Arbitrary text strings associated with the domain name. Hosting
+//     uses TXT records to determine a which Firebase Projects have
+//     permission to act on the domain name's behalf.
+//   - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) Rdata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDiscoveredRecord) *string { return v.Rdata }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the a required action for this record.
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) RequiredAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDiscoveredRecord) *string { return v.RequiredAction }).(pulumi.StringPtrOutput)
+}
+
+// The record's type, which determines what data the record contains.
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainRequiredDnsUpdateDiscoveredRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostingCustomDomainRequiredDnsUpdateDiscoveredRecord)(nil)).Elem()
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput() HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput) ToHostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutputWithContext(ctx context.Context) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput {
+	return o
+}
+
+func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput) Index(i pulumi.IntInput) HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingCustomDomainRequiredDnsUpdateDiscoveredRecord {
+		return vs[0].([]HostingCustomDomainRequiredDnsUpdateDiscoveredRecord)[vs[1].(int)]
+	}).(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput)
 }
 
 type HostingVersionConfig struct {
@@ -1067,12 +2901,6 @@ func (i HostingVersionConfigArgs) ToHostingVersionConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigOutput)
 }
 
-func (i HostingVersionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfig] {
-	return pulumix.Output[HostingVersionConfig]{
-		OutputState: i.ToHostingVersionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HostingVersionConfigArgs) ToHostingVersionConfigPtrOutput() HostingVersionConfigPtrOutput {
 	return i.ToHostingVersionConfigPtrOutputWithContext(context.Background())
 }
@@ -1114,12 +2942,6 @@ func (i *hostingVersionConfigPtrType) ToHostingVersionConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigPtrOutput)
 }
 
-func (i *hostingVersionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfig] {
-	return pulumix.Output[*HostingVersionConfig]{
-		OutputState: i.ToHostingVersionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingVersionConfigOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigOutput) ElementType() reflect.Type {
@@ -1142,12 +2964,6 @@ func (o HostingVersionConfigOutput) ToHostingVersionConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostingVersionConfig) *HostingVersionConfig {
 		return &v
 	}).(HostingVersionConfigPtrOutput)
-}
-
-func (o HostingVersionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfig] {
-	return pulumix.Output[HostingVersionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -1176,12 +2992,6 @@ func (o HostingVersionConfigPtrOutput) ToHostingVersionConfigPtrOutput() Hosting
 
 func (o HostingVersionConfigPtrOutput) ToHostingVersionConfigPtrOutputWithContext(ctx context.Context) HostingVersionConfigPtrOutput {
 	return o
-}
-
-func (o HostingVersionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfig] {
-	return pulumix.Output[*HostingVersionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingVersionConfigPtrOutput) Elem() HostingVersionConfigOutput {
@@ -1293,12 +3103,6 @@ func (i HostingVersionConfigRedirectArgs) ToHostingVersionConfigRedirectOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRedirectOutput)
 }
 
-func (i HostingVersionConfigRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRedirect] {
-	return pulumix.Output[HostingVersionConfigRedirect]{
-		OutputState: i.ToHostingVersionConfigRedirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostingVersionConfigRedirectArrayInput is an input type that accepts HostingVersionConfigRedirectArray and HostingVersionConfigRedirectArrayOutput values.
 // You can construct a concrete instance of `HostingVersionConfigRedirectArrayInput` via:
 //
@@ -1324,12 +3128,6 @@ func (i HostingVersionConfigRedirectArray) ToHostingVersionConfigRedirectArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRedirectArrayOutput)
 }
 
-func (i HostingVersionConfigRedirectArray) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRedirect] {
-	return pulumix.Output[[]HostingVersionConfigRedirect]{
-		OutputState: i.ToHostingVersionConfigRedirectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingVersionConfigRedirectOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigRedirectOutput) ElementType() reflect.Type {
@@ -1342,12 +3140,6 @@ func (o HostingVersionConfigRedirectOutput) ToHostingVersionConfigRedirectOutput
 
 func (o HostingVersionConfigRedirectOutput) ToHostingVersionConfigRedirectOutputWithContext(ctx context.Context) HostingVersionConfigRedirectOutput {
 	return o
-}
-
-func (o HostingVersionConfigRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRedirect] {
-	return pulumix.Output[HostingVersionConfigRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-supplied glob to match against the request URL path.
@@ -1400,12 +3192,6 @@ func (o HostingVersionConfigRedirectArrayOutput) ToHostingVersionConfigRedirectA
 
 func (o HostingVersionConfigRedirectArrayOutput) ToHostingVersionConfigRedirectArrayOutputWithContext(ctx context.Context) HostingVersionConfigRedirectArrayOutput {
 	return o
-}
-
-func (o HostingVersionConfigRedirectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRedirect] {
-	return pulumix.Output[[]HostingVersionConfigRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingVersionConfigRedirectArrayOutput) Index(i pulumi.IntInput) HostingVersionConfigRedirectOutput {
@@ -1461,12 +3247,6 @@ func (i HostingVersionConfigRewriteArgs) ToHostingVersionConfigRewriteOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteOutput)
 }
 
-func (i HostingVersionConfigRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewrite] {
-	return pulumix.Output[HostingVersionConfigRewrite]{
-		OutputState: i.ToHostingVersionConfigRewriteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostingVersionConfigRewriteArrayInput is an input type that accepts HostingVersionConfigRewriteArray and HostingVersionConfigRewriteArrayOutput values.
 // You can construct a concrete instance of `HostingVersionConfigRewriteArrayInput` via:
 //
@@ -1492,12 +3272,6 @@ func (i HostingVersionConfigRewriteArray) ToHostingVersionConfigRewriteArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteArrayOutput)
 }
 
-func (i HostingVersionConfigRewriteArray) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRewrite] {
-	return pulumix.Output[[]HostingVersionConfigRewrite]{
-		OutputState: i.ToHostingVersionConfigRewriteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingVersionConfigRewriteOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigRewriteOutput) ElementType() reflect.Type {
@@ -1510,12 +3284,6 @@ func (o HostingVersionConfigRewriteOutput) ToHostingVersionConfigRewriteOutput()
 
 func (o HostingVersionConfigRewriteOutput) ToHostingVersionConfigRewriteOutputWithContext(ctx context.Context) HostingVersionConfigRewriteOutput {
 	return o
-}
-
-func (o HostingVersionConfigRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewrite] {
-	return pulumix.Output[HostingVersionConfigRewrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The function to proxy requests to. Must match the exported function name exactly.
@@ -1551,12 +3319,6 @@ func (o HostingVersionConfigRewriteArrayOutput) ToHostingVersionConfigRewriteArr
 
 func (o HostingVersionConfigRewriteArrayOutput) ToHostingVersionConfigRewriteArrayOutputWithContext(ctx context.Context) HostingVersionConfigRewriteArrayOutput {
 	return o
-}
-
-func (o HostingVersionConfigRewriteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRewrite] {
-	return pulumix.Output[[]HostingVersionConfigRewrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingVersionConfigRewriteArrayOutput) Index(i pulumi.IntInput) HostingVersionConfigRewriteOutput {
@@ -1602,12 +3364,6 @@ func (i HostingVersionConfigRewriteRunArgs) ToHostingVersionConfigRewriteRunOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteRunOutput)
 }
 
-func (i HostingVersionConfigRewriteRunArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewriteRun] {
-	return pulumix.Output[HostingVersionConfigRewriteRun]{
-		OutputState: i.ToHostingVersionConfigRewriteRunOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HostingVersionConfigRewriteRunArgs) ToHostingVersionConfigRewriteRunPtrOutput() HostingVersionConfigRewriteRunPtrOutput {
 	return i.ToHostingVersionConfigRewriteRunPtrOutputWithContext(context.Background())
 }
@@ -1649,12 +3405,6 @@ func (i *hostingVersionConfigRewriteRunPtrType) ToHostingVersionConfigRewriteRun
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteRunPtrOutput)
 }
 
-func (i *hostingVersionConfigRewriteRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfigRewriteRun] {
-	return pulumix.Output[*HostingVersionConfigRewriteRun]{
-		OutputState: i.ToHostingVersionConfigRewriteRunPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingVersionConfigRewriteRunOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigRewriteRunOutput) ElementType() reflect.Type {
@@ -1679,12 +3429,6 @@ func (o HostingVersionConfigRewriteRunOutput) ToHostingVersionConfigRewriteRunPt
 	}).(HostingVersionConfigRewriteRunPtrOutput)
 }
 
-func (o HostingVersionConfigRewriteRunOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewriteRun] {
-	return pulumix.Output[HostingVersionConfigRewriteRun]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 func (o HostingVersionConfigRewriteRunOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostingVersionConfigRewriteRun) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -1707,12 +3451,6 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ToHostingVersionConfigRewriteRu
 
 func (o HostingVersionConfigRewriteRunPtrOutput) ToHostingVersionConfigRewriteRunPtrOutputWithContext(ctx context.Context) HostingVersionConfigRewriteRunPtrOutput {
 	return o
-}
-
-func (o HostingVersionConfigRewriteRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfigRewriteRun] {
-	return pulumix.Output[*HostingVersionConfigRewriteRun]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingVersionConfigRewriteRunPtrOutput) Elem() HostingVersionConfigRewriteRunOutput {
@@ -1756,6 +3494,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataFatalErrorPtrInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataFatalErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataProcessingStateInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataProcessingStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataProcessingStatePtrInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataProcessingStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertInput)(nil)).Elem(), HostingCustomDomainCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertArrayInput)(nil)).Elem(), HostingCustomDomainCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationInput)(nil)).Elem(), HostingCustomDomainCertVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationPtrInput)(nil)).Elem(), HostingCustomDomainCertVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsPtrInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesiredInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDesiredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesiredArrayInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDesiredArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesiredRecordInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDesiredRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDesiredRecordArrayInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDesiredRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscoveredInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDiscoveredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscoveredArrayInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDiscoveredArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscoveredRecordInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayInput)(nil)).Elem(), HostingCustomDomainCertVerificationDnsDiscoveredRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationHttpInput)(nil)).Elem(), HostingCustomDomainCertVerificationHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainCertVerificationHttpPtrInput)(nil)).Elem(), HostingCustomDomainCertVerificationHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainIssueInput)(nil)).Elem(), HostingCustomDomainIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainIssueArrayInput)(nil)).Elem(), HostingCustomDomainIssueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateArrayInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesiredInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDesiredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesiredArrayInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDesiredArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesiredRecordInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDesiredRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDiscoveredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredArrayInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDiscoveredArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredRecordInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigInput)(nil)).Elem(), HostingVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigPtrInput)(nil)).Elem(), HostingVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRedirectInput)(nil)).Elem(), HostingVersionConfigRedirectArgs{})
@@ -1774,6 +3540,34 @@ func init() {
 	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataProcessingStateOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationPtrOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsPtrOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDesiredOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDesiredArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDesiredRecordOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDesiredRecordArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDiscoveredOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDiscoveredArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDiscoveredRecordOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationDnsDiscoveredRecordArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationHttpOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainCertVerificationHttpPtrOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainIssueOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainIssueArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDesiredOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDesiredArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDesiredRecordOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDesiredRecordArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDiscoveredOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDiscoveredArrayOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordOutput{})
+	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigPtrOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRedirectOutput{})

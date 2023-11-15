@@ -29,7 +29,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * TagKey can be imported using any of these accepted formats
+ * TagKey can be imported using any of these accepted formats* `tagKeys/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagKey using one of the formats above. For exampletf import {
+ *
+ *  id = "tagKeys/{{name}}"
+ *
+ *  to = google_tags_tag_key.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:tags/tagKey:TagKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagKey can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}

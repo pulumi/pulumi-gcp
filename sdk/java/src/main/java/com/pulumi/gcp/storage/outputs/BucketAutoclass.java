@@ -5,7 +5,10 @@ package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketAutoclass {
@@ -14,6 +17,11 @@ public final class BucketAutoclass {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+     * 
+     */
+    private @Nullable String terminalStorageClass;
 
     private BucketAutoclass() {}
     /**
@@ -22,6 +30,13 @@ public final class BucketAutoclass {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+     * 
+     */
+    public Optional<String> terminalStorageClass() {
+        return Optional.ofNullable(this.terminalStorageClass);
     }
 
     public static Builder builder() {
@@ -34,10 +49,12 @@ public final class BucketAutoclass {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private @Nullable String terminalStorageClass;
         public Builder() {}
         public Builder(BucketAutoclass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.terminalStorageClass = defaults.terminalStorageClass;
         }
 
         @CustomType.Setter
@@ -45,9 +62,15 @@ public final class BucketAutoclass {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
+        public Builder terminalStorageClass(@Nullable String terminalStorageClass) {
+            this.terminalStorageClass = terminalStorageClass;
+            return this;
+        }
         public BucketAutoclass build() {
             final var o = new BucketAutoclass();
             o.enabled = enabled;
+            o.terminalStorageClass = terminalStorageClass;
             return o;
         }
     }

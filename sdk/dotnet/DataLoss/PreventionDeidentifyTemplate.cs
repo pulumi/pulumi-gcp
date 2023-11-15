@@ -82,7 +82,15 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// ## Import
     /// 
-    /// DeidentifyTemplate can be imported using any of these accepted formats
+    /// DeidentifyTemplate can be imported using any of these accepted formats* `{{parent}}/deidentifyTemplates/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DeidentifyTemplate using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{parent}}/deidentifyTemplates/{{name}}"
+    /// 
+    ///  to = google_data_loss_prevention_deidentify_template.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DeidentifyTemplate can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}

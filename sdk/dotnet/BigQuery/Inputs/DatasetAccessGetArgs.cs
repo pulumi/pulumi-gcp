@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? GroupByEmail { get; set; }
 
         /// <summary>
+        /// Some other type of member that appears in the IAM Policy but isn't a user,
+        /// group, domain, or special group. For example: `allUsers`
+        /// </summary>
+        [Input("iamMember")]
+        public Input<string>? IamMember { get; set; }
+
+        /// <summary>
         /// Describes the rights granted to the user specified by the other
         /// member of the access object. Basic, predefined, and custom roles
         /// are supported. Predefined roles that have equivalent basic roles

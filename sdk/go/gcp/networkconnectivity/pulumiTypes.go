@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -45,12 +44,6 @@ func (i HubRoutingVpcArgs) ToHubRoutingVpcOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HubRoutingVpcOutput)
 }
 
-func (i HubRoutingVpcArgs) ToOutput(ctx context.Context) pulumix.Output[HubRoutingVpc] {
-	return pulumix.Output[HubRoutingVpc]{
-		OutputState: i.ToHubRoutingVpcOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HubRoutingVpcArrayInput is an input type that accepts HubRoutingVpcArray and HubRoutingVpcArrayOutput values.
 // You can construct a concrete instance of `HubRoutingVpcArrayInput` via:
 //
@@ -76,12 +69,6 @@ func (i HubRoutingVpcArray) ToHubRoutingVpcArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HubRoutingVpcArrayOutput)
 }
 
-func (i HubRoutingVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]HubRoutingVpc] {
-	return pulumix.Output[[]HubRoutingVpc]{
-		OutputState: i.ToHubRoutingVpcArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HubRoutingVpcOutput struct{ *pulumi.OutputState }
 
 func (HubRoutingVpcOutput) ElementType() reflect.Type {
@@ -94,12 +81,6 @@ func (o HubRoutingVpcOutput) ToHubRoutingVpcOutput() HubRoutingVpcOutput {
 
 func (o HubRoutingVpcOutput) ToHubRoutingVpcOutputWithContext(ctx context.Context) HubRoutingVpcOutput {
 	return o
-}
-
-func (o HubRoutingVpcOutput) ToOutput(ctx context.Context) pulumix.Output[HubRoutingVpc] {
-	return pulumix.Output[HubRoutingVpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HubRoutingVpcOutput) Uri() pulumi.StringPtrOutput {
@@ -120,16 +101,614 @@ func (o HubRoutingVpcArrayOutput) ToHubRoutingVpcArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o HubRoutingVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HubRoutingVpc] {
-	return pulumix.Output[[]HubRoutingVpc]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HubRoutingVpc {
 		return vs[0].([]HubRoutingVpc)[vs[1].(int)]
 	}).(HubRoutingVpcOutput)
+}
+
+type PolicyBasedRouteFilter struct {
+	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	//
+	// ***
+	DestRange *string `pulumi:"destRange"`
+	// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// Internet protocol versions this policy-based route applies to.
+	// Possible values are: `IPV4`.
+	ProtocolVersion string `pulumi:"protocolVersion"`
+	// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	SrcRange *string `pulumi:"srcRange"`
+}
+
+// PolicyBasedRouteFilterInput is an input type that accepts PolicyBasedRouteFilterArgs and PolicyBasedRouteFilterOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteFilterInput` via:
+//
+//	PolicyBasedRouteFilterArgs{...}
+type PolicyBasedRouteFilterInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteFilterOutput() PolicyBasedRouteFilterOutput
+	ToPolicyBasedRouteFilterOutputWithContext(context.Context) PolicyBasedRouteFilterOutput
+}
+
+type PolicyBasedRouteFilterArgs struct {
+	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	//
+	// ***
+	DestRange pulumi.StringPtrInput `pulumi:"destRange"`
+	// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// Internet protocol versions this policy-based route applies to.
+	// Possible values are: `IPV4`.
+	ProtocolVersion pulumi.StringInput `pulumi:"protocolVersion"`
+	// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+	SrcRange pulumi.StringPtrInput `pulumi:"srcRange"`
+}
+
+func (PolicyBasedRouteFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteFilter)(nil)).Elem()
+}
+
+func (i PolicyBasedRouteFilterArgs) ToPolicyBasedRouteFilterOutput() PolicyBasedRouteFilterOutput {
+	return i.ToPolicyBasedRouteFilterOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteFilterArgs) ToPolicyBasedRouteFilterOutputWithContext(ctx context.Context) PolicyBasedRouteFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteFilterOutput)
+}
+
+func (i PolicyBasedRouteFilterArgs) ToPolicyBasedRouteFilterPtrOutput() PolicyBasedRouteFilterPtrOutput {
+	return i.ToPolicyBasedRouteFilterPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteFilterArgs) ToPolicyBasedRouteFilterPtrOutputWithContext(ctx context.Context) PolicyBasedRouteFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteFilterOutput).ToPolicyBasedRouteFilterPtrOutputWithContext(ctx)
+}
+
+// PolicyBasedRouteFilterPtrInput is an input type that accepts PolicyBasedRouteFilterArgs, PolicyBasedRouteFilterPtr and PolicyBasedRouteFilterPtrOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteFilterPtrInput` via:
+//
+//	        PolicyBasedRouteFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyBasedRouteFilterPtrInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteFilterPtrOutput() PolicyBasedRouteFilterPtrOutput
+	ToPolicyBasedRouteFilterPtrOutputWithContext(context.Context) PolicyBasedRouteFilterPtrOutput
+}
+
+type policyBasedRouteFilterPtrType PolicyBasedRouteFilterArgs
+
+func PolicyBasedRouteFilterPtr(v *PolicyBasedRouteFilterArgs) PolicyBasedRouteFilterPtrInput {
+	return (*policyBasedRouteFilterPtrType)(v)
+}
+
+func (*policyBasedRouteFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteFilter)(nil)).Elem()
+}
+
+func (i *policyBasedRouteFilterPtrType) ToPolicyBasedRouteFilterPtrOutput() PolicyBasedRouteFilterPtrOutput {
+	return i.ToPolicyBasedRouteFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *policyBasedRouteFilterPtrType) ToPolicyBasedRouteFilterPtrOutputWithContext(ctx context.Context) PolicyBasedRouteFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteFilterPtrOutput)
+}
+
+type PolicyBasedRouteFilterOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteFilter)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteFilterOutput) ToPolicyBasedRouteFilterOutput() PolicyBasedRouteFilterOutput {
+	return o
+}
+
+func (o PolicyBasedRouteFilterOutput) ToPolicyBasedRouteFilterOutputWithContext(ctx context.Context) PolicyBasedRouteFilterOutput {
+	return o
+}
+
+func (o PolicyBasedRouteFilterOutput) ToPolicyBasedRouteFilterPtrOutput() PolicyBasedRouteFilterPtrOutput {
+	return o.ToPolicyBasedRouteFilterPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteFilterOutput) ToPolicyBasedRouteFilterPtrOutputWithContext(ctx context.Context) PolicyBasedRouteFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBasedRouteFilter) *PolicyBasedRouteFilter {
+		return &v
+	}).(PolicyBasedRouteFilterPtrOutput)
+}
+
+// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+//
+// ***
+func (o PolicyBasedRouteFilterOutput) DestRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBasedRouteFilter) *string { return v.DestRange }).(pulumi.StringPtrOutput)
+}
+
+// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+func (o PolicyBasedRouteFilterOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBasedRouteFilter) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Internet protocol versions this policy-based route applies to.
+// Possible values are: `IPV4`.
+func (o PolicyBasedRouteFilterOutput) ProtocolVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyBasedRouteFilter) string { return v.ProtocolVersion }).(pulumi.StringOutput)
+}
+
+// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+func (o PolicyBasedRouteFilterOutput) SrcRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBasedRouteFilter) *string { return v.SrcRange }).(pulumi.StringPtrOutput)
+}
+
+type PolicyBasedRouteFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteFilter)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteFilterPtrOutput) ToPolicyBasedRouteFilterPtrOutput() PolicyBasedRouteFilterPtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteFilterPtrOutput) ToPolicyBasedRouteFilterPtrOutputWithContext(ctx context.Context) PolicyBasedRouteFilterPtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteFilterPtrOutput) Elem() PolicyBasedRouteFilterOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteFilter) PolicyBasedRouteFilter {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBasedRouteFilter
+		return ret
+	}).(PolicyBasedRouteFilterOutput)
+}
+
+// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+//
+// ***
+func (o PolicyBasedRouteFilterPtrOutput) DestRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+func (o PolicyBasedRouteFilterPtrOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Internet protocol versions this policy-based route applies to.
+// Possible values are: `IPV4`.
+func (o PolicyBasedRouteFilterPtrOutput) ProtocolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProtocolVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+func (o PolicyBasedRouteFilterPtrOutput) SrcRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcRange
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyBasedRouteInterconnectAttachment struct {
+	// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+	Region string `pulumi:"region"`
+}
+
+// PolicyBasedRouteInterconnectAttachmentInput is an input type that accepts PolicyBasedRouteInterconnectAttachmentArgs and PolicyBasedRouteInterconnectAttachmentOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteInterconnectAttachmentInput` via:
+//
+//	PolicyBasedRouteInterconnectAttachmentArgs{...}
+type PolicyBasedRouteInterconnectAttachmentInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteInterconnectAttachmentOutput() PolicyBasedRouteInterconnectAttachmentOutput
+	ToPolicyBasedRouteInterconnectAttachmentOutputWithContext(context.Context) PolicyBasedRouteInterconnectAttachmentOutput
+}
+
+type PolicyBasedRouteInterconnectAttachmentArgs struct {
+	// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (PolicyBasedRouteInterconnectAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteInterconnectAttachment)(nil)).Elem()
+}
+
+func (i PolicyBasedRouteInterconnectAttachmentArgs) ToPolicyBasedRouteInterconnectAttachmentOutput() PolicyBasedRouteInterconnectAttachmentOutput {
+	return i.ToPolicyBasedRouteInterconnectAttachmentOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteInterconnectAttachmentArgs) ToPolicyBasedRouteInterconnectAttachmentOutputWithContext(ctx context.Context) PolicyBasedRouteInterconnectAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteInterconnectAttachmentOutput)
+}
+
+func (i PolicyBasedRouteInterconnectAttachmentArgs) ToPolicyBasedRouteInterconnectAttachmentPtrOutput() PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return i.ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteInterconnectAttachmentArgs) ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(ctx context.Context) PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteInterconnectAttachmentOutput).ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(ctx)
+}
+
+// PolicyBasedRouteInterconnectAttachmentPtrInput is an input type that accepts PolicyBasedRouteInterconnectAttachmentArgs, PolicyBasedRouteInterconnectAttachmentPtr and PolicyBasedRouteInterconnectAttachmentPtrOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteInterconnectAttachmentPtrInput` via:
+//
+//	        PolicyBasedRouteInterconnectAttachmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyBasedRouteInterconnectAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteInterconnectAttachmentPtrOutput() PolicyBasedRouteInterconnectAttachmentPtrOutput
+	ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(context.Context) PolicyBasedRouteInterconnectAttachmentPtrOutput
+}
+
+type policyBasedRouteInterconnectAttachmentPtrType PolicyBasedRouteInterconnectAttachmentArgs
+
+func PolicyBasedRouteInterconnectAttachmentPtr(v *PolicyBasedRouteInterconnectAttachmentArgs) PolicyBasedRouteInterconnectAttachmentPtrInput {
+	return (*policyBasedRouteInterconnectAttachmentPtrType)(v)
+}
+
+func (*policyBasedRouteInterconnectAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteInterconnectAttachment)(nil)).Elem()
+}
+
+func (i *policyBasedRouteInterconnectAttachmentPtrType) ToPolicyBasedRouteInterconnectAttachmentPtrOutput() PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return i.ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *policyBasedRouteInterconnectAttachmentPtrType) ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(ctx context.Context) PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteInterconnectAttachmentPtrOutput)
+}
+
+type PolicyBasedRouteInterconnectAttachmentOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteInterconnectAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteInterconnectAttachment)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentOutput) ToPolicyBasedRouteInterconnectAttachmentOutput() PolicyBasedRouteInterconnectAttachmentOutput {
+	return o
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentOutput) ToPolicyBasedRouteInterconnectAttachmentOutputWithContext(ctx context.Context) PolicyBasedRouteInterconnectAttachmentOutput {
+	return o
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentOutput) ToPolicyBasedRouteInterconnectAttachmentPtrOutput() PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return o.ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentOutput) ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(ctx context.Context) PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBasedRouteInterconnectAttachment) *PolicyBasedRouteInterconnectAttachment {
+		return &v
+	}).(PolicyBasedRouteInterconnectAttachmentPtrOutput)
+}
+
+// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+func (o PolicyBasedRouteInterconnectAttachmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyBasedRouteInterconnectAttachment) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type PolicyBasedRouteInterconnectAttachmentPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteInterconnectAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteInterconnectAttachment)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentPtrOutput) ToPolicyBasedRouteInterconnectAttachmentPtrOutput() PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentPtrOutput) ToPolicyBasedRouteInterconnectAttachmentPtrOutputWithContext(ctx context.Context) PolicyBasedRouteInterconnectAttachmentPtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteInterconnectAttachmentPtrOutput) Elem() PolicyBasedRouteInterconnectAttachmentOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteInterconnectAttachment) PolicyBasedRouteInterconnectAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBasedRouteInterconnectAttachment
+		return ret
+	}).(PolicyBasedRouteInterconnectAttachmentOutput)
+}
+
+// Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+func (o PolicyBasedRouteInterconnectAttachmentPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteInterconnectAttachment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyBasedRouteVirtualMachine struct {
+	// A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+	Tags []string `pulumi:"tags"`
+}
+
+// PolicyBasedRouteVirtualMachineInput is an input type that accepts PolicyBasedRouteVirtualMachineArgs and PolicyBasedRouteVirtualMachineOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteVirtualMachineInput` via:
+//
+//	PolicyBasedRouteVirtualMachineArgs{...}
+type PolicyBasedRouteVirtualMachineInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteVirtualMachineOutput() PolicyBasedRouteVirtualMachineOutput
+	ToPolicyBasedRouteVirtualMachineOutputWithContext(context.Context) PolicyBasedRouteVirtualMachineOutput
+}
+
+type PolicyBasedRouteVirtualMachineArgs struct {
+	// A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (PolicyBasedRouteVirtualMachineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteVirtualMachine)(nil)).Elem()
+}
+
+func (i PolicyBasedRouteVirtualMachineArgs) ToPolicyBasedRouteVirtualMachineOutput() PolicyBasedRouteVirtualMachineOutput {
+	return i.ToPolicyBasedRouteVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteVirtualMachineArgs) ToPolicyBasedRouteVirtualMachineOutputWithContext(ctx context.Context) PolicyBasedRouteVirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteVirtualMachineOutput)
+}
+
+func (i PolicyBasedRouteVirtualMachineArgs) ToPolicyBasedRouteVirtualMachinePtrOutput() PolicyBasedRouteVirtualMachinePtrOutput {
+	return i.ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteVirtualMachineArgs) ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(ctx context.Context) PolicyBasedRouteVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteVirtualMachineOutput).ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(ctx)
+}
+
+// PolicyBasedRouteVirtualMachinePtrInput is an input type that accepts PolicyBasedRouteVirtualMachineArgs, PolicyBasedRouteVirtualMachinePtr and PolicyBasedRouteVirtualMachinePtrOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteVirtualMachinePtrInput` via:
+//
+//	        PolicyBasedRouteVirtualMachineArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyBasedRouteVirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteVirtualMachinePtrOutput() PolicyBasedRouteVirtualMachinePtrOutput
+	ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(context.Context) PolicyBasedRouteVirtualMachinePtrOutput
+}
+
+type policyBasedRouteVirtualMachinePtrType PolicyBasedRouteVirtualMachineArgs
+
+func PolicyBasedRouteVirtualMachinePtr(v *PolicyBasedRouteVirtualMachineArgs) PolicyBasedRouteVirtualMachinePtrInput {
+	return (*policyBasedRouteVirtualMachinePtrType)(v)
+}
+
+func (*policyBasedRouteVirtualMachinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteVirtualMachine)(nil)).Elem()
+}
+
+func (i *policyBasedRouteVirtualMachinePtrType) ToPolicyBasedRouteVirtualMachinePtrOutput() PolicyBasedRouteVirtualMachinePtrOutput {
+	return i.ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *policyBasedRouteVirtualMachinePtrType) ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(ctx context.Context) PolicyBasedRouteVirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteVirtualMachinePtrOutput)
+}
+
+type PolicyBasedRouteVirtualMachineOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteVirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteVirtualMachine)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteVirtualMachineOutput) ToPolicyBasedRouteVirtualMachineOutput() PolicyBasedRouteVirtualMachineOutput {
+	return o
+}
+
+func (o PolicyBasedRouteVirtualMachineOutput) ToPolicyBasedRouteVirtualMachineOutputWithContext(ctx context.Context) PolicyBasedRouteVirtualMachineOutput {
+	return o
+}
+
+func (o PolicyBasedRouteVirtualMachineOutput) ToPolicyBasedRouteVirtualMachinePtrOutput() PolicyBasedRouteVirtualMachinePtrOutput {
+	return o.ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBasedRouteVirtualMachineOutput) ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(ctx context.Context) PolicyBasedRouteVirtualMachinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBasedRouteVirtualMachine) *PolicyBasedRouteVirtualMachine {
+		return &v
+	}).(PolicyBasedRouteVirtualMachinePtrOutput)
+}
+
+// A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+func (o PolicyBasedRouteVirtualMachineOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyBasedRouteVirtualMachine) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type PolicyBasedRouteVirtualMachinePtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteVirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBasedRouteVirtualMachine)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteVirtualMachinePtrOutput) ToPolicyBasedRouteVirtualMachinePtrOutput() PolicyBasedRouteVirtualMachinePtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteVirtualMachinePtrOutput) ToPolicyBasedRouteVirtualMachinePtrOutputWithContext(ctx context.Context) PolicyBasedRouteVirtualMachinePtrOutput {
+	return o
+}
+
+func (o PolicyBasedRouteVirtualMachinePtrOutput) Elem() PolicyBasedRouteVirtualMachineOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteVirtualMachine) PolicyBasedRouteVirtualMachine {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBasedRouteVirtualMachine
+		return ret
+	}).(PolicyBasedRouteVirtualMachineOutput)
+}
+
+// A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+func (o PolicyBasedRouteVirtualMachinePtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyBasedRouteVirtualMachine) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+type PolicyBasedRouteWarning struct {
+	// (Output)
+	// A warning code, if applicable.
+	Code *string `pulumi:"code"`
+	// (Output)
+	// Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+	Data map[string]string `pulumi:"data"`
+	// (Output)
+	// A human-readable description of the warning code.
+	WarningMessage *string `pulumi:"warningMessage"`
+}
+
+// PolicyBasedRouteWarningInput is an input type that accepts PolicyBasedRouteWarningArgs and PolicyBasedRouteWarningOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteWarningInput` via:
+//
+//	PolicyBasedRouteWarningArgs{...}
+type PolicyBasedRouteWarningInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteWarningOutput() PolicyBasedRouteWarningOutput
+	ToPolicyBasedRouteWarningOutputWithContext(context.Context) PolicyBasedRouteWarningOutput
+}
+
+type PolicyBasedRouteWarningArgs struct {
+	// (Output)
+	// A warning code, if applicable.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// (Output)
+	// Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+	Data pulumi.StringMapInput `pulumi:"data"`
+	// (Output)
+	// A human-readable description of the warning code.
+	WarningMessage pulumi.StringPtrInput `pulumi:"warningMessage"`
+}
+
+func (PolicyBasedRouteWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteWarning)(nil)).Elem()
+}
+
+func (i PolicyBasedRouteWarningArgs) ToPolicyBasedRouteWarningOutput() PolicyBasedRouteWarningOutput {
+	return i.ToPolicyBasedRouteWarningOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteWarningArgs) ToPolicyBasedRouteWarningOutputWithContext(ctx context.Context) PolicyBasedRouteWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteWarningOutput)
+}
+
+// PolicyBasedRouteWarningArrayInput is an input type that accepts PolicyBasedRouteWarningArray and PolicyBasedRouteWarningArrayOutput values.
+// You can construct a concrete instance of `PolicyBasedRouteWarningArrayInput` via:
+//
+//	PolicyBasedRouteWarningArray{ PolicyBasedRouteWarningArgs{...} }
+type PolicyBasedRouteWarningArrayInput interface {
+	pulumi.Input
+
+	ToPolicyBasedRouteWarningArrayOutput() PolicyBasedRouteWarningArrayOutput
+	ToPolicyBasedRouteWarningArrayOutputWithContext(context.Context) PolicyBasedRouteWarningArrayOutput
+}
+
+type PolicyBasedRouteWarningArray []PolicyBasedRouteWarningInput
+
+func (PolicyBasedRouteWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyBasedRouteWarning)(nil)).Elem()
+}
+
+func (i PolicyBasedRouteWarningArray) ToPolicyBasedRouteWarningArrayOutput() PolicyBasedRouteWarningArrayOutput {
+	return i.ToPolicyBasedRouteWarningArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyBasedRouteWarningArray) ToPolicyBasedRouteWarningArrayOutputWithContext(ctx context.Context) PolicyBasedRouteWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBasedRouteWarningArrayOutput)
+}
+
+type PolicyBasedRouteWarningOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBasedRouteWarning)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteWarningOutput) ToPolicyBasedRouteWarningOutput() PolicyBasedRouteWarningOutput {
+	return o
+}
+
+func (o PolicyBasedRouteWarningOutput) ToPolicyBasedRouteWarningOutputWithContext(ctx context.Context) PolicyBasedRouteWarningOutput {
+	return o
+}
+
+// (Output)
+// A warning code, if applicable.
+func (o PolicyBasedRouteWarningOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBasedRouteWarning) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+func (o PolicyBasedRouteWarningOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PolicyBasedRouteWarning) map[string]string { return v.Data }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// A human-readable description of the warning code.
+func (o PolicyBasedRouteWarningOutput) WarningMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBasedRouteWarning) *string { return v.WarningMessage }).(pulumi.StringPtrOutput)
+}
+
+type PolicyBasedRouteWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyBasedRouteWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyBasedRouteWarning)(nil)).Elem()
+}
+
+func (o PolicyBasedRouteWarningArrayOutput) ToPolicyBasedRouteWarningArrayOutput() PolicyBasedRouteWarningArrayOutput {
+	return o
+}
+
+func (o PolicyBasedRouteWarningArrayOutput) ToPolicyBasedRouteWarningArrayOutputWithContext(ctx context.Context) PolicyBasedRouteWarningArrayOutput {
+	return o
+}
+
+func (o PolicyBasedRouteWarningArrayOutput) Index(i pulumi.IntInput) PolicyBasedRouteWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyBasedRouteWarning {
+		return vs[0].([]PolicyBasedRouteWarning)[vs[1].(int)]
+	}).(PolicyBasedRouteWarningOutput)
 }
 
 type ServiceConnectionPolicyPscConfig struct {
@@ -167,12 +746,6 @@ func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfig
 
 func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigOutput)
-}
-
-func (i ServiceConnectionPolicyPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConfig] {
-	return pulumix.Output[ServiceConnectionPolicyPscConfig]{
-		OutputState: i.ToServiceConnectionPolicyPscConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput {
@@ -216,12 +789,6 @@ func (i *serviceConnectionPolicyPscConfigPtrType) ToServiceConnectionPolicyPscCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigPtrOutput)
 }
 
-func (i *serviceConnectionPolicyPscConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConfig] {
-	return pulumix.Output[*ServiceConnectionPolicyPscConfig]{
-		OutputState: i.ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionPolicyPscConfigOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConfigOutput) ElementType() reflect.Type {
@@ -246,12 +813,6 @@ func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConf
 	}).(ServiceConnectionPolicyPscConfigPtrOutput)
 }
 
-func (o ServiceConnectionPolicyPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConfig] {
-	return pulumix.Output[ServiceConnectionPolicyPscConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Max number of PSC connections for this policy.
 func (o ServiceConnectionPolicyPscConfigOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
@@ -274,12 +835,6 @@ func (o ServiceConnectionPolicyPscConfigPtrOutput) ToServiceConnectionPolicyPscC
 
 func (o ServiceConnectionPolicyPscConfigPtrOutput) ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigPtrOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyPscConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConfig] {
-	return pulumix.Output[*ServiceConnectionPolicyPscConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceConnectionPolicyPscConfigPtrOutput) Elem() ServiceConnectionPolicyPscConfigOutput {
@@ -387,12 +942,6 @@ func (i ServiceConnectionPolicyPscConnectionArgs) ToServiceConnectionPolicyPscCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionOutput)
 }
 
-func (i ServiceConnectionPolicyPscConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnection] {
-	return pulumix.Output[ServiceConnectionPolicyPscConnection]{
-		OutputState: i.ToServiceConnectionPolicyPscConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceConnectionPolicyPscConnectionArrayInput is an input type that accepts ServiceConnectionPolicyPscConnectionArray and ServiceConnectionPolicyPscConnectionArrayOutput values.
 // You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionArrayInput` via:
 //
@@ -418,12 +967,6 @@ func (i ServiceConnectionPolicyPscConnectionArray) ToServiceConnectionPolicyPscC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionArrayOutput)
 }
 
-func (i ServiceConnectionPolicyPscConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceConnectionPolicyPscConnection] {
-	return pulumix.Output[[]ServiceConnectionPolicyPscConnection]{
-		OutputState: i.ToServiceConnectionPolicyPscConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionPolicyPscConnectionOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConnectionOutput) ElementType() reflect.Type {
@@ -436,12 +979,6 @@ func (o ServiceConnectionPolicyPscConnectionOutput) ToServiceConnectionPolicyPsc
 
 func (o ServiceConnectionPolicyPscConnectionOutput) ToServiceConnectionPolicyPscConnectionOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyPscConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnection] {
-	return pulumix.Output[ServiceConnectionPolicyPscConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource reference of the consumer address.
@@ -512,12 +1049,6 @@ func (o ServiceConnectionPolicyPscConnectionArrayOutput) ToServiceConnectionPoli
 	return o
 }
 
-func (o ServiceConnectionPolicyPscConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceConnectionPolicyPscConnection] {
-	return pulumix.Output[[]ServiceConnectionPolicyPscConnection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceConnectionPolicyPscConnectionArrayOutput) Index(i pulumi.IntInput) ServiceConnectionPolicyPscConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceConnectionPolicyPscConnection {
 		return vs[0].([]ServiceConnectionPolicyPscConnection)[vs[1].(int)]
@@ -567,12 +1098,6 @@ func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorOutput)
 }
 
-func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionError] {
-	return pulumix.Output[ServiceConnectionPolicyPscConnectionError]{
-		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
 	return i.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(context.Background())
 }
@@ -614,12 +1139,6 @@ func (i *serviceConnectionPolicyPscConnectionErrorPtrType) ToServiceConnectionPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
 }
 
-func (i *serviceConnectionPolicyPscConnectionErrorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionError] {
-	return pulumix.Output[*ServiceConnectionPolicyPscConnectionError]{
-		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionPolicyPscConnectionErrorOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConnectionErrorOutput) ElementType() reflect.Type {
@@ -642,12 +1161,6 @@ func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToServiceConnectionPoli
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConnectionPolicyPscConnectionError) *ServiceConnectionPolicyPscConnectionError {
 		return &v
 	}).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
-}
-
-func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionError] {
-	return pulumix.Output[ServiceConnectionPolicyPscConnectionError]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of [google.rpc.Code][].
@@ -678,12 +1191,6 @@ func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToServiceConnectionP
 
 func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionError] {
-	return pulumix.Output[*ServiceConnectionPolicyPscConnectionError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Elem() ServiceConnectionPolicyPscConnectionErrorOutput {
@@ -768,12 +1275,6 @@ func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoOutput)
 }
 
-func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo] {
-	return pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo]{
-		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
 	return i.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(context.Background())
 }
@@ -815,12 +1316,6 @@ func (i *serviceConnectionPolicyPscConnectionErrorInfoPtrType) ToServiceConnecti
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
 }
 
-func (i *serviceConnectionPolicyPscConnectionErrorInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo] {
-	return pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo]{
-		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConnectionPolicyPscConnectionErrorInfoOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConnectionErrorInfoOutput) ElementType() reflect.Type {
@@ -843,12 +1338,6 @@ func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToServiceConnection
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConnectionPolicyPscConnectionErrorInfo) *ServiceConnectionPolicyPscConnectionErrorInfo {
 		return &v
 	}).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
-}
-
-func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo] {
-	return pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical grouping to which the "reason" belongs.
@@ -878,12 +1367,6 @@ func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToServiceConnect
 
 func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
 	return o
-}
-
-func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo] {
-	return pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Elem() ServiceConnectionPolicyPscConnectionErrorInfoOutput {
@@ -963,12 +1446,6 @@ func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsOutput)
 }
 
-func (i SpokeLinkedInterconnectAttachmentsArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedInterconnectAttachments] {
-	return pulumix.Output[SpokeLinkedInterconnectAttachments]{
-		OutputState: i.ToSpokeLinkedInterconnectAttachmentsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return i.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(context.Background())
 }
@@ -1010,12 +1487,6 @@ func (i *spokeLinkedInterconnectAttachmentsPtrType) ToSpokeLinkedInterconnectAtt
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
-func (i *spokeLinkedInterconnectAttachmentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedInterconnectAttachments] {
-	return pulumix.Output[*SpokeLinkedInterconnectAttachments]{
-		OutputState: i.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpokeLinkedInterconnectAttachmentsOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedInterconnectAttachmentsOutput) ElementType() reflect.Type {
@@ -1040,12 +1511,6 @@ func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttac
 	}).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
-func (o SpokeLinkedInterconnectAttachmentsOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedInterconnectAttachments] {
-	return pulumix.Output[SpokeLinkedInterconnectAttachments]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1068,12 +1533,6 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToSpokeLinkedInterconnectAt
 
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return o
-}
-
-func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedInterconnectAttachments] {
-	return pulumix.Output[*SpokeLinkedInterconnectAttachments]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Elem() SpokeLinkedInterconnectAttachmentsOutput {
@@ -1143,12 +1602,6 @@ func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceIns
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesOutput)
 }
 
-func (i SpokeLinkedRouterApplianceInstancesArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstances] {
-	return pulumix.Output[SpokeLinkedRouterApplianceInstances]{
-		OutputState: i.ToSpokeLinkedRouterApplianceInstancesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput {
 	return i.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(context.Background())
 }
@@ -1190,12 +1643,6 @@ func (i *spokeLinkedRouterApplianceInstancesPtrType) ToSpokeLinkedRouterApplianc
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesPtrOutput)
 }
 
-func (i *spokeLinkedRouterApplianceInstancesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedRouterApplianceInstances] {
-	return pulumix.Output[*SpokeLinkedRouterApplianceInstances]{
-		OutputState: i.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpokeLinkedRouterApplianceInstancesOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedRouterApplianceInstancesOutput) ElementType() reflect.Type {
@@ -1218,12 +1665,6 @@ func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedRouterApplianceInstances) *SpokeLinkedRouterApplianceInstances {
 		return &v
 	}).(SpokeLinkedRouterApplianceInstancesPtrOutput)
-}
-
-func (o SpokeLinkedRouterApplianceInstancesOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstances] {
-	return pulumix.Output[SpokeLinkedRouterApplianceInstances]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of router appliance instances
@@ -1250,12 +1691,6 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToSpokeLinkedRouterApplian
 
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput {
 	return o
-}
-
-func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedRouterApplianceInstances] {
-	return pulumix.Output[*SpokeLinkedRouterApplianceInstances]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterApplianceInstancesOutput {
@@ -1329,12 +1764,6 @@ func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToSpokeLinkedRouterAppl
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesInstanceOutput)
 }
 
-func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance] {
-	return pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance]{
-		OutputState: i.ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpokeLinkedRouterApplianceInstancesInstanceArrayInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArray and SpokeLinkedRouterApplianceInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInstanceArrayInput` via:
 //
@@ -1360,12 +1789,6 @@ func (i SpokeLinkedRouterApplianceInstancesInstanceArray) ToSpokeLinkedRouterApp
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput)
 }
 
-func (i SpokeLinkedRouterApplianceInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance] {
-	return pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance]{
-		OutputState: i.ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpokeLinkedRouterApplianceInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedRouterApplianceInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1378,12 +1801,6 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterAp
 
 func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceOutput {
 	return o
-}
-
-func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance] {
-	return pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address on the VM to use for peering.
@@ -1410,12 +1827,6 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToSpokeLinkedRou
 
 func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
 	return o
-}
-
-func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance] {
-	return pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) Index(i pulumi.IntInput) SpokeLinkedRouterApplianceInstancesInstanceOutput {
@@ -1461,12 +1872,6 @@ func (i SpokeLinkedVpcNetworkArgs) ToSpokeLinkedVpcNetworkOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpcNetworkOutput)
 }
 
-func (i SpokeLinkedVpcNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpcNetwork] {
-	return pulumix.Output[SpokeLinkedVpcNetwork]{
-		OutputState: i.ToSpokeLinkedVpcNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SpokeLinkedVpcNetworkArgs) ToSpokeLinkedVpcNetworkPtrOutput() SpokeLinkedVpcNetworkPtrOutput {
 	return i.ToSpokeLinkedVpcNetworkPtrOutputWithContext(context.Background())
 }
@@ -1508,12 +1913,6 @@ func (i *spokeLinkedVpcNetworkPtrType) ToSpokeLinkedVpcNetworkPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpcNetworkPtrOutput)
 }
 
-func (i *spokeLinkedVpcNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpcNetwork] {
-	return pulumix.Output[*SpokeLinkedVpcNetwork]{
-		OutputState: i.ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpokeLinkedVpcNetworkOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedVpcNetworkOutput) ElementType() reflect.Type {
@@ -1538,12 +1937,6 @@ func (o SpokeLinkedVpcNetworkOutput) ToSpokeLinkedVpcNetworkPtrOutputWithContext
 	}).(SpokeLinkedVpcNetworkPtrOutput)
 }
 
-func (o SpokeLinkedVpcNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpcNetwork] {
-	return pulumix.Output[SpokeLinkedVpcNetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IP ranges encompassing the subnets to be excluded from peering.
 func (o SpokeLinkedVpcNetworkOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedVpcNetwork) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
@@ -1566,12 +1959,6 @@ func (o SpokeLinkedVpcNetworkPtrOutput) ToSpokeLinkedVpcNetworkPtrOutput() Spoke
 
 func (o SpokeLinkedVpcNetworkPtrOutput) ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkPtrOutput {
 	return o
-}
-
-func (o SpokeLinkedVpcNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpcNetwork] {
-	return pulumix.Output[*SpokeLinkedVpcNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpokeLinkedVpcNetworkPtrOutput) Elem() SpokeLinkedVpcNetworkOutput {
@@ -1641,12 +2028,6 @@ func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsOutput)
 }
 
-func (i SpokeLinkedVpnTunnelsArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpnTunnels] {
-	return pulumix.Output[SpokeLinkedVpnTunnels]{
-		OutputState: i.ToSpokeLinkedVpnTunnelsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput {
 	return i.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(context.Background())
 }
@@ -1688,12 +2069,6 @@ func (i *spokeLinkedVpnTunnelsPtrType) ToSpokeLinkedVpnTunnelsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
-func (i *spokeLinkedVpnTunnelsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpnTunnels] {
-	return pulumix.Output[*SpokeLinkedVpnTunnels]{
-		OutputState: i.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpokeLinkedVpnTunnelsOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedVpnTunnelsOutput) ElementType() reflect.Type {
@@ -1718,12 +2093,6 @@ func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext
 	}).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
-func (o SpokeLinkedVpnTunnelsOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpnTunnels] {
-	return pulumix.Output[SpokeLinkedVpnTunnels]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedVpnTunnelsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SpokeLinkedVpnTunnels) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1746,12 +2115,6 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) ToSpokeLinkedVpnTunnelsPtrOutput() Spoke
 
 func (o SpokeLinkedVpnTunnelsPtrOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsPtrOutput {
 	return o
-}
-
-func (o SpokeLinkedVpnTunnelsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpnTunnels] {
-	return pulumix.Output[*SpokeLinkedVpnTunnels]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpokeLinkedVpnTunnelsPtrOutput) Elem() SpokeLinkedVpnTunnelsOutput {
@@ -1787,6 +2150,14 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterPtrInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteInterconnectAttachmentInput)(nil)).Elem(), PolicyBasedRouteInterconnectAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteInterconnectAttachmentPtrInput)(nil)).Elem(), PolicyBasedRouteInterconnectAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteVirtualMachineInput)(nil)).Elem(), PolicyBasedRouteVirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteVirtualMachinePtrInput)(nil)).Elem(), PolicyBasedRouteVirtualMachineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteWarningInput)(nil)).Elem(), PolicyBasedRouteWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteWarningArrayInput)(nil)).Elem(), PolicyBasedRouteWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConfigInput)(nil)).Elem(), ServiceConnectionPolicyPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConfigPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionArgs{})
@@ -1807,6 +2178,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteFilterOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteFilterPtrOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteInterconnectAttachmentOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteInterconnectAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteVirtualMachineOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteVirtualMachinePtrOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteWarningOutput{})
+	pulumi.RegisterOutputType(PolicyBasedRouteWarningArrayOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConfigOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionOutput{})

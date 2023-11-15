@@ -14,6 +14,25 @@ public final class GetMembershipIamPolicyPlainArgs extends com.pulumi.resources.
 
     public static final GetMembershipIamPolicyPlainArgs Empty = new GetMembershipIamPolicyPlainArgs();
 
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    @Import(name="location")
+    private @Nullable String location;
+
+    /**
+     * @return Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    public Optional<String> location() {
+        return Optional.ofNullable(this.location);
+    }
+
     @Import(name="membershipId", required=true)
     private String membershipId;
 
@@ -41,6 +60,7 @@ public final class GetMembershipIamPolicyPlainArgs extends com.pulumi.resources.
     private GetMembershipIamPolicyPlainArgs() {}
 
     private GetMembershipIamPolicyPlainArgs(GetMembershipIamPolicyPlainArgs $) {
+        this.location = $.location;
         this.membershipId = $.membershipId;
         this.project = $.project;
     }
@@ -61,6 +81,19 @@ public final class GetMembershipIamPolicyPlainArgs extends com.pulumi.resources.
 
         public Builder(GetMembershipIamPolicyPlainArgs defaults) {
             $ = new GetMembershipIamPolicyPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable String location) {
+            $.location = location;
+            return this;
         }
 
         public Builder membershipId(String membershipId) {

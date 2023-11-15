@@ -20,6 +20,25 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     public static final SubnetworkArgs Empty = new SubnetworkArgs();
 
     /**
+     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     * 
+     */
+    @Import(name="allowSubnetCidrRoutesOverlap")
+    private @Nullable Output<Boolean> allowSubnetCidrRoutesOverlap;
+
+    /**
+     * @return Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     * 
+     */
+    public Optional<Output<Boolean>> allowSubnetCidrRoutesOverlap() {
+        return Optional.ofNullable(this.allowSubnetCidrRoutesOverlap);
+    }
+
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
      * creation time.
@@ -316,6 +335,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     private SubnetworkArgs() {}
 
     private SubnetworkArgs(SubnetworkArgs $) {
+        this.allowSubnetCidrRoutesOverlap = $.allowSubnetCidrRoutesOverlap;
         this.description = $.description;
         this.ipCidrRange = $.ipCidrRange;
         this.ipv6AccessType = $.ipv6AccessType;
@@ -348,6 +368,31 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SubnetworkArgs defaults) {
             $ = new SubnetworkArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+         * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+         * BGP even if their destinations match existing subnet ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowSubnetCidrRoutesOverlap(@Nullable Output<Boolean> allowSubnetCidrRoutesOverlap) {
+            $.allowSubnetCidrRoutesOverlap = allowSubnetCidrRoutesOverlap;
+            return this;
+        }
+
+        /**
+         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+         * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+         * BGP even if their destinations match existing subnet ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowSubnetCidrRoutesOverlap(Boolean allowSubnetCidrRoutesOverlap) {
+            return allowSubnetCidrRoutesOverlap(Output.of(allowSubnetCidrRoutesOverlap));
         }
 
         /**

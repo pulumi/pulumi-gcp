@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes.
@@ -56,7 +55,17 @@ import (
 //
 // ## Import
 //
-// # CapacityCommitment can be imported using any of these accepted formats
+// CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CapacityCommitment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}"
+//
+//	to = google_bigquery_capacity_commitment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CapacityCommitment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -103,7 +112,7 @@ type CapacityCommitment struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
 	RenewalPlan pulumi.StringPtrOutput `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount pulumi.IntOutput `pulumi:"slotCount"`
@@ -172,7 +181,7 @@ type capacityCommitmentState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount *int `pulumi:"slotCount"`
@@ -206,7 +215,7 @@ type CapacityCommitmentState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.
 	SlotCount pulumi.IntPtrInput
@@ -238,7 +247,7 @@ type capacityCommitmentArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount int `pulumi:"slotCount"`
@@ -265,7 +274,7 @@ type CapacityCommitmentArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.
 	SlotCount pulumi.IntInput
@@ -294,12 +303,6 @@ func (i *CapacityCommitment) ToCapacityCommitmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentOutput)
 }
 
-func (i *CapacityCommitment) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitment] {
-	return pulumix.Output[*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CapacityCommitmentArrayInput is an input type that accepts CapacityCommitmentArray and CapacityCommitmentArrayOutput values.
 // You can construct a concrete instance of `CapacityCommitmentArrayInput` via:
 //
@@ -323,12 +326,6 @@ func (i CapacityCommitmentArray) ToCapacityCommitmentArrayOutput() CapacityCommi
 
 func (i CapacityCommitmentArray) ToCapacityCommitmentArrayOutputWithContext(ctx context.Context) CapacityCommitmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentArrayOutput)
-}
-
-func (i CapacityCommitmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CapacityCommitment] {
-	return pulumix.Output[[]*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CapacityCommitmentMapInput is an input type that accepts CapacityCommitmentMap and CapacityCommitmentMapOutput values.
@@ -356,12 +353,6 @@ func (i CapacityCommitmentMap) ToCapacityCommitmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityCommitmentMapOutput)
 }
 
-func (i CapacityCommitmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CapacityCommitment] {
-	return pulumix.Output[map[string]*CapacityCommitment]{
-		OutputState: i.ToCapacityCommitmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CapacityCommitmentOutput struct{ *pulumi.OutputState }
 
 func (CapacityCommitmentOutput) ElementType() reflect.Type {
@@ -374,12 +365,6 @@ func (o CapacityCommitmentOutput) ToCapacityCommitmentOutput() CapacityCommitmen
 
 func (o CapacityCommitmentOutput) ToCapacityCommitmentOutputWithContext(ctx context.Context) CapacityCommitmentOutput {
 	return o
-}
-
-func (o CapacityCommitmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityCommitment] {
-	return pulumix.Output[*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
@@ -434,7 +419,7 @@ func (o CapacityCommitmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
 func (o CapacityCommitmentOutput) RenewalPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringPtrOutput { return v.RenewalPlan }).(pulumi.StringPtrOutput)
 }
@@ -463,12 +448,6 @@ func (o CapacityCommitmentArrayOutput) ToCapacityCommitmentArrayOutputWithContex
 	return o
 }
 
-func (o CapacityCommitmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CapacityCommitment] {
-	return pulumix.Output[[]*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CapacityCommitmentArrayOutput) Index(i pulumi.IntInput) CapacityCommitmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CapacityCommitment {
 		return vs[0].([]*CapacityCommitment)[vs[1].(int)]
@@ -487,12 +466,6 @@ func (o CapacityCommitmentMapOutput) ToCapacityCommitmentMapOutput() CapacityCom
 
 func (o CapacityCommitmentMapOutput) ToCapacityCommitmentMapOutputWithContext(ctx context.Context) CapacityCommitmentMapOutput {
 	return o
-}
-
-func (o CapacityCommitmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CapacityCommitment] {
-	return pulumix.Output[map[string]*CapacityCommitment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CapacityCommitmentMapOutput) MapIndex(k pulumi.StringInput) CapacityCommitmentOutput {

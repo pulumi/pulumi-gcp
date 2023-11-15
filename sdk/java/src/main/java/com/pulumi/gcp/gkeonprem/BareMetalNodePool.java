@@ -20,6 +20,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Bare Metal Node Pool.
+ * 
  * ## Example Usage
  * ### Gkeonprem Bare Metal Node Pool Basic
  * ```java
@@ -48,7 +50,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePool;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -128,9 +129,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var nodepool_basic = new BareMetalNodePool(&#34;nodepool-basic&#34;, BareMetalNodePoolArgs.builder()        
  *             .bareMetalCluster(default_basic.name())
@@ -141,9 +140,7 @@ import javax.annotation.Nullable;
  *                     .nodeIp(&#34;10.200.0.11&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -175,7 +172,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePool;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -255,9 +251,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var nodepool_full = new BareMetalNodePool(&#34;nodepool-full&#34;, BareMetalNodePoolArgs.builder()        
  *             .displayName(&#34;test-name&#34;)
@@ -277,9 +271,7 @@ import javax.annotation.Nullable;
  *                     .effect(&#34;NO_EXECUTE&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -287,7 +279,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BareMetalNodePool can be imported using any of these accepted formats
+ * BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalNodePool using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}&#34;
+ * 
+ *  to = google_gkeonprem_bare_metal_node_pool.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalNodePool can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}

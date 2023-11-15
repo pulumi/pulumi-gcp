@@ -10,16 +10,25 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
 //
-// Project-level logging sinks can be imported using their URI, e.g.
+// Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging sinks using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project_id}}/sinks/{{name}}"
+//
+//	to = google_logging_project_sink.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+//	$ pulumi import gcp:logging/projectSink:ProjectSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging sinks can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
 //
 // ```
 type ProjectSink struct {
@@ -27,6 +36,11 @@ type ProjectSink struct {
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
+	// A user managed service account that will be used to write
+	// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+	// will automatically be generated.
+	CustomWriterIdentity pulumi.StringPtrOutput `pulumi:"customWriterIdentity"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -53,8 +67,7 @@ type ProjectSink struct {
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
 	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity pulumi.BoolPtrOutput `pulumi:"uniqueWriterIdentity"`
@@ -98,6 +111,11 @@ func GetProjectSink(ctx *pulumi.Context,
 type projectSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// A user managed service account that will be used to write
+	// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+	// will automatically be generated.
+	CustomWriterIdentity *string `pulumi:"customWriterIdentity"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -124,8 +142,7 @@ type projectSinkState struct {
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
 	Project *string `pulumi:"project"`
-	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
 	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity *bool `pulumi:"uniqueWriterIdentity"`
@@ -137,6 +154,11 @@ type projectSinkState struct {
 type ProjectSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
+	// A user managed service account that will be used to write
+	// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+	// will automatically be generated.
+	CustomWriterIdentity pulumi.StringPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -163,8 +185,7 @@ type ProjectSinkState struct {
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
 	Project pulumi.StringPtrInput
-	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
 	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity pulumi.BoolPtrInput
@@ -180,6 +201,11 @@ func (ProjectSinkState) ElementType() reflect.Type {
 type projectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// A user managed service account that will be used to write
+	// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+	// will automatically be generated.
+	CustomWriterIdentity *string `pulumi:"customWriterIdentity"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -206,8 +232,7 @@ type projectSinkArgs struct {
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
 	Project *string `pulumi:"project"`
-	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
 	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity *bool `pulumi:"uniqueWriterIdentity"`
@@ -217,6 +242,11 @@ type projectSinkArgs struct {
 type ProjectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
+	// A user managed service account that will be used to write
+	// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+	// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+	// will automatically be generated.
+	CustomWriterIdentity pulumi.StringPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -243,8 +273,7 @@ type ProjectSinkArgs struct {
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
 	Project pulumi.StringPtrInput
-	// Whether or not to create a unique identity associated with this sink. If `false`
-	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+	// Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
 	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
 	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity pulumi.BoolPtrInput
@@ -273,12 +302,6 @@ func (i *ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkOutput)
 }
 
-func (i *ProjectSink) ToOutput(ctx context.Context) pulumix.Output[*ProjectSink] {
-	return pulumix.Output[*ProjectSink]{
-		OutputState: i.ToProjectSinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectSinkArrayInput is an input type that accepts ProjectSinkArray and ProjectSinkArrayOutput values.
 // You can construct a concrete instance of `ProjectSinkArrayInput` via:
 //
@@ -302,12 +325,6 @@ func (i ProjectSinkArray) ToProjectSinkArrayOutput() ProjectSinkArrayOutput {
 
 func (i ProjectSinkArray) ToProjectSinkArrayOutputWithContext(ctx context.Context) ProjectSinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkArrayOutput)
-}
-
-func (i ProjectSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectSink] {
-	return pulumix.Output[[]*ProjectSink]{
-		OutputState: i.ToProjectSinkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectSinkMapInput is an input type that accepts ProjectSinkMap and ProjectSinkMapOutput values.
@@ -335,12 +352,6 @@ func (i ProjectSinkMap) ToProjectSinkMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkMapOutput)
 }
 
-func (i ProjectSinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectSink] {
-	return pulumix.Output[map[string]*ProjectSink]{
-		OutputState: i.ToProjectSinkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectSinkOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkOutput) ElementType() reflect.Type {
@@ -355,15 +366,17 @@ func (o ProjectSinkOutput) ToProjectSinkOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o ProjectSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSink] {
-	return pulumix.Output[*ProjectSink]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Options that affect sinks exporting data to BigQuery. Structure documented below.
 func (o ProjectSinkOutput) BigqueryOptions() ProjectSinkBigqueryOptionsOutput {
 	return o.ApplyT(func(v *ProjectSink) ProjectSinkBigqueryOptionsOutput { return v.BigqueryOptions }).(ProjectSinkBigqueryOptionsOutput)
+}
+
+// A user managed service account that will be used to write
+// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+// will automatically be generated.
+func (o ProjectSinkOutput) CustomWriterIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectSink) pulumi.StringPtrOutput { return v.CustomWriterIdentity }).(pulumi.StringPtrOutput)
 }
 
 // A description of this sink. The maximum length of the description is 8000 characters.
@@ -413,8 +426,7 @@ func (o ProjectSinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectSink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Whether or not to create a unique identity associated with this sink. If `false`
-// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+// Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
 // then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
 // `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 func (o ProjectSinkOutput) UniqueWriterIdentity() pulumi.BoolPtrOutput {
@@ -441,12 +453,6 @@ func (o ProjectSinkArrayOutput) ToProjectSinkArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProjectSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectSink] {
-	return pulumix.Output[[]*ProjectSink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectSinkArrayOutput) Index(i pulumi.IntInput) ProjectSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectSink {
 		return vs[0].([]*ProjectSink)[vs[1].(int)]
@@ -465,12 +471,6 @@ func (o ProjectSinkMapOutput) ToProjectSinkMapOutput() ProjectSinkMapOutput {
 
 func (o ProjectSinkMapOutput) ToProjectSinkMapOutputWithContext(ctx context.Context) ProjectSinkMapOutput {
 	return o
-}
-
-func (o ProjectSinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectSink] {
-	return pulumix.Output[map[string]*ProjectSink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectSinkMapOutput) MapIndex(k pulumi.StringInput) ProjectSinkOutput {

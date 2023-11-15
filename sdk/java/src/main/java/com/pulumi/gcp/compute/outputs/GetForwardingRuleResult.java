@@ -45,6 +45,7 @@ public final class GetForwardingRuleResult {
     private String pscConnectionId;
     private String pscConnectionStatus;
     private Map<String,String> pulumiLabels;
+    private Boolean recreateClosedPsc;
     private @Nullable String region;
     private String selfLink;
     private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
@@ -137,6 +138,9 @@ public final class GetForwardingRuleResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public Boolean recreateClosedPsc() {
+        return this.recreateClosedPsc;
+    }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -197,6 +201,7 @@ public final class GetForwardingRuleResult {
         private String pscConnectionId;
         private String pscConnectionStatus;
         private Map<String,String> pulumiLabels;
+        private Boolean recreateClosedPsc;
         private @Nullable String region;
         private String selfLink;
         private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
@@ -234,6 +239,7 @@ public final class GetForwardingRuleResult {
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.recreateClosedPsc = defaults.recreateClosedPsc;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.serviceDirectoryRegistrations = defaults.serviceDirectoryRegistrations;
@@ -378,6 +384,11 @@ public final class GetForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder recreateClosedPsc(Boolean recreateClosedPsc) {
+            this.recreateClosedPsc = Objects.requireNonNull(recreateClosedPsc);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
@@ -451,6 +462,7 @@ public final class GetForwardingRuleResult {
             o.pscConnectionId = pscConnectionId;
             o.pscConnectionStatus = pscConnectionStatus;
             o.pulumiLabels = pulumiLabels;
+            o.recreateClosedPsc = recreateClosedPsc;
             o.region = region;
             o.selfLink = selfLink;
             o.serviceDirectoryRegistrations = serviceDirectoryRegistrations;

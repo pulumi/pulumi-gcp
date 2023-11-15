@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
@@ -124,33 +123,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the Healthcare FHIR store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `fhir_store_id`, role, and account e.g.
+//	id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
+//
+//	to = google_healthcare_fhir_store_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `fhir_store_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `fhir_store_id`, role, and account e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
+//	$ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
 //
 // ```
 type FhirStoreIamMember struct {
@@ -342,12 +329,6 @@ func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberOutput)
 }
 
-func (i *FhirStoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamMember] {
-	return pulumix.Output[*FhirStoreIamMember]{
-		OutputState: i.ToFhirStoreIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FhirStoreIamMemberArrayInput is an input type that accepts FhirStoreIamMemberArray and FhirStoreIamMemberArrayOutput values.
 // You can construct a concrete instance of `FhirStoreIamMemberArrayInput` via:
 //
@@ -371,12 +352,6 @@ func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutput() FhirStoreIamM
 
 func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutputWithContext(ctx context.Context) FhirStoreIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberArrayOutput)
-}
-
-func (i FhirStoreIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamMember] {
-	return pulumix.Output[[]*FhirStoreIamMember]{
-		OutputState: i.ToFhirStoreIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FhirStoreIamMemberMapInput is an input type that accepts FhirStoreIamMemberMap and FhirStoreIamMemberMapOutput values.
@@ -404,12 +379,6 @@ func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberMapOutput)
 }
 
-func (i FhirStoreIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamMember] {
-	return pulumix.Output[map[string]*FhirStoreIamMember]{
-		OutputState: i.ToFhirStoreIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberOutput) ElementType() reflect.Type {
@@ -422,12 +391,6 @@ func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutput() FhirStoreIamMembe
 
 func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutputWithContext(ctx context.Context) FhirStoreIamMemberOutput {
 	return o
-}
-
-func (o FhirStoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamMember] {
-	return pulumix.Output[*FhirStoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamMemberOutput) Condition() FhirStoreIamMemberConditionPtrOutput {
@@ -481,12 +444,6 @@ func (o FhirStoreIamMemberArrayOutput) ToFhirStoreIamMemberArrayOutputWithContex
 	return o
 }
 
-func (o FhirStoreIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamMember] {
-	return pulumix.Output[[]*FhirStoreIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreIamMemberArrayOutput) Index(i pulumi.IntInput) FhirStoreIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamMember {
 		return vs[0].([]*FhirStoreIamMember)[vs[1].(int)]
@@ -505,12 +462,6 @@ func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutput() FhirStoreIa
 
 func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutputWithContext(ctx context.Context) FhirStoreIamMemberMapOutput {
 	return o
-}
-
-func (o FhirStoreIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamMember] {
-	return pulumix.Output[map[string]*FhirStoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamMemberOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Secret is a logical secret whose value and versions can be accessed.
@@ -151,7 +150,17 @@ import (
 //
 // ## Import
 //
-// # Secret can be imported using any of these accepted formats
+// Secret can be imported using any of these accepted formats* `projects/{{project}}/secrets/{{secret_id}}` * `{{project}}/{{secret_id}}` * `{{secret_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Secret using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/secrets/{{secret_id}}"
+//
+//	to = google_secret_manager_secret.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:secretmanager/secret:Secret When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Secret can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -196,6 +205,7 @@ type Secret struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Only one of `expireTime` or `ttl` can be provided.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -232,6 +242,7 @@ type Secret struct {
 	Topics SecretTopicArrayOutput `pulumi:"topics"`
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of `ttl` or `expireTime` can be provided.
 	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	// A version alias is a string with a maximum length of 63 characters and can contain
@@ -307,6 +318,7 @@ type secretState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Only one of `expireTime` or `ttl` can be provided.
 	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -343,6 +355,7 @@ type secretState struct {
 	Topics []SecretTopic `pulumi:"topics"`
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of `ttl` or `expireTime` can be provided.
 	Ttl *string `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	// A version alias is a string with a maximum length of 63 characters and can contain
@@ -378,6 +391,7 @@ type SecretState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Only one of `expireTime` or `ttl` can be provided.
 	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -414,6 +428,7 @@ type SecretState struct {
 	Topics SecretTopicArrayInput
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of `ttl` or `expireTime` can be provided.
 	Ttl pulumi.StringPtrInput
 	// Mapping from version alias to version name.
 	// A version alias is a string with a maximum length of 63 characters and can contain
@@ -446,6 +461,7 @@ type secretArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Only one of `expireTime` or `ttl` can be provided.
 	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -476,6 +492,7 @@ type secretArgs struct {
 	Topics []SecretTopic `pulumi:"topics"`
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of `ttl` or `expireTime` can be provided.
 	Ttl *string `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	// A version alias is a string with a maximum length of 63 characters and can contain
@@ -505,6 +522,7 @@ type SecretArgs struct {
 	Annotations pulumi.StringMapInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Only one of `expireTime` or `ttl` can be provided.
 	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -535,6 +553,7 @@ type SecretArgs struct {
 	Topics SecretTopicArrayInput
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of `ttl` or `expireTime` can be provided.
 	Ttl pulumi.StringPtrInput
 	// Mapping from version alias to version name.
 	// A version alias is a string with a maximum length of 63 characters and can contain
@@ -569,12 +588,6 @@ func (i *Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
 }
 
-func (i *Secret) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
-	return pulumix.Output[*Secret]{
-		OutputState: i.ToSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretArrayInput is an input type that accepts SecretArray and SecretArrayOutput values.
 // You can construct a concrete instance of `SecretArrayInput` via:
 //
@@ -598,12 +611,6 @@ func (i SecretArray) ToSecretArrayOutput() SecretArrayOutput {
 
 func (i SecretArray) ToSecretArrayOutputWithContext(ctx context.Context) SecretArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretArrayOutput)
-}
-
-func (i SecretArray) ToOutput(ctx context.Context) pulumix.Output[[]*Secret] {
-	return pulumix.Output[[]*Secret]{
-		OutputState: i.ToSecretArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecretMapInput is an input type that accepts SecretMap and SecretMapOutput values.
@@ -631,12 +638,6 @@ func (i SecretMap) ToSecretMapOutputWithContext(ctx context.Context) SecretMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SecretMapOutput)
 }
 
-func (i SecretMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Secret] {
-	return pulumix.Output[map[string]*Secret]{
-		OutputState: i.ToSecretMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretOutput struct{ *pulumi.OutputState }
 
 func (SecretOutput) ElementType() reflect.Type {
@@ -649,12 +650,6 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
-}
-
-func (o SecretOutput) ToOutput(ctx context.Context) pulumix.Output[*Secret] {
-	return pulumix.Output[*Secret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom metadata about the secret.
@@ -692,6 +687,7 @@ func (o SecretOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 // Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Only one of `expireTime` or `ttl` can be provided.
 func (o SecretOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -755,6 +751,7 @@ func (o SecretOutput) Topics() SecretTopicArrayOutput {
 
 // The TTL for the Secret.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+// Only one of `ttl` or `expireTime` can be provided.
 func (o SecretOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.Ttl }).(pulumi.StringPtrOutput)
 }
@@ -784,12 +781,6 @@ func (o SecretArrayOutput) ToSecretArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Secret] {
-	return pulumix.Output[[]*Secret]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecretArrayOutput) Index(i pulumi.IntInput) SecretOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Secret {
 		return vs[0].([]*Secret)[vs[1].(int)]
@@ -808,12 +799,6 @@ func (o SecretMapOutput) ToSecretMapOutput() SecretMapOutput {
 
 func (o SecretMapOutput) ToSecretMapOutputWithContext(ctx context.Context) SecretMapOutput {
 	return o
-}
-
-func (o SecretMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Secret] {
-	return pulumix.Output[map[string]*Secret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretMapOutput) MapIndex(k pulumi.StringInput) SecretOutput {

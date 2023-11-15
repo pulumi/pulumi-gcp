@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.CxPageArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageState;
+import com.pulumi.gcp.diagflow.outputs.CxPageAdvancedSettings;
 import com.pulumi.gcp.diagflow.outputs.CxPageEntryFulfillment;
 import com.pulumi.gcp.diagflow.outputs.CxPageEventHandler;
 import com.pulumi.gcp.diagflow.outputs.CxPageForm;
@@ -50,6 +51,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxPageFormArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsDtmfSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -547,6 +550,13 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .required(&#34;true&#34;)
  *                     .redact(&#34;true&#34;)
+ *                     .advancedSettings(CxPageFormParameterAdvancedSettingsArgs.builder()
+ *                         .dtmfSettings(CxPageFormParameterAdvancedSettingsDtmfSettingsArgs.builder()
+ *                             .enabled(true)
+ *                             .maxDigits(1)
+ *                             .finishDigit(&#34;#&#34;)
+ *                             .build())
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .transitionRoutes(CxPageTransitionRouteArgs.builder()
@@ -658,6 +668,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .targetPage(myPage2.id())
  *                 .build())
+ *             .advancedSettings(CxPageAdvancedSettingsArgs.builder()
+ *                 .dtmfSettings(CxPageAdvancedSettingsDtmfSettingsArgs.builder()
+ *                     .enabled(true)
+ *                     .maxDigits(1)
+ *                     .finishDigit(&#34;#&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -666,7 +683,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Page can be imported using any of these accepted formats
+ * Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{parent}}/pages/{{name}}&#34;
+ * 
+ *  to = google_dialogflow_cx_page.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
@@ -679,6 +704,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/cxPage:CxPage")
 public class CxPage extends com.pulumi.resources.CustomResource {
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedSettings", refs={CxPageAdvancedSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxPageAdvancedSettings> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxPageAdvancedSettings>> advancedSettings() {
+        return Codegen.optional(this.advancedSettings);
+    }
     /**
      * The human-readable name of the page, unique within the agent.
      * 

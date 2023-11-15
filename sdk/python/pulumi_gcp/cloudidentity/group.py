@@ -145,6 +145,7 @@ class GroupArgs:
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
+                 additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -156,6 +157,8 @@ class _GroupState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]] additional_group_keys: Additional group keys associated with the Group
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The time when the Group was created.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
@@ -181,6 +184,8 @@ class _GroupState:
                groups or customers/{customer_id} for Google Groups.
         :param pulumi.Input[str] update_time: The time when the Group was last updated.
         """
+        if additional_group_keys is not None:
+            pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -199,6 +204,19 @@ class _GroupState:
             pulumi.set(__self__, "parent", parent)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="additionalGroupKeys")
+    def additional_group_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]]:
+        """
+        Additional group keys associated with the Group
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_group_keys")
+
+    @additional_group_keys.setter
+    def additional_group_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]]):
+        pulumi.set(self, "additional_group_keys", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -372,7 +390,15 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Group can be imported using any of these accepted formats:
+        Group can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Group using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_cloud_identity_group.default }
+
+        ```sh
+         $ pulumi import gcp:cloudidentity/group:Group When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Group can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:cloudidentity/group:Group default {{name}}
@@ -443,7 +469,15 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Group can be imported using any of these accepted formats:
+        Group can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Group using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_cloud_identity_group.default }
+
+        ```sh
+         $ pulumi import gcp:cloudidentity/group:Group When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Group can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:cloudidentity/group:Group default {{name}}
@@ -491,6 +525,7 @@ class Group(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["additional_group_keys"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -504,6 +539,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAdditionalGroupKeyArgs']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -520,6 +556,8 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAdditionalGroupKeyArgs']]]] additional_group_keys: Additional group keys associated with the Group
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The time when the Group was created.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group.
                Must not be longer than 4,096 characters.
@@ -549,6 +587,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["additional_group_keys"] = additional_group_keys
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -559,6 +598,15 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         __props__.__dict__["update_time"] = update_time
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="additionalGroupKeys")
+    def additional_group_keys(self) -> pulumi.Output[Sequence['outputs.GroupAdditionalGroupKey']]:
+        """
+        Additional group keys associated with the Group
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_group_keys")
 
     @property
     @pulumi.getter(name="createTime")

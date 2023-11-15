@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a GKE cluster from its name and location.
@@ -96,6 +95,7 @@ type LookupClusterResult struct {
 	EnableShieldedNodes        bool                                  `pulumi:"enableShieldedNodes"`
 	EnableTpu                  bool                                  `pulumi:"enableTpu"`
 	Endpoint                   string                                `pulumi:"endpoint"`
+	Fleets                     []GetClusterFleet                     `pulumi:"fleets"`
 	GatewayApiConfigs          []GetClusterGatewayApiConfig          `pulumi:"gatewayApiConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
@@ -189,12 +189,6 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterRe
 
 func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
 	return o
-}
-
-func (o LookupClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterResult] {
-	return pulumix.Output[LookupClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupClusterResultOutput) AddonsConfigs() GetClusterAddonsConfigArrayOutput {
@@ -303,6 +297,10 @@ func (o LookupClusterResultOutput) EnableTpu() pulumi.BoolOutput {
 
 func (o LookupClusterResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Fleets() GetClusterFleetArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterFleet { return v.Fleets }).(GetClusterFleetArrayOutput)
 }
 
 func (o LookupClusterResultOutput) GatewayApiConfigs() GetClusterGatewayApiConfigArrayOutput {

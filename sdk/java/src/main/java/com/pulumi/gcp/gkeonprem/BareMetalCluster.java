@@ -34,6 +34,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Bare Metal User Cluster.
+ * 
  * ## Example Usage
  * ### Gkeonprem Bare Metal Cluster Basic
  * ```java
@@ -44,22 +46,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkeonprem.BareMetalCluster;
  * import com.pulumi.gcp.gkeonprem.BareMetalClusterArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigIslandModeCidrArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigIslandModeCidrArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,38 +75,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_basic = new BareMetalCluster(&#34;cluster-basic&#34;, BareMetalClusterArgs.builder()        
- *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .bareMetalVersion(&#34;1.12.3&#34;)
- *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
- *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
- *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
- *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
- *                     .build())
- *                 .build())
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
  *                         .labels()
- *                         .operatingSystem(&#34;LINUX&#34;)
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
  *                             .labels()
  *                             .nodeIp(&#34;10.200.0.9&#34;)
  *                             .build())
+ *                         .operatingSystem(&#34;LINUX&#34;)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .loadBalancer(BareMetalClusterLoadBalancerArgs.builder()
- *                 .portConfig(BareMetalClusterLoadBalancerPortConfigArgs.builder()
- *                     .controlPlaneLoadBalancerPort(443)
- *                     .build())
- *                 .vipConfig(BareMetalClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
- *                     .ingressVip(&#34;10.200.0.14&#34;)
- *                     .build())
  *                 .metalLbConfig(BareMetalClusterLoadBalancerMetalLbConfigArgs.builder()
  *                     .addressPools(BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                         .pool(&#34;pool1&#34;)
  *                         .addresses(                        
  *                             &#34;10.200.0.14/32&#34;,
  *                             &#34;10.200.0.15/32&#34;,
@@ -118,20 +104,22 @@ import javax.annotation.Nullable;
  *                             &#34;fd00:1::12/128&#34;)
  *                         .avoidBuggyIps(true)
  *                         .manualAssign(true)
+ *                         .pool(&#34;pool1&#34;)
  *                         .build())
+ *                     .build())
+ *                 .portConfig(BareMetalClusterLoadBalancerPortConfigArgs.builder()
+ *                     .controlPlaneLoadBalancerPort(443)
+ *                     .build())
+ *                 .vipConfig(BareMetalClusterLoadBalancerVipConfigArgs.builder()
+ *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
+ *                     .ingressVip(&#34;10.200.0.14&#34;)
  *                     .build())
  *                 .build())
- *             .storage(BareMetalClusterStorageArgs.builder()
- *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
- *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
- *                         .path(&#34;/mnt/localpv-share&#34;)
- *                         .storageClass(&#34;local-shared&#34;)
- *                         .build())
- *                     .sharedPathPvCount(5)
- *                     .build())
- *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
- *                     .path(&#34;/mnt/localpv-disk&#34;)
- *                     .storageClass(&#34;local-disks&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
+ *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
+ *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
+ *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
  *                     .build())
  *                 .build())
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
@@ -141,9 +129,20 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .storage(BareMetalClusterStorageArgs.builder()
+ *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
+ *                     .path(&#34;/mnt/localpv-disk&#34;)
+ *                     .storageClass(&#34;local-disks&#34;)
+ *                     .build())
+ *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
+ *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
+ *                         .path(&#34;/mnt/localpv-share&#34;)
+ *                         .storageClass(&#34;local-shared&#34;)
+ *                         .build())
+ *                     .sharedPathPvCount(5)
+ *                     .build())
+ *                 .build())
+ *             .build());
  * 
  *     }
  * }
@@ -157,24 +156,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkeonprem.BareMetalCluster;
  * import com.pulumi.gcp.gkeonprem.BareMetalClusterArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigIslandModeCidrArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterBinaryAuthorizationArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerManualLbConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerManualLbConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigIslandModeCidrArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterBinaryAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterUpgradePolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -189,28 +187,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_manuallb = new BareMetalCluster(&#34;cluster-manuallb&#34;, BareMetalClusterArgs.builder()        
- *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .bareMetalVersion(&#34;1.12.3&#34;)
- *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
- *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
- *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
- *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
- *                     .build())
+ *             .binaryAuthorization(BareMetalClusterBinaryAuthorizationArgs.builder()
+ *                 .evaluationMode(&#34;DISABLED&#34;)
  *                 .build())
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
  *                         .labels()
- *                         .operatingSystem(&#34;LINUX&#34;)
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
  *                             .labels()
  *                             .nodeIp(&#34;10.200.0.9&#34;)
  *                             .build())
+ *                         .operatingSystem(&#34;LINUX&#34;)
  *                         .build())
  *                     .build())
  *                 .build())
  *             .loadBalancer(BareMetalClusterLoadBalancerArgs.builder()
+ *                 .manualLbConfig(BareMetalClusterLoadBalancerManualLbConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
  *                 .portConfig(BareMetalClusterLoadBalancerPortConfigArgs.builder()
  *                     .controlPlaneLoadBalancerPort(443)
  *                     .build())
@@ -218,21 +215,12 @@ import javax.annotation.Nullable;
  *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
  *                     .ingressVip(&#34;10.200.0.14&#34;)
  *                     .build())
- *                 .manualLbConfig(BareMetalClusterLoadBalancerManualLbConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
  *                 .build())
- *             .storage(BareMetalClusterStorageArgs.builder()
- *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
- *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
- *                         .path(&#34;/mnt/localpv-share&#34;)
- *                         .storageClass(&#34;local-shared&#34;)
- *                         .build())
- *                     .sharedPathPvCount(5)
- *                     .build())
- *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
- *                     .path(&#34;/mnt/localpv-disk&#34;)
- *                     .storageClass(&#34;local-disks&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
+ *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
+ *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
+ *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
  *                     .build())
  *                 .build())
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
@@ -242,15 +230,23 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .binaryAuthorization(BareMetalClusterBinaryAuthorizationArgs.builder()
- *                 .evaluationMode(&#34;DISABLED&#34;)
+ *             .storage(BareMetalClusterStorageArgs.builder()
+ *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
+ *                     .path(&#34;/mnt/localpv-disk&#34;)
+ *                     .storageClass(&#34;local-disks&#34;)
+ *                     .build())
+ *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
+ *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
+ *                         .path(&#34;/mnt/localpv-share&#34;)
+ *                         .storageClass(&#34;local-shared&#34;)
+ *                         .build())
+ *                     .sharedPathPvCount(5)
+ *                     .build())
  *                 .build())
  *             .upgradePolicy(BareMetalClusterUpgradePolicyArgs.builder()
  *                 .policy(&#34;SERIAL&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -264,33 +260,32 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkeonprem.BareMetalCluster;
  * import com.pulumi.gcp.gkeonprem.BareMetalClusterArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigIslandModeCidrArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigSrIovConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterClusterOperationsArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterMaintenanceConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigIslandModeCidrArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNetworkConfigSrIovConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNodeAccessConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNodeConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterOsEnvironmentConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterProxyArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterProxyArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterClusterOperationsArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterMaintenanceConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNodeConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterNodeAccessConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterOsEnvironmentConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -305,60 +300,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_bgplb = new BareMetalCluster(&#34;cluster-bgplb&#34;, BareMetalClusterArgs.builder()        
- *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
  *             .bareMetalVersion(&#34;1.12.3&#34;)
- *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
- *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
- *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
- *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
- *                     .build())
- *                 .advancedNetworking(true)
- *                 .multipleNetworkInterfacesConfig(BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .srIovConfig(BareMetalClusterNetworkConfigSrIovConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
+ *             .clusterOperations(BareMetalClusterClusterOperationsArgs.builder()
+ *                 .enableApplicationLogs(true)
  *                 .build())
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
- *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
- *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
- *                         .operatingSystem(&#34;LINUX&#34;)
- *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                             .labels()
- *                             .nodeIp(&#34;10.200.0.9&#34;)
- *                             .build())
- *                         .taints(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs.builder()
- *                             .key(&#34;test-key&#34;)
- *                             .value(&#34;test-value&#34;)
- *                             .effect(&#34;NO_EXECUTE&#34;)
- *                             .build())
- *                         .build())
- *                     .build())
  *                 .apiServerArgs(BareMetalClusterControlPlaneApiServerArgArgs.builder()
  *                     .argument(&#34;test-argument&#34;)
  *                     .value(&#34;test-value&#34;)
  *                     .build())
+ *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
+ *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
+ *                         .labels()
+ *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
+ *                             .labels()
+ *                             .nodeIp(&#34;10.200.0.9&#34;)
+ *                             .build())
+ *                         .operatingSystem(&#34;LINUX&#34;)
+ *                         .taints(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs.builder()
+ *                             .effect(&#34;NO_EXECUTE&#34;)
+ *                             .key(&#34;test-key&#34;)
+ *                             .value(&#34;test-value&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .loadBalancer(BareMetalClusterLoadBalancerArgs.builder()
- *                 .portConfig(BareMetalClusterLoadBalancerPortConfigArgs.builder()
- *                     .controlPlaneLoadBalancerPort(443)
- *                     .build())
- *                 .vipConfig(BareMetalClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
- *                     .ingressVip(&#34;10.200.0.14&#34;)
- *                     .build())
  *                 .bgpLbConfig(BareMetalClusterLoadBalancerBgpLbConfigArgs.builder()
- *                     .asn(123456)
- *                     .bgpPeerConfigs(BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs.builder()
- *                         .asn(123457)
- *                         .ipAddress(&#34;10.0.0.1&#34;)
- *                         .controlPlaneNodes(&#34;test-node&#34;)
- *                         .build())
  *                     .addressPools(BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs.builder()
- *                         .pool(&#34;pool1&#34;)
  *                         .addresses(                        
  *                             &#34;10.200.0.14/32&#34;,
  *                             &#34;10.200.0.15/32&#34;,
@@ -369,41 +339,73 @@ import javax.annotation.Nullable;
  *                             &#34;fd00:1::10/128&#34;,
  *                             &#34;fd00:1::11/128&#34;,
  *                             &#34;fd00:1::12/128&#34;)
+ *                         .pool(&#34;pool1&#34;)
+ *                         .build())
+ *                     .asn(123456)
+ *                     .bgpPeerConfigs(BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs.builder()
+ *                         .asn(123457)
+ *                         .controlPlaneNodes(&#34;test-node&#34;)
+ *                         .ipAddress(&#34;10.0.0.1&#34;)
  *                         .build())
  *                     .loadBalancerNodePoolConfig(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs.builder()
  *                         .nodePoolConfig(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs.builder()
+ *                             .kubeletConfig(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs.builder()
+ *                                 .registryBurst(12)
+ *                                 .registryPullQps(10)
+ *                                 .serializeImagePullsDisabled(true)
+ *                                 .build())
  *                             .labels()
- *                             .operatingSystem(&#34;LINUX&#34;)
  *                             .nodeConfigs(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
  *                                 .labels()
  *                                 .nodeIp(&#34;10.200.0.9&#34;)
  *                                 .build())
+ *                             .operatingSystem(&#34;LINUX&#34;)
  *                             .taints(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs.builder()
+ *                                 .effect(&#34;NO_EXECUTE&#34;)
  *                                 .key(&#34;test-key&#34;)
  *                                 .value(&#34;test-value&#34;)
- *                                 .effect(&#34;NO_EXECUTE&#34;)
- *                                 .build())
- *                             .kubeletConfig(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs.builder()
- *                                 .registryPullQps(10)
- *                                 .registryBurst(12)
- *                                 .serializeImagePullsDisabled(true)
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build())
+ *                 .portConfig(BareMetalClusterLoadBalancerPortConfigArgs.builder()
+ *                     .controlPlaneLoadBalancerPort(443)
+ *                     .build())
+ *                 .vipConfig(BareMetalClusterLoadBalancerVipConfigArgs.builder()
+ *                     .controlPlaneVip(&#34;10.200.0.13&#34;)
+ *                     .ingressVip(&#34;10.200.0.14&#34;)
+ *                     .build())
  *                 .build())
- *             .storage(BareMetalClusterStorageArgs.builder()
- *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
- *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
- *                         .path(&#34;/mnt/localpv-share&#34;)
- *                         .storageClass(&#34;local-shared&#34;)
- *                         .build())
- *                     .sharedPathPvCount(5)
+ *             .location(&#34;us-west1&#34;)
+ *             .maintenanceConfig(BareMetalClusterMaintenanceConfigArgs.builder()
+ *                 .maintenanceAddressCidrBlocks(&#34;192.168.0.1/20&#34;)
+ *                 .build())
+ *             .networkConfig(BareMetalClusterNetworkConfigArgs.builder()
+ *                 .advancedNetworking(true)
+ *                 .islandModeCidr(BareMetalClusterNetworkConfigIslandModeCidrArgs.builder()
+ *                     .podAddressCidrBlocks(&#34;10.240.0.0/13&#34;)
+ *                     .serviceAddressCidrBlocks(&#34;172.26.0.0/16&#34;)
  *                     .build())
- *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
- *                     .path(&#34;/mnt/localpv-disk&#34;)
- *                     .storageClass(&#34;local-disks&#34;)
+ *                 .multipleNetworkInterfacesConfig(BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs.builder()
+ *                     .enabled(true)
  *                     .build())
+ *                 .srIovConfig(BareMetalClusterNetworkConfigSrIovConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .nodeAccessConfig(BareMetalClusterNodeAccessConfigArgs.builder()
+ *                 .loginUser(&#34;test@example.com&#34;)
+ *                 .build())
+ *             .nodeConfig(BareMetalClusterNodeConfigArgs.builder()
+ *                 .containerRuntime(&#34;CONTAINERD&#34;)
+ *                 .maxPodsPerNode(10)
+ *                 .build())
+ *             .osEnvironmentConfig(BareMetalClusterOsEnvironmentConfigArgs.builder()
+ *                 .packageRepoExcluded(true)
+ *                 .build())
+ *             .proxy(BareMetalClusterProxyArgs.builder()
+ *                 .noProxies(&#34;127.0.0.1&#34;)
+ *                 .uri(&#34;http://test-domain/test&#34;)
  *                 .build())
  *             .securityConfig(BareMetalClusterSecurityConfigArgs.builder()
  *                 .authorization(BareMetalClusterSecurityConfigAuthorizationArgs.builder()
@@ -412,29 +414,20 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .proxy(BareMetalClusterProxyArgs.builder()
- *                 .uri(&#34;http://test-domain/test&#34;)
- *                 .noProxies(&#34;127.0.0.1&#34;)
+ *             .storage(BareMetalClusterStorageArgs.builder()
+ *                 .lvpNodeMountsConfig(BareMetalClusterStorageLvpNodeMountsConfigArgs.builder()
+ *                     .path(&#34;/mnt/localpv-disk&#34;)
+ *                     .storageClass(&#34;local-disks&#34;)
+ *                     .build())
+ *                 .lvpShareConfig(BareMetalClusterStorageLvpShareConfigArgs.builder()
+ *                     .lvpConfig(BareMetalClusterStorageLvpShareConfigLvpConfigArgs.builder()
+ *                         .path(&#34;/mnt/localpv-share&#34;)
+ *                         .storageClass(&#34;local-shared&#34;)
+ *                         .build())
+ *                     .sharedPathPvCount(5)
+ *                     .build())
  *                 .build())
- *             .clusterOperations(BareMetalClusterClusterOperationsArgs.builder()
- *                 .enableApplicationLogs(true)
- *                 .build())
- *             .maintenanceConfig(BareMetalClusterMaintenanceConfigArgs.builder()
- *                 .maintenanceAddressCidrBlocks(&#34;192.168.0.1/20&#34;)
- *                 .build())
- *             .nodeConfig(BareMetalClusterNodeConfigArgs.builder()
- *                 .maxPodsPerNode(10)
- *                 .containerRuntime(&#34;CONTAINERD&#34;)
- *                 .build())
- *             .nodeAccessConfig(BareMetalClusterNodeAccessConfigArgs.builder()
- *                 .loginUser(&#34;test@example.com&#34;)
- *                 .build())
- *             .osEnvironmentConfig(BareMetalClusterOsEnvironmentConfigArgs.builder()
- *                 .packageRepoExcluded(true)
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -442,7 +435,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BareMetalCluster can be imported using any of these accepted formats
+ * BareMetalCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalCluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}&#34;
+ * 
+ *  to = google_gkeonprem_bare_metal_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalCluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}

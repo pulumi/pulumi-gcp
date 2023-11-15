@@ -17,6 +17,7 @@ __all__ = ['CxPageArgs', 'CxPage']
 class CxPageArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 advanced_settings: Optional[pulumi.Input['CxPageAdvancedSettingsArgs']] = None,
                  entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['CxPageFormArgs']] = None,
@@ -30,6 +31,9 @@ class CxPageArgs:
                
                
                - - -
+        :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -65,6 +69,8 @@ class CxPageArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
@@ -94,6 +100,20 @@ class CxPageArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['CxPageAdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['CxPageAdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
 
     @property
     @pulumi.getter(name="entryFulfillment")
@@ -209,6 +229,7 @@ class CxPageArgs:
 @pulumi.input_type
 class _CxPageState:
     def __init__(__self__, *,
+                 advanced_settings: Optional[pulumi.Input['CxPageAdvancedSettingsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
@@ -220,6 +241,9 @@ class _CxPageState:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxPage resources.
+        :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
                
                
@@ -260,6 +284,8 @@ class _CxPageState:
                TransitionRoutes defined in the transition route groups with only condition specified.
                Structure is documented below.
         """
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
@@ -278,6 +304,20 @@ class _CxPageState:
             pulumi.set(__self__, "transition_route_groups", transition_route_groups)
         if transition_routes is not None:
             pulumi.set(__self__, "transition_routes", transition_routes)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional[pulumi.Input['CxPageAdvancedSettingsArgs']]:
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @advanced_settings.setter
+    def advanced_settings(self, value: Optional[pulumi.Input['CxPageAdvancedSettingsArgs']]):
+        pulumi.set(self, "advanced_settings", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -423,6 +463,7 @@ class CxPage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxPageAdvancedSettingsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]]] = None,
@@ -891,6 +932,13 @@ class CxPage(pulumi.CustomResource):
                     ),
                     required=True,
                     redact=True,
+                    advanced_settings=gcp.diagflow.CxPageFormParameterAdvancedSettingsArgs(
+                        dtmf_settings=gcp.diagflow.CxPageFormParameterAdvancedSettingsDtmfSettingsArgs(
+                            enabled=True,
+                            max_digits=1,
+                            finish_digit="#",
+                        ),
+                    ),
                 )],
             ),
             transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
@@ -992,12 +1040,27 @@ class CxPage(pulumi.CustomResource):
                     )],
                 ),
                 target_page=my_page2.id,
-            )])
+            )],
+            advanced_settings=gcp.diagflow.CxPageAdvancedSettingsArgs(
+                dtmf_settings=gcp.diagflow.CxPageAdvancedSettingsDtmfSettingsArgs(
+                    enabled=True,
+                    max_digits=1,
+                    finish_digit="#",
+                ),
+            ))
         ```
 
         ## Import
 
-        Page can be imported using any of these accepted formats
+        Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/pages/{{name}}"
+
+         to = google_dialogflow_cx_page.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
@@ -1009,6 +1072,9 @@ class CxPage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CxPageAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
                
                
@@ -1512,6 +1578,13 @@ class CxPage(pulumi.CustomResource):
                     ),
                     required=True,
                     redact=True,
+                    advanced_settings=gcp.diagflow.CxPageFormParameterAdvancedSettingsArgs(
+                        dtmf_settings=gcp.diagflow.CxPageFormParameterAdvancedSettingsDtmfSettingsArgs(
+                            enabled=True,
+                            max_digits=1,
+                            finish_digit="#",
+                        ),
+                    ),
                 )],
             ),
             transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
@@ -1613,12 +1686,27 @@ class CxPage(pulumi.CustomResource):
                     )],
                 ),
                 target_page=my_page2.id,
-            )])
+            )],
+            advanced_settings=gcp.diagflow.CxPageAdvancedSettingsArgs(
+                dtmf_settings=gcp.diagflow.CxPageAdvancedSettingsDtmfSettingsArgs(
+                    enabled=True,
+                    max_digits=1,
+                    finish_digit="#",
+                ),
+            ))
         ```
 
         ## Import
 
-        Page can be imported using any of these accepted formats
+        Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/pages/{{name}}"
+
+         to = google_dialogflow_cx_page.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
@@ -1643,6 +1731,7 @@ class CxPage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxPageAdvancedSettingsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]]] = None,
@@ -1660,6 +1749,7 @@ class CxPage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxPageArgs.__new__(CxPageArgs)
 
+            __props__.__dict__["advanced_settings"] = advanced_settings
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1681,6 +1771,7 @@ class CxPage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxPageAdvancedSettingsArgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']]] = None,
             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]]] = None,
@@ -1697,6 +1788,9 @@ class CxPage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CxPageAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
                
                
@@ -1741,6 +1835,7 @@ class CxPage(pulumi.CustomResource):
 
         __props__ = _CxPageState.__new__(_CxPageState)
 
+        __props__.__dict__["advanced_settings"] = advanced_settings
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["entry_fulfillment"] = entry_fulfillment
         __props__.__dict__["event_handlers"] = event_handlers
@@ -1751,6 +1846,16 @@ class CxPage(pulumi.CustomResource):
         __props__.__dict__["transition_route_groups"] = transition_route_groups
         __props__.__dict__["transition_routes"] = transition_routes
         return CxPage(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> pulumi.Output[Optional['outputs.CxPageAdvancedSettings']]:
+        """
+        Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter(name="displayName")

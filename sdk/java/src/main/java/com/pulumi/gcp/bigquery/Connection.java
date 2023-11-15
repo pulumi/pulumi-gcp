@@ -319,6 +319,46 @@ import javax.annotation.Nullable;
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
  *             .cloudSpanner(ConnectionCloudSpannerArgs.builder()
  *                 .database(&#34;projects/project/instances/instance/databases/database&#34;)
+ *                 .databaseRole(&#34;database_role&#34;)
+ *                 .build())
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .description(&#34;a riveting description&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Bigquery Connection Cloudspanner Databoost
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .cloudSpanner(ConnectionCloudSpannerArgs.builder()
+ *                 .database(&#34;projects/project/instances/instance/databases/database&#34;)
+ *                 .maxParallelism(100)
+ *                 .useDataBoost(true)
+ *                 .useParallelism(true)
  *                 .build())
  *             .connectionId(&#34;my-connection&#34;)
  *             .description(&#34;a riveting description&#34;)
@@ -332,7 +372,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Connection can be imported using any of these accepted formats
+ * Connection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}` * `{{project}}/{{location}}/{{connection_id}}` * `{{location}}/{{connection_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Connection using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/connections/{{connection_id}}&#34;
+ * 
+ *  to = google_bigquery_connection.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/connection:Connection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Connection can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}

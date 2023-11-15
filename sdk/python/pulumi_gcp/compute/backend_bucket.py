@@ -496,7 +496,15 @@ class BackendBucket(pulumi.CustomResource):
 
         ## Import
 
-        BackendBucket can be imported using any of these accepted formats
+        BackendBucket can be imported using any of these accepted formats* `projects/{{project}}/global/backendBuckets/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackendBucket using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/backendBuckets/{{name}}"
+
+         to = google_compute_backend_bucket.default }
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackendBucket can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
@@ -622,7 +630,15 @@ class BackendBucket(pulumi.CustomResource):
 
         ## Import
 
-        BackendBucket can be imported using any of these accepted formats
+        BackendBucket can be imported using any of these accepted formats* `projects/{{project}}/global/backendBuckets/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackendBucket using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/backendBuckets/{{name}}"
+
+         to = google_compute_backend_bucket.default }
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackendBucket can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceBootDiskInitializeParams {
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
+    private @Nullable Boolean enableConfidentialCompute;
     /**
      * @return The image from which to initialize this disk. This can be
      * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
@@ -47,6 +53,13 @@ public final class InstanceBootDiskInitializeParams {
     private @Nullable String type;
 
     private InstanceBootDiskInitializeParams() {}
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
+    public Optional<Boolean> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
+    }
     /**
      * @return The image from which to initialize this disk. This can be
      * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
@@ -98,6 +111,7 @@ public final class InstanceBootDiskInitializeParams {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enableConfidentialCompute;
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
         private @Nullable Map<String,Object> resourceManagerTags;
@@ -106,6 +120,7 @@ public final class InstanceBootDiskInitializeParams {
         public Builder() {}
         public Builder(InstanceBootDiskInitializeParams defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
@@ -113,6 +128,11 @@ public final class InstanceBootDiskInitializeParams {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
+            this.enableConfidentialCompute = enableConfidentialCompute;
+            return this;
+        }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
@@ -140,6 +160,7 @@ public final class InstanceBootDiskInitializeParams {
         }
         public InstanceBootDiskInitializeParams build() {
             final var o = new InstanceBootDiskInitializeParams();
+            o.enableConfidentialCompute = enableConfidentialCompute;
             o.image = image;
             o.labels = labels;
             o.resourceManagerTags = resourceManagerTags;

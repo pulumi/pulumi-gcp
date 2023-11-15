@@ -13,11 +13,16 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodeConfigLinuxNodeConfigResult
     {
+        public readonly string CgroupMode;
         public readonly ImmutableDictionary<string, string> Sysctls;
 
         [OutputConstructor]
-        private GetClusterNodeConfigLinuxNodeConfigResult(ImmutableDictionary<string, string> sysctls)
+        private GetClusterNodeConfigLinuxNodeConfigResult(
+            string cgroupMode,
+
+            ImmutableDictionary<string, string> sysctls)
         {
+            CgroupMode = cgroupMode;
             Sysctls = sysctls;
         }
     }

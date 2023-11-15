@@ -22,7 +22,7 @@ class GetSubnetworkResult:
     """
     A collection of values returned by getSubnetwork.
     """
-    def __init__(__self__, description=None, gateway_address=None, id=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
+    def __init__(__self__, description=None, gateway_address=None, id=None, internal_ipv6_prefix=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -32,6 +32,9 @@ class GetSubnetworkResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if internal_ipv6_prefix and not isinstance(internal_ipv6_prefix, str):
+            raise TypeError("Expected argument 'internal_ipv6_prefix' to be a str")
+        pulumi.set(__self__, "internal_ipv6_prefix", internal_ipv6_prefix)
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
@@ -80,6 +83,14 @@ class GetSubnetworkResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internalIpv6Prefix")
+    def internal_ipv6_prefix(self) -> str:
+        """
+        The internal IPv6 address range that is assigned to this subnetwork.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix")
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -148,6 +159,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             description=self.description,
             gateway_address=self.gateway_address,
             id=self.id,
+            internal_ipv6_prefix=self.internal_ipv6_prefix,
             ip_cidr_range=self.ip_cidr_range,
             name=self.name,
             network=self.network,
@@ -198,6 +210,7 @@ def get_subnetwork(name: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         gateway_address=pulumi.get(__ret__, 'gateway_address'),
         id=pulumi.get(__ret__, 'id'),
+        internal_ipv6_prefix=pulumi.get(__ret__, 'internal_ipv6_prefix'),
         ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),

@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Redis Instance Basic
+ * 
  * ```java
  * package generated_program;
  * 
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cache = new Instance(&#34;cache&#34;, InstanceArgs.builder()        
+ *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .memorySizeGb(1)
  *             .build());
  * 
@@ -121,6 +123,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Redis Instance Full With Persistence Config
+ * 
  * ```java
  * package generated_program;
  * 
@@ -145,6 +148,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var cache_persis = new Instance(&#34;cache-persis&#34;, InstanceArgs.builder()        
  *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .locationId(&#34;us-central1-a&#34;)
  *             .memorySizeGb(1)
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
@@ -326,7 +330,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance can be imported using any of these accepted formats
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{region}}/instances/{{name}}&#34;
+ * 
+ *  to = google_redis_instance.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:redis/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

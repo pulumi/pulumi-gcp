@@ -315,7 +315,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// RouterNat can be imported using any of these accepted formats
+    /// RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
+    /// 
+    ///  to = google_compute_router_nat.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}

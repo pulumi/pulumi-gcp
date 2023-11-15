@@ -75,7 +75,15 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Import
     /// 
-    /// AccessPolicy can be imported using any of these accepted formats:
+    /// AccessPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AccessPolicy using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_access_context_manager_access_policy.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AccessPolicy can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}

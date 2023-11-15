@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An `Environment group` in Apigee.
@@ -93,7 +92,17 @@ import (
 //
 // ## Import
 //
-// # Envgroup can be imported using any of these accepted formats
+// Envgroup can be imported using any of these accepted formats* `{{org_id}}/envgroups/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Envgroup using one of the formats above. For exampletf import {
+//
+//	id = "{{org_id}}/envgroups/{{name}}"
+//
+//	to = google_apigee_envgroup.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/envGroup:EnvGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Envgroup can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -228,12 +237,6 @@ func (i *EnvGroup) ToEnvGroupOutputWithContext(ctx context.Context) EnvGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupOutput)
 }
 
-func (i *EnvGroup) ToOutput(ctx context.Context) pulumix.Output[*EnvGroup] {
-	return pulumix.Output[*EnvGroup]{
-		OutputState: i.ToEnvGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvGroupArrayInput is an input type that accepts EnvGroupArray and EnvGroupArrayOutput values.
 // You can construct a concrete instance of `EnvGroupArrayInput` via:
 //
@@ -257,12 +260,6 @@ func (i EnvGroupArray) ToEnvGroupArrayOutput() EnvGroupArrayOutput {
 
 func (i EnvGroupArray) ToEnvGroupArrayOutputWithContext(ctx context.Context) EnvGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupArrayOutput)
-}
-
-func (i EnvGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvGroup] {
-	return pulumix.Output[[]*EnvGroup]{
-		OutputState: i.ToEnvGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvGroupMapInput is an input type that accepts EnvGroupMap and EnvGroupMapOutput values.
@@ -290,12 +287,6 @@ func (i EnvGroupMap) ToEnvGroupMapOutputWithContext(ctx context.Context) EnvGrou
 	return pulumi.ToOutputWithContext(ctx, i).(EnvGroupMapOutput)
 }
 
-func (i EnvGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvGroup] {
-	return pulumix.Output[map[string]*EnvGroup]{
-		OutputState: i.ToEnvGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvGroupOutput struct{ *pulumi.OutputState }
 
 func (EnvGroupOutput) ElementType() reflect.Type {
@@ -308,12 +299,6 @@ func (o EnvGroupOutput) ToEnvGroupOutput() EnvGroupOutput {
 
 func (o EnvGroupOutput) ToEnvGroupOutputWithContext(ctx context.Context) EnvGroupOutput {
 	return o
-}
-
-func (o EnvGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvGroup] {
-	return pulumix.Output[*EnvGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hostnames of the environment group.
@@ -348,12 +333,6 @@ func (o EnvGroupArrayOutput) ToEnvGroupArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o EnvGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvGroup] {
-	return pulumix.Output[[]*EnvGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvGroupArrayOutput) Index(i pulumi.IntInput) EnvGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvGroup {
 		return vs[0].([]*EnvGroup)[vs[1].(int)]
@@ -372,12 +351,6 @@ func (o EnvGroupMapOutput) ToEnvGroupMapOutput() EnvGroupMapOutput {
 
 func (o EnvGroupMapOutput) ToEnvGroupMapOutputWithContext(ctx context.Context) EnvGroupMapOutput {
 	return o
-}
-
-func (o EnvGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvGroup] {
-	return pulumix.Output[map[string]*EnvGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvGroupMapOutput) MapIndex(k pulumi.StringInput) EnvGroupOutput {

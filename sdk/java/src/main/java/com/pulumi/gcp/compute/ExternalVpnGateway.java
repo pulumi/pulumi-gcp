@@ -159,7 +159,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ExternalVpnGateway can be imported using any of these accepted formats
+ * ExternalVpnGateway can be imported using any of these accepted formats* `projects/{{project}}/global/externalVpnGateways/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ExternalVpnGateway using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/externalVpnGateways/{{name}}&#34;
+ * 
+ *  to = google_compute_external_vpn_gateway.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ExternalVpnGateway can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A connectivity test are a static analysis of your resource configurations
@@ -178,7 +177,17 @@ import (
 //
 // ## Import
 //
-// # ConnectivityTest can be imported using any of these accepted formats
+// ConnectivityTest can be imported using any of these accepted formats* `projects/{{project}}/locations/global/connectivityTests/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectivityTest using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/global/connectivityTests/{{name}}"
+//
+//	to = google_network_management_connectivity_test.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectivityTest can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -572,12 +581,6 @@ func (i *ConnectivityTest) ToConnectivityTestOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestOutput)
 }
 
-func (i *ConnectivityTest) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTest] {
-	return pulumix.Output[*ConnectivityTest]{
-		OutputState: i.ToConnectivityTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectivityTestArrayInput is an input type that accepts ConnectivityTestArray and ConnectivityTestArrayOutput values.
 // You can construct a concrete instance of `ConnectivityTestArrayInput` via:
 //
@@ -601,12 +604,6 @@ func (i ConnectivityTestArray) ToConnectivityTestArrayOutput() ConnectivityTestA
 
 func (i ConnectivityTestArray) ToConnectivityTestArrayOutputWithContext(ctx context.Context) ConnectivityTestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestArrayOutput)
-}
-
-func (i ConnectivityTestArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectivityTest] {
-	return pulumix.Output[[]*ConnectivityTest]{
-		OutputState: i.ToConnectivityTestArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectivityTestMapInput is an input type that accepts ConnectivityTestMap and ConnectivityTestMapOutput values.
@@ -634,12 +631,6 @@ func (i ConnectivityTestMap) ToConnectivityTestMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestMapOutput)
 }
 
-func (i ConnectivityTestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectivityTest] {
-	return pulumix.Output[map[string]*ConnectivityTest]{
-		OutputState: i.ToConnectivityTestMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectivityTestOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestOutput) ElementType() reflect.Type {
@@ -652,12 +643,6 @@ func (o ConnectivityTestOutput) ToConnectivityTestOutput() ConnectivityTestOutpu
 
 func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.Context) ConnectivityTestOutput {
 	return o
-}
-
-func (o ConnectivityTestOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTest] {
-	return pulumix.Output[*ConnectivityTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user-supplied description of the Connectivity Test.
@@ -764,12 +749,6 @@ func (o ConnectivityTestArrayOutput) ToConnectivityTestArrayOutputWithContext(ct
 	return o
 }
 
-func (o ConnectivityTestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectivityTest] {
-	return pulumix.Output[[]*ConnectivityTest]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectivityTestArrayOutput) Index(i pulumi.IntInput) ConnectivityTestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectivityTest {
 		return vs[0].([]*ConnectivityTest)[vs[1].(int)]
@@ -788,12 +767,6 @@ func (o ConnectivityTestMapOutput) ToConnectivityTestMapOutput() ConnectivityTes
 
 func (o ConnectivityTestMapOutput) ToConnectivityTestMapOutputWithContext(ctx context.Context) ConnectivityTestMapOutput {
 	return o
-}
-
-func (o ConnectivityTestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectivityTest] {
-	return pulumix.Output[map[string]*ConnectivityTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectivityTestMapOutput) MapIndex(k pulumi.StringInput) ConnectivityTestOutput {

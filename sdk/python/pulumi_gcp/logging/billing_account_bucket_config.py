@@ -21,6 +21,7 @@ class BillingAccountBucketConfigArgs:
                  location: pulumi.Input[str],
                  cmek_settings: Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BillingAccountBucketConfig resource.
@@ -31,6 +32,7 @@ class BillingAccountBucketConfigArgs:
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
         pulumi.set(__self__, "billing_account", billing_account)
@@ -40,6 +42,8 @@ class BillingAccountBucketConfigArgs:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if index_configs is not None:
+            pulumi.set(__self__, "index_configs", index_configs)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
@@ -106,6 +110,18 @@ class BillingAccountBucketConfigArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
+
+    @index_configs.setter
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]]]):
+        pulumi.set(self, "index_configs", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -125,6 +141,7 @@ class _BillingAccountBucketConfigState:
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -137,6 +154,7 @@ class _BillingAccountBucketConfigState:
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
@@ -150,6 +168,8 @@ class _BillingAccountBucketConfigState:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if index_configs is not None:
+            pulumi.set(__self__, "index_configs", index_configs)
         if lifecycle_state is not None:
             pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if location is not None:
@@ -210,6 +230,18 @@ class _BillingAccountBucketConfigState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
+
+    @index_configs.setter
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]]]):
+        pulumi.set(self, "index_configs", value)
+
+    @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -267,6 +299,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -277,23 +310,17 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
-        basic = gcp.logging.BillingAccountBucketConfig("basic",
-            billing_account=default.billing_account,
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        ```
-
         ## Import
 
-        This resource can be imported using the following format:
+        This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+
+         id = "billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}"
+
+         to = google_logging_billing_account_bucket_config.default }
+
+        ```sh
+         $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -307,6 +334,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
@@ -323,23 +351,17 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
-        basic = gcp.logging.BillingAccountBucketConfig("basic",
-            billing_account=default.billing_account,
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        ```
-
         ## Import
 
-        This resource can be imported using the following format:
+        This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+
+         id = "billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}"
+
+         to = google_logging_billing_account_bucket_config.default }
+
+        ```sh
+         $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -364,6 +386,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -383,6 +406,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             __props__.__dict__["bucket_id"] = bucket_id
             __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
+            __props__.__dict__["index_configs"] = index_configs
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -403,6 +427,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             bucket_id: Optional[pulumi.Input[str]] = None,
             cmek_settings: Optional[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -420,6 +445,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
@@ -433,6 +459,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         __props__.__dict__["bucket_id"] = bucket_id
         __props__.__dict__["cmek_settings"] = cmek_settings
         __props__.__dict__["description"] = description
+        __props__.__dict__["index_configs"] = index_configs
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -472,6 +499,14 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         Describes this bucket.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> pulumi.Output[Optional[Sequence['outputs.BillingAccountBucketConfigIndexConfig']]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
 
     @property
     @pulumi.getter(name="lifecycleState")

@@ -390,18 +390,26 @@ class InstanceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
+        Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g. * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}` * `{{project_id}}/{{zone}}/{{instance_group_id}}` * `{{zone}}/{{instance_group_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance groups using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}"
+
+         to = google_compute_instance_group.default }
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance groups can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{zone}}/{{instance_group_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -476,18 +484,26 @@ class InstanceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
+        Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g. * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}` * `{{project_id}}/{{zone}}/{{instance_group_id}}` * `{{zone}}/{{instance_group_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance groups using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}"
+
+         to = google_compute_instance_group.default }
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance groups can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{zone}}/{{instance_group_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
         ```
 
         :param str resource_name: The name of the resource.

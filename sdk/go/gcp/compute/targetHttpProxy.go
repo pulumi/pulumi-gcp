@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a TargetHttpProxy resource, which is used by one or more global
@@ -60,7 +59,17 @@ import (
 //
 // ## Import
 //
-// # TargetHttpProxy can be imported using any of these accepted formats
+// TargetHttpProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpProxy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/targetHttpProxies/{{name}}"
+//
+//	to = google_compute_target_http_proxy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpProxy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -314,12 +323,6 @@ func (i *TargetHttpProxy) ToTargetHttpProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyOutput)
 }
 
-func (i *TargetHttpProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpProxy] {
-	return pulumix.Output[*TargetHttpProxy]{
-		OutputState: i.ToTargetHttpProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetHttpProxyArrayInput is an input type that accepts TargetHttpProxyArray and TargetHttpProxyArrayOutput values.
 // You can construct a concrete instance of `TargetHttpProxyArrayInput` via:
 //
@@ -343,12 +346,6 @@ func (i TargetHttpProxyArray) ToTargetHttpProxyArrayOutput() TargetHttpProxyArra
 
 func (i TargetHttpProxyArray) ToTargetHttpProxyArrayOutputWithContext(ctx context.Context) TargetHttpProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyArrayOutput)
-}
-
-func (i TargetHttpProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetHttpProxy] {
-	return pulumix.Output[[]*TargetHttpProxy]{
-		OutputState: i.ToTargetHttpProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetHttpProxyMapInput is an input type that accepts TargetHttpProxyMap and TargetHttpProxyMapOutput values.
@@ -376,12 +373,6 @@ func (i TargetHttpProxyMap) ToTargetHttpProxyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyMapOutput)
 }
 
-func (i TargetHttpProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetHttpProxy] {
-	return pulumix.Output[map[string]*TargetHttpProxy]{
-		OutputState: i.ToTargetHttpProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetHttpProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpProxyOutput) ElementType() reflect.Type {
@@ -394,12 +385,6 @@ func (o TargetHttpProxyOutput) ToTargetHttpProxyOutput() TargetHttpProxyOutput {
 
 func (o TargetHttpProxyOutput) ToTargetHttpProxyOutputWithContext(ctx context.Context) TargetHttpProxyOutput {
 	return o
-}
-
-func (o TargetHttpProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpProxy] {
-	return pulumix.Output[*TargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -477,12 +462,6 @@ func (o TargetHttpProxyArrayOutput) ToTargetHttpProxyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o TargetHttpProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetHttpProxy] {
-	return pulumix.Output[[]*TargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetHttpProxyArrayOutput) Index(i pulumi.IntInput) TargetHttpProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetHttpProxy {
 		return vs[0].([]*TargetHttpProxy)[vs[1].(int)]
@@ -501,12 +480,6 @@ func (o TargetHttpProxyMapOutput) ToTargetHttpProxyMapOutput() TargetHttpProxyMa
 
 func (o TargetHttpProxyMapOutput) ToTargetHttpProxyMapOutputWithContext(ctx context.Context) TargetHttpProxyMapOutput {
 	return o
-}
-
-func (o TargetHttpProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetHttpProxy] {
-	return pulumix.Output[map[string]*TargetHttpProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetHttpProxyMapOutput) MapIndex(k pulumi.StringInput) TargetHttpProxyOutput {

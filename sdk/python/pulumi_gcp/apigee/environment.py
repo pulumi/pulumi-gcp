@@ -22,7 +22,8 @@ class EnvironmentArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None):
+                 node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
@@ -46,6 +47,11 @@ class EnvironmentArgs:
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
+        :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
+               limited by capability and capacity. Refer to Apigee's public documentation
+               to understand about each of these types in details.
+               An Apigee org can support heterogeneous Environments.
+               Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
         """
         pulumi.set(__self__, "org_id", org_id)
         if api_proxy_type is not None:
@@ -60,6 +66,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "name", name)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="orgId")
@@ -159,6 +167,22 @@ class EnvironmentArgs:
     def node_config(self, value: Optional[pulumi.Input['EnvironmentNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Types that can be selected for an Environment. Each of the types are
+        limited by capability and capacity. Refer to Apigee's public documentation
+        to understand about each of these types in details.
+        An Apigee org can support heterogeneous Environments.
+        Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _EnvironmentState:
@@ -169,7 +193,8 @@ class _EnvironmentState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
-                 org_id: Optional[pulumi.Input[str]] = None):
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
@@ -193,6 +218,11 @@ class _EnvironmentState:
                
                
                - - -
+        :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
+               limited by capability and capacity. Refer to Apigee's public documentation
+               to understand about each of these types in details.
+               An Apigee org can support heterogeneous Environments.
+               Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
         """
         if api_proxy_type is not None:
             pulumi.set(__self__, "api_proxy_type", api_proxy_type)
@@ -208,6 +238,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "node_config", node_config)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="apiProxyType")
@@ -307,6 +339,22 @@ class _EnvironmentState:
     def org_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "org_id", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Types that can be selected for an Environment. Each of the types are
+        limited by capability and capacity. Refer to Apigee's public documentation
+        to understand about each of these types in details.
+        An Apigee org can support heterogeneous Environments.
+        Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 class Environment(pulumi.CustomResource):
     @overload
@@ -320,6 +368,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         An `Environment` in Apigee.
@@ -361,7 +410,15 @@ class Environment(pulumi.CustomResource):
 
         ## Import
 
-        Environment can be imported using any of these accepted formats
+        Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+
+         id = "{{org_id}}/environments/{{name}}"
+
+         to = google_apigee_environment.default }
+
+        ```sh
+         $ pulumi import gcp:apigee/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
@@ -394,6 +451,11 @@ class Environment(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
+               limited by capability and capacity. Refer to Apigee's public documentation
+               to understand about each of these types in details.
+               An Apigee org can support heterogeneous Environments.
+               Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
         """
         ...
     @overload
@@ -441,7 +503,15 @@ class Environment(pulumi.CustomResource):
 
         ## Import
 
-        Environment can be imported using any of these accepted formats
+        Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+
+         id = "{{org_id}}/environments/{{name}}"
+
+         to = google_apigee_environment.default }
+
+        ```sh
+         $ pulumi import gcp:apigee/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
@@ -473,6 +543,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,6 +562,7 @@ class Environment(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["type"] = type
         super(Environment, __self__).__init__(
             'gcp:apigee/environment:Environment',
             resource_name,
@@ -507,7 +579,8 @@ class Environment(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentNodeConfigArgs']]] = None,
-            org_id: Optional[pulumi.Input[str]] = None) -> 'Environment':
+            org_id: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -536,6 +609,11 @@ class Environment(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
+               limited by capability and capacity. Refer to Apigee's public documentation
+               to understand about each of these types in details.
+               An Apigee org can support heterogeneous Environments.
+               Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -548,6 +626,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["type"] = type
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -619,4 +698,16 @@ class Environment(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Types that can be selected for an Environment. Each of the types are
+        limited by capability and capacity. Refer to Apigee's public documentation
+        to understand about each of these types in details.
+        An Apigee org can support heterogeneous Environments.
+        Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+        """
+        return pulumi.get(self, "type")
 

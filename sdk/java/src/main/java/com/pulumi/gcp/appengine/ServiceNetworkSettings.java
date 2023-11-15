@@ -97,7 +97,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ServiceNetworkSettings can be imported using any of these accepted formats
+ * ServiceNetworkSettings can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}` * `{{project}}/{{service}}` * `{{service}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceNetworkSettings using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;apps/{{project}}/services/{{service}}&#34;
+ * 
+ *  to = google_app_engine_service_network_settings.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceNetworkSettings can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}

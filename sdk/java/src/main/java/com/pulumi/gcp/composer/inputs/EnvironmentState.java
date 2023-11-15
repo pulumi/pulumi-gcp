@@ -6,6 +6,7 @@ package com.pulumi.gcp.composer.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+import com.pulumi.gcp.composer.inputs.EnvironmentStorageConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -136,6 +137,21 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Configuration options for storage used by Composer environment.
+     * 
+     */
+    @Import(name="storageConfig")
+    private @Nullable Output<EnvironmentStorageConfigArgs> storageConfig;
+
+    /**
+     * @return Configuration options for storage used by Composer environment.
+     * 
+     */
+    public Optional<Output<EnvironmentStorageConfigArgs>> storageConfig() {
+        return Optional.ofNullable(this.storageConfig);
+    }
+
     private EnvironmentState() {}
 
     private EnvironmentState(EnvironmentState $) {
@@ -146,6 +162,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
+        this.storageConfig = $.storageConfig;
     }
 
     public static Builder builder() {
@@ -325,6 +342,27 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param storageConfig Configuration options for storage used by Composer environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageConfig(@Nullable Output<EnvironmentStorageConfigArgs> storageConfig) {
+            $.storageConfig = storageConfig;
+            return this;
+        }
+
+        /**
+         * @param storageConfig Configuration options for storage used by Composer environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageConfig(EnvironmentStorageConfigArgs storageConfig) {
+            return storageConfig(Output.of(storageConfig));
         }
 
         public EnvironmentState build() {

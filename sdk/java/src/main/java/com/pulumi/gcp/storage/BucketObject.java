@@ -12,6 +12,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.BucketObjectArgs;
 import com.pulumi.gcp.storage.inputs.BucketObjectState;
 import com.pulumi.gcp.storage.outputs.BucketObjectCustomerEncryption;
+import com.pulumi.gcp.storage.outputs.BucketObjectRetention;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -338,6 +339,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      */
     public Output<String> outputName() {
         return this.outputName;
+    }
+    /**
+     * The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     * 
+     */
+    @Export(name="retention", refs={BucketObjectRetention.class}, tree="[0]")
+    private Output</* @Nullable */ BucketObjectRetention> retention;
+
+    /**
+     * @return The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     * 
+     */
+    public Output<Optional<BucketObjectRetention>> retention() {
+        return Codegen.optional(this.retention);
     }
     /**
      * (Computed) A url reference to this object.

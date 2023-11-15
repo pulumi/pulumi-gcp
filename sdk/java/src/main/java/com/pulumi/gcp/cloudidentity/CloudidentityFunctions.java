@@ -8,15 +8,186 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsPlainArgs;
+import com.pulumi.gcp.cloudidentity.outputs.GetGroupLookupResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudidentityFunctions {
+    /**
+     * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group&#39;s email.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#groups
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
+     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
+     *                 .id(&#34;my-group@example.com&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupLookupResult> getGroupLookup(GetGroupLookupArgs args) {
+        return getGroupLookup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group&#39;s email.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#groups
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
+     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
+     *                 .id(&#34;my-group@example.com&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupLookupResult> getGroupLookupPlain(GetGroupLookupPlainArgs args) {
+        return getGroupLookupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group&#39;s email.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#groups
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
+     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
+     *                 .id(&#34;my-group@example.com&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGroupLookupResult> getGroupLookup(GetGroupLookupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupLookup:getGroupLookup", TypeShape.of(GetGroupLookupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group&#39;s email.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#groups
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
+     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
+     *                 .id(&#34;my-group@example.com&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGroupLookupResult> getGroupLookupPlain(GetGroupLookupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroupLookup:getGroupLookup", TypeShape.of(GetGroupLookupResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
      * 

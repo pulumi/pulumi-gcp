@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.inputs.ClusterDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
 import com.pulumi.gcp.container.inputs.ClusterDnsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterEnableK8sBetaApisArgs;
+import com.pulumi.gcp.container.inputs.ClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.ClusterGatewayApiConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
@@ -524,6 +525,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
+     * Fleet configuration for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Import(name="fleet")
+    private @Nullable Output<ClusterFleetArgs> fleet;
+
+    /**
+     * @return Fleet configuration for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Optional<Output<ClusterFleetArgs>> fleet() {
+        return Optional.ofNullable(this.fleet);
     }
 
     /**
@@ -1276,16 +1296,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Import(name="securityPostureConfig")
     private @Nullable Output<ClusterSecurityPostureConfigArgs> securityPostureConfig;
 
     /**
      * @return Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Optional<Output<ClusterSecurityPostureConfigArgs>> securityPostureConfig() {
@@ -1460,6 +1476,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.enableShieldedNodes = $.enableShieldedNodes;
         this.enableTpu = $.enableTpu;
         this.endpoint = $.endpoint;
+        this.fleet = $.fleet;
         this.gatewayApiConfig = $.gatewayApiConfig;
         this.identityServiceConfig = $.identityServiceConfig;
         this.initialNodeCount = $.initialNodeCount;
@@ -2157,6 +2174,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param fleet Fleet configuration for the cluster. Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleet(@Nullable Output<ClusterFleetArgs> fleet) {
+            $.fleet = fleet;
+            return this;
+        }
+
+        /**
+         * @param fleet Fleet configuration for the cluster. Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleet(ClusterFleetArgs fleet) {
+            return fleet(Output.of(fleet));
         }
 
         /**
@@ -3162,8 +3204,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityPostureConfig Enable/Disable Security Posture API features for the cluster. Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-         * 
          * @return builder
          * 
          */
@@ -3174,8 +3214,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityPostureConfig Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
          * 
          * @return builder
          * 

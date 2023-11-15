@@ -143,7 +143,15 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// ## Import
     /// 
-    /// Topic can be imported using any of these accepted formats
+    /// Topic can be imported using any of these accepted formats* `projects/{{project}}/topics/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Topic using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/topics/{{name}}"
+    /// 
+    ///  to = google_pubsub_topic.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:pubsub/topic:Topic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Topic can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
@@ -192,7 +200,8 @@ namespace Pulumi.Gcp.PubSub
         /// For instance, it allows any attached subscription to seek to a timestamp
         /// that is up to messageRetentionDuration in the past. If this field is not
         /// set, message retention is controlled by settings on individual subscriptions.
-        /// Cannot be more than 31 days or less than 10 minutes.
+        /// The rotation period has the format of a decimal number, followed by the
+        /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Output("messageRetentionDuration")]
         public Output<string?> MessageRetentionDuration { get; private set; } = null!;
@@ -319,7 +328,8 @@ namespace Pulumi.Gcp.PubSub
         /// For instance, it allows any attached subscription to seek to a timestamp
         /// that is up to messageRetentionDuration in the past. If this field is not
         /// set, message retention is controlled by settings on individual subscriptions.
-        /// Cannot be more than 31 days or less than 10 minutes.
+        /// The rotation period has the format of a decimal number, followed by the
+        /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
@@ -412,7 +422,8 @@ namespace Pulumi.Gcp.PubSub
         /// For instance, it allows any attached subscription to seek to a timestamp
         /// that is up to messageRetentionDuration in the past. If this field is not
         /// set, message retention is controlled by settings on individual subscriptions.
-        /// Cannot be more than 31 days or less than 10 minutes.
+        /// The rotation period has the format of a decimal number, followed by the
+        /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }

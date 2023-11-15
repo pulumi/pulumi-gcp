@@ -315,7 +315,15 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// ## Import
     /// 
-    /// function can be imported using any of these accepted formats
+    /// function can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/functions/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import function using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/functions/{{name}}"
+    /// 
+    ///  to = google_cloudfunctions2_function.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudfunctionsv2/function:Function When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), function can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}

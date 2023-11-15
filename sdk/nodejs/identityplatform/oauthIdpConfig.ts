@@ -29,7 +29,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OauthIdpConfig can be imported using any of these accepted formats
+ * OauthIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/oauthIdpConfigs/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OauthIdpConfig using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/oauthIdpConfigs/{{name}}"
+ *
+ *  to = google_identity_platform_oauth_idp_config.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OauthIdpConfig can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}

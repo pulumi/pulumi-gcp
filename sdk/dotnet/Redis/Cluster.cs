@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis
 {
     /// <summary>
+    /// A Google Cloud Redis Cluster instance.
+    /// 
+    /// To get more information about Cluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+    /// 
     /// ## Example Usage
     /// ### Redis Cluster Ha
     /// 
@@ -24,9 +32,6 @@ namespace Pulumi.Gcp.Redis
     ///     var producerNet = new Gcp.Compute.Network("producerNet", new()
     ///     {
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var producerSubnet = new Gcp.Compute.Subnetwork("producerSubnet", new()
@@ -34,9 +39,6 @@ namespace Pulumi.Gcp.Redis
     ///         IpCidrRange = "10.0.0.248/29",
     ///         Region = "us-central1",
     ///         Network = producerNet.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
@@ -52,9 +54,6 @@ namespace Pulumi.Gcp.Redis
     ///                 producerSubnet.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var cluster_ha = new Gcp.Redis.Cluster("cluster-ha", new()
@@ -73,7 +72,6 @@ namespace Pulumi.Gcp.Redis
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             @default,
@@ -85,7 +83,15 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// ## Import
     /// 
-    /// Cluster can be imported using any of these accepted formats
+    /// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{region}}/clusters/{{name}}"
+    /// 
+    ///  to = google_redis_cluster.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:redis/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}

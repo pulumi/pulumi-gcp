@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigOutput() Databas
 
 func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigOutputWithContext(ctx context.Context) DatabaseEncryptionConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigOutput)
-}
-
-func (i DatabaseEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseEncryptionConfig] {
-	return pulumix.Output[DatabaseEncryptionConfig]{
-		OutputState: i.ToDatabaseEncryptionConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput {
@@ -96,12 +89,6 @@ func (i *databaseEncryptionConfigPtrType) ToDatabaseEncryptionConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigPtrOutput)
 }
 
-func (i *databaseEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEncryptionConfig] {
-	return pulumix.Output[*DatabaseEncryptionConfig]{
-		OutputState: i.ToDatabaseEncryptionConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseEncryptionConfigOutput) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutputWithC
 	}).(DatabaseEncryptionConfigPtrOutput)
 }
 
-func (o DatabaseEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseEncryptionConfig] {
-	return pulumix.Output[DatabaseEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 // in the same location as the Spanner Database.
 func (o DatabaseEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
@@ -150,12 +131,6 @@ func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutput()
 
 func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
 	return o
-}
-
-func (o DatabaseEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEncryptionConfig] {
-	return pulumix.Output[*DatabaseEncryptionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseEncryptionConfigPtrOutput) Elem() DatabaseEncryptionConfigOutput {
@@ -214,12 +189,6 @@ func (i DatabaseIAMBindingConditionArgs) ToDatabaseIAMBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingConditionOutput)
 }
 
-func (i DatabaseIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMBindingCondition] {
-	return pulumix.Output[DatabaseIAMBindingCondition]{
-		OutputState: i.ToDatabaseIAMBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseIAMBindingConditionArgs) ToDatabaseIAMBindingConditionPtrOutput() DatabaseIAMBindingConditionPtrOutput {
 	return i.ToDatabaseIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -261,12 +230,6 @@ func (i *databaseIAMBindingConditionPtrType) ToDatabaseIAMBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingConditionPtrOutput)
 }
 
-func (i *databaseIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMBindingCondition] {
-	return pulumix.Output[*DatabaseIAMBindingCondition]{
-		OutputState: i.ToDatabaseIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -289,12 +252,6 @@ func (o DatabaseIAMBindingConditionOutput) ToDatabaseIAMBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMBindingCondition) *DatabaseIAMBindingCondition {
 		return &v
 	}).(DatabaseIAMBindingConditionPtrOutput)
-}
-
-func (o DatabaseIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMBindingCondition] {
-	return pulumix.Output[DatabaseIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -321,12 +278,6 @@ func (o DatabaseIAMBindingConditionPtrOutput) ToDatabaseIAMBindingConditionPtrOu
 
 func (o DatabaseIAMBindingConditionPtrOutput) ToDatabaseIAMBindingConditionPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingConditionPtrOutput {
 	return o
-}
-
-func (o DatabaseIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMBindingCondition] {
-	return pulumix.Output[*DatabaseIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMBindingConditionPtrOutput) Elem() DatabaseIAMBindingConditionOutput {
@@ -401,12 +352,6 @@ func (i DatabaseIAMMemberConditionArgs) ToDatabaseIAMMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberConditionOutput)
 }
 
-func (i DatabaseIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMMemberCondition] {
-	return pulumix.Output[DatabaseIAMMemberCondition]{
-		OutputState: i.ToDatabaseIAMMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseIAMMemberConditionArgs) ToDatabaseIAMMemberConditionPtrOutput() DatabaseIAMMemberConditionPtrOutput {
 	return i.ToDatabaseIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -448,12 +393,6 @@ func (i *databaseIAMMemberConditionPtrType) ToDatabaseIAMMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberConditionPtrOutput)
 }
 
-func (i *databaseIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMMemberCondition] {
-	return pulumix.Output[*DatabaseIAMMemberCondition]{
-		OutputState: i.ToDatabaseIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -476,12 +415,6 @@ func (o DatabaseIAMMemberConditionOutput) ToDatabaseIAMMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMMemberCondition) *DatabaseIAMMemberCondition {
 		return &v
 	}).(DatabaseIAMMemberConditionPtrOutput)
-}
-
-func (o DatabaseIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMMemberCondition] {
-	return pulumix.Output[DatabaseIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -508,12 +441,6 @@ func (o DatabaseIAMMemberConditionPtrOutput) ToDatabaseIAMMemberConditionPtrOutp
 
 func (o DatabaseIAMMemberConditionPtrOutput) ToDatabaseIAMMemberConditionPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberConditionPtrOutput {
 	return o
-}
-
-func (o DatabaseIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMMemberCondition] {
-	return pulumix.Output[*DatabaseIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseIAMMemberConditionPtrOutput) Elem() DatabaseIAMMemberConditionOutput {
@@ -553,6 +480,522 @@ func (o DatabaseIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceAutoscalingConfig struct {
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
+	AutoscalingLimits *InstanceAutoscalingConfigAutoscalingLimits `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
+	AutoscalingTargets *InstanceAutoscalingConfigAutoscalingTargets `pulumi:"autoscalingTargets"`
+}
+
+// InstanceAutoscalingConfigInput is an input type that accepts InstanceAutoscalingConfigArgs and InstanceAutoscalingConfigOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigInput` via:
+//
+//	InstanceAutoscalingConfigArgs{...}
+type InstanceAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigOutput() InstanceAutoscalingConfigOutput
+	ToInstanceAutoscalingConfigOutputWithContext(context.Context) InstanceAutoscalingConfigOutput
+}
+
+type InstanceAutoscalingConfigArgs struct {
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
+	AutoscalingLimits InstanceAutoscalingConfigAutoscalingLimitsPtrInput `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
+	// Structure is documented below.
+	AutoscalingTargets InstanceAutoscalingConfigAutoscalingTargetsPtrInput `pulumi:"autoscalingTargets"`
+}
+
+func (InstanceAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigArgs) ToInstanceAutoscalingConfigOutput() InstanceAutoscalingConfigOutput {
+	return i.ToInstanceAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigArgs) ToInstanceAutoscalingConfigOutputWithContext(ctx context.Context) InstanceAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigOutput)
+}
+
+func (i InstanceAutoscalingConfigArgs) ToInstanceAutoscalingConfigPtrOutput() InstanceAutoscalingConfigPtrOutput {
+	return i.ToInstanceAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigArgs) ToInstanceAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigOutput).ToInstanceAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceAutoscalingConfigPtrInput is an input type that accepts InstanceAutoscalingConfigArgs, InstanceAutoscalingConfigPtr and InstanceAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigPtrInput` via:
+//
+//	        InstanceAutoscalingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigPtrOutput() InstanceAutoscalingConfigPtrOutput
+	ToInstanceAutoscalingConfigPtrOutputWithContext(context.Context) InstanceAutoscalingConfigPtrOutput
+}
+
+type instanceAutoscalingConfigPtrType InstanceAutoscalingConfigArgs
+
+func InstanceAutoscalingConfigPtr(v *InstanceAutoscalingConfigArgs) InstanceAutoscalingConfigPtrInput {
+	return (*instanceAutoscalingConfigPtrType)(v)
+}
+
+func (*instanceAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *instanceAutoscalingConfigPtrType) ToInstanceAutoscalingConfigPtrOutput() InstanceAutoscalingConfigPtrOutput {
+	return i.ToInstanceAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutoscalingConfigPtrType) ToInstanceAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigPtrOutput)
+}
+
+type InstanceAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigOutput) ToInstanceAutoscalingConfigOutput() InstanceAutoscalingConfigOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigOutput) ToInstanceAutoscalingConfigOutputWithContext(ctx context.Context) InstanceAutoscalingConfigOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigOutput) ToInstanceAutoscalingConfigPtrOutput() InstanceAutoscalingConfigPtrOutput {
+	return o.ToInstanceAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutoscalingConfigOutput) ToInstanceAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutoscalingConfig) *InstanceAutoscalingConfig {
+		return &v
+	}).(InstanceAutoscalingConfigPtrOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
+func (o InstanceAutoscalingConfigOutput) AutoscalingLimits() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfig) *InstanceAutoscalingConfigAutoscalingLimits {
+		return v.AutoscalingLimits
+	}).(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
+func (o InstanceAutoscalingConfigOutput) AutoscalingTargets() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfig) *InstanceAutoscalingConfigAutoscalingTargets {
+		return v.AutoscalingTargets
+	}).(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+type InstanceAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigPtrOutput) ToInstanceAutoscalingConfigPtrOutput() InstanceAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigPtrOutput) ToInstanceAutoscalingConfigPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigPtrOutput) Elem() InstanceAutoscalingConfigOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfig) InstanceAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutoscalingConfig
+		return ret
+	}).(InstanceAutoscalingConfigOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
+func (o InstanceAutoscalingConfigPtrOutput) AutoscalingLimits() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfig) *InstanceAutoscalingConfigAutoscalingLimits {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingLimits
+	}).(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
+// Structure is documented below.
+func (o InstanceAutoscalingConfigPtrOutput) AutoscalingTargets() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfig) *InstanceAutoscalingConfigAutoscalingTargets {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingTargets
+	}).(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+type InstanceAutoscalingConfigAutoscalingLimits struct {
+	// Specifies maximum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits *int `pulumi:"maxProcessingUnits"`
+	// Specifies minimum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits *int `pulumi:"minProcessingUnits"`
+}
+
+// InstanceAutoscalingConfigAutoscalingLimitsInput is an input type that accepts InstanceAutoscalingConfigAutoscalingLimitsArgs and InstanceAutoscalingConfigAutoscalingLimitsOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAutoscalingLimitsInput` via:
+//
+//	InstanceAutoscalingConfigAutoscalingLimitsArgs{...}
+type InstanceAutoscalingConfigAutoscalingLimitsInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAutoscalingLimitsOutput() InstanceAutoscalingConfigAutoscalingLimitsOutput
+	ToInstanceAutoscalingConfigAutoscalingLimitsOutputWithContext(context.Context) InstanceAutoscalingConfigAutoscalingLimitsOutput
+}
+
+type InstanceAutoscalingConfigAutoscalingLimitsArgs struct {
+	// Specifies maximum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
+	MaxProcessingUnits pulumi.IntPtrInput `pulumi:"maxProcessingUnits"`
+	// Specifies minimum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000.
+	MinProcessingUnits pulumi.IntPtrInput `pulumi:"minProcessingUnits"`
+}
+
+func (InstanceAutoscalingConfigAutoscalingLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAutoscalingLimitsOutput() InstanceAutoscalingConfigAutoscalingLimitsOutput {
+	return i.ToInstanceAutoscalingConfigAutoscalingLimitsOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAutoscalingLimitsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAutoscalingLimitsOutput)
+}
+
+func (i InstanceAutoscalingConfigAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return i.ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAutoscalingLimitsOutput).ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx)
+}
+
+// InstanceAutoscalingConfigAutoscalingLimitsPtrInput is an input type that accepts InstanceAutoscalingConfigAutoscalingLimitsArgs, InstanceAutoscalingConfigAutoscalingLimitsPtr and InstanceAutoscalingConfigAutoscalingLimitsPtrOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAutoscalingLimitsPtrInput` via:
+//
+//	        InstanceAutoscalingConfigAutoscalingLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutoscalingConfigAutoscalingLimitsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput
+	ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Context) InstanceAutoscalingConfigAutoscalingLimitsPtrOutput
+}
+
+type instanceAutoscalingConfigAutoscalingLimitsPtrType InstanceAutoscalingConfigAutoscalingLimitsArgs
+
+func InstanceAutoscalingConfigAutoscalingLimitsPtr(v *InstanceAutoscalingConfigAutoscalingLimitsArgs) InstanceAutoscalingConfigAutoscalingLimitsPtrInput {
+	return (*instanceAutoscalingConfigAutoscalingLimitsPtrType)(v)
+}
+
+func (*instanceAutoscalingConfigAutoscalingLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (i *instanceAutoscalingConfigAutoscalingLimitsPtrType) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return i.ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutoscalingConfigAutoscalingLimitsPtrType) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+type InstanceAutoscalingConfigAutoscalingLimitsOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAutoscalingLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAutoscalingLimitsOutput() InstanceAutoscalingConfigAutoscalingLimitsOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAutoscalingLimitsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingLimitsOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutoscalingConfigAutoscalingLimits) *InstanceAutoscalingConfigAutoscalingLimits {
+		return &v
+	}).(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput)
+}
+
+// Specifies maximum number of processing units allocated to the instance.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MaxProcessingUnits }).(pulumi.IntPtrOutput)
+}
+
+// Specifies minimum number of processing units allocated to the instance.
+// If set, this number should be multiples of 1000.
+func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MinProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MinProcessingUnits }).(pulumi.IntPtrOutput)
+}
+
+type InstanceAutoscalingConfigAutoscalingLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfigAutoscalingLimits)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutput() InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) ToInstanceAutoscalingConfigAutoscalingLimitsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) Elem() InstanceAutoscalingConfigAutoscalingLimitsOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingLimits) InstanceAutoscalingConfigAutoscalingLimits {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutoscalingConfigAutoscalingLimits
+		return ret
+	}).(InstanceAutoscalingConfigAutoscalingLimitsOutput)
+}
+
+// Specifies maximum number of processing units allocated to the instance.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
+func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MaxProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProcessingUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies minimum number of processing units allocated to the instance.
+// If set, this number should be multiples of 1000.
+func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MinProcessingUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProcessingUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceAutoscalingConfigAutoscalingTargets struct {
+	// Specifies the target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+	HighPriorityCpuUtilizationPercent *int `pulumi:"highPriorityCpuUtilizationPercent"`
+	// Specifies the target storage utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	StorageUtilizationPercent *int `pulumi:"storageUtilizationPercent"`
+}
+
+// InstanceAutoscalingConfigAutoscalingTargetsInput is an input type that accepts InstanceAutoscalingConfigAutoscalingTargetsArgs and InstanceAutoscalingConfigAutoscalingTargetsOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAutoscalingTargetsInput` via:
+//
+//	InstanceAutoscalingConfigAutoscalingTargetsArgs{...}
+type InstanceAutoscalingConfigAutoscalingTargetsInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAutoscalingTargetsOutput() InstanceAutoscalingConfigAutoscalingTargetsOutput
+	ToInstanceAutoscalingConfigAutoscalingTargetsOutputWithContext(context.Context) InstanceAutoscalingConfigAutoscalingTargetsOutput
+}
+
+type InstanceAutoscalingConfigAutoscalingTargetsArgs struct {
+	// Specifies the target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+	HighPriorityCpuUtilizationPercent pulumi.IntPtrInput `pulumi:"highPriorityCpuUtilizationPercent"`
+	// Specifies the target storage utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	StorageUtilizationPercent pulumi.IntPtrInput `pulumi:"storageUtilizationPercent"`
+}
+
+func (InstanceAutoscalingConfigAutoscalingTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAutoscalingTargetsArgs) ToInstanceAutoscalingConfigAutoscalingTargetsOutput() InstanceAutoscalingConfigAutoscalingTargetsOutput {
+	return i.ToInstanceAutoscalingConfigAutoscalingTargetsOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAutoscalingTargetsArgs) ToInstanceAutoscalingConfigAutoscalingTargetsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAutoscalingTargetsOutput)
+}
+
+func (i InstanceAutoscalingConfigAutoscalingTargetsArgs) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutput() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return i.ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAutoscalingTargetsArgs) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAutoscalingTargetsOutput).ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx)
+}
+
+// InstanceAutoscalingConfigAutoscalingTargetsPtrInput is an input type that accepts InstanceAutoscalingConfigAutoscalingTargetsArgs, InstanceAutoscalingConfigAutoscalingTargetsPtr and InstanceAutoscalingConfigAutoscalingTargetsPtrOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAutoscalingTargetsPtrInput` via:
+//
+//	        InstanceAutoscalingConfigAutoscalingTargetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutoscalingConfigAutoscalingTargetsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutput() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput
+	ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Context) InstanceAutoscalingConfigAutoscalingTargetsPtrOutput
+}
+
+type instanceAutoscalingConfigAutoscalingTargetsPtrType InstanceAutoscalingConfigAutoscalingTargetsArgs
+
+func InstanceAutoscalingConfigAutoscalingTargetsPtr(v *InstanceAutoscalingConfigAutoscalingTargetsArgs) InstanceAutoscalingConfigAutoscalingTargetsPtrInput {
+	return (*instanceAutoscalingConfigAutoscalingTargetsPtrType)(v)
+}
+
+func (*instanceAutoscalingConfigAutoscalingTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (i *instanceAutoscalingConfigAutoscalingTargetsPtrType) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutput() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return i.ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutoscalingConfigAutoscalingTargetsPtrType) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+type InstanceAutoscalingConfigAutoscalingTargetsOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAutoscalingTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) ToInstanceAutoscalingConfigAutoscalingTargetsOutput() InstanceAutoscalingConfigAutoscalingTargetsOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) ToInstanceAutoscalingConfigAutoscalingTargetsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingTargetsOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutput() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutoscalingConfigAutoscalingTargets) *InstanceAutoscalingConfigAutoscalingTargets {
+		return &v
+	}).(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput)
+}
+
+// Specifies the target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) HighPriorityCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingTargets) *int { return v.HighPriorityCpuUtilizationPercent }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the target storage utilization percentage that the autoscaler
+// should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) StorageUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingTargets) *int { return v.StorageUtilizationPercent }).(pulumi.IntPtrOutput)
+}
+
+type InstanceAutoscalingConfigAutoscalingTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutoscalingConfigAutoscalingTargets)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutput() InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) ToInstanceAutoscalingConfigAutoscalingTargetsPtrOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAutoscalingTargetsPtrOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) Elem() InstanceAutoscalingConfigAutoscalingTargetsOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingTargets) InstanceAutoscalingConfigAutoscalingTargets {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutoscalingConfigAutoscalingTargets
+		return ret
+	}).(InstanceAutoscalingConfigAutoscalingTargetsOutput)
+}
+
+// Specifies the target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) HighPriorityCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HighPriorityCpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the target storage utilization percentage that the autoscaler
+// should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) StorageUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StorageUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
 type InstanceIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -586,12 +1029,6 @@ func (i InstanceIAMBindingConditionArgs) ToInstanceIAMBindingConditionOutput() I
 
 func (i InstanceIAMBindingConditionArgs) ToInstanceIAMBindingConditionOutputWithContext(ctx context.Context) InstanceIAMBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingConditionOutput)
-}
-
-func (i InstanceIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMBindingCondition] {
-	return pulumix.Output[InstanceIAMBindingCondition]{
-		OutputState: i.ToInstanceIAMBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i InstanceIAMBindingConditionArgs) ToInstanceIAMBindingConditionPtrOutput() InstanceIAMBindingConditionPtrOutput {
@@ -635,12 +1072,6 @@ func (i *instanceIAMBindingConditionPtrType) ToInstanceIAMBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingConditionPtrOutput)
 }
 
-func (i *instanceIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMBindingCondition] {
-	return pulumix.Output[*InstanceIAMBindingCondition]{
-		OutputState: i.ToInstanceIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -663,12 +1094,6 @@ func (o InstanceIAMBindingConditionOutput) ToInstanceIAMBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMBindingCondition) *InstanceIAMBindingCondition {
 		return &v
 	}).(InstanceIAMBindingConditionPtrOutput)
-}
-
-func (o InstanceIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMBindingCondition] {
-	return pulumix.Output[InstanceIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -695,12 +1120,6 @@ func (o InstanceIAMBindingConditionPtrOutput) ToInstanceIAMBindingConditionPtrOu
 
 func (o InstanceIAMBindingConditionPtrOutput) ToInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIAMBindingConditionPtrOutput {
 	return o
-}
-
-func (o InstanceIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMBindingCondition] {
-	return pulumix.Output[*InstanceIAMBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIAMBindingConditionPtrOutput) Elem() InstanceIAMBindingConditionOutput {
@@ -775,12 +1194,6 @@ func (i InstanceIAMMemberConditionArgs) ToInstanceIAMMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberConditionOutput)
 }
 
-func (i InstanceIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMMemberCondition] {
-	return pulumix.Output[InstanceIAMMemberCondition]{
-		OutputState: i.ToInstanceIAMMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceIAMMemberConditionArgs) ToInstanceIAMMemberConditionPtrOutput() InstanceIAMMemberConditionPtrOutput {
 	return i.ToInstanceIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -822,12 +1235,6 @@ func (i *instanceIAMMemberConditionPtrType) ToInstanceIAMMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberConditionPtrOutput)
 }
 
-func (i *instanceIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMMemberCondition] {
-	return pulumix.Output[*InstanceIAMMemberCondition]{
-		OutputState: i.ToInstanceIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -850,12 +1257,6 @@ func (o InstanceIAMMemberConditionOutput) ToInstanceIAMMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMMemberCondition) *InstanceIAMMemberCondition {
 		return &v
 	}).(InstanceIAMMemberConditionPtrOutput)
-}
-
-func (o InstanceIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMMemberCondition] {
-	return pulumix.Output[InstanceIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -882,12 +1283,6 @@ func (o InstanceIAMMemberConditionPtrOutput) ToInstanceIAMMemberConditionPtrOutp
 
 func (o InstanceIAMMemberConditionPtrOutput) ToInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIAMMemberConditionPtrOutput {
 	return o
-}
-
-func (o InstanceIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMMemberCondition] {
-	return pulumix.Output[*InstanceIAMMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIAMMemberConditionPtrOutput) Elem() InstanceIAMMemberConditionOutput {
@@ -927,6 +1322,310 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetInstanceAutoscalingConfig struct {
+	AutoscalingLimits  []GetInstanceAutoscalingConfigAutoscalingLimit  `pulumi:"autoscalingLimits"`
+	AutoscalingTargets []GetInstanceAutoscalingConfigAutoscalingTarget `pulumi:"autoscalingTargets"`
+}
+
+// GetInstanceAutoscalingConfigInput is an input type that accepts GetInstanceAutoscalingConfigArgs and GetInstanceAutoscalingConfigOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigInput` via:
+//
+//	GetInstanceAutoscalingConfigArgs{...}
+type GetInstanceAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigOutput() GetInstanceAutoscalingConfigOutput
+	ToGetInstanceAutoscalingConfigOutputWithContext(context.Context) GetInstanceAutoscalingConfigOutput
+}
+
+type GetInstanceAutoscalingConfigArgs struct {
+	AutoscalingLimits  GetInstanceAutoscalingConfigAutoscalingLimitArrayInput  `pulumi:"autoscalingLimits"`
+	AutoscalingTargets GetInstanceAutoscalingConfigAutoscalingTargetArrayInput `pulumi:"autoscalingTargets"`
+}
+
+func (GetInstanceAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigArgs) ToGetInstanceAutoscalingConfigOutput() GetInstanceAutoscalingConfigOutput {
+	return i.ToGetInstanceAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigArgs) ToGetInstanceAutoscalingConfigOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigOutput)
+}
+
+// GetInstanceAutoscalingConfigArrayInput is an input type that accepts GetInstanceAutoscalingConfigArray and GetInstanceAutoscalingConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigArray{ GetInstanceAutoscalingConfigArgs{...} }
+type GetInstanceAutoscalingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigArrayOutput() GetInstanceAutoscalingConfigArrayOutput
+	ToGetInstanceAutoscalingConfigArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigArrayOutput
+}
+
+type GetInstanceAutoscalingConfigArray []GetInstanceAutoscalingConfigInput
+
+func (GetInstanceAutoscalingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigArray) ToGetInstanceAutoscalingConfigArrayOutput() GetInstanceAutoscalingConfigArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigArray) ToGetInstanceAutoscalingConfigArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigOutput) ToGetInstanceAutoscalingConfigOutput() GetInstanceAutoscalingConfigOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigOutput) ToGetInstanceAutoscalingConfigOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigOutput) AutoscalingLimits() GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfig) []GetInstanceAutoscalingConfigAutoscalingLimit {
+		return v.AutoscalingLimits
+	}).(GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput)
+}
+
+func (o GetInstanceAutoscalingConfigOutput) AutoscalingTargets() GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfig) []GetInstanceAutoscalingConfigAutoscalingTarget {
+		return v.AutoscalingTargets
+	}).(GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigArrayOutput) ToGetInstanceAutoscalingConfigArrayOutput() GetInstanceAutoscalingConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigArrayOutput) ToGetInstanceAutoscalingConfigArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfig {
+		return vs[0].([]GetInstanceAutoscalingConfig)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigOutput)
+}
+
+type GetInstanceAutoscalingConfigAutoscalingLimit struct {
+	MaxProcessingUnits int `pulumi:"maxProcessingUnits"`
+	MinProcessingUnits int `pulumi:"minProcessingUnits"`
+}
+
+// GetInstanceAutoscalingConfigAutoscalingLimitInput is an input type that accepts GetInstanceAutoscalingConfigAutoscalingLimitArgs and GetInstanceAutoscalingConfigAutoscalingLimitOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAutoscalingLimitInput` via:
+//
+//	GetInstanceAutoscalingConfigAutoscalingLimitArgs{...}
+type GetInstanceAutoscalingConfigAutoscalingLimitInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAutoscalingLimitOutput() GetInstanceAutoscalingConfigAutoscalingLimitOutput
+	ToGetInstanceAutoscalingConfigAutoscalingLimitOutputWithContext(context.Context) GetInstanceAutoscalingConfigAutoscalingLimitOutput
+}
+
+type GetInstanceAutoscalingConfigAutoscalingLimitArgs struct {
+	MaxProcessingUnits pulumi.IntInput `pulumi:"maxProcessingUnits"`
+	MinProcessingUnits pulumi.IntInput `pulumi:"minProcessingUnits"`
+}
+
+func (GetInstanceAutoscalingConfigAutoscalingLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimit)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingLimitArgs) ToGetInstanceAutoscalingConfigAutoscalingLimitOutput() GetInstanceAutoscalingConfigAutoscalingLimitOutput {
+	return i.ToGetInstanceAutoscalingConfigAutoscalingLimitOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingLimitArgs) ToGetInstanceAutoscalingConfigAutoscalingLimitOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAutoscalingLimitOutput)
+}
+
+// GetInstanceAutoscalingConfigAutoscalingLimitArrayInput is an input type that accepts GetInstanceAutoscalingConfigAutoscalingLimitArray and GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAutoscalingLimitArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigAutoscalingLimitArray{ GetInstanceAutoscalingConfigAutoscalingLimitArgs{...} }
+type GetInstanceAutoscalingConfigAutoscalingLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutput() GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput
+	ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput
+}
+
+type GetInstanceAutoscalingConfigAutoscalingLimitArray []GetInstanceAutoscalingConfigAutoscalingLimitInput
+
+func (GetInstanceAutoscalingConfigAutoscalingLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAutoscalingLimit)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingLimitArray) ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutput() GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingLimitArray) ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAutoscalingLimitOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAutoscalingLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimit)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) ToGetInstanceAutoscalingConfigAutoscalingLimitOutput() GetInstanceAutoscalingConfigAutoscalingLimitOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) ToGetInstanceAutoscalingConfigAutoscalingLimitOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingLimitOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) MaxProcessingUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingLimit) int { return v.MaxProcessingUnits }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) MinProcessingUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingLimit) int { return v.MinProcessingUnits }).(pulumi.IntOutput)
+}
+
+type GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAutoscalingLimit)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput) ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutput() GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput) ToGetInstanceAutoscalingConfigAutoscalingLimitArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigAutoscalingLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfigAutoscalingLimit {
+		return vs[0].([]GetInstanceAutoscalingConfigAutoscalingLimit)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigAutoscalingLimitOutput)
+}
+
+type GetInstanceAutoscalingConfigAutoscalingTarget struct {
+	HighPriorityCpuUtilizationPercent int `pulumi:"highPriorityCpuUtilizationPercent"`
+	StorageUtilizationPercent         int `pulumi:"storageUtilizationPercent"`
+}
+
+// GetInstanceAutoscalingConfigAutoscalingTargetInput is an input type that accepts GetInstanceAutoscalingConfigAutoscalingTargetArgs and GetInstanceAutoscalingConfigAutoscalingTargetOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAutoscalingTargetInput` via:
+//
+//	GetInstanceAutoscalingConfigAutoscalingTargetArgs{...}
+type GetInstanceAutoscalingConfigAutoscalingTargetInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAutoscalingTargetOutput() GetInstanceAutoscalingConfigAutoscalingTargetOutput
+	ToGetInstanceAutoscalingConfigAutoscalingTargetOutputWithContext(context.Context) GetInstanceAutoscalingConfigAutoscalingTargetOutput
+}
+
+type GetInstanceAutoscalingConfigAutoscalingTargetArgs struct {
+	HighPriorityCpuUtilizationPercent pulumi.IntInput `pulumi:"highPriorityCpuUtilizationPercent"`
+	StorageUtilizationPercent         pulumi.IntInput `pulumi:"storageUtilizationPercent"`
+}
+
+func (GetInstanceAutoscalingConfigAutoscalingTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTarget)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingTargetArgs) ToGetInstanceAutoscalingConfigAutoscalingTargetOutput() GetInstanceAutoscalingConfigAutoscalingTargetOutput {
+	return i.ToGetInstanceAutoscalingConfigAutoscalingTargetOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingTargetArgs) ToGetInstanceAutoscalingConfigAutoscalingTargetOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAutoscalingTargetOutput)
+}
+
+// GetInstanceAutoscalingConfigAutoscalingTargetArrayInput is an input type that accepts GetInstanceAutoscalingConfigAutoscalingTargetArray and GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAutoscalingTargetArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigAutoscalingTargetArray{ GetInstanceAutoscalingConfigAutoscalingTargetArgs{...} }
+type GetInstanceAutoscalingConfigAutoscalingTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutput() GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput
+	ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput
+}
+
+type GetInstanceAutoscalingConfigAutoscalingTargetArray []GetInstanceAutoscalingConfigAutoscalingTargetInput
+
+func (GetInstanceAutoscalingConfigAutoscalingTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAutoscalingTarget)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingTargetArray) ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutput() GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAutoscalingTargetArray) ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAutoscalingTargetOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAutoscalingTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTarget)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) ToGetInstanceAutoscalingConfigAutoscalingTargetOutput() GetInstanceAutoscalingConfigAutoscalingTargetOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) ToGetInstanceAutoscalingConfigAutoscalingTargetOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingTargetOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) HighPriorityCpuUtilizationPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingTarget) int { return v.HighPriorityCpuUtilizationPercent }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) StorageUtilizationPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingTarget) int { return v.StorageUtilizationPercent }).(pulumi.IntOutput)
+}
+
+type GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAutoscalingTarget)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput) ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutput() GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput) ToGetInstanceAutoscalingConfigAutoscalingTargetArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigAutoscalingTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfigAutoscalingTarget {
+		return vs[0].([]GetInstanceAutoscalingConfigAutoscalingTarget)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigAutoscalingTargetOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionConfigInput)(nil)).Elem(), DatabaseEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionConfigPtrInput)(nil)).Elem(), DatabaseEncryptionConfigArgs{})
@@ -934,18 +1633,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingConditionPtrInput)(nil)).Elem(), DatabaseIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberConditionInput)(nil)).Elem(), DatabaseIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberConditionPtrInput)(nil)).Elem(), DatabaseIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigInput)(nil)).Elem(), InstanceAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigPtrInput)(nil)).Elem(), InstanceAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargetsInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargetsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionPtrInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionPtrInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigInput)(nil)).Elem(), GetInstanceAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimitInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimitArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArray{})
 	pulumi.RegisterOutputType(DatabaseEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingTargetsOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingLimitOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingTargetOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput{})
 }

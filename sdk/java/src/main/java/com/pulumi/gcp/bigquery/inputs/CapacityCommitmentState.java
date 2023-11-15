@@ -166,14 +166,14 @@ public final class CapacityCommitmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      * 
      */
     @Import(name="renewalPlan")
     private @Nullable Output<String> renewalPlan;
 
     /**
-     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      * 
      */
     public Optional<Output<String>> renewalPlan() {
@@ -449,7 +449,7 @@ public final class CapacityCommitmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class CapacityCommitmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
          * 
          * @return builder
          * 

@@ -48,7 +48,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AuthorizedOrgsDesc can be imported using any of these accepted formats:
+ * AuthorizedOrgsDesc can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AuthorizedOrgsDesc using one of the formats above. For exampletf import {
+ *
+ *  id = "{{name}}"
+ *
+ *  to = google_access_context_manager_authorized_orgs_desc.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AuthorizedOrgsDesc can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}

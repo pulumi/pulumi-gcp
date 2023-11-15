@@ -43,7 +43,15 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// ## Import
     /// 
-    /// DomainMapping can be imported using any of these accepted formats
+    /// DomainMapping can be imported using any of these accepted formats* `apps/{{project}}/domainMappings/{{domain_name}}` * `{{project}}/{{domain_name}}` * `{{domain_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DomainMapping using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "apps/{{project}}/domainMappings/{{domain_name}}"
+    /// 
+    ///  to = google_app_engine_domain_mapping.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DomainMapping can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}

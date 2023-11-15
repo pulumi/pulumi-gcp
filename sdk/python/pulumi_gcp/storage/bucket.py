@@ -21,6 +21,7 @@ class BucketArgs:
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -44,6 +45,7 @@ class BucketArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -71,6 +73,8 @@ class BucketArgs:
             pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+        if enable_object_retention is not None:
+            pulumi.set(__self__, "enable_object_retention", enable_object_retention)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if force_destroy is not None:
@@ -161,6 +165,18 @@ class BucketArgs:
     @default_event_based_hold.setter
     def default_event_based_hold(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "default_event_based_hold", value)
+
+    @property
+    @pulumi.getter(name="enableObjectRetention")
+    def enable_object_retention(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+        """
+        return pulumi.get(self, "enable_object_retention")
+
+    @enable_object_retention.setter
+    def enable_object_retention(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_object_retention", value)
 
     @property
     @pulumi.getter
@@ -342,6 +358,7 @@ class _BucketState:
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -368,6 +385,7 @@ class _BucketState:
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
+        :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -402,6 +420,8 @@ class _BucketState:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if enable_object_retention is not None:
+            pulumi.set(__self__, "enable_object_retention", enable_object_retention)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if force_destroy is not None:
@@ -499,6 +519,18 @@ class _BucketState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="enableObjectRetention")
+    def enable_object_retention(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+        """
+        return pulumi.get(self, "enable_object_retention")
+
+    @enable_object_retention.setter
+    def enable_object_retention(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_object_retention", value)
 
     @property
     @pulumi.getter
@@ -731,6 +763,7 @@ class Bucket(pulumi.CustomResource):
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -831,14 +864,22 @@ class Bucket(pulumi.CustomResource):
 
         Storage buckets can be imported using the `name` or
 
-        `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+        `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). * `{{project_id}}/{{bucket}}` * `{{bucket}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage buckets using one of the formats above. For exampletf import {
+
+         id = "{{project_id}}/{{bucket}}"
+
+         to = google_storage_bucket.default }
 
         ```sh
-         $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+         $ pulumi import gcp:storage/bucket:Bucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage buckets can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+         $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
         ```
 
          `false` in state. If you've set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
@@ -849,6 +890,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -960,14 +1002,22 @@ class Bucket(pulumi.CustomResource):
 
         Storage buckets can be imported using the `name` or
 
-        `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+        `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). * `{{project_id}}/{{bucket}}` * `{{bucket}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage buckets using one of the formats above. For exampletf import {
+
+         id = "{{project_id}}/{{bucket}}"
+
+         to = google_storage_bucket.default }
 
         ```sh
-         $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+         $ pulumi import gcp:storage/bucket:Bucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage buckets can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+         $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
         ```
 
          `false` in state. If you've set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
@@ -991,6 +1041,7 @@ class Bucket(pulumi.CustomResource):
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+                 enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1019,6 +1070,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["cors"] = cors
             __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
+            __props__.__dict__["enable_object_retention"] = enable_object_retention
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
@@ -1057,6 +1109,7 @@ class Bucket(pulumi.CustomResource):
             custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            enable_object_retention: Optional[pulumi.Input[bool]] = None,
             encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1088,6 +1141,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
+        :param pulumi.Input[bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -1121,6 +1175,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["custom_placement_config"] = custom_placement_config
         __props__.__dict__["default_event_based_hold"] = default_event_based_hold
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["enable_object_retention"] = enable_object_retention
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
@@ -1181,6 +1236,14 @@ class Bucket(pulumi.CustomResource):
         clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="enableObjectRetention")
+    def enable_object_retention(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+        """
+        return pulumi.get(self, "enable_object_retention")
 
     @property
     @pulumi.getter

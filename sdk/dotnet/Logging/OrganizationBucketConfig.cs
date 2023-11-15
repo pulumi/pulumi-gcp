@@ -37,6 +37,11 @@ namespace Pulumi.Gcp.Logging
     ///         Location = "global",
     ///         RetentionDays = 30,
     ///         BucketId = "_Default",
+    ///         IndexConfigs = 
+    ///         {
+    ///             { "filePath", "jsonPayload.request.status" },
+    ///             { "type", "INDEX_TYPE_STRING" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -44,7 +49,15 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the following format:
+    /// This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}"
+    /// 
+    ///  to = google_logging_organization_bucket_config.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -72,6 +85,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        [Output("indexConfigs")]
+        public Output<ImmutableArray<Outputs.OrganizationBucketConfigIndexConfig>> IndexConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -169,6 +188,18 @@ namespace Pulumi.Gcp.Logging
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("indexConfigs")]
+        private InputList<Inputs.OrganizationBucketConfigIndexConfigArgs>? _indexConfigs;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.OrganizationBucketConfigIndexConfigArgs> IndexConfigs
+        {
+            get => _indexConfigs ?? (_indexConfigs = new InputList<Inputs.OrganizationBucketConfigIndexConfigArgs>());
+            set => _indexConfigs = value;
+        }
+
         /// <summary>
         /// The location of the bucket. The supported locations are: "global" "us-central1"
         /// </summary>
@@ -214,6 +245,18 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("indexConfigs")]
+        private InputList<Inputs.OrganizationBucketConfigIndexConfigGetArgs>? _indexConfigs;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.OrganizationBucketConfigIndexConfigGetArgs> IndexConfigs
+        {
+            get => _indexConfigs ?? (_indexConfigs = new InputList<Inputs.OrganizationBucketConfigIndexConfigGetArgs>());
+            set => _indexConfigs = value;
+        }
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

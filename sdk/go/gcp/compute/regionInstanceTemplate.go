@@ -10,12 +10,21 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
 //
-// # Instance templates can be imported using any of these accepted formats
+// Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}"
+//
+//	to = google_compute_region_instance_template.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -34,8 +43,6 @@ import (
 //	$ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
 //
 // ```
-//
-//	[custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
 type RegionInstanceTemplate struct {
 	pulumi.CustomResourceState
 
@@ -70,7 +77,7 @@ type RegionInstanceTemplate struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	//
-	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
 	// ***
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -204,7 +211,7 @@ type regionInstanceTemplateState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	//
-	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
 	// ***
 	MachineType *string `pulumi:"machineType"`
@@ -298,7 +305,7 @@ type RegionInstanceTemplateState struct {
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	//
-	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
 	// ***
 	MachineType pulumi.StringPtrInput
@@ -394,7 +401,7 @@ type regionInstanceTemplateArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	//
-	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
 	// ***
 	MachineType string `pulumi:"machineType"`
@@ -479,7 +486,7 @@ type RegionInstanceTemplateArgs struct {
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	//
-	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 	//
 	// ***
 	MachineType pulumi.StringInput
@@ -556,12 +563,6 @@ func (i *RegionInstanceTemplate) ToRegionInstanceTemplateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateOutput)
 }
 
-func (i *RegionInstanceTemplate) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceTemplate] {
-	return pulumix.Output[*RegionInstanceTemplate]{
-		OutputState: i.ToRegionInstanceTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionInstanceTemplateArrayInput is an input type that accepts RegionInstanceTemplateArray and RegionInstanceTemplateArrayOutput values.
 // You can construct a concrete instance of `RegionInstanceTemplateArrayInput` via:
 //
@@ -585,12 +586,6 @@ func (i RegionInstanceTemplateArray) ToRegionInstanceTemplateArrayOutput() Regio
 
 func (i RegionInstanceTemplateArray) ToRegionInstanceTemplateArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateArrayOutput)
-}
-
-func (i RegionInstanceTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionInstanceTemplate] {
-	return pulumix.Output[[]*RegionInstanceTemplate]{
-		OutputState: i.ToRegionInstanceTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionInstanceTemplateMapInput is an input type that accepts RegionInstanceTemplateMap and RegionInstanceTemplateMapOutput values.
@@ -618,12 +613,6 @@ func (i RegionInstanceTemplateMap) ToRegionInstanceTemplateMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateMapOutput)
 }
 
-func (i RegionInstanceTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionInstanceTemplate] {
-	return pulumix.Output[map[string]*RegionInstanceTemplate]{
-		OutputState: i.ToRegionInstanceTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionInstanceTemplateOutput struct{ *pulumi.OutputState }
 
 func (RegionInstanceTemplateOutput) ElementType() reflect.Type {
@@ -636,12 +625,6 @@ func (o RegionInstanceTemplateOutput) ToRegionInstanceTemplateOutput() RegionIns
 
 func (o RegionInstanceTemplateOutput) ToRegionInstanceTemplateOutputWithContext(ctx context.Context) RegionInstanceTemplateOutput {
 	return o
-}
-
-func (o RegionInstanceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionInstanceTemplate] {
-	return pulumix.Output[*RegionInstanceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -711,7 +694,7 @@ func (o RegionInstanceTemplateOutput) Labels() pulumi.StringMapOutput {
 
 // The machine type to create.
 //
-// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
 //
 // ***
 func (o RegionInstanceTemplateOutput) MachineType() pulumi.StringOutput {
@@ -853,12 +836,6 @@ func (o RegionInstanceTemplateArrayOutput) ToRegionInstanceTemplateArrayOutputWi
 	return o
 }
 
-func (o RegionInstanceTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionInstanceTemplate] {
-	return pulumix.Output[[]*RegionInstanceTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionInstanceTemplateArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionInstanceTemplate {
 		return vs[0].([]*RegionInstanceTemplate)[vs[1].(int)]
@@ -877,12 +854,6 @@ func (o RegionInstanceTemplateMapOutput) ToRegionInstanceTemplateMapOutput() Reg
 
 func (o RegionInstanceTemplateMapOutput) ToRegionInstanceTemplateMapOutputWithContext(ctx context.Context) RegionInstanceTemplateMapOutput {
 	return o
-}
-
-func (o RegionInstanceTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionInstanceTemplate] {
-	return pulumix.Output[map[string]*RegionInstanceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionInstanceTemplateMapOutput) MapIndex(k pulumi.StringInput) RegionInstanceTemplateOutput {

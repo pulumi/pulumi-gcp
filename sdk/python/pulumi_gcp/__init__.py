@@ -110,6 +110,8 @@ if typing.TYPE_CHECKING:
     diagflow = __diagflow
     import pulumi_gcp.dns as __dns
     dns = __dns
+    import pulumi_gcp.edgecontainer as __edgecontainer
+    edgecontainer = __edgecontainer
     import pulumi_gcp.edgenetwork as __edgenetwork
     edgenetwork = __edgenetwork
     import pulumi_gcp.endpoints as __endpoints
@@ -142,6 +144,8 @@ if typing.TYPE_CHECKING:
     iap = __iap
     import pulumi_gcp.identityplatform as __identityplatform
     identityplatform = __identityplatform
+    import pulumi_gcp.integrationconnectors as __integrationconnectors
+    integrationconnectors = __integrationconnectors
     import pulumi_gcp.kms as __kms
     kms = __kms
     import pulumi_gcp.logging as __logging
@@ -269,6 +273,7 @@ else:
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
     dns = _utilities.lazy_import('pulumi_gcp.dns')
+    edgecontainer = _utilities.lazy_import('pulumi_gcp.edgecontainer')
     edgenetwork = _utilities.lazy_import('pulumi_gcp.edgenetwork')
     endpoints = _utilities.lazy_import('pulumi_gcp.endpoints')
     essentialcontacts = _utilities.lazy_import('pulumi_gcp.essentialcontacts')
@@ -285,6 +290,7 @@ else:
     iam = _utilities.lazy_import('pulumi_gcp.iam')
     iap = _utilities.lazy_import('pulumi_gcp.iap')
     identityplatform = _utilities.lazy_import('pulumi_gcp.identityplatform')
+    integrationconnectors = _utilities.lazy_import('pulumi_gcp.integrationconnectors')
     kms = _utilities.lazy_import('pulumi_gcp.kms')
     logging = _utilities.lazy_import('pulumi_gcp.logging')
     looker = _utilities.lazy_import('pulumi_gcp.looker')
@@ -501,6 +507,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.alloydb",
   "classes": {
    "gcp:alloydb/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "alloydb/user",
+  "fqn": "pulumi_gcp.alloydb",
+  "classes": {
+   "gcp:alloydb/user:User": "User"
   }
  },
  {
@@ -2217,6 +2231,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/instanceSettings",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instanceSettings:InstanceSettings": "InstanceSettings"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/instanceTemplate",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3057,6 +3079,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "databasemigrationservice/privateConnection",
+  "fqn": "pulumi_gcp.databasemigrationservice",
+  "classes": {
+   "gcp:databasemigrationservice/privateConnection:PrivateConnection": "PrivateConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "datacatalog/entry",
   "fqn": "pulumi_gcp.datacatalog",
   "classes": {
@@ -3833,6 +3863,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "edgecontainer/cluster",
+  "fqn": "pulumi_gcp.edgecontainer",
+  "classes": {
+   "gcp:edgecontainer/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "edgecontainer/nodePool",
+  "fqn": "pulumi_gcp.edgecontainer",
+  "classes": {
+   "gcp:edgecontainer/nodePool:NodePool": "NodePool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "edgecontainer/vpnConnection",
+  "fqn": "pulumi_gcp.edgecontainer",
+  "classes": {
+   "gcp:edgecontainer/vpnConnection:VpnConnection": "VpnConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "edgenetwork/network",
   "fqn": "pulumi_gcp.edgenetwork",
   "classes": {
@@ -4033,6 +4087,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/hostingCustomDomain",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/hostingCustomDomain:HostingCustomDomain": "HostingCustomDomain"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/hostingRelease",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -4093,6 +4155,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebaserules",
   "classes": {
    "gcp:firebaserules/ruleset:Ruleset": "Ruleset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firestore/backupSchedule",
+  "fqn": "pulumi_gcp.firestore",
+  "classes": {
+   "gcp:firestore/backupSchedule:BackupSchedule": "BackupSchedule"
   }
  },
  {
@@ -4277,6 +4347,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkehub",
   "classes": {
    "gcp:gkehub/featureMembership:FeatureMembership": "FeatureMembership"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/fleet",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/fleet:Fleet": "Fleet"
   }
  },
  {
@@ -4929,6 +5007,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "integrationconnectors/connection",
+  "fqn": "pulumi_gcp.integrationconnectors",
+  "classes": {
+   "gcp:integrationconnectors/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/cryptoKey",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -5245,6 +5331,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
    "gcp:networkconnectivity/hub:Hub": "Hub"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/policyBasedRoute",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": "PolicyBasedRoute"
   }
  },
  {
@@ -5749,6 +5843,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
    "gcp:pubsub/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "pubsub/schemaIamBinding",
+  "fqn": "pulumi_gcp.pubsub",
+  "classes": {
+   "gcp:pubsub/schemaIamBinding:SchemaIamBinding": "SchemaIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "pubsub/schemaIamMember",
+  "fqn": "pulumi_gcp.pubsub",
+  "classes": {
+   "gcp:pubsub/schemaIamMember:SchemaIamMember": "SchemaIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "pubsub/schemaIamPolicy",
+  "fqn": "pulumi_gcp.pubsub",
+  "classes": {
+   "gcp:pubsub/schemaIamPolicy:SchemaIamPolicy": "SchemaIamPolicy"
   }
  },
  {

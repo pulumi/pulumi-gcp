@@ -399,7 +399,15 @@ class AndroidApp(pulumi.CustomResource):
 
         ## Import
 
-        AndroidApp can be imported using any of these accepted formats
+        AndroidApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/androidApps/{{app_id}}` * `projects/{{project}}/androidApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `androidApps/{{app_id}}` * `{{app_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AndroidApp using one of the formats above. For exampletf import {
+
+         id = "{{project}} projects/{{project}}/androidApps/{{app_id}}"
+
+         to = google_firebase_android_app.default }
+
+        ```sh
+         $ pulumi import gcp:firebase/androidApp:AndroidApp When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AndroidApp can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}
@@ -492,7 +500,15 @@ class AndroidApp(pulumi.CustomResource):
 
         ## Import
 
-        AndroidApp can be imported using any of these accepted formats
+        AndroidApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/androidApps/{{app_id}}` * `projects/{{project}}/androidApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `androidApps/{{app_id}}` * `{{app_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AndroidApp using one of the formats above. For exampletf import {
+
+         id = "{{project}} projects/{{project}}/androidApps/{{app_id}}"
+
+         to = google_firebase_android_app.default }
+
+        ```sh
+         $ pulumi import gcp:firebase/androidApp:AndroidApp When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AndroidApp can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}

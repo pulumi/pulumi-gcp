@@ -203,6 +203,7 @@ public final class GkehubFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
      *             .project(google_gke_hub_membership.membership().project())
+     *             .location(google_gke_hub_membership.membership().location())
      *             .membershipId(google_gke_hub_membership.membership().membership_id())
      *             .build());
      * 
@@ -241,6 +242,7 @@ public final class GkehubFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
      *             .project(google_gke_hub_membership.membership().project())
+     *             .location(google_gke_hub_membership.membership().location())
      *             .membershipId(google_gke_hub_membership.membership().membership_id())
      *             .build());
      * 
@@ -279,6 +281,7 @@ public final class GkehubFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
      *             .project(google_gke_hub_membership.membership().project())
+     *             .location(google_gke_hub_membership.membership().location())
      *             .membershipId(google_gke_hub_membership.membership().membership_id())
      *             .build());
      * 
@@ -317,6 +320,7 @@ public final class GkehubFunctions {
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
      *             .project(google_gke_hub_membership.membership().project())
+     *             .location(google_gke_hub_membership.membership().location())
      *             .membershipId(google_gke_hub_membership.membership().membership_id())
      *             .build());
      * 

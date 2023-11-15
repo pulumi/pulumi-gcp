@@ -37,16 +37,36 @@ public final class PerInstanceConfigPreservedStateArgs extends com.pulumi.resour
         return Optional.ofNullable(this.disks);
     }
 
+    /**
+     * Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="externalIps")
     private @Nullable Output<List<PerInstanceConfigPreservedStateExternalIpArgs>> externalIps;
 
+    /**
+     * @return Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<PerInstanceConfigPreservedStateExternalIpArgs>>> externalIps() {
         return Optional.ofNullable(this.externalIps);
     }
 
+    /**
+     * Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="internalIps")
     private @Nullable Output<List<PerInstanceConfigPreservedStateInternalIpArgs>> internalIps;
 
+    /**
+     * @return Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<PerInstanceConfigPreservedStateInternalIpArgs>>> internalIps() {
         return Optional.ofNullable(this.internalIps);
     }
@@ -127,28 +147,70 @@ public final class PerInstanceConfigPreservedStateArgs extends com.pulumi.resour
             return disks(List.of(disks));
         }
 
+        /**
+         * @param externalIps Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIps(@Nullable Output<List<PerInstanceConfigPreservedStateExternalIpArgs>> externalIps) {
             $.externalIps = externalIps;
             return this;
         }
 
+        /**
+         * @param externalIps Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIps(List<PerInstanceConfigPreservedStateExternalIpArgs> externalIps) {
             return externalIps(Output.of(externalIps));
         }
 
+        /**
+         * @param externalIps Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIps(PerInstanceConfigPreservedStateExternalIpArgs... externalIps) {
             return externalIps(List.of(externalIps));
         }
 
+        /**
+         * @param internalIps Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIps(@Nullable Output<List<PerInstanceConfigPreservedStateInternalIpArgs>> internalIps) {
             $.internalIps = internalIps;
             return this;
         }
 
+        /**
+         * @param internalIps Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIps(List<PerInstanceConfigPreservedStateInternalIpArgs> internalIps) {
             return internalIps(Output.of(internalIps));
         }
 
+        /**
+         * @param internalIps Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIps(PerInstanceConfigPreservedStateInternalIpArgs... internalIps) {
             return internalIps(List.of(internalIps));
         }

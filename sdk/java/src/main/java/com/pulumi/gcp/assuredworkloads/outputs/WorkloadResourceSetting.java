@@ -12,7 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkloadResourceSetting {
     /**
-     * @return Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+     * @return User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+     * 
+     */
+    private @Nullable String displayName;
+    /**
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
      * 
      */
     private @Nullable String resourceId;
@@ -24,7 +29,14 @@ public final class WorkloadResourceSetting {
 
     private WorkloadResourceSetting() {}
     /**
-     * @return Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+     * @return User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+     * 
+     */
+    public Optional<String> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+    /**
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
      * 
      */
     public Optional<String> resourceId() {
@@ -47,15 +59,22 @@ public final class WorkloadResourceSetting {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String displayName;
         private @Nullable String resourceId;
         private @Nullable String resourceType;
         public Builder() {}
         public Builder(WorkloadResourceSetting defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.displayName = defaults.displayName;
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
+        public Builder displayName(@Nullable String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
         @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
             this.resourceId = resourceId;
@@ -68,6 +87,7 @@ public final class WorkloadResourceSetting {
         }
         public WorkloadResourceSetting build() {
             final var o = new WorkloadResourceSetting();
+            o.displayName = displayName;
             o.resourceId = resourceId;
             o.resourceType = resourceType;
             return o;

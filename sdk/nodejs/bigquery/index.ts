@@ -75,6 +75,11 @@ export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").g
 export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
 
+export { GetDatasetArgs, GetDatasetResult, GetDatasetOutputArgs } from "./getDataset";
+export const getDataset: typeof import("./getDataset").getDataset = null as any;
+export const getDatasetOutput: typeof import("./getDataset").getDatasetOutput = null as any;
+utilities.lazyLoad(exports, ["getDataset","getDatasetOutput"], () => require("./getDataset"));
+
 export { GetDatasetIamPolicyArgs, GetDatasetIamPolicyResult, GetDatasetIamPolicyOutputArgs } from "./getDatasetIamPolicy";
 export const getDatasetIamPolicy: typeof import("./getDatasetIamPolicy").getDatasetIamPolicy = null as any;
 export const getDatasetIamPolicyOutput: typeof import("./getDatasetIamPolicy").getDatasetIamPolicyOutput = null as any;

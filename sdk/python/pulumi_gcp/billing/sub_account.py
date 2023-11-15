@@ -206,7 +206,15 @@ class SubAccount(pulumi.CustomResource):
 
         ## Import
 
-        Billing Subaccounts can be imported using any of these accepted formats:
+        Billing Subaccounts can be imported using any of these accepted formats* `billingAccounts/{billing_account_id}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Billing Subaccounts using one of the formats above. For exampletf import {
+
+         id = "billingAccounts/{billing_account_id}"
+
+         to = google_billing_subaccount.default }
+
+        ```sh
+         $ pulumi import gcp:billing/subAccount:SubAccount When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Billing Subaccounts can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
@@ -243,7 +251,15 @@ class SubAccount(pulumi.CustomResource):
 
         ## Import
 
-        Billing Subaccounts can be imported using any of these accepted formats:
+        Billing Subaccounts can be imported using any of these accepted formats* `billingAccounts/{billing_account_id}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Billing Subaccounts using one of the formats above. For exampletf import {
+
+         id = "billingAccounts/{billing_account_id}"
+
+         to = google_billing_subaccount.default }
+
+        ```sh
+         $ pulumi import gcp:billing/subAccount:SubAccount When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Billing Subaccounts can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}

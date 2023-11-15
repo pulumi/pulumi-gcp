@@ -1210,14 +1210,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
-        ### Redis Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache = gcp.redis.Instance("cache", memory_size_gb=1)
-        ```
         ### Redis Instance Full
 
         ```python
@@ -1249,22 +1241,6 @@ class Instance(pulumi.CustomResource):
                     ),
                 )],
             ))
-        ```
-        ### Redis Instance Full With Persistence Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache_persis = gcp.redis.Instance("cache-persis",
-            alternative_location_id="us-central1-f",
-            location_id="us-central1-a",
-            memory_size_gb=1,
-            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
-                persistence_mode="RDB",
-                rdb_snapshot_period="TWELVE_HOURS",
-            ),
-            tier="STANDARD_HA")
         ```
         ### Redis Instance Private Service
 
@@ -1351,7 +1327,15 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats
+        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
+
+         to = google_redis_instance.default }
+
+        ```sh
+         $ pulumi import gcp:redis/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
@@ -1459,14 +1443,6 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
-        ### Redis Instance Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache = gcp.redis.Instance("cache", memory_size_gb=1)
-        ```
         ### Redis Instance Full
 
         ```python
@@ -1498,22 +1474,6 @@ class Instance(pulumi.CustomResource):
                     ),
                 )],
             ))
-        ```
-        ### Redis Instance Full With Persistence Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cache_persis = gcp.redis.Instance("cache-persis",
-            alternative_location_id="us-central1-f",
-            location_id="us-central1-a",
-            memory_size_gb=1,
-            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
-                persistence_mode="RDB",
-                rdb_snapshot_period="TWELVE_HOURS",
-            ),
-            tier="STANDARD_HA")
         ```
         ### Redis Instance Private Service
 
@@ -1600,7 +1560,15 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats
+        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
+
+         to = google_redis_instance.default }
+
+        ```sh
+         $ pulumi import gcp:redis/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

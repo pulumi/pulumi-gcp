@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'RepositoryGitRemoteSettings',
+    'RepositoryGitRemoteSettingsSshAuthenticationConfig',
     'RepositoryReleaseConfigCodeCompilationConfig',
     'RepositoryReleaseConfigRecentScheduledReleaseRecord',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus',
@@ -27,10 +28,12 @@ class RepositoryGitRemoteSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authenticationTokenSecretVersion":
-            suggest = "authentication_token_secret_version"
-        elif key == "defaultBranch":
+        if key == "defaultBranch":
             suggest = "default_branch"
+        elif key == "authenticationTokenSecretVersion":
+            suggest = "authentication_token_secret_version"
+        elif key == "sshAuthenticationConfig":
+            suggest = "ssh_authentication_config"
         elif key == "tokenStatus":
             suggest = "token_status"
 
@@ -46,30 +49,28 @@ class RepositoryGitRemoteSettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 authentication_token_secret_version: str,
                  default_branch: str,
                  url: str,
+                 authentication_token_secret_version: Optional[str] = None,
+                 ssh_authentication_config: Optional['outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig'] = None,
                  token_status: Optional[str] = None):
         """
-        :param str authentication_token_secret_version: The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
         :param str default_branch: The Git remote's default branch name.
         :param str url: The Git remote's URL.
+        :param str authentication_token_secret_version: The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
+        :param 'RepositoryGitRemoteSettingsSshAuthenticationConfigArgs' ssh_authentication_config: Authentication fields for remote uris using SSH protocol.
+               Structure is documented below.
         :param str token_status: (Output)
                Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         """
-        pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "url", url)
+        if authentication_token_secret_version is not None:
+            pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
+        if ssh_authentication_config is not None:
+            pulumi.set(__self__, "ssh_authentication_config", ssh_authentication_config)
         if token_status is not None:
             pulumi.set(__self__, "token_status", token_status)
-
-    @property
-    @pulumi.getter(name="authenticationTokenSecretVersion")
-    def authentication_token_secret_version(self) -> str:
-        """
-        The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
-        """
-        return pulumi.get(self, "authentication_token_secret_version")
 
     @property
     @pulumi.getter(name="defaultBranch")
@@ -88,6 +89,23 @@ class RepositoryGitRemoteSettings(dict):
         return pulumi.get(self, "url")
 
     @property
+    @pulumi.getter(name="authenticationTokenSecretVersion")
+    def authentication_token_secret_version(self) -> Optional[str]:
+        """
+        The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
+        """
+        return pulumi.get(self, "authentication_token_secret_version")
+
+    @property
+    @pulumi.getter(name="sshAuthenticationConfig")
+    def ssh_authentication_config(self) -> Optional['outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig']:
+        """
+        Authentication fields for remote uris using SSH protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ssh_authentication_config")
+
+    @property
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[str]:
         """
@@ -95,6 +113,54 @@ class RepositoryGitRemoteSettings(dict):
         Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         """
         return pulumi.get(self, "token_status")
+
+
+@pulumi.output_type
+class RepositoryGitRemoteSettingsSshAuthenticationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostPublicKey":
+            suggest = "host_public_key"
+        elif key == "userPrivateKeySecretVersion":
+            suggest = "user_private_key_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryGitRemoteSettingsSshAuthenticationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryGitRemoteSettingsSshAuthenticationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryGitRemoteSettingsSshAuthenticationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_public_key: str,
+                 user_private_key_secret_version: str):
+        """
+        :param str host_public_key: Content of a public SSH key to verify an identity of a remote Git host.
+        :param str user_private_key_secret_version: The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+        """
+        pulumi.set(__self__, "host_public_key", host_public_key)
+        pulumi.set(__self__, "user_private_key_secret_version", user_private_key_secret_version)
+
+    @property
+    @pulumi.getter(name="hostPublicKey")
+    def host_public_key(self) -> str:
+        """
+        Content of a public SSH key to verify an identity of a remote Git host.
+        """
+        return pulumi.get(self, "host_public_key")
+
+    @property
+    @pulumi.getter(name="userPrivateKeySecretVersion")
+    def user_private_key_secret_version(self) -> str:
+        """
+        The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+        """
+        return pulumi.get(self, "user_private_key_secret_version")
 
 
 @pulumi.output_type
@@ -628,9 +694,9 @@ class RepositoryWorkspaceCompilationOverrides(dict):
                  schema_suffix: Optional[str] = None,
                  table_prefix: Optional[str] = None):
         """
-        :param str default_database: Optional. The default database (Google Cloud project ID).
-        :param str schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
-        :param str table_prefix: Optional. The prefix that should be prepended to all table names.
+        :param str default_database: The default database (Google Cloud project ID).
+        :param str schema_suffix: The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        :param str table_prefix: The prefix that should be prepended to all table names.
         """
         if default_database is not None:
             pulumi.set(__self__, "default_database", default_database)
@@ -643,7 +709,7 @@ class RepositoryWorkspaceCompilationOverrides(dict):
     @pulumi.getter(name="defaultDatabase")
     def default_database(self) -> Optional[str]:
         """
-        Optional. The default database (Google Cloud project ID).
+        The default database (Google Cloud project ID).
         """
         return pulumi.get(self, "default_database")
 
@@ -651,7 +717,7 @@ class RepositoryWorkspaceCompilationOverrides(dict):
     @pulumi.getter(name="schemaSuffix")
     def schema_suffix(self) -> Optional[str]:
         """
-        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        The suffix that should be appended to all schema (BigQuery dataset ID) names.
         """
         return pulumi.get(self, "schema_suffix")
 
@@ -659,7 +725,7 @@ class RepositoryWorkspaceCompilationOverrides(dict):
     @pulumi.getter(name="tablePrefix")
     def table_prefix(self) -> Optional[str]:
         """
-        Optional. The prefix that should be prepended to all table names.
+        The prefix that should be prepended to all table names.
         """
         return pulumi.get(self, "table_prefix")
 

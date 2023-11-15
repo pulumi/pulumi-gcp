@@ -8,22 +8,32 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeConfigLinuxNodeConfigArgs Empty = new NodePoolNodeConfigLinuxNodeConfigArgs();
 
-    @Import(name="sysctls", required=true)
-    private Output<Map<String,String>> sysctls;
+    @Import(name="cgroupMode")
+    private @Nullable Output<String> cgroupMode;
 
-    public Output<Map<String,String>> sysctls() {
-        return this.sysctls;
+    public Optional<Output<String>> cgroupMode() {
+        return Optional.ofNullable(this.cgroupMode);
+    }
+
+    @Import(name="sysctls")
+    private @Nullable Output<Map<String,String>> sysctls;
+
+    public Optional<Output<Map<String,String>>> sysctls() {
+        return Optional.ofNullable(this.sysctls);
     }
 
     private NodePoolNodeConfigLinuxNodeConfigArgs() {}
 
     private NodePoolNodeConfigLinuxNodeConfigArgs(NodePoolNodeConfigLinuxNodeConfigArgs $) {
+        this.cgroupMode = $.cgroupMode;
         this.sysctls = $.sysctls;
     }
 
@@ -45,7 +55,16 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
             $ = new NodePoolNodeConfigLinuxNodeConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder sysctls(Output<Map<String,String>> sysctls) {
+        public Builder cgroupMode(@Nullable Output<String> cgroupMode) {
+            $.cgroupMode = cgroupMode;
+            return this;
+        }
+
+        public Builder cgroupMode(String cgroupMode) {
+            return cgroupMode(Output.of(cgroupMode));
+        }
+
+        public Builder sysctls(@Nullable Output<Map<String,String>> sysctls) {
             $.sysctls = sysctls;
             return this;
         }
@@ -55,7 +74,6 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
         }
 
         public NodePoolNodeConfigLinuxNodeConfigArgs build() {
-            $.sysctls = Objects.requireNonNull($.sysctls, "expected parameter 'sysctls' to be non-null");
             return $;
         }
     }

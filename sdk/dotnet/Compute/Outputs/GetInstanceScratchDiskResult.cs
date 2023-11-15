@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetInstanceScratchDiskResult
     {
         /// <summary>
+        /// Name with which the attached disk is accessible
+        /// under `/dev/disk/by-id/`
+        /// </summary>
+        public readonly string DeviceName;
+        /// <summary>
         /// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
         /// </summary>
         public readonly string Interface;
@@ -24,10 +29,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetInstanceScratchDiskResult(
+            string deviceName,
+
             string @interface,
 
             int size)
         {
+            DeviceName = deviceName;
             Interface = @interface;
             Size = size;
         }

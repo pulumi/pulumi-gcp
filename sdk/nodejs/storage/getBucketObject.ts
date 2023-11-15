@@ -103,6 +103,7 @@ export interface GetBucketObjectResult {
     readonly metadata: {[key: string]: string};
     readonly name?: string;
     readonly outputName: string;
+    readonly retentions: outputs.storage.GetBucketObjectRetention[];
     /**
      * (Computed) A url reference to this object.
      */

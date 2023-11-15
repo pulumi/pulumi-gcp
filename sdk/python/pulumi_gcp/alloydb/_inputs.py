@@ -31,6 +31,9 @@ __all__ = [
     'ClusterNetworkConfigArgs',
     'ClusterRestoreBackupSourceArgs',
     'ClusterRestoreContinuousBackupSourceArgs',
+    'ClusterSecondaryConfigArgs',
+    'InstanceClientConnectionConfigArgs',
+    'InstanceClientConnectionConfigSslConfigArgs',
     'InstanceMachineConfigArgs',
     'InstanceQueryInsightsConfigArgs',
     'InstanceReadPoolConfigArgs',
@@ -966,6 +969,96 @@ class ClusterRestoreContinuousBackupSourceArgs:
     @point_in_time.setter
     def point_in_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "point_in_time", value)
+
+
+@pulumi.input_type
+class ClusterSecondaryConfigArgs:
+    def __init__(__self__, *,
+                 primary_cluster_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] primary_cluster_name: Name of the primary cluster must be in the format
+               'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        pulumi.set(__self__, "primary_cluster_name", primary_cluster_name)
+
+    @property
+    @pulumi.getter(name="primaryClusterName")
+    def primary_cluster_name(self) -> pulumi.Input[str]:
+        """
+        Name of the primary cluster must be in the format
+        'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        return pulumi.get(self, "primary_cluster_name")
+
+    @primary_cluster_name.setter
+    def primary_cluster_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "primary_cluster_name", value)
+
+
+@pulumi.input_type
+class InstanceClientConnectionConfigArgs:
+    def __init__(__self__, *,
+                 require_connectors: Optional[pulumi.Input[bool]] = None,
+                 ssl_config: Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] require_connectors: Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+        :param pulumi.Input['InstanceClientConnectionConfigSslConfigArgs'] ssl_config: SSL config option for this instance.
+               Structure is documented below.
+        """
+        if require_connectors is not None:
+            pulumi.set(__self__, "require_connectors", require_connectors)
+        if ssl_config is not None:
+            pulumi.set(__self__, "ssl_config", ssl_config)
+
+    @property
+    @pulumi.getter(name="requireConnectors")
+    def require_connectors(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+        """
+        return pulumi.get(self, "require_connectors")
+
+    @require_connectors.setter
+    def require_connectors(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_connectors", value)
+
+    @property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArgs']]:
+        """
+        SSL config option for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ssl_config")
+
+    @ssl_config.setter
+    def ssl_config(self, value: Optional[pulumi.Input['InstanceClientConnectionConfigSslConfigArgs']]):
+        pulumi.set(self, "ssl_config", value)
+
+
+@pulumi.input_type
+class InstanceClientConnectionConfigSslConfigArgs:
+    def __init__(__self__, *,
+                 ssl_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ssl_mode: SSL mode. Specifies client-server SSL/TLS connection behavior.
+               Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
+        """
+        if ssl_mode is not None:
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        SSL mode. Specifies client-server SSL/TLS connection behavior.
+        Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
+        """
+        return pulumi.get(self, "ssl_mode")
+
+    @ssl_mode.setter
+    def ssl_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_mode", value)
 
 
 @pulumi.input_type

@@ -50,10 +50,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Billing account logging exclusions can be imported using their URI, e.g.
+ * Billing account logging exclusions can be imported using their URI, e.g. * `billingAccounts/{{billing_account}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import billing account logging exclusions using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;billingAccounts/{{billing_account}}/exclusions/{{name}}&#34;
+ * 
+ *  to = google_logging_billing_account_exclusion.default }
  * 
  * ```sh
- *  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion my_exclusion billingAccounts/my-billing_account/exclusions/my-exclusion
+ *  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), billing account logging exclusions can be imported using one of the formats above. For example
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion default billingAccounts/{{billing_account}}/exclusions/{{name}}
  * ```
  * 
  */

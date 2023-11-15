@@ -30,6 +30,11 @@ public final class GetSubnetworkResult {
      */
     private String id;
     /**
+     * @return The internal IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    private String internalIpv6Prefix;
+    /**
      * @return The range of IP addresses belonging to this subnetwork
      * secondary range.
      * 
@@ -80,6 +85,13 @@ public final class GetSubnetworkResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The internal IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    public String internalIpv6Prefix() {
+        return this.internalIpv6Prefix;
     }
     /**
      * @return The range of IP addresses belonging to this subnetwork
@@ -139,6 +151,7 @@ public final class GetSubnetworkResult {
         private String description;
         private String gatewayAddress;
         private String id;
+        private String internalIpv6Prefix;
         private String ipCidrRange;
         private @Nullable String name;
         private String network;
@@ -153,6 +166,7 @@ public final class GetSubnetworkResult {
     	      this.description = defaults.description;
     	      this.gatewayAddress = defaults.gatewayAddress;
     	      this.id = defaults.id;
+    	      this.internalIpv6Prefix = defaults.internalIpv6Prefix;
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
@@ -176,6 +190,11 @@ public final class GetSubnetworkResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder internalIpv6Prefix(String internalIpv6Prefix) {
+            this.internalIpv6Prefix = Objects.requireNonNull(internalIpv6Prefix);
             return this;
         }
         @CustomType.Setter
@@ -226,6 +245,7 @@ public final class GetSubnetworkResult {
             o.description = description;
             o.gatewayAddress = gatewayAddress;
             o.id = id;
+            o.internalIpv6Prefix = internalIpv6Prefix;
             o.ipCidrRange = ipCidrRange;
             o.name = name;
             o.network = network;

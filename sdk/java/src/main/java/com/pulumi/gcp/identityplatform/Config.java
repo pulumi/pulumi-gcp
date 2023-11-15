@@ -13,6 +13,7 @@ import com.pulumi.gcp.identityplatform.inputs.ConfigState;
 import com.pulumi.gcp.identityplatform.outputs.ConfigBlockingFunctions;
 import com.pulumi.gcp.identityplatform.outputs.ConfigQuota;
 import com.pulumi.gcp.identityplatform.outputs.ConfigSignIn;
+import com.pulumi.gcp.identityplatform.outputs.ConfigSmsRegionConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -52,6 +53,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInAnonymousArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInEmailArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInPhoneNumberArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigAllowlistOnlyArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
@@ -98,6 +101,13 @@ import javax.annotation.Nullable;
  *                     .testPhoneNumbers(Map.of(&#34;+11231231234&#34;, &#34;000000&#34;))
  *                     .build())
  *                 .build())
+ *             .smsRegionConfig(ConfigSmsRegionConfigArgs.builder()
+ *                 .allowlistOnly(ConfigSmsRegionConfigAllowlistOnlyArgs.builder()
+ *                     .allowedRegions(                    
+ *                         &#34;US&#34;,
+ *                         &#34;CA&#34;)
+ *                     .build())
+ *                 .build())
  *             .blockingFunctions(ConfigBlockingFunctionsArgs.builder()
  *                 .triggers(ConfigBlockingFunctionsTriggerArgs.builder()
  *                     .eventType(&#34;beforeSignIn&#34;)
@@ -128,7 +138,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Config can be imported using any of these accepted formats
+ * Config can be imported using any of these accepted formats* `projects/{{project}}/config` * `projects/{{project}}` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Config using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/config&#34;
+ * 
+ *  to = google_identity_platform_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/config:Config When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Config can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
@@ -250,6 +268,22 @@ public class Config extends com.pulumi.resources.CustomResource {
      */
     public Output<ConfigSignIn> signIn() {
         return this.signIn;
+    }
+    /**
+     * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="smsRegionConfig", refs={ConfigSmsRegionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConfigSmsRegionConfig> smsRegionConfig;
+
+    /**
+     * @return Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConfigSmsRegionConfig>> smsRegionConfig() {
+        return Codegen.optional(this.smsRegionConfig);
     }
 
     /**

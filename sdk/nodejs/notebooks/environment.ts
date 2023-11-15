@@ -32,7 +32,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Environment can be imported using any of these accepted formats
+ * Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/environments/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/environments/{{name}}"
+ *
+ *  to = google_notebooks_environment.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}

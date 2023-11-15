@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A rule for the OrganizationSecurityPolicy.
@@ -80,7 +79,17 @@ import (
 //
 // ## Import
 //
-// OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
+// OrganizationSecurityPolicyRule can be imported using any of these accepted formats* `{{policy_id}}/priority/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationSecurityPolicyRule using one of the formats above. For exampletf import {
+//
+//	id = "{{policy_id}}/priority/{{priority}}"
+//
+//	to = google_compute_organization_security_policy_rule.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationSecurityPolicyRule can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -328,12 +337,6 @@ func (i *OrganizationSecurityPolicyRule) ToOrganizationSecurityPolicyRuleOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleOutput)
 }
 
-func (i *OrganizationSecurityPolicyRule) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyRule] {
-	return pulumix.Output[*OrganizationSecurityPolicyRule]{
-		OutputState: i.ToOrganizationSecurityPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationSecurityPolicyRuleArrayInput is an input type that accepts OrganizationSecurityPolicyRuleArray and OrganizationSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyRuleArrayInput` via:
 //
@@ -357,12 +360,6 @@ func (i OrganizationSecurityPolicyRuleArray) ToOrganizationSecurityPolicyRuleArr
 
 func (i OrganizationSecurityPolicyRuleArray) ToOrganizationSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleArrayOutput)
-}
-
-func (i OrganizationSecurityPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicyRule] {
-	return pulumix.Output[[]*OrganizationSecurityPolicyRule]{
-		OutputState: i.ToOrganizationSecurityPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationSecurityPolicyRuleMapInput is an input type that accepts OrganizationSecurityPolicyRuleMap and OrganizationSecurityPolicyRuleMapOutput values.
@@ -390,12 +387,6 @@ func (i OrganizationSecurityPolicyRuleMap) ToOrganizationSecurityPolicyRuleMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMapOutput)
 }
 
-func (i OrganizationSecurityPolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicyRule] {
-	return pulumix.Output[map[string]*OrganizationSecurityPolicyRule]{
-		OutputState: i.ToOrganizationSecurityPolicyRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationSecurityPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityPolicyRuleOutput) ElementType() reflect.Type {
@@ -408,12 +399,6 @@ func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOu
 
 func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleOutput {
 	return o
-}
-
-func (o OrganizationSecurityPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyRule] {
-	return pulumix.Output[*OrganizationSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Action to perform when the client connection triggers the rule. Can currently be either
@@ -491,12 +476,6 @@ func (o OrganizationSecurityPolicyRuleArrayOutput) ToOrganizationSecurityPolicyR
 	return o
 }
 
-func (o OrganizationSecurityPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicyRule] {
-	return pulumix.Output[[]*OrganizationSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationSecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) OrganizationSecurityPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationSecurityPolicyRule {
 		return vs[0].([]*OrganizationSecurityPolicyRule)[vs[1].(int)]
@@ -515,12 +494,6 @@ func (o OrganizationSecurityPolicyRuleMapOutput) ToOrganizationSecurityPolicyRul
 
 func (o OrganizationSecurityPolicyRuleMapOutput) ToOrganizationSecurityPolicyRuleMapOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMapOutput {
 	return o
-}
-
-func (o OrganizationSecurityPolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicyRule] {
-	return pulumix.Output[map[string]*OrganizationSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationSecurityPolicyRuleMapOutput) MapIndex(k pulumi.StringInput) OrganizationSecurityPolicyRuleOutput {

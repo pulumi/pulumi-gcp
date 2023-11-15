@@ -173,10 +173,64 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Monitoring Alert Policy Promql Condition
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.monitoring.AlertPolicy;
+ * import com.pulumi.gcp.monitoring.AlertPolicyArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyAlertStrategyArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
+ * import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionPrometheusQueryLanguageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alertPolicy = new AlertPolicy(&#34;alertPolicy&#34;, AlertPolicyArgs.builder()        
+ *             .alertStrategy(AlertPolicyAlertStrategyArgs.builder()
+ *                 .autoClose(&#34;1800s&#34;)
+ *                 .build())
+ *             .combiner(&#34;OR&#34;)
+ *             .conditions(AlertPolicyConditionArgs.builder()
+ *                 .conditionPrometheusQueryLanguage(AlertPolicyConditionConditionPrometheusQueryLanguageArgs.builder()
+ *                     .alertRule(&#34;AlwaysOn&#34;)
+ *                     .duration(&#34;60s&#34;)
+ *                     .evaluationInterval(&#34;60s&#34;)
+ *                     .query(&#34;compute_googleapis_com:instance_cpu_usage_time &gt; 0&#34;)
+ *                     .ruleGroup(&#34;a test&#34;)
+ *                     .build())
+ *                 .displayName(&#34;test condition&#34;)
+ *                 .build())
+ *             .displayName(&#34;My Alert Policy&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * AlertPolicy can be imported using any of these accepted formats:
+ * AlertPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AlertPolicy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_monitoring_alert_policy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AlertPolicy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

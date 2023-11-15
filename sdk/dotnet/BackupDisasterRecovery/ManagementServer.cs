@@ -78,7 +78,15 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// ## Import
     /// 
-    /// ManagementServer can be imported using any of these accepted formats
+    /// ManagementServer can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/managementServers/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ManagementServer using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/managementServers/{{name}}"
+    /// 
+    ///  to = google_backup_dr_management_server.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ManagementServer can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default projects/{{project}}/locations/{{location}}/managementServers/{{name}}

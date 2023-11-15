@@ -140,15 +140,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      * The location of the cloud run job
      * 
      */
-    @Import(name="location")
-    private @Nullable Output<String> location;
+    @Import(name="location", required=true)
+    private Output<String> location;
 
     /**
      * @return The location of the cloud run job
      * 
      */
-    public Optional<Output<String>> location() {
-        return Optional.ofNullable(this.location);
+    public Output<String> location() {
+        return this.location;
     }
 
     /**
@@ -393,7 +393,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder location(@Nullable Output<String> location) {
+        public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
@@ -476,6 +476,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobArgs build() {
+            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             $.template = Objects.requireNonNull($.template, "expected parameter 'template' to be non-null");
             return $;
         }

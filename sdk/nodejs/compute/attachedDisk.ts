@@ -45,7 +45,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Attached Disk can be imported the following ways
+ * Attached Disk can be imported the following ways* `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}` * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Attached Disk using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}"
+ *
+ *  to = google_compute_attached_disk.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/attachedDisk:AttachedDisk When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Attached Disk can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}

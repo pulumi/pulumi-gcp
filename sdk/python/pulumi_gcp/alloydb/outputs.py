@@ -32,6 +32,9 @@ __all__ = [
     'ClusterNetworkConfig',
     'ClusterRestoreBackupSource',
     'ClusterRestoreContinuousBackupSource',
+    'ClusterSecondaryConfig',
+    'InstanceClientConnectionConfig',
+    'InstanceClientConnectionConfigSslConfig',
     'InstanceMachineConfig',
     'InstanceQueryInsightsConfig',
     'InstanceReadPoolConfig',
@@ -1121,6 +1124,133 @@ class ClusterRestoreContinuousBackupSource(dict):
         The point in time that this cluster is restored to, in RFC 3339 format.
         """
         return pulumi.get(self, "point_in_time")
+
+
+@pulumi.output_type
+class ClusterSecondaryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryClusterName":
+            suggest = "primary_cluster_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterSecondaryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterSecondaryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterSecondaryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_cluster_name: str):
+        """
+        :param str primary_cluster_name: Name of the primary cluster must be in the format
+               'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        pulumi.set(__self__, "primary_cluster_name", primary_cluster_name)
+
+    @property
+    @pulumi.getter(name="primaryClusterName")
+    def primary_cluster_name(self) -> str:
+        """
+        Name of the primary cluster must be in the format
+        'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        return pulumi.get(self, "primary_cluster_name")
+
+
+@pulumi.output_type
+class InstanceClientConnectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requireConnectors":
+            suggest = "require_connectors"
+        elif key == "sslConfig":
+            suggest = "ssl_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceClientConnectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceClientConnectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceClientConnectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 require_connectors: Optional[bool] = None,
+                 ssl_config: Optional['outputs.InstanceClientConnectionConfigSslConfig'] = None):
+        """
+        :param bool require_connectors: Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+        :param 'InstanceClientConnectionConfigSslConfigArgs' ssl_config: SSL config option for this instance.
+               Structure is documented below.
+        """
+        if require_connectors is not None:
+            pulumi.set(__self__, "require_connectors", require_connectors)
+        if ssl_config is not None:
+            pulumi.set(__self__, "ssl_config", ssl_config)
+
+    @property
+    @pulumi.getter(name="requireConnectors")
+    def require_connectors(self) -> Optional[bool]:
+        """
+        Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+        """
+        return pulumi.get(self, "require_connectors")
+
+    @property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> Optional['outputs.InstanceClientConnectionConfigSslConfig']:
+        """
+        SSL config option for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ssl_config")
+
+
+@pulumi.output_type
+class InstanceClientConnectionConfigSslConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sslMode":
+            suggest = "ssl_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceClientConnectionConfigSslConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceClientConnectionConfigSslConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceClientConnectionConfigSslConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssl_mode: Optional[str] = None):
+        """
+        :param str ssl_mode: SSL mode. Specifies client-server SSL/TLS connection behavior.
+               Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
+        """
+        if ssl_mode is not None:
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> Optional[str]:
+        """
+        SSL mode. Specifies client-server SSL/TLS connection behavior.
+        Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
+        """
+        return pulumi.get(self, "ssl_mode")
 
 
 @pulumi.output_type

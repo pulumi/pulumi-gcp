@@ -22,7 +22,7 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, configs=None, effective_labels=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None):
+    def __init__(__self__, configs=None, effective_labels=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, storage_configs=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
@@ -47,6 +47,9 @@ class GetEnvironmentResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if storage_configs and not isinstance(storage_configs, list):
+            raise TypeError("Expected argument 'storage_configs' to be a list")
+        pulumi.set(__self__, "storage_configs", storage_configs)
 
     @property
     @pulumi.getter
@@ -94,6 +97,11 @@ class GetEnvironmentResult:
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
 
+    @property
+    @pulumi.getter(name="storageConfigs")
+    def storage_configs(self) -> Sequence['outputs.GetEnvironmentStorageConfigResult']:
+        return pulumi.get(self, "storage_configs")
+
 
 class AwaitableGetEnvironmentResult(GetEnvironmentResult):
     # pylint: disable=using-constant-test
@@ -108,7 +116,8 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             name=self.name,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
-            region=self.region)
+            region=self.region,
+            storage_configs=self.storage_configs)
 
 
 def get_environment(name: Optional[str] = None,
@@ -139,7 +148,8 @@ def get_environment(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
-        region=pulumi.get(__ret__, 'region'))
+        region=pulumi.get(__ret__, 'region'),
+        storage_configs=pulumi.get(__ret__, 'storage_configs'))
 
 
 @_utilities.lift_output_func(get_environment)

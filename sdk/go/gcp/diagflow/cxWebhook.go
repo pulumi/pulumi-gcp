@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
@@ -75,7 +74,17 @@ import (
 //
 // ## Import
 //
-// # Webhook can be imported using any of these accepted formats
+// Webhook can be imported using any of these accepted formats* `{{parent}}/webhooks/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Webhook using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/webhooks/{{name}}"
+//
+//	to = google_dialogflow_cx_webhook.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxWebhook:CxWebhook When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Webhook can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -295,12 +304,6 @@ func (i *CxWebhook) ToCxWebhookOutputWithContext(ctx context.Context) CxWebhookO
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookOutput)
 }
 
-func (i *CxWebhook) ToOutput(ctx context.Context) pulumix.Output[*CxWebhook] {
-	return pulumix.Output[*CxWebhook]{
-		OutputState: i.ToCxWebhookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxWebhookArrayInput is an input type that accepts CxWebhookArray and CxWebhookArrayOutput values.
 // You can construct a concrete instance of `CxWebhookArrayInput` via:
 //
@@ -324,12 +327,6 @@ func (i CxWebhookArray) ToCxWebhookArrayOutput() CxWebhookArrayOutput {
 
 func (i CxWebhookArray) ToCxWebhookArrayOutputWithContext(ctx context.Context) CxWebhookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookArrayOutput)
-}
-
-func (i CxWebhookArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxWebhook] {
-	return pulumix.Output[[]*CxWebhook]{
-		OutputState: i.ToCxWebhookArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxWebhookMapInput is an input type that accepts CxWebhookMap and CxWebhookMapOutput values.
@@ -357,12 +354,6 @@ func (i CxWebhookMap) ToCxWebhookMapOutputWithContext(ctx context.Context) CxWeb
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookMapOutput)
 }
 
-func (i CxWebhookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxWebhook] {
-	return pulumix.Output[map[string]*CxWebhook]{
-		OutputState: i.ToCxWebhookMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxWebhookOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookOutput) ElementType() reflect.Type {
@@ -375,12 +366,6 @@ func (o CxWebhookOutput) ToCxWebhookOutput() CxWebhookOutput {
 
 func (o CxWebhookOutput) ToCxWebhookOutputWithContext(ctx context.Context) CxWebhookOutput {
 	return o
-}
-
-func (o CxWebhookOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhook] {
-	return pulumix.Output[*CxWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether the webhook is disabled.
@@ -458,12 +443,6 @@ func (o CxWebhookArrayOutput) ToCxWebhookArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CxWebhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxWebhook] {
-	return pulumix.Output[[]*CxWebhook]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxWebhookArrayOutput) Index(i pulumi.IntInput) CxWebhookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxWebhook {
 		return vs[0].([]*CxWebhook)[vs[1].(int)]
@@ -482,12 +461,6 @@ func (o CxWebhookMapOutput) ToCxWebhookMapOutput() CxWebhookMapOutput {
 
 func (o CxWebhookMapOutput) ToCxWebhookMapOutputWithContext(ctx context.Context) CxWebhookMapOutput {
 	return o
-}
-
-func (o CxWebhookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxWebhook] {
-	return pulumix.Output[map[string]*CxWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxWebhookMapOutput) MapIndex(k pulumi.StringInput) CxWebhookOutput {

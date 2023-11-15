@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud Security Command Center (Cloud SCC) notification configs. A
@@ -67,7 +66,17 @@ import (
 //
 // ## Import
 //
-// # NotificationConfig can be imported using any of these accepted formats
+// NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NotificationConfig using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{organization}}/notificationConfigs/{{name}}"
+//
+//	to = google_scc_notification_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NotificationConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -249,12 +258,6 @@ func (i *NotificationConfig) ToNotificationConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigOutput)
 }
 
-func (i *NotificationConfig) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfig] {
-	return pulumix.Output[*NotificationConfig]{
-		OutputState: i.ToNotificationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NotificationConfigArrayInput is an input type that accepts NotificationConfigArray and NotificationConfigArrayOutput values.
 // You can construct a concrete instance of `NotificationConfigArrayInput` via:
 //
@@ -278,12 +281,6 @@ func (i NotificationConfigArray) ToNotificationConfigArrayOutput() NotificationC
 
 func (i NotificationConfigArray) ToNotificationConfigArrayOutputWithContext(ctx context.Context) NotificationConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigArrayOutput)
-}
-
-func (i NotificationConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationConfig] {
-	return pulumix.Output[[]*NotificationConfig]{
-		OutputState: i.ToNotificationConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NotificationConfigMapInput is an input type that accepts NotificationConfigMap and NotificationConfigMapOutput values.
@@ -311,12 +308,6 @@ func (i NotificationConfigMap) ToNotificationConfigMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigMapOutput)
 }
 
-func (i NotificationConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationConfig] {
-	return pulumix.Output[map[string]*NotificationConfig]{
-		OutputState: i.ToNotificationConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigOutput) ElementType() reflect.Type {
@@ -329,12 +320,6 @@ func (o NotificationConfigOutput) ToNotificationConfigOutput() NotificationConfi
 
 func (o NotificationConfigOutput) ToNotificationConfigOutputWithContext(ctx context.Context) NotificationConfigOutput {
 	return o
-}
-
-func (o NotificationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfig] {
-	return pulumix.Output[*NotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This must be unique within the organization.
@@ -391,12 +376,6 @@ func (o NotificationConfigArrayOutput) ToNotificationConfigArrayOutputWithContex
 	return o
 }
 
-func (o NotificationConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationConfig] {
-	return pulumix.Output[[]*NotificationConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotificationConfigArrayOutput) Index(i pulumi.IntInput) NotificationConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NotificationConfig {
 		return vs[0].([]*NotificationConfig)[vs[1].(int)]
@@ -415,12 +394,6 @@ func (o NotificationConfigMapOutput) ToNotificationConfigMapOutput() Notificatio
 
 func (o NotificationConfigMapOutput) ToNotificationConfigMapOutputWithContext(ctx context.Context) NotificationConfigMapOutput {
 	return o
-}
-
-func (o NotificationConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationConfig] {
-	return pulumix.Output[map[string]*NotificationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotificationConfigMapOutput) MapIndex(k pulumi.StringInput) NotificationConfigOutput {

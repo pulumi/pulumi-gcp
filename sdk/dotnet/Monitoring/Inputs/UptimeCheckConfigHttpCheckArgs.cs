@@ -40,10 +40,16 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
         /// <summary>
         /// The content type to use for the check.
-        /// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
+
+        /// <summary>
+        /// A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        /// </summary>
+        [Input("customContentType")]
+        public Input<string>? CustomContentType { get; set; }
 
         [Input("headers")]
         private InputMap<string>? _headers;
@@ -68,6 +74,13 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Contains information needed to add pings to an HTTP check.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pingConfig")]
+        public Input<Inputs.UptimeCheckConfigHttpCheckPingConfigArgs>? PingConfig { get; set; }
 
         /// <summary>
         /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).

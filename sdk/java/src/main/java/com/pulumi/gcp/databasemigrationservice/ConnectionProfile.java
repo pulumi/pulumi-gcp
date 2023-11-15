@@ -14,6 +14,7 @@ import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileAlloydb;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileCloudsql;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileError;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileMysql;
+import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileOracle;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfilePostgresql;
 import java.lang.String;
 import java.util.List;
@@ -31,7 +32,7 @@ import javax.annotation.Nullable;
  *     * [Database Migration](https://cloud.google.com/database-migration/docs/)
  * 
  * &gt; **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+ * values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
  * Read more about sensitive data in state.
  * 
  * ## Example Usage
@@ -228,10 +229,60 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Database Migration Service Connection Profile Oracle
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleStaticServiceIpConnectivityArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var oracleprofile = new ConnectionProfile(&#34;oracleprofile&#34;, ConnectionProfileArgs.builder()        
+ *             .connectionProfileId(&#34;my-profileid&#34;)
+ *             .displayName(&#34;my-profileid_display&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .location(&#34;us-central1&#34;)
+ *             .oracle(ConnectionProfileOracleArgs.builder()
+ *                 .databaseService(&#34;dbprovider&#34;)
+ *                 .host(&#34;host&#34;)
+ *                 .password(&#34;password&#34;)
+ *                 .port(1521)
+ *                 .staticServiceIpConnectivity()
+ *                 .username(&#34;username&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * ConnectionProfile can be imported using any of these accepted formats
+ * ConnectionProfile can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}` * `{{project}}/{{location}}/{{connection_profile_id}}` * `{{location}}/{{connection_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectionProfile using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}&#34;
+ * 
+ *  to = google_database_migration_service_connection_profile.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectionProfile can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
@@ -433,6 +484,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="oracle", refs={ConnectionProfileOracle.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProfileOracle> oracle;
+
+    /**
+     * @return Specifies connection parameters required specifically for Oracle databases.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionProfileOracle>> oracle() {
+        return Codegen.optional(this.oracle);
     }
     /**
      * Specifies connection parameters required specifically for PostgreSQL databases.

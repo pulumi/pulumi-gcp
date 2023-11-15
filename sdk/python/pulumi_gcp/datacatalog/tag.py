@@ -500,7 +500,15 @@ class Tag(pulumi.CustomResource):
 
         ## Import
 
-        Tag can be imported using any of these accepted formats:
+        Tag can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Tag using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_data_catalog_tag.default }
+
+        ```sh
+         $ pulumi import gcp:datacatalog/tag:Tag When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Tag can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
@@ -792,7 +800,15 @@ class Tag(pulumi.CustomResource):
 
         ## Import
 
-        Tag can be imported using any of these accepted formats:
+        Tag can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Tag using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_data_catalog_tag.default }
+
+        ```sh
+         $ pulumi import gcp:datacatalog/tag:Tag When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Tag can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:datacatalog/tag:Tag default {{name}}

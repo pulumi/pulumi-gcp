@@ -39,7 +39,7 @@ class CapacityCommitmentArgs:
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         """
         pulumi.set(__self__, "plan", plan)
         pulumi.set(__self__, "slot_count", slot_count)
@@ -152,7 +152,7 @@ class CapacityCommitmentArgs:
     @pulumi.getter(name="renewalPlan")
     def renewal_plan(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 
@@ -195,7 +195,7 @@ class _CapacityCommitmentState:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] state: State of the commitment
         """
@@ -344,7 +344,7 @@ class _CapacityCommitmentState:
     @pulumi.getter(name="renewalPlan")
     def renewal_plan(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 
@@ -419,7 +419,15 @@ class CapacityCommitment(pulumi.CustomResource):
 
         ## Import
 
-        CapacityCommitment can be imported using any of these accepted formats
+        CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CapacityCommitment using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}"
+
+         to = google_bigquery_capacity_commitment.default }
+
+        ```sh
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CapacityCommitment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
@@ -449,7 +457,7 @@ class CapacityCommitment(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         """
         ...
@@ -486,7 +494,15 @@ class CapacityCommitment(pulumi.CustomResource):
 
         ## Import
 
-        CapacityCommitment can be imported using any of these accepted formats
+        CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CapacityCommitment using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}"
+
+         to = google_bigquery_capacity_commitment.default }
+
+        ```sh
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CapacityCommitment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
@@ -594,7 +610,7 @@ class CapacityCommitment(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] state: State of the commitment
         """
@@ -700,7 +716,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @pulumi.getter(name="renewalPlan")
     def renewal_plan(self) -> pulumi.Output[Optional[str]]:
         """
-        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
+        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 

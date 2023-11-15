@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
@@ -19,19 +18,35 @@ import (
 //
 // ## Import
 //
-// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
+// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g. * `{{project_id}}/{{instance}}/{{host}}/{{name}}` SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g. * `{{project_id}}/{{instance}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NAME_HERE using one of the formats above. For exampletf MySQL database import {
+//
+//	id = "{{project_id}}/{{instance}}/{{host}}/{{name}}"
+//
+//	to = google_sql_user.default } PostgreSQL database import {
+//
+//	id = "{{project_id}}/{{instance}}/{{name}}"
+//
+//	to = google_sql_user.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
+//	$ pulumi import gcp:sql/user:User When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NAME_HERE can be imported using one of the formats above. For example
 //
 // ```
 //
-//	SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
+//	MySQL database
 //
 // ```sh
 //
-//	$ pulumi import gcp:sql/user:User users my-project/main-instance/me
+//	$ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{host}}/{{name}}
+//
+// ```
+//
+//	PostgreSQL database
+//
+// ```sh
+//
+//	$ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
 //
 // ```
 type User struct {
@@ -276,12 +291,6 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
 }
 
-func (i *User) ToOutput(ctx context.Context) pulumix.Output[*User] {
-	return pulumix.Output[*User]{
-		OutputState: i.ToUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
@@ -305,12 +314,6 @@ func (i UserArray) ToUserArrayOutput() UserArrayOutput {
 
 func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserArrayOutput)
-}
-
-func (i UserArray) ToOutput(ctx context.Context) pulumix.Output[[]*User] {
-	return pulumix.Output[[]*User]{
-		OutputState: i.ToUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
@@ -338,12 +341,6 @@ func (i UserMap) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserMapOutput)
 }
 
-func (i UserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*User] {
-	return pulumix.Output[map[string]*User]{
-		OutputState: i.ToUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserOutput struct{ *pulumi.OutputState }
 
 func (UserOutput) ElementType() reflect.Type {
@@ -356,12 +353,6 @@ func (o UserOutput) ToUserOutput() UserOutput {
 
 func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
-}
-
-func (o UserOutput) ToOutput(ctx context.Context) pulumix.Output[*User] {
-	return pulumix.Output[*User]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The deletion policy for the user.
@@ -437,12 +428,6 @@ func (o UserArrayOutput) ToUserArrayOutputWithContext(ctx context.Context) UserA
 	return o
 }
 
-func (o UserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*User] {
-	return pulumix.Output[[]*User]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserArrayOutput) Index(i pulumi.IntInput) UserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *User {
 		return vs[0].([]*User)[vs[1].(int)]
@@ -461,12 +446,6 @@ func (o UserMapOutput) ToUserMapOutput() UserMapOutput {
 
 func (o UserMapOutput) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return o
-}
-
-func (o UserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*User] {
-	return pulumix.Output[map[string]*User]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserMapOutput) MapIndex(k pulumi.StringInput) UserOutput {

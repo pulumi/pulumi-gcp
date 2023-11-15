@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Google Bare Metal User Cluster.
+ *
  * ## Example Usage
  * ### Gkeonprem Bare Metal Cluster Basic
  *
@@ -15,38 +17,23 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_basic = new gcp.gkeonprem.BareMetalCluster("cluster-basic", {
- *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     bareMetalVersion: "1.12.3",
- *     networkConfig: {
- *         islandModeCidr: {
- *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
- *             podAddressCidrBlocks: ["10.240.0.0/13"],
- *         },
- *     },
  *     controlPlane: {
  *         controlPlaneNodePoolConfig: {
  *             nodePoolConfig: {
  *                 labels: {},
- *                 operatingSystem: "LINUX",
  *                 nodeConfigs: [{
  *                     labels: {},
  *                     nodeIp: "10.200.0.9",
  *                 }],
+ *                 operatingSystem: "LINUX",
  *             },
  *         },
  *     },
  *     loadBalancer: {
- *         portConfig: {
- *             controlPlaneLoadBalancerPort: 443,
- *         },
- *         vipConfig: {
- *             controlPlaneVip: "10.200.0.13",
- *             ingressVip: "10.200.0.14",
- *         },
  *         metalLbConfig: {
  *             addressPools: [{
- *                 pool: "pool1",
  *                 addresses: [
  *                     "10.200.0.14/32",
  *                     "10.200.0.15/32",
@@ -60,20 +47,22 @@ import * as utilities from "../utilities";
  *                 ],
  *                 avoidBuggyIps: true,
  *                 manualAssign: true,
+ *                 pool: "pool1",
  *             }],
  *         },
- *     },
- *     storage: {
- *         lvpShareConfig: {
- *             lvpConfig: {
- *                 path: "/mnt/localpv-share",
- *                 storageClass: "local-shared",
- *             },
- *             sharedPathPvCount: 5,
+ *         portConfig: {
+ *             controlPlaneLoadBalancerPort: 443,
  *         },
- *         lvpNodeMountsConfig: {
- *             path: "/mnt/localpv-disk",
- *             storageClass: "local-disks",
+ *         vipConfig: {
+ *             controlPlaneVip: "10.200.0.13",
+ *             ingressVip: "10.200.0.14",
+ *         },
+ *     },
+ *     location: "us-west1",
+ *     networkConfig: {
+ *         islandModeCidr: {
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
  *         },
  *     },
  *     securityConfig: {
@@ -83,8 +72,19 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * }, {
- *     provider: google_beta,
+ *     storage: {
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
+ *         },
+ *         lvpShareConfig: {
+ *             lvpConfig: {
+ *                 path: "/mnt/localpv-share",
+ *                 storageClass: "local-shared",
+ *             },
+ *             sharedPathPvCount: 5,
+ *         },
+ *     },
  * });
  * ```
  * ### Gkeonprem Bare Metal Cluster Manuallb
@@ -94,28 +94,27 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_manuallb = new gcp.gkeonprem.BareMetalCluster("cluster-manuallb", {
- *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     bareMetalVersion: "1.12.3",
- *     networkConfig: {
- *         islandModeCidr: {
- *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
- *             podAddressCidrBlocks: ["10.240.0.0/13"],
- *         },
+ *     binaryAuthorization: {
+ *         evaluationMode: "DISABLED",
  *     },
  *     controlPlane: {
  *         controlPlaneNodePoolConfig: {
  *             nodePoolConfig: {
  *                 labels: {},
- *                 operatingSystem: "LINUX",
  *                 nodeConfigs: [{
  *                     labels: {},
  *                     nodeIp: "10.200.0.9",
  *                 }],
+ *                 operatingSystem: "LINUX",
  *             },
  *         },
  *     },
  *     loadBalancer: {
+ *         manualLbConfig: {
+ *             enabled: true,
+ *         },
  *         portConfig: {
  *             controlPlaneLoadBalancerPort: 443,
  *         },
@@ -123,21 +122,12 @@ import * as utilities from "../utilities";
  *             controlPlaneVip: "10.200.0.13",
  *             ingressVip: "10.200.0.14",
  *         },
- *         manualLbConfig: {
- *             enabled: true,
- *         },
  *     },
- *     storage: {
- *         lvpShareConfig: {
- *             lvpConfig: {
- *                 path: "/mnt/localpv-share",
- *                 storageClass: "local-shared",
- *             },
- *             sharedPathPvCount: 5,
- *         },
- *         lvpNodeMountsConfig: {
- *             path: "/mnt/localpv-disk",
- *             storageClass: "local-disks",
+ *     location: "us-west1",
+ *     networkConfig: {
+ *         islandModeCidr: {
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
  *         },
  *     },
  *     securityConfig: {
@@ -147,14 +137,22 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- *     binaryAuthorization: {
- *         evaluationMode: "DISABLED",
+ *     storage: {
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
+ *         },
+ *         lvpShareConfig: {
+ *             lvpConfig: {
+ *                 path: "/mnt/localpv-share",
+ *                 storageClass: "local-shared",
+ *             },
+ *             sharedPathPvCount: 5,
+ *         },
  *     },
  *     upgradePolicy: {
  *         policy: "SERIAL",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Gkeonprem Bare Metal Cluster Bgplb
@@ -164,60 +162,35 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_bgplb = new gcp.gkeonprem.BareMetalCluster("cluster-bgplb", {
- *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     bareMetalVersion: "1.12.3",
- *     networkConfig: {
- *         islandModeCidr: {
- *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
- *             podAddressCidrBlocks: ["10.240.0.0/13"],
- *         },
- *         advancedNetworking: true,
- *         multipleNetworkInterfacesConfig: {
- *             enabled: true,
- *         },
- *         srIovConfig: {
- *             enabled: true,
- *         },
+ *     clusterOperations: {
+ *         enableApplicationLogs: true,
  *     },
  *     controlPlane: {
- *         controlPlaneNodePoolConfig: {
- *             nodePoolConfig: {
- *                 labels: {},
- *                 operatingSystem: "LINUX",
- *                 nodeConfigs: [{
- *                     labels: {},
- *                     nodeIp: "10.200.0.9",
- *                 }],
- *                 taints: [{
- *                     key: "test-key",
- *                     value: "test-value",
- *                     effect: "NO_EXECUTE",
- *                 }],
- *             },
- *         },
  *         apiServerArgs: [{
  *             argument: "test-argument",
  *             value: "test-value",
  *         }],
+ *         controlPlaneNodePoolConfig: {
+ *             nodePoolConfig: {
+ *                 labels: {},
+ *                 nodeConfigs: [{
+ *                     labels: {},
+ *                     nodeIp: "10.200.0.9",
+ *                 }],
+ *                 operatingSystem: "LINUX",
+ *                 taints: [{
+ *                     effect: "NO_EXECUTE",
+ *                     key: "test-key",
+ *                     value: "test-value",
+ *                 }],
+ *             },
+ *         },
  *     },
  *     loadBalancer: {
- *         portConfig: {
- *             controlPlaneLoadBalancerPort: 443,
- *         },
- *         vipConfig: {
- *             controlPlaneVip: "10.200.0.13",
- *             ingressVip: "10.200.0.14",
- *         },
  *         bgpLbConfig: {
- *             asn: 123456,
- *             bgpPeerConfigs: [{
- *                 asn: 123457,
- *                 ipAddress: "10.0.0.1",
- *                 controlPlaneNodes: ["test-node"],
- *             }],
  *             addressPools: [{
- *                 pool: "pool1",
  *                 addresses: [
  *                     "10.200.0.14/32",
  *                     "10.200.0.15/32",
@@ -229,41 +202,73 @@ import * as utilities from "../utilities";
  *                     "fd00:1::11/128",
  *                     "fd00:1::12/128",
  *                 ],
+ *                 pool: "pool1",
+ *             }],
+ *             asn: 123456,
+ *             bgpPeerConfigs: [{
+ *                 asn: 123457,
+ *                 controlPlaneNodes: ["test-node"],
+ *                 ipAddress: "10.0.0.1",
  *             }],
  *             loadBalancerNodePoolConfig: {
  *                 nodePoolConfig: {
+ *                     kubeletConfig: {
+ *                         registryBurst: 12,
+ *                         registryPullQps: 10,
+ *                         serializeImagePullsDisabled: true,
+ *                     },
  *                     labels: {},
- *                     operatingSystem: "LINUX",
  *                     nodeConfigs: [{
  *                         labels: {},
  *                         nodeIp: "10.200.0.9",
  *                     }],
+ *                     operatingSystem: "LINUX",
  *                     taints: [{
+ *                         effect: "NO_EXECUTE",
  *                         key: "test-key",
  *                         value: "test-value",
- *                         effect: "NO_EXECUTE",
  *                     }],
- *                     kubeletConfig: {
- *                         registryPullQps: 10,
- *                         registryBurst: 12,
- *                         serializeImagePullsDisabled: true,
- *                     },
  *                 },
  *             },
  *         },
+ *         portConfig: {
+ *             controlPlaneLoadBalancerPort: 443,
+ *         },
+ *         vipConfig: {
+ *             controlPlaneVip: "10.200.0.13",
+ *             ingressVip: "10.200.0.14",
+ *         },
  *     },
- *     storage: {
- *         lvpShareConfig: {
- *             lvpConfig: {
- *                 path: "/mnt/localpv-share",
- *                 storageClass: "local-shared",
- *             },
- *             sharedPathPvCount: 5,
+ *     location: "us-west1",
+ *     maintenanceConfig: {
+ *         maintenanceAddressCidrBlocks: ["192.168.0.1/20"],
+ *     },
+ *     networkConfig: {
+ *         advancedNetworking: true,
+ *         islandModeCidr: {
+ *             podAddressCidrBlocks: ["10.240.0.0/13"],
+ *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
  *         },
- *         lvpNodeMountsConfig: {
- *             path: "/mnt/localpv-disk",
- *             storageClass: "local-disks",
+ *         multipleNetworkInterfacesConfig: {
+ *             enabled: true,
  *         },
+ *         srIovConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     nodeAccessConfig: {
+ *         loginUser: "test@example.com",
+ *     },
+ *     nodeConfig: {
+ *         containerRuntime: "CONTAINERD",
+ *         maxPodsPerNode: 10,
+ *     },
+ *     osEnvironmentConfig: {
+ *         packageRepoExcluded: true,
+ *     },
+ *     proxy: {
+ *         noProxies: ["127.0.0.1"],
+ *         uri: "http://test-domain/test",
  *     },
  *     securityConfig: {
  *         authorization: {
@@ -272,34 +277,33 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- *     proxy: {
- *         uri: "http://test-domain/test",
- *         noProxies: ["127.0.0.1"],
+ *     storage: {
+ *         lvpNodeMountsConfig: {
+ *             path: "/mnt/localpv-disk",
+ *             storageClass: "local-disks",
+ *         },
+ *         lvpShareConfig: {
+ *             lvpConfig: {
+ *                 path: "/mnt/localpv-share",
+ *                 storageClass: "local-shared",
+ *             },
+ *             sharedPathPvCount: 5,
+ *         },
  *     },
- *     clusterOperations: {
- *         enableApplicationLogs: true,
- *     },
- *     maintenanceConfig: {
- *         maintenanceAddressCidrBlocks: ["192.168.0.1/20"],
- *     },
- *     nodeConfig: {
- *         maxPodsPerNode: 10,
- *         containerRuntime: "CONTAINERD",
- *     },
- *     nodeAccessConfig: {
- *         loginUser: "test@example.com",
- *     },
- *     osEnvironmentConfig: {
- *         packageRepoExcluded: true,
- *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
  * ## Import
  *
- * BareMetalCluster can be imported using any of these accepted formats
+ * BareMetalCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalCluster using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}"
+ *
+ *  to = google_gkeonprem_bare_metal_cluster.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalCluster can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}

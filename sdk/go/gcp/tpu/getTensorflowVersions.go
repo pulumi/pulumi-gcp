@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
@@ -139,12 +138,6 @@ func (o GetTensorflowVersionsResultOutput) ToGetTensorflowVersionsResultOutput()
 
 func (o GetTensorflowVersionsResultOutput) ToGetTensorflowVersionsResultOutputWithContext(ctx context.Context) GetTensorflowVersionsResultOutput {
 	return o
-}
-
-func (o GetTensorflowVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTensorflowVersionsResult] {
-	return pulumix.Output[GetTensorflowVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

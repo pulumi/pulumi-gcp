@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Global Network endpoint represents a IP address and port combination that exists outside of GCP.
@@ -61,7 +60,17 @@ import (
 //
 // ## Import
 //
-// # GlobalNetworkEndpoint can be imported using any of these accepted formats
+// GlobalNetworkEndpoint can be imported using any of these accepted formats* `projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` * `{{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` * `{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalNetworkEndpoint using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}"
+//
+//	to = google_compute_global_network_endpoint.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalNetworkEndpoint can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -230,12 +239,6 @@ func (i *GlobalNetworkEndpoint) ToGlobalNetworkEndpointOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointOutput)
 }
 
-func (i *GlobalNetworkEndpoint) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpoint] {
-	return pulumix.Output[*GlobalNetworkEndpoint]{
-		OutputState: i.ToGlobalNetworkEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalNetworkEndpointArrayInput is an input type that accepts GlobalNetworkEndpointArray and GlobalNetworkEndpointArrayOutput values.
 // You can construct a concrete instance of `GlobalNetworkEndpointArrayInput` via:
 //
@@ -259,12 +262,6 @@ func (i GlobalNetworkEndpointArray) ToGlobalNetworkEndpointArrayOutput() GlobalN
 
 func (i GlobalNetworkEndpointArray) ToGlobalNetworkEndpointArrayOutputWithContext(ctx context.Context) GlobalNetworkEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointArrayOutput)
-}
-
-func (i GlobalNetworkEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalNetworkEndpoint] {
-	return pulumix.Output[[]*GlobalNetworkEndpoint]{
-		OutputState: i.ToGlobalNetworkEndpointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalNetworkEndpointMapInput is an input type that accepts GlobalNetworkEndpointMap and GlobalNetworkEndpointMapOutput values.
@@ -292,12 +289,6 @@ func (i GlobalNetworkEndpointMap) ToGlobalNetworkEndpointMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointMapOutput)
 }
 
-func (i GlobalNetworkEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalNetworkEndpoint] {
-	return pulumix.Output[map[string]*GlobalNetworkEndpoint]{
-		OutputState: i.ToGlobalNetworkEndpointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalNetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointOutput) ElementType() reflect.Type {
@@ -310,12 +301,6 @@ func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutput() GlobalNetwo
 
 func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutputWithContext(ctx context.Context) GlobalNetworkEndpointOutput {
 	return o
-}
-
-func (o GlobalNetworkEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpoint] {
-	return pulumix.Output[*GlobalNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified domain name of network endpoint.
@@ -361,12 +346,6 @@ func (o GlobalNetworkEndpointArrayOutput) ToGlobalNetworkEndpointArrayOutputWith
 	return o
 }
 
-func (o GlobalNetworkEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalNetworkEndpoint] {
-	return pulumix.Output[[]*GlobalNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalNetworkEndpointArrayOutput) Index(i pulumi.IntInput) GlobalNetworkEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalNetworkEndpoint {
 		return vs[0].([]*GlobalNetworkEndpoint)[vs[1].(int)]
@@ -385,12 +364,6 @@ func (o GlobalNetworkEndpointMapOutput) ToGlobalNetworkEndpointMapOutput() Globa
 
 func (o GlobalNetworkEndpointMapOutput) ToGlobalNetworkEndpointMapOutputWithContext(ctx context.Context) GlobalNetworkEndpointMapOutput {
 	return o
-}
-
-func (o GlobalNetworkEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalNetworkEndpoint] {
-	return pulumix.Output[map[string]*GlobalNetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalNetworkEndpointMapOutput) MapIndex(k pulumi.StringInput) GlobalNetworkEndpointOutput {

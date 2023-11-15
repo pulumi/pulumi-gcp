@@ -18,7 +18,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionPerInstanceConfigPreservedStateDisk> Disks;
+        /// <summary>
+        /// Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RegionPerInstanceConfigPreservedStateExternalIp> ExternalIps;
+        /// <summary>
+        /// Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RegionPerInstanceConfigPreservedStateInternalIp> InternalIps;
         /// <summary>
         /// Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.

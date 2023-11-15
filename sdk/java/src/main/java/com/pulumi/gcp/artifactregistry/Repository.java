@@ -320,7 +320,7 @@ import javax.annotation.Nullable;
  *                 .yumRepository(RepositoryRemoteRepositoryConfigYumRepositoryArgs.builder()
  *                     .publicRepository(RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs.builder()
  *                         .repositoryBase(&#34;CENTOS&#34;)
- *                         .repositoryPath(&#34;8-stream/BaseOs/x86_64/os&#34;)
+ *                         .repositoryPath(&#34;centos/8-stream/BaseOS/x86_64/os&#34;)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -406,7 +406,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Repository can be imported using any of these accepted formats
+ * Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}` * `{{project}}/{{location}}/{{repository_id}}` * `{{location}}/{{repository_id}}` * `{{repository_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}&#34;
+ * 
+ *  to = google_artifact_registry_repository.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:artifactregistry/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}

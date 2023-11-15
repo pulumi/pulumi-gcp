@@ -20,7 +20,9 @@ class ClusterArgs:
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -30,7 +32,8 @@ class ClusterArgs:
                  network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
-                 restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None):
+                 restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
+                 secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
@@ -45,9 +48,15 @@ class ClusterArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
+        :param pulumi.Input[str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
+               Default value is `PRIMARY`.
+               Possible values are: `PRIMARY`, `SECONDARY`.
         :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+               Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -70,6 +79,8 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
+        :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+               Structure is documented below.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
@@ -77,8 +88,12 @@ class ClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if automated_backup_policy is not None:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if continuous_backup_config is not None:
             pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if encryption_config is not None:
@@ -102,6 +117,8 @@ class ClusterArgs:
             pulumi.set(__self__, "restore_backup_source", restore_backup_source)
         if restore_continuous_backup_source is not None:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
+        if secondary_config is not None:
+            pulumi.set(__self__, "secondary_config", secondary_config)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -160,6 +177,20 @@ class ClusterArgs:
         pulumi.set(self, "automated_backup_policy", value)
 
     @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of cluster. If not set, defaults to PRIMARY.
+        Default value is `PRIMARY`.
+        Possible values are: `PRIMARY`, `SECONDARY`.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_type", value)
+
+    @property
     @pulumi.getter(name="continuousBackupConfig")
     def continuous_backup_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]:
         """
@@ -172,6 +203,20 @@ class ClusterArgs:
     @continuous_backup_config.setter
     def continuous_backup_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]):
         pulumi.set(self, "continuous_backup_config", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine if the cluster should be deleted forcefully.
+        Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+        Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -308,6 +353,19 @@ class ClusterArgs:
     def restore_continuous_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]):
         pulumi.set(self, "restore_continuous_backup_source", value)
 
+    @property
+    @pulumi.getter(name="secondaryConfig")
+    def secondary_config(self) -> Optional[pulumi.Input['ClusterSecondaryConfigArgs']]:
+        """
+        Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_config")
+
+    @secondary_config.setter
+    def secondary_config(self, value: Optional[pulumi.Input['ClusterSecondaryConfigArgs']]):
+        pulumi.set(self, "secondary_config", value)
+
 
 @pulumi.input_type
 class _ClusterState:
@@ -316,9 +374,11 @@ class _ClusterState:
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -337,6 +397,7 @@ class _ClusterState:
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
+                 secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
@@ -351,12 +412,18 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]] backup_sources: Cluster created from backup.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input[str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
+               Default value is `PRIMARY`.
+               Possible values are: `PRIMARY`, `SECONDARY`.
         :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+               Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
@@ -397,6 +464,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
+        :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+               Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
@@ -408,12 +477,16 @@ class _ClusterState:
             pulumi.set(__self__, "backup_sources", backup_sources)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if continuous_backup_config is not None:
             pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
         if continuous_backup_infos is not None:
             pulumi.set(__self__, "continuous_backup_infos", continuous_backup_infos)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_annotations is not None:
@@ -453,6 +526,8 @@ class _ClusterState:
             pulumi.set(__self__, "restore_backup_source", restore_backup_source)
         if restore_continuous_backup_source is not None:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
+        if secondary_config is not None:
+            pulumi.set(__self__, "secondary_config", secondary_config)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if uid is not None:
@@ -513,6 +588,20 @@ class _ClusterState:
         pulumi.set(self, "cluster_id", value)
 
     @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of cluster. If not set, defaults to PRIMARY.
+        Default value is `PRIMARY`.
+        Possible values are: `PRIMARY`, `SECONDARY`.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_type", value)
+
+    @property
     @pulumi.getter(name="continuousBackupConfig")
     def continuous_backup_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]:
         """
@@ -550,6 +639,20 @@ class _ClusterState:
     @database_version.setter
     def database_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine if the cluster should be deleted forcefully.
+        Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+        Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -793,6 +896,19 @@ class _ClusterState:
         pulumi.set(self, "restore_continuous_backup_source", value)
 
     @property
+    @pulumi.getter(name="secondaryConfig")
+    def secondary_config(self) -> Optional[pulumi.Input['ClusterSecondaryConfigArgs']]:
+        """
+        Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_config")
+
+    @secondary_config.setter
+    def secondary_config(self, value: Optional[pulumi.Input['ClusterSecondaryConfigArgs']]):
+        pulumi.set(self, "secondary_config", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -825,7 +941,9 @@ class Cluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -837,6 +955,7 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
+                 secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
                  __props__=None):
         """
         A managed alloydb cluster.
@@ -962,10 +1081,60 @@ class Cluster(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Secondary Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        primary_cluster = gcp.alloydb.Cluster("primaryCluster",
+            cluster_id="alloydb-primary-cluster",
+            location="us-central1",
+            network=default.id)
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        primary_instance = gcp.alloydb.Instance("primaryInstance",
+            cluster=primary_cluster.name,
+            instance_id="alloydb-primary-instance",
+            instance_type="PRIMARY",
+            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
+                cpu_count=2,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        secondary = gcp.alloydb.Cluster("secondary",
+            cluster_id="alloydb-secondary-cluster",
+            location="us-east1",
+            network=default.id,
+            cluster_type="SECONDARY",
+            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
+                enabled=False,
+            ),
+            secondary_config=gcp.alloydb.ClusterSecondaryConfigArgs(
+                primary_cluster_name=primary_cluster.name,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[primary_instance]))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
+
+         to = google_alloydb_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -993,9 +1162,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input[str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
+               Default value is `PRIMARY`.
+               Possible values are: `PRIMARY`, `SECONDARY`.
         :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+               Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -1021,6 +1196,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         """
         ...
@@ -1153,10 +1330,60 @@ class Cluster(pulumi.CustomResource):
             ))
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Secondary Cluster Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        primary_cluster = gcp.alloydb.Cluster("primaryCluster",
+            cluster_id="alloydb-primary-cluster",
+            location="us-central1",
+            network=default.id)
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        primary_instance = gcp.alloydb.Instance("primaryInstance",
+            cluster=primary_cluster.name,
+            instance_id="alloydb-primary-instance",
+            instance_type="PRIMARY",
+            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
+                cpu_count=2,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        secondary = gcp.alloydb.Cluster("secondary",
+            cluster_id="alloydb-secondary-cluster",
+            location="us-east1",
+            network=default.id,
+            cluster_type="SECONDARY",
+            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
+                enabled=False,
+            ),
+            secondary_config=gcp.alloydb.ClusterSecondaryConfigArgs(
+                primary_cluster_name=primary_cluster.name,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[primary_instance]))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
+
+         to = google_alloydb_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -1192,7 +1419,9 @@ class Cluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -1204,6 +1433,7 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
+                 secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1218,7 +1448,9 @@ class Cluster(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["cluster_type"] = cluster_type
             __props__.__dict__["continuous_backup_config"] = continuous_backup_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["etag"] = etag
@@ -1232,6 +1464,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["restore_backup_source"] = restore_backup_source
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
+            __props__.__dict__["secondary_config"] = secondary_config
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
             __props__.__dict__["database_version"] = None
@@ -1260,9 +1493,11 @@ class Cluster(pulumi.CustomResource):
             automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
             backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
+            cluster_type: Optional[pulumi.Input[str]] = None,
             continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
             continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1281,6 +1516,7 @@ class Cluster(pulumi.CustomResource):
             reconciling: Optional[pulumi.Input[bool]] = None,
             restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
             restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
+            secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -1300,12 +1536,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]] backup_sources: Cluster created from backup.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input[str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
+               Default value is `PRIMARY`.
+               Possible values are: `PRIMARY`, `SECONDARY`.
         :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+               Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
@@ -1346,6 +1588,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+               Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
@@ -1357,9 +1601,11 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["automated_backup_policy"] = automated_backup_policy
         __props__.__dict__["backup_sources"] = backup_sources
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["cluster_type"] = cluster_type
         __props__.__dict__["continuous_backup_config"] = continuous_backup_config
         __props__.__dict__["continuous_backup_infos"] = continuous_backup_infos
         __props__.__dict__["database_version"] = database_version
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1378,6 +1624,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["restore_backup_source"] = restore_backup_source
         __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
+        __props__.__dict__["secondary_config"] = secondary_config
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1421,6 +1668,16 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "cluster_id")
 
     @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of cluster. If not set, defaults to PRIMARY.
+        Default value is `PRIMARY`.
+        Possible values are: `PRIMARY`, `SECONDARY`.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
     @pulumi.getter(name="continuousBackupConfig")
     def continuous_backup_config(self) -> pulumi.Output['outputs.ClusterContinuousBackupConfig']:
         """
@@ -1446,6 +1703,16 @@ class Cluster(pulumi.CustomResource):
         The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         """
         return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Policy to determine if the cluster should be deleted forcefully.
+        Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+        Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="displayName")
@@ -1615,6 +1882,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "restore_continuous_backup_source")
+
+    @property
+    @pulumi.getter(name="secondaryConfig")
+    def secondary_config(self) -> pulumi.Output[Optional['outputs.ClusterSecondaryConfig']]:
+        """
+        Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_config")
 
     @property
     @pulumi.getter

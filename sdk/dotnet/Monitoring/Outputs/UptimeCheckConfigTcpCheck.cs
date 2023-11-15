@@ -14,13 +14,22 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class UptimeCheckConfigTcpCheck
     {
         /// <summary>
+        /// Contains information needed to add pings to a TCP check.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.UptimeCheckConfigTcpCheckPingConfig? PingConfig;
+        /// <summary>
         /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
         /// </summary>
         public readonly int Port;
 
         [OutputConstructor]
-        private UptimeCheckConfigTcpCheck(int port)
+        private UptimeCheckConfigTcpCheck(
+            Outputs.UptimeCheckConfigTcpCheckPingConfig? pingConfig,
+
+            int port)
         {
+            PingConfig = pingConfig;
             Port = port;
         }
     }

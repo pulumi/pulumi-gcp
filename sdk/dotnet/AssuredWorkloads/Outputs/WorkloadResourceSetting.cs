@@ -14,7 +14,11 @@ namespace Pulumi.Gcp.AssuredWorkloads.Outputs
     public sealed class WorkloadResourceSetting
     {
         /// <summary>
-        /// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        /// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        /// </summary>
+        public readonly string? DisplayName;
+        /// <summary>
+        /// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         /// </summary>
         public readonly string? ResourceId;
         /// <summary>
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.AssuredWorkloads.Outputs
 
         [OutputConstructor]
         private WorkloadResourceSetting(
+            string? displayName,
+
             string? resourceId,
 
             string? resourceType)
         {
+            DisplayName = displayName;
             ResourceId = resourceId;
             ResourceType = resourceType;
         }

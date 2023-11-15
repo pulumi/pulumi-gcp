@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageBootDiskInitializeParams
     {
+        public readonly bool? EnableConfidentialCompute;
         public readonly string? Image;
         public readonly ImmutableDictionary<string, object>? Labels;
         public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
@@ -21,6 +22,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceFromMachineImageBootDiskInitializeParams(
+            bool? enableConfidentialCompute,
+
             string? image,
 
             ImmutableDictionary<string, object>? labels,
@@ -31,6 +34,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? type)
         {
+            EnableConfidentialCompute = enableConfidentialCompute;
             Image = image;
             Labels = labels;
             ResourceManagerTags = resourceManagerTags;

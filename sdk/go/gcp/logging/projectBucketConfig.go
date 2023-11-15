@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a project-level logging bucket config. For more information see
@@ -19,171 +18,19 @@ import (
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				OrgId:     pulumi.String("123456789"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-//				Project:       _default.ProjectId,
-//				Location:      pulumi.String("global"),
-//				RetentionDays: pulumi.Int(30),
-//				BucketId:      pulumi.String("_Default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Create logging bucket with customId
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-//				BucketId:      pulumi.String("custom-bucket"),
-//				Location:      pulumi.String("global"),
-//				Project:       pulumi.String("project_id"),
-//				RetentionDays: pulumi.Int(30),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Create logging bucket with Log Analytics enabled
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewProjectBucketConfig(ctx, "analytics-enabled-bucket", &logging.ProjectBucketConfigArgs{
-//				BucketId:        pulumi.String("custom-bucket"),
-//				EnableAnalytics: pulumi.Bool(true),
-//				Location:        pulumi.String("global"),
-//				Project:         pulumi.String("project_id"),
-//				RetentionDays:   pulumi.Int(30),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Create logging bucket with customId and cmekSettings
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cmekSettings, err := logging.GetProjectCmekSettings(ctx, &logging.GetProjectCmekSettingsArgs{
-//				Project: "project_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
-//				KeyRing:        keyring.ID(),
-//				RotationPeriod: pulumi.String("100000s"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKeyBinding", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: key.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId)),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewProjectBucketConfig(ctx, "example-project-bucket-cmek-settings", &logging.ProjectBucketConfigArgs{
-//				Project:       pulumi.String("project_id"),
-//				Location:      pulumi.String("us-central1"),
-//				RetentionDays: pulumi.Int(30),
-//				BucketId:      pulumi.String("custom-bucket"),
-//				CmekSettings: &logging.ProjectBucketConfigCmekSettingsArgs{
-//					KmsKeyName: key.ID(),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				cryptoKeyBinding,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// This resource can be imported using the following format:
+// This resource can be imported using the following format* `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}"
+//
+//	to = google_logging_project_bucket_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -201,6 +48,8 @@ type ProjectBucketConfig struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
 	EnableAnalytics pulumi.BoolPtrOutput `pulumi:"enableAnalytics"`
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs ProjectBucketConfigIndexConfigArrayOutput `pulumi:"indexConfigs"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// The location of the bucket.
@@ -262,6 +111,8 @@ type projectBucketConfigState struct {
 	Description *string `pulumi:"description"`
 	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
 	EnableAnalytics *bool `pulumi:"enableAnalytics"`
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs []ProjectBucketConfigIndexConfig `pulumi:"indexConfigs"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// The location of the bucket.
@@ -285,6 +136,8 @@ type ProjectBucketConfigState struct {
 	Description pulumi.StringPtrInput
 	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
 	EnableAnalytics pulumi.BoolPtrInput
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs ProjectBucketConfigIndexConfigArrayInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringPtrInput
 	// The location of the bucket.
@@ -312,6 +165,8 @@ type projectBucketConfigArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
 	EnableAnalytics *bool `pulumi:"enableAnalytics"`
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs []ProjectBucketConfigIndexConfig `pulumi:"indexConfigs"`
 	// The location of the bucket.
 	Location string `pulumi:"location"`
 	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
@@ -332,6 +187,8 @@ type ProjectBucketConfigArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
 	EnableAnalytics pulumi.BoolPtrInput
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs ProjectBucketConfigIndexConfigArrayInput
 	// The location of the bucket.
 	Location pulumi.StringInput
 	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
@@ -365,12 +222,6 @@ func (i *ProjectBucketConfig) ToProjectBucketConfigOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigOutput)
 }
 
-func (i *ProjectBucketConfig) ToOutput(ctx context.Context) pulumix.Output[*ProjectBucketConfig] {
-	return pulumix.Output[*ProjectBucketConfig]{
-		OutputState: i.ToProjectBucketConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectBucketConfigArrayInput is an input type that accepts ProjectBucketConfigArray and ProjectBucketConfigArrayOutput values.
 // You can construct a concrete instance of `ProjectBucketConfigArrayInput` via:
 //
@@ -394,12 +245,6 @@ func (i ProjectBucketConfigArray) ToProjectBucketConfigArrayOutput() ProjectBuck
 
 func (i ProjectBucketConfigArray) ToProjectBucketConfigArrayOutputWithContext(ctx context.Context) ProjectBucketConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigArrayOutput)
-}
-
-func (i ProjectBucketConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectBucketConfig] {
-	return pulumix.Output[[]*ProjectBucketConfig]{
-		OutputState: i.ToProjectBucketConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectBucketConfigMapInput is an input type that accepts ProjectBucketConfigMap and ProjectBucketConfigMapOutput values.
@@ -427,12 +272,6 @@ func (i ProjectBucketConfigMap) ToProjectBucketConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigMapOutput)
 }
 
-func (i ProjectBucketConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectBucketConfig] {
-	return pulumix.Output[map[string]*ProjectBucketConfig]{
-		OutputState: i.ToProjectBucketConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectBucketConfigOutput) ElementType() reflect.Type {
@@ -445,12 +284,6 @@ func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutput() ProjectBucketCo
 
 func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutputWithContext(ctx context.Context) ProjectBucketConfigOutput {
 	return o
-}
-
-func (o ProjectBucketConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectBucketConfig] {
-	return pulumix.Output[*ProjectBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -471,6 +304,11 @@ func (o ProjectBucketConfigOutput) Description() pulumi.StringOutput {
 // Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
 func (o ProjectBucketConfigOutput) EnableAnalytics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.BoolPtrOutput { return v.EnableAnalytics }).(pulumi.BoolPtrOutput)
+}
+
+// A list of indexed fields and related configuration data. Structure is documented below.
+func (o ProjectBucketConfigOutput) IndexConfigs() ProjectBucketConfigIndexConfigArrayOutput {
+	return o.ApplyT(func(v *ProjectBucketConfig) ProjectBucketConfigIndexConfigArrayOutput { return v.IndexConfigs }).(ProjectBucketConfigIndexConfigArrayOutput)
 }
 
 // The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -517,12 +355,6 @@ func (o ProjectBucketConfigArrayOutput) ToProjectBucketConfigArrayOutputWithCont
 	return o
 }
 
-func (o ProjectBucketConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectBucketConfig] {
-	return pulumix.Output[[]*ProjectBucketConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectBucketConfigArrayOutput) Index(i pulumi.IntInput) ProjectBucketConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectBucketConfig {
 		return vs[0].([]*ProjectBucketConfig)[vs[1].(int)]
@@ -541,12 +373,6 @@ func (o ProjectBucketConfigMapOutput) ToProjectBucketConfigMapOutput() ProjectBu
 
 func (o ProjectBucketConfigMapOutput) ToProjectBucketConfigMapOutputWithContext(ctx context.Context) ProjectBucketConfigMapOutput {
 	return o
-}
-
-func (o ProjectBucketConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectBucketConfig] {
-	return pulumix.Output[map[string]*ProjectBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectBucketConfigMapOutput) MapIndex(k pulumi.StringInput) ProjectBucketConfigOutput {

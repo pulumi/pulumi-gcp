@@ -22,7 +22,7 @@ public final class CxVersionNluSetting {
      * @return Indicates NLU model training mode.
      * * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
      * * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-     *   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+     *   Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
      * 
      */
     private @Nullable String modelTrainingMode;
@@ -30,7 +30,7 @@ public final class CxVersionNluSetting {
      * @return Indicates the type of NLU model.
      * * MODEL_TYPE_STANDARD: Use standard NLU model.
      * * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-     *   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+     *   Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
      * 
      */
     private @Nullable String modelType;
@@ -48,7 +48,7 @@ public final class CxVersionNluSetting {
      * @return Indicates NLU model training mode.
      * * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
      * * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-     *   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+     *   Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
      * 
      */
     public Optional<String> modelTrainingMode() {
@@ -58,7 +58,7 @@ public final class CxVersionNluSetting {
      * @return Indicates the type of NLU model.
      * * MODEL_TYPE_STANDARD: Use standard NLU model.
      * * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-     *   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+     *   Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
      * 
      */
     public Optional<String> modelType() {

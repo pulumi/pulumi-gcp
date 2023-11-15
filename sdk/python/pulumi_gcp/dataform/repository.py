@@ -20,6 +20,7 @@ class RepositoryArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
@@ -32,7 +33,8 @@ class RepositoryArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
-        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
+        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         if git_remote_settings is not None:
@@ -43,6 +45,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if workspace_compilation_overrides is not None:
             pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
@@ -100,10 +104,22 @@ class RepositoryArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter(name="workspaceCompilationOverrides")
     def workspace_compilation_overrides(self) -> Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']]:
         """
-        Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         Structure is documented below.
         """
         return pulumi.get(self, "workspace_compilation_overrides")
@@ -120,6 +136,7 @@ class _RepositoryState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
@@ -132,7 +149,8 @@ class _RepositoryState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
-        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
+        :param pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         if git_remote_settings is not None:
@@ -143,6 +161,8 @@ class _RepositoryState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if workspace_compilation_overrides is not None:
             pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
@@ -200,10 +220,22 @@ class _RepositoryState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter(name="workspaceCompilationOverrides")
     def workspace_compilation_overrides(self) -> Optional[pulumi.Input['RepositoryWorkspaceCompilationOverridesArgs']]:
         """
-        Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         Structure is documented below.
         """
         return pulumi.get(self, "workspace_compilation_overrides")
@@ -222,6 +254,7 @@ class Repository(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None,
                  __props__=None):
         """
@@ -256,10 +289,52 @@ class Repository(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dataform Repository Ssh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            secret=secret.id,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+                url=git_repository.url,
+                default_branch="main",
+                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs(
+                    user_private_key_secret_version=secret_version.id,
+                    host_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
+                ),
+            ),
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+                default_database="database",
+                schema_suffix="_suffix",
+                table_prefix="prefix_",
+            ),
+            service_account="1234567890-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
-        Repository can be imported using any of these accepted formats
+        Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/repositories/{{name}}"
+
+         to = google_dataform_repository.default }
+
+        ```sh
+         $ pulumi import gcp:dataform/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
@@ -288,7 +363,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
+        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         ...
@@ -329,10 +405,52 @@ class Repository(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dataform Repository Ssh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
+        secret = gcp.secretmanager.Secret("secret",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secret_version = gcp.secretmanager.SecretVersion("secretVersion",
+            secret=secret.id,
+            secret_data="secret-data",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        dataform_respository = gcp.dataform.Repository("dataformRespository",
+            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
+                url=git_repository.url,
+                default_branch="main",
+                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs(
+                    user_private_key_secret_version=secret_version.id,
+                    host_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
+                ),
+            ),
+            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
+                default_database="database",
+                schema_suffix="_suffix",
+                table_prefix="prefix_",
+            ),
+            service_account="1234567890-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
-        Repository can be imported using any of these accepted formats
+        Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/repositories/{{name}}"
+
+         to = google_dataform_repository.default }
+
+        ```sh
+         $ pulumi import gcp:dataform/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
@@ -369,6 +487,7 @@ class Repository(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -383,6 +502,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
         super(Repository, __self__).__init__(
             'gcp:dataform/repository:Repository',
@@ -398,6 +518,7 @@ class Repository(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            service_account: Optional[pulumi.Input[str]] = None,
             workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
@@ -415,7 +536,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
+        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -426,6 +548,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
         return Repository(resource_name, opts=opts, __props__=__props__)
 
@@ -467,10 +590,18 @@ class Repository(pulumi.CustomResource):
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[Optional[str]]:
+        """
+        The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter(name="workspaceCompilationOverrides")
     def workspace_compilation_overrides(self) -> pulumi.Output[Optional['outputs.RepositoryWorkspaceCompilationOverrides']]:
         """
-        Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         Structure is documented below.
         """
         return pulumi.get(self, "workspace_compilation_overrides")

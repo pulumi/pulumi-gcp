@@ -72,6 +72,51 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Node Group Maintenance Interval
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.NodeGroup;
+ * import com.pulumi.gcp.compute.NodeGroupArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var soletenant_tmpl = new NodeTemplate(&#34;soletenant-tmpl&#34;, NodeTemplateArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .nodeType(&#34;c2-node-60-240&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
+ *             .initialSize(1)
+ *             .nodeTemplate(soletenant_tmpl.id())
+ *             .maintenanceInterval(&#34;RECURRENT&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Node Group Autoscaling Policy
  * ```java
  * package generated_program;
@@ -179,7 +224,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NodeGroup can be imported using any of these accepted formats
+ * NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}&#34;
+ * 
+ *  to = google_compute_node_group.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -261,6 +314,28 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> initialSize() {
         return Codegen.optional(this.initialSize);
+    }
+    /**
+     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * 
+     */
+    @Export(name="maintenanceInterval", refs={String.class}, tree="[0]")
+    private Output<String> maintenanceInterval;
+
+    /**
+     * @return Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * 
+     */
+    public Output<String> maintenanceInterval() {
+        return this.maintenanceInterval;
     }
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.

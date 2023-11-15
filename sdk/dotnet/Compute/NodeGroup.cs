@@ -50,6 +50,39 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Node Group Maintenance Interval
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         NodeType = "c2-node-60-240",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///         Description = "example google_compute_node_group for Terraform Google Provider",
+    ///         InitialSize = 1,
+    ///         NodeTemplate = soletenant_tmpl.Id,
+    ///         MaintenanceInterval = "RECURRENT",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Node Group Autoscaling Policy
     /// 
     /// ```csharp
@@ -134,7 +167,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// NodeGroup can be imported using any of these accepted formats
+    /// NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
+    /// 
+    ///  to = google_compute_node_group.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -181,6 +222,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("initialSize")]
         public Output<int?> InitialSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+        /// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+        /// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+        /// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+        /// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        /// </summary>
+        [Output("maintenanceInterval")]
+        public Output<string> MaintenanceInterval { get; private set; } = null!;
 
         /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
@@ -310,6 +361,16 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? InitialSize { get; set; }
 
         /// <summary>
+        /// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+        /// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+        /// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+        /// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+        /// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        /// </summary>
+        [Input("maintenanceInterval")]
+        public Input<string>? MaintenanceInterval { get; set; }
+
+        /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         /// </summary>
         [Input("maintenancePolicy")]
@@ -391,6 +452,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("initialSize")]
         public Input<int>? InitialSize { get; set; }
+
+        /// <summary>
+        /// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+        /// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+        /// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+        /// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+        /// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        /// </summary>
+        [Input("maintenanceInterval")]
+        public Input<string>? MaintenanceInterval { get; set; }
 
         /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.

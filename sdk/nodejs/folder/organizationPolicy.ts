@@ -86,14 +86,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Folder organization policies can be imported using any of the follow formats
+ * Folder organization policies can be imported using any of the follow formats* `folders/{{folder_id}}/constraints/serviceuser.services` * `{{folder_id}}/serviceuser.services` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import folder organization policies using one of the formats above. For exampletf import {
+ *
+ *  id = "folders/{{folder_id}}/constraints/serviceuser.services"
+ *
+ *  to = google_folder_organization_policy.default }
  *
  * ```sh
- *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folders/folder-1234/constraints/serviceuser.services
+ *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), folder organization policies can be imported using one of the formats above. For example
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folder-1234/serviceuser.services
+ *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `google_folder_organization_policy.default folders/* ``{{folder_id}}/constraints/serviceuser.services`
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `* `google_folder_organization_policy.default {{folder_id}}/``serviceuser.services
  * ```
  */
 export class OrganizationPolicy extends pulumi.CustomResource {

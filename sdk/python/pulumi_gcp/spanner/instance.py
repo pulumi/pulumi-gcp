@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -16,6 +18,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 autoscaling_config: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +38,11 @@ class InstanceArgs:
                
                
                - - -
+        :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -56,6 +64,8 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
@@ -101,6 +111,22 @@ class InstanceArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        When autoscaling is enabled, num_nodes and processing_units are treated as,
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -190,6 +216,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 autoscaling_config: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -203,6 +230,11 @@ class _InstanceState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input['InstanceAutoscalingConfigArgs'] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -237,6 +269,8 @@ class _InstanceState:
                and default labels configured on the provider.
         :param pulumi.Input[str] state: Instance status: `CREATING` or `READY`.
         """
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if display_name is not None:
@@ -259,6 +293,22 @@ class _InstanceState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        When autoscaling is enabled, num_nodes and processing_units are treated as,
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
 
     @property
     @pulumi.getter
@@ -420,6 +470,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -485,7 +536,15 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats
+        Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/instances/{{name}}"
+
+         to = google_spanner_instance.default }
+
+        ```sh
+         $ pulumi import gcp:spanner/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
@@ -501,6 +560,11 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -593,7 +657,15 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats
+        Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/instances/{{name}}"
+
+         to = google_spanner_instance.default }
+
+        ```sh
+         $ pulumi import gcp:spanner/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
@@ -622,6 +694,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -639,6 +712,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["autoscaling_config"] = autoscaling_config
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -666,6 +740,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling_config: Optional[pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']]] = None,
             config: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -684,6 +759,11 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+               When autoscaling is enabled, num_nodes and processing_units are treated as,
+               OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+               the instance.
+               Structure is documented below.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
                quite the same as a region) which defines the geographic placement and
                replication of your databases in this instance. It determines where your data
@@ -722,6 +802,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["autoscaling_config"] = autoscaling_config
         __props__.__dict__["config"] = config
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -734,6 +815,18 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> pulumi.Output[Optional['outputs.InstanceAutoscalingConfig']]:
+        """
+        The autoscaling configuration. Autoscaling is enabled if this field is set.
+        When autoscaling is enabled, num_nodes and processing_units are treated as,
+        OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
 
     @property
     @pulumi.getter

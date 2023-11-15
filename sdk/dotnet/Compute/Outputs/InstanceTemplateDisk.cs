@@ -74,6 +74,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// read-write mode.
         /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This
+        /// sets the number of I/O operations per second that the disk can handle.
+        /// Values must be between 10,000 and 120,000. For more details, see the
+        /// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        /// </summary>
         public readonly int? ProvisionedIops;
         /// <summary>
         /// - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.

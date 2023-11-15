@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Firestore.Inputs
     {
         /// <summary>
         /// (Output)
-        /// The state of the TTL configuration.
+        /// The state of TTL (time-to-live) configuration for documents that have this Field set.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

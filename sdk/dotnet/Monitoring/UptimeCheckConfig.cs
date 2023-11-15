@@ -52,8 +52,13 @@ namespace Pulumi.Gcp.Monitoring
     ///         HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
     ///         {
     ///             Body = "Zm9vJTI1M0RiYXI=",
-    ///             ContentType = "URL_ENCODED",
+    ///             ContentType = "USER_PROVIDED",
+    ///             CustomContentType = "application/json",
     ///             Path = "some-path",
+    ///             PingConfig = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckPingConfigArgs
+    ///             {
+    ///                 PingsCount = 1,
+    ///             },
     ///             Port = 8010,
     ///             RequestMethod = "POST",
     ///         },
@@ -67,6 +72,10 @@ namespace Pulumi.Gcp.Monitoring
     ///             Type = "uptime_url",
     ///         },
     ///         Timeout = "60s",
+    ///         UserLabels = 
+    ///         {
+    ///             { "example-key", "example-value" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -205,6 +214,10 @@ namespace Pulumi.Gcp.Monitoring
     ///         TcpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigTcpCheckArgs
     ///         {
     ///             Port = 888,
+    ///             PingConfig = new Gcp.Monitoring.Inputs.UptimeCheckConfigTcpCheckPingConfigArgs
+    ///             {
+    ///                 PingsCount = 2,
+    ///             },
     ///         },
     ///         ResourceGroup = new Gcp.Monitoring.Inputs.UptimeCheckConfigResourceGroupArgs
     ///         {
@@ -280,7 +293,15 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// UptimeCheckConfig can be imported using any of these accepted formats:
+    /// UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_monitoring_uptime_check_config.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -383,6 +404,12 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Output("uptimeCheckId")]
         public Output<string> UptimeCheckId { get; private set; } = null!;
+
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        [Output("userLabels")]
+        public Output<ImmutableDictionary<string, string>?> UserLabels { get; private set; } = null!;
 
 
         /// <summary>
@@ -525,6 +552,18 @@ namespace Pulumi.Gcp.Monitoring
         [Input("timeout", required: true)]
         public Input<string> Timeout { get; set; } = null!;
 
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
+
         public UptimeCheckConfigArgs()
         {
         }
@@ -639,6 +678,18 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("uptimeCheckId")]
         public Input<string>? UptimeCheckId { get; set; }
+
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
 
         public UptimeCheckConfigState()
         {

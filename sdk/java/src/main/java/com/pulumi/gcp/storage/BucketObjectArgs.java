@@ -7,6 +7,7 @@ import com.pulumi.asset.AssetOrArchive;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.BucketObjectCustomerEncryptionArgs;
+import com.pulumi.gcp.storage.inputs.BucketObjectRetentionArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -215,6 +216,21 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     * 
+     */
+    @Import(name="retention")
+    private @Nullable Output<BucketObjectRetentionArgs> retention;
+
+    /**
+     * @return The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+     * 
+     */
+    public Optional<Output<BucketObjectRetentionArgs>> retention() {
+        return Optional.ofNullable(this.retention);
+    }
+
+    /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      * 
@@ -285,6 +301,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsKeyName = $.kmsKeyName;
         this.metadata = $.metadata;
         this.name = $.name;
+        this.retention = $.retention;
         this.source = $.source;
         this.storageClass = $.storageClass;
         this.temporaryHold = $.temporaryHold;
@@ -575,6 +592,27 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param retention The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retention(@Nullable Output<BucketObjectRetentionArgs> retention) {
+            $.retention = retention;
+            return this;
+        }
+
+        /**
+         * @param retention The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retention(BucketObjectRetentionArgs retention) {
+            return retention(Output.of(retention));
         }
 
         /**

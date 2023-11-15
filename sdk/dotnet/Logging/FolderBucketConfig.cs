@@ -38,6 +38,11 @@ namespace Pulumi.Gcp.Logging
     ///         Location = "global",
     ///         RetentionDays = 30,
     ///         BucketId = "_Default",
+    ///         IndexConfigs = 
+    ///         {
+    ///             { "filePath", "jsonPayload.request.status" },
+    ///             { "type", "INDEX_TYPE_STRING" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -45,7 +50,15 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the following format:
+    /// This resource can be imported using the following format* `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}"
+    /// 
+    ///  to = google_logging_folder_bucket_config.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -79,6 +92,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        [Output("indexConfigs")]
+        public Output<ImmutableArray<Outputs.FolderBucketConfigIndexConfig>> IndexConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -176,6 +195,18 @@ namespace Pulumi.Gcp.Logging
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
 
+        [Input("indexConfigs")]
+        private InputList<Inputs.FolderBucketConfigIndexConfigArgs>? _indexConfigs;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FolderBucketConfigIndexConfigArgs> IndexConfigs
+        {
+            get => _indexConfigs ?? (_indexConfigs = new InputList<Inputs.FolderBucketConfigIndexConfigArgs>());
+            set => _indexConfigs = value;
+        }
+
         /// <summary>
         /// The location of the bucket.
         /// </summary>
@@ -221,6 +252,18 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
+
+        [Input("indexConfigs")]
+        private InputList<Inputs.FolderBucketConfigIndexConfigGetArgs>? _indexConfigs;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FolderBucketConfigIndexConfigGetArgs> IndexConfigs
+        {
+            get => _indexConfigs ?? (_indexConfigs = new InputList<Inputs.FolderBucketConfigIndexConfigGetArgs>());
+            set => _indexConfigs = value;
+        }
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

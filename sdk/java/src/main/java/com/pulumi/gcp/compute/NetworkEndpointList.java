@@ -138,7 +138,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkEndpoints can be imported using any of these accepted formats
+ * NetworkEndpoints can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}` * `{{project}}/{{zone}}/{{network_endpoint_group}}` * `{{zone}}/{{network_endpoint_group}}` * `{{network_endpoint_group}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkEndpoints using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}&#34;
+ * 
+ *  to = google_compute_network_endpoints.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkEndpoints can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}

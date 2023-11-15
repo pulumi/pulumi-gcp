@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a reservation resource. A reservation ensures that capacity is
@@ -64,7 +63,17 @@ import (
 //
 // ## Import
 //
-// # Reservation can be imported using any of these accepted formats
+// Reservation can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/reservations/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Reservation using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/reservations/{{name}}"
+//
+//	to = google_compute_reservation.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/reservation:Reservation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Reservation can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -321,12 +330,6 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
 }
 
-func (i *Reservation) ToOutput(ctx context.Context) pulumix.Output[*Reservation] {
-	return pulumix.Output[*Reservation]{
-		OutputState: i.ToReservationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReservationArrayInput is an input type that accepts ReservationArray and ReservationArrayOutput values.
 // You can construct a concrete instance of `ReservationArrayInput` via:
 //
@@ -350,12 +353,6 @@ func (i ReservationArray) ToReservationArrayOutput() ReservationArrayOutput {
 
 func (i ReservationArray) ToReservationArrayOutputWithContext(ctx context.Context) ReservationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationArrayOutput)
-}
-
-func (i ReservationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Reservation] {
-	return pulumix.Output[[]*Reservation]{
-		OutputState: i.ToReservationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReservationMapInput is an input type that accepts ReservationMap and ReservationMapOutput values.
@@ -383,12 +380,6 @@ func (i ReservationMap) ToReservationMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationMapOutput)
 }
 
-func (i ReservationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Reservation] {
-	return pulumix.Output[map[string]*Reservation]{
-		OutputState: i.ToReservationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReservationOutput struct{ *pulumi.OutputState }
 
 func (ReservationOutput) ElementType() reflect.Type {
@@ -401,12 +392,6 @@ func (o ReservationOutput) ToReservationOutput() ReservationOutput {
 
 func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
 	return o
-}
-
-func (o ReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*Reservation] {
-	return pulumix.Output[*Reservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Full or partial URL to a parent commitment. This field displays for
@@ -490,12 +475,6 @@ func (o ReservationArrayOutput) ToReservationArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ReservationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Reservation] {
-	return pulumix.Output[[]*Reservation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReservationArrayOutput) Index(i pulumi.IntInput) ReservationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Reservation {
 		return vs[0].([]*Reservation)[vs[1].(int)]
@@ -514,12 +493,6 @@ func (o ReservationMapOutput) ToReservationMapOutput() ReservationMapOutput {
 
 func (o ReservationMapOutput) ToReservationMapOutputWithContext(ctx context.Context) ReservationMapOutput {
 	return o
-}
-
-func (o ReservationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Reservation] {
-	return pulumix.Output[map[string]*Reservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReservationMapOutput) MapIndex(k pulumi.StringInput) ReservationOutput {

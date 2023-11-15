@@ -16,6 +16,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Custom constraints are created by administrators to provide more granular and customizable control over the specific fields that are restricted by your organization policies.
+ * 
+ * To get more information about CustomConstraint, see:
+ * 
+ * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ * 
  * ## Example Usage
  * ### Org Policy Custom Constraint Basic
  * ```java
@@ -26,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.orgpolicy.CustomConstraint;
  * import com.pulumi.gcp.orgpolicy.CustomConstraintArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,16 +49,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
  *             .actionType(&#34;ALLOW&#34;)
  *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
  *             .methodTypes(            
  *                 &#34;CREATE&#34;,
  *                 &#34;UPDATE&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
  *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -67,7 +73,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,18 +87,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .displayName(&#34;Disable GKE auto upgrade&#34;)
- *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
  *             .actionType(&#34;ALLOW&#34;)
  *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
+ *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
+ *             .displayName(&#34;Disable GKE auto upgrade&#34;)
  *             .methodTypes(            
  *                 &#34;CREATE&#34;,
  *                 &#34;UPDATE&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
  *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var bool = new Policy(&#34;bool&#34;, PolicyArgs.builder()        
  *             .parent(&#34;organizations/123456789&#34;)
@@ -102,9 +105,7 @@ import javax.annotation.Nullable;
  *                     .enforce(&#34;TRUE&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -112,7 +113,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CustomConstraint can be imported using any of these accepted formats:
+ * CustomConstraint can be imported using any of these accepted formats* `{{parent}}/customConstraints/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CustomConstraint using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{parent}}/customConstraints/{{name}}&#34;
+ * 
+ *  to = google_org_policy_custom_constraint.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CustomConstraint can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}

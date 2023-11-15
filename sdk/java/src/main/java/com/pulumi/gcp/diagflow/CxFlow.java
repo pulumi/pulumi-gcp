@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.CxFlowArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowState;
+import com.pulumi.gcp.diagflow.outputs.CxFlowAdvancedSettings;
 import com.pulumi.gcp.diagflow.outputs.CxFlowEventHandler;
 import com.pulumi.gcp.diagflow.outputs.CxFlowNluSettings;
 import com.pulumi.gcp.diagflow.outputs.CxFlowTransitionRoute;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +30,7 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
  * ## Example Usage
- * ### Dialogflowcx Flow Full
+ * ### Dialogflowcx Flow Basic
  * ```java
  * package generated_program;
  * 
@@ -43,8 +45,106 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new CxAgent(&#34;agent&#34;, CxAgentArgs.builder()        
+ *             .displayName(&#34;dialogflowcx-agent&#34;)
+ *             .location(&#34;global&#34;)
+ *             .defaultLanguageCode(&#34;en&#34;)
+ *             .supportedLanguageCodes(            
+ *                 &#34;fr&#34;,
+ *                 &#34;de&#34;,
+ *                 &#34;es&#34;)
+ *             .timeZone(&#34;America/New_York&#34;)
+ *             .description(&#34;Example description.&#34;)
+ *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var basicFlow = new CxFlow(&#34;basicFlow&#34;, CxFlowArgs.builder()        
+ *             .parent(agent.id())
+ *             .displayName(&#34;MyFlow&#34;)
+ *             .description(&#34;Test Flow&#34;)
+ *             .nluSettings(CxFlowNluSettingsArgs.builder()
+ *                 .classificationThreshold(0.3)
+ *                 .modelType(&#34;MODEL_TYPE_STANDARD&#34;)
+ *                 .build())
+ *             .eventHandlers(            
+ *                 CxFlowEventHandlerArgs.builder()
+ *                     .event(&#34;custom-event&#34;)
+ *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
+ *                         .returnPartialResponses(false)
+ *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
+ *                                 .texts(&#34;I didn&#39;t get that. Can you say it again?&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CxFlowEventHandlerArgs.builder()
+ *                     .event(&#34;sys.no-match-default&#34;)
+ *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
+ *                         .returnPartialResponses(false)
+ *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
+ *                                 .texts(&#34;Sorry, could you say that again?&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 CxFlowEventHandlerArgs.builder()
+ *                     .event(&#34;sys.no-input-default&#34;)
+ *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
+ *                         .returnPartialResponses(false)
+ *                         .messages(CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                             .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
+ *                                 .texts(&#34;One more time?&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Dialogflowcx Flow Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.diagflow.CxFlow;
+ * import com.pulumi.gcp.diagflow.CxFlowArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsDtmfSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -75,6 +175,11 @@ import javax.annotation.Nullable;
  *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
  *                 .enableSpeechAdaptation(true)
  *                 .build())
+ *             .build());
+ * 
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var basicFlow = new CxFlow(&#34;basicFlow&#34;, CxFlowArgs.builder()        
@@ -338,6 +443,16 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .targetFlow(agent.startFlow())
  *                 .build())
+ *             .advancedSettings(CxFlowAdvancedSettingsArgs.builder()
+ *                 .audioExportGcsDestination(CxFlowAdvancedSettingsAudioExportGcsDestinationArgs.builder()
+ *                     .uri(bucket.url().applyValue(url -&gt; String.format(&#34;%s/prefix-&#34;, url)))
+ *                     .build())
+ *                 .dtmfSettings(CxFlowAdvancedSettingsDtmfSettingsArgs.builder()
+ *                     .enabled(true)
+ *                     .maxDigits(1)
+ *                     .finishDigit(&#34;#&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -346,7 +461,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Flow can be imported using any of these accepted formats
+ * Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{parent}}/flows/{{name}}&#34;
+ * 
+ *  to = google_dialogflow_cx_flow.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
@@ -359,6 +482,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/cxFlow:CxFlow")
 public class CxFlow extends com.pulumi.resources.CustomResource {
+    /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedSettings", refs={CxFlowAdvancedSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxFlowAdvancedSettings> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxFlowAdvancedSettings>> advancedSettings() {
+        return Codegen.optional(this.advancedSettings);
+    }
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
@@ -412,6 +553,26 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      */
     public Output<List<CxFlowEventHandler>> eventHandlers() {
         return this.eventHandlers;
+    }
+    /**
+     * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     * 
+     */
+    @Export(name="isDefaultStartFlow", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefaultStartFlow;
+
+    /**
+     * @return Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     * 
+     */
+    public Output<Optional<Boolean>> isDefaultStartFlow() {
+        return Codegen.optional(this.isDefaultStartFlow);
     }
     /**
      * The language of the following fields in flow:

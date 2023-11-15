@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetSchemaIamPolicyArgs, GetSchemaIamPolicyResult, GetSchemaIamPolicyOutputArgs } from "./getSchemaIamPolicy";
+export const getSchemaIamPolicy: typeof import("./getSchemaIamPolicy").getSchemaIamPolicy = null as any;
+export const getSchemaIamPolicyOutput: typeof import("./getSchemaIamPolicy").getSchemaIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSchemaIamPolicy","getSchemaIamPolicyOutput"], () => require("./getSchemaIamPolicy"));
+
 export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
 export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
 export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
@@ -44,6 +49,21 @@ export { SchemaArgs, SchemaState } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
 utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+
+export { SchemaIamBindingArgs, SchemaIamBindingState } from "./schemaIamBinding";
+export type SchemaIamBinding = import("./schemaIamBinding").SchemaIamBinding;
+export const SchemaIamBinding: typeof import("./schemaIamBinding").SchemaIamBinding = null as any;
+utilities.lazyLoad(exports, ["SchemaIamBinding"], () => require("./schemaIamBinding"));
+
+export { SchemaIamMemberArgs, SchemaIamMemberState } from "./schemaIamMember";
+export type SchemaIamMember = import("./schemaIamMember").SchemaIamMember;
+export const SchemaIamMember: typeof import("./schemaIamMember").SchemaIamMember = null as any;
+utilities.lazyLoad(exports, ["SchemaIamMember"], () => require("./schemaIamMember"));
+
+export { SchemaIamPolicyArgs, SchemaIamPolicyState } from "./schemaIamPolicy";
+export type SchemaIamPolicy = import("./schemaIamPolicy").SchemaIamPolicy;
+export const SchemaIamPolicy: typeof import("./schemaIamPolicy").SchemaIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SchemaIamPolicy"], () => require("./schemaIamPolicy"));
 
 export { SubscriptionArgs, SubscriptionState } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
@@ -99,6 +119,12 @@ const _module = {
                 return new LiteTopic(name, <any>undefined, { urn })
             case "gcp:pubsub/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "gcp:pubsub/schemaIamBinding:SchemaIamBinding":
+                return new SchemaIamBinding(name, <any>undefined, { urn })
+            case "gcp:pubsub/schemaIamMember:SchemaIamMember":
+                return new SchemaIamMember(name, <any>undefined, { urn })
+            case "gcp:pubsub/schemaIamPolicy:SchemaIamPolicy":
+                return new SchemaIamPolicy(name, <any>undefined, { urn })
             case "gcp:pubsub/subscription:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
             case "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
@@ -124,6 +150,9 @@ pulumi.runtime.registerResourceModule("gcp", "pubsub/liteReservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/liteSubscription", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/liteTopic", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/schema", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/schemaIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/schemaIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/schemaIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscription", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMMember", _module)

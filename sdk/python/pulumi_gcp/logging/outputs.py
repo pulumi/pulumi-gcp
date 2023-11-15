@@ -12,9 +12,11 @@ from . import outputs
 
 __all__ = [
     'BillingAccountBucketConfigCmekSettings',
+    'BillingAccountBucketConfigIndexConfig',
     'BillingAccountSinkBigqueryOptions',
     'BillingAccountSinkExclusion',
     'FolderBucketConfigCmekSettings',
+    'FolderBucketConfigIndexConfig',
     'FolderSinkBigqueryOptions',
     'FolderSinkExclusion',
     'LinkedDatasetBigqueryDataset',
@@ -25,9 +27,11 @@ __all__ = [
     'MetricMetricDescriptor',
     'MetricMetricDescriptorLabel',
     'OrganizationBucketConfigCmekSettings',
+    'OrganizationBucketConfigIndexConfig',
     'OrganizationSinkBigqueryOptions',
     'OrganizationSinkExclusion',
     'ProjectBucketConfigCmekSettings',
+    'ProjectBucketConfigIndexConfig',
     'ProjectSinkBigqueryOptions',
     'ProjectSinkExclusion',
     'GetSinkBigqueryOptionResult',
@@ -95,6 +99,54 @@ class BillingAccountBucketConfigCmekSettings(dict):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> Optional[str]:
         return pulumi.get(self, "service_account_id")
+
+
+@pulumi.output_type
+class BillingAccountBucketConfigIndexConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BillingAccountBucketConfigIndexConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BillingAccountBucketConfigIndexConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BillingAccountBucketConfigIndexConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_path: str,
+                 type: str):
+        """
+        :param str field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param str type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> str:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -254,6 +306,54 @@ class FolderBucketConfigCmekSettings(dict):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> Optional[str]:
         return pulumi.get(self, "service_account_id")
+
+
+@pulumi.output_type
+class FolderBucketConfigIndexConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderBucketConfigIndexConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderBucketConfigIndexConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderBucketConfigIndexConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_path: str,
+                 type: str):
+        """
+        :param str field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param str type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> str:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -845,6 +945,54 @@ class OrganizationBucketConfigCmekSettings(dict):
 
 
 @pulumi.output_type
+class OrganizationBucketConfigIndexConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationBucketConfigIndexConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationBucketConfigIndexConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationBucketConfigIndexConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_path: str,
+                 type: str):
+        """
+        :param str field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param str type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> str:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class OrganizationSinkBigqueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1037,6 +1185,54 @@ class ProjectBucketConfigCmekSettings(dict):
         See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
         """
         return pulumi.get(self, "service_account_id")
+
+
+@pulumi.output_type
+class ProjectBucketConfigIndexConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldPath":
+            suggest = "field_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectBucketConfigIndexConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectBucketConfigIndexConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectBucketConfigIndexConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_path: str,
+                 type: str):
+        """
+        :param str field_path: The LogEntry field path to index.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        :param str type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        pulumi.set(__self__, "field_path", field_path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="fieldPath")
+    def field_path(self) -> str:
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        return pulumi.get(self, "field_path")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

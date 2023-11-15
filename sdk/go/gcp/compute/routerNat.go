@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A NAT service created in a router.
@@ -336,7 +335,17 @@ import (
 //
 // ## Import
 //
-// # RouterNat can be imported using any of these accepted formats
+// RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
+//
+//	to = google_compute_router_nat.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -826,12 +835,6 @@ func (i *RouterNat) ToRouterNatOutputWithContext(ctx context.Context) RouterNatO
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatOutput)
 }
 
-func (i *RouterNat) ToOutput(ctx context.Context) pulumix.Output[*RouterNat] {
-	return pulumix.Output[*RouterNat]{
-		OutputState: i.ToRouterNatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouterNatArrayInput is an input type that accepts RouterNatArray and RouterNatArrayOutput values.
 // You can construct a concrete instance of `RouterNatArrayInput` via:
 //
@@ -855,12 +858,6 @@ func (i RouterNatArray) ToRouterNatArrayOutput() RouterNatArrayOutput {
 
 func (i RouterNatArray) ToRouterNatArrayOutputWithContext(ctx context.Context) RouterNatArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatArrayOutput)
-}
-
-func (i RouterNatArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouterNat] {
-	return pulumix.Output[[]*RouterNat]{
-		OutputState: i.ToRouterNatArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterNatMapInput is an input type that accepts RouterNatMap and RouterNatMapOutput values.
@@ -888,12 +885,6 @@ func (i RouterNatMap) ToRouterNatMapOutputWithContext(ctx context.Context) Route
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatMapOutput)
 }
 
-func (i RouterNatMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouterNat] {
-	return pulumix.Output[map[string]*RouterNat]{
-		OutputState: i.ToRouterNatMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterNatOutput struct{ *pulumi.OutputState }
 
 func (RouterNatOutput) ElementType() reflect.Type {
@@ -906,12 +897,6 @@ func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {
 
 func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
 	return o
-}
-
-func (o RouterNatOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterNat] {
-	return pulumix.Output[*RouterNat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be
@@ -1068,12 +1053,6 @@ func (o RouterNatArrayOutput) ToRouterNatArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RouterNatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouterNat] {
-	return pulumix.Output[[]*RouterNat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouterNatArrayOutput) Index(i pulumi.IntInput) RouterNatOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouterNat {
 		return vs[0].([]*RouterNat)[vs[1].(int)]
@@ -1092,12 +1071,6 @@ func (o RouterNatMapOutput) ToRouterNatMapOutput() RouterNatMapOutput {
 
 func (o RouterNatMapOutput) ToRouterNatMapOutputWithContext(ctx context.Context) RouterNatMapOutput {
 	return o
-}
-
-func (o RouterNatMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouterNat] {
-	return pulumix.Output[map[string]*RouterNat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouterNatMapOutput) MapIndex(k pulumi.StringInput) RouterNatOutput {

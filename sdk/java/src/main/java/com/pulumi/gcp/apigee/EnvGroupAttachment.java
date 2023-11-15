@@ -137,7 +137,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EnvgroupAttachment can be imported using any of these accepted formats
+ * EnvgroupAttachment can be imported using any of these accepted formats* `{{envgroup_id}}/attachments/{{name}}` * `{{envgroup_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EnvgroupAttachment using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{envgroup_id}}/attachments/{{name}}&#34;
+ * 
+ *  to = google_apigee_envgroup_attachment.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EnvgroupAttachment can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/attachments/{{name}}

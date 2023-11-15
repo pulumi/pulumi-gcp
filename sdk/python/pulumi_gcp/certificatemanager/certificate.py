@@ -46,10 +46,10 @@ class CertificateArgs:
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-               served from non-core Google data centers.
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+               See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               see https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -162,10 +162,10 @@ class CertificateArgs:
         The scope of the certificate.
         DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
-        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-        served from non-core Google data centers.
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        See https://cloud.google.com/vpc/docs/edge-locations.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        see https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones
         """
         return pulumi.get(self, "scope")
 
@@ -227,10 +227,10 @@ class _CertificateState:
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-               served from non-core Google data centers.
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+               See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               see https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -372,10 +372,10 @@ class _CertificateState:
         The scope of the certificate.
         DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
-        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-        served from non-core Google data centers.
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        See https://cloud.google.com/vpc/docs/edge-locations.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        see https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones
         """
         return pulumi.get(self, "scope")
 
@@ -554,10 +554,108 @@ class Certificate(pulumi.CustomResource):
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         ```
+        ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.certificateauthority.CaPool("pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+            location="us-central1",
+            pool=pool.name,
+            certificate_authority_id="ca-authority",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        default = gcp.certificatemanager.Certificate("default",
+            description="sample google managed all_regions certificate with issuance config for terraform",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
+        ```
+        ### Certificate Manager Google Managed Certificate Dns All Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
+        default = gcp.certificatemanager.Certificate("default",
+            description="The default cert",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
+            ))
+        ```
 
         ## Import
 
-        Certificate can be imported using any of these accepted formats
+        Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/certificates/{{name}}"
+
+         to = google_certificate_manager_certificate.default }
+
+        ```sh
+         $ pulumi import gcp:certificatemanager/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
@@ -593,10 +691,10 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-               served from non-core Google data centers.
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+               See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               see https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -749,10 +847,108 @@ class Certificate(pulumi.CustomResource):
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         ```
+        ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.certificateauthority.CaPool("pool",
+            location="us-central1",
+            tier="ENTERPRISE")
+        ca_authority = gcp.certificateauthority.Authority("caAuthority",
+            location="us-central1",
+            pool=pool.name,
+            certificate_authority_id="ca-authority",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                        common_name="my-certificate-authority",
+                    ),
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        # creating certificate_issuance_config to use it in the managed certificate
+        issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
+            description="sample description for the certificate issuanceConfigs",
+            certificate_authority_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs(
+                certificate_authority_service_config=gcp.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs(
+                    ca_pool=pool.id,
+                ),
+            ),
+            lifetime="1814400s",
+            rotation_window_percentage=34,
+            key_algorithm="ECDSA_P256",
+            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+        default = gcp.certificatemanager.Certificate("default",
+            description="sample google managed all_regions certificate with issuance config for terraform",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=["terraform.subdomain1.com"],
+                issuance_config=issuanceconfig.id,
+            ))
+        ```
+        ### Certificate Manager Google Managed Certificate Dns All Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
+        default = gcp.certificatemanager.Certificate("default",
+            description="The default cert",
+            scope="ALL_REGIONS",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
+            ))
+        ```
 
         ## Import
 
-        Certificate can be imported using any of these accepted formats
+        Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/certificates/{{name}}"
+
+         to = google_certificate_manager_certificate.default }
+
+        ```sh
+         $ pulumi import gcp:certificatemanager/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
@@ -860,10 +1056,10 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
-               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-               served from non-core Google data centers.
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+               See https://cloud.google.com/vpc/docs/edge-locations.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               see https://cloud.google.com/compute/docs/regions-zones
+               See https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -968,10 +1164,10 @@ class Certificate(pulumi.CustomResource):
         The scope of the certificate.
         DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
-        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-        served from non-core Google data centers.
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        See https://cloud.google.com/vpc/docs/edge-locations.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        see https://cloud.google.com/compute/docs/regions-zones
+        See https://cloud.google.com/compute/docs/regions-zones
         """
         return pulumi.get(self, "scope")
 

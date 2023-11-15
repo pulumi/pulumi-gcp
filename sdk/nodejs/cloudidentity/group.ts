@@ -43,7 +43,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Group can be imported using any of these accepted formats:
+ * Group can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Group using one of the formats above. For exampletf import {
+ *
+ *  id = "{{name}}"
+ *
+ *  to = google_cloud_identity_group.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudidentity/group:Group When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Group can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
@@ -77,6 +85,11 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
+    /**
+     * Additional group keys associated with the Group
+     * Structure is documented below.
+     */
+    public /*out*/ readonly additionalGroupKeys!: pulumi.Output<outputs.cloudidentity.GroupAdditionalGroupKey[]>;
     /**
      * The time when the Group was created.
      */
@@ -142,6 +155,7 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["additionalGroupKeys"] = state ? state.additionalGroupKeys : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -168,6 +182,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["additionalGroupKeys"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -181,6 +196,11 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * Additional group keys associated with the Group
+     * Structure is documented below.
+     */
+    additionalGroupKeys?: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupAdditionalGroupKey>[]>;
     /**
      * The time when the Group was created.
      */

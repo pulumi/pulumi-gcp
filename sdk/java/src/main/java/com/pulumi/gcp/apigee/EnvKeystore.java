@@ -25,7 +25,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EnvKeystore can be imported using any of these accepted formats
+ * EnvKeystore can be imported using any of these accepted formats* `{{env_id}}/keystores/{{name}}` * `{{env_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EnvKeystore using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{env_id}}/keystores/{{name}}&#34;
+ * 
+ *  to = google_apigee_env_keystore.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/envKeystore:EnvKeystore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EnvKeystore can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/keystores/{{name}}

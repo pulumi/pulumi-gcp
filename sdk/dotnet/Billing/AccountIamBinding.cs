@@ -99,23 +99,19 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// ## Import
     /// 
-    /// Instance IAM resources can be imported using the project, table name, role and/or member.
+    /// ### Importing IAM policies IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example* `{{billing_account_id}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// 
+    ///  id = {{billing_account_id}}
+    /// 
+    ///  to = google_billing_account_iam_policy.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id"
+    ///  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user"
+    ///  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding default {{billing_account_id}}
     /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding binding "your-billing-account-id roles/billing.user user:jane@example.com"
-    /// ```
-    /// 
-    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
-    /// full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:billing/accountIamBinding:AccountIamBinding")]
     public partial class AccountIamBinding : global::Pulumi.CustomResource

@@ -314,14 +314,20 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      * 
      */
     @Import(name="maxStaleness")
     private @Nullable Output<String> maxStaleness;
 
     /**
-     * @return The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * @return The maximum staleness of data that could be
+     * returned when the table (or stale MV) is queried. Staleness encoded as a
+     * string encoding of [SQL IntervalValue
+     * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
      * 
      */
     public Optional<Output<String>> maxStaleness() {
@@ -420,6 +426,25 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TableRangePartitioningArgs>> rangePartitioning() {
         return Optional.ofNullable(this.rangePartitioning);
+    }
+
+    /**
+     * If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     * 
+     */
+    @Import(name="requirePartitionFilter")
+    private @Nullable Output<Boolean> requirePartitionFilter;
+
+    /**
+     * @return If set to true, queries over this table
+     * require a partition filter that can be used for partition elimination to be
+     * specified.
+     * 
+     */
+    public Optional<Output<Boolean>> requirePartitionFilter() {
+        return Optional.ofNullable(this.requirePartitionFilter);
     }
 
     /**
@@ -590,6 +615,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.rangePartitioning = $.rangePartitioning;
+        this.requirePartitionFilter = $.requirePartitionFilter;
         this.schema = $.schema;
         this.selfLink = $.selfLink;
         this.tableConstraints = $.tableConstraints;
@@ -1007,7 +1033,10 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxStaleness The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+         * @param maxStaleness The maximum staleness of data that could be
+         * returned when the table (or stale MV) is queried. Staleness encoded as a
+         * string encoding of [SQL IntervalValue
+         * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
          * 
          * @return builder
          * 
@@ -1018,7 +1047,10 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxStaleness The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+         * @param maxStaleness The maximum staleness of data that could be
+         * returned when the table (or stale MV) is queried. Staleness encoded as a
+         * string encoding of [SQL IntervalValue
+         * type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
          * 
          * @return builder
          * 
@@ -1155,6 +1187,31 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rangePartitioning(TableRangePartitioningArgs rangePartitioning) {
             return rangePartitioning(Output.of(rangePartitioning));
+        }
+
+        /**
+         * @param requirePartitionFilter If set to true, queries over this table
+         * require a partition filter that can be used for partition elimination to be
+         * specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePartitionFilter(@Nullable Output<Boolean> requirePartitionFilter) {
+            $.requirePartitionFilter = requirePartitionFilter;
+            return this;
+        }
+
+        /**
+         * @param requirePartitionFilter If set to true, queries over this table
+         * require a partition filter that can be used for partition elimination to be
+         * specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requirePartitionFilter(Boolean requirePartitionFilter) {
+            return requirePartitionFilter(Output.of(requirePartitionFilter));
         }
 
         /**

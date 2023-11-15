@@ -147,6 +147,29 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee&#39;s public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee&#39;s public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private EnvironmentState() {}
 
     private EnvironmentState(EnvironmentState $) {
@@ -157,6 +180,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nodeConfig = $.nodeConfig;
         this.orgId = $.orgId;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -348,6 +372,35 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        /**
+         * @param type Types that can be selected for an Environment. Each of the types are
+         * limited by capability and capacity. Refer to Apigee&#39;s public documentation
+         * to understand about each of these types in details.
+         * An Apigee org can support heterogeneous Environments.
+         * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Types that can be selected for an Environment. Each of the types are
+         * limited by capability and capacity. Refer to Apigee&#39;s public documentation
+         * to understand about each of these types in details.
+         * An Apigee org can support heterogeneous Environments.
+         * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public EnvironmentState build() {

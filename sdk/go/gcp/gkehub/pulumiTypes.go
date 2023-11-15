@@ -9,10 +9,1152 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type FeatureFleetDefaultMemberConfig struct {
+	// Config Management spec
+	// Structure is documented below.
+	Configmanagement *FeatureFleetDefaultMemberConfigConfigmanagement `pulumi:"configmanagement"`
+	// Service Mesh spec
+	// Structure is documented below.
+	Mesh *FeatureFleetDefaultMemberConfigMesh `pulumi:"mesh"`
+}
+
+// FeatureFleetDefaultMemberConfigInput is an input type that accepts FeatureFleetDefaultMemberConfigArgs and FeatureFleetDefaultMemberConfigOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigInput` via:
+//
+//	FeatureFleetDefaultMemberConfigArgs{...}
+type FeatureFleetDefaultMemberConfigInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigOutput() FeatureFleetDefaultMemberConfigOutput
+	ToFeatureFleetDefaultMemberConfigOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigOutput
+}
+
+type FeatureFleetDefaultMemberConfigArgs struct {
+	// Config Management spec
+	// Structure is documented below.
+	Configmanagement FeatureFleetDefaultMemberConfigConfigmanagementPtrInput `pulumi:"configmanagement"`
+	// Service Mesh spec
+	// Structure is documented below.
+	Mesh FeatureFleetDefaultMemberConfigMeshPtrInput `pulumi:"mesh"`
+}
+
+func (FeatureFleetDefaultMemberConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigArgs) ToFeatureFleetDefaultMemberConfigOutput() FeatureFleetDefaultMemberConfigOutput {
+	return i.ToFeatureFleetDefaultMemberConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigArgs) ToFeatureFleetDefaultMemberConfigOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigArgs) ToFeatureFleetDefaultMemberConfigPtrOutput() FeatureFleetDefaultMemberConfigPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigArgs) ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigOutput).ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigArgs, FeatureFleetDefaultMemberConfigPtr and FeatureFleetDefaultMemberConfigPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPtrOutput() FeatureFleetDefaultMemberConfigPtrOutput
+	ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPtrType FeatureFleetDefaultMemberConfigArgs
+
+func FeatureFleetDefaultMemberConfigPtr(v *FeatureFleetDefaultMemberConfigArgs) FeatureFleetDefaultMemberConfigPtrInput {
+	return (*featureFleetDefaultMemberConfigPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPtrType) ToFeatureFleetDefaultMemberConfigPtrOutput() FeatureFleetDefaultMemberConfigPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPtrType) ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigOutput) ToFeatureFleetDefaultMemberConfigOutput() FeatureFleetDefaultMemberConfigOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigOutput) ToFeatureFleetDefaultMemberConfigOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigOutput) ToFeatureFleetDefaultMemberConfigPtrOutput() FeatureFleetDefaultMemberConfigPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigOutput) ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfig {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPtrOutput)
+}
+
+// Config Management spec
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigOutput) Configmanagement() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigConfigmanagement {
+		return v.Configmanagement
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput)
+}
+
+// Service Mesh spec
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigOutput) Mesh() FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigMesh { return v.Mesh }).(FeatureFleetDefaultMemberConfigMeshPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPtrOutput) ToFeatureFleetDefaultMemberConfigPtrOutput() FeatureFleetDefaultMemberConfigPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPtrOutput) ToFeatureFleetDefaultMemberConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPtrOutput) Elem() FeatureFleetDefaultMemberConfigOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfig) FeatureFleetDefaultMemberConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfig
+		return ret
+	}).(FeatureFleetDefaultMemberConfigOutput)
+}
+
+// Config Management spec
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPtrOutput) Configmanagement() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigConfigmanagement {
+		if v == nil {
+			return nil
+		}
+		return v.Configmanagement
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput)
+}
+
+// Service Mesh spec
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPtrOutput) Mesh() FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigMesh {
+		if v == nil {
+			return nil
+		}
+		return v.Mesh
+	}).(FeatureFleetDefaultMemberConfigMeshPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagement struct {
+	// ConfigSync configuration for the cluster
+	// Structure is documented below.
+	ConfigSync *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync `pulumi:"configSync"`
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementArgs and FeatureFleetDefaultMemberConfigConfigmanagementOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementInput` via:
+//
+//	FeatureFleetDefaultMemberConfigConfigmanagementArgs{...}
+type FeatureFleetDefaultMemberConfigConfigmanagementInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementOutput() FeatureFleetDefaultMemberConfigConfigmanagementOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementOutput
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementArgs struct {
+	// ConfigSync configuration for the cluster
+	// Structure is documented below.
+	ConfigSync FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
+}
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementOutput() FeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementOutput).ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementArgs, FeatureFleetDefaultMemberConfigConfigmanagementPtr and FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigConfigmanagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigConfigmanagementPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput
+}
+
+type featureFleetDefaultMemberConfigConfigmanagementPtrType FeatureFleetDefaultMemberConfigConfigmanagementArgs
+
+func FeatureFleetDefaultMemberConfigConfigmanagementPtr(v *FeatureFleetDefaultMemberConfigConfigmanagementArgs) FeatureFleetDefaultMemberConfigConfigmanagementPtrInput {
+	return (*featureFleetDefaultMemberConfigConfigmanagementPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigConfigmanagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementOutput() FeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigConfigmanagement) *FeatureFleetDefaultMemberConfigConfigmanagement {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput)
+}
+
+// ConfigSync configuration for the cluster
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ConfigSync() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+		return v.ConfigSync
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Elem() FeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) FeatureFleetDefaultMemberConfigConfigmanagement {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigConfigmanagement
+		return ret
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementOutput)
+}
+
+// ConfigSync configuration for the cluster
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ConfigSync() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigSync
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
+	// Git repo configuration for the cluster
+	// Structure is documented below.
+	Git *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit `pulumi:"git"`
+	// OCI repo configuration for the cluster
+	// Structure is documented below.
+	Oci *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci `pulumi:"oci"`
+	// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+	SourceFormat *string `pulumi:"sourceFormat"`
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs and FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput` via:
+//
+//	FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{...}
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
+	// Git repo configuration for the cluster
+	// Structure is documented below.
+	Git FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	// OCI repo configuration for the cluster
+	// Structure is documented below.
+	Oci FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
+	// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
+}
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput).ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs, FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtr and FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput
+}
+
+type featureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrType FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
+
+func FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtr(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput {
+	return (*featureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
+}
+
+// Git repo configuration for the cluster
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Git() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+		return v.Git
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// OCI repo configuration for the cluster
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Oci() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+		return v.Oci
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput)
+}
+
+// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Elem() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigConfigmanagementConfigSync
+		return ret
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput)
+}
+
+// Git repo configuration for the cluster
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Git() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+		if v == nil {
+			return nil
+		}
+		return v.Git
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// OCI repo configuration for the cluster
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Oci() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+		if v == nil {
+			return nil
+		}
+		return v.Oci
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput)
+}
+
+// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail *string `pulumi:"gcpServiceAccountEmail"`
+	// URL for the HTTPS Proxy to be used when communicating with the Git repo
+	HttpsProxy *string `pulumi:"httpsProxy"`
+	// The path within the Git repository that represents the top level of the repo to sync
+	PolicyDir *string `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType string `pulumi:"secretType"`
+	// The branch of the repository to sync from. Default: master
+	SyncBranch *string `pulumi:"syncBranch"`
+	// The URL of the Git repository to use as the source of truth
+	SyncRepo *string `pulumi:"syncRepo"`
+	// Git revision (tag or hash) to check out. Default HEAD
+	SyncRev *string `pulumi:"syncRev"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs and FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput` via:
+//
+//	FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{...}
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"gcpServiceAccountEmail"`
+	// URL for the HTTPS Proxy to be used when communicating with the Git repo
+	HttpsProxy pulumi.StringPtrInput `pulumi:"httpsProxy"`
+	// The path within the Git repository that represents the top level of the repo to sync
+	PolicyDir pulumi.StringPtrInput `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// The branch of the repository to sync from. Default: master
+	SyncBranch pulumi.StringPtrInput `pulumi:"syncBranch"`
+	// The URL of the Git repository to use as the source of truth
+	SyncRepo pulumi.StringPtrInput `pulumi:"syncRepo"`
+	// Git revision (tag or hash) to check out. Default HEAD
+	SyncRev pulumi.StringPtrInput `pulumi:"syncRev"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
+}
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput).ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs, FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtr and FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput
+}
+
+type featureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrType FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs
+
+func FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtr(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput {
+	return (*featureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput)
+}
+
+// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL for the HTTPS Proxy to be used when communicating with the Git repo
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string { return v.HttpsProxy }).(pulumi.StringPtrOutput)
+}
+
+// The path within the Git repository that represents the top level of the repo to sync
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string { return v.PolicyDir }).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the Git repo
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The branch of the repository to sync from. Default: master
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string { return v.SyncBranch }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Git repository to use as the source of truth
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string { return v.SyncRepo }).(pulumi.StringPtrOutput)
+}
+
+// Git revision (tag or hash) to check out. Default HEAD
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string { return v.SyncRev }).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string { return v.SyncWaitSecs }).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit
+		return ret
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput)
+}
+
+// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL for the HTTPS Proxy to be used when communicating with the Git repo
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsProxy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path within the Git repository that represents the top level of the repo to sync
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the Git repo
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The branch of the repository to sync from. Default: master
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) SyncBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Git repository to use as the source of truth
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncRepo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git revision (tag or hash) to check out. Default HEAD
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) SyncRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncWaitSecs
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail *string `pulumi:"gcpServiceAccountEmail"`
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+	PolicyDir *string `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType string `pulumi:"secretType"`
+	// The OCI image repository URL for the package to sync from
+	SyncRepo *string `pulumi:"syncRepo"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
+	// Version of ACM installed
+	Version *string `pulumi:"version"`
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs and FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput` via:
+//
+//	FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{...}
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"gcpServiceAccountEmail"`
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+	PolicyDir pulumi.StringPtrInput `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// The OCI image repository URL for the package to sync from
+	SyncRepo pulumi.StringPtrInput `pulumi:"syncRepo"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
+	// Version of ACM installed
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput).ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs, FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtr and FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput
+	ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput
+}
+
+type featureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrType FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs
+
+func FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtr(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput {
+	return (*featureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrType) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput)
+}
+
+// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.PolicyDir }).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the Git repo
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The OCI image repository URL for the package to sync from
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.SyncRepo }).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.SyncWaitSecs }).(pulumi.StringPtrOutput)
+}
+
+// Version of ACM installed
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) ToFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) Elem() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci
+		return ret
+	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput)
+}
+
+// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) GcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) PolicyDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of secret configured for access to the Git repo
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCI image repository URL for the package to sync from
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) SyncRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncRepo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) SyncWaitSecs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncWaitSecs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of ACM installed
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigMesh struct {
+	// Whether to automatically manage Service Mesh
+	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+	Management string `pulumi:"management"`
+}
+
+// FeatureFleetDefaultMemberConfigMeshInput is an input type that accepts FeatureFleetDefaultMemberConfigMeshArgs and FeatureFleetDefaultMemberConfigMeshOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigMeshInput` via:
+//
+//	FeatureFleetDefaultMemberConfigMeshArgs{...}
+type FeatureFleetDefaultMemberConfigMeshInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigMeshOutput() FeatureFleetDefaultMemberConfigMeshOutput
+	ToFeatureFleetDefaultMemberConfigMeshOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigMeshOutput
+}
+
+type FeatureFleetDefaultMemberConfigMeshArgs struct {
+	// Whether to automatically manage Service Mesh
+	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+	Management pulumi.StringInput `pulumi:"management"`
+}
+
+func (FeatureFleetDefaultMemberConfigMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigMeshArgs) ToFeatureFleetDefaultMemberConfigMeshOutput() FeatureFleetDefaultMemberConfigMeshOutput {
+	return i.ToFeatureFleetDefaultMemberConfigMeshOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigMeshArgs) ToFeatureFleetDefaultMemberConfigMeshOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigMeshOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigMeshArgs) ToFeatureFleetDefaultMemberConfigMeshPtrOutput() FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigMeshArgs) ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigMeshOutput).ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigMeshPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigMeshArgs, FeatureFleetDefaultMemberConfigMeshPtr and FeatureFleetDefaultMemberConfigMeshPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigMeshPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigMeshPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigMeshPtrOutput() FeatureFleetDefaultMemberConfigMeshPtrOutput
+	ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigMeshPtrOutput
+}
+
+type featureFleetDefaultMemberConfigMeshPtrType FeatureFleetDefaultMemberConfigMeshArgs
+
+func FeatureFleetDefaultMemberConfigMeshPtr(v *FeatureFleetDefaultMemberConfigMeshArgs) FeatureFleetDefaultMemberConfigMeshPtrInput {
+	return (*featureFleetDefaultMemberConfigMeshPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigMeshPtrType) ToFeatureFleetDefaultMemberConfigMeshPtrOutput() FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigMeshPtrType) ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigMeshPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigMeshOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshOutput) ToFeatureFleetDefaultMemberConfigMeshOutput() FeatureFleetDefaultMemberConfigMeshOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshOutput) ToFeatureFleetDefaultMemberConfigMeshOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigMeshOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshOutput) ToFeatureFleetDefaultMemberConfigMeshPtrOutput() FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshOutput) ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigMesh) *FeatureFleetDefaultMemberConfigMesh {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigMeshPtrOutput)
+}
+
+// Whether to automatically manage Service Mesh
+// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+func (o FeatureFleetDefaultMemberConfigMeshOutput) Management() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigMesh) string { return v.Management }).(pulumi.StringOutput)
+}
+
+type FeatureFleetDefaultMemberConfigMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshPtrOutput) ToFeatureFleetDefaultMemberConfigMeshPtrOutput() FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshPtrOutput) ToFeatureFleetDefaultMemberConfigMeshPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigMeshPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigMeshPtrOutput) Elem() FeatureFleetDefaultMemberConfigMeshOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigMesh) FeatureFleetDefaultMemberConfigMesh {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigMesh
+		return ret
+	}).(FeatureFleetDefaultMemberConfigMeshOutput)
+}
+
+// Whether to automatically manage Service Mesh
+// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+func (o FeatureFleetDefaultMemberConfigMeshPtrOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Management
+	}).(pulumi.StringPtrOutput)
+}
 
 type FeatureIamBindingCondition struct {
 	Description *string `pulumi:"description"`
@@ -47,12 +1189,6 @@ func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionOutput() Fea
 
 func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionOutputWithContext(ctx context.Context) FeatureIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionOutput)
-}
-
-func (i FeatureIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureIamBindingCondition] {
-	return pulumix.Output[FeatureIamBindingCondition]{
-		OutputState: i.ToFeatureIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput {
@@ -96,12 +1232,6 @@ func (i *featureIamBindingConditionPtrType) ToFeatureIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionPtrOutput)
 }
 
-func (i *featureIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamBindingCondition] {
-	return pulumix.Output[*FeatureIamBindingCondition]{
-		OutputState: i.ToFeatureIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (FeatureIamBindingConditionOutput) ElementType() reflect.Type {
@@ -124,12 +1254,6 @@ func (o FeatureIamBindingConditionOutput) ToFeatureIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureIamBindingCondition) *FeatureIamBindingCondition {
 		return &v
 	}).(FeatureIamBindingConditionPtrOutput)
-}
-
-func (o FeatureIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureIamBindingCondition] {
-	return pulumix.Output[FeatureIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -156,12 +1280,6 @@ func (o FeatureIamBindingConditionPtrOutput) ToFeatureIamBindingConditionPtrOutp
 
 func (o FeatureIamBindingConditionPtrOutput) ToFeatureIamBindingConditionPtrOutputWithContext(ctx context.Context) FeatureIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o FeatureIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamBindingCondition] {
-	return pulumix.Output[*FeatureIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamBindingConditionPtrOutput) Elem() FeatureIamBindingConditionOutput {
@@ -236,12 +1354,6 @@ func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionOutput)
 }
 
-func (i FeatureIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureIamMemberCondition] {
-	return pulumix.Output[FeatureIamMemberCondition]{
-		OutputState: i.ToFeatureIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput {
 	return i.ToFeatureIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -283,12 +1395,6 @@ func (i *featureIamMemberConditionPtrType) ToFeatureIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionPtrOutput)
 }
 
-func (i *featureIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamMemberCondition] {
-	return pulumix.Output[*FeatureIamMemberCondition]{
-		OutputState: i.ToFeatureIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (FeatureIamMemberConditionOutput) ElementType() reflect.Type {
@@ -311,12 +1417,6 @@ func (o FeatureIamMemberConditionOutput) ToFeatureIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureIamMemberCondition) *FeatureIamMemberCondition {
 		return &v
 	}).(FeatureIamMemberConditionPtrOutput)
-}
-
-func (o FeatureIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureIamMemberCondition] {
-	return pulumix.Output[FeatureIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -343,12 +1443,6 @@ func (o FeatureIamMemberConditionPtrOutput) ToFeatureIamMemberConditionPtrOutput
 
 func (o FeatureIamMemberConditionPtrOutput) ToFeatureIamMemberConditionPtrOutputWithContext(ctx context.Context) FeatureIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o FeatureIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamMemberCondition] {
-	return pulumix.Output[*FeatureIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureIamMemberConditionPtrOutput) Elem() FeatureIamMemberConditionOutput {
@@ -437,12 +1531,6 @@ func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanageme
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementOutput)
 }
 
-func (i FeatureMembershipConfigmanagementArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagement] {
-	return pulumix.Output[FeatureMembershipConfigmanagement]{
-		OutputState: i.ToFeatureMembershipConfigmanagementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
 }
@@ -484,12 +1572,6 @@ func (i *featureMembershipConfigmanagementPtrType) ToFeatureMembershipConfigmana
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagement] {
-	return pulumix.Output[*FeatureMembershipConfigmanagement]{
-		OutputState: i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementOutput) ElementType() reflect.Type {
@@ -512,12 +1594,6 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagement {
 		return &v
 	}).(FeatureMembershipConfigmanagementPtrOutput)
-}
-
-func (o FeatureMembershipConfigmanagementOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagement] {
-	return pulumix.Output[FeatureMembershipConfigmanagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Binauthz configuration for the cluster. Structure is documented below.
@@ -565,12 +1641,6 @@ func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigman
 
 func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagement] {
-	return pulumix.Output[*FeatureMembershipConfigmanagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConfigmanagementOutput {
@@ -666,12 +1736,6 @@ func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfig
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzOutput)
 }
 
-func (i FeatureMembershipConfigmanagementBinauthzArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementBinauthz] {
-	return pulumix.Output[FeatureMembershipConfigmanagementBinauthz]{
-		OutputState: i.ToFeatureMembershipConfigmanagementBinauthzOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(context.Background())
 }
@@ -713,12 +1777,6 @@ func (i *featureMembershipConfigmanagementBinauthzPtrType) ToFeatureMembershipCo
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementBinauthzPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementBinauthz] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementBinauthz]{
-		OutputState: i.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementBinauthzOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementBinauthzOutput) ElementType() reflect.Type {
@@ -743,12 +1801,6 @@ func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConf
 	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
 
-func (o FeatureMembershipConfigmanagementBinauthzOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementBinauthz] {
-	return pulumix.Output[FeatureMembershipConfigmanagementBinauthz]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether binauthz is enabled in this cluster.
 func (o FeatureMembershipConfigmanagementBinauthzOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementBinauthz) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -766,12 +1818,6 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipC
 
 func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementBinauthz] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementBinauthz]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Elem() FeatureMembershipConfigmanagementBinauthzOutput {
@@ -796,7 +1842,8 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 
 type FeatureMembershipConfigmanagementConfigSync struct {
 	// (Optional) Structure is documented below.
-	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
+	Git                           *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
+	MetricsGcpServiceAccountEmail *string                                         `pulumi:"metricsGcpServiceAccountEmail"`
 	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
@@ -820,7 +1867,8 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// (Optional) Structure is documented below.
-	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	Git                           FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	MetricsGcpServiceAccountEmail pulumi.StringPtrInput                                  `pulumi:"metricsGcpServiceAccountEmail"`
 	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
@@ -841,12 +1889,6 @@ func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConf
 
 func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOutput)
-}
-
-func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSync] {
-	return pulumix.Output[FeatureMembershipConfigmanagementConfigSync]{
-		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
@@ -890,12 +1932,6 @@ func (i *featureMembershipConfigmanagementConfigSyncPtrType) ToFeatureMembership
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementConfigSyncPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSync] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSync]{
-		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementConfigSyncOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementConfigSyncOutput) ElementType() reflect.Type {
@@ -920,17 +1956,15 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
-func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSync] {
-	return pulumix.Output[FeatureMembershipConfigmanagementConfigSync]{
-		OutputState: o.OutputState,
-	}
-}
-
 // (Optional) Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
 		return v.Git
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
 // (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -966,12 +2000,6 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToFeatureMembershi
 	return o
 }
 
-func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSync] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSync]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) FeatureMembershipConfigmanagementConfigSync {
 		if v != nil {
@@ -990,6 +2018,15 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembe
 		}
 		return v.Git
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsGcpServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -1085,12 +2122,6 @@ func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipC
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
 }
 
-func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit] {
-	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit]{
-		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncGitOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
 }
@@ -1132,12 +2163,6 @@ func (i *featureMembershipConfigmanagementConfigSyncGitPtrType) ToFeatureMembers
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementConfigSyncGitPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit]{
-		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementConfigSyncGitOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementConfigSyncGitOutput) ElementType() reflect.Type {
@@ -1160,12 +2185,6 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSyncGit) *FeatureMembershipConfigmanagementConfigSyncGit {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
-}
-
-func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit] {
-	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
@@ -1220,12 +2239,6 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMember
 
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncGitOutput {
@@ -1367,12 +2380,6 @@ func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipC
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciOutput)
 }
 
-func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci] {
-	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci]{
-		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncOciOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
 }
@@ -1414,12 +2421,6 @@ func (i *featureMembershipConfigmanagementConfigSyncOciPtrType) ToFeatureMembers
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementConfigSyncOciPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci]{
-		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementConfigSyncOciOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementConfigSyncOciOutput) ElementType() reflect.Type {
@@ -1442,12 +2443,6 @@ func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToFeatureMembershi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSyncOci) *FeatureMembershipConfigmanagementConfigSyncOci {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
-}
-
-func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci] {
-	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
@@ -1487,12 +2482,6 @@ func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToFeatureMember
 
 func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOciOutput {
@@ -1596,12 +2585,6 @@ func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembe
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerOutput)
 }
 
-func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementHierarchyController] {
-	return pulumix.Output[FeatureMembershipConfigmanagementHierarchyController]{
-		OutputState: i.ToFeatureMembershipConfigmanagementHierarchyControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(context.Background())
 }
@@ -1643,12 +2626,6 @@ func (i *featureMembershipConfigmanagementHierarchyControllerPtrType) ToFeatureM
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementHierarchyControllerPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController]{
-		OutputState: i.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementHierarchyControllerOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementHierarchyControllerOutput) ElementType() reflect.Type {
@@ -1671,12 +2648,6 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMem
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementHierarchyController) *FeatureMembershipConfigmanagementHierarchyController {
 		return &v
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
-}
-
-func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementHierarchyController] {
-	return pulumix.Output[FeatureMembershipConfigmanagementHierarchyController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether hierarchical resource quota is enabled in this cluster.
@@ -1708,12 +2679,6 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeature
 
 func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementHierarchyControllerOutput {
@@ -1817,12 +2782,6 @@ func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembersh
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerOutput)
 }
 
-func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyController] {
-	return pulumix.Output[FeatureMembershipConfigmanagementPolicyController]{
-		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(context.Background())
 }
@@ -1864,12 +2823,6 @@ func (i *featureMembershipConfigmanagementPolicyControllerPtrType) ToFeatureMemb
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementPolicyControllerPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyController] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyController]{
-		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementPolicyControllerOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementPolicyControllerOutput) ElementType() reflect.Type {
@@ -1892,12 +2845,6 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMember
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyController {
 		return &v
 	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
-}
-
-func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyController] {
-	return pulumix.Output[FeatureMembershipConfigmanagementPolicyController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -1954,12 +2901,6 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMem
 
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyController] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyController]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerOutput {
@@ -2083,12 +3024,6 @@ func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatu
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput)
 }
 
-func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
-	return pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
-		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(context.Background())
 }
@@ -2130,12 +3065,6 @@ func (i *featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ToF
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
-func (i *featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
-		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ElementType() reflect.Type {
@@ -2160,12 +3089,6 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFea
 	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
-func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
-	return pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) Backends() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyControllerMonitoring) []string { return v.Backends }).(pulumi.StringArrayOutput)
 }
@@ -2182,12 +3105,6 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) To
 
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
-	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
@@ -2246,12 +3163,6 @@ func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshOutput)
 }
 
-func (i FeatureMembershipMeshArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipMesh] {
-	return pulumix.Output[FeatureMembershipMesh]{
-		OutputState: i.ToFeatureMembershipMeshOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput {
 	return i.ToFeatureMembershipMeshPtrOutputWithContext(context.Background())
 }
@@ -2293,12 +3204,6 @@ func (i *featureMembershipMeshPtrType) ToFeatureMembershipMeshPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshPtrOutput)
 }
 
-func (i *featureMembershipMeshPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipMesh] {
-	return pulumix.Output[*FeatureMembershipMesh]{
-		OutputState: i.ToFeatureMembershipMeshPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipMeshOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipMeshOutput) ElementType() reflect.Type {
@@ -2323,12 +3228,6 @@ func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext
 	}).(FeatureMembershipMeshPtrOutput)
 }
 
-func (o FeatureMembershipMeshOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipMesh] {
-	return pulumix.Output[FeatureMembershipMesh]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Deprecated: Deprecated in favor of the `management` field
 func (o FeatureMembershipMeshOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.ControlPlane }).(pulumi.StringPtrOutput)
@@ -2351,12 +3250,6 @@ func (o FeatureMembershipMeshPtrOutput) ToFeatureMembershipMeshPtrOutput() Featu
 
 func (o FeatureMembershipMeshPtrOutput) ToFeatureMembershipMeshPtrOutputWithContext(ctx context.Context) FeatureMembershipMeshPtrOutput {
 	return o
-}
-
-func (o FeatureMembershipMeshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipMesh] {
-	return pulumix.Output[*FeatureMembershipMesh]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
@@ -2432,12 +3325,6 @@ func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput)
 }
 
-func (i FeatureResourceStateArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureResourceState] {
-	return pulumix.Output[FeatureResourceState]{
-		OutputState: i.ToFeatureResourceStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureResourceStateArrayInput is an input type that accepts FeatureResourceStateArray and FeatureResourceStateArrayOutput values.
 // You can construct a concrete instance of `FeatureResourceStateArrayInput` via:
 //
@@ -2463,12 +3350,6 @@ func (i FeatureResourceStateArray) ToFeatureResourceStateArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateArrayOutput)
 }
 
-func (i FeatureResourceStateArray) ToOutput(ctx context.Context) pulumix.Output[[]FeatureResourceState] {
-	return pulumix.Output[[]FeatureResourceState]{
-		OutputState: i.ToFeatureResourceStateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureResourceStateOutput struct{ *pulumi.OutputState }
 
 func (FeatureResourceStateOutput) ElementType() reflect.Type {
@@ -2481,12 +3362,6 @@ func (o FeatureResourceStateOutput) ToFeatureResourceStateOutput() FeatureResour
 
 func (o FeatureResourceStateOutput) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
 	return o
-}
-
-func (o FeatureResourceStateOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureResourceState] {
-	return pulumix.Output[FeatureResourceState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -2514,12 +3389,6 @@ func (o FeatureResourceStateArrayOutput) ToFeatureResourceStateArrayOutput() Fea
 
 func (o FeatureResourceStateArrayOutput) ToFeatureResourceStateArrayOutputWithContext(ctx context.Context) FeatureResourceStateArrayOutput {
 	return o
-}
-
-func (o FeatureResourceStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureResourceState] {
-	return pulumix.Output[[]FeatureResourceState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourceStateOutput {
@@ -2569,12 +3438,6 @@ func (i FeatureSpecArgs) ToFeatureSpecOutputWithContext(ctx context.Context) Fea
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecOutput)
 }
 
-func (i FeatureSpecArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpec] {
-	return pulumix.Output[FeatureSpec]{
-		OutputState: i.ToFeatureSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureSpecArgs) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
 	return i.ToFeatureSpecPtrOutputWithContext(context.Background())
 }
@@ -2616,12 +3479,6 @@ func (i *featureSpecPtrType) ToFeatureSpecPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecPtrOutput)
 }
 
-func (i *featureSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpec] {
-	return pulumix.Output[*FeatureSpec]{
-		OutputState: i.ToFeatureSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureSpecOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecOutput) ElementType() reflect.Type {
@@ -2644,12 +3501,6 @@ func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpec) *FeatureSpec {
 		return &v
 	}).(FeatureSpecPtrOutput)
-}
-
-func (o FeatureSpecOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpec] {
-	return pulumix.Output[FeatureSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fleet Observability feature spec.
@@ -2676,12 +3527,6 @@ func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
 
 func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
 	return o
-}
-
-func (o FeatureSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpec] {
-	return pulumix.Output[*FeatureSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
@@ -2751,12 +3596,6 @@ func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityOutput
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityOutput)
 }
 
-func (i FeatureSpecFleetobservabilityArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservability] {
-	return pulumix.Output[FeatureSpecFleetobservability]{
-		OutputState: i.ToFeatureSpecFleetobservabilityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityPtrOutputWithContext(context.Background())
 }
@@ -2798,12 +3637,6 @@ func (i *featureSpecFleetobservabilityPtrType) ToFeatureSpecFleetobservabilityPt
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityPtrOutput)
 }
 
-func (i *featureSpecFleetobservabilityPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservability] {
-	return pulumix.Output[*FeatureSpecFleetobservability]{
-		OutputState: i.ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureSpecFleetobservabilityOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityOutput) ElementType() reflect.Type {
@@ -2828,12 +3661,6 @@ func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityPtrO
 	}).(FeatureSpecFleetobservabilityPtrOutput)
 }
 
-func (o FeatureSpecFleetobservabilityOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservability] {
-	return pulumix.Output[FeatureSpecFleetobservability]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
 // Structure is documented below.
 func (o FeatureSpecFleetobservabilityOutput) LoggingConfig() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
@@ -2854,12 +3681,6 @@ func (o FeatureSpecFleetobservabilityPtrOutput) ToFeatureSpecFleetobservabilityP
 
 func (o FeatureSpecFleetobservabilityPtrOutput) ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityPtrOutput {
 	return o
-}
-
-func (o FeatureSpecFleetobservabilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservability] {
-	return pulumix.Output[*FeatureSpecFleetobservability]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecFleetobservabilityPtrOutput) Elem() FeatureSpecFleetobservabilityOutput {
@@ -2924,12 +3745,6 @@ func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobserv
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigOutput)
 }
 
-func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig] {
-	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig]{
-		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -2971,12 +3786,6 @@ func (i *featureSpecFleetobservabilityLoggingConfigPtrType) ToFeatureSpecFleetob
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
 }
 
-func (i *featureSpecFleetobservabilityLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig] {
-	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig]{
-		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureSpecFleetobservabilityLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityLoggingConfigOutput) ElementType() reflect.Type {
@@ -2999,12 +3808,6 @@ func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobse
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfig {
 		return &v
 	}).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
-}
-
-func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig] {
-	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specified if applying the default routing config to logs not specified in other configs.
@@ -3035,12 +3838,6 @@ func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToFeatureSpecFleeto
 
 func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
 	return o
-}
-
-func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig] {
-	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigOutput {
@@ -3110,12 +3907,6 @@ func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSp
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
 }
 
-func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
-	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
-		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(context.Background())
 }
@@ -3157,12 +3948,6 @@ func (i *featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ToFeatu
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
-func (i *featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
-	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
-		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ElementType() reflect.Type {
@@ -3187,12 +3972,6 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeature
 	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
-func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
-	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specified if fleet logging feature is enabled.
 // Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) Mode() pulumi.StringPtrOutput {
@@ -3211,12 +3990,6 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToFeat
 
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
 	return o
-}
-
-func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
-	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
@@ -3275,12 +4048,6 @@ func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFe
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
 }
 
-func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
-	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
-		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(context.Background())
 }
@@ -3322,12 +4089,6 @@ func (i *featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 }
 
-func (i *featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
-	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
-		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ElementType() reflect.Type {
@@ -3352,12 +4113,6 @@ func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) To
 	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 }
 
-func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
-	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specified if fleet logging feature is enabled.
 // Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) Mode() pulumi.StringPtrOutput {
@@ -3376,12 +4131,6 @@ func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
 	return o
-}
-
-func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
-	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
@@ -3438,12 +4187,6 @@ func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressOutput)
 }
 
-func (i FeatureSpecMulticlusteringressArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecMulticlusteringress] {
-	return pulumix.Output[FeatureSpecMulticlusteringress]{
-		OutputState: i.ToFeatureSpecMulticlusteringressOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput {
 	return i.ToFeatureSpecMulticlusteringressPtrOutputWithContext(context.Background())
 }
@@ -3485,12 +4228,6 @@ func (i *featureSpecMulticlusteringressPtrType) ToFeatureSpecMulticlusteringress
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressPtrOutput)
 }
 
-func (i *featureSpecMulticlusteringressPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecMulticlusteringress] {
-	return pulumix.Output[*FeatureSpecMulticlusteringress]{
-		OutputState: i.ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureSpecMulticlusteringressOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecMulticlusteringressOutput) ElementType() reflect.Type {
@@ -3515,12 +4252,6 @@ func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPt
 	}).(FeatureSpecMulticlusteringressPtrOutput)
 }
 
-func (o FeatureSpecMulticlusteringressOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecMulticlusteringress] {
-	return pulumix.Output[FeatureSpecMulticlusteringress]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o FeatureSpecMulticlusteringressOutput) ConfigMembership() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureSpecMulticlusteringress) string { return v.ConfigMembership }).(pulumi.StringOutput)
@@ -3538,12 +4269,6 @@ func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringres
 
 func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
 	return o
-}
-
-func (o FeatureSpecMulticlusteringressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecMulticlusteringress] {
-	return pulumix.Output[*FeatureSpecMulticlusteringress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureSpecMulticlusteringressPtrOutput) Elem() FeatureSpecMulticlusteringressOutput {
@@ -3603,12 +4328,6 @@ func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput)
 }
 
-func (i FeatureStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureStateType] {
-	return pulumix.Output[FeatureStateType]{
-		OutputState: i.ToFeatureStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureStateTypeArrayInput is an input type that accepts FeatureStateTypeArray and FeatureStateTypeArrayOutput values.
 // You can construct a concrete instance of `FeatureStateTypeArrayInput` via:
 //
@@ -3634,12 +4353,6 @@ func (i FeatureStateTypeArray) ToFeatureStateTypeArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeArrayOutput)
 }
 
-func (i FeatureStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateType] {
-	return pulumix.Output[[]FeatureStateType]{
-		OutputState: i.ToFeatureStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureStateTypeOutput struct{ *pulumi.OutputState }
 
 func (FeatureStateTypeOutput) ElementType() reflect.Type {
@@ -3652,12 +4365,6 @@ func (o FeatureStateTypeOutput) ToFeatureStateTypeOutput() FeatureStateTypeOutpu
 
 func (o FeatureStateTypeOutput) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
 	return o
-}
-
-func (o FeatureStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureStateType] {
-	return pulumix.Output[FeatureStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3679,12 +4386,6 @@ func (o FeatureStateTypeArrayOutput) ToFeatureStateTypeArrayOutput() FeatureStat
 
 func (o FeatureStateTypeArrayOutput) ToFeatureStateTypeArrayOutputWithContext(ctx context.Context) FeatureStateTypeArrayOutput {
 	return o
-}
-
-func (o FeatureStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateType] {
-	return pulumix.Output[[]FeatureStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureStateTypeArrayOutput) Index(i pulumi.IntInput) FeatureStateTypeOutput {
@@ -3740,12 +4441,6 @@ func (i FeatureStateStateArgs) ToFeatureStateStateOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateStateOutput)
 }
 
-func (i FeatureStateStateArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureStateState] {
-	return pulumix.Output[FeatureStateState]{
-		OutputState: i.ToFeatureStateStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureStateStateArrayInput is an input type that accepts FeatureStateStateArray and FeatureStateStateArrayOutput values.
 // You can construct a concrete instance of `FeatureStateStateArrayInput` via:
 //
@@ -3771,12 +4466,6 @@ func (i FeatureStateStateArray) ToFeatureStateStateArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateStateArrayOutput)
 }
 
-func (i FeatureStateStateArray) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateState] {
-	return pulumix.Output[[]FeatureStateState]{
-		OutputState: i.ToFeatureStateStateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureStateStateOutput struct{ *pulumi.OutputState }
 
 func (FeatureStateStateOutput) ElementType() reflect.Type {
@@ -3789,12 +4478,6 @@ func (o FeatureStateStateOutput) ToFeatureStateStateOutput() FeatureStateStateOu
 
 func (o FeatureStateStateOutput) ToFeatureStateStateOutputWithContext(ctx context.Context) FeatureStateStateOutput {
 	return o
-}
-
-func (o FeatureStateStateOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureStateState] {
-	return pulumix.Output[FeatureStateState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -3829,16 +4512,110 @@ func (o FeatureStateStateArrayOutput) ToFeatureStateStateArrayOutputWithContext(
 	return o
 }
 
-func (o FeatureStateStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateState] {
-	return pulumix.Output[[]FeatureStateState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureStateStateArrayOutput) Index(i pulumi.IntInput) FeatureStateStateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureStateState {
 		return vs[0].([]FeatureStateState)[vs[1].(int)]
 	}).(FeatureStateStateOutput)
+}
+
+type FleetStateType struct {
+	// (Output)
+	// Describes the state of a Fleet resource.
+	Code *string `pulumi:"code"`
+}
+
+// FleetStateTypeInput is an input type that accepts FleetStateTypeArgs and FleetStateTypeOutput values.
+// You can construct a concrete instance of `FleetStateTypeInput` via:
+//
+//	FleetStateTypeArgs{...}
+type FleetStateTypeInput interface {
+	pulumi.Input
+
+	ToFleetStateTypeOutput() FleetStateTypeOutput
+	ToFleetStateTypeOutputWithContext(context.Context) FleetStateTypeOutput
+}
+
+type FleetStateTypeArgs struct {
+	// (Output)
+	// Describes the state of a Fleet resource.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (FleetStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetStateType)(nil)).Elem()
+}
+
+func (i FleetStateTypeArgs) ToFleetStateTypeOutput() FleetStateTypeOutput {
+	return i.ToFleetStateTypeOutputWithContext(context.Background())
+}
+
+func (i FleetStateTypeArgs) ToFleetStateTypeOutputWithContext(ctx context.Context) FleetStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetStateTypeOutput)
+}
+
+// FleetStateTypeArrayInput is an input type that accepts FleetStateTypeArray and FleetStateTypeArrayOutput values.
+// You can construct a concrete instance of `FleetStateTypeArrayInput` via:
+//
+//	FleetStateTypeArray{ FleetStateTypeArgs{...} }
+type FleetStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToFleetStateTypeArrayOutput() FleetStateTypeArrayOutput
+	ToFleetStateTypeArrayOutputWithContext(context.Context) FleetStateTypeArrayOutput
+}
+
+type FleetStateTypeArray []FleetStateTypeInput
+
+func (FleetStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetStateType)(nil)).Elem()
+}
+
+func (i FleetStateTypeArray) ToFleetStateTypeArrayOutput() FleetStateTypeArrayOutput {
+	return i.ToFleetStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i FleetStateTypeArray) ToFleetStateTypeArrayOutputWithContext(ctx context.Context) FleetStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetStateTypeArrayOutput)
+}
+
+type FleetStateTypeOutput struct{ *pulumi.OutputState }
+
+func (FleetStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetStateType)(nil)).Elem()
+}
+
+func (o FleetStateTypeOutput) ToFleetStateTypeOutput() FleetStateTypeOutput {
+	return o
+}
+
+func (o FleetStateTypeOutput) ToFleetStateTypeOutputWithContext(ctx context.Context) FleetStateTypeOutput {
+	return o
+}
+
+// (Output)
+// Describes the state of a Fleet resource.
+func (o FleetStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+type FleetStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetStateType)(nil)).Elem()
+}
+
+func (o FleetStateTypeArrayOutput) ToFleetStateTypeArrayOutput() FleetStateTypeArrayOutput {
+	return o
+}
+
+func (o FleetStateTypeArrayOutput) ToFleetStateTypeArrayOutputWithContext(ctx context.Context) FleetStateTypeArrayOutput {
+	return o
+}
+
+func (o FleetStateTypeArrayOutput) Index(i pulumi.IntInput) FleetStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetStateType {
+		return vs[0].([]FleetStateType)[vs[1].(int)]
+	}).(FleetStateTypeOutput)
 }
 
 type MembershipAuthority struct {
@@ -3870,12 +4647,6 @@ func (i MembershipAuthorityArgs) ToMembershipAuthorityOutput() MembershipAuthori
 
 func (i MembershipAuthorityArgs) ToMembershipAuthorityOutputWithContext(ctx context.Context) MembershipAuthorityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipAuthorityOutput)
-}
-
-func (i MembershipAuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipAuthority] {
-	return pulumix.Output[MembershipAuthority]{
-		OutputState: i.ToMembershipAuthorityOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i MembershipAuthorityArgs) ToMembershipAuthorityPtrOutput() MembershipAuthorityPtrOutput {
@@ -3919,12 +4690,6 @@ func (i *membershipAuthorityPtrType) ToMembershipAuthorityPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipAuthorityPtrOutput)
 }
 
-func (i *membershipAuthorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipAuthority] {
-	return pulumix.Output[*MembershipAuthority]{
-		OutputState: i.ToMembershipAuthorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipAuthorityOutput struct{ *pulumi.OutputState }
 
 func (MembershipAuthorityOutput) ElementType() reflect.Type {
@@ -3949,12 +4714,6 @@ func (o MembershipAuthorityOutput) ToMembershipAuthorityPtrOutputWithContext(ctx
 	}).(MembershipAuthorityPtrOutput)
 }
 
-func (o MembershipAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipAuthority] {
-	return pulumix.Output[MembershipAuthority]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipAuthorityOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -3971,12 +4730,6 @@ func (o MembershipAuthorityPtrOutput) ToMembershipAuthorityPtrOutput() Membershi
 
 func (o MembershipAuthorityPtrOutput) ToMembershipAuthorityPtrOutputWithContext(ctx context.Context) MembershipAuthorityPtrOutput {
 	return o
-}
-
-func (o MembershipAuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipAuthority] {
-	return pulumix.Output[*MembershipAuthority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipAuthorityPtrOutput) Elem() MembershipAuthorityOutput {
@@ -4033,12 +4786,6 @@ func (i MembershipBindingStateTypeArgs) ToMembershipBindingStateTypeOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingStateTypeOutput)
 }
 
-func (i MembershipBindingStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipBindingStateType] {
-	return pulumix.Output[MembershipBindingStateType]{
-		OutputState: i.ToMembershipBindingStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipBindingStateTypeArrayInput is an input type that accepts MembershipBindingStateTypeArray and MembershipBindingStateTypeArrayOutput values.
 // You can construct a concrete instance of `MembershipBindingStateTypeArrayInput` via:
 //
@@ -4064,12 +4811,6 @@ func (i MembershipBindingStateTypeArray) ToMembershipBindingStateTypeArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingStateTypeArrayOutput)
 }
 
-func (i MembershipBindingStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]MembershipBindingStateType] {
-	return pulumix.Output[[]MembershipBindingStateType]{
-		OutputState: i.ToMembershipBindingStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipBindingStateTypeOutput struct{ *pulumi.OutputState }
 
 func (MembershipBindingStateTypeOutput) ElementType() reflect.Type {
@@ -4082,12 +4823,6 @@ func (o MembershipBindingStateTypeOutput) ToMembershipBindingStateTypeOutput() M
 
 func (o MembershipBindingStateTypeOutput) ToMembershipBindingStateTypeOutputWithContext(ctx context.Context) MembershipBindingStateTypeOutput {
 	return o
-}
-
-func (o MembershipBindingStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipBindingStateType] {
-	return pulumix.Output[MembershipBindingStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4108,12 +4843,6 @@ func (o MembershipBindingStateTypeArrayOutput) ToMembershipBindingStateTypeArray
 
 func (o MembershipBindingStateTypeArrayOutput) ToMembershipBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipBindingStateTypeArrayOutput {
 	return o
-}
-
-func (o MembershipBindingStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembershipBindingStateType] {
-	return pulumix.Output[[]MembershipBindingStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipBindingStateTypeArrayOutput) Index(i pulumi.IntInput) MembershipBindingStateTypeOutput {
@@ -4157,12 +4886,6 @@ func (i MembershipEndpointArgs) ToMembershipEndpointOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointOutput)
 }
 
-func (i MembershipEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpoint] {
-	return pulumix.Output[MembershipEndpoint]{
-		OutputState: i.ToMembershipEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MembershipEndpointArgs) ToMembershipEndpointPtrOutput() MembershipEndpointPtrOutput {
 	return i.ToMembershipEndpointPtrOutputWithContext(context.Background())
 }
@@ -4204,12 +4927,6 @@ func (i *membershipEndpointPtrType) ToMembershipEndpointPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointPtrOutput)
 }
 
-func (i *membershipEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpoint] {
-	return pulumix.Output[*MembershipEndpoint]{
-		OutputState: i.ToMembershipEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipEndpointOutput struct{ *pulumi.OutputState }
 
 func (MembershipEndpointOutput) ElementType() reflect.Type {
@@ -4234,12 +4951,6 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx c
 	}).(MembershipEndpointPtrOutput)
 }
 
-func (o MembershipEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpoint] {
-	return pulumix.Output[MembershipEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 // Structure is documented below.
 func (o MembershipEndpointOutput) GkeCluster() MembershipEndpointGkeClusterPtrOutput {
@@ -4258,12 +4969,6 @@ func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutput() MembershipE
 
 func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutputWithContext(ctx context.Context) MembershipEndpointPtrOutput {
 	return o
-}
-
-func (o MembershipEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpoint] {
-	return pulumix.Output[*MembershipEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
@@ -4318,12 +5023,6 @@ func (i MembershipEndpointGkeClusterArgs) ToMembershipEndpointGkeClusterOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointGkeClusterOutput)
 }
 
-func (i MembershipEndpointGkeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpointGkeCluster] {
-	return pulumix.Output[MembershipEndpointGkeCluster]{
-		OutputState: i.ToMembershipEndpointGkeClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MembershipEndpointGkeClusterArgs) ToMembershipEndpointGkeClusterPtrOutput() MembershipEndpointGkeClusterPtrOutput {
 	return i.ToMembershipEndpointGkeClusterPtrOutputWithContext(context.Background())
 }
@@ -4365,12 +5064,6 @@ func (i *membershipEndpointGkeClusterPtrType) ToMembershipEndpointGkeClusterPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointGkeClusterPtrOutput)
 }
 
-func (i *membershipEndpointGkeClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpointGkeCluster] {
-	return pulumix.Output[*MembershipEndpointGkeCluster]{
-		OutputState: i.ToMembershipEndpointGkeClusterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipEndpointGkeClusterOutput struct{ *pulumi.OutputState }
 
 func (MembershipEndpointGkeClusterOutput) ElementType() reflect.Type {
@@ -4395,12 +5088,6 @@ func (o MembershipEndpointGkeClusterOutput) ToMembershipEndpointGkeClusterPtrOut
 	}).(MembershipEndpointGkeClusterPtrOutput)
 }
 
-func (o MembershipEndpointGkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpointGkeCluster] {
-	return pulumix.Output[MembershipEndpointGkeCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipEndpointGkeClusterOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipEndpointGkeCluster) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -4417,12 +5104,6 @@ func (o MembershipEndpointGkeClusterPtrOutput) ToMembershipEndpointGkeClusterPtr
 
 func (o MembershipEndpointGkeClusterPtrOutput) ToMembershipEndpointGkeClusterPtrOutputWithContext(ctx context.Context) MembershipEndpointGkeClusterPtrOutput {
 	return o
-}
-
-func (o MembershipEndpointGkeClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpointGkeCluster] {
-	return pulumix.Output[*MembershipEndpointGkeCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipEndpointGkeClusterPtrOutput) Elem() MembershipEndpointGkeClusterOutput {
@@ -4479,12 +5160,6 @@ func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionOutput)
 }
 
-func (i MembershipIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipIamBindingCondition] {
-	return pulumix.Output[MembershipIamBindingCondition]{
-		OutputState: i.ToMembershipIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput {
 	return i.ToMembershipIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -4526,12 +5201,6 @@ func (i *membershipIamBindingConditionPtrType) ToMembershipIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionPtrOutput)
 }
 
-func (i *membershipIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamBindingCondition] {
-	return pulumix.Output[*MembershipIamBindingCondition]{
-		OutputState: i.ToMembershipIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamBindingConditionOutput) ElementType() reflect.Type {
@@ -4554,12 +5223,6 @@ func (o MembershipIamBindingConditionOutput) ToMembershipIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipIamBindingCondition) *MembershipIamBindingCondition {
 		return &v
 	}).(MembershipIamBindingConditionPtrOutput)
-}
-
-func (o MembershipIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipIamBindingCondition] {
-	return pulumix.Output[MembershipIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4586,12 +5249,6 @@ func (o MembershipIamBindingConditionPtrOutput) ToMembershipIamBindingConditionP
 
 func (o MembershipIamBindingConditionPtrOutput) ToMembershipIamBindingConditionPtrOutputWithContext(ctx context.Context) MembershipIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o MembershipIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamBindingCondition] {
-	return pulumix.Output[*MembershipIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamBindingConditionPtrOutput) Elem() MembershipIamBindingConditionOutput {
@@ -4666,12 +5323,6 @@ func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionOutput)
 }
 
-func (i MembershipIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipIamMemberCondition] {
-	return pulumix.Output[MembershipIamMemberCondition]{
-		OutputState: i.ToMembershipIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput {
 	return i.ToMembershipIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -4713,12 +5364,6 @@ func (i *membershipIamMemberConditionPtrType) ToMembershipIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionPtrOutput)
 }
 
-func (i *membershipIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamMemberCondition] {
-	return pulumix.Output[*MembershipIamMemberCondition]{
-		OutputState: i.ToMembershipIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamMemberConditionOutput) ElementType() reflect.Type {
@@ -4741,12 +5386,6 @@ func (o MembershipIamMemberConditionOutput) ToMembershipIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipIamMemberCondition) *MembershipIamMemberCondition {
 		return &v
 	}).(MembershipIamMemberConditionPtrOutput)
-}
-
-func (o MembershipIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipIamMemberCondition] {
-	return pulumix.Output[MembershipIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4773,12 +5412,6 @@ func (o MembershipIamMemberConditionPtrOutput) ToMembershipIamMemberConditionPtr
 
 func (o MembershipIamMemberConditionPtrOutput) ToMembershipIamMemberConditionPtrOutputWithContext(ctx context.Context) MembershipIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o MembershipIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamMemberCondition] {
-	return pulumix.Output[*MembershipIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipIamMemberConditionPtrOutput) Elem() MembershipIamMemberConditionOutput {
@@ -4857,12 +5490,6 @@ func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRoleOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRoleOutput)
 }
 
-func (i MembershipRbacRoleBindingRoleArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingRole] {
-	return pulumix.Output[MembershipRbacRoleBindingRole]{
-		OutputState: i.ToMembershipRbacRoleBindingRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput {
 	return i.ToMembershipRbacRoleBindingRolePtrOutputWithContext(context.Background())
 }
@@ -4904,12 +5531,6 @@ func (i *membershipRbacRoleBindingRolePtrType) ToMembershipRbacRoleBindingRolePt
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRolePtrOutput)
 }
 
-func (i *membershipRbacRoleBindingRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBindingRole] {
-	return pulumix.Output[*MembershipRbacRoleBindingRole]{
-		OutputState: i.ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipRbacRoleBindingRoleOutput struct{ *pulumi.OutputState }
 
 func (MembershipRbacRoleBindingRoleOutput) ElementType() reflect.Type {
@@ -4934,12 +5555,6 @@ func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRolePtrO
 	}).(MembershipRbacRoleBindingRolePtrOutput)
 }
 
-func (o MembershipRbacRoleBindingRoleOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingRole] {
-	return pulumix.Output[MembershipRbacRoleBindingRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
 //
@@ -4960,12 +5575,6 @@ func (o MembershipRbacRoleBindingRolePtrOutput) ToMembershipRbacRoleBindingRoleP
 
 func (o MembershipRbacRoleBindingRolePtrOutput) ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRolePtrOutput {
 	return o
-}
-
-func (o MembershipRbacRoleBindingRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBindingRole] {
-	return pulumix.Output[*MembershipRbacRoleBindingRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipRbacRoleBindingRolePtrOutput) Elem() MembershipRbacRoleBindingRoleOutput {
@@ -5026,12 +5635,6 @@ func (i MembershipRbacRoleBindingStateTypeArgs) ToMembershipRbacRoleBindingState
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingStateTypeOutput)
 }
 
-func (i MembershipRbacRoleBindingStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingStateType] {
-	return pulumix.Output[MembershipRbacRoleBindingStateType]{
-		OutputState: i.ToMembershipRbacRoleBindingStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipRbacRoleBindingStateTypeArrayInput is an input type that accepts MembershipRbacRoleBindingStateTypeArray and MembershipRbacRoleBindingStateTypeArrayOutput values.
 // You can construct a concrete instance of `MembershipRbacRoleBindingStateTypeArrayInput` via:
 //
@@ -5057,12 +5660,6 @@ func (i MembershipRbacRoleBindingStateTypeArray) ToMembershipRbacRoleBindingStat
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingStateTypeArrayOutput)
 }
 
-func (i MembershipRbacRoleBindingStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRbacRoleBindingStateType] {
-	return pulumix.Output[[]MembershipRbacRoleBindingStateType]{
-		OutputState: i.ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipRbacRoleBindingStateTypeOutput struct{ *pulumi.OutputState }
 
 func (MembershipRbacRoleBindingStateTypeOutput) ElementType() reflect.Type {
@@ -5075,12 +5672,6 @@ func (o MembershipRbacRoleBindingStateTypeOutput) ToMembershipRbacRoleBindingSta
 
 func (o MembershipRbacRoleBindingStateTypeOutput) ToMembershipRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeOutput {
 	return o
-}
-
-func (o MembershipRbacRoleBindingStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingStateType] {
-	return pulumix.Output[MembershipRbacRoleBindingStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -5101,12 +5692,6 @@ func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToMembershipRbacRoleBindi
 
 func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeArrayOutput {
 	return o
-}
-
-func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRbacRoleBindingStateType] {
-	return pulumix.Output[[]MembershipRbacRoleBindingStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipRbacRoleBindingStateTypeArrayOutput) Index(i pulumi.IntInput) MembershipRbacRoleBindingStateTypeOutput {
@@ -5150,12 +5735,6 @@ func (i NamespaceStateTypeArgs) ToNamespaceStateTypeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStateTypeOutput)
 }
 
-func (i NamespaceStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[NamespaceStateType] {
-	return pulumix.Output[NamespaceStateType]{
-		OutputState: i.ToNamespaceStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NamespaceStateTypeArrayInput is an input type that accepts NamespaceStateTypeArray and NamespaceStateTypeArrayOutput values.
 // You can construct a concrete instance of `NamespaceStateTypeArrayInput` via:
 //
@@ -5181,12 +5760,6 @@ func (i NamespaceStateTypeArray) ToNamespaceStateTypeArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStateTypeArrayOutput)
 }
 
-func (i NamespaceStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceStateType] {
-	return pulumix.Output[[]NamespaceStateType]{
-		OutputState: i.ToNamespaceStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NamespaceStateTypeOutput struct{ *pulumi.OutputState }
 
 func (NamespaceStateTypeOutput) ElementType() reflect.Type {
@@ -5199,12 +5772,6 @@ func (o NamespaceStateTypeOutput) ToNamespaceStateTypeOutput() NamespaceStateTyp
 
 func (o NamespaceStateTypeOutput) ToNamespaceStateTypeOutputWithContext(ctx context.Context) NamespaceStateTypeOutput {
 	return o
-}
-
-func (o NamespaceStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceStateType] {
-	return pulumix.Output[NamespaceStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -5225,12 +5792,6 @@ func (o NamespaceStateTypeArrayOutput) ToNamespaceStateTypeArrayOutput() Namespa
 
 func (o NamespaceStateTypeArrayOutput) ToNamespaceStateTypeArrayOutputWithContext(ctx context.Context) NamespaceStateTypeArrayOutput {
 	return o
-}
-
-func (o NamespaceStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceStateType] {
-	return pulumix.Output[[]NamespaceStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespaceStateTypeArrayOutput) Index(i pulumi.IntInput) NamespaceStateTypeOutput {
@@ -5274,12 +5835,6 @@ func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionOutput)
 }
 
-func (i ScopeIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeIamBindingCondition] {
-	return pulumix.Output[ScopeIamBindingCondition]{
-		OutputState: i.ToScopeIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput {
 	return i.ToScopeIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -5321,12 +5876,6 @@ func (i *scopeIamBindingConditionPtrType) ToScopeIamBindingConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionPtrOutput)
 }
 
-func (i *scopeIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamBindingCondition] {
-	return pulumix.Output[*ScopeIamBindingCondition]{
-		OutputState: i.ToScopeIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ScopeIamBindingConditionOutput) ElementType() reflect.Type {
@@ -5349,12 +5898,6 @@ func (o ScopeIamBindingConditionOutput) ToScopeIamBindingConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeIamBindingCondition) *ScopeIamBindingCondition {
 		return &v
 	}).(ScopeIamBindingConditionPtrOutput)
-}
-
-func (o ScopeIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeIamBindingCondition] {
-	return pulumix.Output[ScopeIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -5381,12 +5924,6 @@ func (o ScopeIamBindingConditionPtrOutput) ToScopeIamBindingConditionPtrOutput()
 
 func (o ScopeIamBindingConditionPtrOutput) ToScopeIamBindingConditionPtrOutputWithContext(ctx context.Context) ScopeIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o ScopeIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamBindingCondition] {
-	return pulumix.Output[*ScopeIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeIamBindingConditionPtrOutput) Elem() ScopeIamBindingConditionOutput {
@@ -5461,12 +5998,6 @@ func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionOutput)
 }
 
-func (i ScopeIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeIamMemberCondition] {
-	return pulumix.Output[ScopeIamMemberCondition]{
-		OutputState: i.ToScopeIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput {
 	return i.ToScopeIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -5508,12 +6039,6 @@ func (i *scopeIamMemberConditionPtrType) ToScopeIamMemberConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionPtrOutput)
 }
 
-func (i *scopeIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamMemberCondition] {
-	return pulumix.Output[*ScopeIamMemberCondition]{
-		OutputState: i.ToScopeIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ScopeIamMemberConditionOutput) ElementType() reflect.Type {
@@ -5536,12 +6061,6 @@ func (o ScopeIamMemberConditionOutput) ToScopeIamMemberConditionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeIamMemberCondition) *ScopeIamMemberCondition {
 		return &v
 	}).(ScopeIamMemberConditionPtrOutput)
-}
-
-func (o ScopeIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeIamMemberCondition] {
-	return pulumix.Output[ScopeIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -5568,12 +6087,6 @@ func (o ScopeIamMemberConditionPtrOutput) ToScopeIamMemberConditionPtrOutput() S
 
 func (o ScopeIamMemberConditionPtrOutput) ToScopeIamMemberConditionPtrOutputWithContext(ctx context.Context) ScopeIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o ScopeIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamMemberCondition] {
-	return pulumix.Output[*ScopeIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeIamMemberConditionPtrOutput) Elem() ScopeIamMemberConditionOutput {
@@ -5652,12 +6165,6 @@ func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRoleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRoleOutput)
 }
 
-func (i ScopeRbacRoleBindingRoleArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingRole] {
-	return pulumix.Output[ScopeRbacRoleBindingRole]{
-		OutputState: i.ToScopeRbacRoleBindingRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput {
 	return i.ToScopeRbacRoleBindingRolePtrOutputWithContext(context.Background())
 }
@@ -5699,12 +6206,6 @@ func (i *scopeRbacRoleBindingRolePtrType) ToScopeRbacRoleBindingRolePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRolePtrOutput)
 }
 
-func (i *scopeRbacRoleBindingRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBindingRole] {
-	return pulumix.Output[*ScopeRbacRoleBindingRole]{
-		OutputState: i.ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeRbacRoleBindingRoleOutput struct{ *pulumi.OutputState }
 
 func (ScopeRbacRoleBindingRoleOutput) ElementType() reflect.Type {
@@ -5729,12 +6230,6 @@ func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutputWithC
 	}).(ScopeRbacRoleBindingRolePtrOutput)
 }
 
-func (o ScopeRbacRoleBindingRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingRole] {
-	return pulumix.Output[ScopeRbacRoleBindingRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
 //
@@ -5755,12 +6250,6 @@ func (o ScopeRbacRoleBindingRolePtrOutput) ToScopeRbacRoleBindingRolePtrOutput()
 
 func (o ScopeRbacRoleBindingRolePtrOutput) ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRolePtrOutput {
 	return o
-}
-
-func (o ScopeRbacRoleBindingRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBindingRole] {
-	return pulumix.Output[*ScopeRbacRoleBindingRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeRbacRoleBindingRolePtrOutput) Elem() ScopeRbacRoleBindingRoleOutput {
@@ -5821,12 +6310,6 @@ func (i ScopeRbacRoleBindingStateTypeArgs) ToScopeRbacRoleBindingStateTypeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingStateTypeOutput)
 }
 
-func (i ScopeRbacRoleBindingStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingStateType] {
-	return pulumix.Output[ScopeRbacRoleBindingStateType]{
-		OutputState: i.ToScopeRbacRoleBindingStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScopeRbacRoleBindingStateTypeArrayInput is an input type that accepts ScopeRbacRoleBindingStateTypeArray and ScopeRbacRoleBindingStateTypeArrayOutput values.
 // You can construct a concrete instance of `ScopeRbacRoleBindingStateTypeArrayInput` via:
 //
@@ -5852,12 +6335,6 @@ func (i ScopeRbacRoleBindingStateTypeArray) ToScopeRbacRoleBindingStateTypeArray
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingStateTypeArrayOutput)
 }
 
-func (i ScopeRbacRoleBindingStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]ScopeRbacRoleBindingStateType] {
-	return pulumix.Output[[]ScopeRbacRoleBindingStateType]{
-		OutputState: i.ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeRbacRoleBindingStateTypeOutput struct{ *pulumi.OutputState }
 
 func (ScopeRbacRoleBindingStateTypeOutput) ElementType() reflect.Type {
@@ -5870,12 +6347,6 @@ func (o ScopeRbacRoleBindingStateTypeOutput) ToScopeRbacRoleBindingStateTypeOutp
 
 func (o ScopeRbacRoleBindingStateTypeOutput) ToScopeRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeOutput {
 	return o
-}
-
-func (o ScopeRbacRoleBindingStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingStateType] {
-	return pulumix.Output[ScopeRbacRoleBindingStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -5896,12 +6367,6 @@ func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToScopeRbacRoleBindingStateTyp
 
 func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeArrayOutput {
 	return o
-}
-
-func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScopeRbacRoleBindingStateType] {
-	return pulumix.Output[[]ScopeRbacRoleBindingStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeRbacRoleBindingStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeRbacRoleBindingStateTypeOutput {
@@ -5945,12 +6410,6 @@ func (i ScopeStateTypeArgs) ToScopeStateTypeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeStateTypeOutput)
 }
 
-func (i ScopeStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeStateType] {
-	return pulumix.Output[ScopeStateType]{
-		OutputState: i.ToScopeStateTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScopeStateTypeArrayInput is an input type that accepts ScopeStateTypeArray and ScopeStateTypeArrayOutput values.
 // You can construct a concrete instance of `ScopeStateTypeArrayInput` via:
 //
@@ -5976,12 +6435,6 @@ func (i ScopeStateTypeArray) ToScopeStateTypeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeStateTypeArrayOutput)
 }
 
-func (i ScopeStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]ScopeStateType] {
-	return pulumix.Output[[]ScopeStateType]{
-		OutputState: i.ToScopeStateTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeStateTypeOutput struct{ *pulumi.OutputState }
 
 func (ScopeStateTypeOutput) ElementType() reflect.Type {
@@ -5994,12 +6447,6 @@ func (o ScopeStateTypeOutput) ToScopeStateTypeOutput() ScopeStateTypeOutput {
 
 func (o ScopeStateTypeOutput) ToScopeStateTypeOutputWithContext(ctx context.Context) ScopeStateTypeOutput {
 	return o
-}
-
-func (o ScopeStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeStateType] {
-	return pulumix.Output[ScopeStateType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -6022,12 +6469,6 @@ func (o ScopeStateTypeArrayOutput) ToScopeStateTypeArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ScopeStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScopeStateType] {
-	return pulumix.Output[[]ScopeStateType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScopeStateType {
 		return vs[0].([]ScopeStateType)[vs[1].(int)]
@@ -6035,6 +6476,18 @@ func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigMeshInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigMeshPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionPtrInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamMemberConditionInput)(nil)).Elem(), FeatureIamMemberConditionArgs{})
@@ -6075,6 +6528,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeArrayInput)(nil)).Elem(), FeatureStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateInput)(nil)).Elem(), FeatureStateStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateArrayInput)(nil)).Elem(), FeatureStateStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetStateTypeInput)(nil)).Elem(), FleetStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetStateTypeArrayInput)(nil)).Elem(), FleetStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityInput)(nil)).Elem(), MembershipAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityPtrInput)(nil)).Elem(), MembershipAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipBindingStateTypeInput)(nil)).Elem(), MembershipBindingStateTypeArgs{})
@@ -6103,6 +6558,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), ScopeRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeInput)(nil)).Elem(), ScopeStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeArrayInput)(nil)).Elem(), ScopeStateTypeArray{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigMeshOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigMeshPtrOutput{})
 	pulumi.RegisterOutputType(FeatureIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(FeatureIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FeatureIamMemberConditionOutput{})
@@ -6143,6 +6610,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(FeatureStateStateOutput{})
 	pulumi.RegisterOutputType(FeatureStateStateArrayOutput{})
+	pulumi.RegisterOutputType(FleetStateTypeOutput{})
+	pulumi.RegisterOutputType(FleetStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(MembershipBindingStateTypeOutput{})

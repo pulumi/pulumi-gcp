@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -134,10 +133,97 @@ import (
 //	}
 //
 // ```
+// ### Network Security Server Tls Policy Mtls
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTrustConfig, err := certificatemanager.NewTrustConfig(ctx, "defaultTrustConfig", &certificatemanager.TrustConfigArgs{
+//				Description: pulumi.String("sample trust config description"),
+//				Location:    pulumi.String("global"),
+//				TrustStores: certificatemanager.TrustConfigTrustStoreArray{
+//					&certificatemanager.TrustConfigTrustStoreArgs{
+//						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
+//							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
+//								PemCertificate: readFileOrPanic("test-fixtures/ca_cert.pem"),
+//							},
+//						},
+//						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
+//							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
+//								PemCertificate: readFileOrPanic("test-fixtures/ca_cert.pem"),
+//							},
+//						},
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewServerTlsPolicy(ctx, "defaultServerTlsPolicy", &networksecurity.ServerTlsPolicyArgs{
+//				Description: pulumi.String("my description"),
+//				Location:    pulumi.String("global"),
+//				AllowOpen:   pulumi.Bool(false),
+//				MtlsPolicy: &networksecurity.ServerTlsPolicyMtlsPolicyArgs{
+//					ClientValidationMode: pulumi.String("REJECT_INVALID"),
+//					ClientValidationTrustConfig: defaultTrustConfig.Name.ApplyT(func(name string) (string, error) {
+//						return fmt.Sprintf("projects/%v/locations/global/trustConfigs/%v", project.Number, name), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # ServerTlsPolicy can be imported using any of these accepted formats
+// ServerTlsPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServerTlsPolicy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}"
+//
+//	to = google_network_security_server_tls_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServerTlsPolicy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -397,12 +483,6 @@ func (i *ServerTlsPolicy) ToServerTlsPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyOutput)
 }
 
-func (i *ServerTlsPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicy] {
-	return pulumix.Output[*ServerTlsPolicy]{
-		OutputState: i.ToServerTlsPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerTlsPolicyArrayInput is an input type that accepts ServerTlsPolicyArray and ServerTlsPolicyArrayOutput values.
 // You can construct a concrete instance of `ServerTlsPolicyArrayInput` via:
 //
@@ -426,12 +506,6 @@ func (i ServerTlsPolicyArray) ToServerTlsPolicyArrayOutput() ServerTlsPolicyArra
 
 func (i ServerTlsPolicyArray) ToServerTlsPolicyArrayOutputWithContext(ctx context.Context) ServerTlsPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyArrayOutput)
-}
-
-func (i ServerTlsPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerTlsPolicy] {
-	return pulumix.Output[[]*ServerTlsPolicy]{
-		OutputState: i.ToServerTlsPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServerTlsPolicyMapInput is an input type that accepts ServerTlsPolicyMap and ServerTlsPolicyMapOutput values.
@@ -459,12 +533,6 @@ func (i ServerTlsPolicyMap) ToServerTlsPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMapOutput)
 }
 
-func (i ServerTlsPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerTlsPolicy] {
-	return pulumix.Output[map[string]*ServerTlsPolicy]{
-		OutputState: i.ToServerTlsPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerTlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyOutput) ElementType() reflect.Type {
@@ -477,12 +545,6 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutput() ServerTlsPolicyOutput {
 
 func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Context) ServerTlsPolicyOutput {
 	return o
-}
-
-func (o ServerTlsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicy] {
-	return pulumix.Output[*ServerTlsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies.
@@ -571,12 +633,6 @@ func (o ServerTlsPolicyArrayOutput) ToServerTlsPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ServerTlsPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerTlsPolicy] {
-	return pulumix.Output[[]*ServerTlsPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerTlsPolicyArrayOutput) Index(i pulumi.IntInput) ServerTlsPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerTlsPolicy {
 		return vs[0].([]*ServerTlsPolicy)[vs[1].(int)]
@@ -595,12 +651,6 @@ func (o ServerTlsPolicyMapOutput) ToServerTlsPolicyMapOutput() ServerTlsPolicyMa
 
 func (o ServerTlsPolicyMapOutput) ToServerTlsPolicyMapOutputWithContext(ctx context.Context) ServerTlsPolicyMapOutput {
 	return o
-}
-
-func (o ServerTlsPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerTlsPolicy] {
-	return pulumix.Output[map[string]*ServerTlsPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerTlsPolicyMapOutput) MapIndex(k pulumi.StringInput) ServerTlsPolicyOutput {

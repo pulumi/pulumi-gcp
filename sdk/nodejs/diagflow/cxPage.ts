@@ -467,6 +467,13 @@ import * as utilities from "../utilities";
  *             },
  *             required: true,
  *             redact: true,
+ *             advancedSettings: {
+ *                 dtmfSettings: {
+ *                     enabled: true,
+ *                     maxDigits: 1,
+ *                     finishDigit: "#",
+ *                 },
+ *             },
  *         }],
  *     },
  *     transitionRoutes: [{
@@ -569,12 +576,27 @@ import * as utilities from "../utilities";
  *         },
  *         targetPage: myPage2.id,
  *     }],
+ *     advancedSettings: {
+ *         dtmfSettings: {
+ *             enabled: true,
+ *             maxDigits: 1,
+ *             finishDigit: "#",
+ *         },
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * Page can be imported using any of these accepted formats
+ * Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
+ *
+ *  id = "{{parent}}/pages/{{name}}"
+ *
+ *  to = google_dialogflow_cx_page.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
@@ -612,6 +634,12 @@ export class CxPage extends pulumi.CustomResource {
         return obj['__pulumiType'] === CxPage.__pulumiType;
     }
 
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
      *
@@ -692,6 +720,7 @@ export class CxPage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxPageState | undefined;
+            resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["entryFulfillment"] = state ? state.entryFulfillment : undefined;
             resourceInputs["eventHandlers"] = state ? state.eventHandlers : undefined;
@@ -706,6 +735,7 @@ export class CxPage extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["entryFulfillment"] = args ? args.entryFulfillment : undefined;
             resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
@@ -725,6 +755,12 @@ export class CxPage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CxPage resources.
  */
 export interface CxPageState {
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
     /**
      * The human-readable name of the page, unique within the agent.
      *
@@ -797,6 +833,12 @@ export interface CxPageState {
  * The set of arguments for constructing a CxPage resource.
  */
 export interface CxPageArgs {
+    /**
+     * Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
     /**
      * The human-readable name of the page, unique within the agent.
      *

@@ -197,7 +197,15 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ## Import
     /// 
-    /// Feature can be imported using any of these accepted formats
+    /// Feature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Feature using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/features/{{name}}"
+    /// 
+    ///  to = google_gke_hub_feature.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkehub/feature:Feature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Feature can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
@@ -231,6 +239,13 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Fleet Default Membership Configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("fleetDefaultMemberConfig")]
+        public Output<Outputs.FeatureFleetDefaultMemberConfig?> FleetDefaultMemberConfig { get; private set; } = null!;
 
         /// <summary>
         /// GCP labels for this Feature.
@@ -349,6 +364,13 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class FeatureArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Fleet Default Membership Configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("fleetDefaultMemberConfig")]
+        public Input<Inputs.FeatureFleetDefaultMemberConfigArgs>? FleetDefaultMemberConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -427,6 +449,13 @@ namespace Pulumi.Gcp.GkeHub
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Optional. Fleet Default Membership Configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("fleetDefaultMemberConfig")]
+        public Input<Inputs.FeatureFleetDefaultMemberConfigGetArgs>? FleetDefaultMemberConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

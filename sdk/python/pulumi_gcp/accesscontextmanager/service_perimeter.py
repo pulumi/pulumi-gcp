@@ -664,7 +664,15 @@ class ServicePerimeter(pulumi.CustomResource):
 
         ## Import
 
-        ServicePerimeter can be imported using any of these accepted formats:
+        ServicePerimeter can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeter using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_access_context_manager_service_perimeter.default }
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeter can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}
@@ -911,7 +919,15 @@ class ServicePerimeter(pulumi.CustomResource):
 
         ## Import
 
-        ServicePerimeter can be imported using any of these accepted formats:
+        ServicePerimeter can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeter using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_access_context_manager_service_perimeter.default }
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeter can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}

@@ -18,6 +18,25 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     public static final IndexState Empty = new IndexState();
 
     /**
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * 
+     */
+    @Import(name="apiScope")
+    private @Nullable Output<String> apiScope;
+
+    /**
+     * @return The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     * 
+     */
+    public Optional<Output<String>> apiScope() {
+        return Optional.ofNullable(this.apiScope);
+    }
+
+    /**
      * The collection being indexed.
      * 
      */
@@ -111,7 +130,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     @Import(name="queryScope")
@@ -120,7 +139,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     public Optional<Output<String>> queryScope() {
@@ -130,6 +149,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     private IndexState() {}
 
     private IndexState(IndexState $) {
+        this.apiScope = $.apiScope;
         this.collection = $.collection;
         this.database = $.database;
         this.fields = $.fields;
@@ -154,6 +174,31 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(IndexState defaults) {
             $ = new IndexState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiScope The API scope at which a query is run.
+         * Default value is `ANY_API`.
+         * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiScope(@Nullable Output<String> apiScope) {
+            $.apiScope = apiScope;
+            return this;
+        }
+
+        /**
+         * @param apiScope The API scope at which a query is run.
+         * Default value is `ANY_API`.
+         * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiScope(String apiScope) {
+            return apiScope(Output.of(apiScope));
         }
 
         /**
@@ -296,7 +341,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param queryScope The scope at which a query is run.
          * Default value is `COLLECTION`.
-         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
          * 
          * @return builder
          * 
@@ -309,7 +354,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param queryScope The scope at which a query is run.
          * Default value is `COLLECTION`.
-         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
          * 
          * @return builder
          * 

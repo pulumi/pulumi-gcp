@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
@@ -250,33 +249,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `key_ring_id`, role, and account e.g.
+//	id = "{{project_id}}/{{location}}/{{key_ring_name}}"
+//
+//	to = google_kms_key_ring_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `key_ring_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `key_ring_id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam your-project-id/location-name/key-ring-name
+//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy default {{project_id}}/{{location}}/{{key_ring_name}}
 //
 // ```
 type KeyRingIAMPolicy struct {
@@ -450,12 +437,6 @@ func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyOutput)
 }
 
-func (i *KeyRingIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMPolicy] {
-	return pulumix.Output[*KeyRingIAMPolicy]{
-		OutputState: i.ToKeyRingIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyRingIAMPolicyArrayInput is an input type that accepts KeyRingIAMPolicyArray and KeyRingIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `KeyRingIAMPolicyArrayInput` via:
 //
@@ -479,12 +460,6 @@ func (i KeyRingIAMPolicyArray) ToKeyRingIAMPolicyArrayOutput() KeyRingIAMPolicyA
 
 func (i KeyRingIAMPolicyArray) ToKeyRingIAMPolicyArrayOutputWithContext(ctx context.Context) KeyRingIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyArrayOutput)
-}
-
-func (i KeyRingIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRingIAMPolicy] {
-	return pulumix.Output[[]*KeyRingIAMPolicy]{
-		OutputState: i.ToKeyRingIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeyRingIAMPolicyMapInput is an input type that accepts KeyRingIAMPolicyMap and KeyRingIAMPolicyMapOutput values.
@@ -512,12 +487,6 @@ func (i KeyRingIAMPolicyMap) ToKeyRingIAMPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyMapOutput)
 }
 
-func (i KeyRingIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRingIAMPolicy] {
-	return pulumix.Output[map[string]*KeyRingIAMPolicy]{
-		OutputState: i.ToKeyRingIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyRingIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMPolicyOutput) ElementType() reflect.Type {
@@ -530,12 +499,6 @@ func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutpu
 
 func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyOutputWithContext(ctx context.Context) KeyRingIAMPolicyOutput {
 	return o
-}
-
-func (o KeyRingIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMPolicy] {
-	return pulumix.Output[*KeyRingIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the key ring's IAM policy.
@@ -580,12 +543,6 @@ func (o KeyRingIAMPolicyArrayOutput) ToKeyRingIAMPolicyArrayOutputWithContext(ct
 	return o
 }
 
-func (o KeyRingIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRingIAMPolicy] {
-	return pulumix.Output[[]*KeyRingIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyRingIAMPolicyArrayOutput) Index(i pulumi.IntInput) KeyRingIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIAMPolicy {
 		return vs[0].([]*KeyRingIAMPolicy)[vs[1].(int)]
@@ -604,12 +561,6 @@ func (o KeyRingIAMPolicyMapOutput) ToKeyRingIAMPolicyMapOutput() KeyRingIAMPolic
 
 func (o KeyRingIAMPolicyMapOutput) ToKeyRingIAMPolicyMapOutputWithContext(ctx context.Context) KeyRingIAMPolicyMapOutput {
 	return o
-}
-
-func (o KeyRingIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRingIAMPolicy] {
-	return pulumix.Output[map[string]*KeyRingIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyRingIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMPolicyOutput {

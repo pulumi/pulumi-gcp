@@ -457,8 +457,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the load_balancing_scheme is set
-     * to INTERNAL_SELF_MANAGED.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
      * Structure is documented below.
      * 
      */
@@ -467,8 +467,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the load_balancing_scheme is set
-     * to INTERNAL_SELF_MANAGED.
+     * Applicable backend service types can be a global backend service with the
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
      * Structure is documented below.
      * 
      */
@@ -1291,8 +1291,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
-         * This field is applicable only when the load_balancing_scheme is set
-         * to INTERNAL_SELF_MANAGED.
+         * Applicable backend service types can be a global backend service with the
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
          * Structure is documented below.
          * 
          * @return builder
@@ -1305,8 +1305,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
-         * This field is applicable only when the load_balancing_scheme is set
-         * to INTERNAL_SELF_MANAGED.
+         * Applicable backend service types can be a global backend service with the
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
          * Structure is documented below.
          * 
          * @return builder

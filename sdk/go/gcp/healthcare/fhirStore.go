@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
@@ -251,7 +250,17 @@ import (
 //
 // ## Import
 //
-// # FhirStore can be imported using any of these accepted formats
+// FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FhirStore using one of the formats above. For exampletf import {
+//
+//	id = "{{dataset}}/fhirStores/{{name}}"
+//
+//	to = google_healthcare_fhir_store.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:healthcare/fhirStore:FhirStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FhirStore can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -727,12 +736,6 @@ func (i *FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreOutput)
 }
 
-func (i *FhirStore) ToOutput(ctx context.Context) pulumix.Output[*FhirStore] {
-	return pulumix.Output[*FhirStore]{
-		OutputState: i.ToFhirStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FhirStoreArrayInput is an input type that accepts FhirStoreArray and FhirStoreArrayOutput values.
 // You can construct a concrete instance of `FhirStoreArrayInput` via:
 //
@@ -756,12 +759,6 @@ func (i FhirStoreArray) ToFhirStoreArrayOutput() FhirStoreArrayOutput {
 
 func (i FhirStoreArray) ToFhirStoreArrayOutputWithContext(ctx context.Context) FhirStoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreArrayOutput)
-}
-
-func (i FhirStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStore] {
-	return pulumix.Output[[]*FhirStore]{
-		OutputState: i.ToFhirStoreArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FhirStoreMapInput is an input type that accepts FhirStoreMap and FhirStoreMapOutput values.
@@ -789,12 +786,6 @@ func (i FhirStoreMap) ToFhirStoreMapOutputWithContext(ctx context.Context) FhirS
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreMapOutput)
 }
 
-func (i FhirStoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStore] {
-	return pulumix.Output[map[string]*FhirStore]{
-		OutputState: i.ToFhirStoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirStoreOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreOutput) ElementType() reflect.Type {
@@ -807,12 +798,6 @@ func (o FhirStoreOutput) ToFhirStoreOutput() FhirStoreOutput {
 
 func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput {
 	return o
-}
-
-func (o FhirStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStore] {
-	return pulumix.Output[*FhirStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
@@ -956,12 +941,6 @@ func (o FhirStoreArrayOutput) ToFhirStoreArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o FhirStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStore] {
-	return pulumix.Output[[]*FhirStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FhirStoreArrayOutput) Index(i pulumi.IntInput) FhirStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStore {
 		return vs[0].([]*FhirStore)[vs[1].(int)]
@@ -980,12 +959,6 @@ func (o FhirStoreMapOutput) ToFhirStoreMapOutput() FhirStoreMapOutput {
 
 func (o FhirStoreMapOutput) ToFhirStoreMapOutputWithContext(ctx context.Context) FhirStoreMapOutput {
 	return o
-}
-
-func (o FhirStoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStore] {
-	return pulumix.Output[map[string]*FhirStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirStoreMapOutput) MapIndex(k pulumi.StringInput) FhirStoreOutput {

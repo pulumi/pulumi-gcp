@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This message configures which resources and services to monitor for availability.
@@ -53,9 +52,13 @@ import (
 //				},
 //				DisplayName: pulumi.String("http-uptime-check"),
 //				HttpCheck: &monitoring.UptimeCheckConfigHttpCheckArgs{
-//					Body:          pulumi.String("Zm9vJTI1M0RiYXI="),
-//					ContentType:   pulumi.String("URL_ENCODED"),
-//					Path:          pulumi.String("some-path"),
+//					Body:              pulumi.String("Zm9vJTI1M0RiYXI="),
+//					ContentType:       pulumi.String("USER_PROVIDED"),
+//					CustomContentType: pulumi.String("application/json"),
+//					Path:              pulumi.String("some-path"),
+//					PingConfig: &monitoring.UptimeCheckConfigHttpCheckPingConfigArgs{
+//						PingsCount: pulumi.Int(1),
+//					},
 //					Port:          pulumi.Int(8010),
 //					RequestMethod: pulumi.String("POST"),
 //				},
@@ -67,6 +70,9 @@ import (
 //					Type: pulumi.String("uptime_url"),
 //				},
 //				Timeout: pulumi.String("60s"),
+//				UserLabels: pulumi.StringMap{
+//					"example-key": pulumi.String("example-value"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -213,6 +219,9 @@ import (
 //				Timeout:     pulumi.String("60s"),
 //				TcpCheck: &monitoring.UptimeCheckConfigTcpCheckArgs{
 //					Port: pulumi.Int(888),
+//					PingConfig: &monitoring.UptimeCheckConfigTcpCheckPingConfigArgs{
+//						PingsCount: pulumi.Int(2),
+//					},
 //				},
 //				ResourceGroup: &monitoring.UptimeCheckConfigResourceGroupArgs{
 //					ResourceType: pulumi.String("INSTANCE"),
@@ -298,7 +307,17 @@ import (
 //
 // ## Import
 //
-// UptimeCheckConfig can be imported using any of these accepted formats:
+// UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_monitoring_uptime_check_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -346,6 +365,8 @@ type UptimeCheckConfig struct {
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringOutput `pulumi:"uptimeCheckId"`
+	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 }
 
 // NewUptimeCheckConfig registers a new resource with the given unique name, arguments, and options.
@@ -422,6 +443,8 @@ type uptimeCheckConfigState struct {
 	Timeout *string `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId *string `pulumi:"uptimeCheckId"`
+	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 type UptimeCheckConfigState struct {
@@ -463,6 +486,8 @@ type UptimeCheckConfigState struct {
 	Timeout pulumi.StringPtrInput
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringPtrInput
+	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	UserLabels pulumi.StringMapInput
 }
 
 func (UptimeCheckConfigState) ElementType() reflect.Type {
@@ -504,6 +529,8 @@ type uptimeCheckConfigArgs struct {
 	//
 	// ***
 	Timeout string `pulumi:"timeout"`
+	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
@@ -542,6 +569,8 @@ type UptimeCheckConfigArgs struct {
 	//
 	// ***
 	Timeout pulumi.StringInput
+	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	UserLabels pulumi.StringMapInput
 }
 
 func (UptimeCheckConfigArgs) ElementType() reflect.Type {
@@ -565,12 +594,6 @@ func (i *UptimeCheckConfig) ToUptimeCheckConfigOutput() UptimeCheckConfigOutput 
 
 func (i *UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigOutput)
-}
-
-func (i *UptimeCheckConfig) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfig] {
-	return pulumix.Output[*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UptimeCheckConfigArrayInput is an input type that accepts UptimeCheckConfigArray and UptimeCheckConfigArrayOutput values.
@@ -598,12 +621,6 @@ func (i UptimeCheckConfigArray) ToUptimeCheckConfigArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigArrayOutput)
 }
 
-func (i UptimeCheckConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeCheckConfig] {
-	return pulumix.Output[[]*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UptimeCheckConfigMapInput is an input type that accepts UptimeCheckConfigMap and UptimeCheckConfigMapOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigMapInput` via:
 //
@@ -629,12 +646,6 @@ func (i UptimeCheckConfigMap) ToUptimeCheckConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigMapOutput)
 }
 
-func (i UptimeCheckConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeCheckConfig] {
-	return pulumix.Output[map[string]*UptimeCheckConfig]{
-		OutputState: i.ToUptimeCheckConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UptimeCheckConfigOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigOutput) ElementType() reflect.Type {
@@ -647,12 +658,6 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutput() UptimeCheckConfigOu
 
 func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
 	return o
-}
-
-func (o UptimeCheckConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfig] {
-	return pulumix.Output[*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
@@ -735,6 +740,11 @@ func (o UptimeCheckConfigOutput) UptimeCheckId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.UptimeCheckId }).(pulumi.StringOutput)
 }
 
+// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+func (o UptimeCheckConfigOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
 type UptimeCheckConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigArrayOutput) ElementType() reflect.Type {
@@ -747,12 +757,6 @@ func (o UptimeCheckConfigArrayOutput) ToUptimeCheckConfigArrayOutput() UptimeChe
 
 func (o UptimeCheckConfigArrayOutput) ToUptimeCheckConfigArrayOutputWithContext(ctx context.Context) UptimeCheckConfigArrayOutput {
 	return o
-}
-
-func (o UptimeCheckConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UptimeCheckConfig] {
-	return pulumix.Output[[]*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UptimeCheckConfigArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigOutput {
@@ -773,12 +777,6 @@ func (o UptimeCheckConfigMapOutput) ToUptimeCheckConfigMapOutput() UptimeCheckCo
 
 func (o UptimeCheckConfigMapOutput) ToUptimeCheckConfigMapOutputWithContext(ctx context.Context) UptimeCheckConfigMapOutput {
 	return o
-}
-
-func (o UptimeCheckConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UptimeCheckConfig] {
-	return pulumix.Output[map[string]*UptimeCheckConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UptimeCheckConfigMapOutput) MapIndex(k pulumi.StringInput) UptimeCheckConfigOutput {

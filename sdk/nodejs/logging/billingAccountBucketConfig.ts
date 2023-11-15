@@ -13,26 +13,17 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.organizations.getBillingAccount({
- *     billingAccount: "00AA00-000AAA-00AA0A",
- * });
- * const basic = new gcp.logging.BillingAccountBucketConfig("basic", {
- *     billingAccount: _default.then(_default => _default.billingAccount),
- *     location: "global",
- *     retentionDays: 30,
- *     bucketId: "_Default",
- * });
- * ```
- *
  * ## Import
  *
- * This resource can be imported using the following format:
+ * This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+ *
+ *  id = "billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}"
+ *
+ *  to = google_logging_billing_account_bucket_config.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -85,6 +76,10 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    public readonly indexConfigs!: pulumi.Output<outputs.logging.BillingAccountBucketConfigIndexConfig[] | undefined>;
+    /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
@@ -118,6 +113,7 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             resourceInputs["bucketId"] = state ? state.bucketId : undefined;
             resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["indexConfigs"] = state ? state.indexConfigs : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -137,6 +133,7 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
             resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["indexConfigs"] = args ? args.indexConfigs : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["lifecycleState"] = undefined /*out*/;
@@ -169,6 +166,10 @@ export interface BillingAccountBucketConfigState {
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountBucketConfigIndexConfig>[]>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
@@ -209,6 +210,10 @@ export interface BillingAccountBucketConfigArgs {
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountBucketConfigIndexConfig>[]>;
     /**
      * The location of the bucket.
      */

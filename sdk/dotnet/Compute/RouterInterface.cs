@@ -38,14 +38,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.
+    /// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g. * `{{project_id}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import router interfaces using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{project_id}}/{{region}}/{{router}}/{{name}}"
+    /// 
+    ///  to = google_compute_router_interface.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/routerInterface:RouterInterface foobar my-project/us-central1/router-1/interface-1
+    ///  $ pulumi import gcp:compute/routerInterface:RouterInterface When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), router interfaces can be imported using one of the formats above. For example
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/routerInterface:RouterInterface foobar us-central1/router-1/interface-1
+    ///  $ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/routerInterface:RouterInterface")]

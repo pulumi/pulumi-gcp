@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -43,6 +45,26 @@ import * as utilities from "../utilities";
  *     dependsOn: [vertexVpcConnection],
  * });
  * ```
+ * ### Vertex Ai Index Endpoint With Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const indexEndpoint = new gcp.vertex.AiIndexEndpoint("indexEndpoint", {
+ *     displayName: "sample-endpoint",
+ *     description: "A sample vertex endpoint",
+ *     region: "us-central1",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     privateServiceConnectConfig: {
+ *         enablePrivateServiceConnect: true,
+ *         projectAllowlists: [project.then(project => project.number)],
+ *     },
+ * });
+ * ```
  * ### Vertex Ai Index Endpoint With Public Endpoint
  *
  * ```typescript
@@ -62,7 +84,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * IndexEndpoint can be imported using any of these accepted formats
+ * IndexEndpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import IndexEndpoint using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}"
+ *
+ *  to = google_vertex_ai_index_endpoint.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), IndexEndpoint can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
@@ -149,6 +179,11 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
+     * Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     */
+    public readonly privateServiceConnectConfig!: pulumi.Output<outputs.vertex.AiIndexEndpointPrivateServiceConnectConfig>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -196,6 +231,7 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["privateServiceConnectConfig"] = state ? state.privateServiceConnectConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publicEndpointDomainName"] = state ? state.publicEndpointDomainName : undefined;
             resourceInputs["publicEndpointEnabled"] = state ? state.publicEndpointEnabled : undefined;
@@ -211,6 +247,7 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["privateServiceConnectConfig"] = args ? args.privateServiceConnectConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publicEndpointEnabled"] = args ? args.publicEndpointEnabled : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -274,6 +311,11 @@ export interface AiIndexEndpointState {
      */
     network?: pulumi.Input<string>;
     /**
+     * Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     */
+    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiIndexEndpointPrivateServiceConnectConfig>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -329,6 +371,11 @@ export interface AiIndexEndpointArgs {
      * Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     */
+    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiIndexEndpointPrivateServiceConnectConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

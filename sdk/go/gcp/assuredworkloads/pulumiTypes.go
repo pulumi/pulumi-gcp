@@ -9,10 +9,215 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type WorkloadComplianceStatus struct {
+	AcknowledgedViolationCounts []int `pulumi:"acknowledgedViolationCounts"`
+	ActiveViolationCounts       []int `pulumi:"activeViolationCounts"`
+}
+
+// WorkloadComplianceStatusInput is an input type that accepts WorkloadComplianceStatusArgs and WorkloadComplianceStatusOutput values.
+// You can construct a concrete instance of `WorkloadComplianceStatusInput` via:
+//
+//	WorkloadComplianceStatusArgs{...}
+type WorkloadComplianceStatusInput interface {
+	pulumi.Input
+
+	ToWorkloadComplianceStatusOutput() WorkloadComplianceStatusOutput
+	ToWorkloadComplianceStatusOutputWithContext(context.Context) WorkloadComplianceStatusOutput
+}
+
+type WorkloadComplianceStatusArgs struct {
+	AcknowledgedViolationCounts pulumi.IntArrayInput `pulumi:"acknowledgedViolationCounts"`
+	ActiveViolationCounts       pulumi.IntArrayInput `pulumi:"activeViolationCounts"`
+}
+
+func (WorkloadComplianceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadComplianceStatus)(nil)).Elem()
+}
+
+func (i WorkloadComplianceStatusArgs) ToWorkloadComplianceStatusOutput() WorkloadComplianceStatusOutput {
+	return i.ToWorkloadComplianceStatusOutputWithContext(context.Background())
+}
+
+func (i WorkloadComplianceStatusArgs) ToWorkloadComplianceStatusOutputWithContext(ctx context.Context) WorkloadComplianceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadComplianceStatusOutput)
+}
+
+// WorkloadComplianceStatusArrayInput is an input type that accepts WorkloadComplianceStatusArray and WorkloadComplianceStatusArrayOutput values.
+// You can construct a concrete instance of `WorkloadComplianceStatusArrayInput` via:
+//
+//	WorkloadComplianceStatusArray{ WorkloadComplianceStatusArgs{...} }
+type WorkloadComplianceStatusArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadComplianceStatusArrayOutput() WorkloadComplianceStatusArrayOutput
+	ToWorkloadComplianceStatusArrayOutputWithContext(context.Context) WorkloadComplianceStatusArrayOutput
+}
+
+type WorkloadComplianceStatusArray []WorkloadComplianceStatusInput
+
+func (WorkloadComplianceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadComplianceStatus)(nil)).Elem()
+}
+
+func (i WorkloadComplianceStatusArray) ToWorkloadComplianceStatusArrayOutput() WorkloadComplianceStatusArrayOutput {
+	return i.ToWorkloadComplianceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadComplianceStatusArray) ToWorkloadComplianceStatusArrayOutputWithContext(ctx context.Context) WorkloadComplianceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadComplianceStatusArrayOutput)
+}
+
+type WorkloadComplianceStatusOutput struct{ *pulumi.OutputState }
+
+func (WorkloadComplianceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadComplianceStatus)(nil)).Elem()
+}
+
+func (o WorkloadComplianceStatusOutput) ToWorkloadComplianceStatusOutput() WorkloadComplianceStatusOutput {
+	return o
+}
+
+func (o WorkloadComplianceStatusOutput) ToWorkloadComplianceStatusOutputWithContext(ctx context.Context) WorkloadComplianceStatusOutput {
+	return o
+}
+
+func (o WorkloadComplianceStatusOutput) AcknowledgedViolationCounts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v WorkloadComplianceStatus) []int { return v.AcknowledgedViolationCounts }).(pulumi.IntArrayOutput)
+}
+
+func (o WorkloadComplianceStatusOutput) ActiveViolationCounts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v WorkloadComplianceStatus) []int { return v.ActiveViolationCounts }).(pulumi.IntArrayOutput)
+}
+
+type WorkloadComplianceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadComplianceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadComplianceStatus)(nil)).Elem()
+}
+
+func (o WorkloadComplianceStatusArrayOutput) ToWorkloadComplianceStatusArrayOutput() WorkloadComplianceStatusArrayOutput {
+	return o
+}
+
+func (o WorkloadComplianceStatusArrayOutput) ToWorkloadComplianceStatusArrayOutputWithContext(ctx context.Context) WorkloadComplianceStatusArrayOutput {
+	return o
+}
+
+func (o WorkloadComplianceStatusArrayOutput) Index(i pulumi.IntInput) WorkloadComplianceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadComplianceStatus {
+		return vs[0].([]WorkloadComplianceStatus)[vs[1].(int)]
+	}).(WorkloadComplianceStatusOutput)
+}
+
+type WorkloadEkmProvisioningResponse struct {
+	EkmProvisioningErrorDomain  *string `pulumi:"ekmProvisioningErrorDomain"`
+	EkmProvisioningErrorMapping *string `pulumi:"ekmProvisioningErrorMapping"`
+	EkmProvisioningState        *string `pulumi:"ekmProvisioningState"`
+}
+
+// WorkloadEkmProvisioningResponseInput is an input type that accepts WorkloadEkmProvisioningResponseArgs and WorkloadEkmProvisioningResponseOutput values.
+// You can construct a concrete instance of `WorkloadEkmProvisioningResponseInput` via:
+//
+//	WorkloadEkmProvisioningResponseArgs{...}
+type WorkloadEkmProvisioningResponseInput interface {
+	pulumi.Input
+
+	ToWorkloadEkmProvisioningResponseOutput() WorkloadEkmProvisioningResponseOutput
+	ToWorkloadEkmProvisioningResponseOutputWithContext(context.Context) WorkloadEkmProvisioningResponseOutput
+}
+
+type WorkloadEkmProvisioningResponseArgs struct {
+	EkmProvisioningErrorDomain  pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorDomain"`
+	EkmProvisioningErrorMapping pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorMapping"`
+	EkmProvisioningState        pulumi.StringPtrInput `pulumi:"ekmProvisioningState"`
+}
+
+func (WorkloadEkmProvisioningResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (i WorkloadEkmProvisioningResponseArgs) ToWorkloadEkmProvisioningResponseOutput() WorkloadEkmProvisioningResponseOutput {
+	return i.ToWorkloadEkmProvisioningResponseOutputWithContext(context.Background())
+}
+
+func (i WorkloadEkmProvisioningResponseArgs) ToWorkloadEkmProvisioningResponseOutputWithContext(ctx context.Context) WorkloadEkmProvisioningResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadEkmProvisioningResponseOutput)
+}
+
+// WorkloadEkmProvisioningResponseArrayInput is an input type that accepts WorkloadEkmProvisioningResponseArray and WorkloadEkmProvisioningResponseArrayOutput values.
+// You can construct a concrete instance of `WorkloadEkmProvisioningResponseArrayInput` via:
+//
+//	WorkloadEkmProvisioningResponseArray{ WorkloadEkmProvisioningResponseArgs{...} }
+type WorkloadEkmProvisioningResponseArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadEkmProvisioningResponseArrayOutput() WorkloadEkmProvisioningResponseArrayOutput
+	ToWorkloadEkmProvisioningResponseArrayOutputWithContext(context.Context) WorkloadEkmProvisioningResponseArrayOutput
+}
+
+type WorkloadEkmProvisioningResponseArray []WorkloadEkmProvisioningResponseInput
+
+func (WorkloadEkmProvisioningResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (i WorkloadEkmProvisioningResponseArray) ToWorkloadEkmProvisioningResponseArrayOutput() WorkloadEkmProvisioningResponseArrayOutput {
+	return i.ToWorkloadEkmProvisioningResponseArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadEkmProvisioningResponseArray) ToWorkloadEkmProvisioningResponseArrayOutputWithContext(ctx context.Context) WorkloadEkmProvisioningResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadEkmProvisioningResponseArrayOutput)
+}
+
+type WorkloadEkmProvisioningResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadEkmProvisioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (o WorkloadEkmProvisioningResponseOutput) ToWorkloadEkmProvisioningResponseOutput() WorkloadEkmProvisioningResponseOutput {
+	return o
+}
+
+func (o WorkloadEkmProvisioningResponseOutput) ToWorkloadEkmProvisioningResponseOutputWithContext(ctx context.Context) WorkloadEkmProvisioningResponseOutput {
+	return o
+}
+
+func (o WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadEkmProvisioningResponse) *string { return v.EkmProvisioningErrorDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadEkmProvisioningResponse) *string { return v.EkmProvisioningErrorMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkloadEkmProvisioningResponseOutput) EkmProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadEkmProvisioningResponse) *string { return v.EkmProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadEkmProvisioningResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadEkmProvisioningResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (o WorkloadEkmProvisioningResponseArrayOutput) ToWorkloadEkmProvisioningResponseArrayOutput() WorkloadEkmProvisioningResponseArrayOutput {
+	return o
+}
+
+func (o WorkloadEkmProvisioningResponseArrayOutput) ToWorkloadEkmProvisioningResponseArrayOutputWithContext(ctx context.Context) WorkloadEkmProvisioningResponseArrayOutput {
+	return o
+}
+
+func (o WorkloadEkmProvisioningResponseArrayOutput) Index(i pulumi.IntInput) WorkloadEkmProvisioningResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadEkmProvisioningResponse {
+		return vs[0].([]WorkloadEkmProvisioningResponse)[vs[1].(int)]
+	}).(WorkloadEkmProvisioningResponseOutput)
+}
 
 type WorkloadKmsSettings struct {
 	// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
@@ -49,12 +254,6 @@ func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsOutput() WorkloadKmsSettin
 
 func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsOutputWithContext(ctx context.Context) WorkloadKmsSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadKmsSettingsOutput)
-}
-
-func (i WorkloadKmsSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadKmsSettings] {
-	return pulumix.Output[WorkloadKmsSettings]{
-		OutputState: i.ToWorkloadKmsSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i WorkloadKmsSettingsArgs) ToWorkloadKmsSettingsPtrOutput() WorkloadKmsSettingsPtrOutput {
@@ -98,12 +297,6 @@ func (i *workloadKmsSettingsPtrType) ToWorkloadKmsSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadKmsSettingsPtrOutput)
 }
 
-func (i *workloadKmsSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkloadKmsSettings] {
-	return pulumix.Output[*WorkloadKmsSettings]{
-		OutputState: i.ToWorkloadKmsSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadKmsSettingsOutput struct{ *pulumi.OutputState }
 
 func (WorkloadKmsSettingsOutput) ElementType() reflect.Type {
@@ -128,12 +321,6 @@ func (o WorkloadKmsSettingsOutput) ToWorkloadKmsSettingsPtrOutputWithContext(ctx
 	}).(WorkloadKmsSettingsPtrOutput)
 }
 
-func (o WorkloadKmsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadKmsSettings] {
-	return pulumix.Output[WorkloadKmsSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o WorkloadKmsSettingsOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadKmsSettings) string { return v.NextRotationTime }).(pulumi.StringOutput)
@@ -156,12 +343,6 @@ func (o WorkloadKmsSettingsPtrOutput) ToWorkloadKmsSettingsPtrOutput() WorkloadK
 
 func (o WorkloadKmsSettingsPtrOutput) ToWorkloadKmsSettingsPtrOutputWithContext(ctx context.Context) WorkloadKmsSettingsPtrOutput {
 	return o
-}
-
-func (o WorkloadKmsSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadKmsSettings] {
-	return pulumix.Output[*WorkloadKmsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadKmsSettingsPtrOutput) Elem() WorkloadKmsSettingsOutput {
@@ -194,8 +375,183 @@ func (o WorkloadKmsSettingsPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkloadPartnerPermissions struct {
+	// Optional. Allow partner to view violation alerts.
+	AssuredWorkloadsMonitoring *bool `pulumi:"assuredWorkloadsMonitoring"`
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer *bool `pulumi:"dataLogsViewer"`
+	// Optional. Allow partner to view access approval logs.
+	ServiceAccessApprover *bool `pulumi:"serviceAccessApprover"`
+}
+
+// WorkloadPartnerPermissionsInput is an input type that accepts WorkloadPartnerPermissionsArgs and WorkloadPartnerPermissionsOutput values.
+// You can construct a concrete instance of `WorkloadPartnerPermissionsInput` via:
+//
+//	WorkloadPartnerPermissionsArgs{...}
+type WorkloadPartnerPermissionsInput interface {
+	pulumi.Input
+
+	ToWorkloadPartnerPermissionsOutput() WorkloadPartnerPermissionsOutput
+	ToWorkloadPartnerPermissionsOutputWithContext(context.Context) WorkloadPartnerPermissionsOutput
+}
+
+type WorkloadPartnerPermissionsArgs struct {
+	// Optional. Allow partner to view violation alerts.
+	AssuredWorkloadsMonitoring pulumi.BoolPtrInput `pulumi:"assuredWorkloadsMonitoring"`
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer pulumi.BoolPtrInput `pulumi:"dataLogsViewer"`
+	// Optional. Allow partner to view access approval logs.
+	ServiceAccessApprover pulumi.BoolPtrInput `pulumi:"serviceAccessApprover"`
+}
+
+func (WorkloadPartnerPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (i WorkloadPartnerPermissionsArgs) ToWorkloadPartnerPermissionsOutput() WorkloadPartnerPermissionsOutput {
+	return i.ToWorkloadPartnerPermissionsOutputWithContext(context.Background())
+}
+
+func (i WorkloadPartnerPermissionsArgs) ToWorkloadPartnerPermissionsOutputWithContext(ctx context.Context) WorkloadPartnerPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadPartnerPermissionsOutput)
+}
+
+func (i WorkloadPartnerPermissionsArgs) ToWorkloadPartnerPermissionsPtrOutput() WorkloadPartnerPermissionsPtrOutput {
+	return i.ToWorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadPartnerPermissionsArgs) ToWorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) WorkloadPartnerPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadPartnerPermissionsOutput).ToWorkloadPartnerPermissionsPtrOutputWithContext(ctx)
+}
+
+// WorkloadPartnerPermissionsPtrInput is an input type that accepts WorkloadPartnerPermissionsArgs, WorkloadPartnerPermissionsPtr and WorkloadPartnerPermissionsPtrOutput values.
+// You can construct a concrete instance of `WorkloadPartnerPermissionsPtrInput` via:
+//
+//	        WorkloadPartnerPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkloadPartnerPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadPartnerPermissionsPtrOutput() WorkloadPartnerPermissionsPtrOutput
+	ToWorkloadPartnerPermissionsPtrOutputWithContext(context.Context) WorkloadPartnerPermissionsPtrOutput
+}
+
+type workloadPartnerPermissionsPtrType WorkloadPartnerPermissionsArgs
+
+func WorkloadPartnerPermissionsPtr(v *WorkloadPartnerPermissionsArgs) WorkloadPartnerPermissionsPtrInput {
+	return (*workloadPartnerPermissionsPtrType)(v)
+}
+
+func (*workloadPartnerPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (i *workloadPartnerPermissionsPtrType) ToWorkloadPartnerPermissionsPtrOutput() WorkloadPartnerPermissionsPtrOutput {
+	return i.ToWorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadPartnerPermissionsPtrType) ToWorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) WorkloadPartnerPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadPartnerPermissionsPtrOutput)
+}
+
+type WorkloadPartnerPermissionsOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPartnerPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (o WorkloadPartnerPermissionsOutput) ToWorkloadPartnerPermissionsOutput() WorkloadPartnerPermissionsOutput {
+	return o
+}
+
+func (o WorkloadPartnerPermissionsOutput) ToWorkloadPartnerPermissionsOutputWithContext(ctx context.Context) WorkloadPartnerPermissionsOutput {
+	return o
+}
+
+func (o WorkloadPartnerPermissionsOutput) ToWorkloadPartnerPermissionsPtrOutput() WorkloadPartnerPermissionsPtrOutput {
+	return o.ToWorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadPartnerPermissionsOutput) ToWorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) WorkloadPartnerPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadPartnerPermissions) *WorkloadPartnerPermissions {
+		return &v
+	}).(WorkloadPartnerPermissionsPtrOutput)
+}
+
+// Optional. Allow partner to view violation alerts.
+func (o WorkloadPartnerPermissionsOutput) AssuredWorkloadsMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadPartnerPermissions) *bool { return v.AssuredWorkloadsMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o WorkloadPartnerPermissionsOutput) DataLogsViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadPartnerPermissions) *bool { return v.DataLogsViewer }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Allow partner to view access approval logs.
+func (o WorkloadPartnerPermissionsOutput) ServiceAccessApprover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadPartnerPermissions) *bool { return v.ServiceAccessApprover }).(pulumi.BoolPtrOutput)
+}
+
+type WorkloadPartnerPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPartnerPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (o WorkloadPartnerPermissionsPtrOutput) ToWorkloadPartnerPermissionsPtrOutput() WorkloadPartnerPermissionsPtrOutput {
+	return o
+}
+
+func (o WorkloadPartnerPermissionsPtrOutput) ToWorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) WorkloadPartnerPermissionsPtrOutput {
+	return o
+}
+
+func (o WorkloadPartnerPermissionsPtrOutput) Elem() WorkloadPartnerPermissionsOutput {
+	return o.ApplyT(func(v *WorkloadPartnerPermissions) WorkloadPartnerPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadPartnerPermissions
+		return ret
+	}).(WorkloadPartnerPermissionsOutput)
+}
+
+// Optional. Allow partner to view violation alerts.
+func (o WorkloadPartnerPermissionsPtrOutput) AssuredWorkloadsMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AssuredWorkloadsMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o WorkloadPartnerPermissionsPtrOutput) DataLogsViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataLogsViewer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Allow partner to view access approval logs.
+func (o WorkloadPartnerPermissionsPtrOutput) ServiceAccessApprover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccessApprover
+	}).(pulumi.BoolPtrOutput)
+}
+
 type WorkloadResource struct {
-	// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+	// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
 	ResourceId *int `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 	ResourceType *string `pulumi:"resourceType"`
@@ -213,7 +569,7 @@ type WorkloadResourceInput interface {
 }
 
 type WorkloadResourceArgs struct {
-	// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+	// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
 	ResourceId pulumi.IntPtrInput `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
@@ -229,12 +585,6 @@ func (i WorkloadResourceArgs) ToWorkloadResourceOutput() WorkloadResourceOutput 
 
 func (i WorkloadResourceArgs) ToWorkloadResourceOutputWithContext(ctx context.Context) WorkloadResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceOutput)
-}
-
-func (i WorkloadResourceArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadResource] {
-	return pulumix.Output[WorkloadResource]{
-		OutputState: i.ToWorkloadResourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkloadResourceArrayInput is an input type that accepts WorkloadResourceArray and WorkloadResourceArrayOutput values.
@@ -262,12 +612,6 @@ func (i WorkloadResourceArray) ToWorkloadResourceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceArrayOutput)
 }
 
-func (i WorkloadResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResource] {
-	return pulumix.Output[[]WorkloadResource]{
-		OutputState: i.ToWorkloadResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadResourceOutput struct{ *pulumi.OutputState }
 
 func (WorkloadResourceOutput) ElementType() reflect.Type {
@@ -282,13 +626,7 @@ func (o WorkloadResourceOutput) ToWorkloadResourceOutputWithContext(ctx context.
 	return o
 }
 
-func (o WorkloadResourceOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadResource] {
-	return pulumix.Output[WorkloadResource]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
 func (o WorkloadResourceOutput) ResourceId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkloadResource) *int { return v.ResourceId }).(pulumi.IntPtrOutput)
 }
@@ -312,12 +650,6 @@ func (o WorkloadResourceArrayOutput) ToWorkloadResourceArrayOutputWithContext(ct
 	return o
 }
 
-func (o WorkloadResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResource] {
-	return pulumix.Output[[]WorkloadResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadResourceArrayOutput) Index(i pulumi.IntInput) WorkloadResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadResource {
 		return vs[0].([]WorkloadResource)[vs[1].(int)]
@@ -325,7 +657,9 @@ func (o WorkloadResourceArrayOutput) Index(i pulumi.IntInput) WorkloadResourceOu
 }
 
 type WorkloadResourceSetting struct {
-	// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+	// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+	DisplayName *string `pulumi:"displayName"`
+	// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
 	ResourceId *string `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 	ResourceType *string `pulumi:"resourceType"`
@@ -343,7 +677,9 @@ type WorkloadResourceSettingInput interface {
 }
 
 type WorkloadResourceSettingArgs struct {
-	// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+	// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
@@ -359,12 +695,6 @@ func (i WorkloadResourceSettingArgs) ToWorkloadResourceSettingOutput() WorkloadR
 
 func (i WorkloadResourceSettingArgs) ToWorkloadResourceSettingOutputWithContext(ctx context.Context) WorkloadResourceSettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceSettingOutput)
-}
-
-func (i WorkloadResourceSettingArgs) ToOutput(ctx context.Context) pulumix.Output[WorkloadResourceSetting] {
-	return pulumix.Output[WorkloadResourceSetting]{
-		OutputState: i.ToWorkloadResourceSettingOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkloadResourceSettingArrayInput is an input type that accepts WorkloadResourceSettingArray and WorkloadResourceSettingArrayOutput values.
@@ -392,12 +722,6 @@ func (i WorkloadResourceSettingArray) ToWorkloadResourceSettingArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadResourceSettingArrayOutput)
 }
 
-func (i WorkloadResourceSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResourceSetting] {
-	return pulumix.Output[[]WorkloadResourceSetting]{
-		OutputState: i.ToWorkloadResourceSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadResourceSettingOutput struct{ *pulumi.OutputState }
 
 func (WorkloadResourceSettingOutput) ElementType() reflect.Type {
@@ -412,13 +736,12 @@ func (o WorkloadResourceSettingOutput) ToWorkloadResourceSettingOutputWithContex
 	return o
 }
 
-func (o WorkloadResourceSettingOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadResourceSetting] {
-	return pulumix.Output[WorkloadResourceSetting]{
-		OutputState: o.OutputState,
-	}
+// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+func (o WorkloadResourceSettingOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadResourceSetting) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
 func (o WorkloadResourceSettingOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadResourceSetting) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
@@ -442,29 +765,139 @@ func (o WorkloadResourceSettingArrayOutput) ToWorkloadResourceSettingArrayOutput
 	return o
 }
 
-func (o WorkloadResourceSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkloadResourceSetting] {
-	return pulumix.Output[[]WorkloadResourceSetting]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadResourceSettingArrayOutput) Index(i pulumi.IntInput) WorkloadResourceSettingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadResourceSetting {
 		return vs[0].([]WorkloadResourceSetting)[vs[1].(int)]
 	}).(WorkloadResourceSettingOutput)
 }
 
+type WorkloadSaaEnrollmentResponse struct {
+	SetupErrors []string `pulumi:"setupErrors"`
+	SetupStatus *string  `pulumi:"setupStatus"`
+}
+
+// WorkloadSaaEnrollmentResponseInput is an input type that accepts WorkloadSaaEnrollmentResponseArgs and WorkloadSaaEnrollmentResponseOutput values.
+// You can construct a concrete instance of `WorkloadSaaEnrollmentResponseInput` via:
+//
+//	WorkloadSaaEnrollmentResponseArgs{...}
+type WorkloadSaaEnrollmentResponseInput interface {
+	pulumi.Input
+
+	ToWorkloadSaaEnrollmentResponseOutput() WorkloadSaaEnrollmentResponseOutput
+	ToWorkloadSaaEnrollmentResponseOutputWithContext(context.Context) WorkloadSaaEnrollmentResponseOutput
+}
+
+type WorkloadSaaEnrollmentResponseArgs struct {
+	SetupErrors pulumi.StringArrayInput `pulumi:"setupErrors"`
+	SetupStatus pulumi.StringPtrInput   `pulumi:"setupStatus"`
+}
+
+func (WorkloadSaaEnrollmentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadSaaEnrollmentResponse)(nil)).Elem()
+}
+
+func (i WorkloadSaaEnrollmentResponseArgs) ToWorkloadSaaEnrollmentResponseOutput() WorkloadSaaEnrollmentResponseOutput {
+	return i.ToWorkloadSaaEnrollmentResponseOutputWithContext(context.Background())
+}
+
+func (i WorkloadSaaEnrollmentResponseArgs) ToWorkloadSaaEnrollmentResponseOutputWithContext(ctx context.Context) WorkloadSaaEnrollmentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadSaaEnrollmentResponseOutput)
+}
+
+// WorkloadSaaEnrollmentResponseArrayInput is an input type that accepts WorkloadSaaEnrollmentResponseArray and WorkloadSaaEnrollmentResponseArrayOutput values.
+// You can construct a concrete instance of `WorkloadSaaEnrollmentResponseArrayInput` via:
+//
+//	WorkloadSaaEnrollmentResponseArray{ WorkloadSaaEnrollmentResponseArgs{...} }
+type WorkloadSaaEnrollmentResponseArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadSaaEnrollmentResponseArrayOutput() WorkloadSaaEnrollmentResponseArrayOutput
+	ToWorkloadSaaEnrollmentResponseArrayOutputWithContext(context.Context) WorkloadSaaEnrollmentResponseArrayOutput
+}
+
+type WorkloadSaaEnrollmentResponseArray []WorkloadSaaEnrollmentResponseInput
+
+func (WorkloadSaaEnrollmentResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadSaaEnrollmentResponse)(nil)).Elem()
+}
+
+func (i WorkloadSaaEnrollmentResponseArray) ToWorkloadSaaEnrollmentResponseArrayOutput() WorkloadSaaEnrollmentResponseArrayOutput {
+	return i.ToWorkloadSaaEnrollmentResponseArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadSaaEnrollmentResponseArray) ToWorkloadSaaEnrollmentResponseArrayOutputWithContext(ctx context.Context) WorkloadSaaEnrollmentResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadSaaEnrollmentResponseArrayOutput)
+}
+
+type WorkloadSaaEnrollmentResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadSaaEnrollmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadSaaEnrollmentResponse)(nil)).Elem()
+}
+
+func (o WorkloadSaaEnrollmentResponseOutput) ToWorkloadSaaEnrollmentResponseOutput() WorkloadSaaEnrollmentResponseOutput {
+	return o
+}
+
+func (o WorkloadSaaEnrollmentResponseOutput) ToWorkloadSaaEnrollmentResponseOutputWithContext(ctx context.Context) WorkloadSaaEnrollmentResponseOutput {
+	return o
+}
+
+func (o WorkloadSaaEnrollmentResponseOutput) SetupErrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkloadSaaEnrollmentResponse) []string { return v.SetupErrors }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkloadSaaEnrollmentResponseOutput) SetupStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadSaaEnrollmentResponse) *string { return v.SetupStatus }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadSaaEnrollmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadSaaEnrollmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadSaaEnrollmentResponse)(nil)).Elem()
+}
+
+func (o WorkloadSaaEnrollmentResponseArrayOutput) ToWorkloadSaaEnrollmentResponseArrayOutput() WorkloadSaaEnrollmentResponseArrayOutput {
+	return o
+}
+
+func (o WorkloadSaaEnrollmentResponseArrayOutput) ToWorkloadSaaEnrollmentResponseArrayOutputWithContext(ctx context.Context) WorkloadSaaEnrollmentResponseArrayOutput {
+	return o
+}
+
+func (o WorkloadSaaEnrollmentResponseArrayOutput) Index(i pulumi.IntInput) WorkloadSaaEnrollmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadSaaEnrollmentResponse {
+		return vs[0].([]WorkloadSaaEnrollmentResponse)[vs[1].(int)]
+	}).(WorkloadSaaEnrollmentResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceStatusInput)(nil)).Elem(), WorkloadComplianceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceStatusArrayInput)(nil)).Elem(), WorkloadComplianceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadEkmProvisioningResponseInput)(nil)).Elem(), WorkloadEkmProvisioningResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadEkmProvisioningResponseArrayInput)(nil)).Elem(), WorkloadEkmProvisioningResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadKmsSettingsInput)(nil)).Elem(), WorkloadKmsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadKmsSettingsPtrInput)(nil)).Elem(), WorkloadKmsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadPartnerPermissionsInput)(nil)).Elem(), WorkloadPartnerPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadPartnerPermissionsPtrInput)(nil)).Elem(), WorkloadPartnerPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadResourceInput)(nil)).Elem(), WorkloadResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadResourceArrayInput)(nil)).Elem(), WorkloadResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadResourceSettingInput)(nil)).Elem(), WorkloadResourceSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadResourceSettingArrayInput)(nil)).Elem(), WorkloadResourceSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadSaaEnrollmentResponseInput)(nil)).Elem(), WorkloadSaaEnrollmentResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadSaaEnrollmentResponseArrayInput)(nil)).Elem(), WorkloadSaaEnrollmentResponseArray{})
+	pulumi.RegisterOutputType(WorkloadComplianceStatusOutput{})
+	pulumi.RegisterOutputType(WorkloadComplianceStatusArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadEkmProvisioningResponseOutput{})
+	pulumi.RegisterOutputType(WorkloadEkmProvisioningResponseArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadKmsSettingsOutput{})
 	pulumi.RegisterOutputType(WorkloadKmsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadPartnerPermissionsOutput{})
+	pulumi.RegisterOutputType(WorkloadPartnerPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadResourceOutput{})
 	pulumi.RegisterOutputType(WorkloadResourceArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadResourceSettingOutput{})
 	pulumi.RegisterOutputType(WorkloadResourceSettingArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadSaaEnrollmentResponseOutput{})
+	pulumi.RegisterOutputType(WorkloadSaaEnrollmentResponseArrayOutput{})
 }

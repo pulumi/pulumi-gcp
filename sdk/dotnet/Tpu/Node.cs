@@ -96,7 +96,15 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// ## Import
     /// 
-    /// Node can be imported using any of these accepted formats
+    /// Node can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/nodes/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Node using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{zone}}/nodes/{{name}}"
+    /// 
+    ///  to = google_tpu_node.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:tpu/node:Node When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Node can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

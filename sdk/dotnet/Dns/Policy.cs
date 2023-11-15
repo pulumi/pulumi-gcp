@@ -77,7 +77,15 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ## Import
     /// 
-    /// Policy can be imported using any of these accepted formats
+    /// Policy can be imported using any of these accepted formats* `projects/{{project}}/policies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Policy using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/policies/{{name}}"
+    /// 
+    ///  to = google_dns_policy.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dns/policy:Policy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Policy can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}

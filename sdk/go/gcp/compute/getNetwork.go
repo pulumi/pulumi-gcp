@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a network within GCE from its name.
@@ -67,9 +66,11 @@ type LookupNetworkResult struct {
 	// The IP address of the gateway.
 	GatewayIpv4 string `pulumi:"gatewayIpv4"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
-	Name    string  `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// The ula internal ipv6 range assigned to this network.
+	InternalIpv6Range string  `pulumi:"internalIpv6Range"`
+	Name              string  `pulumi:"name"`
+	Project           *string `pulumi:"project"`
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// the list of subnetworks which belong to the network
@@ -119,12 +120,6 @@ func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx co
 	return o
 }
 
-func (o LookupNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkResult] {
-	return pulumix.Output[LookupNetworkResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Description of this network.
 func (o LookupNetworkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Description }).(pulumi.StringOutput)
@@ -138,6 +133,11 @@ func (o LookupNetworkResultOutput) GatewayIpv4() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ula internal ipv6 range assigned to this network.
+func (o LookupNetworkResultOutput) InternalIpv6Range() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.InternalIpv6Range }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkResultOutput) Name() pulumi.StringOutput {

@@ -12,7 +12,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigLinuxNodeConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("sysctls", required: true)]
+        [Input("cgroupMode")]
+        public Input<string>? CgroupMode { get; set; }
+
+        [Input("sysctls")]
         private InputMap<string>? _sysctls;
         public InputMap<string> Sysctls
         {

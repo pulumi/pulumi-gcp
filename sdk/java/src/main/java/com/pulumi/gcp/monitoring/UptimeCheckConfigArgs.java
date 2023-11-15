@@ -13,6 +13,7 @@ import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -222,6 +223,21 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
         return this.timeout;
     }
 
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     * 
+     */
+    @Import(name="userLabels")
+    private @Nullable Output<Map<String,String>> userLabels;
+
+    /**
+     * @return User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> userLabels() {
+        return Optional.ofNullable(this.userLabels);
+    }
+
     private UptimeCheckConfigArgs() {}
 
     private UptimeCheckConfigArgs(UptimeCheckConfigArgs $) {
@@ -237,6 +253,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
         this.syntheticMonitor = $.syntheticMonitor;
         this.tcpCheck = $.tcpCheck;
         this.timeout = $.timeout;
+        this.userLabels = $.userLabels;
     }
 
     public static Builder builder() {
@@ -548,6 +565,27 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder timeout(String timeout) {
             return timeout(Output.of(timeout));
+        }
+
+        /**
+         * @param userLabels User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userLabels(@Nullable Output<Map<String,String>> userLabels) {
+            $.userLabels = userLabels;
+            return this;
+        }
+
+        /**
+         * @param userLabels User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userLabels(Map<String,String> userLabels) {
+            return userLabels(Output.of(userLabels));
         }
 
         public UptimeCheckConfigArgs build() {

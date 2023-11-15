@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -80,6 +79,14 @@ import (
 //						},
 //					},
 //				},
+//				SmsRegionConfig: &identityplatform.ConfigSmsRegionConfigArgs{
+//					AllowlistOnly: &identityplatform.ConfigSmsRegionConfigAllowlistOnlyArgs{
+//						AllowedRegions: pulumi.StringArray{
+//							pulumi.String("US"),
+//							pulumi.String("CA"),
+//						},
+//					},
+//				},
 //				BlockingFunctions: &identityplatform.ConfigBlockingFunctionsArgs{
 //					Triggers: identityplatform.ConfigBlockingFunctionsTriggerArray{
 //						&identityplatform.ConfigBlockingFunctionsTriggerArgs{
@@ -117,7 +124,17 @@ import (
 //
 // ## Import
 //
-// # Config can be imported using any of these accepted formats
+// Config can be imported using any of these accepted formats* `projects/{{project}}/config` * `projects/{{project}}` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Config using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/config"
+//
+//	to = google_identity_platform_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:identityplatform/config:Config When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Config can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -157,6 +174,9 @@ type Config struct {
 	// Configuration related to local sign in methods.
 	// Structure is documented below.
 	SignIn ConfigSignInOutput `pulumi:"signIn"`
+	// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+	// Structure is documented below.
+	SmsRegionConfig ConfigSmsRegionConfigPtrOutput `pulumi:"smsRegionConfig"`
 }
 
 // NewConfig registers a new resource with the given unique name, arguments, and options.
@@ -207,6 +227,9 @@ type configState struct {
 	// Configuration related to local sign in methods.
 	// Structure is documented below.
 	SignIn *ConfigSignIn `pulumi:"signIn"`
+	// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+	// Structure is documented below.
+	SmsRegionConfig *ConfigSmsRegionConfig `pulumi:"smsRegionConfig"`
 }
 
 type ConfigState struct {
@@ -228,6 +251,9 @@ type ConfigState struct {
 	// Configuration related to local sign in methods.
 	// Structure is documented below.
 	SignIn ConfigSignInPtrInput
+	// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+	// Structure is documented below.
+	SmsRegionConfig ConfigSmsRegionConfigPtrInput
 }
 
 func (ConfigState) ElementType() reflect.Type {
@@ -251,6 +277,9 @@ type configArgs struct {
 	// Configuration related to local sign in methods.
 	// Structure is documented below.
 	SignIn *ConfigSignIn `pulumi:"signIn"`
+	// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+	// Structure is documented below.
+	SmsRegionConfig *ConfigSmsRegionConfig `pulumi:"smsRegionConfig"`
 }
 
 // The set of arguments for constructing a Config resource.
@@ -271,6 +300,9 @@ type ConfigArgs struct {
 	// Configuration related to local sign in methods.
 	// Structure is documented below.
 	SignIn ConfigSignInPtrInput
+	// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+	// Structure is documented below.
+	SmsRegionConfig ConfigSmsRegionConfigPtrInput
 }
 
 func (ConfigArgs) ElementType() reflect.Type {
@@ -294,12 +326,6 @@ func (i *Config) ToConfigOutput() ConfigOutput {
 
 func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
-}
-
-func (i *Config) ToOutput(ctx context.Context) pulumix.Output[*Config] {
-	return pulumix.Output[*Config]{
-		OutputState: i.ToConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigArrayInput is an input type that accepts ConfigArray and ConfigArrayOutput values.
@@ -327,12 +353,6 @@ func (i ConfigArray) ToConfigArrayOutputWithContext(ctx context.Context) ConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigArrayOutput)
 }
 
-func (i ConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*Config] {
-	return pulumix.Output[[]*Config]{
-		OutputState: i.ToConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigMapInput is an input type that accepts ConfigMap and ConfigMapOutput values.
 // You can construct a concrete instance of `ConfigMapInput` via:
 //
@@ -358,12 +378,6 @@ func (i ConfigMap) ToConfigMapOutputWithContext(ctx context.Context) ConfigMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapOutput)
 }
 
-func (i ConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Config] {
-	return pulumix.Output[map[string]*Config]{
-		OutputState: i.ToConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigOutput) ElementType() reflect.Type {
@@ -376,12 +390,6 @@ func (o ConfigOutput) ToConfigOutput() ConfigOutput {
 
 func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return o
-}
-
-func (o ConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*Config] {
-	return pulumix.Output[*Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of domains authorized for OAuth redirects.
@@ -423,6 +431,12 @@ func (o ConfigOutput) SignIn() ConfigSignInOutput {
 	return o.ApplyT(func(v *Config) ConfigSignInOutput { return v.SignIn }).(ConfigSignInOutput)
 }
 
+// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+// Structure is documented below.
+func (o ConfigOutput) SmsRegionConfig() ConfigSmsRegionConfigPtrOutput {
+	return o.ApplyT(func(v *Config) ConfigSmsRegionConfigPtrOutput { return v.SmsRegionConfig }).(ConfigSmsRegionConfigPtrOutput)
+}
+
 type ConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigArrayOutput) ElementType() reflect.Type {
@@ -435,12 +449,6 @@ func (o ConfigArrayOutput) ToConfigArrayOutput() ConfigArrayOutput {
 
 func (o ConfigArrayOutput) ToConfigArrayOutputWithContext(ctx context.Context) ConfigArrayOutput {
 	return o
-}
-
-func (o ConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Config] {
-	return pulumix.Output[[]*Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigArrayOutput) Index(i pulumi.IntInput) ConfigOutput {
@@ -461,12 +469,6 @@ func (o ConfigMapOutput) ToConfigMapOutput() ConfigMapOutput {
 
 func (o ConfigMapOutput) ToConfigMapOutputWithContext(ctx context.Context) ConfigMapOutput {
 	return o
-}
-
-func (o ConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Config] {
-	return pulumix.Output[map[string]*Config]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigMapOutput) MapIndex(k pulumi.StringInput) ConfigOutput {

@@ -277,7 +277,15 @@ class Fulfillment(pulumi.CustomResource):
 
         ## Import
 
-        Fulfillment can be imported using any of these accepted formats:
+        Fulfillment can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Fulfillment using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_dialogflow_fulfillment.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/fulfillment:Fulfillment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Fulfillment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
@@ -339,7 +347,15 @@ class Fulfillment(pulumi.CustomResource):
 
         ## Import
 
-        Fulfillment can be imported using any of these accepted formats:
+        Fulfillment can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Fulfillment using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_dialogflow_fulfillment.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/fulfillment:Fulfillment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Fulfillment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}

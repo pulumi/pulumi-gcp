@@ -27,12 +27,24 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",
+ *     indexConfigs: {
+ *         filePath: "jsonPayload.request.status",
+ *         type: "INDEX_TYPE_STRING",
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * This resource can be imported using the following format:
+ * This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+ *
+ *  id = "organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}"
+ *
+ *  to = google_logging_organization_bucket_config.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -81,6 +93,10 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    public readonly indexConfigs!: pulumi.Output<outputs.logging.OrganizationBucketConfigIndexConfig[] | undefined>;
+    /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
@@ -117,6 +133,7 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
             resourceInputs["bucketId"] = state ? state.bucketId : undefined;
             resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["indexConfigs"] = state ? state.indexConfigs : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -136,6 +153,7 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
             resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["indexConfigs"] = args ? args.indexConfigs : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["organization"] = args ? args.organization : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
@@ -165,6 +183,10 @@ export interface OrganizationBucketConfigState {
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.OrganizationBucketConfigIndexConfig>[]>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
@@ -205,6 +227,10 @@ export interface OrganizationBucketConfigArgs {
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.OrganizationBucketConfigIndexConfig>[]>;
     /**
      * The location of the bucket. The supported locations are: "global" "us-central1"
      */

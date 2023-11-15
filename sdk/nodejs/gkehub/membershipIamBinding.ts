@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * });
  * const policy = new gcp.gkehub.MembershipIamPolicy("policy", {
  *     project: google_gke_hub_membership.membership.project,
+ *     location: google_gke_hub_membership.membership.location,
  *     membershipId: google_gke_hub_membership.membership.membership_id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -48,6 +49,7 @@ import * as utilities from "../utilities";
  *
  * const binding = new gcp.gkehub.MembershipIamBinding("binding", {
  *     project: google_gke_hub_membership.membership.project,
+ *     location: google_gke_hub_membership.membership.location,
  *     membershipId: google_gke_hub_membership.membership.membership_id,
  *     role: "roles/viewer",
  *     members: ["user:jane@example.com"],
@@ -62,6 +64,7 @@ import * as utilities from "../utilities";
  *
  * const member = new gcp.gkehub.MembershipIamMember("member", {
  *     project: google_gke_hub_membership.membership.project,
+ *     location: google_gke_hub_membership.membership.location,
  *     membershipId: google_gke_hub_membership.membership.membership_id,
  *     role: "roles/viewer",
  *     member: "user:jane@example.com",
@@ -125,6 +128,12 @@ export class MembershipIamBinding extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
+    public readonly location!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     public readonly membershipId!: pulumi.Output<string>;
     /**
@@ -166,6 +175,7 @@ export class MembershipIamBinding extends pulumi.CustomResource {
             const state = argsOrState as MembershipIamBindingState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
             resourceInputs["membershipId"] = state ? state.membershipId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -182,6 +192,7 @@ export class MembershipIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["members"] = args ? args.members : undefined;
             resourceInputs["membershipId"] = args ? args.membershipId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -202,6 +213,12 @@ export interface MembershipIamBindingState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
+    location?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
     membershipId?: pulumi.Input<string>;
     /**
@@ -234,6 +251,12 @@ export interface MembershipIamBindingState {
  */
 export interface MembershipIamBindingArgs {
     condition?: pulumi.Input<inputs.gkehub.MembershipIamBindingCondition>;
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     */
+    location?: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     membershipId: pulumi.Input<string>;
     /**

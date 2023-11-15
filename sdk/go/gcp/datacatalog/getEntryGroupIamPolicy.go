@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for entrygroup
@@ -113,12 +112,6 @@ func (o LookupEntryGroupIamPolicyResultOutput) ToLookupEntryGroupIamPolicyResult
 
 func (o LookupEntryGroupIamPolicyResultOutput) ToLookupEntryGroupIamPolicyResultOutputWithContext(ctx context.Context) LookupEntryGroupIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupEntryGroupIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntryGroupIamPolicyResult] {
-	return pulumix.Output[LookupEntryGroupIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupEntryGroupIamPolicyResultOutput) EntryGroup() pulumi.StringOutput {

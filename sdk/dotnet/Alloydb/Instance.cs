@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
-    /// A managed alloydb cluster instance.
-    /// 
-    /// To get more information about Instance, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
-    /// * How-to Guides
-    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-    /// 
     /// ## Example Usage
     /// ### Alloydb Instance Basic
     /// 
@@ -81,10 +73,116 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// ### Alloydb Secondary Instance Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default");
+    /// 
+    ///     var primaryCluster = new Gcp.Alloydb.Cluster("primaryCluster", new()
+    ///     {
+    ///         ClusterId = "alloydb-primary-cluster",
+    ///         Location = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var primaryInstance = new Gcp.Alloydb.Instance("primaryInstance", new()
+    ///     {
+    ///         Cluster = primaryCluster.Name,
+    ///         InstanceId = "alloydb-primary-instance",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondaryCluster = new Gcp.Alloydb.Cluster("secondaryCluster", new()
+    ///     {
+    ///         ClusterId = "alloydb-secondary-cluster",
+    ///         Location = "us-east1",
+    ///         Network = @default.Id,
+    ///         ClusterType = "SECONDARY",
+    ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
+    ///         {
+    ///             Enabled = false,
+    ///         },
+    ///         SecondaryConfig = new Gcp.Alloydb.Inputs.ClusterSecondaryConfigArgs
+    ///         {
+    ///             PrimaryClusterName = primaryCluster.Name,
+    ///         },
+    ///         DeletionPolicy = "FORCE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             primaryInstance,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondaryInstance = new Gcp.Alloydb.Instance("secondaryInstance", new()
+    ///     {
+    ///         Cluster = secondaryCluster.Name,
+    ///         InstanceId = "alloydb-secondary-instance",
+    ///         InstanceType = secondaryCluster.ClusterType,
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Instance can be imported using any of these accepted formats
+    /// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}` * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}` * `{{location}}/{{cluster}}/{{instance_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}"
+    /// 
+    ///  to = google_alloydb_instance.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:alloydb/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
@@ -120,6 +218,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("availabilityType")]
         public Output<string> AvailabilityType { get; private set; } = null!;
+
+        /// <summary>
+        /// Client connection specific configurations.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("clientConnectionConfig")]
+        public Output<Outputs.InstanceClientConnectionConfig> ClientConnectionConfig { get; private set; } = null!;
 
         /// <summary>
         /// Identifies the alloydb cluster. Must be in the format
@@ -175,8 +280,15 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-        /// Possible values are: `PRIMARY`, `READ_POOL`.
+        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+        /// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+        /// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+        /// google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+        /// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+        /// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+        /// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+        /// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+        /// "SECONDARY"]
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -331,6 +443,13 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? AvailabilityType { get; set; }
 
         /// <summary>
+        /// Client connection specific configurations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientConnectionConfig")]
+        public Input<Inputs.InstanceClientConnectionConfigArgs>? ClientConnectionConfig { get; set; }
+
+        /// <summary>
         /// Identifies the alloydb cluster. Must be in the format
         /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
         /// </summary>
@@ -371,8 +490,15 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-        /// Possible values are: `PRIMARY`, `READ_POOL`.
+        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+        /// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+        /// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+        /// google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+        /// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+        /// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+        /// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+        /// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+        /// "SECONDARY"]
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -445,6 +571,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }
+
+        /// <summary>
+        /// Client connection specific configurations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientConnectionConfig")]
+        public Input<Inputs.InstanceClientConnectionConfigGetArgs>? ClientConnectionConfig { get; set; }
 
         /// <summary>
         /// Identifies the alloydb cluster. Must be in the format
@@ -522,8 +655,15 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-        /// Possible values are: `PRIMARY`, `READ_POOL`.
+        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+        /// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+        /// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+        /// google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+        /// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+        /// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+        /// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+        /// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+        /// "SECONDARY"]
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

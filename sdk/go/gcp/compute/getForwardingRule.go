@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a forwarding rule within GCE from its name.
@@ -92,6 +91,7 @@ type LookupForwardingRuleResult struct {
 	PscConnectionId               string                                          `pulumi:"pscConnectionId"`
 	PscConnectionStatus           string                                          `pulumi:"pscConnectionStatus"`
 	PulumiLabels                  map[string]string                               `pulumi:"pulumiLabels"`
+	RecreateClosedPsc             bool                                            `pulumi:"recreateClosedPsc"`
 	Region                        *string                                         `pulumi:"region"`
 	SelfLink                      string                                          `pulumi:"selfLink"`
 	ServiceDirectoryRegistrations []GetForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
@@ -146,12 +146,6 @@ func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutput() L
 
 func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutputWithContext(ctx context.Context) LookupForwardingRuleResultOutput {
 	return o
-}
-
-func (o LookupForwardingRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupForwardingRuleResult] {
-	return pulumix.Output[LookupForwardingRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupForwardingRuleResultOutput) AllPorts() pulumi.BoolOutput {
@@ -257,6 +251,10 @@ func (o LookupForwardingRuleResultOutput) PscConnectionStatus() pulumi.StringOut
 
 func (o LookupForwardingRuleResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) RecreateClosedPsc() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.RecreateClosedPsc }).(pulumi.BoolOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) Region() pulumi.StringPtrOutput {

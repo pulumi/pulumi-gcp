@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,27 +22,18 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
- * ### Tpu V2 Vm Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const availableV2RuntimeVersions = gcp.tpu.getV2RuntimeVersions({});
- * const availableV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
- * const tpu = new gcp.tpu.V2Vm("tpu", {
- *     zone: "us-central1-c",
- *     description: "Text description of the TPU.",
- *     runtimeVersion: "tpu-vm-tf-2.13.0",
- *     acceleratorType: "v2-8",
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *
- * Vm can be imported using any of these accepted formats
+ * Vm can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/nodes/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Vm using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{zone}}/nodes/{{name}}"
+ *
+ *  to = google_tpu_v2_vm.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:tpu/v2Vm:V2Vm When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Vm can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
@@ -87,22 +80,93 @@ export class V2Vm extends pulumi.CustomResource {
     }
 
     /**
-     * TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+     * The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
+     * Structure is documented below.
      */
-    public readonly acceleratorType!: pulumi.Output<string | undefined>;
+    public readonly acceleratorConfig!: pulumi.Output<outputs.tpu.V2VmAcceleratorConfig>;
+    /**
+     * TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
+     */
+    public readonly acceleratorType!: pulumi.Output<string>;
+    /**
+     * The API version that created this Node.
+     */
+    public /*out*/ readonly apiVersion!: pulumi.Output<string>;
+    /**
+     * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user's provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     */
+    public readonly cidrBlock!: pulumi.Output<string>;
+    /**
+     * The additional data disks for the Node.
+     * Structure is documented below.
+     */
+    public readonly dataDisks!: pulumi.Output<outputs.tpu.V2VmDataDisk[] | undefined>;
     /**
      * Text description of the TPU.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The health status of the TPU node.
+     */
+    public /*out*/ readonly health!: pulumi.Output<string>;
+    /**
+     * If this field is populated, it contains a description of why the TPU Node is unhealthy.
+     */
+    public /*out*/ readonly healthDescription!: pulumi.Output<string>;
+    /**
+     * Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     */
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Whether the Node belongs to a Multislice group.
+     */
+    public /*out*/ readonly multisliceNode!: pulumi.Output<boolean>;
+    /**
      * The immutable name of the TPU.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Network configurations for the TPU node.
+     * Structure is documented below.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.tpu.V2VmNetworkConfig>;
+    /**
+     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
+     * runtime clients of the node reach out to the 0th entry in this map first.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.V2VmNetworkEndpoint[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The qualified name of the QueuedResource that requested this Node.
+     */
+    public /*out*/ readonly queuedResource!: pulumi.Output<string>;
     /**
      * Runtime version for the TPU.
      *
@@ -110,6 +174,35 @@ export class V2Vm extends pulumi.CustomResource {
      * - - -
      */
     public readonly runtimeVersion!: pulumi.Output<string>;
+    /**
+     * The scheduling options for this node.
+     * Structure is documented below.
+     */
+    public readonly schedulingConfig!: pulumi.Output<outputs.tpu.V2VmSchedulingConfig | undefined>;
+    /**
+     * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     */
+    public readonly serviceAccount!: pulumi.Output<outputs.tpu.V2VmServiceAccount>;
+    /**
+     * Shielded Instance options.
+     * Structure is documented below.
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.tpu.V2VmShieldedInstanceConfig | undefined>;
+    /**
+     * The current state for the TPU Node.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The Symptoms that have occurred to the TPU Node.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly symptoms!: pulumi.Output<outputs.tpu.V2VmSymptom[]>;
+    /**
+     * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
@@ -128,25 +221,67 @@ export class V2Vm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2VmState | undefined;
+            resourceInputs["acceleratorConfig"] = state ? state.acceleratorConfig : undefined;
             resourceInputs["acceleratorType"] = state ? state.acceleratorType : undefined;
+            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["healthDescription"] = state ? state.healthDescription : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["multisliceNode"] = state ? state.multisliceNode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["queuedResource"] = state ? state.queuedResource : undefined;
             resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
+            resourceInputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["symptoms"] = state ? state.symptoms : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as V2VmArgs | undefined;
             if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeVersion'");
             }
+            resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
+            resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["multisliceNode"] = undefined /*out*/;
+            resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["queuedResource"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["symptoms"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(V2Vm.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -156,22 +291,93 @@ export class V2Vm extends pulumi.CustomResource {
  */
 export interface V2VmState {
     /**
-     * TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+     * The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
+     * Structure is documented below.
+     */
+    acceleratorConfig?: pulumi.Input<inputs.tpu.V2VmAcceleratorConfig>;
+    /**
+     * TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
      */
     acceleratorType?: pulumi.Input<string>;
+    /**
+     * The API version that created this Node.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user's provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * The additional data disks for the Node.
+     * Structure is documented below.
+     */
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmDataDisk>[]>;
     /**
      * Text description of the TPU.
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The health status of the TPU node.
+     */
+    health?: pulumi.Input<string>;
+    /**
+     * If this field is populated, it contains a description of why the TPU Node is unhealthy.
+     */
+    healthDescription?: pulumi.Input<string>;
+    /**
+     * Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether the Node belongs to a Multislice group.
+     */
+    multisliceNode?: pulumi.Input<boolean>;
+    /**
      * The immutable name of the TPU.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Network configurations for the TPU node.
+     * Structure is documented below.
+     */
+    networkConfig?: pulumi.Input<inputs.tpu.V2VmNetworkConfig>;
+    /**
+     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
+     * runtime clients of the node reach out to the 0th entry in this map first.
+     * Structure is documented below.
+     */
+    networkEndpoints?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmNetworkEndpoint>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The qualified name of the QueuedResource that requested this Node.
+     */
+    queuedResource?: pulumi.Input<string>;
     /**
      * Runtime version for the TPU.
      *
@@ -179,6 +385,35 @@ export interface V2VmState {
      * - - -
      */
     runtimeVersion?: pulumi.Input<string>;
+    /**
+     * The scheduling options for this node.
+     * Structure is documented below.
+     */
+    schedulingConfig?: pulumi.Input<inputs.tpu.V2VmSchedulingConfig>;
+    /**
+     * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     */
+    serviceAccount?: pulumi.Input<inputs.tpu.V2VmServiceAccount>;
+    /**
+     * Shielded Instance options.
+     * Structure is documented below.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.tpu.V2VmShieldedInstanceConfig>;
+    /**
+     * The current state for the TPU Node.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The Symptoms that have occurred to the TPU Node.
+     * Structure is documented below.
+     */
+    symptoms?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmSymptom>[]>;
+    /**
+     * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
@@ -190,17 +425,53 @@ export interface V2VmState {
  */
 export interface V2VmArgs {
     /**
-     * TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+     * The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+     * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
+     * Structure is documented below.
+     */
+    acceleratorConfig?: pulumi.Input<inputs.tpu.V2VmAcceleratorConfig>;
+    /**
+     * TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+     * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
      */
     acceleratorType?: pulumi.Input<string>;
+    /**
+     * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user's provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * The additional data disks for the Node.
+     * Structure is documented below.
+     */
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmDataDisk>[]>;
     /**
      * Text description of the TPU.
      */
     description?: pulumi.Input<string>;
     /**
+     * Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The immutable name of the TPU.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Network configurations for the TPU node.
+     * Structure is documented below.
+     */
+    networkConfig?: pulumi.Input<inputs.tpu.V2VmNetworkConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -213,6 +484,26 @@ export interface V2VmArgs {
      * - - -
      */
     runtimeVersion: pulumi.Input<string>;
+    /**
+     * The scheduling options for this node.
+     * Structure is documented below.
+     */
+    schedulingConfig?: pulumi.Input<inputs.tpu.V2VmSchedulingConfig>;
+    /**
+     * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     */
+    serviceAccount?: pulumi.Input<inputs.tpu.V2VmServiceAccount>;
+    /**
+     * Shielded Instance options.
+     * Structure is documented below.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.tpu.V2VmShieldedInstanceConfig>;
+    /**
+     * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */

@@ -60,7 +60,15 @@ namespace Pulumi.Gcp.DeploymentManager
     /// 
     /// ## Import
     /// 
-    /// Deployment can be imported using any of these accepted formats
+    /// Deployment can be imported using any of these accepted formats* `projects/{{project}}/deployments/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Deployment using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/deployments/{{name}}"
+    /// 
+    ///  to = google_deployment_manager_deployment.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:deploymentmanager/deployment:Deployment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Deployment can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}

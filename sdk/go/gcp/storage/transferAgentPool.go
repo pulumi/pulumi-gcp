@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an On-Premises Agent pool.
@@ -71,7 +70,17 @@ import (
 //
 // ## Import
 //
-// # AgentPool can be imported using any of these accepted formats
+// AgentPool can be imported using any of these accepted formats* `projects/{{project}}/agentPools/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AgentPool using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/agentPools/{{name}}"
+//
+//	to = google_storage_transfer_agent_pool.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/transferAgentPool:TransferAgentPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AgentPool can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -265,12 +274,6 @@ func (i *TransferAgentPool) ToTransferAgentPoolOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAgentPoolOutput)
 }
 
-func (i *TransferAgentPool) ToOutput(ctx context.Context) pulumix.Output[*TransferAgentPool] {
-	return pulumix.Output[*TransferAgentPool]{
-		OutputState: i.ToTransferAgentPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransferAgentPoolArrayInput is an input type that accepts TransferAgentPoolArray and TransferAgentPoolArrayOutput values.
 // You can construct a concrete instance of `TransferAgentPoolArrayInput` via:
 //
@@ -294,12 +297,6 @@ func (i TransferAgentPoolArray) ToTransferAgentPoolArrayOutput() TransferAgentPo
 
 func (i TransferAgentPoolArray) ToTransferAgentPoolArrayOutputWithContext(ctx context.Context) TransferAgentPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAgentPoolArrayOutput)
-}
-
-func (i TransferAgentPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransferAgentPool] {
-	return pulumix.Output[[]*TransferAgentPool]{
-		OutputState: i.ToTransferAgentPoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TransferAgentPoolMapInput is an input type that accepts TransferAgentPoolMap and TransferAgentPoolMapOutput values.
@@ -327,12 +324,6 @@ func (i TransferAgentPoolMap) ToTransferAgentPoolMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAgentPoolMapOutput)
 }
 
-func (i TransferAgentPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferAgentPool] {
-	return pulumix.Output[map[string]*TransferAgentPool]{
-		OutputState: i.ToTransferAgentPoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransferAgentPoolOutput struct{ *pulumi.OutputState }
 
 func (TransferAgentPoolOutput) ElementType() reflect.Type {
@@ -345,12 +336,6 @@ func (o TransferAgentPoolOutput) ToTransferAgentPoolOutput() TransferAgentPoolOu
 
 func (o TransferAgentPoolOutput) ToTransferAgentPoolOutputWithContext(ctx context.Context) TransferAgentPoolOutput {
 	return o
-}
-
-func (o TransferAgentPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferAgentPool] {
-	return pulumix.Output[*TransferAgentPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
@@ -403,12 +388,6 @@ func (o TransferAgentPoolArrayOutput) ToTransferAgentPoolArrayOutputWithContext(
 	return o
 }
 
-func (o TransferAgentPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransferAgentPool] {
-	return pulumix.Output[[]*TransferAgentPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransferAgentPoolArrayOutput) Index(i pulumi.IntInput) TransferAgentPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransferAgentPool {
 		return vs[0].([]*TransferAgentPool)[vs[1].(int)]
@@ -427,12 +406,6 @@ func (o TransferAgentPoolMapOutput) ToTransferAgentPoolMapOutput() TransferAgent
 
 func (o TransferAgentPoolMapOutput) ToTransferAgentPoolMapOutputWithContext(ctx context.Context) TransferAgentPoolMapOutput {
 	return o
-}
-
-func (o TransferAgentPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferAgentPool] {
-	return pulumix.Output[map[string]*TransferAgentPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransferAgentPoolMapOutput) MapIndex(k pulumi.StringInput) TransferAgentPoolOutput {

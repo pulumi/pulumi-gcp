@@ -510,6 +510,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.documentAiWarehouseCustomEndpoint);
     }
 
+    @Import(name="edgecontainerCustomEndpoint")
+    private @Nullable Output<String> edgecontainerCustomEndpoint;
+
+    public Optional<Output<String>> edgecontainerCustomEndpoint() {
+        return Optional.ofNullable(this.edgecontainerCustomEndpoint);
+    }
+
     @Import(name="edgenetworkCustomEndpoint")
     private @Nullable Output<String> edgenetworkCustomEndpoint;
 
@@ -697,6 +704,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<List<String>>> impersonateServiceAccountDelegates() {
         return Optional.ofNullable(this.impersonateServiceAccountDelegates);
+    }
+
+    @Import(name="integrationConnectorsCustomEndpoint")
+    private @Nullable Output<String> integrationConnectorsCustomEndpoint;
+
+    public Optional<Output<String>> integrationConnectorsCustomEndpoint() {
+        return Optional.ofNullable(this.integrationConnectorsCustomEndpoint);
     }
 
     @Import(name="kmsCustomEndpoint")
@@ -1021,6 +1035,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tpuV2CustomEndpoint);
     }
 
+    @Import(name="universeDomain")
+    private @Nullable Output<String> universeDomain;
+
+    public Optional<Output<String>> universeDomain() {
+        return Optional.ofNullable(this.universeDomain);
+    }
+
     @Import(name="userProjectOverride", json=true)
     private @Nullable Output<Boolean> userProjectOverride;
 
@@ -1143,6 +1164,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
         this.documentAiWarehouseCustomEndpoint = $.documentAiWarehouseCustomEndpoint;
+        this.edgecontainerCustomEndpoint = $.edgecontainerCustomEndpoint;
         this.edgenetworkCustomEndpoint = $.edgenetworkCustomEndpoint;
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
@@ -1170,6 +1192,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.identityPlatformCustomEndpoint = $.identityPlatformCustomEndpoint;
         this.impersonateServiceAccount = $.impersonateServiceAccount;
         this.impersonateServiceAccountDelegates = $.impersonateServiceAccountDelegates;
+        this.integrationConnectorsCustomEndpoint = $.integrationConnectorsCustomEndpoint;
         this.kmsCustomEndpoint = $.kmsCustomEndpoint;
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
@@ -1216,6 +1239,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.tagsLocationCustomEndpoint = $.tagsLocationCustomEndpoint;
         this.tpuCustomEndpoint = $.tpuCustomEndpoint;
         this.tpuV2CustomEndpoint = $.tpuV2CustomEndpoint;
+        this.universeDomain = $.universeDomain;
         this.userProjectOverride = $.userProjectOverride;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
         this.vmwareengineCustomEndpoint = $.vmwareengineCustomEndpoint;
@@ -1873,6 +1897,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return documentAiWarehouseCustomEndpoint(Output.of(documentAiWarehouseCustomEndpoint));
         }
 
+        public Builder edgecontainerCustomEndpoint(@Nullable Output<String> edgecontainerCustomEndpoint) {
+            $.edgecontainerCustomEndpoint = edgecontainerCustomEndpoint;
+            return this;
+        }
+
+        public Builder edgecontainerCustomEndpoint(String edgecontainerCustomEndpoint) {
+            return edgecontainerCustomEndpoint(Output.of(edgecontainerCustomEndpoint));
+        }
+
         public Builder edgenetworkCustomEndpoint(@Nullable Output<String> edgenetworkCustomEndpoint) {
             $.edgenetworkCustomEndpoint = edgenetworkCustomEndpoint;
             return this;
@@ -2118,6 +2151,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder impersonateServiceAccountDelegates(String... impersonateServiceAccountDelegates) {
             return impersonateServiceAccountDelegates(List.of(impersonateServiceAccountDelegates));
+        }
+
+        public Builder integrationConnectorsCustomEndpoint(@Nullable Output<String> integrationConnectorsCustomEndpoint) {
+            $.integrationConnectorsCustomEndpoint = integrationConnectorsCustomEndpoint;
+            return this;
+        }
+
+        public Builder integrationConnectorsCustomEndpoint(String integrationConnectorsCustomEndpoint) {
+            return integrationConnectorsCustomEndpoint(Output.of(integrationConnectorsCustomEndpoint));
         }
 
         public Builder kmsCustomEndpoint(@Nullable Output<String> kmsCustomEndpoint) {
@@ -2536,6 +2578,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder tpuV2CustomEndpoint(String tpuV2CustomEndpoint) {
             return tpuV2CustomEndpoint(Output.of(tpuV2CustomEndpoint));
+        }
+
+        public Builder universeDomain(@Nullable Output<String> universeDomain) {
+            $.universeDomain = universeDomain;
+            return this;
+        }
+
+        public Builder universeDomain(String universeDomain) {
+            return universeDomain(Output.of(universeDomain));
         }
 
         public Builder userProjectOverride(@Nullable Output<Boolean> userProjectOverride) {

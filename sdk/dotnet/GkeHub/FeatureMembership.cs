@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
+    /// Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The google_gke_hub is the Fleet API.
+    /// 
     /// ## Example Usage
     /// ### Config Management
     /// 
@@ -238,7 +240,15 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ## Import
     /// 
-    /// FeatureMembership can be imported using any of these accepted formats
+    /// FeatureMembership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}` * `{{project}}/{{location}}/{{feature}}/{{membership}}` * `{{location}}/{{feature}}/{{membership}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeatureMembership using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}"
+    /// 
+    ///  to = google_gke_hub_feature_membership.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeatureMembership can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}

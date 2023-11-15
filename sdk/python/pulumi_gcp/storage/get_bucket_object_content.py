@@ -22,7 +22,7 @@ class GetBucketObjectContentResult:
     """
     A collection of values returned by getBucketObjectContent.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -77,6 +77,9 @@ class GetBucketObjectContentResult:
         if output_name and not isinstance(output_name, str):
             raise TypeError("Expected argument 'output_name' to be a str")
         pulumi.set(__self__, "output_name", output_name)
+        if retentions and not isinstance(retentions, list):
+            raise TypeError("Expected argument 'retentions' to be a list")
+        pulumi.set(__self__, "retentions", retentions)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -187,6 +190,11 @@ class GetBucketObjectContentResult:
         return pulumi.get(self, "output_name")
 
     @property
+    @pulumi.getter
+    def retentions(self) -> Sequence['outputs.GetBucketObjectContentRetentionResult']:
+        return pulumi.get(self, "retentions")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -231,6 +239,7 @@ class AwaitableGetBucketObjectContentResult(GetBucketObjectContentResult):
             metadata=self.metadata,
             name=self.name,
             output_name=self.output_name,
+            retentions=self.retentions,
             self_link=self.self_link,
             source=self.source,
             storage_class=self.storage_class,
@@ -293,6 +302,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         output_name=pulumi.get(__ret__, 'output_name'),
+        retentions=pulumi.get(__ret__, 'retentions'),
         self_link=pulumi.get(__ret__, 'self_link'),
         source=pulumi.get(__ret__, 'source'),
         storage_class=pulumi.get(__ret__, 'storage_class'),

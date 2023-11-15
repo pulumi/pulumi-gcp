@@ -63,7 +63,15 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// ## Import
     /// 
-    /// Listing can be imported using any of these accepted formats
+    /// Listing can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}` * `{{location}}/{{data_exchange_id}}/{{listing_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Listing using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}"
+    /// 
+    ///  to = google_bigquery_analytics_hub_listing.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigqueryanalyticshub/listing:Listing When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Listing can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}

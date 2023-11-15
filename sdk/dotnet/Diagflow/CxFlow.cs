@@ -19,6 +19,118 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// ### Dialogflowcx Flow Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "fr",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var basicFlow = new Gcp.Diagflow.CxFlow("basicFlow", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyFlow",
+    ///         Description = "Test Flow",
+    ///         NluSettings = new Gcp.Diagflow.Inputs.CxFlowNluSettingsArgs
+    ///         {
+    ///             ClassificationThreshold = 0.3,
+    ///             ModelType = "MODEL_TYPE_STANDARD",
+    ///         },
+    ///         EventHandlers = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
+    ///             {
+    ///                 Event = "custom-event",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = false,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "I didn't get that. Can you say it again?",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
+    ///             {
+    ///                 Event = "sys.no-match-default",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = false,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "Sorry, could you say that again?",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Diagflow.Inputs.CxFlowEventHandlerArgs
+    ///             {
+    ///                 Event = "sys.no-input-default",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = false,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Text = new Gcp.Diagflow.Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "One more time?",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dialogflowcx Flow Full
     /// 
     /// ```csharp
@@ -50,6 +162,12 @@ namespace Pulumi.Gcp.Diagflow
     ///         {
     ///             EnableSpeechAdaptation = true,
     ///         },
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var basicFlow = new Gcp.Diagflow.CxFlow("basicFlow", new()
@@ -472,6 +590,19 @@ namespace Pulumi.Gcp.Diagflow
     ///                 TargetFlow = agent.StartFlow,
     ///             },
     ///         },
+    ///         AdvancedSettings = new Gcp.Diagflow.Inputs.CxFlowAdvancedSettingsArgs
+    ///         {
+    ///             AudioExportGcsDestination = new Gcp.Diagflow.Inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs
+    ///             {
+    ///                 Uri = bucket.Url.Apply(url =&gt; $"{url}/prefix-"),
+    ///             },
+    ///             DtmfSettings = new Gcp.Diagflow.Inputs.CxFlowAdvancedSettingsDtmfSettingsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 MaxDigits = 1,
+    ///                 FinishDigit = "#",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -479,7 +610,15 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Import
     /// 
-    /// Flow can be imported using any of these accepted formats
+    /// Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{parent}}/flows/{{name}}"
+    /// 
+    ///  to = google_dialogflow_cx_flow.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
@@ -492,6 +631,14 @@ namespace Pulumi.Gcp.Diagflow
     [GcpResourceType("gcp:diagflow/cxFlow:CxFlow")]
     public partial class CxFlow : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("advancedSettings")]
+        public Output<Outputs.CxFlowAdvancedSettings?> AdvancedSettings { get; private set; } = null!;
+
         /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
@@ -516,6 +663,15 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("eventHandlers")]
         public Output<ImmutableArray<Outputs.CxFlowEventHandler>> EventHandlers { get; private set; } = null!;
+
+        /// <summary>
+        /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+        /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+        /// 
+        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        /// </summary>
+        [Output("isDefaultStartFlow")]
+        public Output<bool?> IsDefaultStartFlow { get; private set; } = null!;
 
         /// <summary>
         /// The language of the following fields in flow:
@@ -618,6 +774,14 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxFlowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxFlowAdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
         [Input("description")]
@@ -647,6 +811,15 @@ namespace Pulumi.Gcp.Diagflow
             get => _eventHandlers ?? (_eventHandlers = new InputList<Inputs.CxFlowEventHandlerArgs>());
             set => _eventHandlers = value;
         }
+
+        /// <summary>
+        /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+        /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+        /// 
+        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        /// </summary>
+        [Input("isDefaultStartFlow")]
+        public Input<bool>? IsDefaultStartFlow { get; set; }
 
         /// <summary>
         /// The language of the following fields in flow:
@@ -716,6 +889,14 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxFlowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxFlowAdvancedSettingsGetArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
         [Input("description")]
@@ -745,6 +926,15 @@ namespace Pulumi.Gcp.Diagflow
             get => _eventHandlers ?? (_eventHandlers = new InputList<Inputs.CxFlowEventHandlerGetArgs>());
             set => _eventHandlers = value;
         }
+
+        /// <summary>
+        /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+        /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+        /// 
+        /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+        /// </summary>
+        [Input("isDefaultStartFlow")]
+        public Input<bool>? IsDefaultStartFlow { get; set; }
 
         /// <summary>
         /// The language of the following fields in flow:

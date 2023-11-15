@@ -92,7 +92,15 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// ## Import
     /// 
-    /// Instance can be imported using any of these accepted formats
+    /// Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/instances/{{name}}"
+    /// 
+    ///  to = google_spanner_instance.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
@@ -109,6 +117,16 @@ namespace Pulumi.Gcp.Spanner
     [GcpResourceType("gcp:spanner/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// When autoscaling is enabled, num_nodes and processing_units are treated as,
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        /// the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("autoscalingConfig")]
+        public Output<Outputs.InstanceAutoscalingConfig?> AutoscalingConfig { get; private set; } = null!;
+
         /// <summary>
         /// The name of the instance's configuration (similar but not
         /// quite the same as a region) which defines the geographic placement and
@@ -249,6 +267,16 @@ namespace Pulumi.Gcp.Spanner
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// When autoscaling is enabled, num_nodes and processing_units are treated as,
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        /// the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.InstanceAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
+
+        /// <summary>
         /// The name of the instance's configuration (similar but not
         /// quite the same as a region) which defines the geographic placement and
         /// replication of your databases in this instance. It determines where your data
@@ -331,6 +359,16 @@ namespace Pulumi.Gcp.Spanner
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+        /// When autoscaling is enabled, num_nodes and processing_units are treated as,
+        /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+        /// the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.InstanceAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
+
         /// <summary>
         /// The name of the instance's configuration (similar but not
         /// quite the same as a region) which defines the geographic placement and

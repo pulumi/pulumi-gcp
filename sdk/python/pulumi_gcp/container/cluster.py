@@ -42,6 +42,7 @@ class ClusterArgs:
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -86,7 +87,7 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
@@ -143,6 +144,9 @@ class ClusterArgs:
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -276,8 +280,6 @@ class ClusterArgs:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
@@ -340,6 +342,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
+        if fleet is not None:
+            pulumi.set(__self__, "fleet", fleet)
         if gateway_api_config is not None:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
@@ -438,7 +442,7 @@ class ClusterArgs:
     @pulumi.getter(name="allowNetAdmin")
     def allow_net_admin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable NET_ADMIN for the cluster. Defaults to 
+        Enable NET_ADMIN for the cluster. Defaults to
         `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
         set to `true`).
         """
@@ -765,6 +769,20 @@ class ClusterArgs:
     @enable_tpu.setter
     def enable_tpu(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_tpu", value)
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> Optional[pulumi.Input['ClusterFleetArgs']]:
+        """
+        Fleet configuration for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "fleet")
+
+    @fleet.setter
+    def fleet(self, value: Optional[pulumi.Input['ClusterFleetArgs']]):
+        pulumi.set(self, "fleet", value)
 
     @property
     @pulumi.getter(name="gatewayApiConfig")
@@ -1277,8 +1295,6 @@ class ClusterArgs:
     def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "security_posture_config")
 
@@ -1381,6 +1397,7 @@ class _ClusterState:
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
+                 fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -1431,7 +1448,7 @@ class _ClusterState:
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
@@ -1489,6 +1506,9 @@ class _ClusterState:
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
+        :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -1626,8 +1646,6 @@ class _ClusterState:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
@@ -1700,6 +1718,8 @@ class _ClusterState:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if fleet is not None:
+            pulumi.set(__self__, "fleet", fleet)
         if gateway_api_config is not None:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
@@ -1810,7 +1830,7 @@ class _ClusterState:
     @pulumi.getter(name="allowNetAdmin")
     def allow_net_admin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable NET_ADMIN for the cluster. Defaults to 
+        Enable NET_ADMIN for the cluster. Defaults to
         `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
         set to `true`).
         """
@@ -2149,6 +2169,20 @@ class _ClusterState:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> Optional[pulumi.Input['ClusterFleetArgs']]:
+        """
+        Fleet configuration for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "fleet")
+
+    @fleet.setter
+    def fleet(self, value: Optional[pulumi.Input['ClusterFleetArgs']]):
+        pulumi.set(self, "fleet", value)
 
     @property
     @pulumi.getter(name="gatewayApiConfig")
@@ -2696,8 +2730,6 @@ class _ClusterState:
     def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "security_posture_config")
 
@@ -2842,6 +2874,7 @@ class Cluster(pulumi.CustomResource):
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['ClusterFleetArgs']]] = None,
                  gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -2941,18 +2974,26 @@ class Cluster(pulumi.CustomResource):
 
         ## Import
 
-        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
+
+         to = google_container_cluster.default }
 
         ```sh
-         $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+         $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+         $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+         $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
         ```
 
          For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
@@ -2961,7 +3002,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
@@ -3018,6 +3059,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet configuration for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -3151,8 +3195,6 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
@@ -3227,18 +3269,26 @@ class Cluster(pulumi.CustomResource):
 
         ## Import
 
-        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
+
+         to = google_container_cluster.default }
 
         ```sh
-         $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+         $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+         $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+         $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
         ```
 
          For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
@@ -3284,6 +3334,7 @@ class Cluster(pulumi.CustomResource):
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['ClusterFleetArgs']]] = None,
                  gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -3359,6 +3410,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enable_multi_networking"] = enable_multi_networking
             __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
             __props__.__dict__["enable_tpu"] = enable_tpu
+            __props__.__dict__["fleet"] = fleet
             __props__.__dict__["gateway_api_config"] = gateway_api_config
             __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_node_count"] = initial_node_count
@@ -3443,6 +3495,7 @@ class Cluster(pulumi.CustomResource):
             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
             enable_tpu: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
+            fleet: Optional[pulumi.Input[pulumi.InputType['ClusterFleetArgs']]] = None,
             gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
             identity_service_config: Optional[pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']]] = None,
             initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -3498,7 +3551,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
         :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
@@ -3556,6 +3609,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
+        :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet configuration for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -3693,8 +3749,6 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
@@ -3744,6 +3798,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
         __props__.__dict__["enable_tpu"] = enable_tpu
         __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["fleet"] = fleet
         __props__.__dict__["gateway_api_config"] = gateway_api_config
         __props__.__dict__["identity_service_config"] = identity_service_config
         __props__.__dict__["initial_node_count"] = initial_node_count
@@ -3805,7 +3860,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="allowNetAdmin")
     def allow_net_admin(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable NET_ADMIN for the cluster. Defaults to 
+        Enable NET_ADMIN for the cluster. Defaults to
         `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
         set to `true`).
         """
@@ -4040,6 +4095,16 @@ class Cluster(pulumi.CustomResource):
         The IP address of this cluster's Kubernetes master.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> pulumi.Output[Optional['outputs.ClusterFleet']]:
+        """
+        Fleet configuration for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "fleet")
 
     @property
     @pulumi.getter(name="gatewayApiConfig")
@@ -4439,8 +4504,6 @@ class Cluster(pulumi.CustomResource):
     def security_posture_config(self) -> pulumi.Output['outputs.ClusterSecurityPostureConfig']:
         """
         Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "security_posture_config")
 

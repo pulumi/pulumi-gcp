@@ -19,6 +19,27 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
     public static final TargetHttpsProxyArgs Empty = new TargetHttpsProxyArgs();
 
     /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * 
+     */
+    @Import(name="certificateManagerCertificates")
+    private @Nullable Output<List<String>> certificateManagerCertificates;
+
+    /**
+     * @return URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * 
+     */
+    public Optional<Output<List<String>>> certificateManagerCertificates() {
+        return Optional.ofNullable(this.certificateManagerCertificates);
+    }
+
+    /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -195,16 +216,18 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      * 
      */
     @Import(name="sslCertificates")
     private @Nullable Output<List<String>> sslCertificates;
 
     /**
-     * @return A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * @return URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      * 
      */
     public Optional<Output<List<String>>> sslCertificates() {
@@ -254,6 +277,7 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
     private TargetHttpsProxyArgs() {}
 
     private TargetHttpsProxyArgs(TargetHttpsProxyArgs $) {
+        this.certificateManagerCertificates = $.certificateManagerCertificates;
         this.certificateMap = $.certificateMap;
         this.description = $.description;
         this.httpKeepAliveTimeoutSec = $.httpKeepAliveTimeoutSec;
@@ -283,6 +307,46 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(TargetHttpsProxyArgs defaults) {
             $ = new TargetHttpsProxyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+         * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+         * sslCertificates and certificateManagerCertificates fields can not be defined together.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateManagerCertificates(@Nullable Output<List<String>> certificateManagerCertificates) {
+            $.certificateManagerCertificates = certificateManagerCertificates;
+            return this;
+        }
+
+        /**
+         * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+         * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+         * sslCertificates and certificateManagerCertificates fields can not be defined together.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateManagerCertificates(List<String> certificateManagerCertificates) {
+            return certificateManagerCertificates(Output.of(certificateManagerCertificates));
+        }
+
+        /**
+         * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+         * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+         * sslCertificates and certificateManagerCertificates fields can not be defined together.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateManagerCertificates(String... certificateManagerCertificates) {
+            return certificateManagerCertificates(List.of(certificateManagerCertificates));
         }
 
         /**
@@ -510,8 +574,9 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sslCertificates A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-         * connections between users and the load balancer. At least one resource must be specified.
+         * @param sslCertificates URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+         * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+         * sslCertificates and certificateManagerCertificates can not be defined together.
          * 
          * @return builder
          * 
@@ -522,8 +587,9 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sslCertificates A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-         * connections between users and the load balancer. At least one resource must be specified.
+         * @param sslCertificates URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+         * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+         * sslCertificates and certificateManagerCertificates can not be defined together.
          * 
          * @return builder
          * 
@@ -533,8 +599,9 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sslCertificates A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-         * connections between users and the load balancer. At least one resource must be specified.
+         * @param sslCertificates URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+         * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+         * sslCertificates and certificateManagerCertificates can not be defined together.
          * 
          * @return builder
          * 

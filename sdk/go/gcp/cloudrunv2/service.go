@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -488,7 +487,17 @@ import (
 //
 // ## Import
 //
-// # Service can be imported using any of these accepted formats
+// Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Service using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/services/{{name}}"
+//
+//	to = google_cloud_run_v2_service.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:cloudrunv2/service:Service When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Service can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -572,7 +581,7 @@ type Service struct {
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run service
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the Service.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -616,6 +625,9 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	if args.Template == nil {
 		return nil, errors.New("invalid value for required argument 'Template'")
 	}
@@ -887,7 +899,7 @@ type serviceArgs struct {
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// Name of the Service.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -939,7 +951,7 @@ type ServiceArgs struct {
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// Name of the Service.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -976,12 +988,6 @@ func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput)
 }
 
-func (i *Service) ToOutput(ctx context.Context) pulumix.Output[*Service] {
-	return pulumix.Output[*Service]{
-		OutputState: i.ToServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceArrayInput is an input type that accepts ServiceArray and ServiceArrayOutput values.
 // You can construct a concrete instance of `ServiceArrayInput` via:
 //
@@ -1005,12 +1011,6 @@ func (i ServiceArray) ToServiceArrayOutput() ServiceArrayOutput {
 
 func (i ServiceArray) ToServiceArrayOutputWithContext(ctx context.Context) ServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceArrayOutput)
-}
-
-func (i ServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Service] {
-	return pulumix.Output[[]*Service]{
-		OutputState: i.ToServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceMapInput is an input type that accepts ServiceMap and ServiceMapOutput values.
@@ -1038,12 +1038,6 @@ func (i ServiceMap) ToServiceMapOutputWithContext(ctx context.Context) ServiceMa
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMapOutput)
 }
 
-func (i ServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Service] {
-	return pulumix.Output[map[string]*Service]{
-		OutputState: i.ToServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceOutput struct{ *pulumi.OutputState }
 
 func (ServiceOutput) ElementType() reflect.Type {
@@ -1056,12 +1050,6 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
-}
-
-func (o ServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*Service] {
-	return pulumix.Output[*Service]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -1189,8 +1177,8 @@ func (o ServiceOutput) LaunchStage() pulumi.StringOutput {
 }
 
 // The location of the cloud run service
-func (o ServiceOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o ServiceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Name of the Service.
@@ -1277,12 +1265,6 @@ func (o ServiceArrayOutput) ToServiceArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Service] {
-	return pulumix.Output[[]*Service]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceArrayOutput) Index(i pulumi.IntInput) ServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Service {
 		return vs[0].([]*Service)[vs[1].(int)]
@@ -1301,12 +1283,6 @@ func (o ServiceMapOutput) ToServiceMapOutput() ServiceMapOutput {
 
 func (o ServiceMapOutput) ToServiceMapOutputWithContext(ctx context.Context) ServiceMapOutput {
 	return o
-}
-
-func (o ServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Service] {
-	return pulumix.Output[map[string]*Service]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceMapOutput) MapIndex(k pulumi.StringInput) ServiceOutput {

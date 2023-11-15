@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Google Compute Engine Instance Group Manager API creates and manages pools
@@ -129,29 +128,39 @@ import (
 //
 // ## Import
 //
-// # Instance group managers can be imported using any of these accepted formats
+// Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
+//
+//	to = google_compute_instance_group_manager.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{zone}}/{{name}}
+//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{name}}
+//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
+//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
 //
 // ```
 type InstanceGroupManager struct {
@@ -626,12 +635,6 @@ func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
 }
 
-func (i *InstanceGroupManager) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManager] {
-	return pulumix.Output[*InstanceGroupManager]{
-		OutputState: i.ToInstanceGroupManagerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceGroupManagerArrayInput is an input type that accepts InstanceGroupManagerArray and InstanceGroupManagerArrayOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerArrayInput` via:
 //
@@ -655,12 +658,6 @@ func (i InstanceGroupManagerArray) ToInstanceGroupManagerArrayOutput() InstanceG
 
 func (i InstanceGroupManagerArray) ToInstanceGroupManagerArrayOutputWithContext(ctx context.Context) InstanceGroupManagerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerArrayOutput)
-}
-
-func (i InstanceGroupManagerArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroupManager] {
-	return pulumix.Output[[]*InstanceGroupManager]{
-		OutputState: i.ToInstanceGroupManagerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceGroupManagerMapInput is an input type that accepts InstanceGroupManagerMap and InstanceGroupManagerMapOutput values.
@@ -688,12 +685,6 @@ func (i InstanceGroupManagerMap) ToInstanceGroupManagerMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerMapOutput)
 }
 
-func (i InstanceGroupManagerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroupManager] {
-	return pulumix.Output[map[string]*InstanceGroupManager]{
-		OutputState: i.ToInstanceGroupManagerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceGroupManagerOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
@@ -706,12 +697,6 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroup
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
 	return o
-}
-
-func (o InstanceGroupManagerOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupManager] {
-	return pulumix.Output[*InstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 // )
@@ -892,12 +877,6 @@ func (o InstanceGroupManagerArrayOutput) ToInstanceGroupManagerArrayOutputWithCo
 	return o
 }
 
-func (o InstanceGroupManagerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroupManager] {
-	return pulumix.Output[[]*InstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceGroupManagerArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGroupManager {
 		return vs[0].([]*InstanceGroupManager)[vs[1].(int)]
@@ -916,12 +895,6 @@ func (o InstanceGroupManagerMapOutput) ToInstanceGroupManagerMapOutput() Instanc
 
 func (o InstanceGroupManagerMapOutput) ToInstanceGroupManagerMapOutputWithContext(ctx context.Context) InstanceGroupManagerMapOutput {
 	return o
-}
-
-func (o InstanceGroupManagerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroupManager] {
-	return pulumix.Output[map[string]*InstanceGroupManager]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerOutput {

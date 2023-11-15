@@ -16,7 +16,7 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
     public static final LocationTagBindingArgs Empty = new LocationTagBindingArgs();
 
     /**
-     * Location of the resource.
+     * Location of the target resource.
      * 
      * ***
      * 
@@ -25,7 +25,7 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> location;
 
     /**
-     * @return Location of the resource.
+     * @return Location of the target resource.
      * 
      * ***
      * 
@@ -91,7 +91,7 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location Location of the resource.
+         * @param location Location of the target resource.
          * 
          * ***
          * 
@@ -104,7 +104,7 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location Location of the resource.
+         * @param location Location of the target resource.
          * 
          * ***
          * 

@@ -225,6 +225,9 @@ public final class Config {
     public Optional<String> documentAiWarehouseCustomEndpoint() {
         return Codegen.stringProp("documentAiWarehouseCustomEndpoint").config(config).get();
     }
+    public Optional<String> edgecontainerCustomEndpoint() {
+        return Codegen.stringProp("edgecontainerCustomEndpoint").config(config).get();
+    }
     public Optional<String> edgenetworkCustomEndpoint() {
         return Codegen.stringProp("edgenetworkCustomEndpoint").config(config).get();
     }
@@ -305,6 +308,9 @@ public final class Config {
     }
     public Optional<List<String>> impersonateServiceAccountDelegates() {
         return Codegen.objectProp("impersonateServiceAccountDelegates", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
+    }
+    public Optional<String> integrationConnectorsCustomEndpoint() {
+        return Codegen.stringProp("integrationConnectorsCustomEndpoint").config(config).get();
     }
     public Optional<String> kmsCustomEndpoint() {
         return Codegen.stringProp("kmsCustomEndpoint").config(config).get();
@@ -443,6 +449,9 @@ public final class Config {
     }
     public Optional<String> tpuV2CustomEndpoint() {
         return Codegen.stringProp("tpuV2CustomEndpoint").config(config).get();
+    }
+    public Optional<String> universeDomain() {
+        return Codegen.stringProp("universeDomain").config(config).get();
     }
     public Optional<Boolean> userProjectOverride() {
         return Codegen.booleanProp("userProjectOverride").config(config).get();

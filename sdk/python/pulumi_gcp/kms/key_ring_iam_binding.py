@@ -340,28 +340,18 @@ class KeyRingIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+        ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
-        This member resource can be imported using the `key_ring_id`, role, and account e.g.
+         id = "{{project_id}}/{{location}}/{{key_ring_name}}"
+
+         to = google_kms_key_ring_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
-         IAM binding imports use space-delimited identifiers; the resource in question and the role.
-
-        This binding resource can be imported using the `key_ring_id` and role, e.g.
-
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
-        ```
-
-         IAM policy imports use the identifier of the resource in question.
-
-        This policy resource can be imported using the `key_ring_id`, e.g.
-
-        ```sh
-         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam your-project-id/location-name/key-ring-name
+         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -499,28 +489,18 @@ class KeyRingIAMBinding(pulumi.CustomResource):
 
         ## Import
 
-        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+        ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
-        This member resource can be imported using the `key_ring_id`, role, and account e.g.
+         id = "{{project_id}}/{{location}}/{{key_ring_name}}"
+
+         to = google_kms_key_ring_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
-         IAM binding imports use space-delimited identifiers; the resource in question and the role.
-
-        This binding resource can be imported using the `key_ring_id` and role, e.g.
-
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
-        ```
-
-         IAM policy imports use the identifier of the resource in question.
-
-        This policy resource can be imported using the `key_ring_id`, e.g.
-
-        ```sh
-         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam your-project-id/location-name/key-ring-name
+         $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}
         ```
 
         :param str resource_name: The name of the resource.

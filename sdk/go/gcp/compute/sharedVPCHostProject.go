@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enables the Google Compute Engine
@@ -63,11 +62,21 @@ import (
 //
 // ## Import
 //
-// Google Compute Engine Shared VPC host project feature can be imported using the `project`, e.g.
+// Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g. * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Google Compute Engine Shared VPC host projects using one of the formats above. For exampletf import {
+//
+//	id = "{{project_id}}"
+//
+//	to = google_compute_shared_vpc_host_project.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject host host-project-id
+//	$ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
 //
 // ```
 type SharedVPCHostProject struct {
@@ -157,12 +166,6 @@ func (i *SharedVPCHostProject) ToSharedVPCHostProjectOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectOutput)
 }
 
-func (i *SharedVPCHostProject) ToOutput(ctx context.Context) pulumix.Output[*SharedVPCHostProject] {
-	return pulumix.Output[*SharedVPCHostProject]{
-		OutputState: i.ToSharedVPCHostProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedVPCHostProjectArrayInput is an input type that accepts SharedVPCHostProjectArray and SharedVPCHostProjectArrayOutput values.
 // You can construct a concrete instance of `SharedVPCHostProjectArrayInput` via:
 //
@@ -186,12 +189,6 @@ func (i SharedVPCHostProjectArray) ToSharedVPCHostProjectArrayOutput() SharedVPC
 
 func (i SharedVPCHostProjectArray) ToSharedVPCHostProjectArrayOutputWithContext(ctx context.Context) SharedVPCHostProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectArrayOutput)
-}
-
-func (i SharedVPCHostProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*SharedVPCHostProject] {
-	return pulumix.Output[[]*SharedVPCHostProject]{
-		OutputState: i.ToSharedVPCHostProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SharedVPCHostProjectMapInput is an input type that accepts SharedVPCHostProjectMap and SharedVPCHostProjectMapOutput values.
@@ -219,12 +216,6 @@ func (i SharedVPCHostProjectMap) ToSharedVPCHostProjectMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectMapOutput)
 }
 
-func (i SharedVPCHostProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedVPCHostProject] {
-	return pulumix.Output[map[string]*SharedVPCHostProject]{
-		OutputState: i.ToSharedVPCHostProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedVPCHostProjectOutput struct{ *pulumi.OutputState }
 
 func (SharedVPCHostProjectOutput) ElementType() reflect.Type {
@@ -237,12 +228,6 @@ func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectOutput() SharedVPCHost
 
 func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput {
 	return o
-}
-
-func (o SharedVPCHostProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedVPCHostProject] {
-	return pulumix.Output[*SharedVPCHostProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the project that will serve as a Shared VPC host project
@@ -264,12 +249,6 @@ func (o SharedVPCHostProjectArrayOutput) ToSharedVPCHostProjectArrayOutputWithCo
 	return o
 }
 
-func (o SharedVPCHostProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SharedVPCHostProject] {
-	return pulumix.Output[[]*SharedVPCHostProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedVPCHostProjectArrayOutput) Index(i pulumi.IntInput) SharedVPCHostProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SharedVPCHostProject {
 		return vs[0].([]*SharedVPCHostProject)[vs[1].(int)]
@@ -288,12 +267,6 @@ func (o SharedVPCHostProjectMapOutput) ToSharedVPCHostProjectMapOutput() SharedV
 
 func (o SharedVPCHostProjectMapOutput) ToSharedVPCHostProjectMapOutputWithContext(ctx context.Context) SharedVPCHostProjectMapOutput {
 	return o
-}
-
-func (o SharedVPCHostProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedVPCHostProject] {
-	return pulumix.Output[map[string]*SharedVPCHostProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedVPCHostProjectMapOutput) MapIndex(k pulumi.StringInput) SharedVPCHostProjectOutput {

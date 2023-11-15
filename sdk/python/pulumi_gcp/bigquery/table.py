@@ -30,6 +30,7 @@ class TableArgs:
                  max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
+                 require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
@@ -64,11 +65,17 @@ class TableArgs:
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
-        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be
+               returned when the table (or stale MV) is queried. Staleness encoded as a
+               string encoding of [SQL IntervalValue
+               type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
+        :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
+               require a partition filter that can be used for partition elimination to be
+               specified.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
                for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -117,6 +124,8 @@ class TableArgs:
             pulumi.set(__self__, "project", project)
         if range_partitioning is not None:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
+        if require_partition_filter is not None:
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if table_constraints is not None:
@@ -279,7 +288,10 @@ class TableArgs:
     @pulumi.getter(name="maxStaleness")
     def max_staleness(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        The maximum staleness of data that could be
+        returned when the table (or stale MV) is queried. Staleness encoded as a
+        string encoding of [SQL IntervalValue
+        type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         """
         return pulumi.get(self, "max_staleness")
 
@@ -312,6 +324,20 @@ class TableArgs:
     @range_partitioning.setter
     def range_partitioning(self, value: Optional[pulumi.Input['TableRangePartitioningArgs']]):
         pulumi.set(self, "range_partitioning", value)
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, queries over this table
+        require a partition filter that can be used for partition elimination to be
+        specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
+
+    @require_partition_filter.setter
+    def require_partition_filter(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_partition_filter", value)
 
     @property
     @pulumi.getter
@@ -404,6 +430,7 @@ class _TableState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
+                 require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
@@ -459,7 +486,10 @@ class _TableState:
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
-        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be
+               returned when the table (or stale MV) is queried. Staleness encoded as a
+               string encoding of [SQL IntervalValue
+               type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         :param pulumi.Input[int] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
         :param pulumi.Input[int] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
@@ -468,6 +498,9 @@ class _TableState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
+        :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
+               require a partition filter that can be used for partition elimination to be
+               specified.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
                for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -539,6 +572,8 @@ class _TableState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if range_partitioning is not None:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
+        if require_partition_filter is not None:
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if self_link is not None:
@@ -769,7 +804,10 @@ class _TableState:
     @pulumi.getter(name="maxStaleness")
     def max_staleness(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        The maximum staleness of data that could be
+        returned when the table (or stale MV) is queried. Staleness encoded as a
+        string encoding of [SQL IntervalValue
+        type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         """
         return pulumi.get(self, "max_staleness")
 
@@ -850,6 +888,20 @@ class _TableState:
     @range_partitioning.setter
     def range_partitioning(self, value: Optional[pulumi.Input['TableRangePartitioningArgs']]):
         pulumi.set(self, "range_partitioning", value)
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, queries over this table
+        require a partition filter that can be used for partition elimination to be
+        specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
+
+    @require_partition_filter.setter
+    def require_partition_filter(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_partition_filter", value)
 
     @property
     @pulumi.getter
@@ -973,6 +1025,7 @@ class Table(pulumi.CustomResource):
                  max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+                 require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -1042,7 +1095,15 @@ class Table(pulumi.CustomResource):
 
         ## Import
 
-        BigQuery tables imported using any of these accepted formats
+        BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}"
+
+         to = google_bigquery_table.default }
+
+        ```sh
+         $ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
@@ -1084,11 +1145,17 @@ class Table(pulumi.CustomResource):
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
-        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be
+               returned when the table (or stale MV) is queried. Staleness encoded as a
+               string encoding of [SQL IntervalValue
+               type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
+        :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
+               require a partition filter that can be used for partition elimination to be
+               specified.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
                for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -1182,7 +1249,15 @@ class Table(pulumi.CustomResource):
 
         ## Import
 
-        BigQuery tables imported using any of these accepted formats
+        BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}"
+
+         to = google_bigquery_table.default }
+
+        ```sh
+         $ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
@@ -1224,6 +1299,7 @@ class Table(pulumi.CustomResource):
                  max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+                 require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -1253,6 +1329,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["max_staleness"] = max_staleness
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
+            __props__.__dict__["require_partition_filter"] = require_partition_filter
             __props__.__dict__["schema"] = schema
             __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
@@ -1305,6 +1382,7 @@ class Table(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+            require_partition_filter: Optional[pulumi.Input[bool]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
@@ -1365,7 +1443,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
-        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be
+               returned when the table (or stale MV) is queried. Staleness encoded as a
+               string encoding of [SQL IntervalValue
+               type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         :param pulumi.Input[int] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
         :param pulumi.Input[int] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
@@ -1374,6 +1455,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
+        :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
+               require a partition filter that can be used for partition elimination to be
+               specified.
         :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
                for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -1427,6 +1511,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["range_partitioning"] = range_partitioning
+        __props__.__dict__["require_partition_filter"] = require_partition_filter
         __props__.__dict__["schema"] = schema
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
@@ -1591,7 +1676,10 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="maxStaleness")
     def max_staleness(self) -> pulumi.Output[Optional[str]]:
         """
-        The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        The maximum staleness of data that could be
+        returned when the table (or stale MV) is queried. Staleness encoded as a
+        string encoding of [SQL IntervalValue
+        type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         """
         return pulumi.get(self, "max_staleness")
 
@@ -1644,6 +1732,16 @@ class Table(pulumi.CustomResource):
         partitioning for this table. Structure is documented below.
         """
         return pulumi.get(self, "range_partitioning")
+
+    @property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, queries over this table
+        require a partition filter that can be used for partition elimination to be
+        specified.
+        """
+        return pulumi.get(self, "require_partition_filter")
 
     @property
     @pulumi.getter

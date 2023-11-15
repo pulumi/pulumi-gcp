@@ -100,7 +100,15 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// MetricDescriptor can be imported using any of these accepted formats:
+    /// MetricDescriptor can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MetricDescriptor using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_monitoring_metric_descriptor.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MetricDescriptor can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}

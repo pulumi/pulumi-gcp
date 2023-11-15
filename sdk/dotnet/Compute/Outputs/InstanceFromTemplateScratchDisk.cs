@@ -13,15 +13,19 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromTemplateScratchDisk
     {
+        public readonly string? DeviceName;
         public readonly string Interface;
         public readonly int? Size;
 
         [OutputConstructor]
         private InstanceFromTemplateScratchDisk(
+            string? deviceName,
+
             string @interface,
 
             int? size)
         {
+            DeviceName = deviceName;
             Interface = @interface;
             Size = size;
         }

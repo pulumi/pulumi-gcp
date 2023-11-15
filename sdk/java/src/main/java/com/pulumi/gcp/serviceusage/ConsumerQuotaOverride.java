@@ -31,7 +31,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ConsumerQuotaOverride can be imported using any of these accepted formats
+ * ConsumerQuotaOverride can be imported using any of these accepted formats* `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}` * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}` * `{{service}}/{{metric}}/{{limit}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConsumerQuotaOverride using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}&#34;
+ * 
+ *  to = google_service_usage_consumer_quota_override.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConsumerQuotaOverride can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}

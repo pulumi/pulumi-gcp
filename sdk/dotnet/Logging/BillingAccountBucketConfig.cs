@@ -16,35 +16,17 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// &gt; **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = Gcp.Organizations.GetBillingAccount.Invoke(new()
-    ///     {
-    ///         BillingAccount = "00AA00-000AAA-00AA0A",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.Logging.BillingAccountBucketConfig("basic", new()
-    ///     {
-    ///         BillingAccount = @default.Apply(@default =&gt; @default.Apply(getBillingAccountResult =&gt; getBillingAccountResult.BillingAccount)),
-    ///         Location = "global",
-    ///         RetentionDays = 30,
-    ///         BucketId = "_Default",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the following format:
+    /// This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}"
+    /// 
+    ///  to = google_logging_billing_account_bucket_config.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -78,6 +60,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        [Output("indexConfigs")]
+        public Output<ImmutableArray<Outputs.BillingAccountBucketConfigIndexConfig>> IndexConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -175,6 +163,18 @@ namespace Pulumi.Gcp.Logging
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("indexConfigs")]
+        private InputList<Inputs.BillingAccountBucketConfigIndexConfigArgs>? _indexConfigs;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BillingAccountBucketConfigIndexConfigArgs> IndexConfigs
+        {
+            get => _indexConfigs ?? (_indexConfigs = new InputList<Inputs.BillingAccountBucketConfigIndexConfigArgs>());
+            set => _indexConfigs = value;
+        }
+
         /// <summary>
         /// The location of the bucket.
         /// </summary>
@@ -220,6 +220,18 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("indexConfigs")]
+        private InputList<Inputs.BillingAccountBucketConfigIndexConfigGetArgs>? _indexConfigs;
+
+        /// <summary>
+        /// A list of indexed fields and related configuration data. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BillingAccountBucketConfigIndexConfigGetArgs> IndexConfigs
+        {
+            get => _indexConfigs ?? (_indexConfigs = new InputList<Inputs.BillingAccountBucketConfigIndexConfigGetArgs>());
+            set => _indexConfigs = value;
+        }
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

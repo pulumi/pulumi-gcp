@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows creation and management of a Google Cloud Platform project.
@@ -94,11 +93,21 @@ import (
 //
 // ## Import
 //
-// Projects can be imported using the `project_id`, e.g.
+// Projects can be imported using the `project_id`, e.g. * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Projects using one of the formats above. For exampletf import {
+//
+//	id = "{{project_id}}"
+//
+//	to = google_project.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
+//	$ pulumi import gcp:projects/usageExportBucket:UsageExportBucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Projects can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
 //
 // ```
 type UsageExportBucket struct {
@@ -208,12 +217,6 @@ func (i *UsageExportBucket) ToUsageExportBucketOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketOutput)
 }
 
-func (i *UsageExportBucket) ToOutput(ctx context.Context) pulumix.Output[*UsageExportBucket] {
-	return pulumix.Output[*UsageExportBucket]{
-		OutputState: i.ToUsageExportBucketOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UsageExportBucketArrayInput is an input type that accepts UsageExportBucketArray and UsageExportBucketArrayOutput values.
 // You can construct a concrete instance of `UsageExportBucketArrayInput` via:
 //
@@ -237,12 +240,6 @@ func (i UsageExportBucketArray) ToUsageExportBucketArrayOutput() UsageExportBuck
 
 func (i UsageExportBucketArray) ToUsageExportBucketArrayOutputWithContext(ctx context.Context) UsageExportBucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketArrayOutput)
-}
-
-func (i UsageExportBucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*UsageExportBucket] {
-	return pulumix.Output[[]*UsageExportBucket]{
-		OutputState: i.ToUsageExportBucketArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UsageExportBucketMapInput is an input type that accepts UsageExportBucketMap and UsageExportBucketMapOutput values.
@@ -270,12 +267,6 @@ func (i UsageExportBucketMap) ToUsageExportBucketMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketMapOutput)
 }
 
-func (i UsageExportBucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UsageExportBucket] {
-	return pulumix.Output[map[string]*UsageExportBucket]{
-		OutputState: i.ToUsageExportBucketMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UsageExportBucketOutput struct{ *pulumi.OutputState }
 
 func (UsageExportBucketOutput) ElementType() reflect.Type {
@@ -288,12 +279,6 @@ func (o UsageExportBucketOutput) ToUsageExportBucketOutput() UsageExportBucketOu
 
 func (o UsageExportBucketOutput) ToUsageExportBucketOutputWithContext(ctx context.Context) UsageExportBucketOutput {
 	return o
-}
-
-func (o UsageExportBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*UsageExportBucket] {
-	return pulumix.Output[*UsageExportBucket]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bucket to store reports in.
@@ -325,12 +310,6 @@ func (o UsageExportBucketArrayOutput) ToUsageExportBucketArrayOutputWithContext(
 	return o
 }
 
-func (o UsageExportBucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UsageExportBucket] {
-	return pulumix.Output[[]*UsageExportBucket]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UsageExportBucketArrayOutput) Index(i pulumi.IntInput) UsageExportBucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UsageExportBucket {
 		return vs[0].([]*UsageExportBucket)[vs[1].(int)]
@@ -349,12 +328,6 @@ func (o UsageExportBucketMapOutput) ToUsageExportBucketMapOutput() UsageExportBu
 
 func (o UsageExportBucketMapOutput) ToUsageExportBucketMapOutputWithContext(ctx context.Context) UsageExportBucketMapOutput {
 	return o
-}
-
-func (o UsageExportBucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UsageExportBucket] {
-	return pulumix.Output[map[string]*UsageExportBucket]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UsageExportBucketMapOutput) MapIndex(k pulumi.StringInput) UsageExportBucketOutput {

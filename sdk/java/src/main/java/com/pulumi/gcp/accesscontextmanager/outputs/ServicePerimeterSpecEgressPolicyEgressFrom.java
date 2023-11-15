@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimeterSpecEgressPolicyEgressFromSource;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,18 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
      * 
      */
     private @Nullable String identityType;
+    /**
+     * @return Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+     * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+     * 
+     */
+    private @Nullable String sourceRestriction;
+    /**
+     * @return Sources that this EgressPolicy authorizes access from.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServicePerimeterSpecEgressPolicyEgressFromSource> sources;
 
     private ServicePerimeterSpecEgressPolicyEgressFrom() {}
     /**
@@ -48,6 +61,22 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
     public Optional<String> identityType() {
         return Optional.ofNullable(this.identityType);
     }
+    /**
+     * @return Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+     * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+     * 
+     */
+    public Optional<String> sourceRestriction() {
+        return Optional.ofNullable(this.sourceRestriction);
+    }
+    /**
+     * @return Sources that this EgressPolicy authorizes access from.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServicePerimeterSpecEgressPolicyEgressFromSource> sources() {
+        return this.sources == null ? List.of() : this.sources;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -60,11 +89,15 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
     public static final class Builder {
         private @Nullable List<String> identities;
         private @Nullable String identityType;
+        private @Nullable String sourceRestriction;
+        private @Nullable List<ServicePerimeterSpecEgressPolicyEgressFromSource> sources;
         public Builder() {}
         public Builder(ServicePerimeterSpecEgressPolicyEgressFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identities = defaults.identities;
     	      this.identityType = defaults.identityType;
+    	      this.sourceRestriction = defaults.sourceRestriction;
+    	      this.sources = defaults.sources;
         }
 
         @CustomType.Setter
@@ -80,10 +113,25 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
             this.identityType = identityType;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceRestriction(@Nullable String sourceRestriction) {
+            this.sourceRestriction = sourceRestriction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sources(@Nullable List<ServicePerimeterSpecEgressPolicyEgressFromSource> sources) {
+            this.sources = sources;
+            return this;
+        }
+        public Builder sources(ServicePerimeterSpecEgressPolicyEgressFromSource... sources) {
+            return sources(List.of(sources));
+        }
         public ServicePerimeterSpecEgressPolicyEgressFrom build() {
             final var o = new ServicePerimeterSpecEgressPolicyEgressFrom();
             o.identities = identities;
             o.identityType = identityType;
+            o.sourceRestriction = sourceRestriction;
+            o.sources = sources;
             return o;
         }
     }

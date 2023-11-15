@@ -20,6 +20,7 @@ class NodeGroupArgs:
                  autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  initial_size: Optional[pulumi.Input[int]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,11 @@ class NodeGroupArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+               receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+               infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+               the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+               migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -55,6 +61,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "description", description)
         if initial_size is not None:
             pulumi.set(__self__, "initial_size", initial_size)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_window is not None:
@@ -121,6 +129,22 @@ class NodeGroupArgs:
     @initial_size.setter
     def initial_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_size", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+        receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+        infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+        the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+        migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -205,6 +229,7 @@ class _NodeGroupState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  initial_size: Optional[pulumi.Input[int]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -223,6 +248,11 @@ class _NodeGroupState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+               receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+               infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+               the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+               migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -247,6 +277,8 @@ class _NodeGroupState:
             pulumi.set(__self__, "description", description)
         if initial_size is not None:
             pulumi.set(__self__, "initial_size", initial_size)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_window is not None:
@@ -316,6 +348,22 @@ class _NodeGroupState:
     @initial_size.setter
     def initial_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_size", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+        receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+        infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+        the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+        migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -440,6 +488,7 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  initial_size: Optional[pulumi.Input[int]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -477,6 +526,24 @@ class NodeGroup(pulumi.CustomResource):
             description="example google_compute_node_group for the Google Provider",
             initial_size=1,
             node_template=soletenant_tmpl.id)
+        ```
+        ### Node Group Maintenance Interval
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="c2-node-60-240",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Terraform Google Provider",
+            initial_size=1,
+            node_template=soletenant_tmpl.id,
+            maintenance_interval="RECURRENT",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Node Group Autoscaling Policy
 
@@ -530,7 +597,15 @@ class NodeGroup(pulumi.CustomResource):
 
         ## Import
 
-        NodeGroup can be imported using any of these accepted formats
+        NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
+
+         to = google_compute_node_group.default }
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -556,6 +631,11 @@ class NodeGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+               receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+               infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+               the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+               migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -606,6 +686,24 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
+        ### Node Group Maintenance Interval
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="c2-node-60-240",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Terraform Google Provider",
+            initial_size=1,
+            node_template=soletenant_tmpl.id,
+            maintenance_interval="RECURRENT",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Node Group Autoscaling Policy
 
         ```python
@@ -658,7 +756,15 @@ class NodeGroup(pulumi.CustomResource):
 
         ## Import
 
-        NodeGroup can be imported using any of these accepted formats
+        NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
+
+         to = google_compute_node_group.default }
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -694,6 +800,7 @@ class NodeGroup(pulumi.CustomResource):
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  initial_size: Optional[pulumi.Input[int]] = None,
+                 maintenance_interval: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -713,6 +820,7 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["initial_size"] = initial_size
+            __props__.__dict__["maintenance_interval"] = maintenance_interval
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
@@ -739,6 +847,7 @@ class NodeGroup(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             initial_size: Optional[pulumi.Input[int]] = None,
+            maintenance_interval: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[str]] = None,
             maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -762,6 +871,11 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+               receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+               infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+               the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+               migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -786,6 +900,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["initial_size"] = initial_size
+        __props__.__dict__["maintenance_interval"] = maintenance_interval
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["name"] = name
@@ -831,6 +946,18 @@ class NodeGroup(pulumi.CustomResource):
         The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         """
         return pulumi.get(self, "initial_size")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> pulumi.Output[str]:
+        """
+        Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+        receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+        infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+        the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+        migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        """
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="maintenancePolicy")

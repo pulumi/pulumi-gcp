@@ -5,7 +5,10 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +20,25 @@ import javax.annotation.Nullable;
 public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
 
     public static final CxAgentState Empty = new CxAgentState();
+
+    /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedSettings")
+    private @Nullable Output<CxAgentAdvancedSettingsArgs> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentAdvancedSettingsArgs>> advancedSettings() {
+        return Optional.ofNullable(this.advancedSettings);
+    }
 
     /**
      * The URI of the agent&#39;s avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -108,6 +130,23 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableStackdriverLogging() {
         return Optional.ofNullable(this.enableStackdriverLogging);
+    }
+
+    /**
+     * Git integration settings for this agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gitIntegrationSettings")
+    private @Nullable Output<CxAgentGitIntegrationSettingsArgs> gitIntegrationSettings;
+
+    /**
+     * @return Git integration settings for this agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentGitIntegrationSettingsArgs>> gitIntegrationSettings() {
+        return Optional.ofNullable(this.gitIntegrationSettings);
     }
 
     /**
@@ -226,6 +265,23 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Settings related to speech synthesizing.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="textToSpeechSettings")
+    private @Nullable Output<CxAgentTextToSpeechSettingsArgs> textToSpeechSettings;
+
+    /**
+     * @return Settings related to speech synthesizing.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentTextToSpeechSettingsArgs>> textToSpeechSettings() {
+        return Optional.ofNullable(this.textToSpeechSettings);
+    }
+
+    /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      * 
@@ -249,12 +305,14 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
     private CxAgentState() {}
 
     private CxAgentState(CxAgentState $) {
+        this.advancedSettings = $.advancedSettings;
         this.avatarUri = $.avatarUri;
         this.defaultLanguageCode = $.defaultLanguageCode;
         this.description = $.description;
         this.displayName = $.displayName;
         this.enableSpellCorrection = $.enableSpellCorrection;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
+        this.gitIntegrationSettings = $.gitIntegrationSettings;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -262,6 +320,7 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
         this.speechToTextSettings = $.speechToTextSettings;
         this.startFlow = $.startFlow;
         this.supportedLanguageCodes = $.supportedLanguageCodes;
+        this.textToSpeechSettings = $.textToSpeechSettings;
         this.timeZone = $.timeZone;
     }
 
@@ -281,6 +340,31 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CxAgentState defaults) {
             $ = new CxAgentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(@Nullable Output<CxAgentAdvancedSettingsArgs> advancedSettings) {
+            $.advancedSettings = advancedSettings;
+            return this;
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(CxAgentAdvancedSettingsArgs advancedSettings) {
+            return advancedSettings(Output.of(advancedSettings));
         }
 
         /**
@@ -409,6 +493,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableStackdriverLogging(Boolean enableStackdriverLogging) {
             return enableStackdriverLogging(Output.of(enableStackdriverLogging));
+        }
+
+        /**
+         * @param gitIntegrationSettings Git integration settings for this agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitIntegrationSettings(@Nullable Output<CxAgentGitIntegrationSettingsArgs> gitIntegrationSettings) {
+            $.gitIntegrationSettings = gitIntegrationSettings;
+            return this;
+        }
+
+        /**
+         * @param gitIntegrationSettings Git integration settings for this agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitIntegrationSettings(CxAgentGitIntegrationSettingsArgs gitIntegrationSettings) {
+            return gitIntegrationSettings(Output.of(gitIntegrationSettings));
         }
 
         /**
@@ -576,6 +683,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder supportedLanguageCodes(String... supportedLanguageCodes) {
             return supportedLanguageCodes(List.of(supportedLanguageCodes));
+        }
+
+        /**
+         * @param textToSpeechSettings Settings related to speech synthesizing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder textToSpeechSettings(@Nullable Output<CxAgentTextToSpeechSettingsArgs> textToSpeechSettings) {
+            $.textToSpeechSettings = textToSpeechSettings;
+            return this;
+        }
+
+        /**
+         * @param textToSpeechSettings Settings related to speech synthesizing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder textToSpeechSettings(CxAgentTextToSpeechSettingsArgs textToSpeechSettings) {
+            return textToSpeechSettings(Output.of(textToSpeechSettings));
         }
 
         /**

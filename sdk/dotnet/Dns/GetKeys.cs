@@ -12,10 +12,16 @@ namespace Pulumi.Gcp.Dns
     public static class GetKeys
     {
         /// <summary>
-        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+        /// 
+        /// For more information see the
         /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
         /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
         /// 
+        /// &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+        /// to contain any DNSKEYs. Queries to managed zones without this setting
+        /// enabled will result in a 404 error as the collection of DNSKEYs does
+        /// not exist in the DNS API.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -57,10 +63,16 @@ namespace Pulumi.Gcp.Dns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+        /// 
+        /// For more information see the
         /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
         /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
         /// 
+        /// &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+        /// to contain any DNSKEYs. Queries to managed zones without this setting
+        /// enabled will result in a 404 error as the collection of DNSKEYs does
+        /// not exist in the DNS API.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

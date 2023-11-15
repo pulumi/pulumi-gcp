@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceSettingsDataCacheConfig
     {
         /// <summary>
-        /// Whether data cache is enabled for the instance. Defaults to `false`
-        /// Can only be used with MYSQL.
+        /// Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
         /// </summary>
         public readonly bool? DataCacheEnabled;
 

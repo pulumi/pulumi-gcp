@@ -9,14 +9,23 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Location resource.
 //
 // ## Import
 //
-// # Location can be imported using any of these accepted formats
+// Location can be imported using any of these accepted formats* `projects/{{project}}/locations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Location using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{name}}"
+//
+//	to = google_notebooks_location.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:notebooks/location:Location When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Location can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -140,12 +149,6 @@ func (i *Location) ToLocationOutputWithContext(ctx context.Context) LocationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
 }
 
-func (i *Location) ToOutput(ctx context.Context) pulumix.Output[*Location] {
-	return pulumix.Output[*Location]{
-		OutputState: i.ToLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LocationArrayInput is an input type that accepts LocationArray and LocationArrayOutput values.
 // You can construct a concrete instance of `LocationArrayInput` via:
 //
@@ -169,12 +172,6 @@ func (i LocationArray) ToLocationArrayOutput() LocationArrayOutput {
 
 func (i LocationArray) ToLocationArrayOutputWithContext(ctx context.Context) LocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationArrayOutput)
-}
-
-func (i LocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Location] {
-	return pulumix.Output[[]*Location]{
-		OutputState: i.ToLocationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LocationMapInput is an input type that accepts LocationMap and LocationMapOutput values.
@@ -202,12 +199,6 @@ func (i LocationMap) ToLocationMapOutputWithContext(ctx context.Context) Locatio
 	return pulumi.ToOutputWithContext(ctx, i).(LocationMapOutput)
 }
 
-func (i LocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Location] {
-	return pulumix.Output[map[string]*Location]{
-		OutputState: i.ToLocationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LocationOutput struct{ *pulumi.OutputState }
 
 func (LocationOutput) ElementType() reflect.Type {
@@ -220,12 +211,6 @@ func (o LocationOutput) ToLocationOutput() LocationOutput {
 
 func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
 	return o
-}
-
-func (o LocationOutput) ToOutput(ctx context.Context) pulumix.Output[*Location] {
-	return pulumix.Output[*Location]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the Location resource.
@@ -258,12 +243,6 @@ func (o LocationArrayOutput) ToLocationArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o LocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Location] {
-	return pulumix.Output[[]*Location]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Location {
 		return vs[0].([]*Location)[vs[1].(int)]
@@ -282,12 +261,6 @@ func (o LocationMapOutput) ToLocationMapOutput() LocationMapOutput {
 
 func (o LocationMapOutput) ToLocationMapOutputWithContext(ctx context.Context) LocationMapOutput {
 	return o
-}
-
-func (o LocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Location] {
-	return pulumix.Output[map[string]*Location]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocationMapOutput) MapIndex(k pulumi.StringInput) LocationOutput {

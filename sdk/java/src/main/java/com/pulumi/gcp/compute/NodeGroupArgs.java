@@ -71,6 +71,29 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * 
+     */
+    @Import(name="maintenanceInterval")
+    private @Nullable Output<String> maintenanceInterval;
+
+    /**
+     * @return Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * 
+     */
+    public Optional<Output<String>> maintenanceInterval() {
+        return Optional.ofNullable(this.maintenanceInterval);
+    }
+
+    /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      * 
      */
@@ -191,6 +214,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.autoscalingPolicy = $.autoscalingPolicy;
         this.description = $.description;
         this.initialSize = $.initialSize;
+        this.maintenanceInterval = $.maintenanceInterval;
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceWindow = $.maintenanceWindow;
         this.name = $.name;
@@ -285,6 +309,35 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder initialSize(Integer initialSize) {
             return initialSize(Output.of(initialSize));
+        }
+
+        /**
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+         * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+         * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+         * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+         * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
+            $.maintenanceInterval = maintenanceInterval;
+            return this;
+        }
+
+        /**
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+         * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+         * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+         * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+         * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceInterval(String maintenanceInterval) {
+            return maintenanceInterval(Output.of(maintenanceInterval));
         }
 
         /**

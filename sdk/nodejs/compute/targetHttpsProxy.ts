@@ -15,10 +15,60 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
+ * ### Target Https Proxy Certificate Manager Certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
+ *     scope: "ALL_REGIONS",
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
+ *     urlMap: defaultURLMap.id,
+ *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
+ * });
+ * // [google_certificate_manager_certificate.default.id] is also acceptable
+ * ```
  *
  * ## Import
  *
- * TargetHttpsProxy can be imported using any of these accepted formats
+ * TargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpsProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpsProxy using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/global/targetHttpsProxies/{{name}}"
+ *
+ *  to = google_compute_target_https_proxy.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpsProxy can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
@@ -60,6 +110,13 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
         return obj['__pulumiType'] === TargetHttpsProxy.__pulumiType;
     }
 
+    /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+     */
+    public readonly certificateManagerCertificates!: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
@@ -133,8 +190,9 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
     /**
-     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      */
     public readonly sslCertificates!: pulumi.Output<string[] | undefined>;
     /**
@@ -165,6 +223,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetHttpsProxyState | undefined;
+            resourceInputs["certificateManagerCertificates"] = state ? state.certificateManagerCertificates : undefined;
             resourceInputs["certificateMap"] = state ? state.certificateMap : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -184,6 +243,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
+            resourceInputs["certificateManagerCertificates"] = args ? args.certificateManagerCertificates : undefined;
             resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["httpKeepAliveTimeoutSec"] = args ? args.httpKeepAliveTimeoutSec : undefined;
@@ -208,6 +268,13 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetHttpsProxy resources.
  */
 export interface TargetHttpsProxyState {
+    /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+     */
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
@@ -281,8 +348,9 @@ export interface TargetHttpsProxyState {
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
-     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      */
     sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -305,6 +373,13 @@ export interface TargetHttpsProxyState {
  * The set of arguments for constructing a TargetHttpsProxy resource.
  */
 export interface TargetHttpsProxyArgs {
+    /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+     */
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
@@ -366,8 +441,9 @@ export interface TargetHttpsProxyArgs {
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
-     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      */
     sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**

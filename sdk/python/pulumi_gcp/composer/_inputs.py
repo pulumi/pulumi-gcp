@@ -31,6 +31,7 @@ __all__ = [
     'EnvironmentConfigWorkloadsConfigTriggererArgs',
     'EnvironmentConfigWorkloadsConfigWebServerArgs',
     'EnvironmentConfigWorkloadsConfigWorkerArgs',
+    'EnvironmentStorageConfigArgs',
 ]
 
 @pulumi.input_type
@@ -1154,5 +1155,21 @@ class EnvironmentConfigWorkloadsConfigWorkerArgs:
     @storage_gb.setter
     def storage_gb(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "storage_gb", value)
+
+
+@pulumi.input_type
+class EnvironmentStorageConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str]):
+        pulumi.set(__self__, "bucket", bucket)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
 
 

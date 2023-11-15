@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An authorized organizations description describes a list of organizations
@@ -78,7 +77,17 @@ import (
 //
 // ## Import
 //
-// AuthorizedOrgsDesc can be imported using any of these accepted formats:
+// AuthorizedOrgsDesc can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AuthorizedOrgsDesc using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_access_context_manager_authorized_orgs_desc.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AuthorizedOrgsDesc can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -364,12 +373,6 @@ func (i *AuthorizedOrgsDesc) ToAuthorizedOrgsDescOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedOrgsDescOutput)
 }
 
-func (i *AuthorizedOrgsDesc) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDesc] {
-	return pulumix.Output[*AuthorizedOrgsDesc]{
-		OutputState: i.ToAuthorizedOrgsDescOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizedOrgsDescArrayInput is an input type that accepts AuthorizedOrgsDescArray and AuthorizedOrgsDescArrayOutput values.
 // You can construct a concrete instance of `AuthorizedOrgsDescArrayInput` via:
 //
@@ -393,12 +396,6 @@ func (i AuthorizedOrgsDescArray) ToAuthorizedOrgsDescArrayOutput() AuthorizedOrg
 
 func (i AuthorizedOrgsDescArray) ToAuthorizedOrgsDescArrayOutputWithContext(ctx context.Context) AuthorizedOrgsDescArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedOrgsDescArrayOutput)
-}
-
-func (i AuthorizedOrgsDescArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthorizedOrgsDesc] {
-	return pulumix.Output[[]*AuthorizedOrgsDesc]{
-		OutputState: i.ToAuthorizedOrgsDescArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthorizedOrgsDescMapInput is an input type that accepts AuthorizedOrgsDescMap and AuthorizedOrgsDescMapOutput values.
@@ -426,12 +423,6 @@ func (i AuthorizedOrgsDescMap) ToAuthorizedOrgsDescMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizedOrgsDescMapOutput)
 }
 
-func (i AuthorizedOrgsDescMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthorizedOrgsDesc] {
-	return pulumix.Output[map[string]*AuthorizedOrgsDesc]{
-		OutputState: i.ToAuthorizedOrgsDescMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizedOrgsDescOutput struct{ *pulumi.OutputState }
 
 func (AuthorizedOrgsDescOutput) ElementType() reflect.Type {
@@ -444,12 +435,6 @@ func (o AuthorizedOrgsDescOutput) ToAuthorizedOrgsDescOutput() AuthorizedOrgsDes
 
 func (o AuthorizedOrgsDescOutput) ToAuthorizedOrgsDescOutputWithContext(ctx context.Context) AuthorizedOrgsDescOutput {
 	return o
-}
-
-func (o AuthorizedOrgsDescOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizedOrgsDesc] {
-	return pulumix.Output[*AuthorizedOrgsDesc]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of entities that need to use the authorization relationship during
@@ -532,12 +517,6 @@ func (o AuthorizedOrgsDescArrayOutput) ToAuthorizedOrgsDescArrayOutputWithContex
 	return o
 }
 
-func (o AuthorizedOrgsDescArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthorizedOrgsDesc] {
-	return pulumix.Output[[]*AuthorizedOrgsDesc]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthorizedOrgsDescArrayOutput) Index(i pulumi.IntInput) AuthorizedOrgsDescOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthorizedOrgsDesc {
 		return vs[0].([]*AuthorizedOrgsDesc)[vs[1].(int)]
@@ -556,12 +535,6 @@ func (o AuthorizedOrgsDescMapOutput) ToAuthorizedOrgsDescMapOutput() AuthorizedO
 
 func (o AuthorizedOrgsDescMapOutput) ToAuthorizedOrgsDescMapOutputWithContext(ctx context.Context) AuthorizedOrgsDescMapOutput {
 	return o
-}
-
-func (o AuthorizedOrgsDescMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthorizedOrgsDesc] {
-	return pulumix.Output[map[string]*AuthorizedOrgsDesc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizedOrgsDescMapOutput) MapIndex(k pulumi.StringInput) AuthorizedOrgsDescOutput {

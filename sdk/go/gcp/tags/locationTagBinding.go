@@ -10,20 +10,20 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
+// A LocationTagBinding represents a connection between a TagValue and a non-global target such as a Cloud Run Service or Compute Instance. Once a LocationTagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
 //
-// To get more information about TagBinding, see:
+// To get more information about LocationTagBinding, see:
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
+// ### Cloud Run Service
 //
-// To bind a tag to a Cloud Run instance:
+// To bind a tag to a Cloud Run service:
 //
 // ```go
 // package main
@@ -82,8 +82,7 @@ import (
 //	}
 //
 // ```
-//
-// To bind a (firewall) tag to compute instance:
+// ### Compute Instance
 //
 // ```go
 // package main
@@ -145,7 +144,17 @@ import (
 //
 // ## Import
 //
-// TagBinding can be imported using any of these accepted formats:
+// LocationTagBinding can be imported using any of these accepted formats* `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagBinding using one of the formats above. For exampletf import {
+//
+//	id = "{{location}}/{{name}}"
+//
+//	to = google_tags_location_tag_binding.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:tags/locationTagBinding:LocationTagBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagBinding can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -155,7 +164,7 @@ import (
 type LocationTagBinding struct {
 	pulumi.CustomResourceState
 
-	// Location of the resource.
+	// Location of the target resource.
 	//
 	// ***
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -203,7 +212,7 @@ func GetLocationTagBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LocationTagBinding resources.
 type locationTagBindingState struct {
-	// Location of the resource.
+	// Location of the target resource.
 	//
 	// ***
 	Location *string `pulumi:"location"`
@@ -216,7 +225,7 @@ type locationTagBindingState struct {
 }
 
 type LocationTagBindingState struct {
-	// Location of the resource.
+	// Location of the target resource.
 	//
 	// ***
 	Location pulumi.StringPtrInput
@@ -233,7 +242,7 @@ func (LocationTagBindingState) ElementType() reflect.Type {
 }
 
 type locationTagBindingArgs struct {
-	// Location of the resource.
+	// Location of the target resource.
 	//
 	// ***
 	Location *string `pulumi:"location"`
@@ -245,7 +254,7 @@ type locationTagBindingArgs struct {
 
 // The set of arguments for constructing a LocationTagBinding resource.
 type LocationTagBindingArgs struct {
-	// Location of the resource.
+	// Location of the target resource.
 	//
 	// ***
 	Location pulumi.StringPtrInput
@@ -278,12 +287,6 @@ func (i *LocationTagBinding) ToLocationTagBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LocationTagBindingOutput)
 }
 
-func (i *LocationTagBinding) ToOutput(ctx context.Context) pulumix.Output[*LocationTagBinding] {
-	return pulumix.Output[*LocationTagBinding]{
-		OutputState: i.ToLocationTagBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LocationTagBindingArrayInput is an input type that accepts LocationTagBindingArray and LocationTagBindingArrayOutput values.
 // You can construct a concrete instance of `LocationTagBindingArrayInput` via:
 //
@@ -307,12 +310,6 @@ func (i LocationTagBindingArray) ToLocationTagBindingArrayOutput() LocationTagBi
 
 func (i LocationTagBindingArray) ToLocationTagBindingArrayOutputWithContext(ctx context.Context) LocationTagBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationTagBindingArrayOutput)
-}
-
-func (i LocationTagBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*LocationTagBinding] {
-	return pulumix.Output[[]*LocationTagBinding]{
-		OutputState: i.ToLocationTagBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LocationTagBindingMapInput is an input type that accepts LocationTagBindingMap and LocationTagBindingMapOutput values.
@@ -340,12 +337,6 @@ func (i LocationTagBindingMap) ToLocationTagBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(LocationTagBindingMapOutput)
 }
 
-func (i LocationTagBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LocationTagBinding] {
-	return pulumix.Output[map[string]*LocationTagBinding]{
-		OutputState: i.ToLocationTagBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LocationTagBindingOutput struct{ *pulumi.OutputState }
 
 func (LocationTagBindingOutput) ElementType() reflect.Type {
@@ -360,13 +351,7 @@ func (o LocationTagBindingOutput) ToLocationTagBindingOutputWithContext(ctx cont
 	return o
 }
 
-func (o LocationTagBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*LocationTagBinding] {
-	return pulumix.Output[*LocationTagBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Location of the resource.
+// Location of the target resource.
 //
 // ***
 func (o LocationTagBindingOutput) Location() pulumi.StringPtrOutput {
@@ -402,12 +387,6 @@ func (o LocationTagBindingArrayOutput) ToLocationTagBindingArrayOutputWithContex
 	return o
 }
 
-func (o LocationTagBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LocationTagBinding] {
-	return pulumix.Output[[]*LocationTagBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LocationTagBindingArrayOutput) Index(i pulumi.IntInput) LocationTagBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LocationTagBinding {
 		return vs[0].([]*LocationTagBinding)[vs[1].(int)]
@@ -426,12 +405,6 @@ func (o LocationTagBindingMapOutput) ToLocationTagBindingMapOutput() LocationTag
 
 func (o LocationTagBindingMapOutput) ToLocationTagBindingMapOutputWithContext(ctx context.Context) LocationTagBindingMapOutput {
 	return o
-}
-
-func (o LocationTagBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LocationTagBinding] {
-	return pulumix.Output[map[string]*LocationTagBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocationTagBindingMapOutput) MapIndex(k pulumi.StringInput) LocationTagBindingOutput {

@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -38,6 +38,9 @@ class GetBucketResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if enable_object_retention and not isinstance(enable_object_retention, bool):
+            raise TypeError("Expected argument 'enable_object_retention' to be a bool")
+        pulumi.set(__self__, "enable_object_retention", enable_object_retention)
         if encryptions and not isinstance(encryptions, list):
             raise TypeError("Expected argument 'encryptions' to be a list")
         pulumi.set(__self__, "encryptions", encryptions)
@@ -120,6 +123,11 @@ class GetBucketResult:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="enableObjectRetention")
+    def enable_object_retention(self) -> bool:
+        return pulumi.get(self, "enable_object_retention")
 
     @property
     @pulumi.getter
@@ -231,6 +239,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             custom_placement_configs=self.custom_placement_configs,
             default_event_based_hold=self.default_event_based_hold,
             effective_labels=self.effective_labels,
+            enable_object_retention=self.enable_object_retention,
             encryptions=self.encryptions,
             force_destroy=self.force_destroy,
             id=self.id,
@@ -283,6 +292,7 @@ def get_bucket(name: Optional[str] = None,
         custom_placement_configs=pulumi.get(__ret__, 'custom_placement_configs'),
         default_event_based_hold=pulumi.get(__ret__, 'default_event_based_hold'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        enable_object_retention=pulumi.get(__ret__, 'enable_object_retention'),
         encryptions=pulumi.get(__ret__, 'encryptions'),
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
         id=pulumi.get(__ret__, 'id'),

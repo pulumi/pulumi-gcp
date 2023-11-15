@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Transfer Job in Google Cloud Storage Transfer.
@@ -144,11 +143,21 @@ import (
 //
 // ## Import
 //
-// Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
+// Storage Transfer Jobs can be imported using the Transfer Job's `project` and `name` (without the `transferJob/` prefix), e.g. * `{{project_id}}/{{name}}`, where `name` is a numeric value. In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage Transfer Jobs using one of the formats above. For exampletf import {
+//
+//	id = "{{project_id}}/{{name}}"
+//
+//	to = google_storage_transfer_job.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
+//	$ pulumi import gcp:storage/transferJob:TransferJob When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage Transfer Jobs can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
 //
 // ```
 type TransferJob struct {
@@ -340,12 +349,6 @@ func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) Transf
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobOutput)
 }
 
-func (i *TransferJob) ToOutput(ctx context.Context) pulumix.Output[*TransferJob] {
-	return pulumix.Output[*TransferJob]{
-		OutputState: i.ToTransferJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransferJobArrayInput is an input type that accepts TransferJobArray and TransferJobArrayOutput values.
 // You can construct a concrete instance of `TransferJobArrayInput` via:
 //
@@ -369,12 +372,6 @@ func (i TransferJobArray) ToTransferJobArrayOutput() TransferJobArrayOutput {
 
 func (i TransferJobArray) ToTransferJobArrayOutputWithContext(ctx context.Context) TransferJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobArrayOutput)
-}
-
-func (i TransferJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransferJob] {
-	return pulumix.Output[[]*TransferJob]{
-		OutputState: i.ToTransferJobArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TransferJobMapInput is an input type that accepts TransferJobMap and TransferJobMapOutput values.
@@ -402,12 +399,6 @@ func (i TransferJobMap) ToTransferJobMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobMapOutput)
 }
 
-func (i TransferJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferJob] {
-	return pulumix.Output[map[string]*TransferJob]{
-		OutputState: i.ToTransferJobMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransferJobOutput struct{ *pulumi.OutputState }
 
 func (TransferJobOutput) ElementType() reflect.Type {
@@ -420,12 +411,6 @@ func (o TransferJobOutput) ToTransferJobOutput() TransferJobOutput {
 
 func (o TransferJobOutput) ToTransferJobOutputWithContext(ctx context.Context) TransferJobOutput {
 	return o
-}
-
-func (o TransferJobOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferJob] {
-	return pulumix.Output[*TransferJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the Transfer Job was created.
@@ -500,12 +485,6 @@ func (o TransferJobArrayOutput) ToTransferJobArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o TransferJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransferJob] {
-	return pulumix.Output[[]*TransferJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransferJobArrayOutput) Index(i pulumi.IntInput) TransferJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransferJob {
 		return vs[0].([]*TransferJob)[vs[1].(int)]
@@ -524,12 +503,6 @@ func (o TransferJobMapOutput) ToTransferJobMapOutput() TransferJobMapOutput {
 
 func (o TransferJobMapOutput) ToTransferJobMapOutputWithContext(ctx context.Context) TransferJobMapOutput {
 	return o
-}
-
-func (o TransferJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferJob] {
-	return pulumix.Output[map[string]*TransferJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransferJobMapOutput) MapIndex(k pulumi.StringInput) TransferJobOutput {

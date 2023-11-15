@@ -10,9 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
+    private String cgroupMode;
     private Map<String,String> sysctls;
 
     private GetClusterNodePoolNodeConfigLinuxNodeConfig() {}
+    public String cgroupMode() {
+        return this.cgroupMode;
+    }
     public Map<String,String> sysctls() {
         return this.sysctls;
     }
@@ -26,13 +30,20 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String cgroupMode;
         private Map<String,String> sysctls;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cgroupMode = defaults.cgroupMode;
     	      this.sysctls = defaults.sysctls;
         }
 
+        @CustomType.Setter
+        public Builder cgroupMode(String cgroupMode) {
+            this.cgroupMode = Objects.requireNonNull(cgroupMode);
+            return this;
+        }
         @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             this.sysctls = Objects.requireNonNull(sysctls);
@@ -40,6 +51,7 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
         }
         public GetClusterNodePoolNodeConfigLinuxNodeConfig build() {
             final var o = new GetClusterNodePoolNodeConfigLinuxNodeConfig();
+            o.cgroupMode = cgroupMode;
             o.sysctls = sysctls;
             return o;
         }

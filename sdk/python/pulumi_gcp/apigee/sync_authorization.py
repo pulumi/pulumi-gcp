@@ -181,7 +181,15 @@ class SyncAuthorization(pulumi.CustomResource):
 
         ## Import
 
-        SyncAuthorization can be imported using any of these accepted formats
+        SyncAuthorization can be imported using any of these accepted formats* `organizations/{{name}}/syncAuthorization` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SyncAuthorization using one of the formats above. For exampletf import {
+
+         id = "organizations/{{name}}/syncAuthorization"
+
+         to = google_apigee_sync_authorization.default }
+
+        ```sh
+         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SyncAuthorization can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
@@ -249,7 +257,15 @@ class SyncAuthorization(pulumi.CustomResource):
 
         ## Import
 
-        SyncAuthorization can be imported using any of these accepted formats
+        SyncAuthorization can be imported using any of these accepted formats* `organizations/{{name}}/syncAuthorization` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SyncAuthorization using one of the formats above. For exampletf import {
+
+         id = "organizations/{{name}}/syncAuthorization"
+
+         to = google_apigee_sync_authorization.default }
+
+        ```sh
+         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SyncAuthorization can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization

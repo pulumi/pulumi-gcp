@@ -32,7 +32,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ServicePerimeterIngressPolicy can be imported using any of these accepted formats:
+ * ServicePerimeterIngressPolicy can be imported using any of these accepted formats* `{{perimeter}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeterIngressPolicy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{perimeter}}&#34;
+ * 
+ *  to = google_access_context_manager_service_perimeter_ingress_policy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeterIngressPolicy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy default {{perimeter}}

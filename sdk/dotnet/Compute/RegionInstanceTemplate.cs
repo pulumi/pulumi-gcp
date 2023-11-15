@@ -12,7 +12,15 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// ## Import
     /// 
-    /// Instance templates can be imported using any of these accepted formats
+    /// Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}"
+    /// 
+    ///  to = google_compute_region_instance_template.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
@@ -25,8 +33,6 @@ namespace Pulumi.Gcp.Compute
     /// ```sh
     ///  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
     /// ```
-    /// 
-    ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
     /// </summary>
     [GcpResourceType("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate")]
     public partial class RegionInstanceTemplate : global::Pulumi.CustomResource
@@ -103,7 +109,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The machine type to create.
         /// 
-        /// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
         /// 
         /// - - -
         /// </summary>
@@ -377,7 +383,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The machine type to create.
         /// 
-        /// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
         /// 
         /// - - -
         /// </summary>
@@ -618,7 +624,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The machine type to create.
         /// 
-        /// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
         /// 
         /// - - -
         /// </summary>

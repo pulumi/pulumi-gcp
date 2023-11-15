@@ -8,10 +8,103 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Network Attachment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const rejectedProducerProject = new gcp.organizations.Project("rejectedProducerProject", {
+ *     projectId: "prj-rejected",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const acceptedProducerProject = new gcp.organizations.Project("acceptedProducerProject", {
+ *     projectId: "prj-accepted",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("defaultNetworkAttachment", {
+ *     region: "us-central1",
+ *     description: "basic network attachment description",
+ *     connectionPreference: "ACCEPT_MANUAL",
+ *     subnetworks: [defaultSubnetwork.selfLink],
+ *     producerAcceptLists: [acceptedProducerProject.projectId],
+ *     producerRejectLists: [rejectedProducerProject.projectId],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Network Attachment Instance Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("defaultNetworkAttachment", {
+ *     region: "us-central1",
+ *     description: "my basic network attachment",
+ *     subnetworks: [defaultSubnetwork.id],
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
+ *     zone: "us-central1-a",
+ *     machineType: "e2-micro",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     networkInterfaces: [
+ *         {
+ *             network: "default",
+ *         },
+ *         {
+ *             networkAttachment: defaultNetworkAttachment.selfLink,
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
- * NetworkAttachment can be imported using any of these accepted formats
+ * NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkAttachment using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}"
+ *
+ *  to = google_compute_network_attachment.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/networkAttachment:NetworkAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkAttachment can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}

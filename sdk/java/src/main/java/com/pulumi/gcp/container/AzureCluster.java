@@ -77,6 +77,9 @@ import javax.annotation.Nullable;
  * 
  *         var primary = new AzureCluster(&#34;primary&#34;, AzureClusterArgs.builder()        
  *             .authorization(AzureClusterAuthorizationArgs.builder()
+ *                 .adminGroups(AzureClusterAuthorizationAdminGroupArgs.builder()
+ *                     .group(&#34;group@domain.com&#34;)
+ *                     .build())
  *                 .adminUsers(AzureClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;mmv2@google.com&#34;)
  *                     .build())
@@ -198,7 +201,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cluster can be imported using any of these accepted formats
+ * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/azureClusters/{{name}}&#34;
+ * 
+ *  to = google_container_azure_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:container/azureCluster:AzureCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}

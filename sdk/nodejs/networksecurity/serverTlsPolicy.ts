@@ -90,10 +90,58 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Network Security Server Tls Policy Mtls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("defaultTrustConfig", {
+ *     description: "sample trust config description",
+ *     location: "global",
+ *     trustStores: [{
+ *         trustAnchors: [{
+ *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem"),
+ *         }],
+ *         intermediateCas: [{
+ *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem"),
+ *         }],
+ *     }],
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultServerTlsPolicy = new gcp.networksecurity.ServerTlsPolicy("defaultServerTlsPolicy", {
+ *     description: "my description",
+ *     location: "global",
+ *     allowOpen: false,
+ *     mtlsPolicy: {
+ *         clientValidationMode: "REJECT_INVALID",
+ *         clientValidationTrustConfig: pulumi.all([project, defaultTrustConfig.name]).apply(([project, name]) => `projects/${project.number}/locations/global/trustConfigs/${name}`),
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
- * ServerTlsPolicy can be imported using any of these accepted formats
+ * ServerTlsPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServerTlsPolicy using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}"
+ *
+ *  to = google_network_security_server_tls_policy.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServerTlsPolicy can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}

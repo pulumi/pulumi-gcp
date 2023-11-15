@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -55,7 +54,17 @@ import (
 //
 // ## Import
 //
-// # Source can be imported using any of these accepted formats
+// Source can be imported using any of these accepted formats* `organizations/{{organization}}/sources/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Source using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{organization}}/sources/{{name}}"
+//
+//	to = google_scc_source.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:securitycenter/sourceIamBinding:SourceIamBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Source can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -202,12 +211,6 @@ func (i *SourceIamBinding) ToSourceIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingOutput)
 }
 
-func (i *SourceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*SourceIamBinding] {
-	return pulumix.Output[*SourceIamBinding]{
-		OutputState: i.ToSourceIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SourceIamBindingArrayInput is an input type that accepts SourceIamBindingArray and SourceIamBindingArrayOutput values.
 // You can construct a concrete instance of `SourceIamBindingArrayInput` via:
 //
@@ -231,12 +234,6 @@ func (i SourceIamBindingArray) ToSourceIamBindingArrayOutput() SourceIamBindingA
 
 func (i SourceIamBindingArray) ToSourceIamBindingArrayOutputWithContext(ctx context.Context) SourceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingArrayOutput)
-}
-
-func (i SourceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*SourceIamBinding] {
-	return pulumix.Output[[]*SourceIamBinding]{
-		OutputState: i.ToSourceIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SourceIamBindingMapInput is an input type that accepts SourceIamBindingMap and SourceIamBindingMapOutput values.
@@ -264,12 +261,6 @@ func (i SourceIamBindingMap) ToSourceIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingMapOutput)
 }
 
-func (i SourceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceIamBinding] {
-	return pulumix.Output[map[string]*SourceIamBinding]{
-		OutputState: i.ToSourceIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (SourceIamBindingOutput) ElementType() reflect.Type {
@@ -282,12 +273,6 @@ func (o SourceIamBindingOutput) ToSourceIamBindingOutput() SourceIamBindingOutpu
 
 func (o SourceIamBindingOutput) ToSourceIamBindingOutputWithContext(ctx context.Context) SourceIamBindingOutput {
 	return o
-}
-
-func (o SourceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceIamBinding] {
-	return pulumix.Output[*SourceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceIamBindingOutput) Condition() SourceIamBindingConditionPtrOutput {
@@ -332,12 +317,6 @@ func (o SourceIamBindingArrayOutput) ToSourceIamBindingArrayOutputWithContext(ct
 	return o
 }
 
-func (o SourceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SourceIamBinding] {
-	return pulumix.Output[[]*SourceIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourceIamBindingArrayOutput) Index(i pulumi.IntInput) SourceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SourceIamBinding {
 		return vs[0].([]*SourceIamBinding)[vs[1].(int)]
@@ -356,12 +335,6 @@ func (o SourceIamBindingMapOutput) ToSourceIamBindingMapOutput() SourceIamBindin
 
 func (o SourceIamBindingMapOutput) ToSourceIamBindingMapOutputWithContext(ctx context.Context) SourceIamBindingMapOutput {
 	return o
-}
-
-func (o SourceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceIamBinding] {
-	return pulumix.Output[map[string]*SourceIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceIamBindingMapOutput) MapIndex(k pulumi.StringInput) SourceIamBindingOutput {

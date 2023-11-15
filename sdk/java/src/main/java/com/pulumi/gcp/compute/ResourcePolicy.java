@@ -320,7 +320,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ResourcePolicy can be imported using any of these accepted formats
+ * ResourcePolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResourcePolicy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}&#34;
+ * 
+ *  to = google_compute_resource_policy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResourcePolicy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}

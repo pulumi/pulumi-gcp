@@ -112,7 +112,15 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Import
     /// 
-    /// AccessLevels can be imported using any of these accepted formats
+    /// AccessLevels can be imported using any of these accepted formats* `{{parent}}/accessLevels` * `{{parent}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AccessLevels using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{parent}}/accessLevels"
+    /// 
+    ///  to = google_access_context_manager_access_levels.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AccessLevels can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels

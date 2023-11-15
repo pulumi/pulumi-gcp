@@ -213,9 +213,23 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * Indicates how many IOPS to provision for the disk. This
+     * sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details, see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
     @Import(name="provisionedIops")
     private @Nullable Output<Integer> provisionedIops;
 
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This
+     * sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details, see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
     public Optional<Output<Integer>> provisionedIops() {
         return Optional.ofNullable(this.provisionedIops);
     }
@@ -656,11 +670,29 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This
+         * sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details, see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
             $.provisionedIops = provisionedIops;
             return this;
         }
 
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This
+         * sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details, see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedIops(Integer provisionedIops) {
             return provisionedIops(Output.of(provisionedIops));
         }

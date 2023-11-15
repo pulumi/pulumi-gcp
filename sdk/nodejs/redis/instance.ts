@@ -16,14 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
  * ## Example Usage
- * ### Redis Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const cache = new gcp.redis.Instance("cache", {memorySizeGb: 1});
- * ```
  * ### Redis Instance Full
  *
  * ```typescript
@@ -57,23 +49,6 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     },
- * });
- * ```
- * ### Redis Instance Full With Persistence Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const cache_persis = new gcp.redis.Instance("cache-persis", {
- *     alternativeLocationId: "us-central1-f",
- *     locationId: "us-central1-a",
- *     memorySizeGb: 1,
- *     persistenceConfig: {
- *         persistenceMode: "RDB",
- *         rdbSnapshotPeriod: "TWELVE_HOURS",
- *     },
- *     tier: "STANDARD_HA",
  * });
  * ```
  * ### Redis Instance Private Service
@@ -171,7 +146,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instance can be imported using any of these accepted formats
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
+ *
+ *  to = google_redis_instance.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:redis/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

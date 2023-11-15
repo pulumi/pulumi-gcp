@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
@@ -123,7 +122,17 @@ import (
 //
 // ## Import
 //
-// # WorkerPool can be imported using any of these accepted formats
+// WorkerPool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workerPools/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkerPool using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/workerPools/{{name}}"
+//
+//	to = google_cloudbuild_worker_pool.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:cloudbuild/workerPool:WorkerPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkerPool can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -348,12 +357,6 @@ func (i *WorkerPool) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
 }
 
-func (i *WorkerPool) ToOutput(ctx context.Context) pulumix.Output[*WorkerPool] {
-	return pulumix.Output[*WorkerPool]{
-		OutputState: i.ToWorkerPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerPoolArrayInput is an input type that accepts WorkerPoolArray and WorkerPoolArrayOutput values.
 // You can construct a concrete instance of `WorkerPoolArrayInput` via:
 //
@@ -377,12 +380,6 @@ func (i WorkerPoolArray) ToWorkerPoolArrayOutput() WorkerPoolArrayOutput {
 
 func (i WorkerPoolArray) ToWorkerPoolArrayOutputWithContext(ctx context.Context) WorkerPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolArrayOutput)
-}
-
-func (i WorkerPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerPool] {
-	return pulumix.Output[[]*WorkerPool]{
-		OutputState: i.ToWorkerPoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkerPoolMapInput is an input type that accepts WorkerPoolMap and WorkerPoolMapOutput values.
@@ -410,12 +407,6 @@ func (i WorkerPoolMap) ToWorkerPoolMapOutputWithContext(ctx context.Context) Wor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolMapOutput)
 }
 
-func (i WorkerPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerPool] {
-	return pulumix.Output[map[string]*WorkerPool]{
-		OutputState: i.ToWorkerPoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolOutput) ElementType() reflect.Type {
@@ -428,12 +419,6 @@ func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {
 
 func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPoolOutput {
 	return o
-}
-
-func (o WorkerPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPool] {
-	return pulumix.Output[*WorkerPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
@@ -520,12 +505,6 @@ func (o WorkerPoolArrayOutput) ToWorkerPoolArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o WorkerPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerPool] {
-	return pulumix.Output[[]*WorkerPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerPoolArrayOutput) Index(i pulumi.IntInput) WorkerPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerPool {
 		return vs[0].([]*WorkerPool)[vs[1].(int)]
@@ -544,12 +523,6 @@ func (o WorkerPoolMapOutput) ToWorkerPoolMapOutput() WorkerPoolMapOutput {
 
 func (o WorkerPoolMapOutput) ToWorkerPoolMapOutputWithContext(ctx context.Context) WorkerPoolMapOutput {
 	return o
-}
-
-func (o WorkerPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerPool] {
-	return pulumix.Output[map[string]*WorkerPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerPoolMapOutput) MapIndex(k pulumi.StringInput) WorkerPoolOutput {

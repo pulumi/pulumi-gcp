@@ -11,10 +11,19 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CxAgentAdvancedSettings',
+    'CxAgentAdvancedSettingsAudioExportGcsDestination',
+    'CxAgentAdvancedSettingsDtmfSettings',
+    'CxAgentGitIntegrationSettings',
+    'CxAgentGitIntegrationSettingsGithubSettings',
     'CxAgentSpeechToTextSettings',
+    'CxAgentTextToSpeechSettings',
     'CxEntityTypeEntity',
     'CxEntityTypeExcludedPhrase',
     'CxEnvironmentVersionConfig',
+    'CxFlowAdvancedSettings',
+    'CxFlowAdvancedSettingsAudioExportGcsDestination',
+    'CxFlowAdvancedSettingsDtmfSettings',
     'CxFlowEventHandler',
     'CxFlowEventHandlerTriggerFulfillment',
     'CxFlowEventHandlerTriggerFulfillmentConditionalCase',
@@ -41,6 +50,8 @@ __all__ = [
     'CxIntentParameter',
     'CxIntentTrainingPhrase',
     'CxIntentTrainingPhrasePart',
+    'CxPageAdvancedSettings',
+    'CxPageAdvancedSettingsDtmfSettings',
     'CxPageEntryFulfillment',
     'CxPageEntryFulfillmentConditionalCase',
     'CxPageEntryFulfillmentMessage',
@@ -64,6 +75,8 @@ __all__ = [
     'CxPageEventHandlerTriggerFulfillmentSetParameterAction',
     'CxPageForm',
     'CxPageFormParameter',
+    'CxPageFormParameterAdvancedSettings',
+    'CxPageFormParameterAdvancedSettingsDtmfSettings',
     'CxPageFormParameterFillBehavior',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillment',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase',
@@ -134,6 +147,285 @@ __all__ = [
 ]
 
 @pulumi.output_type
+class CxAgentAdvancedSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioExportGcsDestination":
+            suggest = "audio_export_gcs_destination"
+        elif key == "dtmfSettings":
+            suggest = "dtmf_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentAdvancedSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentAdvancedSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audio_export_gcs_destination: Optional['outputs.CxAgentAdvancedSettingsAudioExportGcsDestination'] = None,
+                 dtmf_settings: Optional['outputs.CxAgentAdvancedSettingsDtmfSettings'] = None):
+        """
+        :param 'CxAgentAdvancedSettingsAudioExportGcsDestinationArgs' audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               Structure is documented below.
+        :param 'CxAgentAdvancedSettingsDtmfSettingsArgs' dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        """
+        if audio_export_gcs_destination is not None:
+            pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+
+    @property
+    @pulumi.getter(name="audioExportGcsDestination")
+    def audio_export_gcs_destination(self) -> Optional['outputs.CxAgentAdvancedSettingsAudioExportGcsDestination']:
+        """
+        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "audio_export_gcs_destination")
+
+    @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional['outputs.CxAgentAdvancedSettingsDtmfSettings']:
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+
+@pulumi.output_type
+class CxAgentAdvancedSettingsAudioExportGcsDestination(dict):
+    def __init__(__self__, *,
+                 uri: Optional[str] = None):
+        """
+        :param str uri: The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+               Format: gs://bucket/object-name-or-prefix
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        Format: gs://bucket/object-name-or-prefix
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CxAgentAdvancedSettingsDtmfSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finishDigit":
+            suggest = "finish_digit"
+        elif key == "maxDigits":
+            suggest = "max_digits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentAdvancedSettingsDtmfSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 finish_digit: Optional[str] = None,
+                 max_digits: Optional[int] = None):
+        """
+        :param bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param str finish_digit: The digit that terminates a DTMF digit sequence.
+        :param int max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[str]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[int]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
+
+
+@pulumi.output_type
+class CxAgentGitIntegrationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "githubSettings":
+            suggest = "github_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentGitIntegrationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentGitIntegrationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentGitIntegrationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 github_settings: Optional['outputs.CxAgentGitIntegrationSettingsGithubSettings'] = None):
+        """
+        :param 'CxAgentGitIntegrationSettingsGithubSettingsArgs' github_settings: Settings of integration with GitHub.
+               Structure is documented below.
+        """
+        if github_settings is not None:
+            pulumi.set(__self__, "github_settings", github_settings)
+
+    @property
+    @pulumi.getter(name="githubSettings")
+    def github_settings(self) -> Optional['outputs.CxAgentGitIntegrationSettingsGithubSettings']:
+        """
+        Settings of integration with GitHub.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "github_settings")
+
+
+@pulumi.output_type
+class CxAgentGitIntegrationSettingsGithubSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "repositoryUri":
+            suggest = "repository_uri"
+        elif key == "trackingBranch":
+            suggest = "tracking_branch"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentGitIntegrationSettingsGithubSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentGitIntegrationSettingsGithubSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentGitIntegrationSettingsGithubSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_token: Optional[str] = None,
+                 branches: Optional[Sequence[str]] = None,
+                 display_name: Optional[str] = None,
+                 repository_uri: Optional[str] = None,
+                 tracking_branch: Optional[str] = None):
+        """
+        :param str access_token: The access token used to authenticate the access to the GitHub repository.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param Sequence[str] branches: A list of branches configured to be used from Dialogflow.
+        :param str display_name: The unique repository display name for the GitHub repository.
+        :param str repository_uri: The GitHub repository URI related to the agent.
+        :param str tracking_branch: The branch of the GitHub repository tracked for this agent.
+        """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if branches is not None:
+            pulumi.set(__self__, "branches", branches)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if repository_uri is not None:
+            pulumi.set(__self__, "repository_uri", repository_uri)
+        if tracking_branch is not None:
+            pulumi.set(__self__, "tracking_branch", tracking_branch)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[str]:
+        """
+        The access token used to authenticate the access to the GitHub repository.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter
+    def branches(self) -> Optional[Sequence[str]]:
+        """
+        A list of branches configured to be used from Dialogflow.
+        """
+        return pulumi.get(self, "branches")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The unique repository display name for the GitHub repository.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="repositoryUri")
+    def repository_uri(self) -> Optional[str]:
+        """
+        The GitHub repository URI related to the agent.
+        """
+        return pulumi.get(self, "repository_uri")
+
+    @property
+    @pulumi.getter(name="trackingBranch")
+    def tracking_branch(self) -> Optional[str]:
+        """
+        The branch of the GitHub repository tracked for this agent.
+        """
+        return pulumi.get(self, "tracking_branch")
+
+
+@pulumi.output_type
 class CxAgentSpeechToTextSettings(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -167,6 +459,48 @@ class CxAgentSpeechToTextSettings(dict):
         Whether to use speech adaptation for speech recognition.
         """
         return pulumi.get(self, "enable_speech_adaptation")
+
+
+@pulumi.output_type
+class CxAgentTextToSpeechSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "synthesizeSpeechConfigs":
+            suggest = "synthesize_speech_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentTextToSpeechSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentTextToSpeechSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentTextToSpeechSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 synthesize_speech_configs: Optional[str] = None):
+        """
+        :param str synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+               These settings affect:
+               * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+               * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+        """
+        if synthesize_speech_configs is not None:
+            pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
+
+    @property
+    @pulumi.getter(name="synthesizeSpeechConfigs")
+    def synthesize_speech_configs(self) -> Optional[str]:
+        """
+        Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+        These settings affect:
+        * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+        * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+        """
+        return pulumi.get(self, "synthesize_speech_configs")
 
 
 @pulumi.output_type
@@ -249,6 +583,155 @@ class CxEnvironmentVersionConfig(dict):
         - - -
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class CxFlowAdvancedSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioExportGcsDestination":
+            suggest = "audio_export_gcs_destination"
+        elif key == "dtmfSettings":
+            suggest = "dtmf_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowAdvancedSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowAdvancedSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audio_export_gcs_destination: Optional['outputs.CxFlowAdvancedSettingsAudioExportGcsDestination'] = None,
+                 dtmf_settings: Optional['outputs.CxFlowAdvancedSettingsDtmfSettings'] = None):
+        """
+        :param 'CxFlowAdvancedSettingsAudioExportGcsDestinationArgs' audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               Structure is documented below.
+        :param 'CxFlowAdvancedSettingsDtmfSettingsArgs' dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        """
+        if audio_export_gcs_destination is not None:
+            pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+
+    @property
+    @pulumi.getter(name="audioExportGcsDestination")
+    def audio_export_gcs_destination(self) -> Optional['outputs.CxFlowAdvancedSettingsAudioExportGcsDestination']:
+        """
+        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "audio_export_gcs_destination")
+
+    @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional['outputs.CxFlowAdvancedSettingsDtmfSettings']:
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+
+@pulumi.output_type
+class CxFlowAdvancedSettingsAudioExportGcsDestination(dict):
+    def __init__(__self__, *,
+                 uri: Optional[str] = None):
+        """
+        :param str uri: The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+               Format: gs://bucket/object-name-or-prefix
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        Format: gs://bucket/object-name-or-prefix
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CxFlowAdvancedSettingsDtmfSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finishDigit":
+            suggest = "finish_digit"
+        elif key == "maxDigits":
+            suggest = "max_digits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowAdvancedSettingsDtmfSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 finish_digit: Optional[str] = None,
+                 max_digits: Optional[int] = None):
+        """
+        :param bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param str finish_digit: The digit that terminates a DTMF digit sequence.
+        :param int max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[str]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[int]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
 
 
 @pulumi.output_type
@@ -1836,6 +2319,114 @@ class CxIntentTrainingPhrasePart(dict):
 
 
 @pulumi.output_type
+class CxPageAdvancedSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dtmfSettings":
+            suggest = "dtmf_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageAdvancedSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageAdvancedSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dtmf_settings: Optional['outputs.CxPageAdvancedSettingsDtmfSettings'] = None):
+        """
+        :param 'CxPageAdvancedSettingsDtmfSettingsArgs' dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        """
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+
+    @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional['outputs.CxPageAdvancedSettingsDtmfSettings']:
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+
+@pulumi.output_type
+class CxPageAdvancedSettingsDtmfSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finishDigit":
+            suggest = "finish_digit"
+        elif key == "maxDigits":
+            suggest = "max_digits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageAdvancedSettingsDtmfSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 finish_digit: Optional[str] = None,
+                 max_digits: Optional[int] = None):
+        """
+        :param bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param str finish_digit: The digit that terminates a DTMF digit sequence.
+        :param int max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[str]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[int]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
+
+
+@pulumi.output_type
 class CxPageEntryFulfillment(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3057,7 +3648,9 @@ class CxPageFormParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultValue":
+        if key == "advancedSettings":
+            suggest = "advanced_settings"
+        elif key == "defaultValue":
             suggest = "default_value"
         elif key == "displayName":
             suggest = "display_name"
@@ -3080,6 +3673,7 @@ class CxPageFormParameter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advanced_settings: Optional['outputs.CxPageFormParameterAdvancedSettings'] = None,
                  default_value: Optional[str] = None,
                  display_name: Optional[str] = None,
                  entity_type: Optional[str] = None,
@@ -3088,6 +3682,9 @@ class CxPageFormParameter(dict):
                  redact: Optional[bool] = None,
                  required: Optional[bool] = None):
         """
+        :param 'CxPageFormParameterAdvancedSettingsArgs' advanced_settings: Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
         :param str default_value: The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         :param str display_name: The human-readable name of the parameter, unique within the form.
         :param str entity_type: The entity type of the parameter.
@@ -3100,6 +3697,8 @@ class CxPageFormParameter(dict):
         :param bool required: Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
                Required parameters must be filled before form filling concludes.
         """
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
         if default_value is not None:
             pulumi.set(__self__, "default_value", default_value)
         if display_name is not None:
@@ -3114,6 +3713,16 @@ class CxPageFormParameter(dict):
             pulumi.set(__self__, "redact", redact)
         if required is not None:
             pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional['outputs.CxPageFormParameterAdvancedSettings']:
+        """
+        Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
 
     @property
     @pulumi.getter(name="defaultValue")
@@ -3174,6 +3783,114 @@ class CxPageFormParameter(dict):
         Required parameters must be filled before form filling concludes.
         """
         return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class CxPageFormParameterAdvancedSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dtmfSettings":
+            suggest = "dtmf_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageFormParameterAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageFormParameterAdvancedSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageFormParameterAdvancedSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dtmf_settings: Optional['outputs.CxPageFormParameterAdvancedSettingsDtmfSettings'] = None):
+        """
+        :param 'CxPageFormParameterAdvancedSettingsDtmfSettingsArgs' dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        """
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+
+    @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional['outputs.CxPageFormParameterAdvancedSettingsDtmfSettings']:
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+
+@pulumi.output_type
+class CxPageFormParameterAdvancedSettingsDtmfSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finishDigit":
+            suggest = "finish_digit"
+        elif key == "maxDigits":
+            suggest = "max_digits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageFormParameterAdvancedSettingsDtmfSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageFormParameterAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageFormParameterAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 finish_digit: Optional[str] = None,
+                 max_digits: Optional[int] = None):
+        """
+        :param bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param str finish_digit: The digit that terminates a DTMF digit sequence.
+        :param int max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[str]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[int]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
 
 
 @pulumi.output_type
@@ -6548,11 +7265,11 @@ class CxVersionNluSetting(dict):
         :param str model_training_mode: Indicates NLU model training mode.
                * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
                * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-               Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+               Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
         :param str model_type: Indicates the type of NLU model.
                * MODEL_TYPE_STANDARD: Use standard NLU model.
                * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-               Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+               Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
         """
         if classification_threshold is not None:
             pulumi.set(__self__, "classification_threshold", classification_threshold)
@@ -6577,7 +7294,7 @@ class CxVersionNluSetting(dict):
         Indicates NLU model training mode.
         * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
         * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-        Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+        Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
         """
         return pulumi.get(self, "model_training_mode")
 
@@ -6588,7 +7305,7 @@ class CxVersionNluSetting(dict):
         Indicates the type of NLU model.
         * MODEL_TYPE_STANDARD: Use standard NLU model.
         * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-        Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+        Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
         """
         return pulumi.get(self, "model_type")
 

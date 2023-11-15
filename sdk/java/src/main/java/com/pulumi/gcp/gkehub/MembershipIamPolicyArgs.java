@@ -15,6 +15,25 @@ public final class MembershipIamPolicyArgs extends com.pulumi.resources.Resource
 
     public static final MembershipIamPolicyArgs Empty = new MembershipIamPolicyArgs();
 
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
     @Import(name="membershipId", required=true)
     private Output<String> membershipId;
 
@@ -83,6 +102,7 @@ public final class MembershipIamPolicyArgs extends com.pulumi.resources.Resource
     private MembershipIamPolicyArgs() {}
 
     private MembershipIamPolicyArgs(MembershipIamPolicyArgs $) {
+        this.location = $.location;
         this.membershipId = $.membershipId;
         this.policyData = $.policyData;
         this.project = $.project;
@@ -104,6 +124,31 @@ public final class MembershipIamPolicyArgs extends com.pulumi.resources.Resource
 
         public Builder(MembershipIamPolicyArgs defaults) {
             $ = new MembershipIamPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         public Builder membershipId(Output<String> membershipId) {

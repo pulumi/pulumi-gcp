@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
@@ -118,7 +117,17 @@ import (
 //
 // ## Import
 //
-// MetricDescriptor can be imported using any of these accepted formats:
+// MetricDescriptor can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MetricDescriptor using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_monitoring_metric_descriptor.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MetricDescriptor can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -446,12 +455,6 @@ func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
 }
 
-func (i *MetricDescriptor) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptor] {
-	return pulumix.Output[*MetricDescriptor]{
-		OutputState: i.ToMetricDescriptorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricDescriptorArrayInput is an input type that accepts MetricDescriptorArray and MetricDescriptorArrayOutput values.
 // You can construct a concrete instance of `MetricDescriptorArrayInput` via:
 //
@@ -475,12 +478,6 @@ func (i MetricDescriptorArray) ToMetricDescriptorArrayOutput() MetricDescriptorA
 
 func (i MetricDescriptorArray) ToMetricDescriptorArrayOutputWithContext(ctx context.Context) MetricDescriptorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorArrayOutput)
-}
-
-func (i MetricDescriptorArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetricDescriptor] {
-	return pulumix.Output[[]*MetricDescriptor]{
-		OutputState: i.ToMetricDescriptorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetricDescriptorMapInput is an input type that accepts MetricDescriptorMap and MetricDescriptorMapOutput values.
@@ -508,12 +505,6 @@ func (i MetricDescriptorMap) ToMetricDescriptorMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMapOutput)
 }
 
-func (i MetricDescriptorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricDescriptor] {
-	return pulumix.Output[map[string]*MetricDescriptor]{
-		OutputState: i.ToMetricDescriptorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorOutput) ElementType() reflect.Type {
@@ -526,12 +517,6 @@ func (o MetricDescriptorOutput) ToMetricDescriptorOutput() MetricDescriptorOutpu
 
 func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput {
 	return o
-}
-
-func (o MetricDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptor] {
-	return pulumix.Output[*MetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A detailed description of the metric, which can be used in documentation.
@@ -632,12 +617,6 @@ func (o MetricDescriptorArrayOutput) ToMetricDescriptorArrayOutputWithContext(ct
 	return o
 }
 
-func (o MetricDescriptorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetricDescriptor] {
-	return pulumix.Output[[]*MetricDescriptor]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricDescriptorArrayOutput) Index(i pulumi.IntInput) MetricDescriptorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetricDescriptor {
 		return vs[0].([]*MetricDescriptor)[vs[1].(int)]
@@ -656,12 +635,6 @@ func (o MetricDescriptorMapOutput) ToMetricDescriptorMapOutput() MetricDescripto
 
 func (o MetricDescriptorMapOutput) ToMetricDescriptorMapOutputWithContext(ctx context.Context) MetricDescriptorMapOutput {
 	return o
-}
-
-func (o MetricDescriptorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricDescriptor] {
-	return pulumix.Output[map[string]*MetricDescriptor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricDescriptorMapOutput) MapIndex(k pulumi.StringInput) MetricDescriptorOutput {

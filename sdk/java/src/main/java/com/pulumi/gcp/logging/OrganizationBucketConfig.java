@@ -11,8 +11,10 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.OrganizationBucketConfigArgs;
 import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigState;
 import com.pulumi.gcp.logging.outputs.OrganizationBucketConfigCmekSettings;
+import com.pulumi.gcp.logging.outputs.OrganizationBucketConfigIndexConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -56,6 +58,10 @@ import javax.annotation.Nullable;
  *             .location(&#34;global&#34;)
  *             .retentionDays(30)
  *             .bucketId(&#34;_Default&#34;)
+ *             .indexConfigs(OrganizationBucketConfigIndexConfigArgs.builder()
+ *                 .filePath(&#34;jsonPayload.request.status&#34;)
+ *                 .type(&#34;INDEX_TYPE_STRING&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -64,7 +70,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using the following format:
+ * This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}&#34;
+ * 
+ *  to = google_logging_organization_bucket_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -118,6 +132,20 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    @Export(name="indexConfigs", refs={List.class,OrganizationBucketConfigIndexConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OrganizationBucketConfigIndexConfig>> indexConfigs;
+
+    /**
+     * @return A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<OrganizationBucketConfigIndexConfig>>> indexConfigs() {
+        return Codegen.optional(this.indexConfigs);
     }
     /**
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

@@ -10,9 +10,14 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadState;
+import com.pulumi.gcp.assuredworkloads.outputs.WorkloadComplianceStatus;
+import com.pulumi.gcp.assuredworkloads.outputs.WorkloadEkmProvisioningResponse;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadKmsSettings;
+import com.pulumi.gcp.assuredworkloads.outputs.WorkloadPartnerPermissions;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadResource;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadResourceSetting;
+import com.pulumi.gcp.assuredworkloads.outputs.WorkloadSaaEnrollmentResponse;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -52,7 +57,7 @@ import javax.annotation.Nullable;
  *         var primary = new Workload(&#34;primary&#34;, WorkloadArgs.builder()        
  *             .billingAccount(&#34;billingAccounts/000000-0000000-0000000-000000&#34;)
  *             .complianceRegime(&#34;FEDRAMP_MODERATE&#34;)
- *             .displayName(&#34;Workload Example&#34;)
+ *             .displayName(&#34;{{display}}&#34;)
  *             .kmsSettings(WorkloadKmsSettingsArgs.builder()
  *                 .nextRotationTime(&#34;9999-10-02T15:01:23Z&#34;)
  *                 .rotationPeriod(&#34;10368000s&#34;)
@@ -63,7 +68,8 @@ import javax.annotation.Nullable;
  *             .provisionedResourcesParent(&#34;folders/519620126891&#34;)
  *             .resourceSettings(            
  *                 WorkloadResourceSettingArgs.builder()
- *                     .resourceType(&#34;CONSUMER_PROJECT&#34;)
+ *                     .displayName(&#34;folder-display-name&#34;)
+ *                     .resourceType(&#34;CONSUMER_FOLDER&#34;)
  *                     .build(),
  *                 WorkloadResourceSettingArgs.builder()
  *                     .resourceType(&#34;ENCRYPTION_KEYS_PROJECT&#34;)
@@ -72,7 +78,64 @@ import javax.annotation.Nullable;
  *                     .resourceId(&#34;ring&#34;)
  *                     .resourceType(&#34;KEYRING&#34;)
  *                     .build())
+ *             .violationNotificationsEnabled(true)
  *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Sovereign_controls_workload
+ * A Sovereign Controls test of the assuredworkloads api
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.assuredworkloads.Workload;
+ * import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
+ * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
+ * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Workload(&#34;primary&#34;, WorkloadArgs.builder()        
+ *             .complianceRegime(&#34;EU_REGIONS_AND_SUPPORT&#34;)
+ *             .displayName(&#34;display&#34;)
+ *             .location(&#34;europe-west9&#34;)
+ *             .organization(&#34;123456789&#34;)
+ *             .billingAccount(&#34;billingAccounts/000000-0000000-0000000-000000&#34;)
+ *             .enableSovereignControls(true)
+ *             .kmsSettings(WorkloadKmsSettingsArgs.builder()
+ *                 .nextRotationTime(&#34;9999-10-02T15:01:23Z&#34;)
+ *                 .rotationPeriod(&#34;10368000s&#34;)
+ *                 .build())
+ *             .resourceSettings(            
+ *                 WorkloadResourceSettingArgs.builder()
+ *                     .resourceType(&#34;CONSUMER_FOLDER&#34;)
+ *                     .build(),
+ *                 WorkloadResourceSettingArgs.builder()
+ *                     .resourceType(&#34;ENCRYPTION_KEYS_PROJECT&#34;)
+ *                     .build(),
+ *                 WorkloadResourceSettingArgs.builder()
+ *                     .resourceId(&#34;ring&#34;)
+ *                     .resourceType(&#34;KEYRING&#34;)
+ *                     .build())
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }
@@ -80,7 +143,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Workload can be imported using any of these accepted formats
+ * Workload can be imported using any of these accepted formats* `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}` * `{{organization}}/{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Workload using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;organizations/{{organization}}/locations/{{location}}/workloads/{{name}}&#34;
+ * 
+ *  to = google_assured_workloads_workload.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:assuredworkloads/workload:Workload When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Workload can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}
@@ -94,32 +165,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:assuredworkloads/workload:Workload")
 public class Workload extends com.pulumi.resources.CustomResource {
     /**
-     * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
+     * Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      * 
      */
     @Export(name="billingAccount", refs={String.class}, tree="[0]")
-    private Output<String> billingAccount;
+    private Output</* @Nullable */ String> billingAccount;
 
     /**
-     * @return Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
+     * @return Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      * 
      */
-    public Output<String> billingAccount() {
-        return this.billingAccount;
+    public Output<Optional<String>> billingAccount() {
+        return Codegen.optional(this.billingAccount);
     }
     /**
-     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
      * 
      */
     @Export(name="complianceRegime", refs={String.class}, tree="[0]")
     private Output<String> complianceRegime;
 
     /**
-     * @return Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+     * @return Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
      * 
      */
     public Output<String> complianceRegime() {
         return this.complianceRegime;
+    }
+    /**
+     * Output only. Count of active Violations in the Workload.
+     * 
+     */
+    @Export(name="complianceStatuses", refs={List.class,WorkloadComplianceStatus.class}, tree="[0,1]")
+    private Output<List<WorkloadComplianceStatus>> complianceStatuses;
+
+    /**
+     * @return Output only. Count of active Violations in the Workload.
+     * 
+     */
+    public Output<List<WorkloadComplianceStatus>> complianceStatuses() {
+        return this.complianceStatuses;
+    }
+    /**
+     * Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
+     * 
+     */
+    @Export(name="compliantButDisallowedServices", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> compliantButDisallowedServices;
+
+    /**
+     * @return Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
+     * 
+     */
+    public Output<List<String>> compliantButDisallowedServices() {
+        return this.compliantButDisallowedServices;
     }
     /**
      * Output only. Immutable. The Workload creation timestamp.
@@ -164,14 +263,56 @@ public class Workload extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+     * Optional. Represents the Ekm Provisioning State of the given workload.
+     * 
+     */
+    @Export(name="ekmProvisioningResponses", refs={List.class,WorkloadEkmProvisioningResponse.class}, tree="[0,1]")
+    private Output<List<WorkloadEkmProvisioningResponse>> ekmProvisioningResponses;
+
+    /**
+     * @return Optional. Represents the Ekm Provisioning State of the given workload.
+     * 
+     */
+    public Output<List<WorkloadEkmProvisioningResponse>> ekmProvisioningResponses() {
+        return this.ekmProvisioningResponses;
+    }
+    /**
+     * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     * 
+     */
+    @Export(name="enableSovereignControls", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableSovereignControls;
+
+    /**
+     * @return Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     * 
+     */
+    public Output<Boolean> enableSovereignControls() {
+        return this.enableSovereignControls;
+    }
+    /**
+     * Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
+     * 
+     */
+    @Export(name="kajEnrollmentState", refs={String.class}, tree="[0]")
+    private Output<String> kajEnrollmentState;
+
+    /**
+     * @return Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
+     * 
+     */
+    public Output<String> kajEnrollmentState() {
+        return this.kajEnrollmentState;
+    }
+    /**
+     * **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
      * 
      */
     @Export(name="kmsSettings", refs={WorkloadKmsSettings.class}, tree="[0]")
     private Output</* @Nullable */ WorkloadKmsSettings> kmsSettings;
 
     /**
-     * @return Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+     * @return **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
      * 
      */
     public Output<Optional<WorkloadKmsSettings>> kmsSettings() {
@@ -244,14 +385,42 @@ public class Workload extends com.pulumi.resources.CustomResource {
         return this.organization;
     }
     /**
-     * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * 
+     */
+    @Export(name="partner", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> partner;
+
+    /**
+     * @return Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * 
+     */
+    public Output<Optional<String>> partner() {
+        return Codegen.optional(this.partner);
+    }
+    /**
+     * Optional. Permissions granted to the AW Partner SA account for the customer workload
+     * 
+     */
+    @Export(name="partnerPermissions", refs={WorkloadPartnerPermissions.class}, tree="[0]")
+    private Output</* @Nullable */ WorkloadPartnerPermissions> partnerPermissions;
+
+    /**
+     * @return Optional. Permissions granted to the AW Partner SA account for the customer workload
+     * 
+     */
+    public Output<Optional<WorkloadPartnerPermissions>> partnerPermissions() {
+        return Codegen.optional(this.partnerPermissions);
+    }
+    /**
+     * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      * 
      */
     @Export(name="provisionedResourcesParent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> provisionedResourcesParent;
 
     /**
-     * @return Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+     * @return Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      * 
      */
     public Output<Optional<String>> provisionedResourcesParent() {
@@ -298,6 +467,34 @@ public class Workload extends com.pulumi.resources.CustomResource {
      */
     public Output<List<WorkloadResource>> resources() {
         return this.resources;
+    }
+    /**
+     * Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+     * 
+     */
+    @Export(name="saaEnrollmentResponses", refs={List.class,WorkloadSaaEnrollmentResponse.class}, tree="[0,1]")
+    private Output<List<WorkloadSaaEnrollmentResponse>> saaEnrollmentResponses;
+
+    /**
+     * @return Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+     * 
+     */
+    public Output<List<WorkloadSaaEnrollmentResponse>> saaEnrollmentResponses() {
+        return this.saaEnrollmentResponses;
+    }
+    /**
+     * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     * 
+     */
+    @Export(name="violationNotificationsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> violationNotificationsEnabled;
+
+    /**
+     * @return Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     * 
+     */
+    public Output<Boolean> violationNotificationsEnabled() {
+        return this.violationNotificationsEnabled;
     }
 
     /**

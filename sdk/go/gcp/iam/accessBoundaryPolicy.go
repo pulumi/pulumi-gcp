@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a collection of access boundary policies to apply to a given resource.
@@ -21,7 +20,17 @@ import (
 //
 // ## Import
 //
-// AccessBoundaryPolicy can be imported using any of these accepted formats:
+// AccessBoundaryPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AccessBoundaryPolicy using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/{{name}}"
+//
+//	to = google_iam_access_boundary_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AccessBoundaryPolicy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -159,12 +168,6 @@ func (i *AccessBoundaryPolicy) ToAccessBoundaryPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyOutput)
 }
 
-func (i *AccessBoundaryPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessBoundaryPolicy] {
-	return pulumix.Output[*AccessBoundaryPolicy]{
-		OutputState: i.ToAccessBoundaryPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessBoundaryPolicyArrayInput is an input type that accepts AccessBoundaryPolicyArray and AccessBoundaryPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessBoundaryPolicyArrayInput` via:
 //
@@ -188,12 +191,6 @@ func (i AccessBoundaryPolicyArray) ToAccessBoundaryPolicyArrayOutput() AccessBou
 
 func (i AccessBoundaryPolicyArray) ToAccessBoundaryPolicyArrayOutputWithContext(ctx context.Context) AccessBoundaryPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyArrayOutput)
-}
-
-func (i AccessBoundaryPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessBoundaryPolicy] {
-	return pulumix.Output[[]*AccessBoundaryPolicy]{
-		OutputState: i.ToAccessBoundaryPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessBoundaryPolicyMapInput is an input type that accepts AccessBoundaryPolicyMap and AccessBoundaryPolicyMapOutput values.
@@ -221,12 +218,6 @@ func (i AccessBoundaryPolicyMap) ToAccessBoundaryPolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AccessBoundaryPolicyMapOutput)
 }
 
-func (i AccessBoundaryPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessBoundaryPolicy] {
-	return pulumix.Output[map[string]*AccessBoundaryPolicy]{
-		OutputState: i.ToAccessBoundaryPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessBoundaryPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessBoundaryPolicyOutput) ElementType() reflect.Type {
@@ -239,12 +230,6 @@ func (o AccessBoundaryPolicyOutput) ToAccessBoundaryPolicyOutput() AccessBoundar
 
 func (o AccessBoundaryPolicyOutput) ToAccessBoundaryPolicyOutputWithContext(ctx context.Context) AccessBoundaryPolicyOutput {
 	return o
-}
-
-func (o AccessBoundaryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessBoundaryPolicy] {
-	return pulumix.Output[*AccessBoundaryPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name of the rule.
@@ -287,12 +272,6 @@ func (o AccessBoundaryPolicyArrayOutput) ToAccessBoundaryPolicyArrayOutputWithCo
 	return o
 }
 
-func (o AccessBoundaryPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessBoundaryPolicy] {
-	return pulumix.Output[[]*AccessBoundaryPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessBoundaryPolicyArrayOutput) Index(i pulumi.IntInput) AccessBoundaryPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessBoundaryPolicy {
 		return vs[0].([]*AccessBoundaryPolicy)[vs[1].(int)]
@@ -311,12 +290,6 @@ func (o AccessBoundaryPolicyMapOutput) ToAccessBoundaryPolicyMapOutput() AccessB
 
 func (o AccessBoundaryPolicyMapOutput) ToAccessBoundaryPolicyMapOutputWithContext(ctx context.Context) AccessBoundaryPolicyMapOutput {
 	return o
-}
-
-func (o AccessBoundaryPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessBoundaryPolicy] {
-	return pulumix.Output[map[string]*AccessBoundaryPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessBoundaryPolicyMapOutput) MapIndex(k pulumi.StringInput) AccessBoundaryPolicyOutput {

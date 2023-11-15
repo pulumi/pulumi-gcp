@@ -41,6 +41,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
+        /// The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+        /// </summary>
+        public readonly int? MinNumInstances;
+        /// <summary>
         /// Specifies the number of worker nodes to create.
         /// If not specified, GCP will default to a predetermined computed value (currently 2).
         /// There is currently a beta feature which allows you to run a
@@ -65,6 +69,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? minCpuPlatform,
 
+            int? minNumInstances,
+
             int? numInstances)
         {
             Accelerators = accelerators;
@@ -73,6 +79,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             InstanceNames = instanceNames;
             MachineType = machineType;
             MinCpuPlatform = minCpuPlatform;
+            MinNumInstances = minNumInstances;
             NumInstances = numInstances;
         }
     }

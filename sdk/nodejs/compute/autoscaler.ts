@@ -147,7 +147,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Autoscaler can be imported using any of these accepted formats
+ * Autoscaler can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Autoscaler using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}"
+ *
+ *  to = google_compute_autoscaler.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/autoscaler:Autoscaler When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Autoscaler can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}

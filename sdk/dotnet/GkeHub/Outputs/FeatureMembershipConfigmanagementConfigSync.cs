@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// (Optional) Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
+        public readonly string? MetricsGcpServiceAccountEmail;
         /// <summary>
         /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         /// 
@@ -36,6 +37,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         private FeatureMembershipConfigmanagementConfigSync(
             Outputs.FeatureMembershipConfigmanagementConfigSyncGit? git,
 
+            string? metricsGcpServiceAccountEmail,
+
             Outputs.FeatureMembershipConfigmanagementConfigSyncOci? oci,
 
             bool? preventDrift,
@@ -43,6 +46,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
             string? sourceFormat)
         {
             Git = git;
+            MetricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             Oci = oci;
             PreventDrift = preventDrift;
             SourceFormat = sourceFormat;

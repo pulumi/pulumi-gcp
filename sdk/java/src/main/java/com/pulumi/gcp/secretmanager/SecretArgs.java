@@ -62,6 +62,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Only one of `expire_time` or `ttl` can be provided.
      * 
      */
     @Import(name="expireTime")
@@ -70,6 +71,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Only one of `expire_time` or `ttl` can be provided.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -199,6 +201,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of `ttl` or `expire_time` can be provided.
      * 
      */
     @Import(name="ttl")
@@ -207,6 +210,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of `ttl` or `expire_time` can be provided.
      * 
      */
     public Optional<Output<String>> ttl() {
@@ -321,6 +325,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * Only one of `expire_time` or `ttl` can be provided.
          * 
          * @return builder
          * 
@@ -333,6 +338,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param expireTime Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * Only one of `expire_time` or `ttl` can be provided.
          * 
          * @return builder
          * 
@@ -511,6 +517,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ttl The TTL for the Secret.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * Only one of `ttl` or `expire_time` can be provided.
          * 
          * @return builder
          * 
@@ -523,6 +530,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ttl The TTL for the Secret.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * Only one of `ttl` or `expire_time` can be provided.
          * 
          * @return builder
          * 

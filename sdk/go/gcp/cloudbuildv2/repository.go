@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Cloudbuildv2 Repository resource
@@ -220,7 +219,17 @@ import (
 //
 // ## Import
 //
-// # Repository can be imported using any of these accepted formats
+// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}` * `{{project}}/{{location}}/{{parent_connection}}/{{name}}` * `{{location}}/{{parent_connection}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}"
+//
+//	to = google_cloudbuildv2_repository.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:cloudbuildv2/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -431,12 +440,6 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
 }
 
-func (i *Repository) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
-	return pulumix.Output[*Repository]{
-		OutputState: i.ToRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryArrayInput is an input type that accepts RepositoryArray and RepositoryArrayOutput values.
 // You can construct a concrete instance of `RepositoryArrayInput` via:
 //
@@ -460,12 +463,6 @@ func (i RepositoryArray) ToRepositoryArrayOutput() RepositoryArrayOutput {
 
 func (i RepositoryArray) ToRepositoryArrayOutputWithContext(ctx context.Context) RepositoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryArrayOutput)
-}
-
-func (i RepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*Repository] {
-	return pulumix.Output[[]*Repository]{
-		OutputState: i.ToRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepositoryMapInput is an input type that accepts RepositoryMap and RepositoryMapOutput values.
@@ -493,12 +490,6 @@ func (i RepositoryMap) ToRepositoryMapOutputWithContext(ctx context.Context) Rep
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryMapOutput)
 }
 
-func (i RepositoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repository] {
-	return pulumix.Output[map[string]*Repository]{
-		OutputState: i.ToRepositoryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryOutput) ElementType() reflect.Type {
@@ -511,12 +502,6 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
-}
-
-func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
-	return pulumix.Output[*Repository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows clients to store small amounts of arbitrary data.
@@ -589,12 +574,6 @@ func (o RepositoryArrayOutput) ToRepositoryArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Repository] {
-	return pulumix.Output[[]*Repository]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepositoryArrayOutput) Index(i pulumi.IntInput) RepositoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Repository {
 		return vs[0].([]*Repository)[vs[1].(int)]
@@ -613,12 +592,6 @@ func (o RepositoryMapOutput) ToRepositoryMapOutput() RepositoryMapOutput {
 
 func (o RepositoryMapOutput) ToRepositoryMapOutputWithContext(ctx context.Context) RepositoryMapOutput {
 	return o
-}
-
-func (o RepositoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repository] {
-	return pulumix.Output[map[string]*Repository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryMapOutput) MapIndex(k pulumi.StringInput) RepositoryOutput {

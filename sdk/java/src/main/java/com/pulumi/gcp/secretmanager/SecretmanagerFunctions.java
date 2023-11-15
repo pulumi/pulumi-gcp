@@ -16,10 +16,13 @@ import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionPlainArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetSecretsPlainArgs;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretIamPolicyResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionAccessResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionResult;
+import com.pulumi.gcp.secretmanager.outputs.GetSecretsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SecretmanagerFunctions {
@@ -618,5 +621,215 @@ public final class SecretmanagerFunctions {
      */
     public static CompletableFuture<GetSecretVersionAccessResult> getSecretVersionAccessPlain(GetSecretVersionAccessPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", TypeShape.of(GetSecretVersionAccessResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the Secret Manager Secrets
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets() {
+        return getSecrets(GetSecretsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the Secret Manager Secrets
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretsResult> getSecretsPlain() {
+        return getSecretsPlain(GetSecretsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the Secret Manager Secrets
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets(GetSecretsArgs args) {
+        return getSecrets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the Secret Manager Secrets
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretsResult> getSecretsPlain(GetSecretsPlainArgs args) {
+        return getSecretsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the Secret Manager Secrets
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretsResult> getSecrets(GetSecretsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:secretmanager/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the Secret Manager Secrets
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretsResult> getSecretsPlain(GetSecretsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecrets:getSecrets", TypeShape.of(GetSecretsResult.class), args, Utilities.withVersion(options));
     }
 }

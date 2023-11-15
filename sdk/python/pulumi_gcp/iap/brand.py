@@ -222,7 +222,15 @@ class Brand(pulumi.CustomResource):
 
         ## Import
 
-        Brand can be imported using any of these accepted formats
+        Brand can be imported using any of these accepted formats* `projects/{{project_id}}/brands/{{brand_id}}` * `projects/{{project_number}}/brands/{{brand_id}}` * `{{project_number}}/{{brand_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Brand using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/brands/{{brand_id}}"
+
+         to = google_iap_brand.default }
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Brand can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
@@ -278,7 +286,15 @@ class Brand(pulumi.CustomResource):
 
         ## Import
 
-        Brand can be imported using any of these accepted formats
+        Brand can be imported using any of these accepted formats* `projects/{{project_id}}/brands/{{brand_id}}` * `projects/{{project_number}}/brands/{{brand_id}}` * `{{project_number}}/{{brand_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Brand using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/brands/{{brand_id}}"
+
+         to = google_iap_brand.default }
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Brand can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
@@ -125,29 +124,23 @@ import (
 //
 // ## Import
 //
-// Instance IAM resources can be imported using the project, instance name, role and/or member.
+// ### Importing IAM policies IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example* `"projects/{project}/instances/{instance}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+//
+//	id = "projects/{project}/instances/{instance}"
+//
+//	to = google_bigtable_instance_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy editor "projects/{project}/instances/{instance}"
+//	$ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy editor "projects/{project}/instances/{instance} roles/editor"
+//	$ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
 //
 // ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy editor "projects/{project}/instances/{instance} roles/editor user:jane@example.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -334,12 +327,6 @@ func (i *InstanceIamPolicy) ToInstanceIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamPolicyOutput)
 }
 
-func (i *InstanceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamPolicy] {
-	return pulumix.Output[*InstanceIamPolicy]{
-		OutputState: i.ToInstanceIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceIamPolicyArrayInput is an input type that accepts InstanceIamPolicyArray and InstanceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `InstanceIamPolicyArrayInput` via:
 //
@@ -363,12 +350,6 @@ func (i InstanceIamPolicyArray) ToInstanceIamPolicyArrayOutput() InstanceIamPoli
 
 func (i InstanceIamPolicyArray) ToInstanceIamPolicyArrayOutputWithContext(ctx context.Context) InstanceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamPolicyArrayOutput)
-}
-
-func (i InstanceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamPolicy] {
-	return pulumix.Output[[]*InstanceIamPolicy]{
-		OutputState: i.ToInstanceIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceIamPolicyMapInput is an input type that accepts InstanceIamPolicyMap and InstanceIamPolicyMapOutput values.
@@ -396,12 +377,6 @@ func (i InstanceIamPolicyMap) ToInstanceIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamPolicyMapOutput)
 }
 
-func (i InstanceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamPolicy] {
-	return pulumix.Output[map[string]*InstanceIamPolicy]{
-		OutputState: i.ToInstanceIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamPolicyOutput) ElementType() reflect.Type {
@@ -414,12 +389,6 @@ func (o InstanceIamPolicyOutput) ToInstanceIamPolicyOutput() InstanceIamPolicyOu
 
 func (o InstanceIamPolicyOutput) ToInstanceIamPolicyOutputWithContext(ctx context.Context) InstanceIamPolicyOutput {
 	return o
-}
-
-func (o InstanceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamPolicy] {
-	return pulumix.Output[*InstanceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the instances's IAM policy.
@@ -470,12 +439,6 @@ func (o InstanceIamPolicyArrayOutput) ToInstanceIamPolicyArrayOutputWithContext(
 	return o
 }
 
-func (o InstanceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamPolicy] {
-	return pulumix.Output[[]*InstanceIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceIamPolicyArrayOutput) Index(i pulumi.IntInput) InstanceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamPolicy {
 		return vs[0].([]*InstanceIamPolicy)[vs[1].(int)]
@@ -494,12 +457,6 @@ func (o InstanceIamPolicyMapOutput) ToInstanceIamPolicyMapOutput() InstanceIamPo
 
 func (o InstanceIamPolicyMapOutput) ToInstanceIamPolicyMapOutputWithContext(ctx context.Context) InstanceIamPolicyMapOutput {
 	return o
-}
-
-func (o InstanceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamPolicy] {
-	return pulumix.Output[map[string]*InstanceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) InstanceIamPolicyOutput {

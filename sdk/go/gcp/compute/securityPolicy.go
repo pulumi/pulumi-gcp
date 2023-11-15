@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
@@ -236,6 +235,38 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/securityPolicies/{{name}}"
+//
+//	to = google_compute_security_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
+//
+// ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -261,7 +292,7 @@ type SecurityPolicy struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayOutput `pulumi:"rules"`
-	// The URI of the created resourc
+	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -326,7 +357,7 @@ type securityPolicyState struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
-	// The URI of the created resourc
+	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -362,7 +393,7 @@ type SecurityPolicyState struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayInput
-	// The URI of the created resourc
+	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -467,12 +498,6 @@ func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
 }
 
-func (i *SecurityPolicy) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicy] {
-	return pulumix.Output[*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecurityPolicyArrayInput is an input type that accepts SecurityPolicyArray and SecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `SecurityPolicyArrayInput` via:
 //
@@ -496,12 +521,6 @@ func (i SecurityPolicyArray) ToSecurityPolicyArrayOutput() SecurityPolicyArrayOu
 
 func (i SecurityPolicyArray) ToSecurityPolicyArrayOutputWithContext(ctx context.Context) SecurityPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyArrayOutput)
-}
-
-func (i SecurityPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityPolicy] {
-	return pulumix.Output[[]*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecurityPolicyMapInput is an input type that accepts SecurityPolicyMap and SecurityPolicyMapOutput values.
@@ -529,12 +548,6 @@ func (i SecurityPolicyMap) ToSecurityPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyMapOutput)
 }
 
-func (i SecurityPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityPolicy] {
-	return pulumix.Output[map[string]*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyOutput) ElementType() reflect.Type {
@@ -547,12 +560,6 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutput() SecurityPolicyOutput {
 
 func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
 	return o
-}
-
-func (o SecurityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicy] {
-	return pulumix.Output[*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -603,7 +610,7 @@ func (o SecurityPolicyOutput) Rules() SecurityPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRuleArrayOutput { return v.Rules }).(SecurityPolicyRuleArrayOutput)
 }
 
-// The URI of the created resourc
+// The URI of the created resource.
 func (o SecurityPolicyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -634,12 +641,6 @@ func (o SecurityPolicyArrayOutput) ToSecurityPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o SecurityPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityPolicy] {
-	return pulumix.Output[[]*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityPolicyArrayOutput) Index(i pulumi.IntInput) SecurityPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityPolicy {
 		return vs[0].([]*SecurityPolicy)[vs[1].(int)]
@@ -658,12 +659,6 @@ func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutput() SecurityPolicyMapOu
 
 func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutputWithContext(ctx context.Context) SecurityPolicyMapOutput {
 	return o
-}
-
-func (o SecurityPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityPolicy] {
-	return pulumix.Output[map[string]*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityPolicyMapOutput) MapIndex(k pulumi.StringInput) SecurityPolicyOutput {

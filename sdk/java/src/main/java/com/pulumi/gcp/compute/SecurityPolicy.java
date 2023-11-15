@@ -257,6 +257,30 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/securityPolicies/{{name}}&#34;
+ * 
+ *  to = google_compute_security_policy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
+ * ```
+ * 
  */
 @ResourceType(type="gcp:compute/securityPolicy:SecurityPolicy")
 public class SecurityPolicy extends com.pulumi.resources.CustomResource {
@@ -385,14 +409,14 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * The URI of the created resourc
+     * The URI of the created resource.
      * 
      */
     @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
-     * @return The URI of the created resourc
+     * @return The URI of the created resource.
      * 
      */
     public Output<String> selfLink() {

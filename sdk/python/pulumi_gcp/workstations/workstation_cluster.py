@@ -21,6 +21,7 @@ class WorkstationClusterArgs:
                  workstation_cluster_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input['WorkstationClusterDomainConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_cluster_config: Optional[pulumi.Input['WorkstationClusterPrivateClusterConfigArgs']] = None,
@@ -39,6 +40,8 @@ class WorkstationClusterArgs:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input['WorkstationClusterDomainConfigArgs'] domain_config: Configuration options for a custom domain.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -55,6 +58,8 @@ class WorkstationClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if domain_config is not None:
+            pulumi.set(__self__, "domain_config", domain_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -132,6 +137,19 @@ class WorkstationClusterArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> Optional[pulumi.Input['WorkstationClusterDomainConfigArgs']]:
+        """
+        Configuration options for a custom domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "domain_config")
+
+    @domain_config.setter
+    def domain_config(self, value: Optional[pulumi.Input['WorkstationClusterDomainConfigArgs']]):
+        pulumi.set(self, "domain_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -192,6 +210,7 @@ class _WorkstationClusterState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  degraded: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input['WorkstationClusterDomainConfigArgs']] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -216,6 +235,8 @@ class _WorkstationClusterState:
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input['WorkstationClusterDomainConfigArgs'] domain_config: Configuration options for a custom domain.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -252,6 +273,8 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "degraded", degraded)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if domain_config is not None:
+            pulumi.set(__self__, "domain_config", domain_config)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if effective_labels is not None:
@@ -342,6 +365,19 @@ class _WorkstationClusterState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> Optional[pulumi.Input['WorkstationClusterDomainConfigArgs']]:
+        """
+        Configuration options for a custom domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "domain_config")
+
+    @domain_config.setter
+    def domain_config(self, value: Optional[pulumi.Input['WorkstationClusterDomainConfigArgs']]):
+        pulumi.set(self, "domain_config", value)
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -519,6 +555,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input[pulumi.InputType['WorkstationClusterDomainConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -586,10 +623,51 @@ class WorkstationCluster(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         project = gcp.organizations.get_project()
         ```
+        ### Workstation Cluster Custom Domain
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster-custom-domain",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            private_cluster_config=gcp.workstations.WorkstationClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+            ),
+            domain_config=gcp.workstations.WorkstationClusterDomainConfigArgs(
+                domain="workstations.example.com",
+            ),
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
-        WorkstationCluster can be imported using any of these accepted formats
+        WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}"
+
+         to = google_workstations_workstation_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
@@ -609,6 +687,8 @@ class WorkstationCluster(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[pulumi.InputType['WorkstationClusterDomainConfigArgs']] domain_config: Configuration options for a custom domain.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -691,10 +771,51 @@ class WorkstationCluster(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         project = gcp.organizations.get_project()
         ```
+        ### Workstation Cluster Custom Domain
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster-custom-domain",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            private_cluster_config=gcp.workstations.WorkstationClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+            ),
+            domain_config=gcp.workstations.WorkstationClusterDomainConfigArgs(
+                domain="workstations.example.com",
+            ),
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
-        WorkstationCluster can be imported using any of these accepted formats
+        WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}"
+
+         to = google_workstations_workstation_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
@@ -725,6 +846,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input[pulumi.InputType['WorkstationClusterDomainConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -743,6 +865,7 @@ class WorkstationCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["domain_config"] = domain_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             if network is None and not opts.urn:
@@ -782,6 +905,7 @@ class WorkstationCluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             degraded: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            domain_config: Optional[pulumi.Input[pulumi.InputType['WorkstationClusterDomainConfigArgs']]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -811,6 +935,8 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[pulumi.InputType['WorkstationClusterDomainConfigArgs']] domain_config: Configuration options for a custom domain.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -846,6 +972,7 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["domain_config"] = domain_config
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
@@ -904,6 +1031,15 @@ class WorkstationCluster(pulumi.CustomResource):
         Human-readable name for this resource.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> pulumi.Output[Optional['outputs.WorkstationClusterDomainConfig']]:
+        """
+        Configuration options for a custom domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "domain_config")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")

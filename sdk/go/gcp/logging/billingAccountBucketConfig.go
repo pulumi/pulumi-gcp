@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a billing account level logging bucket config. For more information see
@@ -19,45 +18,19 @@ import (
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
-//				BillingAccount: pulumi.StringRef("00AA00-000AAA-00AA0A"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewBillingAccountBucketConfig(ctx, "basic", &logging.BillingAccountBucketConfigArgs{
-//				BillingAccount: *pulumi.String(_default.BillingAccount),
-//				Location:       pulumi.String("global"),
-//				RetentionDays:  pulumi.Int(30),
-//				BucketId:       pulumi.String("_Default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// This resource can be imported using the following format:
+// This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+//
+//	id = "billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}"
+//
+//	to = google_logging_billing_account_bucket_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -77,6 +50,8 @@ type BillingAccountBucketConfig struct {
 	CmekSettings BillingAccountBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs BillingAccountBucketConfigIndexConfigArrayOutput `pulumi:"indexConfigs"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// The location of the bucket.
@@ -136,6 +111,8 @@ type billingAccountBucketConfigState struct {
 	CmekSettings *BillingAccountBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs []BillingAccountBucketConfigIndexConfig `pulumi:"indexConfigs"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// The location of the bucket.
@@ -157,6 +134,8 @@ type BillingAccountBucketConfigState struct {
 	CmekSettings BillingAccountBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs BillingAccountBucketConfigIndexConfigArrayInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringPtrInput
 	// The location of the bucket.
@@ -182,6 +161,8 @@ type billingAccountBucketConfigArgs struct {
 	CmekSettings *BillingAccountBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs []BillingAccountBucketConfigIndexConfig `pulumi:"indexConfigs"`
 	// The location of the bucket.
 	Location string `pulumi:"location"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
@@ -200,6 +181,8 @@ type BillingAccountBucketConfigArgs struct {
 	CmekSettings BillingAccountBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
+	// A list of indexed fields and related configuration data. Structure is documented below.
+	IndexConfigs BillingAccountBucketConfigIndexConfigArrayInput
 	// The location of the bucket.
 	Location pulumi.StringInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
@@ -229,12 +212,6 @@ func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigOutput)
 }
 
-func (i *BillingAccountBucketConfig) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketConfig] {
-	return pulumix.Output[*BillingAccountBucketConfig]{
-		OutputState: i.ToBillingAccountBucketConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BillingAccountBucketConfigArrayInput is an input type that accepts BillingAccountBucketConfigArray and BillingAccountBucketConfigArrayOutput values.
 // You can construct a concrete instance of `BillingAccountBucketConfigArrayInput` via:
 //
@@ -258,12 +235,6 @@ func (i BillingAccountBucketConfigArray) ToBillingAccountBucketConfigArrayOutput
 
 func (i BillingAccountBucketConfigArray) ToBillingAccountBucketConfigArrayOutputWithContext(ctx context.Context) BillingAccountBucketConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigArrayOutput)
-}
-
-func (i BillingAccountBucketConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*BillingAccountBucketConfig] {
-	return pulumix.Output[[]*BillingAccountBucketConfig]{
-		OutputState: i.ToBillingAccountBucketConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BillingAccountBucketConfigMapInput is an input type that accepts BillingAccountBucketConfigMap and BillingAccountBucketConfigMapOutput values.
@@ -291,12 +262,6 @@ func (i BillingAccountBucketConfigMap) ToBillingAccountBucketConfigMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigMapOutput)
 }
 
-func (i BillingAccountBucketConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingAccountBucketConfig] {
-	return pulumix.Output[map[string]*BillingAccountBucketConfig]{
-		OutputState: i.ToBillingAccountBucketConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingAccountBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigOutput) ElementType() reflect.Type {
@@ -309,12 +274,6 @@ func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutput() B
 
 func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
 	return o
-}
-
-func (o BillingAccountBucketConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketConfig] {
-	return pulumix.Output[*BillingAccountBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parent resource that contains the logging bucket.
@@ -339,6 +298,13 @@ func (o BillingAccountBucketConfigOutput) CmekSettings() BillingAccountBucketCon
 // Describes this bucket.
 func (o BillingAccountBucketConfigOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfig) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of indexed fields and related configuration data. Structure is documented below.
+func (o BillingAccountBucketConfigOutput) IndexConfigs() BillingAccountBucketConfigIndexConfigArrayOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfig) BillingAccountBucketConfigIndexConfigArrayOutput {
+		return v.IndexConfigs
+	}).(BillingAccountBucketConfigIndexConfigArrayOutput)
 }
 
 // The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -375,12 +341,6 @@ func (o BillingAccountBucketConfigArrayOutput) ToBillingAccountBucketConfigArray
 	return o
 }
 
-func (o BillingAccountBucketConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BillingAccountBucketConfig] {
-	return pulumix.Output[[]*BillingAccountBucketConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BillingAccountBucketConfigArrayOutput) Index(i pulumi.IntInput) BillingAccountBucketConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BillingAccountBucketConfig {
 		return vs[0].([]*BillingAccountBucketConfig)[vs[1].(int)]
@@ -399,12 +359,6 @@ func (o BillingAccountBucketConfigMapOutput) ToBillingAccountBucketConfigMapOutp
 
 func (o BillingAccountBucketConfigMapOutput) ToBillingAccountBucketConfigMapOutputWithContext(ctx context.Context) BillingAccountBucketConfigMapOutput {
 	return o
-}
-
-func (o BillingAccountBucketConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingAccountBucketConfig] {
-	return pulumix.Output[map[string]*BillingAccountBucketConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingAccountBucketConfigMapOutput) MapIndex(k pulumi.StringInput) BillingAccountBucketConfigOutput {

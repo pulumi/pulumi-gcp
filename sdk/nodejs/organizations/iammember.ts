@@ -158,42 +158,18 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ * ### Importing Audit Configs An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g* `"{{org_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
  *
- * This member resource can be imported using the `org_id`, role, and member e.g.
+ *  id = "{{org_id}} foo.googleapis.com"
+ *
+ *  to = google_organization_iam_audit_config.default }
  *
  * ```sh
- *  $ pulumi import gcp:organizations/iAMMember:IAMMember my_organization "your-orgid roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:organizations/iAMMember:IAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  *
- *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
- *
- * This binding resource can be imported using the `org_id` and role, e.g.
- *
  * ```sh
- *  $ pulumi import gcp:organizations/iAMMember:IAMMember my_organization "your-org-id roles/viewer"
- * ```
- *
- *  IAM policy imports use the identifier of the resource in question.
- *
- * This policy resource can be imported using the `org_id`.
- *
- * ```sh
- *  $ pulumi import gcp:organizations/iAMMember:IAMMember my_organization your-org-id
- * ```
- *
- *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
- *
- * ```sh
- *  $ pulumi import gcp:organizations/iAMMember:IAMMember my_organization "your-organization-id foo.googleapis.com"
- * ```
- *
- *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
- *
- * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
- *
- * ```sh
- *  $ pulumi import gcp:organizations/iAMMember:IAMMember to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+ *  $ pulumi import gcp:organizations/iAMMember:IAMMember default "{{org_id}} foo.googleapis.com"
  * ```
  */
 export class IAMMember extends pulumi.CustomResource {

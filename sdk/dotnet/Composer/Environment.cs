@@ -12,7 +12,15 @@ namespace Pulumi.Gcp.Composer
     /// <summary>
     /// ## Import
     /// 
-    /// Environment can be imported using any of these accepted formats
+    /// Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{region}}/environments/{{name}}"
+    /// 
+    ///  to = google_composer_environment.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:composer/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
@@ -77,6 +85,12 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration options for storage used by Composer environment.
+        /// </summary>
+        [Output("storageConfig")]
+        public Output<Outputs.EnvironmentStorageConfig> StorageConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -171,6 +185,12 @@ namespace Pulumi.Gcp.Composer
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Configuration options for storage used by Composer environment.
+        /// </summary>
+        [Input("storageConfig")]
+        public Input<Inputs.EnvironmentStorageConfigArgs>? StorageConfig { get; set; }
+
         public EnvironmentArgs()
         {
         }
@@ -253,6 +273,12 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Configuration options for storage used by Composer environment.
+        /// </summary>
+        [Input("storageConfig")]
+        public Input<Inputs.EnvironmentStorageConfigGetArgs>? StorageConfig { get; set; }
 
         public EnvironmentState()
         {

@@ -22,7 +22,8 @@ class WorkflowArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source_contents: Optional[pulumi.Input[str]] = None):
+                 source_contents: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
@@ -46,6 +47,8 @@ class WorkflowArgs:
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+               string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
@@ -65,6 +68,8 @@ class WorkflowArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source_contents is not None:
             pulumi.set(__self__, "source_contents", source_contents)
+        if user_env_vars is not None:
+            pulumi.set(__self__, "user_env_vars", user_env_vars)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -186,6 +191,19 @@ class WorkflowArgs:
     def source_contents(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_contents", value)
 
+    @property
+    @pulumi.getter(name="userEnvVars")
+    def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+        string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        """
+        return pulumi.get(self, "user_env_vars")
+
+    @user_env_vars.setter
+    def user_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_env_vars", value)
+
 
 @pulumi.input_type
 class _WorkflowState:
@@ -204,7 +222,8 @@ class _WorkflowState:
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
         :param pulumi.Input[str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -235,6 +254,8 @@ class _WorkflowState:
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+               string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -266,6 +287,8 @@ class _WorkflowState:
             pulumi.set(__self__, "state", state)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if user_env_vars is not None:
+            pulumi.set(__self__, "user_env_vars", user_env_vars)
 
     @property
     @pulumi.getter(name="createTime")
@@ -460,6 +483,19 @@ class _WorkflowState:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+    @property
+    @pulumi.getter(name="userEnvVars")
+    def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+        string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        """
+        return pulumi.get(self, "user_env_vars")
+
+    @user_env_vars.setter
+    def user_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_env_vars", value)
+
 
 class Workflow(pulumi.CustomResource):
     @overload
@@ -475,6 +511,7 @@ class Workflow(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Workflow program to be executed by Workflows.
@@ -530,6 +567,55 @@ class Workflow(pulumi.CustomResource):
             return: {wiki_result["body"]}
         \"\"\")
         ```
+        ### Workflow Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.serviceaccount.Account("testAccount",
+            account_id="my-account",
+            display_name="Test Service Account",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_beta = gcp.workflows.Workflow("exampleBeta",
+            region="us-central1",
+            description="Magic",
+            service_account=test_account.id,
+            labels={
+                "env": "test",
+            },
+            user_env_vars={
+                "foo": "BAR",
+            },
+            source_contents=f\"\"\"# This is a sample workflow. You can replace it with your source code.
+        #
+        # This workflow does the following:
+        # - reads current time and date information from an external API and stores
+        #   the response in currentTime variable
+        # - retrieves a list of Wikipedia articles related to the day of the week
+        #   from currentTime
+        # - returns the list of articles as an output of the workflow
+        #
+        # Note: In Terraform you need to escape the $$ or it will cause errors.
+
+        - getCurrentTime:
+            call: http.get
+            args:
+                url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+            result: currentTime
+        - readWikipedia:
+            call: http.get
+            args:
+                url: https://en.wikipedia.org/w/api.php
+                query:
+                    action: opensearch
+                    search: {current_time["body"]["dayOfWeek"]}
+            result: wikiResult
+        - returnOutput:
+            return: {wiki_result["body"]}
+        \"\"\",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -558,6 +644,8 @@ class Workflow(pulumi.CustomResource):
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+               string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         ...
     @overload
@@ -619,6 +707,55 @@ class Workflow(pulumi.CustomResource):
             return: {wiki_result["body"]}
         \"\"\")
         ```
+        ### Workflow Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.serviceaccount.Account("testAccount",
+            account_id="my-account",
+            display_name="Test Service Account",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        example_beta = gcp.workflows.Workflow("exampleBeta",
+            region="us-central1",
+            description="Magic",
+            service_account=test_account.id,
+            labels={
+                "env": "test",
+            },
+            user_env_vars={
+                "foo": "BAR",
+            },
+            source_contents=f\"\"\"# This is a sample workflow. You can replace it with your source code.
+        #
+        # This workflow does the following:
+        # - reads current time and date information from an external API and stores
+        #   the response in currentTime variable
+        # - retrieves a list of Wikipedia articles related to the day of the week
+        #   from currentTime
+        # - returns the list of articles as an output of the workflow
+        #
+        # Note: In Terraform you need to escape the $$ or it will cause errors.
+
+        - getCurrentTime:
+            call: http.get
+            args:
+                url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+            result: currentTime
+        - readWikipedia:
+            call: http.get
+            args:
+                url: https://en.wikipedia.org/w/api.php
+                query:
+                    action: opensearch
+                    search: {current_time["body"]["dayOfWeek"]}
+            result: wikiResult
+        - returnOutput:
+            return: {wiki_result["body"]}
+        \"\"\",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -648,6 +785,7 @@ class Workflow(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -666,6 +804,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["source_contents"] = source_contents
+            __props__.__dict__["user_env_vars"] = user_env_vars
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -698,7 +837,8 @@ class Workflow(pulumi.CustomResource):
             service_account: Optional[pulumi.Input[str]] = None,
             source_contents: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            update_time: Optional[pulumi.Input[str]] = None) -> 'Workflow':
+            update_time: Optional[pulumi.Input[str]] = None,
+            user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Workflow':
         """
         Get an existing Workflow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -734,6 +874,8 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+               string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -754,6 +896,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["source_contents"] = source_contents
         __props__.__dict__["state"] = state
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["user_env_vars"] = user_env_vars
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -888,4 +1031,13 @@ class Workflow(pulumi.CustomResource):
         The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="userEnvVars")
+    def user_env_vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+        string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        """
+        return pulumi.get(self, "user_env_vars")
 

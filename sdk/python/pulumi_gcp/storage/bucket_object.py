@@ -29,6 +29,7 @@ class BucketObjectArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None):
@@ -50,6 +51,7 @@ class BucketObjectArgs:
                
                One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+        :param pulumi.Input['BucketObjectRetentionArgs'] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
@@ -84,6 +86,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if storage_class is not None:
@@ -250,6 +254,18 @@ class BucketObjectArgs:
 
     @property
     @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input['BucketObjectRetentionArgs']]:
+        """
+        The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input['BucketObjectRetentionArgs']]):
+        pulumi.set(self, "retention", value)
+
+    @property
+    @pulumi.getter
     def source(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
         """
         A path to the data you want to upload. Must be defined
@@ -310,6 +326,7 @@ class _BucketObjectState:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_name: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input['BucketObjectRetentionArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
@@ -337,6 +354,7 @@ class _BucketObjectState:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
+        :param pulumi.Input['BucketObjectRetentionArgs'] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
@@ -381,6 +399,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "name", name)
         if output_name is not None:
             pulumi.set(__self__, "output_name", output_name)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if source is not None:
@@ -597,6 +617,18 @@ class _BucketObjectState:
         pulumi.set(self, "output_name", value)
 
     @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input['BucketObjectRetentionArgs']]:
+        """
+        The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input['BucketObjectRetentionArgs']]):
+        pulumi.set(self, "retention", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -668,6 +700,7 @@ class BucketObject(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -727,6 +760,7 @@ class BucketObject(pulumi.CustomResource):
                
                One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+        :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
@@ -807,6 +841,7 @@ class BucketObject(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -834,6 +869,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
+            __props__.__dict__["retention"] = retention
             __props__.__dict__["source"] = source
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["temporary_hold"] = temporary_hold
@@ -871,6 +907,7 @@ class BucketObject(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             output_name: Optional[pulumi.Input[str]] = None,
+            retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
@@ -903,6 +940,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
+        :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
@@ -934,6 +972,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["output_name"] = output_name
+        __props__.__dict__["retention"] = retention
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["source"] = source
         __props__.__dict__["storage_class"] = storage_class
@@ -1077,6 +1116,14 @@ class BucketObject(pulumi.CustomResource):
         `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
         """
         return pulumi.get(self, "output_name")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> pulumi.Output[Optional['outputs.BucketObjectRetention']]:
+        """
+        The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        """
+        return pulumi.get(self, "retention")
 
     @property
     @pulumi.getter(name="selfLink")

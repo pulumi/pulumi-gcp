@@ -10,9 +10,10 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// A Google Bare Metal User Cluster.
+//
 // ## Example Usage
 // ### Gkeonprem Bare Metal Cluster Basic
 //
@@ -29,45 +30,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewBareMetalCluster(ctx, "cluster-basic", &gkeonprem.BareMetalClusterArgs{
-//				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				BareMetalVersion:       pulumi.String("1.12.3"),
-//				NetworkConfig: &gkeonprem.BareMetalClusterNetworkConfigArgs{
-//					IslandModeCidr: &gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs{
-//						ServiceAddressCidrBlocks: pulumi.StringArray{
-//							pulumi.String("172.26.0.0/16"),
-//						},
-//						PodAddressCidrBlocks: pulumi.StringArray{
-//							pulumi.String("10.240.0.0/13"),
-//						},
-//					},
-//				},
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
-//							OperatingSystem: pulumi.String("LINUX"),
+//							Labels: nil,
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
 //									Labels: nil,
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
+//							OperatingSystem: pulumi.String("LINUX"),
 //						},
 //					},
 //				},
 //				LoadBalancer: &gkeonprem.BareMetalClusterLoadBalancerArgs{
-//					PortConfig: &gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs{
-//						ControlPlaneLoadBalancerPort: pulumi.Int(443),
-//					},
-//					VipConfig: &gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs{
-//						ControlPlaneVip: pulumi.String("10.200.0.13"),
-//						IngressVip:      pulumi.String("10.200.0.14"),
-//					},
 //					MetalLbConfig: &gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigArgs{
 //						AddressPools: gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArray{
 //							&gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs{
-//								Pool: pulumi.String("pool1"),
 //								Addresses: pulumi.StringArray{
 //									pulumi.String("10.200.0.14/32"),
 //									pulumi.String("10.200.0.15/32"),
@@ -81,21 +63,27 @@ import (
 //								},
 //								AvoidBuggyIps: pulumi.Bool(true),
 //								ManualAssign:  pulumi.Bool(true),
+//								Pool:          pulumi.String("pool1"),
 //							},
 //						},
 //					},
-//				},
-//				Storage: &gkeonprem.BareMetalClusterStorageArgs{
-//					LvpShareConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigArgs{
-//						LvpConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs{
-//							Path:         pulumi.String("/mnt/localpv-share"),
-//							StorageClass: pulumi.String("local-shared"),
-//						},
-//						SharedPathPvCount: pulumi.Int(5),
+//					PortConfig: &gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs{
+//						ControlPlaneLoadBalancerPort: pulumi.Int(443),
 //					},
-//					LvpNodeMountsConfig: &gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs{
-//						Path:         pulumi.String("/mnt/localpv-disk"),
-//						StorageClass: pulumi.String("local-disks"),
+//					VipConfig: &gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs{
+//						ControlPlaneVip: pulumi.String("10.200.0.13"),
+//						IngressVip:      pulumi.String("10.200.0.14"),
+//					},
+//				},
+//				Location: pulumi.String("us-west1"),
+//				NetworkConfig: &gkeonprem.BareMetalClusterNetworkConfigArgs{
+//					IslandModeCidr: &gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs{
+//						PodAddressCidrBlocks: pulumi.StringArray{
+//							pulumi.String("10.240.0.0/13"),
+//						},
+//						ServiceAddressCidrBlocks: pulumi.StringArray{
+//							pulumi.String("172.26.0.0/16"),
+//						},
 //					},
 //				},
 //				SecurityConfig: &gkeonprem.BareMetalClusterSecurityConfigArgs{
@@ -107,7 +95,20 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Storage: &gkeonprem.BareMetalClusterStorageArgs{
+//					LvpNodeMountsConfig: &gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs{
+//						Path:         pulumi.String("/mnt/localpv-disk"),
+//						StorageClass: pulumi.String("local-disks"),
+//					},
+//					LvpShareConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigArgs{
+//						LvpConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs{
+//							Path:         pulumi.String("/mnt/localpv-share"),
+//							StorageClass: pulumi.String("local-shared"),
+//						},
+//						SharedPathPvCount: pulumi.Int(5),
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -131,34 +132,29 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewBareMetalCluster(ctx, "cluster-manuallb", &gkeonprem.BareMetalClusterArgs{
-//				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				BareMetalVersion:       pulumi.String("1.12.3"),
-//				NetworkConfig: &gkeonprem.BareMetalClusterNetworkConfigArgs{
-//					IslandModeCidr: &gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs{
-//						ServiceAddressCidrBlocks: pulumi.StringArray{
-//							pulumi.String("172.26.0.0/16"),
-//						},
-//						PodAddressCidrBlocks: pulumi.StringArray{
-//							pulumi.String("10.240.0.0/13"),
-//						},
-//					},
+//				BinaryAuthorization: &gkeonprem.BareMetalClusterBinaryAuthorizationArgs{
+//					EvaluationMode: pulumi.String("DISABLED"),
 //				},
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
-//							OperatingSystem: pulumi.String("LINUX"),
+//							Labels: nil,
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
 //									Labels: nil,
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
+//							OperatingSystem: pulumi.String("LINUX"),
 //						},
 //					},
 //				},
 //				LoadBalancer: &gkeonprem.BareMetalClusterLoadBalancerArgs{
+//					ManualLbConfig: &gkeonprem.BareMetalClusterLoadBalancerManualLbConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
 //					PortConfig: &gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs{
 //						ControlPlaneLoadBalancerPort: pulumi.Int(443),
 //					},
@@ -166,21 +162,16 @@ import (
 //						ControlPlaneVip: pulumi.String("10.200.0.13"),
 //						IngressVip:      pulumi.String("10.200.0.14"),
 //					},
-//					ManualLbConfig: &gkeonprem.BareMetalClusterLoadBalancerManualLbConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
 //				},
-//				Storage: &gkeonprem.BareMetalClusterStorageArgs{
-//					LvpShareConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigArgs{
-//						LvpConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs{
-//							Path:         pulumi.String("/mnt/localpv-share"),
-//							StorageClass: pulumi.String("local-shared"),
+//				Location: pulumi.String("us-west1"),
+//				NetworkConfig: &gkeonprem.BareMetalClusterNetworkConfigArgs{
+//					IslandModeCidr: &gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs{
+//						PodAddressCidrBlocks: pulumi.StringArray{
+//							pulumi.String("10.240.0.0/13"),
 //						},
-//						SharedPathPvCount: pulumi.Int(5),
-//					},
-//					LvpNodeMountsConfig: &gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs{
-//						Path:         pulumi.String("/mnt/localpv-disk"),
-//						StorageClass: pulumi.String("local-disks"),
+//						ServiceAddressCidrBlocks: pulumi.StringArray{
+//							pulumi.String("172.26.0.0/16"),
+//						},
 //					},
 //				},
 //				SecurityConfig: &gkeonprem.BareMetalClusterSecurityConfigArgs{
@@ -192,13 +183,23 @@ import (
 //						},
 //					},
 //				},
-//				BinaryAuthorization: &gkeonprem.BareMetalClusterBinaryAuthorizationArgs{
-//					EvaluationMode: pulumi.String("DISABLED"),
+//				Storage: &gkeonprem.BareMetalClusterStorageArgs{
+//					LvpNodeMountsConfig: &gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs{
+//						Path:         pulumi.String("/mnt/localpv-disk"),
+//						StorageClass: pulumi.String("local-disks"),
+//					},
+//					LvpShareConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigArgs{
+//						LvpConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs{
+//							Path:         pulumi.String("/mnt/localpv-share"),
+//							StorageClass: pulumi.String("local-shared"),
+//						},
+//						SharedPathPvCount: pulumi.Int(5),
+//					},
 //				},
 //				UpgradePolicy: &gkeonprem.BareMetalClusterUpgradePolicyArgs{
 //					Policy: pulumi.String("SERIAL"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -222,75 +223,42 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewBareMetalCluster(ctx, "cluster-bgplb", &gkeonprem.BareMetalClusterArgs{
-//				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				BareMetalVersion:       pulumi.String("1.12.3"),
-//				NetworkConfig: &gkeonprem.BareMetalClusterNetworkConfigArgs{
-//					IslandModeCidr: &gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs{
-//						ServiceAddressCidrBlocks: pulumi.StringArray{
-//							pulumi.String("172.26.0.0/16"),
-//						},
-//						PodAddressCidrBlocks: pulumi.StringArray{
-//							pulumi.String("10.240.0.0/13"),
-//						},
-//					},
-//					AdvancedNetworking: pulumi.Bool(true),
-//					MultipleNetworkInterfacesConfig: &gkeonprem.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//					SrIovConfig: &gkeonprem.BareMetalClusterNetworkConfigSrIovConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
+//				ClusterOperations: &gkeonprem.BareMetalClusterClusterOperationsArgs{
+//					EnableApplicationLogs: pulumi.Bool(true),
 //				},
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
-//					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
-//						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
-//							OperatingSystem: pulumi.String("LINUX"),
-//							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
-//								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
-//									Labels: nil,
-//									NodeIp: pulumi.String("10.200.0.9"),
-//								},
-//							},
-//							Taints: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray{
-//								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs{
-//									Key:    pulumi.String("test-key"),
-//									Value:  pulumi.String("test-value"),
-//									Effect: pulumi.String("NO_EXECUTE"),
-//								},
-//							},
-//						},
-//					},
 //					ApiServerArgs: gkeonprem.BareMetalClusterControlPlaneApiServerArgArray{
 //						&gkeonprem.BareMetalClusterControlPlaneApiServerArgArgs{
 //							Argument: pulumi.String("test-argument"),
 //							Value:    pulumi.String("test-value"),
 //						},
 //					},
-//				},
-//				LoadBalancer: &gkeonprem.BareMetalClusterLoadBalancerArgs{
-//					PortConfig: &gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs{
-//						ControlPlaneLoadBalancerPort: pulumi.Int(443),
-//					},
-//					VipConfig: &gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs{
-//						ControlPlaneVip: pulumi.String("10.200.0.13"),
-//						IngressVip:      pulumi.String("10.200.0.14"),
-//					},
-//					BgpLbConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigArgs{
-//						Asn: pulumi.Int(123456),
-//						BgpPeerConfigs: gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArray{
-//							&gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs{
-//								Asn:       pulumi.Int(123457),
-//								IpAddress: pulumi.String("10.0.0.1"),
-//								ControlPlaneNodes: pulumi.StringArray{
-//									pulumi.String("test-node"),
+//					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
+//						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
+//							Labels: nil,
+//							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
+//								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
+//									Labels: nil,
+//									NodeIp: pulumi.String("10.200.0.9"),
+//								},
+//							},
+//							OperatingSystem: pulumi.String("LINUX"),
+//							Taints: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray{
+//								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs{
+//									Effect: pulumi.String("NO_EXECUTE"),
+//									Key:    pulumi.String("test-key"),
+//									Value:  pulumi.String("test-value"),
 //								},
 //							},
 //						},
+//					},
+//				},
+//				LoadBalancer: &gkeonprem.BareMetalClusterLoadBalancerArgs{
+//					BgpLbConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigArgs{
 //						AddressPools: gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArray{
 //							&gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs{
-//								Pool: pulumi.String("pool1"),
 //								Addresses: pulumi.StringArray{
 //									pulumi.String("10.200.0.14/32"),
 //									pulumi.String("10.200.0.15/32"),
@@ -302,46 +270,90 @@ import (
 //									pulumi.String("fd00:1::11/128"),
 //									pulumi.String("fd00:1::12/128"),
 //								},
+//								Pool: pulumi.String("pool1"),
+//							},
+//						},
+//						Asn: pulumi.Int(123456),
+//						BgpPeerConfigs: gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArray{
+//							&gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs{
+//								Asn: pulumi.Int(123457),
+//								ControlPlaneNodes: pulumi.StringArray{
+//									pulumi.String("test-node"),
+//								},
+//								IpAddress: pulumi.String("10.0.0.1"),
 //							},
 //						},
 //						LoadBalancerNodePoolConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{
 //							NodePoolConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{
-//								Labels:          nil,
-//								OperatingSystem: pulumi.String("LINUX"),
+//								KubeletConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{
+//									RegistryBurst:               pulumi.Int(12),
+//									RegistryPullQps:             pulumi.Int(10),
+//									SerializeImagePullsDisabled: pulumi.Bool(true),
+//								},
+//								Labels: nil,
 //								NodeConfigs: gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray{
 //									&gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs{
 //										Labels: nil,
 //										NodeIp: pulumi.String("10.200.0.9"),
 //									},
 //								},
+//								OperatingSystem: pulumi.String("LINUX"),
 //								Taints: gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArray{
 //									&gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs{
+//										Effect: pulumi.String("NO_EXECUTE"),
 //										Key:    pulumi.String("test-key"),
 //										Value:  pulumi.String("test-value"),
-//										Effect: pulumi.String("NO_EXECUTE"),
 //									},
-//								},
-//								KubeletConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs{
-//									RegistryPullQps:             pulumi.Int(10),
-//									RegistryBurst:               pulumi.Int(12),
-//									SerializeImagePullsDisabled: pulumi.Bool(true),
 //								},
 //							},
 //						},
 //					},
+//					PortConfig: &gkeonprem.BareMetalClusterLoadBalancerPortConfigArgs{
+//						ControlPlaneLoadBalancerPort: pulumi.Int(443),
+//					},
+//					VipConfig: &gkeonprem.BareMetalClusterLoadBalancerVipConfigArgs{
+//						ControlPlaneVip: pulumi.String("10.200.0.13"),
+//						IngressVip:      pulumi.String("10.200.0.14"),
+//					},
 //				},
-//				Storage: &gkeonprem.BareMetalClusterStorageArgs{
-//					LvpShareConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigArgs{
-//						LvpConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs{
-//							Path:         pulumi.String("/mnt/localpv-share"),
-//							StorageClass: pulumi.String("local-shared"),
+//				Location: pulumi.String("us-west1"),
+//				MaintenanceConfig: &gkeonprem.BareMetalClusterMaintenanceConfigArgs{
+//					MaintenanceAddressCidrBlocks: pulumi.StringArray{
+//						pulumi.String("192.168.0.1/20"),
+//					},
+//				},
+//				NetworkConfig: &gkeonprem.BareMetalClusterNetworkConfigArgs{
+//					AdvancedNetworking: pulumi.Bool(true),
+//					IslandModeCidr: &gkeonprem.BareMetalClusterNetworkConfigIslandModeCidrArgs{
+//						PodAddressCidrBlocks: pulumi.StringArray{
+//							pulumi.String("10.240.0.0/13"),
 //						},
-//						SharedPathPvCount: pulumi.Int(5),
+//						ServiceAddressCidrBlocks: pulumi.StringArray{
+//							pulumi.String("172.26.0.0/16"),
+//						},
 //					},
-//					LvpNodeMountsConfig: &gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs{
-//						Path:         pulumi.String("/mnt/localpv-disk"),
-//						StorageClass: pulumi.String("local-disks"),
+//					MultipleNetworkInterfacesConfig: &gkeonprem.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs{
+//						Enabled: pulumi.Bool(true),
 //					},
+//					SrIovConfig: &gkeonprem.BareMetalClusterNetworkConfigSrIovConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				NodeAccessConfig: &gkeonprem.BareMetalClusterNodeAccessConfigArgs{
+//					LoginUser: pulumi.String("test@example.com"),
+//				},
+//				NodeConfig: &gkeonprem.BareMetalClusterNodeConfigArgs{
+//					ContainerRuntime: pulumi.String("CONTAINERD"),
+//					MaxPodsPerNode:   pulumi.Int(10),
+//				},
+//				OsEnvironmentConfig: &gkeonprem.BareMetalClusterOsEnvironmentConfigArgs{
+//					PackageRepoExcluded: pulumi.Bool(true),
+//				},
+//				Proxy: &gkeonprem.BareMetalClusterProxyArgs{
+//					NoProxies: pulumi.StringArray{
+//						pulumi.String("127.0.0.1"),
+//					},
+//					Uri: pulumi.String("http://test-domain/test"),
 //				},
 //				SecurityConfig: &gkeonprem.BareMetalClusterSecurityConfigArgs{
 //					Authorization: &gkeonprem.BareMetalClusterSecurityConfigAuthorizationArgs{
@@ -352,31 +364,20 @@ import (
 //						},
 //					},
 //				},
-//				Proxy: &gkeonprem.BareMetalClusterProxyArgs{
-//					Uri: pulumi.String("http://test-domain/test"),
-//					NoProxies: pulumi.StringArray{
-//						pulumi.String("127.0.0.1"),
+//				Storage: &gkeonprem.BareMetalClusterStorageArgs{
+//					LvpNodeMountsConfig: &gkeonprem.BareMetalClusterStorageLvpNodeMountsConfigArgs{
+//						Path:         pulumi.String("/mnt/localpv-disk"),
+//						StorageClass: pulumi.String("local-disks"),
+//					},
+//					LvpShareConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigArgs{
+//						LvpConfig: &gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfigArgs{
+//							Path:         pulumi.String("/mnt/localpv-share"),
+//							StorageClass: pulumi.String("local-shared"),
+//						},
+//						SharedPathPvCount: pulumi.Int(5),
 //					},
 //				},
-//				ClusterOperations: &gkeonprem.BareMetalClusterClusterOperationsArgs{
-//					EnableApplicationLogs: pulumi.Bool(true),
-//				},
-//				MaintenanceConfig: &gkeonprem.BareMetalClusterMaintenanceConfigArgs{
-//					MaintenanceAddressCidrBlocks: pulumi.StringArray{
-//						pulumi.String("192.168.0.1/20"),
-//					},
-//				},
-//				NodeConfig: &gkeonprem.BareMetalClusterNodeConfigArgs{
-//					MaxPodsPerNode:   pulumi.Int(10),
-//					ContainerRuntime: pulumi.String("CONTAINERD"),
-//				},
-//				NodeAccessConfig: &gkeonprem.BareMetalClusterNodeAccessConfigArgs{
-//					LoginUser: pulumi.String("test@example.com"),
-//				},
-//				OsEnvironmentConfig: &gkeonprem.BareMetalClusterOsEnvironmentConfigArgs{
-//					PackageRepoExcluded: pulumi.Bool(true),
-//				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -388,7 +389,17 @@ import (
 //
 // ## Import
 //
-// # BareMetalCluster can be imported using any of these accepted formats
+// BareMetalCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalCluster using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}"
+//
+//	to = google_gkeonprem_bare_metal_cluster.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalCluster can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -977,12 +988,6 @@ func (i *BareMetalCluster) ToBareMetalClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOutput)
 }
 
-func (i *BareMetalCluster) ToOutput(ctx context.Context) pulumix.Output[*BareMetalCluster] {
-	return pulumix.Output[*BareMetalCluster]{
-		OutputState: i.ToBareMetalClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BareMetalClusterArrayInput is an input type that accepts BareMetalClusterArray and BareMetalClusterArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterArrayInput` via:
 //
@@ -1006,12 +1011,6 @@ func (i BareMetalClusterArray) ToBareMetalClusterArrayOutput() BareMetalClusterA
 
 func (i BareMetalClusterArray) ToBareMetalClusterArrayOutputWithContext(ctx context.Context) BareMetalClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterArrayOutput)
-}
-
-func (i BareMetalClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*BareMetalCluster] {
-	return pulumix.Output[[]*BareMetalCluster]{
-		OutputState: i.ToBareMetalClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BareMetalClusterMapInput is an input type that accepts BareMetalClusterMap and BareMetalClusterMapOutput values.
@@ -1039,12 +1038,6 @@ func (i BareMetalClusterMap) ToBareMetalClusterMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterMapOutput)
 }
 
-func (i BareMetalClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BareMetalCluster] {
-	return pulumix.Output[map[string]*BareMetalCluster]{
-		OutputState: i.ToBareMetalClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalClusterOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterOutput) ElementType() reflect.Type {
@@ -1057,12 +1050,6 @@ func (o BareMetalClusterOutput) ToBareMetalClusterOutput() BareMetalClusterOutpu
 
 func (o BareMetalClusterOutput) ToBareMetalClusterOutputWithContext(ctx context.Context) BareMetalClusterOutput {
 	return o
-}
-
-func (o BareMetalClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalCluster] {
-	return pulumix.Output[*BareMetalCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Admin Cluster this Bare Metal User Cluster belongs to.
@@ -1293,12 +1280,6 @@ func (o BareMetalClusterArrayOutput) ToBareMetalClusterArrayOutputWithContext(ct
 	return o
 }
 
-func (o BareMetalClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BareMetalCluster] {
-	return pulumix.Output[[]*BareMetalCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BareMetalClusterArrayOutput) Index(i pulumi.IntInput) BareMetalClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BareMetalCluster {
 		return vs[0].([]*BareMetalCluster)[vs[1].(int)]
@@ -1317,12 +1298,6 @@ func (o BareMetalClusterMapOutput) ToBareMetalClusterMapOutput() BareMetalCluste
 
 func (o BareMetalClusterMapOutput) ToBareMetalClusterMapOutputWithContext(ctx context.Context) BareMetalClusterMapOutput {
 	return o
-}
-
-func (o BareMetalClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BareMetalCluster] {
-	return pulumix.Output[map[string]*BareMetalCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BareMetalClusterMapOutput) MapIndex(k pulumi.StringInput) BareMetalClusterOutput {

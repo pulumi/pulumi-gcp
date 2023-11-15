@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a GlobalForwardingRule resource. Global forwarding rules are
@@ -210,7 +209,17 @@ import (
 //
 // ## Import
 //
-// # GlobalForwardingRule can be imported using any of these accepted formats
+// GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalForwardingRule using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/forwardingRules/{{name}}"
+//
+//	to = google_compute_global_forwarding_rule.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalForwardingRule can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -341,22 +350,23 @@ type GlobalForwardingRule struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrOutput `pulumi:"noAutomateDnsZone"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	// network load balancers, internal proxy load balancers, external proxy load
-	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	// Some products have restrictions on what ports can be used. See
-	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-	// for details.
-	//
-	// * TargetHttpProxy: 80, 8080
-	// * TargetHttpsProxy: 443
-	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetVpnGateway: 500, 4500
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -542,22 +552,23 @@ type globalForwardingRuleState struct {
 	Network *string `pulumi:"network"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	// network load balancers, internal proxy load balancers, external proxy load
-	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	// Some products have restrictions on what ports can be used. See
-	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-	// for details.
-	//
-	// * TargetHttpProxy: 80, 8080
-	// * TargetHttpsProxy: 443
-	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetVpnGateway: 500, 4500
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -706,22 +717,23 @@ type GlobalForwardingRuleState struct {
 	Network pulumi.StringPtrInput
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrInput
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	// network load balancers, internal proxy load balancers, external proxy load
-	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	// Some products have restrictions on what ports can be used. See
-	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-	// for details.
-	//
-	// * TargetHttpProxy: 80, 8080
-	// * TargetHttpsProxy: 443
-	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetVpnGateway: 500, 4500
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -867,22 +879,23 @@ type globalForwardingRuleArgs struct {
 	Network *string `pulumi:"network"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	// network load balancers, internal proxy load balancers, external proxy load
-	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	// Some products have restrictions on what ports can be used. See
-	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-	// for details.
-	//
-	// * TargetHttpProxy: 80, 8080
-	// * TargetHttpsProxy: 443
-	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetVpnGateway: 500, 4500
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1016,22 +1029,23 @@ type GlobalForwardingRuleArgs struct {
 	Network pulumi.StringPtrInput
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrInput
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	// network load balancers, internal proxy load balancers, external proxy load
-	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	// Some products have restrictions on what ports can be used. See
-	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-	// for details.
-	//
-	// * TargetHttpProxy: 80, 8080
-	// * TargetHttpsProxy: 443
-	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	// 1883, 5222
-	// * TargetVpnGateway: 500, 4500
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1084,12 +1098,6 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
-func (i *GlobalForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
-	return pulumix.Output[*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalForwardingRuleArrayInput is an input type that accepts GlobalForwardingRuleArray and GlobalForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `GlobalForwardingRuleArrayInput` via:
 //
@@ -1113,12 +1121,6 @@ func (i GlobalForwardingRuleArray) ToGlobalForwardingRuleArrayOutput() GlobalFor
 
 func (i GlobalForwardingRuleArray) ToGlobalForwardingRuleArrayOutputWithContext(ctx context.Context) GlobalForwardingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleArrayOutput)
-}
-
-func (i GlobalForwardingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalForwardingRule] {
-	return pulumix.Output[[]*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalForwardingRuleMapInput is an input type that accepts GlobalForwardingRuleMap and GlobalForwardingRuleMapOutput values.
@@ -1146,12 +1148,6 @@ func (i GlobalForwardingRuleMap) ToGlobalForwardingRuleMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleMapOutput)
 }
 
-func (i GlobalForwardingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalForwardingRule] {
-	return pulumix.Output[map[string]*GlobalForwardingRule]{
-		OutputState: i.ToGlobalForwardingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
@@ -1164,12 +1160,6 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForward
 
 func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
 	return o
-}
-
-func (o GlobalForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalForwardingRule] {
-	return pulumix.Output[*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
@@ -1323,22 +1313,23 @@ func (o GlobalForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.BoolPtrOutput { return v.NoAutomateDnsZone }).(pulumi.BoolPtrOutput)
 }
 
-// This field can only be used:
-// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-// * By backend service-based network load balancers, target pool-based
-// network load balancers, internal proxy load balancers, external proxy load
-// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-// Some products have restrictions on what ports can be used. See
-// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-// for details.
-//
-// * TargetHttpProxy: 80, 8080
-// * TargetHttpsProxy: 443
-// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-// 1883, 5222
-// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-// 1883, 5222
-// * TargetVpnGateway: 500, 4500
+// The `portRange` field has the following limitations:
+//   - It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: external passthrough
+//     Network Load Balancers, internal and external proxy Network Load
+//     Balancers, internal and external Application Load Balancers, external
+//     protocol forwarding, and Classic VPN.
+//   - Some products have restrictions on what ports can be used. See
+//     [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+//     for details.
+//     For external forwarding rules, two or more forwarding rules cannot use the
+//     same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+//     `portRange`s.
+//     For internal forwarding rules within the same VPC network, two or more
+//     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+//     cannot have overlapping `portRange`s.
+//     @pattern: \d+(?:-\d+)?
 func (o GlobalForwardingRuleOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.PortRange }).(pulumi.StringPtrOutput)
 }
@@ -1416,12 +1407,6 @@ func (o GlobalForwardingRuleArrayOutput) ToGlobalForwardingRuleArrayOutputWithCo
 	return o
 }
 
-func (o GlobalForwardingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalForwardingRule] {
-	return pulumix.Output[[]*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalForwardingRuleArrayOutput) Index(i pulumi.IntInput) GlobalForwardingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalForwardingRule {
 		return vs[0].([]*GlobalForwardingRule)[vs[1].(int)]
@@ -1440,12 +1425,6 @@ func (o GlobalForwardingRuleMapOutput) ToGlobalForwardingRuleMapOutput() GlobalF
 
 func (o GlobalForwardingRuleMapOutput) ToGlobalForwardingRuleMapOutputWithContext(ctx context.Context) GlobalForwardingRuleMapOutput {
 	return o
-}
-
-func (o GlobalForwardingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalForwardingRule] {
-	return pulumix.Output[map[string]*GlobalForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) GlobalForwardingRuleOutput {

@@ -21,6 +21,7 @@ import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreContinuousBackupSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterSecondaryConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -258,10 +259,105 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Alloydb Secondary Cluster Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;);
+ * 
+ *         var primaryCluster = new Cluster(&#34;primaryCluster&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-primary-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .prefixLength(16)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(default_.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var primaryInstance = new Instance(&#34;primaryInstance&#34;, InstanceArgs.builder()        
+ *             .cluster(primaryCluster.name())
+ *             .instanceId(&#34;alloydb-primary-instance&#34;)
+ *             .instanceType(&#34;PRIMARY&#34;)
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var secondary = new Cluster(&#34;secondary&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-secondary-cluster&#34;)
+ *             .location(&#34;us-east1&#34;)
+ *             .network(default_.id())
+ *             .clusterType(&#34;SECONDARY&#34;)
+ *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
+ *                 .enabled(false)
+ *                 .build())
+ *             .secondaryConfig(ClusterSecondaryConfigArgs.builder()
+ *                 .primaryClusterName(primaryCluster.name())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primaryInstance)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * Cluster can be imported using any of these accepted formats
+ * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}&#34;
+ * 
+ *  to = google_alloydb_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -351,6 +447,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
+     * The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     * 
+     */
+    @Export(name="clusterType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clusterType;
+
+    /**
+     * @return The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     * 
+     */
+    public Output<Optional<String>> clusterType() {
+        return Codegen.optional(this.clusterType);
+    }
+    /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
@@ -397,6 +511,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> databaseVersion() {
         return this.databaseVersion;
+    }
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * User-settable and human-readable display name for the Cluster.
@@ -695,6 +827,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterRestoreContinuousBackupSource>> restoreContinuousBackupSource() {
         return Codegen.optional(this.restoreContinuousBackupSource);
+    }
+    /**
+     * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="secondaryConfig", refs={ClusterSecondaryConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterSecondaryConfig> secondaryConfig;
+
+    /**
+     * @return Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterSecondaryConfig>> secondaryConfig() {
+        return Codegen.optional(this.secondaryConfig);
     }
     /**
      * Output only. The current serving state of the cluster.

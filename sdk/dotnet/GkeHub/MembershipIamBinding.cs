@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.GkeHub
     ///     var policy = new Gcp.GkeHub.MembershipIamPolicy("policy", new()
     ///     {
     ///         Project = google_gke_hub_membership.Membership.Project,
+    ///         Location = google_gke_hub_membership.Membership.Location,
     ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
@@ -72,6 +73,7 @@ namespace Pulumi.Gcp.GkeHub
     ///     var binding = new Gcp.GkeHub.MembershipIamBinding("binding", new()
     ///     {
     ///         Project = google_gke_hub_membership.Membership.Project,
+    ///         Location = google_gke_hub_membership.Membership.Location,
     ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
     ///         Role = "roles/viewer",
     ///         Members = new[]
@@ -96,6 +98,7 @@ namespace Pulumi.Gcp.GkeHub
     ///     var member = new Gcp.GkeHub.MembershipIamMember("member", new()
     ///     {
     ///         Project = google_gke_hub_membership.Membership.Project,
+    ///         Location = google_gke_hub_membership.Membership.Location,
     ///         MembershipId = google_gke_hub_membership.Membership.Membership_id,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
@@ -139,6 +142,14 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Location of the membership.
+        /// The default value is `global`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
 
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -222,6 +233,14 @@ namespace Pulumi.Gcp.GkeHub
         [Input("condition")]
         public Input<Inputs.MembershipIamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Location of the membership.
+        /// The default value is `global`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
         [Input("members", required: true)]
         private InputList<string>? _members;
         public InputList<string> Members
@@ -276,6 +295,14 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Location of the membership.
+        /// The default value is `global`.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("members")]
         private InputList<string>? _members;
