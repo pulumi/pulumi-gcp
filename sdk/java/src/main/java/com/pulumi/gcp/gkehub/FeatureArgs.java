@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
 import java.lang.String;
 import java.util.Map;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureArgs Empty = new FeatureArgs();
+
+    /**
+     * Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="fleetDefaultMemberConfig")
+    private @Nullable Output<FeatureFleetDefaultMemberConfigArgs> fleetDefaultMemberConfig;
+
+    /**
+     * @return Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureFleetDefaultMemberConfigArgs>> fleetDefaultMemberConfig() {
+        return Optional.ofNullable(this.fleetDefaultMemberConfig);
+    }
 
     /**
      * GCP labels for this Feature.
@@ -107,6 +125,7 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
     private FeatureArgs() {}
 
     private FeatureArgs(FeatureArgs $) {
+        this.fleetDefaultMemberConfig = $.fleetDefaultMemberConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -130,6 +149,29 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FeatureArgs defaults) {
             $ = new FeatureArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param fleetDefaultMemberConfig Optional. Fleet Default Membership Configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetDefaultMemberConfig(@Nullable Output<FeatureFleetDefaultMemberConfigArgs> fleetDefaultMemberConfig) {
+            $.fleetDefaultMemberConfig = fleetDefaultMemberConfig;
+            return this;
+        }
+
+        /**
+         * @param fleetDefaultMemberConfig Optional. Fleet Default Membership Configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs fleetDefaultMemberConfig) {
+            return fleetDefaultMemberConfig(Output.of(fleetDefaultMemberConfig));
         }
 
         /**

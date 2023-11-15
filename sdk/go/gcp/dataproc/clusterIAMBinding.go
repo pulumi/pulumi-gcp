@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
@@ -126,29 +125,23 @@ import (
 //
 // ## Import
 //
-// Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
+// ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+//
+//	id = projects/{project}/regions/{region}/clusters/{cluster}
+//
+//	to = google_dataproc_cluster_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding editor "projects/{project}/regions/{region}/clusters/{cluster}"
+//	$ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+//	$ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding default projects/{project}/regions/{region}/clusters/{cluster}
 //
 // ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ClusterIAMBinding struct {
 	pulumi.CustomResourceState
 
@@ -373,12 +366,6 @@ func (i *ClusterIAMBinding) ToClusterIAMBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingOutput)
 }
 
-func (i *ClusterIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMBinding] {
-	return pulumix.Output[*ClusterIAMBinding]{
-		OutputState: i.ToClusterIAMBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterIAMBindingArrayInput is an input type that accepts ClusterIAMBindingArray and ClusterIAMBindingArrayOutput values.
 // You can construct a concrete instance of `ClusterIAMBindingArrayInput` via:
 //
@@ -402,12 +389,6 @@ func (i ClusterIAMBindingArray) ToClusterIAMBindingArrayOutput() ClusterIAMBindi
 
 func (i ClusterIAMBindingArray) ToClusterIAMBindingArrayOutputWithContext(ctx context.Context) ClusterIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingArrayOutput)
-}
-
-func (i ClusterIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterIAMBinding] {
-	return pulumix.Output[[]*ClusterIAMBinding]{
-		OutputState: i.ToClusterIAMBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterIAMBindingMapInput is an input type that accepts ClusterIAMBindingMap and ClusterIAMBindingMapOutput values.
@@ -435,12 +416,6 @@ func (i ClusterIAMBindingMap) ToClusterIAMBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingMapOutput)
 }
 
-func (i ClusterIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterIAMBinding] {
-	return pulumix.Output[map[string]*ClusterIAMBinding]{
-		OutputState: i.ToClusterIAMBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMBindingOutput) ElementType() reflect.Type {
@@ -453,12 +428,6 @@ func (o ClusterIAMBindingOutput) ToClusterIAMBindingOutput() ClusterIAMBindingOu
 
 func (o ClusterIAMBindingOutput) ToClusterIAMBindingOutputWithContext(ctx context.Context) ClusterIAMBindingOutput {
 	return o
-}
-
-func (o ClusterIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMBinding] {
-	return pulumix.Output[*ClusterIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
@@ -525,12 +494,6 @@ func (o ClusterIAMBindingArrayOutput) ToClusterIAMBindingArrayOutputWithContext(
 	return o
 }
 
-func (o ClusterIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterIAMBinding] {
-	return pulumix.Output[[]*ClusterIAMBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterIAMBindingArrayOutput) Index(i pulumi.IntInput) ClusterIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMBinding {
 		return vs[0].([]*ClusterIAMBinding)[vs[1].(int)]
@@ -549,12 +512,6 @@ func (o ClusterIAMBindingMapOutput) ToClusterIAMBindingMapOutput() ClusterIAMBin
 
 func (o ClusterIAMBindingMapOutput) ToClusterIAMBindingMapOutputWithContext(ctx context.Context) ClusterIAMBindingMapOutput {
 	return o
-}
-
-func (o ClusterIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterIAMBinding] {
-	return pulumix.Output[map[string]*ClusterIAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterIAMBindingMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMBindingOutput {

@@ -22,12 +22,11 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// &gt; **Warning:** This resource creates a Firestore Index on a project that already has
     /// a Firestore database. If you haven't already created it, you may
-    /// create a `gcp.firestore.Database` resource with `type` set to
-    /// `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
-    /// If you wish to use App Engine, you may instead create a
-    /// `gcp.appengine.Application` resource with `database_type` set to
-    /// `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
-    /// the App Engine location specified.
+    /// create a `gcp.firestore.Database` resource and `location_id` set
+    /// to your chosen location. If you wish to use App Engine, you may
+    /// instead create a `gcp.appengine.Application` resource with
+    /// `database_type` set to `"CLOUD_FIRESTORE"`. Your Firestore location
+    /// will be the same as the App Engine location specified.
     /// 
     /// ## Example Usage
     /// ### Firestore Index Basic
@@ -61,10 +60,51 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Index Datastore Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_datastore_mode_index = new Gcp.Firestore.Index("my-datastore-mode-index", new()
+    ///     {
+    ///         ApiScope = "DATASTORE_MODE_API",
+    ///         Collection = "chatrooms",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         QueryScope = "COLLECTION_RECURSIVE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Index can be imported using any of these accepted formats:
+    /// Index can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_firestore_index.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firestore/index:Index When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:firestore/index:Index default {{name}}
@@ -73,6 +113,14 @@ namespace Pulumi.Gcp.Firestore
     [GcpResourceType("gcp:firestore/index:Index")]
     public partial class Index : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The API scope at which a query is run.
+        /// Default value is `ANY_API`.
+        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        /// </summary>
+        [Output("apiScope")]
+        public Output<string?> ApiScope { get; private set; } = null!;
+
         /// <summary>
         /// The collection being indexed.
         /// </summary>
@@ -114,7 +162,7 @@ namespace Pulumi.Gcp.Firestore
         /// <summary>
         /// The scope at which a query is run.
         /// Default value is `COLLECTION`.
-        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
@@ -166,6 +214,14 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The API scope at which a query is run.
+        /// Default value is `ANY_API`.
+        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        /// </summary>
+        [Input("apiScope")]
+        public Input<string>? ApiScope { get; set; }
+
+        /// <summary>
         /// The collection being indexed.
         /// </summary>
         [Input("collection", required: true)]
@@ -205,7 +261,7 @@ namespace Pulumi.Gcp.Firestore
         /// <summary>
         /// The scope at which a query is run.
         /// Default value is `COLLECTION`.
-        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -218,6 +274,14 @@ namespace Pulumi.Gcp.Firestore
 
     public sealed class IndexState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The API scope at which a query is run.
+        /// Default value is `ANY_API`.
+        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+        /// </summary>
+        [Input("apiScope")]
+        public Input<string>? ApiScope { get; set; }
+
         /// <summary>
         /// The collection being indexed.
         /// </summary>
@@ -265,7 +329,7 @@ namespace Pulumi.Gcp.Firestore
         /// <summary>
         /// The scope at which a query is run.
         /// Default value is `COLLECTION`.
-        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }

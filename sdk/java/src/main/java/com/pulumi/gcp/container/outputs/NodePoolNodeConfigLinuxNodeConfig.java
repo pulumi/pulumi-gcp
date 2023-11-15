@@ -7,14 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigLinuxNodeConfig {
-    private Map<String,String> sysctls;
+    private @Nullable String cgroupMode;
+    private @Nullable Map<String,String> sysctls;
 
     private NodePoolNodeConfigLinuxNodeConfig() {}
+    public Optional<String> cgroupMode() {
+        return Optional.ofNullable(this.cgroupMode);
+    }
     public Map<String,String> sysctls() {
-        return this.sysctls;
+        return this.sysctls == null ? Map.of() : this.sysctls;
     }
 
     public static Builder builder() {
@@ -26,20 +32,28 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> sysctls;
+        private @Nullable String cgroupMode;
+        private @Nullable Map<String,String> sysctls;
         public Builder() {}
         public Builder(NodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cgroupMode = defaults.cgroupMode;
     	      this.sysctls = defaults.sysctls;
         }
 
         @CustomType.Setter
-        public Builder sysctls(Map<String,String> sysctls) {
-            this.sysctls = Objects.requireNonNull(sysctls);
+        public Builder cgroupMode(@Nullable String cgroupMode) {
+            this.cgroupMode = cgroupMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sysctls(@Nullable Map<String,String> sysctls) {
+            this.sysctls = sysctls;
             return this;
         }
         public NodePoolNodeConfigLinuxNodeConfig build() {
             final var o = new NodePoolNodeConfigLinuxNodeConfig();
+            o.cgroupMode = cgroupMode;
             o.sysctls = sysctls;
             return o;
         }

@@ -67,7 +67,15 @@ namespace Pulumi.Gcp.ML
     /// 
     /// ## Import
     /// 
-    /// Model can be imported using any of these accepted formats
+    /// Model can be imported using any of these accepted formats* `projects/{{project}}/models/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Model using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/models/{{name}}"
+    /// 
+    ///  to = google_ml_engine_model.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:ml/engineModel:EngineModel When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Model can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}

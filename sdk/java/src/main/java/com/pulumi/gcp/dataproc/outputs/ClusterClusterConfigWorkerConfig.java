@@ -48,6 +48,11 @@ public final class ClusterClusterConfigWorkerConfig {
      */
     private @Nullable String minCpuPlatform;
     /**
+     * @return The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * 
+     */
+    private @Nullable Integer minNumInstances;
+    /**
      * @return Specifies the number of worker nodes to create.
      * If not specified, GCP will default to a predetermined computed value (currently 2).
      * There is currently a beta feature which allows you to run a
@@ -105,6 +110,13 @@ public final class ClusterClusterConfigWorkerConfig {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
+     * @return The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * 
+     */
+    public Optional<Integer> minNumInstances() {
+        return Optional.ofNullable(this.minNumInstances);
+    }
+    /**
      * @return Specifies the number of worker nodes to create.
      * If not specified, GCP will default to a predetermined computed value (currently 2).
      * There is currently a beta feature which allows you to run a
@@ -133,6 +145,7 @@ public final class ClusterClusterConfigWorkerConfig {
         private @Nullable List<String> instanceNames;
         private @Nullable String machineType;
         private @Nullable String minCpuPlatform;
+        private @Nullable Integer minNumInstances;
         private @Nullable Integer numInstances;
         public Builder() {}
         public Builder(ClusterClusterConfigWorkerConfig defaults) {
@@ -143,6 +156,7 @@ public final class ClusterClusterConfigWorkerConfig {
     	      this.instanceNames = defaults.instanceNames;
     	      this.machineType = defaults.machineType;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
+    	      this.minNumInstances = defaults.minNumInstances;
     	      this.numInstances = defaults.numInstances;
         }
 
@@ -183,6 +197,11 @@ public final class ClusterClusterConfigWorkerConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder minNumInstances(@Nullable Integer minNumInstances) {
+            this.minNumInstances = minNumInstances;
+            return this;
+        }
+        @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
             this.numInstances = numInstances;
             return this;
@@ -195,6 +214,7 @@ public final class ClusterClusterConfigWorkerConfig {
             o.instanceNames = instanceNames;
             o.machineType = machineType;
             o.minCpuPlatform = minCpuPlatform;
+            o.minNumInstances = minNumInstances;
             o.numInstances = numInstances;
             return o;
         }

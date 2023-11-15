@@ -15,6 +15,10 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
+ * > **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `git_integration_settings.github_settings.access_token`.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  * ### Dialogflowcx Agent Full
  *
@@ -22,29 +26,74 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
  * const fullAgent = new gcp.diagflow.CxAgent("fullAgent", {
- *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
- *     defaultLanguageCode: "en",
- *     description: "Example description.",
  *     displayName: "dialogflowcx-agent",
- *     enableSpellCorrection: true,
- *     enableStackdriverLogging: true,
  *     location: "global",
- *     speechToTextSettings: {
- *         enableSpeechAdaptation: true,
- *     },
+ *     defaultLanguageCode: "en",
  *     supportedLanguageCodes: [
  *         "fr",
  *         "de",
  *         "es",
  *     ],
  *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ *     advancedSettings: {
+ *         audioExportGcsDestination: {
+ *             uri: pulumi.interpolate`${bucket.url}/prefix-`,
+ *         },
+ *         dtmfSettings: {
+ *             enabled: true,
+ *             maxDigits: 1,
+ *             finishDigit: "#",
+ *         },
+ *     },
+ *     gitIntegrationSettings: {
+ *         githubSettings: {
+ *             displayName: "Github Repo",
+ *             repositoryUri: "https://api.github.com/repos/githubtraining/hellogitworld",
+ *             trackingBranch: "main",
+ *             accessToken: "secret-token",
+ *             branches: ["main"],
+ *         },
+ *     },
+ *     textToSpeechSettings: {
+ *         synthesizeSpeechConfigs: JSON.stringify({
+ *             en: {
+ *                 voice: {
+ *                     name: "en-US-Neural2-A",
+ *                 },
+ *             },
+ *             fr: {
+ *                 voice: {
+ *                     name: "fr-CA-Neural2-A",
+ *                 },
+ *             },
+ *         }),
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * Agent can be imported using any of these accepted formats
+ * Agent can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/agents/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/agents/{{name}}"
+ *
+ *  to = google_dialogflow_cx_agent.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxAgent:CxAgent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
@@ -87,6 +136,12 @@ export class CxAgent extends pulumi.CustomResource {
     }
 
     /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxAgentAdvancedSettings>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
     public readonly avatarUri!: pulumi.Output<string | undefined>;
@@ -111,6 +166,11 @@ export class CxAgent extends pulumi.CustomResource {
      * Determines whether this agent should log conversation queries.
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
+    /**
+     * Git integration settings for this agent.
+     * Structure is documented below.
+     */
+    public readonly gitIntegrationSettings!: pulumi.Output<outputs.diagflow.CxAgentGitIntegrationSettings | undefined>;
     /**
      * The name of the location this agent is located in.
      * > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
@@ -145,6 +205,11 @@ export class CxAgent extends pulumi.CustomResource {
      */
     public readonly supportedLanguageCodes!: pulumi.Output<string[] | undefined>;
     /**
+     * Settings related to speech synthesizing.
+     * Structure is documented below.
+     */
+    public readonly textToSpeechSettings!: pulumi.Output<outputs.diagflow.CxAgentTextToSpeechSettings | undefined>;
+    /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      *
@@ -166,12 +231,14 @@ export class CxAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxAgentState | undefined;
+            resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
             resourceInputs["avatarUri"] = state ? state.avatarUri : undefined;
             resourceInputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
             resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
+            resourceInputs["gitIntegrationSettings"] = state ? state.gitIntegrationSettings : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -179,6 +246,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["speechToTextSettings"] = state ? state.speechToTextSettings : undefined;
             resourceInputs["startFlow"] = state ? state.startFlow : undefined;
             resourceInputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
+            resourceInputs["textToSpeechSettings"] = state ? state.textToSpeechSettings : undefined;
             resourceInputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as CxAgentArgs | undefined;
@@ -194,17 +262,20 @@ export class CxAgent extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
+            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
             resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["gitIntegrationSettings"] = args ? args.gitIntegrationSettings : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
             resourceInputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
             resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
+            resourceInputs["textToSpeechSettings"] = args ? args.textToSpeechSettings : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["startFlow"] = undefined /*out*/;
@@ -218,6 +289,12 @@ export class CxAgent extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CxAgent resources.
  */
 export interface CxAgentState {
+    /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings>;
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
@@ -243,6 +320,11 @@ export interface CxAgentState {
      * Determines whether this agent should log conversation queries.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
+    /**
+     * Git integration settings for this agent.
+     * Structure is documented below.
+     */
+    gitIntegrationSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettings>;
     /**
      * The name of the location this agent is located in.
      * > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
@@ -277,6 +359,11 @@ export interface CxAgentState {
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Settings related to speech synthesizing.
+     * Structure is documented below.
+     */
+    textToSpeechSettings?: pulumi.Input<inputs.diagflow.CxAgentTextToSpeechSettings>;
+    /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      *
@@ -290,6 +377,12 @@ export interface CxAgentState {
  * The set of arguments for constructing a CxAgent resource.
  */
 export interface CxAgentArgs {
+    /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings>;
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
@@ -316,6 +409,11 @@ export interface CxAgentArgs {
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
+     * Git integration settings for this agent.
+     * Structure is documented below.
+     */
+    gitIntegrationSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettings>;
+    /**
      * The name of the location this agent is located in.
      * > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
      * This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
@@ -340,6 +438,11 @@ export interface CxAgentArgs {
      * The list of all languages supported by this agent (except for the default_language_code).
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Settings related to speech synthesizing.
+     * Structure is documented below.
+     */
+    textToSpeechSettings?: pulumi.Input<inputs.diagflow.CxAgentTextToSpeechSettings>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.

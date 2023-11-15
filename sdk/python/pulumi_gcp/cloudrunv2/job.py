@@ -16,6 +16,7 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
+                 location: pulumi.Input[str],
                  template: pulumi.Input['JobTemplateArgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
@@ -23,11 +24,11 @@ class JobArgs:
                  client_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
+        :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -50,11 +51,11 @@ class JobArgs:
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-        :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input[str] name: Name of the Job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "template", template)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -68,12 +69,22 @@ class JobArgs:
             pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
             pulumi.set(__self__, "launch_stage", launch_stage)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location of the cloud run job
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -173,18 +184,6 @@ class JobArgs:
     @launch_stage.setter
     def launch_stage(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "launch_stage", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The location of the cloud run job
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -968,7 +967,15 @@ class Job(pulumi.CustomResource):
 
         ## Import
 
-        Job can be imported using any of these accepted formats
+        Job can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/jobs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Job using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/jobs/{{name}}"
+
+         to = google_cloud_run_v2_job.default }
+
+        ```sh
+         $ pulumi import gcp:cloudrunv2/job:Job When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Job can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
@@ -1249,7 +1256,15 @@ class Job(pulumi.CustomResource):
 
         ## Import
 
-        Job can be imported using any of these accepted formats
+        Job can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/jobs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Job using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/jobs/{{name}}"
+
+         to = google_cloud_run_v2_job.default }
+
+        ```sh
+         $ pulumi import gcp:cloudrunv2/job:Job When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Job can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
@@ -1303,6 +1318,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -1628,7 +1645,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[str]]:
+    def location(self) -> pulumi.Output[str]:
         """
         The location of the cloud run job
         """

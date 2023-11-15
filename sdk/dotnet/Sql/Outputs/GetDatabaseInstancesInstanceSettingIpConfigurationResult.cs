@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string PrivateNetwork;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult> PscConfigs;
         public readonly bool RequireSsl;
+        public readonly string SslMode;
 
         [OutputConstructor]
         private GetDatabaseInstancesInstanceSettingIpConfigurationResult(
@@ -35,7 +36,9 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult> pscConfigs,
 
-            bool requireSsl)
+            bool requireSsl,
+
+            string sslMode)
         {
             AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
@@ -44,6 +47,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PrivateNetwork = privateNetwork;
             PscConfigs = pscConfigs;
             RequireSsl = requireSsl;
+            SslMode = sslMode;
         }
     }
 }

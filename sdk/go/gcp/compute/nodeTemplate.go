@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a NodeTemplate resource. Node templates specify properties
@@ -90,7 +89,17 @@ import (
 //
 // ## Import
 //
-// # NodeTemplate can be imported using any of these accepted formats
+// NodeTemplate can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeTemplate using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}"
+//
+//	to = google_compute_node_template.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/nodeTemplate:NodeTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeTemplate can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -351,12 +360,6 @@ func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) Node
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOutput)
 }
 
-func (i *NodeTemplate) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplate] {
-	return pulumix.Output[*NodeTemplate]{
-		OutputState: i.ToNodeTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeTemplateArrayInput is an input type that accepts NodeTemplateArray and NodeTemplateArrayOutput values.
 // You can construct a concrete instance of `NodeTemplateArrayInput` via:
 //
@@ -380,12 +383,6 @@ func (i NodeTemplateArray) ToNodeTemplateArrayOutput() NodeTemplateArrayOutput {
 
 func (i NodeTemplateArray) ToNodeTemplateArrayOutputWithContext(ctx context.Context) NodeTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateArrayOutput)
-}
-
-func (i NodeTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*NodeTemplate] {
-	return pulumix.Output[[]*NodeTemplate]{
-		OutputState: i.ToNodeTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeTemplateMapInput is an input type that accepts NodeTemplateMap and NodeTemplateMapOutput values.
@@ -413,12 +410,6 @@ func (i NodeTemplateMap) ToNodeTemplateMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateMapOutput)
 }
 
-func (i NodeTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeTemplate] {
-	return pulumix.Output[map[string]*NodeTemplate]{
-		OutputState: i.ToNodeTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
@@ -431,12 +422,6 @@ func (o NodeTemplateOutput) ToNodeTemplateOutput() NodeTemplateOutput {
 
 func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput {
 	return o
-}
-
-func (o NodeTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTemplate] {
-	return pulumix.Output[*NodeTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CPU overcommit.
@@ -520,12 +505,6 @@ func (o NodeTemplateArrayOutput) ToNodeTemplateArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o NodeTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NodeTemplate] {
-	return pulumix.Output[[]*NodeTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeTemplateArrayOutput) Index(i pulumi.IntInput) NodeTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeTemplate {
 		return vs[0].([]*NodeTemplate)[vs[1].(int)]
@@ -544,12 +523,6 @@ func (o NodeTemplateMapOutput) ToNodeTemplateMapOutput() NodeTemplateMapOutput {
 
 func (o NodeTemplateMapOutput) ToNodeTemplateMapOutputWithContext(ctx context.Context) NodeTemplateMapOutput {
 	return o
-}
-
-func (o NodeTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeTemplate] {
-	return pulumix.Output[map[string]*NodeTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeTemplateMapOutput) MapIndex(k pulumi.StringInput) NodeTemplateOutput {

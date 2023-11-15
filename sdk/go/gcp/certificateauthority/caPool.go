@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A CaPool represents a group of CertificateAuthorities that form a trust anchor. A CaPool can be used to manage
@@ -54,7 +53,17 @@ import (
 //
 // ## Import
 //
-// # CaPool can be imported using any of these accepted formats
+// CaPool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/caPools/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CaPool using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/caPools/{{name}}"
+//
+//	to = google_privateca_ca_pool.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:certificateauthority/caPool:CaPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CaPool can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -303,12 +312,6 @@ func (i *CaPool) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolOutput)
 }
 
-func (i *CaPool) ToOutput(ctx context.Context) pulumix.Output[*CaPool] {
-	return pulumix.Output[*CaPool]{
-		OutputState: i.ToCaPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CaPoolArrayInput is an input type that accepts CaPoolArray and CaPoolArrayOutput values.
 // You can construct a concrete instance of `CaPoolArrayInput` via:
 //
@@ -332,12 +335,6 @@ func (i CaPoolArray) ToCaPoolArrayOutput() CaPoolArrayOutput {
 
 func (i CaPoolArray) ToCaPoolArrayOutputWithContext(ctx context.Context) CaPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolArrayOutput)
-}
-
-func (i CaPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*CaPool] {
-	return pulumix.Output[[]*CaPool]{
-		OutputState: i.ToCaPoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CaPoolMapInput is an input type that accepts CaPoolMap and CaPoolMapOutput values.
@@ -365,12 +362,6 @@ func (i CaPoolMap) ToCaPoolMapOutputWithContext(ctx context.Context) CaPoolMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CaPoolMapOutput)
 }
 
-func (i CaPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CaPool] {
-	return pulumix.Output[map[string]*CaPool]{
-		OutputState: i.ToCaPoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CaPoolOutput struct{ *pulumi.OutputState }
 
 func (CaPoolOutput) ElementType() reflect.Type {
@@ -383,12 +374,6 @@ func (o CaPoolOutput) ToCaPoolOutput() CaPoolOutput {
 
 func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 	return o
-}
-
-func (o CaPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*CaPool] {
-	return pulumix.Output[*CaPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -463,12 +448,6 @@ func (o CaPoolArrayOutput) ToCaPoolArrayOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o CaPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CaPool] {
-	return pulumix.Output[[]*CaPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CaPoolArrayOutput) Index(i pulumi.IntInput) CaPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CaPool {
 		return vs[0].([]*CaPool)[vs[1].(int)]
@@ -487,12 +466,6 @@ func (o CaPoolMapOutput) ToCaPoolMapOutput() CaPoolMapOutput {
 
 func (o CaPoolMapOutput) ToCaPoolMapOutputWithContext(ctx context.Context) CaPoolMapOutput {
 	return o
-}
-
-func (o CaPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CaPool] {
-	return pulumix.Output[map[string]*CaPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CaPoolMapOutput) MapIndex(k pulumi.StringInput) CaPoolOutput {

@@ -24,9 +24,16 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DnsFunctions {
     /**
-     * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+     * Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+     * 
+     * For more information see the
      * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
      * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+     * 
+     * &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+     * to contain any DNSKEYs. Queries to managed zones without this setting
+     * enabled will result in a 404 error as the collection of DNSKEYs does
+     * not exist in the DNS API.
      * 
      * ## Example Usage
      * ```java
@@ -75,9 +82,16 @@ public final class DnsFunctions {
         return getKeys(args, InvokeOptions.Empty);
     }
     /**
-     * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+     * Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+     * 
+     * For more information see the
      * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
      * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+     * 
+     * &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+     * to contain any DNSKEYs. Queries to managed zones without this setting
+     * enabled will result in a 404 error as the collection of DNSKEYs does
+     * not exist in the DNS API.
      * 
      * ## Example Usage
      * ```java
@@ -126,9 +140,16 @@ public final class DnsFunctions {
         return getKeysPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+     * Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+     * 
+     * For more information see the
      * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
      * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+     * 
+     * &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+     * to contain any DNSKEYs. Queries to managed zones without this setting
+     * enabled will result in a 404 error as the collection of DNSKEYs does
+     * not exist in the DNS API.
      * 
      * ## Example Usage
      * ```java
@@ -177,9 +198,16 @@ public final class DnsFunctions {
         return Deployment.getInstance().invoke("gcp:dns/getKeys:getKeys", TypeShape.of(GetKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+     * Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+     * 
+     * For more information see the
      * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
      * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+     * 
+     * &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+     * to contain any DNSKEYs. Queries to managed zones without this setting
+     * enabled will result in a 404 error as the collection of DNSKEYs does
+     * not exist in the DNS API.
      * 
      * ## Example Usage
      * ```java

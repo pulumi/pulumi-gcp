@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A BigQuery Data Policy
@@ -73,7 +72,17 @@ import (
 //
 // ## Import
 //
-// # DataPolicy can be imported using any of these accepted formats
+// DataPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}` * `{{project}}/{{location}}/{{data_policy_id}}` * `{{location}}/{{data_policy_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DataPolicy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}"
+//
+//	to = google_bigquery_datapolicy_data_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DataPolicy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -269,12 +278,6 @@ func (i *DataPolicy) ToDataPolicyOutputWithContext(ctx context.Context) DataPoli
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyOutput)
 }
 
-func (i *DataPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataPolicy] {
-	return pulumix.Output[*DataPolicy]{
-		OutputState: i.ToDataPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataPolicyArrayInput is an input type that accepts DataPolicyArray and DataPolicyArrayOutput values.
 // You can construct a concrete instance of `DataPolicyArrayInput` via:
 //
@@ -298,12 +301,6 @@ func (i DataPolicyArray) ToDataPolicyArrayOutput() DataPolicyArrayOutput {
 
 func (i DataPolicyArray) ToDataPolicyArrayOutputWithContext(ctx context.Context) DataPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyArrayOutput)
-}
-
-func (i DataPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataPolicy] {
-	return pulumix.Output[[]*DataPolicy]{
-		OutputState: i.ToDataPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataPolicyMapInput is an input type that accepts DataPolicyMap and DataPolicyMapOutput values.
@@ -331,12 +328,6 @@ func (i DataPolicyMap) ToDataPolicyMapOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DataPolicyMapOutput)
 }
 
-func (i DataPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataPolicy] {
-	return pulumix.Output[map[string]*DataPolicy]{
-		OutputState: i.ToDataPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataPolicyOutput) ElementType() reflect.Type {
@@ -349,12 +340,6 @@ func (o DataPolicyOutput) ToDataPolicyOutput() DataPolicyOutput {
 
 func (o DataPolicyOutput) ToDataPolicyOutputWithContext(ctx context.Context) DataPolicyOutput {
 	return o
-}
-
-func (o DataPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataPolicy] {
-	return pulumix.Output[*DataPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The data masking policy that specifies the data masking rule to use.
@@ -411,12 +396,6 @@ func (o DataPolicyArrayOutput) ToDataPolicyArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DataPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataPolicy] {
-	return pulumix.Output[[]*DataPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataPolicyArrayOutput) Index(i pulumi.IntInput) DataPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataPolicy {
 		return vs[0].([]*DataPolicy)[vs[1].(int)]
@@ -435,12 +414,6 @@ func (o DataPolicyMapOutput) ToDataPolicyMapOutput() DataPolicyMapOutput {
 
 func (o DataPolicyMapOutput) ToDataPolicyMapOutputWithContext(ctx context.Context) DataPolicyMapOutput {
 	return o
-}
-
-func (o DataPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataPolicy] {
-	return pulumix.Output[map[string]*DataPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPolicyMapOutput) MapIndex(k pulumi.StringInput) DataPolicyOutput {

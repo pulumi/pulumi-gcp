@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IngressPolicies match requests based on ingressFrom and ingressTo stanzas. For an ingress policy to match,
@@ -28,7 +27,17 @@ import (
 //
 // ## Import
 //
-// ServicePerimeterIngressPolicy can be imported using any of these accepted formats:
+// ServicePerimeterIngressPolicy can be imported using any of these accepted formats* `{{perimeter}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeterIngressPolicy using one of the formats above. For exampletf import {
+//
+//	id = "{{perimeter}}"
+//
+//	to = google_access_context_manager_service_perimeter_ingress_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeterIngressPolicy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -172,12 +181,6 @@ func (i *ServicePerimeterIngressPolicy) ToServicePerimeterIngressPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyOutput)
 }
 
-func (i *ServicePerimeterIngressPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterIngressPolicy] {
-	return pulumix.Output[*ServicePerimeterIngressPolicy]{
-		OutputState: i.ToServicePerimeterIngressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterIngressPolicyArrayInput is an input type that accepts ServicePerimeterIngressPolicyArray and ServicePerimeterIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterIngressPolicyArrayInput` via:
 //
@@ -201,12 +204,6 @@ func (i ServicePerimeterIngressPolicyArray) ToServicePerimeterIngressPolicyArray
 
 func (i ServicePerimeterIngressPolicyArray) ToServicePerimeterIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyArrayOutput)
-}
-
-func (i ServicePerimeterIngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeterIngressPolicy] {
-	return pulumix.Output[[]*ServicePerimeterIngressPolicy]{
-		OutputState: i.ToServicePerimeterIngressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimeterIngressPolicyMapInput is an input type that accepts ServicePerimeterIngressPolicyMap and ServicePerimeterIngressPolicyMapOutput values.
@@ -234,12 +231,6 @@ func (i ServicePerimeterIngressPolicyMap) ToServicePerimeterIngressPolicyMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyMapOutput)
 }
 
-func (i ServicePerimeterIngressPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeterIngressPolicy] {
-	return pulumix.Output[map[string]*ServicePerimeterIngressPolicy]{
-		OutputState: i.ToServicePerimeterIngressPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterIngressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyOutput) ElementType() reflect.Type {
@@ -252,12 +243,6 @@ func (o ServicePerimeterIngressPolicyOutput) ToServicePerimeterIngressPolicyOutp
 
 func (o ServicePerimeterIngressPolicyOutput) ToServicePerimeterIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterIngressPolicy] {
-	return pulumix.Output[*ServicePerimeterIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -299,12 +284,6 @@ func (o ServicePerimeterIngressPolicyArrayOutput) ToServicePerimeterIngressPolic
 	return o
 }
 
-func (o ServicePerimeterIngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeterIngressPolicy] {
-	return pulumix.Output[[]*ServicePerimeterIngressPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimeterIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterIngressPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePerimeterIngressPolicy {
 		return vs[0].([]*ServicePerimeterIngressPolicy)[vs[1].(int)]
@@ -323,12 +302,6 @@ func (o ServicePerimeterIngressPolicyMapOutput) ToServicePerimeterIngressPolicyM
 
 func (o ServicePerimeterIngressPolicyMapOutput) ToServicePerimeterIngressPolicyMapOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyMapOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeterIngressPolicy] {
-	return pulumix.Output[map[string]*ServicePerimeterIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterIngressPolicyMapOutput) MapIndex(k pulumi.StringInput) ServicePerimeterIngressPolicyOutput {

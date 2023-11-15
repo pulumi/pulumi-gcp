@@ -30,7 +30,7 @@ class SourceRepresentationInstanceArgs:
         The set of arguments for constructing a SourceRepresentationInstance resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
-        :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+        :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
                
                
                - - -
@@ -89,7 +89,7 @@ class SourceRepresentationInstanceArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        The externally accessible IPv4 address for the source database server.
+        The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 
 
         - - -
@@ -248,7 +248,7 @@ class _SourceRepresentationInstanceState:
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
-        :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+        :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
                
                
                - - -
@@ -353,7 +353,7 @@ class _SourceRepresentationInstanceState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The externally accessible IPv4 address for the source database server.
+        The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 
 
         - - -
@@ -504,7 +504,15 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         ## Import
 
-        SourceRepresentationInstance can be imported using any of these accepted formats
+        SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SourceRepresentationInstance using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/instances/{{name}}"
+
+         to = google_sql_source_representation_instance.default }
+
+        ```sh
+         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SourceRepresentationInstance can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
@@ -526,7 +534,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
-        :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+        :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
                
                
                - - -
@@ -592,7 +600,15 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         ## Import
 
-        SourceRepresentationInstance can be imported using any of these accepted formats
+        SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SourceRepresentationInstance using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/instances/{{name}}"
+
+         to = google_sql_source_representation_instance.default }
+
+        ```sh
+         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SourceRepresentationInstance can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
@@ -695,7 +711,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
-        :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+        :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
                
                
                - - -
@@ -773,7 +789,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        The externally accessible IPv4 address for the source database server.
+        The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 
 
         - - -

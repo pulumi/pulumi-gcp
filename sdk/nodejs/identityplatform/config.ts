@@ -59,6 +59,14 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     smsRegionConfig: {
+ *         allowlistOnly: {
+ *             allowedRegions: [
+ *                 "US",
+ *                 "CA",
+ *             ],
+ *         },
+ *     },
  *     blockingFunctions: {
  *         triggers: [{
  *             eventType: "beforeSignIn",
@@ -87,7 +95,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Config can be imported using any of these accepted formats
+ * Config can be imported using any of these accepted formats* `projects/{{project}}/config` * `projects/{{project}}` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Config using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/config"
+ *
+ *  to = google_identity_platform_config.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/config:Config When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Config can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
@@ -161,6 +177,11 @@ export class Config extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly signIn!: pulumi.Output<outputs.identityplatform.ConfigSignIn>;
+    /**
+     * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     */
+    public readonly smsRegionConfig!: pulumi.Output<outputs.identityplatform.ConfigSmsRegionConfig | undefined>;
 
     /**
      * Create a Config resource with the given unique name, arguments, and options.
@@ -182,6 +203,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["quota"] = state ? state.quota : undefined;
             resourceInputs["signIn"] = state ? state.signIn : undefined;
+            resourceInputs["smsRegionConfig"] = state ? state.smsRegionConfig : undefined;
         } else {
             const args = argsOrState as ConfigArgs | undefined;
             resourceInputs["authorizedDomains"] = args ? args.authorizedDomains : undefined;
@@ -190,6 +212,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
             resourceInputs["signIn"] = args ? args.signIn : undefined;
+            resourceInputs["smsRegionConfig"] = args ? args.smsRegionConfig : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -233,6 +256,11 @@ export interface ConfigState {
      * Structure is documented below.
      */
     signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn>;
+    /**
+     * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     */
+    smsRegionConfig?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfig>;
 }
 
 /**
@@ -267,4 +295,9 @@ export interface ConfigArgs {
      * Structure is documented below.
      */
     signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn>;
+    /**
+     * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     */
+    smsRegionConfig?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfig>;
 }

@@ -952,22 +952,30 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ## Import
 
-        Instance group managers can be imported using any of these accepted formats
+        Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
+
+         to = google_compute_instance_group_manager.default }
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{zone}}/{{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1109,22 +1117,30 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ## Import
 
-        Instance group managers can be imported using any of these accepted formats
+        Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
+
+         to = google_compute_instance_group_manager.default }
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{zone}}/{{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

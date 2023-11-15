@@ -21,6 +21,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Cloud Redis Cluster instance.
+ * 
+ * To get more information about Cluster, see:
+ * 
+ * * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+ * 
  * ## Example Usage
  * ### Redis Cluster Ha
  * ```java
@@ -55,17 +63,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
  *             .ipCidrRange(&#34;10.0.0.248/29&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(producerNet.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy(&#34;default&#34;, ServiceConnectionPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -75,9 +79,7 @@ import javax.annotation.Nullable;
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
  *                 .subnetworks(producerSubnet.id())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var cluster_ha = new Cluster(&#34;cluster-ha&#34;, ClusterArgs.builder()        
  *             .shardCount(3)
@@ -89,7 +91,6 @@ import javax.annotation.Nullable;
  *             .transitEncryptionMode(&#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;)
  *             .authorizationMode(&#34;AUTH_MODE_DISABLED&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(default_)
  *                 .build());
  * 
@@ -99,7 +100,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cluster can be imported using any of these accepted formats
+ * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{region}}/clusters/{{name}}&#34;
+ * 
+ *  to = google_redis_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:redis/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}

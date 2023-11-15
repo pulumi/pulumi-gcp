@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string PscConnectionId;
         public readonly string PscConnectionStatus;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly bool RecreateClosedPsc;
         public readonly string? Region;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetForwardingRuleServiceDirectoryRegistrationResult> ServiceDirectoryRegistrations;
@@ -227,6 +228,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableDictionary<string, string> pulumiLabels,
 
+            bool recreateClosedPsc,
+
             string? region,
 
             string selfLink,
@@ -269,6 +272,7 @@ namespace Pulumi.Gcp.Compute
             PscConnectionId = pscConnectionId;
             PscConnectionStatus = pscConnectionStatus;
             PulumiLabels = pulumiLabels;
+            RecreateClosedPsc = recreateClosedPsc;
             Region = region;
             SelfLink = selfLink;
             ServiceDirectoryRegistrations = serviceDirectoryRegistrations;

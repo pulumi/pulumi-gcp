@@ -51,7 +51,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Environment can be imported using any of these accepted formats
+ * Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+ *
+ *  id = "{{org_id}}/environments/{{name}}"
+ *
+ *  to = google_apigee_environment.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigee/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
@@ -131,6 +139,14 @@ export class Environment extends pulumi.CustomResource {
      * - - -
      */
     public readonly orgId!: pulumi.Output<string>;
+    /**
+     * Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee's public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -152,6 +168,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
             if ((!args || args.orgId === undefined) && !opts.urn) {
@@ -164,6 +181,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
@@ -216,6 +234,14 @@ export interface EnvironmentState {
      * - - -
      */
     orgId?: pulumi.Input<string>;
+    /**
+     * Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee's public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -264,4 +290,12 @@ export interface EnvironmentArgs {
      * - - -
      */
     orgId: pulumi.Input<string>;
+    /**
+     * Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee's public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     */
+    type?: pulumi.Input<string>;
 }

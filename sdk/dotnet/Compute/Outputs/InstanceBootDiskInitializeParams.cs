@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceBootDiskInitializeParams
     {
         /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// </summary>
+        public readonly bool? EnableConfidentialCompute;
+        /// <summary>
         /// The image from which to initialize this disk. This can be
         /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -43,6 +47,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceBootDiskInitializeParams(
+            bool? enableConfidentialCompute,
+
             string? image,
 
             ImmutableDictionary<string, object>? labels,
@@ -53,6 +59,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? type)
         {
+            EnableConfidentialCompute = enableConfidentialCompute;
             Image = image;
             Labels = labels;
             ResourceManagerTags = resourceManagerTags;

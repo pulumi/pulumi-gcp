@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceScratchDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Name with which the attached disk will be accessible
+        /// under `/dev/disk/by-id/google-*`
+        /// </summary>
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
+
+        /// <summary>
         /// The disk interface to use for attaching this disk; either SCSI or NVME.
         /// </summary>
         [Input("interface", required: true)]

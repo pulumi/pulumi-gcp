@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows creation and management of a Google Cloud Billing Subaccount.
@@ -44,7 +43,17 @@ import (
 //
 // ## Import
 //
-// Billing Subaccounts can be imported using any of these accepted formats:
+// Billing Subaccounts can be imported using any of these accepted formats* `billingAccounts/{billing_account_id}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Billing Subaccounts using one of the formats above. For exampletf import {
+//
+//	id = "billingAccounts/{billing_account_id}"
+//
+//	to = google_billing_subaccount.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:billing/subAccount:SubAccount When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Billing Subaccounts can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -194,12 +203,6 @@ func (i *SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccou
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountOutput)
 }
 
-func (i *SubAccount) ToOutput(ctx context.Context) pulumix.Output[*SubAccount] {
-	return pulumix.Output[*SubAccount]{
-		OutputState: i.ToSubAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubAccountArrayInput is an input type that accepts SubAccountArray and SubAccountArrayOutput values.
 // You can construct a concrete instance of `SubAccountArrayInput` via:
 //
@@ -223,12 +226,6 @@ func (i SubAccountArray) ToSubAccountArrayOutput() SubAccountArrayOutput {
 
 func (i SubAccountArray) ToSubAccountArrayOutputWithContext(ctx context.Context) SubAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountArrayOutput)
-}
-
-func (i SubAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubAccount] {
-	return pulumix.Output[[]*SubAccount]{
-		OutputState: i.ToSubAccountArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubAccountMapInput is an input type that accepts SubAccountMap and SubAccountMapOutput values.
@@ -256,12 +253,6 @@ func (i SubAccountMap) ToSubAccountMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountMapOutput)
 }
 
-func (i SubAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubAccount] {
-	return pulumix.Output[map[string]*SubAccount]{
-		OutputState: i.ToSubAccountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubAccountOutput struct{ *pulumi.OutputState }
 
 func (SubAccountOutput) ElementType() reflect.Type {
@@ -274,12 +265,6 @@ func (o SubAccountOutput) ToSubAccountOutput() SubAccountOutput {
 
 func (o SubAccountOutput) ToSubAccountOutputWithContext(ctx context.Context) SubAccountOutput {
 	return o
-}
-
-func (o SubAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*SubAccount] {
-	return pulumix.Output[*SubAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The billing account id.
@@ -329,12 +314,6 @@ func (o SubAccountArrayOutput) ToSubAccountArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SubAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubAccount] {
-	return pulumix.Output[[]*SubAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubAccountArrayOutput) Index(i pulumi.IntInput) SubAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubAccount {
 		return vs[0].([]*SubAccount)[vs[1].(int)]
@@ -353,12 +332,6 @@ func (o SubAccountMapOutput) ToSubAccountMapOutput() SubAccountMapOutput {
 
 func (o SubAccountMapOutput) ToSubAccountMapOutputWithContext(ctx context.Context) SubAccountMapOutput {
 	return o
-}
-
-func (o SubAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubAccount] {
-	return pulumix.Output[map[string]*SubAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubAccountMapOutput) MapIndex(k pulumi.StringInput) SubAccountOutput {

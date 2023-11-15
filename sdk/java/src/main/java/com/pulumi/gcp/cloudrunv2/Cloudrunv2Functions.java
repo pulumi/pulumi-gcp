@@ -8,15 +8,181 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetJobIamPolicyArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetJobIamPolicyPlainArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetJobPlainArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetServiceIamPolicyArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.GetServiceIamPolicyPlainArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.GetServicePlainArgs;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobIamPolicyResult;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobResult;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceIamPolicyResult;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class Cloudrunv2Functions {
+    /**
+     * Get information about a Google Cloud Run v2 Job. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-job&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetJobResult> getJob(GetJobArgs args) {
+        return getJob(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Job. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-job&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetJobResult> getJobPlain(GetJobPlainArgs args) {
+        return getJobPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Job. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-job&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetJobResult> getJob(GetJobArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Job. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myJob = Cloudrunv2Functions.getJob(GetJobArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-job&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetJobResult> getJobPlain(GetJobPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for job
      * 
@@ -172,6 +338,166 @@ public final class Cloudrunv2Functions {
      */
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", TypeShape.of(GetJobIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Service. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args) {
+        return getService(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Service. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
+        return getServicePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Service. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrunv2/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run v2 Service. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrunv2.Cloudrunv2Functions;
+     * import com.pulumi.gcp.cloudrunv2.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myService = Cloudrunv2Functions.getService(GetServiceArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudrunv2/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for service

@@ -1403,7 +1403,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GlobalForwardingRule can be imported using any of these accepted formats
+ * GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalForwardingRule using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/forwardingRules/{{name}}&#34;
+ * 
+ *  to = google_compute_global_forwarding_rule.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalForwardingRule can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
@@ -1779,44 +1787,46 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.noAutomateDnsZone);
     }
     /**
-     * This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By backend service-based network load balancers, target pool-based
-     * network load balancers, internal proxy load balancers, external proxy load
-     * balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-     * Some products have restrictions on what ports can be used. See
-     * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-     * for details.
-     * 
-     * * TargetHttpProxy: 80, 8080
-     * * TargetHttpsProxy: 443
-     * * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetVpnGateway: 500, 4500
+     * The `portRange` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: external passthrough
+     *   Network Load Balancers, internal and external proxy Network Load
+     *   Balancers, internal and external Application Load Balancers, external
+     *   protocol forwarding, and Classic VPN.
+     * * Some products have restrictions on what ports can be used. See
+     *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+     *   for details.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+     *   `portRange`s.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+     *   cannot have overlapping `portRange`s.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     @Export(name="portRange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portRange;
 
     /**
-     * @return This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By backend service-based network load balancers, target pool-based
-     * network load balancers, internal proxy load balancers, external proxy load
-     * balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-     * Some products have restrictions on what ports can be used. See
-     * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-     * for details.
-     * 
-     * * TargetHttpProxy: 80, 8080
-     * * TargetHttpsProxy: 443
-     * * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetVpnGateway: 500, 4500
+     * @return The `portRange` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: external passthrough
+     *   Network Load Balancers, internal and external proxy Network Load
+     *   Balancers, internal and external Application Load Balancers, external
+     *   protocol forwarding, and Classic VPN.
+     * * Some products have restrictions on what ports can be used. See
+     *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+     *   for details.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+     *   `portRange`s.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+     *   cannot have overlapping `portRange`s.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     public Output<Optional<String>> portRange() {

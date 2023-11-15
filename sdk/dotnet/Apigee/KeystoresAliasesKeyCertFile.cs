@@ -20,7 +20,15 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ## Import
     /// 
-    /// KeystoresAliasesKeyCertFile can be imported using any of these accepted formats
+    /// KeystoresAliasesKeyCertFile can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}` * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeystoresAliasesKeyCertFile using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}"
+    /// 
+    ///  to = google_apigee_keystores_aliases_key_cert_file.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeystoresAliasesKeyCertFile can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}

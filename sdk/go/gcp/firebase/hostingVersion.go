@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -211,7 +210,17 @@ import (
 //
 // ## Import
 //
-// # Version can be imported using any of these accepted formats
+// Version can be imported using any of these accepted formats* `sites/{{site_id}}/versions/{{version_id}}` * `{{site_id}}/{{version_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Version using one of the formats above. For exampletf import {
+//
+//	id = "sites/{{site_id}}/versions/{{version_id}}"
+//
+//	to = google_firebase_hosting_version.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:firebase/hostingVersion:HostingVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Version can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -351,12 +360,6 @@ func (i *HostingVersion) ToHostingVersionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionOutput)
 }
 
-func (i *HostingVersion) ToOutput(ctx context.Context) pulumix.Output[*HostingVersion] {
-	return pulumix.Output[*HostingVersion]{
-		OutputState: i.ToHostingVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostingVersionArrayInput is an input type that accepts HostingVersionArray and HostingVersionArrayOutput values.
 // You can construct a concrete instance of `HostingVersionArrayInput` via:
 //
@@ -380,12 +383,6 @@ func (i HostingVersionArray) ToHostingVersionArrayOutput() HostingVersionArrayOu
 
 func (i HostingVersionArray) ToHostingVersionArrayOutputWithContext(ctx context.Context) HostingVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionArrayOutput)
-}
-
-func (i HostingVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostingVersion] {
-	return pulumix.Output[[]*HostingVersion]{
-		OutputState: i.ToHostingVersionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostingVersionMapInput is an input type that accepts HostingVersionMap and HostingVersionMapOutput values.
@@ -413,12 +410,6 @@ func (i HostingVersionMap) ToHostingVersionMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionMapOutput)
 }
 
-func (i HostingVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingVersion] {
-	return pulumix.Output[map[string]*HostingVersion]{
-		OutputState: i.ToHostingVersionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingVersionOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionOutput) ElementType() reflect.Type {
@@ -431,12 +422,6 @@ func (o HostingVersionOutput) ToHostingVersionOutput() HostingVersionOutput {
 
 func (o HostingVersionOutput) ToHostingVersionOutputWithContext(ctx context.Context) HostingVersionOutput {
 	return o
-}
-
-func (o HostingVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingVersion] {
-	return pulumix.Output[*HostingVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
@@ -477,12 +462,6 @@ func (o HostingVersionArrayOutput) ToHostingVersionArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o HostingVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostingVersion] {
-	return pulumix.Output[[]*HostingVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostingVersionArrayOutput) Index(i pulumi.IntInput) HostingVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostingVersion {
 		return vs[0].([]*HostingVersion)[vs[1].(int)]
@@ -501,12 +480,6 @@ func (o HostingVersionMapOutput) ToHostingVersionMapOutput() HostingVersionMapOu
 
 func (o HostingVersionMapOutput) ToHostingVersionMapOutputWithContext(ctx context.Context) HostingVersionMapOutput {
 	return o
-}
-
-func (o HostingVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingVersion] {
-	return pulumix.Output[map[string]*HostingVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingVersionMapOutput) MapIndex(k pulumi.StringInput) HostingVersionOutput {

@@ -98,7 +98,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CertificateMapEntry can be imported using any of these accepted formats
+ * CertificateMapEntry can be imported using any of these accepted formats* `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}` * `{{project}}/{{map}}/{{name}}` * `{{map}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CertificateMapEntry using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}&#34;
+ * 
+ *  to = google_certificate_manager_certificate_map_entry.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CertificateMapEntry can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}

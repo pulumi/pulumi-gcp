@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a VPN gateway running in GCP. This virtual device is managed
@@ -188,7 +187,17 @@ import (
 //
 // ## Import
 //
-// # HaVpnGateway can be imported using any of these accepted formats
+// HaVpnGateway can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HaVpnGateway using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}"
+//
+//	to = google_compute_ha_vpn_gateway.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/haVpnGateway:HaVpnGateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HaVpnGateway can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -431,12 +440,6 @@ func (i *HaVpnGateway) ToHaVpnGatewayOutputWithContext(ctx context.Context) HaVp
 	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayOutput)
 }
 
-func (i *HaVpnGateway) ToOutput(ctx context.Context) pulumix.Output[*HaVpnGateway] {
-	return pulumix.Output[*HaVpnGateway]{
-		OutputState: i.ToHaVpnGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HaVpnGatewayArrayInput is an input type that accepts HaVpnGatewayArray and HaVpnGatewayArrayOutput values.
 // You can construct a concrete instance of `HaVpnGatewayArrayInput` via:
 //
@@ -460,12 +463,6 @@ func (i HaVpnGatewayArray) ToHaVpnGatewayArrayOutput() HaVpnGatewayArrayOutput {
 
 func (i HaVpnGatewayArray) ToHaVpnGatewayArrayOutputWithContext(ctx context.Context) HaVpnGatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayArrayOutput)
-}
-
-func (i HaVpnGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*HaVpnGateway] {
-	return pulumix.Output[[]*HaVpnGateway]{
-		OutputState: i.ToHaVpnGatewayArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HaVpnGatewayMapInput is an input type that accepts HaVpnGatewayMap and HaVpnGatewayMapOutput values.
@@ -493,12 +490,6 @@ func (i HaVpnGatewayMap) ToHaVpnGatewayMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayMapOutput)
 }
 
-func (i HaVpnGatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HaVpnGateway] {
-	return pulumix.Output[map[string]*HaVpnGateway]{
-		OutputState: i.ToHaVpnGatewayMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HaVpnGatewayOutput struct{ *pulumi.OutputState }
 
 func (HaVpnGatewayOutput) ElementType() reflect.Type {
@@ -511,12 +502,6 @@ func (o HaVpnGatewayOutput) ToHaVpnGatewayOutput() HaVpnGatewayOutput {
 
 func (o HaVpnGatewayOutput) ToHaVpnGatewayOutputWithContext(ctx context.Context) HaVpnGatewayOutput {
 	return o
-}
-
-func (o HaVpnGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*HaVpnGateway] {
-	return pulumix.Output[*HaVpnGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description of this resource.
@@ -586,12 +571,6 @@ func (o HaVpnGatewayArrayOutput) ToHaVpnGatewayArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o HaVpnGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HaVpnGateway] {
-	return pulumix.Output[[]*HaVpnGateway]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HaVpnGatewayArrayOutput) Index(i pulumi.IntInput) HaVpnGatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HaVpnGateway {
 		return vs[0].([]*HaVpnGateway)[vs[1].(int)]
@@ -610,12 +589,6 @@ func (o HaVpnGatewayMapOutput) ToHaVpnGatewayMapOutput() HaVpnGatewayMapOutput {
 
 func (o HaVpnGatewayMapOutput) ToHaVpnGatewayMapOutputWithContext(ctx context.Context) HaVpnGatewayMapOutput {
 	return o
-}
-
-func (o HaVpnGatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HaVpnGateway] {
-	return pulumix.Output[map[string]*HaVpnGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HaVpnGatewayMapOutput) MapIndex(k pulumi.StringInput) HaVpnGatewayOutput {

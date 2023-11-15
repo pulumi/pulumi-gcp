@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A source representation instance is a Cloud SQL instance that represents
@@ -89,7 +88,17 @@ import (
 //
 // ## Import
 //
-// # SourceRepresentationInstance can be imported using any of these accepted formats
+// SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SourceRepresentationInstance using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/instances/{{name}}"
+//
+//	to = google_sql_source_representation_instance.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SourceRepresentationInstance can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -122,7 +131,7 @@ type SourceRepresentationInstance struct {
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrOutput `pulumi:"dumpFilePath"`
-	// The externally accessible IPv4 address for the source database server.
+	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 	//
 	// ***
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -198,7 +207,7 @@ type sourceRepresentationInstanceState struct {
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
-	// The externally accessible IPv4 address for the source database server.
+	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 	//
 	// ***
 	Host *string `pulumi:"host"`
@@ -232,7 +241,7 @@ type SourceRepresentationInstanceState struct {
 	DatabaseVersion pulumi.StringPtrInput
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
-	// The externally accessible IPv4 address for the source database server.
+	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 	//
 	// ***
 	Host pulumi.StringPtrInput
@@ -270,7 +279,7 @@ type sourceRepresentationInstanceArgs struct {
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
-	// The externally accessible IPv4 address for the source database server.
+	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 	//
 	// ***
 	Host string `pulumi:"host"`
@@ -305,7 +314,7 @@ type SourceRepresentationInstanceArgs struct {
 	DatabaseVersion pulumi.StringInput
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
-	// The externally accessible IPv4 address for the source database server.
+	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 	//
 	// ***
 	Host pulumi.StringInput
@@ -350,12 +359,6 @@ func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceOutput)
 }
 
-func (i *SourceRepresentationInstance) ToOutput(ctx context.Context) pulumix.Output[*SourceRepresentationInstance] {
-	return pulumix.Output[*SourceRepresentationInstance]{
-		OutputState: i.ToSourceRepresentationInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SourceRepresentationInstanceArrayInput is an input type that accepts SourceRepresentationInstanceArray and SourceRepresentationInstanceArrayOutput values.
 // You can construct a concrete instance of `SourceRepresentationInstanceArrayInput` via:
 //
@@ -379,12 +382,6 @@ func (i SourceRepresentationInstanceArray) ToSourceRepresentationInstanceArrayOu
 
 func (i SourceRepresentationInstanceArray) ToSourceRepresentationInstanceArrayOutputWithContext(ctx context.Context) SourceRepresentationInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceArrayOutput)
-}
-
-func (i SourceRepresentationInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*SourceRepresentationInstance] {
-	return pulumix.Output[[]*SourceRepresentationInstance]{
-		OutputState: i.ToSourceRepresentationInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SourceRepresentationInstanceMapInput is an input type that accepts SourceRepresentationInstanceMap and SourceRepresentationInstanceMapOutput values.
@@ -412,12 +409,6 @@ func (i SourceRepresentationInstanceMap) ToSourceRepresentationInstanceMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceMapOutput)
 }
 
-func (i SourceRepresentationInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceRepresentationInstance] {
-	return pulumix.Output[map[string]*SourceRepresentationInstance]{
-		OutputState: i.ToSourceRepresentationInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceRepresentationInstanceOutput struct{ *pulumi.OutputState }
 
 func (SourceRepresentationInstanceOutput) ElementType() reflect.Type {
@@ -430,12 +421,6 @@ func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput
 
 func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
 	return o
-}
-
-func (o SourceRepresentationInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceRepresentationInstance] {
-	return pulumix.Output[*SourceRepresentationInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
@@ -464,7 +449,7 @@ func (o SourceRepresentationInstanceOutput) DumpFilePath() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringPtrOutput { return v.DumpFilePath }).(pulumi.StringPtrOutput)
 }
 
-// The externally accessible IPv4 address for the source database server.
+// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
 //
 // ***
 func (o SourceRepresentationInstanceOutput) Host() pulumi.StringOutput {
@@ -519,12 +504,6 @@ func (o SourceRepresentationInstanceArrayOutput) ToSourceRepresentationInstanceA
 	return o
 }
 
-func (o SourceRepresentationInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SourceRepresentationInstance] {
-	return pulumix.Output[[]*SourceRepresentationInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourceRepresentationInstanceArrayOutput) Index(i pulumi.IntInput) SourceRepresentationInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SourceRepresentationInstance {
 		return vs[0].([]*SourceRepresentationInstance)[vs[1].(int)]
@@ -543,12 +522,6 @@ func (o SourceRepresentationInstanceMapOutput) ToSourceRepresentationInstanceMap
 
 func (o SourceRepresentationInstanceMapOutput) ToSourceRepresentationInstanceMapOutputWithContext(ctx context.Context) SourceRepresentationInstanceMapOutput {
 	return o
-}
-
-func (o SourceRepresentationInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceRepresentationInstance] {
-	return pulumix.Output[map[string]*SourceRepresentationInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceRepresentationInstanceMapOutput) MapIndex(k pulumi.StringInput) SourceRepresentationInstanceOutput {

@@ -32,6 +32,7 @@ __all__ = [
     'EnvironmentConfigWorkloadsConfigTriggerer',
     'EnvironmentConfigWorkloadsConfigWebServer',
     'EnvironmentConfigWorkloadsConfigWorker',
+    'EnvironmentStorageConfig',
     'GetEnvironmentConfigResult',
     'GetEnvironmentConfigDatabaseConfigResult',
     'GetEnvironmentConfigEncryptionConfigResult',
@@ -53,6 +54,7 @@ __all__ = [
     'GetEnvironmentConfigWorkloadsConfigTriggererResult',
     'GetEnvironmentConfigWorkloadsConfigWebServerResult',
     'GetEnvironmentConfigWorkloadsConfigWorkerResult',
+    'GetEnvironmentStorageConfigResult',
     'GetImageVersionsImageVersionResult',
 ]
 
@@ -1255,6 +1257,18 @@ class EnvironmentConfigWorkloadsConfigWorker(dict):
 
 
 @pulumi.output_type
+class EnvironmentStorageConfig(dict):
+    def __init__(__self__, *,
+                 bucket: str):
+        pulumi.set(__self__, "bucket", bucket)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+
+@pulumi.output_type
 class GetEnvironmentConfigResult(dict):
     def __init__(__self__, *,
                  airflow_uri: str,
@@ -1959,6 +1973,18 @@ class GetEnvironmentConfigWorkloadsConfigWorkerResult(dict):
     @pulumi.getter(name="storageGb")
     def storage_gb(self) -> float:
         return pulumi.get(self, "storage_gb")
+
+
+@pulumi.output_type
+class GetEnvironmentStorageConfigResult(dict):
+    def __init__(__self__, *,
+                 bucket: str):
+        pulumi.set(__self__, "bucket", bucket)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
 
 
 @pulumi.output_type

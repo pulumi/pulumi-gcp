@@ -514,7 +514,7 @@ import javax.annotation.Nullable;
  *                     .bootDiskSizeGb(35)
  *                     .disablePublicIpAddresses(true)
  *                     .accelerators(WorkstationConfigHostGceInstanceAcceleratorArgs.builder()
- *                         .type(&#34;nvidia-tesla-p100&#34;)
+ *                         .type(&#34;nvidia-tesla-t4&#34;)
  *                         .count(&#34;1&#34;)
  *                         .build())
  *                     .build())
@@ -638,7 +638,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * WorkstationConfig can be imported using any of these accepted formats
+ * WorkstationConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}` * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationConfig using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}&#34;
+ * 
+ *  to = google_workstations_workstation_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationConfig can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:workstations/workstationConfig:WorkstationConfig default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}

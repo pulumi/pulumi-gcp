@@ -26,6 +26,7 @@ public final class GetBucketResult {
     private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
     private Boolean defaultEventBasedHold;
     private Map<String,String> effectiveLabels;
+    private Boolean enableObjectRetention;
     private List<GetBucketEncryption> encryptions;
     private Boolean forceDestroy;
     /**
@@ -65,6 +66,9 @@ public final class GetBucketResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public Boolean enableObjectRetention() {
+        return this.enableObjectRetention;
     }
     public List<GetBucketEncryption> encryptions() {
         return this.encryptions;
@@ -142,6 +146,7 @@ public final class GetBucketResult {
         private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
         private Boolean defaultEventBasedHold;
         private Map<String,String> effectiveLabels;
+        private Boolean enableObjectRetention;
         private List<GetBucketEncryption> encryptions;
         private Boolean forceDestroy;
         private String id;
@@ -169,6 +174,7 @@ public final class GetBucketResult {
     	      this.customPlacementConfigs = defaults.customPlacementConfigs;
     	      this.defaultEventBasedHold = defaults.defaultEventBasedHold;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.enableObjectRetention = defaults.enableObjectRetention;
     	      this.encryptions = defaults.encryptions;
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.id = defaults.id;
@@ -222,6 +228,11 @@ public final class GetBucketResult {
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableObjectRetention(Boolean enableObjectRetention) {
+            this.enableObjectRetention = Objects.requireNonNull(enableObjectRetention);
             return this;
         }
         @CustomType.Setter
@@ -344,6 +355,7 @@ public final class GetBucketResult {
             o.customPlacementConfigs = customPlacementConfigs;
             o.defaultEventBasedHold = defaultEventBasedHold;
             o.effectiveLabels = effectiveLabels;
+            o.enableObjectRetention = enableObjectRetention;
             o.encryptions = encryptions;
             o.forceDestroy = forceDestroy;
             o.id = id;

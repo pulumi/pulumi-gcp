@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Cloud Asset Inventory feed used to to listen to asset updates.
@@ -25,7 +24,17 @@ import (
 //
 // ## Import
 //
-// # ProjectFeed can be imported using any of these accepted formats
+// ProjectFeed can be imported using any of these accepted formats* `projects/{{project}}/feeds/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ProjectFeed using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/feeds/{{name}}"
+//
+//	to = google_cloud_asset_project_feed.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:cloudasset/projectFeed:ProjectFeed When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ProjectFeed can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -300,12 +309,6 @@ func (i *ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedOutput)
 }
 
-func (i *ProjectFeed) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeed] {
-	return pulumix.Output[*ProjectFeed]{
-		OutputState: i.ToProjectFeedOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectFeedArrayInput is an input type that accepts ProjectFeedArray and ProjectFeedArrayOutput values.
 // You can construct a concrete instance of `ProjectFeedArrayInput` via:
 //
@@ -329,12 +332,6 @@ func (i ProjectFeedArray) ToProjectFeedArrayOutput() ProjectFeedArrayOutput {
 
 func (i ProjectFeedArray) ToProjectFeedArrayOutputWithContext(ctx context.Context) ProjectFeedArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedArrayOutput)
-}
-
-func (i ProjectFeedArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectFeed] {
-	return pulumix.Output[[]*ProjectFeed]{
-		OutputState: i.ToProjectFeedArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectFeedMapInput is an input type that accepts ProjectFeedMap and ProjectFeedMapOutput values.
@@ -362,12 +359,6 @@ func (i ProjectFeedMap) ToProjectFeedMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedMapOutput)
 }
 
-func (i ProjectFeedMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectFeed] {
-	return pulumix.Output[map[string]*ProjectFeed]{
-		OutputState: i.ToProjectFeedMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectFeedOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedOutput) ElementType() reflect.Type {
@@ -380,12 +371,6 @@ func (o ProjectFeedOutput) ToProjectFeedOutput() ProjectFeedOutput {
 
 func (o ProjectFeedOutput) ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput {
 	return o
-}
-
-func (o ProjectFeedOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeed] {
-	return pulumix.Output[*ProjectFeed]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of the full names of the assets to receive updates. You must specify either or both of
@@ -465,12 +450,6 @@ func (o ProjectFeedArrayOutput) ToProjectFeedArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProjectFeedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectFeed] {
-	return pulumix.Output[[]*ProjectFeed]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectFeedArrayOutput) Index(i pulumi.IntInput) ProjectFeedOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectFeed {
 		return vs[0].([]*ProjectFeed)[vs[1].(int)]
@@ -489,12 +468,6 @@ func (o ProjectFeedMapOutput) ToProjectFeedMapOutput() ProjectFeedMapOutput {
 
 func (o ProjectFeedMapOutput) ToProjectFeedMapOutputWithContext(ctx context.Context) ProjectFeedMapOutput {
 	return o
-}
-
-func (o ProjectFeedMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectFeed] {
-	return pulumix.Output[map[string]*ProjectFeed]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectFeedMapOutput) MapIndex(k pulumi.StringInput) ProjectFeedOutput {

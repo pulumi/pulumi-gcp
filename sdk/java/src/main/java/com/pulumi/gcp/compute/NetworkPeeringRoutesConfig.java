@@ -166,7 +166,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkPeeringRoutesConfig can be imported using any of these accepted formats
+ * NetworkPeeringRoutesConfig can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}` * `{{project}}/{{network}}/{{peering}}` * `{{network}}/{{peering}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkPeeringRoutesConfig using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}&#34;
+ * 
+ *  to = google_compute_network_peering_routes_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkPeeringRoutesConfig can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}

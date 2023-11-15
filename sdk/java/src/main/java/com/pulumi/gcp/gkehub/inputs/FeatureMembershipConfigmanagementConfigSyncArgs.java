@@ -33,6 +33,13 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         return Optional.ofNullable(this.git);
     }
 
+    @Import(name="metricsGcpServiceAccountEmail")
+    private @Nullable Output<String> metricsGcpServiceAccountEmail;
+
+    public Optional<Output<String>> metricsGcpServiceAccountEmail() {
+        return Optional.ofNullable(this.metricsGcpServiceAccountEmail);
+    }
+
     /**
      * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
@@ -86,6 +93,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
 
     private FeatureMembershipConfigmanagementConfigSyncArgs(FeatureMembershipConfigmanagementConfigSyncArgs $) {
         this.git = $.git;
+        this.metricsGcpServiceAccountEmail = $.metricsGcpServiceAccountEmail;
         this.oci = $.oci;
         this.preventDrift = $.preventDrift;
         this.sourceFormat = $.sourceFormat;
@@ -128,6 +136,15 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
          */
         public Builder git(FeatureMembershipConfigmanagementConfigSyncGitArgs git) {
             return git(Output.of(git));
+        }
+
+        public Builder metricsGcpServiceAccountEmail(@Nullable Output<String> metricsGcpServiceAccountEmail) {
+            $.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
+            return this;
+        }
+
+        public Builder metricsGcpServiceAccountEmail(String metricsGcpServiceAccountEmail) {
+            return metricsGcpServiceAccountEmail(Output.of(metricsGcpServiceAccountEmail));
         }
 
         /**

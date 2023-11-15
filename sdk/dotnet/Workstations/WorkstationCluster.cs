@@ -117,10 +117,77 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Cluster Custom Domain
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster-custom-domain",
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
+    ///         {
+    ///             EnablePrivateEndpoint = true,
+    ///         },
+    ///         DomainConfig = new Gcp.Workstations.Inputs.WorkstationClusterDomainConfigArgs
+    ///         {
+    ///             Domain = "workstations.example.com",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label", "key" },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// WorkstationCluster can be imported using any of these accepted formats
+    /// WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}"
+    /// 
+    ///  to = google_workstations_workstation_cluster.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
@@ -170,6 +237,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration options for a custom domain.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("domainConfig")]
+        public Output<Outputs.WorkstationClusterDomainConfig?> DomainConfig { get; private set; } = null!;
 
         /// <summary>
         /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -332,6 +406,13 @@ namespace Pulumi.Gcp.Workstations
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Configuration options for a custom domain.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("domainConfig")]
+        public Input<Inputs.WorkstationClusterDomainConfigArgs>? DomainConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -442,6 +523,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Configuration options for a custom domain.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("domainConfig")]
+        public Input<Inputs.WorkstationClusterDomainConfigGetArgs>? DomainConfig { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;

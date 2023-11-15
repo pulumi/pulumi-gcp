@@ -567,7 +567,15 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Import
     /// 
-    /// NodePool can be imported using any of these accepted formats
+    /// NodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}` * `{{project}}/{{location}}/{{cluster}}/{{name}}` * `{{location}}/{{cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodePool using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}"
+    /// 
+    ///  to = google_container_aws_node_pool.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/awsNodePool:AwsNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodePool can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:container/awsNodePool:AwsNodePool default projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}

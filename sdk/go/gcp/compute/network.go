@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a VPC network or legacy network resource on GCP.
@@ -101,7 +100,17 @@ import (
 //
 // ## Import
 //
-// # Network can be imported using any of these accepted formats
+// Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Network using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/networks/{{name}}"
+//
+//	to = google_compute_network.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/network:Network When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Network can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -464,12 +473,6 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkOutput)
 }
 
-func (i *Network) ToOutput(ctx context.Context) pulumix.Output[*Network] {
-	return pulumix.Output[*Network]{
-		OutputState: i.ToNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkArrayInput is an input type that accepts NetworkArray and NetworkArrayOutput values.
 // You can construct a concrete instance of `NetworkArrayInput` via:
 //
@@ -493,12 +496,6 @@ func (i NetworkArray) ToNetworkArrayOutput() NetworkArrayOutput {
 
 func (i NetworkArray) ToNetworkArrayOutputWithContext(ctx context.Context) NetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkArrayOutput)
-}
-
-func (i NetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*Network] {
-	return pulumix.Output[[]*Network]{
-		OutputState: i.ToNetworkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkMapInput is an input type that accepts NetworkMap and NetworkMapOutput values.
@@ -526,12 +523,6 @@ func (i NetworkMap) ToNetworkMapOutputWithContext(ctx context.Context) NetworkMa
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkMapOutput)
 }
 
-func (i NetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Network] {
-	return pulumix.Output[map[string]*Network]{
-		OutputState: i.ToNetworkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkOutput) ElementType() reflect.Type {
@@ -544,12 +535,6 @@ func (o NetworkOutput) ToNetworkOutput() NetworkOutput {
 
 func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput {
 	return o
-}
-
-func (o NetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*Network] {
-	return pulumix.Output[*Network]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When set to `true`, the network is created in "auto subnet mode" and
@@ -658,12 +643,6 @@ func (o NetworkArrayOutput) ToNetworkArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o NetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Network] {
-	return pulumix.Output[[]*Network]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkArrayOutput) Index(i pulumi.IntInput) NetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Network {
 		return vs[0].([]*Network)[vs[1].(int)]
@@ -682,12 +661,6 @@ func (o NetworkMapOutput) ToNetworkMapOutput() NetworkMapOutput {
 
 func (o NetworkMapOutput) ToNetworkMapOutputWithContext(ctx context.Context) NetworkMapOutput {
 	return o
-}
-
-func (o NetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Network] {
-	return pulumix.Output[map[string]*Network]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkMapOutput) MapIndex(k pulumi.StringInput) NetworkOutput {

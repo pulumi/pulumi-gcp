@@ -143,10 +143,36 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Subnetwork Cidr Overlap
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const net_cidr_overlap = new gcp.compute.Network("net-cidr-overlap", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const subnetwork_cidr_overlap = new gcp.compute.Subnetwork("subnetwork-cidr-overlap", {
+ *     region: "us-west2",
+ *     ipCidrRange: "192.168.1.0/24",
+ *     allowSubnetCidrRoutesOverlap: true,
+ *     network: net_cidr_overlap.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
- * Subnetwork can be imported using any of these accepted formats
+ * Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
+ *
+ *  to = google_compute_subnetwork.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
@@ -192,6 +218,12 @@ export class Subnetwork extends pulumi.CustomResource {
         return obj['__pulumiType'] === Subnetwork.__pulumiType;
     }
 
+    /**
+     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     */
+    public readonly allowSubnetCidrRoutesOverlap!: pulumi.Output<boolean>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -336,6 +368,7 @@ export class Subnetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetworkState | undefined;
+            resourceInputs["allowSubnetCidrRoutesOverlap"] = state ? state.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
@@ -365,6 +398,7 @@ export class Subnetwork extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
@@ -396,6 +430,12 @@ export class Subnetwork extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subnetwork resources.
  */
 export interface SubnetworkState {
+    /**
+     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     */
+    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -532,6 +572,12 @@ export interface SubnetworkState {
  * The set of arguments for constructing a Subnetwork resource.
  */
 export interface SubnetworkArgs {
+    /**
+     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     */
+    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource

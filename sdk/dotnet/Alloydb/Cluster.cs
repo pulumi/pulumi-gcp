@@ -215,10 +215,98 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// ### Alloydb Secondary Cluster Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default");
+    /// 
+    ///     var primaryCluster = new Gcp.Alloydb.Cluster("primaryCluster", new()
+    ///     {
+    ///         ClusterId = "alloydb-primary-cluster",
+    ///         Location = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var primaryInstance = new Gcp.Alloydb.Instance("primaryInstance", new()
+    ///     {
+    ///         Cluster = primaryCluster.Name,
+    ///         InstanceId = "alloydb-primary-instance",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondary = new Gcp.Alloydb.Cluster("secondary", new()
+    ///     {
+    ///         ClusterId = "alloydb-secondary-cluster",
+    ///         Location = "us-east1",
+    ///         Network = @default.Id,
+    ///         ClusterType = "SECONDARY",
+    ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
+    ///         {
+    ///             Enabled = false,
+    ///         },
+    ///         SecondaryConfig = new Gcp.Alloydb.Inputs.ClusterSecondaryConfigArgs
+    ///         {
+    ///             PrimaryClusterName = primaryCluster.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             primaryInstance,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Cluster can be imported using any of these accepted formats
+    /// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
+    /// 
+    ///  to = google_alloydb_cluster.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -270,6 +358,14 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// The type of cluster. If not set, defaults to PRIMARY.
+        /// Default value is `PRIMARY`.
+        /// Possible values are: `PRIMARY`, `SECONDARY`.
+        /// </summary>
+        [Output("clusterType")]
+        public Output<string?> ClusterType { get; private set; } = null!;
+
+        /// <summary>
         /// The continuous backup config for this cluster.
         /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
         /// Structure is documented below.
@@ -289,6 +385,14 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy to determine if the cluster should be deleted forcefully.
+        /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.
@@ -421,6 +525,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.ClusterRestoreContinuousBackupSource?> RestoreContinuousBackupSource { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("secondaryConfig")]
+        public Output<Outputs.ClusterSecondaryConfig?> SecondaryConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The current serving state of the cluster.
         /// </summary>
         [Output("state")]
@@ -513,12 +624,28 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// The type of cluster. If not set, defaults to PRIMARY.
+        /// Default value is `PRIMARY`.
+        /// Possible values are: `PRIMARY`, `SECONDARY`.
+        /// </summary>
+        [Input("clusterType")]
+        public Input<string>? ClusterType { get; set; }
+
+        /// <summary>
         /// The continuous backup config for this cluster.
         /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
         /// Structure is documented below.
         /// </summary>
         [Input("continuousBackupConfig")]
         public Input<Inputs.ClusterContinuousBackupConfigArgs>? ContinuousBackupConfig { get; set; }
+
+        /// <summary>
+        /// Policy to determine if the cluster should be deleted forcefully.
+        /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.
@@ -607,6 +734,13 @@ namespace Pulumi.Gcp.Alloydb
         [Input("restoreContinuousBackupSource")]
         public Input<Inputs.ClusterRestoreContinuousBackupSourceArgs>? RestoreContinuousBackupSource { get; set; }
 
+        /// <summary>
+        /// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("secondaryConfig")]
+        public Input<Inputs.ClusterSecondaryConfigArgs>? SecondaryConfig { get; set; }
+
         public ClusterArgs()
         {
         }
@@ -658,6 +792,14 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
+        /// The type of cluster. If not set, defaults to PRIMARY.
+        /// Default value is `PRIMARY`.
+        /// Possible values are: `PRIMARY`, `SECONDARY`.
+        /// </summary>
+        [Input("clusterType")]
+        public Input<string>? ClusterType { get; set; }
+
+        /// <summary>
         /// The continuous backup config for this cluster.
         /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
         /// Structure is documented below.
@@ -683,6 +825,14 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Policy to determine if the cluster should be deleted forcefully.
+        /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+        /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.
@@ -857,6 +1007,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("restoreContinuousBackupSource")]
         public Input<Inputs.ClusterRestoreContinuousBackupSourceGetArgs>? RestoreContinuousBackupSource { get; set; }
+
+        /// <summary>
+        /// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("secondaryConfig")]
+        public Input<Inputs.ClusterSecondaryConfigGetArgs>? SecondaryConfig { get; set; }
 
         /// <summary>
         /// Output only. The current serving state of the cluster.

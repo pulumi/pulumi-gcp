@@ -162,7 +162,15 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// AppProfile can be imported using any of these accepted formats
+    /// AppProfile can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}` * `{{project}}/{{instance}}/{{app_profile_id}}` * `{{instance}}/{{app_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AppProfile using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}"
+    /// 
+    ///  to = google_bigtable_app_profile.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/appProfile:AppProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AppProfile can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}

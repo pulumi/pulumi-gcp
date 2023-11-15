@@ -236,10 +236,166 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
+    /// ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.CertificateAuthority.CaPool("pool", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Tier = "ENTERPRISE",
+    ///     });
+    /// 
+    ///     var caAuthority = new Gcp.CertificateAuthority.Authority("caAuthority", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Pool = pool.Name,
+    ///         CertificateAuthorityId = "ca-authority",
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "HashiCorp",
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                 {
+    ///                     DnsNames = new[]
+    ///                     {
+    ///                         "hashicorp.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///     });
+    /// 
+    ///     // creating certificate_issuance_config to use it in the managed certificate
+    ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
+    ///     {
+    ///         Description = "sample description for the certificate issuanceConfigs",
+    ///         CertificateAuthorityConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs
+    ///         {
+    ///             CertificateAuthorityServiceConfig = new Gcp.CertificateManager.Inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
+    ///             {
+    ///                 CaPool = pool.Id,
+    ///             },
+    ///         },
+    ///         Lifetime = "1814400s",
+    ///         RotationWindowPercentage = 34,
+    ///         KeyAlgorithm = "ECDSA_P256",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             caAuthority,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Description = "sample google managed all_regions certificate with issuance config for terraform",
+    ///         Scope = "ALL_REGIONS",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 "terraform.subdomain1.com",
+    ///             },
+    ///             IssuanceConfig = issuanceconfig.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Certificate Manager Google Managed Certificate Dns All Regions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain2.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Description = "The default cert",
+    ///         Scope = "ALL_REGIONS",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 instance.Domain,
+    ///                 instance2.Domain,
+    ///             },
+    ///             DnsAuthorizations = new[]
+    ///             {
+    ///                 instance.Id,
+    ///                 instance2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Certificate can be imported using any of these accepted formats
+    /// Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/certificates/{{name}}"
+    /// 
+    ///  to = google_certificate_manager_certificate.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
@@ -320,10 +476,10 @@ namespace Pulumi.Gcp.CertificateManager
         /// The scope of the certificate.
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
-        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-        /// served from non-core Google data centers.
+        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        /// See https://cloud.google.com/vpc/docs/edge-locations.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// see https://cloud.google.com/compute/docs/regions-zones
+        /// See https://cloud.google.com/compute/docs/regions-zones
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
@@ -445,10 +601,10 @@ namespace Pulumi.Gcp.CertificateManager
         /// The scope of the certificate.
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
-        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-        /// served from non-core Google data centers.
+        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        /// See https://cloud.google.com/vpc/docs/edge-locations.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// see https://cloud.google.com/compute/docs/regions-zones
+        /// See https://cloud.google.com/compute/docs/regions-zones
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -560,10 +716,10 @@ namespace Pulumi.Gcp.CertificateManager
         /// The scope of the certificate.
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
-        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-        /// served from non-core Google data centers.
+        /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        /// See https://cloud.google.com/vpc/docs/edge-locations.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// see https://cloud.google.com/compute/docs/regions-zones
+        /// See https://cloud.google.com/compute/docs/regions-zones
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

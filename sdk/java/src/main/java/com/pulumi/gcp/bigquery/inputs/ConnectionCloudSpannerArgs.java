@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,14 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     public static final ConnectionCloudSpannerArgs Empty = new ConnectionCloudSpannerArgs();
 
     /**
-     * Cloud Spanner database in the form `project/instance/database&#39;
+     * Cloud Spanner database in the form `project/instance/database&#39;.
      * 
      */
     @Import(name="database", required=true)
     private Output<String> database;
 
     /**
-     * @return Cloud Spanner database in the form `project/instance/database&#39;
+     * @return Cloud Spanner database in the form `project/instance/database&#39;.
      * 
      */
     public Output<String> database() {
@@ -32,14 +33,59 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * If parallelism should be used when reading from Cloud Spanner
+     * Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+     * 
+     */
+    @Import(name="databaseRole")
+    private @Nullable Output<String> databaseRole;
+
+    /**
+     * @return Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+     * 
+     */
+    public Optional<Output<String>> databaseRole() {
+        return Optional.ofNullable(this.databaseRole);
+    }
+
+    /**
+     * Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+     * 
+     */
+    @Import(name="maxParallelism")
+    private @Nullable Output<Integer> maxParallelism;
+
+    /**
+     * @return Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+     * 
+     */
+    public Optional<Output<Integer>> maxParallelism() {
+        return Optional.ofNullable(this.maxParallelism);
+    }
+
+    /**
+     * If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+     * 
+     */
+    @Import(name="useDataBoost")
+    private @Nullable Output<Boolean> useDataBoost;
+
+    /**
+     * @return If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+     * 
+     */
+    public Optional<Output<Boolean>> useDataBoost() {
+        return Optional.ofNullable(this.useDataBoost);
+    }
+
+    /**
+     * If parallelism should be used when reading from Cloud Spanner.
      * 
      */
     @Import(name="useParallelism")
     private @Nullable Output<Boolean> useParallelism;
 
     /**
-     * @return If parallelism should be used when reading from Cloud Spanner
+     * @return If parallelism should be used when reading from Cloud Spanner.
      * 
      */
     public Optional<Output<Boolean>> useParallelism() {
@@ -47,16 +93,30 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+     * (Optional, Deprecated)
+     * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+     * 
+     * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+     * 
+     * @deprecated
+     * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
      */
+    @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
     @Import(name="useServerlessAnalytics")
     private @Nullable Output<Boolean> useServerlessAnalytics;
 
     /**
-     * @return If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+     * @return (Optional, Deprecated)
+     * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+     * 
+     * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+     * 
+     * @deprecated
+     * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
      */
+    @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
     public Optional<Output<Boolean>> useServerlessAnalytics() {
         return Optional.ofNullable(this.useServerlessAnalytics);
     }
@@ -65,6 +125,9 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
 
     private ConnectionCloudSpannerArgs(ConnectionCloudSpannerArgs $) {
         this.database = $.database;
+        this.databaseRole = $.databaseRole;
+        this.maxParallelism = $.maxParallelism;
+        this.useDataBoost = $.useDataBoost;
         this.useParallelism = $.useParallelism;
         this.useServerlessAnalytics = $.useServerlessAnalytics;
     }
@@ -88,7 +151,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param database Cloud Spanner database in the form `project/instance/database&#39;
+         * @param database Cloud Spanner database in the form `project/instance/database&#39;.
          * 
          * @return builder
          * 
@@ -99,7 +162,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param database Cloud Spanner database in the form `project/instance/database&#39;
+         * @param database Cloud Spanner database in the form `project/instance/database&#39;.
          * 
          * @return builder
          * 
@@ -109,7 +172,70 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useParallelism If parallelism should be used when reading from Cloud Spanner
+         * @param databaseRole Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseRole(@Nullable Output<String> databaseRole) {
+            $.databaseRole = databaseRole;
+            return this;
+        }
+
+        /**
+         * @param databaseRole Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseRole(String databaseRole) {
+            return databaseRole(Output.of(databaseRole));
+        }
+
+        /**
+         * @param maxParallelism Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxParallelism(@Nullable Output<Integer> maxParallelism) {
+            $.maxParallelism = maxParallelism;
+            return this;
+        }
+
+        /**
+         * @param maxParallelism Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxParallelism(Integer maxParallelism) {
+            return maxParallelism(Output.of(maxParallelism));
+        }
+
+        /**
+         * @param useDataBoost If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useDataBoost(@Nullable Output<Boolean> useDataBoost) {
+            $.useDataBoost = useDataBoost;
+            return this;
+        }
+
+        /**
+         * @param useDataBoost If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useDataBoost(Boolean useDataBoost) {
+            return useDataBoost(Output.of(useDataBoost));
+        }
+
+        /**
+         * @param useParallelism If parallelism should be used when reading from Cloud Spanner.
          * 
          * @return builder
          * 
@@ -120,7 +246,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useParallelism If parallelism should be used when reading from Cloud Spanner
+         * @param useParallelism If parallelism should be used when reading from Cloud Spanner.
          * 
          * @return builder
          * 
@@ -130,22 +256,36 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useServerlessAnalytics If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+         * @param useServerlessAnalytics (Optional, Deprecated)
+         * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+         * 
+         * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+         * 
          */
+        @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
         public Builder useServerlessAnalytics(@Nullable Output<Boolean> useServerlessAnalytics) {
             $.useServerlessAnalytics = useServerlessAnalytics;
             return this;
         }
 
         /**
-         * @param useServerlessAnalytics If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+         * @param useServerlessAnalytics (Optional, Deprecated)
+         * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+         * 
+         * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+         * 
          */
+        @Deprecated /* `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead. */
         public Builder useServerlessAnalytics(Boolean useServerlessAnalytics) {
             return useServerlessAnalytics(Output.of(useServerlessAnalytics));
         }

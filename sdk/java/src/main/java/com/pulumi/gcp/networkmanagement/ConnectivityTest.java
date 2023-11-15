@@ -181,7 +181,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ConnectivityTest can be imported using any of these accepted formats
+ * ConnectivityTest can be imported using any of these accepted formats* `projects/{{project}}/locations/global/connectivityTests/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectivityTest using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/global/connectivityTests/{{name}}&#34;
+ * 
+ *  to = google_network_management_connectivity_test.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectivityTest can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}

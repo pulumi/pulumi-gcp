@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Dataform.Outputs
     public sealed class RepositoryWorkspaceCompilationOverrides
     {
         /// <summary>
-        /// Optional. The default database (Google Cloud project ID).
+        /// The default database (Google Cloud project ID).
         /// </summary>
         public readonly string? DefaultDatabase;
         /// <summary>
-        /// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        /// The suffix that should be appended to all schema (BigQuery dataset ID) names.
         /// </summary>
         public readonly string? SchemaSuffix;
         /// <summary>
-        /// Optional. The prefix that should be prepended to all table names.
+        /// The prefix that should be prepended to all table names.
         /// </summary>
         public readonly string? TablePrefix;
 

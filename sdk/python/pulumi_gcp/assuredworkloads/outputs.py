@@ -10,10 +10,104 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'WorkloadComplianceStatus',
+    'WorkloadEkmProvisioningResponse',
     'WorkloadKmsSettings',
+    'WorkloadPartnerPermissions',
     'WorkloadResource',
     'WorkloadResourceSetting',
+    'WorkloadSaaEnrollmentResponse',
 ]
+
+@pulumi.output_type
+class WorkloadComplianceStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgedViolationCounts":
+            suggest = "acknowledged_violation_counts"
+        elif key == "activeViolationCounts":
+            suggest = "active_violation_counts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadComplianceStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadComplianceStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadComplianceStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acknowledged_violation_counts: Optional[Sequence[int]] = None,
+                 active_violation_counts: Optional[Sequence[int]] = None):
+        if acknowledged_violation_counts is not None:
+            pulumi.set(__self__, "acknowledged_violation_counts", acknowledged_violation_counts)
+        if active_violation_counts is not None:
+            pulumi.set(__self__, "active_violation_counts", active_violation_counts)
+
+    @property
+    @pulumi.getter(name="acknowledgedViolationCounts")
+    def acknowledged_violation_counts(self) -> Optional[Sequence[int]]:
+        return pulumi.get(self, "acknowledged_violation_counts")
+
+    @property
+    @pulumi.getter(name="activeViolationCounts")
+    def active_violation_counts(self) -> Optional[Sequence[int]]:
+        return pulumi.get(self, "active_violation_counts")
+
+
+@pulumi.output_type
+class WorkloadEkmProvisioningResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ekmProvisioningErrorDomain":
+            suggest = "ekm_provisioning_error_domain"
+        elif key == "ekmProvisioningErrorMapping":
+            suggest = "ekm_provisioning_error_mapping"
+        elif key == "ekmProvisioningState":
+            suggest = "ekm_provisioning_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadEkmProvisioningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadEkmProvisioningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadEkmProvisioningResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ekm_provisioning_error_domain: Optional[str] = None,
+                 ekm_provisioning_error_mapping: Optional[str] = None,
+                 ekm_provisioning_state: Optional[str] = None):
+        if ekm_provisioning_error_domain is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
+        if ekm_provisioning_error_mapping is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_mapping", ekm_provisioning_error_mapping)
+        if ekm_provisioning_state is not None:
+            pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorDomain")
+    def ekm_provisioning_error_domain(self) -> Optional[str]:
+        return pulumi.get(self, "ekm_provisioning_error_domain")
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorMapping")
+    def ekm_provisioning_error_mapping(self) -> Optional[str]:
+        return pulumi.get(self, "ekm_provisioning_error_mapping")
+
+    @property
+    @pulumi.getter(name="ekmProvisioningState")
+    def ekm_provisioning_state(self) -> Optional[str]:
+        return pulumi.get(self, "ekm_provisioning_state")
+
 
 @pulumi.output_type
 class WorkloadKmsSettings(dict):
@@ -64,6 +158,70 @@ class WorkloadKmsSettings(dict):
 
 
 @pulumi.output_type
+class WorkloadPartnerPermissions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assuredWorkloadsMonitoring":
+            suggest = "assured_workloads_monitoring"
+        elif key == "dataLogsViewer":
+            suggest = "data_logs_viewer"
+        elif key == "serviceAccessApprover":
+            suggest = "service_access_approver"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadPartnerPermissions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadPartnerPermissions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadPartnerPermissions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assured_workloads_monitoring: Optional[bool] = None,
+                 data_logs_viewer: Optional[bool] = None,
+                 service_access_approver: Optional[bool] = None):
+        """
+        :param bool assured_workloads_monitoring: Optional. Allow partner to view violation alerts.
+        :param bool data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
+        :param bool service_access_approver: Optional. Allow partner to view access approval logs.
+        """
+        if assured_workloads_monitoring is not None:
+            pulumi.set(__self__, "assured_workloads_monitoring", assured_workloads_monitoring)
+        if data_logs_viewer is not None:
+            pulumi.set(__self__, "data_logs_viewer", data_logs_viewer)
+        if service_access_approver is not None:
+            pulumi.set(__self__, "service_access_approver", service_access_approver)
+
+    @property
+    @pulumi.getter(name="assuredWorkloadsMonitoring")
+    def assured_workloads_monitoring(self) -> Optional[bool]:
+        """
+        Optional. Allow partner to view violation alerts.
+        """
+        return pulumi.get(self, "assured_workloads_monitoring")
+
+    @property
+    @pulumi.getter(name="dataLogsViewer")
+    def data_logs_viewer(self) -> Optional[bool]:
+        """
+        Allow the partner to view inspectability logs and monitoring violations.
+        """
+        return pulumi.get(self, "data_logs_viewer")
+
+    @property
+    @pulumi.getter(name="serviceAccessApprover")
+    def service_access_approver(self) -> Optional[bool]:
+        """
+        Optional. Allow partner to view access approval logs.
+        """
+        return pulumi.get(self, "service_access_approver")
+
+
+@pulumi.output_type
 class WorkloadResource(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -88,7 +246,7 @@ class WorkloadResource(dict):
                  resource_id: Optional[int] = None,
                  resource_type: Optional[str] = None):
         """
-        :param int resource_id: Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        :param int resource_id: Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         :param str resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
         if resource_id is not None:
@@ -100,7 +258,7 @@ class WorkloadResource(dict):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[int]:
         """
-        Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         """
         return pulumi.get(self, "resource_id")
 
@@ -118,7 +276,9 @@ class WorkloadResourceSetting(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceId":
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "resourceId":
             suggest = "resource_id"
         elif key == "resourceType":
             suggest = "resource_type"
@@ -135,22 +295,34 @@ class WorkloadResourceSetting(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 display_name: Optional[str] = None,
                  resource_id: Optional[str] = None,
                  resource_type: Optional[str] = None):
         """
-        :param str resource_id: Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        :param str display_name: User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        :param str resource_id: Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         :param str resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[str]:
         """
-        Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+        Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         """
         return pulumi.get(self, "resource_id")
 
@@ -161,5 +333,45 @@ class WorkloadResourceSetting(dict):
         Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class WorkloadSaaEnrollmentResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "setupErrors":
+            suggest = "setup_errors"
+        elif key == "setupStatus":
+            suggest = "setup_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadSaaEnrollmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadSaaEnrollmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadSaaEnrollmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 setup_errors: Optional[Sequence[str]] = None,
+                 setup_status: Optional[str] = None):
+        if setup_errors is not None:
+            pulumi.set(__self__, "setup_errors", setup_errors)
+        if setup_status is not None:
+            pulumi.set(__self__, "setup_status", setup_status)
+
+    @property
+    @pulumi.getter(name="setupErrors")
+    def setup_errors(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "setup_errors")
+
+    @property
+    @pulumi.getter(name="setupStatus")
+    def setup_status(self) -> Optional[str]:
+        return pulumi.get(self, "setup_status")
 
 

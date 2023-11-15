@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeOnPrem
 {
     /// <summary>
+    /// A Google Vmware Node Pool.
+    /// 
     /// ## Example Usage
     /// ### Gkeonprem Vmware Node Pool Basic
     /// 
@@ -80,9 +82,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var nodepool_basic = new Gcp.GkeOnPrem.VMwareNodePool("nodepool-basic", new()
@@ -95,9 +94,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///             ImageType = "ubuntu_containerd",
     ///             EnableLoadBalancer = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -171,9 +167,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var nodepool_full = new Gcp.GkeOnPrem.VMwareNodePool("nodepool-full", new()
@@ -211,9 +204,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///             MinReplicas = 1,
     ///             MaxReplicas = 5,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -221,7 +211,15 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// ## Import
     /// 
-    /// VmwareNodePool can be imported using any of these accepted formats
+    /// VmwareNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}` * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}` * `{{location}}/{{vmware_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareNodePool using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}"
+    /// 
+    ///  to = google_gkeonprem_vmware_node_pool.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareNodePool can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i ManagementServerManagementUriArgs) ToManagementServerManagementUriOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerManagementUriOutput)
 }
 
-func (i ManagementServerManagementUriArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementServerManagementUri] {
-	return pulumix.Output[ManagementServerManagementUri]{
-		OutputState: i.ToManagementServerManagementUriOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementServerManagementUriArrayInput is an input type that accepts ManagementServerManagementUriArray and ManagementServerManagementUriArrayOutput values.
 // You can construct a concrete instance of `ManagementServerManagementUriArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i ManagementServerManagementUriArray) ToManagementServerManagementUriArray
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerManagementUriArrayOutput)
 }
 
-func (i ManagementServerManagementUriArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerManagementUri] {
-	return pulumix.Output[[]ManagementServerManagementUri]{
-		OutputState: i.ToManagementServerManagementUriArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementServerManagementUriOutput struct{ *pulumi.OutputState }
 
 func (ManagementServerManagementUriOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o ManagementServerManagementUriOutput) ToManagementServerManagementUriOutp
 
 func (o ManagementServerManagementUriOutput) ToManagementServerManagementUriOutputWithContext(ctx context.Context) ManagementServerManagementUriOutput {
 	return o
-}
-
-func (o ManagementServerManagementUriOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementServerManagementUri] {
-	return pulumix.Output[ManagementServerManagementUri]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -136,12 +117,6 @@ func (o ManagementServerManagementUriArrayOutput) ToManagementServerManagementUr
 
 func (o ManagementServerManagementUriArrayOutput) ToManagementServerManagementUriArrayOutputWithContext(ctx context.Context) ManagementServerManagementUriArrayOutput {
 	return o
-}
-
-func (o ManagementServerManagementUriArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerManagementUri] {
-	return pulumix.Output[[]ManagementServerManagementUri]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementServerManagementUriArrayOutput) Index(i pulumi.IntInput) ManagementServerManagementUriOutput {
@@ -195,12 +170,6 @@ func (i ManagementServerNetworkArgs) ToManagementServerNetworkOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerNetworkOutput)
 }
 
-func (i ManagementServerNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementServerNetwork] {
-	return pulumix.Output[ManagementServerNetwork]{
-		OutputState: i.ToManagementServerNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementServerNetworkArrayInput is an input type that accepts ManagementServerNetworkArray and ManagementServerNetworkArrayOutput values.
 // You can construct a concrete instance of `ManagementServerNetworkArrayInput` via:
 //
@@ -226,12 +195,6 @@ func (i ManagementServerNetworkArray) ToManagementServerNetworkArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementServerNetworkArrayOutput)
 }
 
-func (i ManagementServerNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerNetwork] {
-	return pulumix.Output[[]ManagementServerNetwork]{
-		OutputState: i.ToManagementServerNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementServerNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagementServerNetworkOutput) ElementType() reflect.Type {
@@ -244,12 +207,6 @@ func (o ManagementServerNetworkOutput) ToManagementServerNetworkOutput() Managem
 
 func (o ManagementServerNetworkOutput) ToManagementServerNetworkOutputWithContext(ctx context.Context) ManagementServerNetworkOutput {
 	return o
-}
-
-func (o ManagementServerNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementServerNetwork] {
-	return pulumix.Output[ManagementServerNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
@@ -280,16 +237,210 @@ func (o ManagementServerNetworkArrayOutput) ToManagementServerNetworkArrayOutput
 	return o
 }
 
-func (o ManagementServerNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerNetwork] {
-	return pulumix.Output[[]ManagementServerNetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementServerNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagementServerNetwork {
 		return vs[0].([]ManagementServerNetwork)[vs[1].(int)]
 	}).(ManagementServerNetworkOutput)
+}
+
+type GetManagementServerManagementUri struct {
+	Api   string `pulumi:"api"`
+	WebUi string `pulumi:"webUi"`
+}
+
+// GetManagementServerManagementUriInput is an input type that accepts GetManagementServerManagementUriArgs and GetManagementServerManagementUriOutput values.
+// You can construct a concrete instance of `GetManagementServerManagementUriInput` via:
+//
+//	GetManagementServerManagementUriArgs{...}
+type GetManagementServerManagementUriInput interface {
+	pulumi.Input
+
+	ToGetManagementServerManagementUriOutput() GetManagementServerManagementUriOutput
+	ToGetManagementServerManagementUriOutputWithContext(context.Context) GetManagementServerManagementUriOutput
+}
+
+type GetManagementServerManagementUriArgs struct {
+	Api   pulumi.StringInput `pulumi:"api"`
+	WebUi pulumi.StringInput `pulumi:"webUi"`
+}
+
+func (GetManagementServerManagementUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagementServerManagementUri)(nil)).Elem()
+}
+
+func (i GetManagementServerManagementUriArgs) ToGetManagementServerManagementUriOutput() GetManagementServerManagementUriOutput {
+	return i.ToGetManagementServerManagementUriOutputWithContext(context.Background())
+}
+
+func (i GetManagementServerManagementUriArgs) ToGetManagementServerManagementUriOutputWithContext(ctx context.Context) GetManagementServerManagementUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagementServerManagementUriOutput)
+}
+
+// GetManagementServerManagementUriArrayInput is an input type that accepts GetManagementServerManagementUriArray and GetManagementServerManagementUriArrayOutput values.
+// You can construct a concrete instance of `GetManagementServerManagementUriArrayInput` via:
+//
+//	GetManagementServerManagementUriArray{ GetManagementServerManagementUriArgs{...} }
+type GetManagementServerManagementUriArrayInput interface {
+	pulumi.Input
+
+	ToGetManagementServerManagementUriArrayOutput() GetManagementServerManagementUriArrayOutput
+	ToGetManagementServerManagementUriArrayOutputWithContext(context.Context) GetManagementServerManagementUriArrayOutput
+}
+
+type GetManagementServerManagementUriArray []GetManagementServerManagementUriInput
+
+func (GetManagementServerManagementUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagementServerManagementUri)(nil)).Elem()
+}
+
+func (i GetManagementServerManagementUriArray) ToGetManagementServerManagementUriArrayOutput() GetManagementServerManagementUriArrayOutput {
+	return i.ToGetManagementServerManagementUriArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagementServerManagementUriArray) ToGetManagementServerManagementUriArrayOutputWithContext(ctx context.Context) GetManagementServerManagementUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagementServerManagementUriArrayOutput)
+}
+
+type GetManagementServerManagementUriOutput struct{ *pulumi.OutputState }
+
+func (GetManagementServerManagementUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagementServerManagementUri)(nil)).Elem()
+}
+
+func (o GetManagementServerManagementUriOutput) ToGetManagementServerManagementUriOutput() GetManagementServerManagementUriOutput {
+	return o
+}
+
+func (o GetManagementServerManagementUriOutput) ToGetManagementServerManagementUriOutputWithContext(ctx context.Context) GetManagementServerManagementUriOutput {
+	return o
+}
+
+func (o GetManagementServerManagementUriOutput) Api() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagementServerManagementUri) string { return v.Api }).(pulumi.StringOutput)
+}
+
+func (o GetManagementServerManagementUriOutput) WebUi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagementServerManagementUri) string { return v.WebUi }).(pulumi.StringOutput)
+}
+
+type GetManagementServerManagementUriArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagementServerManagementUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagementServerManagementUri)(nil)).Elem()
+}
+
+func (o GetManagementServerManagementUriArrayOutput) ToGetManagementServerManagementUriArrayOutput() GetManagementServerManagementUriArrayOutput {
+	return o
+}
+
+func (o GetManagementServerManagementUriArrayOutput) ToGetManagementServerManagementUriArrayOutputWithContext(ctx context.Context) GetManagementServerManagementUriArrayOutput {
+	return o
+}
+
+func (o GetManagementServerManagementUriArrayOutput) Index(i pulumi.IntInput) GetManagementServerManagementUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagementServerManagementUri {
+		return vs[0].([]GetManagementServerManagementUri)[vs[1].(int)]
+	}).(GetManagementServerManagementUriOutput)
+}
+
+type GetManagementServerNetwork struct {
+	Network     string `pulumi:"network"`
+	PeeringMode string `pulumi:"peeringMode"`
+}
+
+// GetManagementServerNetworkInput is an input type that accepts GetManagementServerNetworkArgs and GetManagementServerNetworkOutput values.
+// You can construct a concrete instance of `GetManagementServerNetworkInput` via:
+//
+//	GetManagementServerNetworkArgs{...}
+type GetManagementServerNetworkInput interface {
+	pulumi.Input
+
+	ToGetManagementServerNetworkOutput() GetManagementServerNetworkOutput
+	ToGetManagementServerNetworkOutputWithContext(context.Context) GetManagementServerNetworkOutput
+}
+
+type GetManagementServerNetworkArgs struct {
+	Network     pulumi.StringInput `pulumi:"network"`
+	PeeringMode pulumi.StringInput `pulumi:"peeringMode"`
+}
+
+func (GetManagementServerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagementServerNetwork)(nil)).Elem()
+}
+
+func (i GetManagementServerNetworkArgs) ToGetManagementServerNetworkOutput() GetManagementServerNetworkOutput {
+	return i.ToGetManagementServerNetworkOutputWithContext(context.Background())
+}
+
+func (i GetManagementServerNetworkArgs) ToGetManagementServerNetworkOutputWithContext(ctx context.Context) GetManagementServerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagementServerNetworkOutput)
+}
+
+// GetManagementServerNetworkArrayInput is an input type that accepts GetManagementServerNetworkArray and GetManagementServerNetworkArrayOutput values.
+// You can construct a concrete instance of `GetManagementServerNetworkArrayInput` via:
+//
+//	GetManagementServerNetworkArray{ GetManagementServerNetworkArgs{...} }
+type GetManagementServerNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetManagementServerNetworkArrayOutput() GetManagementServerNetworkArrayOutput
+	ToGetManagementServerNetworkArrayOutputWithContext(context.Context) GetManagementServerNetworkArrayOutput
+}
+
+type GetManagementServerNetworkArray []GetManagementServerNetworkInput
+
+func (GetManagementServerNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagementServerNetwork)(nil)).Elem()
+}
+
+func (i GetManagementServerNetworkArray) ToGetManagementServerNetworkArrayOutput() GetManagementServerNetworkArrayOutput {
+	return i.ToGetManagementServerNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagementServerNetworkArray) ToGetManagementServerNetworkArrayOutputWithContext(ctx context.Context) GetManagementServerNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagementServerNetworkArrayOutput)
+}
+
+type GetManagementServerNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetManagementServerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagementServerNetwork)(nil)).Elem()
+}
+
+func (o GetManagementServerNetworkOutput) ToGetManagementServerNetworkOutput() GetManagementServerNetworkOutput {
+	return o
+}
+
+func (o GetManagementServerNetworkOutput) ToGetManagementServerNetworkOutputWithContext(ctx context.Context) GetManagementServerNetworkOutput {
+	return o
+}
+
+func (o GetManagementServerNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagementServerNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetManagementServerNetworkOutput) PeeringMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagementServerNetwork) string { return v.PeeringMode }).(pulumi.StringOutput)
+}
+
+type GetManagementServerNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagementServerNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagementServerNetwork)(nil)).Elem()
+}
+
+func (o GetManagementServerNetworkArrayOutput) ToGetManagementServerNetworkArrayOutput() GetManagementServerNetworkArrayOutput {
+	return o
+}
+
+func (o GetManagementServerNetworkArrayOutput) ToGetManagementServerNetworkArrayOutputWithContext(ctx context.Context) GetManagementServerNetworkArrayOutput {
+	return o
+}
+
+func (o GetManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) GetManagementServerNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagementServerNetwork {
+		return vs[0].([]GetManagementServerNetwork)[vs[1].(int)]
+	}).(GetManagementServerNetworkOutput)
 }
 
 func init() {
@@ -297,8 +448,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriArrayInput)(nil)).Elem(), ManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkInput)(nil)).Elem(), ManagementServerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkArrayInput)(nil)).Elem(), ManagementServerNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriInput)(nil)).Elem(), GetManagementServerManagementUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriArrayInput)(nil)).Elem(), GetManagementServerManagementUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkInput)(nil)).Elem(), GetManagementServerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkArrayInput)(nil)).Elem(), GetManagementServerNetworkArray{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriOutput{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetManagementServerManagementUriOutput{})
+	pulumi.RegisterOutputType(GetManagementServerManagementUriArrayOutput{})
+	pulumi.RegisterOutputType(GetManagementServerNetworkOutput{})
+	pulumi.RegisterOutputType(GetManagementServerNetworkArrayOutput{})
 }

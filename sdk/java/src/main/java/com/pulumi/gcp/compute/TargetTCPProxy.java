@@ -80,7 +80,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TargetTcpProxy can be imported using any of these accepted formats
+ * TargetTcpProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetTcpProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetTcpProxy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/targetTcpProxies/{{name}}&#34;
+ * 
+ *  to = google_compute_target_tcp_proxy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetTcpProxy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default projects/{{project}}/global/targetTcpProxies/{{name}}

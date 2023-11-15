@@ -47,6 +47,7 @@ class SecretArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -66,6 +67,7 @@ class SecretArgs:
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Mapping from version alias to version name.
                A version alias is a string with a maximum length of 63 characters and can contain
                uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
@@ -149,6 +151,7 @@ class SecretArgs:
         """
         Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Only one of `expire_time` or `ttl` can be provided.
         """
         return pulumi.get(self, "expire_time")
 
@@ -223,6 +226,7 @@ class SecretArgs:
         """
         The TTL for the Secret.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Only one of `ttl` or `expire_time` can be provided.
         """
         return pulumi.get(self, "ttl")
 
@@ -288,6 +292,7 @@ class _SecretState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -315,6 +320,7 @@ class _SecretState:
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Mapping from version alias to version name.
                A version alias is a string with a maximum length of 63 characters and can contain
                uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
@@ -421,6 +427,7 @@ class _SecretState:
         """
         Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Only one of `expire_time` or `ttl` can be provided.
         """
         return pulumi.get(self, "expire_time")
 
@@ -547,6 +554,7 @@ class _SecretState:
         """
         The TTL for the Secret.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Only one of `ttl` or `expire_time` can be provided.
         """
         return pulumi.get(self, "ttl")
 
@@ -668,7 +676,15 @@ class Secret(pulumi.CustomResource):
 
         ## Import
 
-        Secret can be imported using any of these accepted formats
+        Secret can be imported using any of these accepted formats* `projects/{{project}}/secrets/{{secret_id}}` * `{{project}}/{{secret_id}}` * `{{secret_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Secret using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/secrets/{{secret_id}}"
+
+         to = google_secret_manager_secret.default }
+
+        ```sh
+         $ pulumi import gcp:secretmanager/secret:Secret When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Secret can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
@@ -699,6 +715,7 @@ class Secret(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -722,6 +739,7 @@ class Secret(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Mapping from version alias to version name.
                A version alias is a string with a maximum length of 63 characters and can contain
                uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
@@ -815,7 +833,15 @@ class Secret(pulumi.CustomResource):
 
         ## Import
 
-        Secret can be imported using any of these accepted formats
+        Secret can be imported using any of these accepted formats* `projects/{{project}}/secrets/{{secret_id}}` * `{{project}}/{{secret_id}}` * `{{secret_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Secret using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/secrets/{{secret_id}}"
+
+         to = google_secret_manager_secret.default }
+
+        ```sh
+         $ pulumi import gcp:secretmanager/secret:Secret When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Secret can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
@@ -935,6 +961,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -962,6 +989,7 @@ class Secret(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Mapping from version alias to version name.
                A version alias is a string with a maximum length of 63 characters and can contain
                uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
@@ -1042,6 +1070,7 @@ class Secret(pulumi.CustomResource):
         """
         Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Only one of `expire_time` or `ttl` can be provided.
         """
         return pulumi.get(self, "expire_time")
 
@@ -1132,6 +1161,7 @@ class Secret(pulumi.CustomResource):
         """
         The TTL for the Secret.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Only one of `ttl` or `expire_time` can be provided.
         """
         return pulumi.get(self, "ttl")
 

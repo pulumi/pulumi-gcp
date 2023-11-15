@@ -65,6 +65,11 @@ export type HostingChannel = import("./hostingChannel").HostingChannel;
 export const HostingChannel: typeof import("./hostingChannel").HostingChannel = null as any;
 utilities.lazyLoad(exports, ["HostingChannel"], () => require("./hostingChannel"));
 
+export { HostingCustomDomainArgs, HostingCustomDomainState } from "./hostingCustomDomain";
+export type HostingCustomDomain = import("./hostingCustomDomain").HostingCustomDomain;
+export const HostingCustomDomain: typeof import("./hostingCustomDomain").HostingCustomDomain = null as any;
+utilities.lazyLoad(exports, ["HostingCustomDomain"], () => require("./hostingCustomDomain"));
+
 export { HostingReleaseArgs, HostingReleaseState } from "./hostingRelease";
 export type HostingRelease = import("./hostingRelease").HostingRelease;
 export const HostingRelease: typeof import("./hostingRelease").HostingRelease = null as any;
@@ -110,6 +115,8 @@ const _module = {
                 return new ExtensionsInstance(name, <any>undefined, { urn })
             case "gcp:firebase/hostingChannel:HostingChannel":
                 return new HostingChannel(name, <any>undefined, { urn })
+            case "gcp:firebase/hostingCustomDomain:HostingCustomDomain":
+                return new HostingCustomDomain(name, <any>undefined, { urn })
             case "gcp:firebase/hostingRelease:HostingRelease":
                 return new HostingRelease(name, <any>undefined, { urn })
             case "gcp:firebase/hostingSite:HostingSite":
@@ -132,6 +139,7 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/extensionsInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingChannel", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/hostingCustomDomain", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingRelease", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingVersion", _module)

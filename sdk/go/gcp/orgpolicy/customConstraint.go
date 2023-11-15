@@ -10,9 +10,17 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Custom constraints are created by administrators to provide more granular and customizable control over the specific fields that are restricted by your organization policies.
+//
+// To get more information about CustomConstraint, see:
+//
+// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+//   - [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+//
 // ## Example Usage
 // ### Org Policy Custom Constraint Basic
 //
@@ -29,17 +37,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-//				Parent:     pulumi.String("organizations/123456789"),
 //				ActionType: pulumi.String("ALLOW"),
 //				Condition:  pulumi.String("resource.management.autoUpgrade == false"),
 //				MethodTypes: pulumi.StringArray{
 //					pulumi.String("CREATE"),
 //					pulumi.String("UPDATE"),
 //				},
+//				Parent: pulumi.String("organizations/123456789"),
 //				ResourceTypes: pulumi.StringArray{
 //					pulumi.String("container.googleapis.com/NodePool"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -63,19 +71,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-//				Parent:      pulumi.String("organizations/123456789"),
-//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
-//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
 //				ActionType:  pulumi.String("ALLOW"),
 //				Condition:   pulumi.String("resource.management.autoUpgrade == false"),
+//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
+//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
 //				MethodTypes: pulumi.StringArray{
 //					pulumi.String("CREATE"),
 //					pulumi.String("UPDATE"),
 //				},
+//				Parent: pulumi.String("organizations/123456789"),
 //				ResourceTypes: pulumi.StringArray{
 //					pulumi.String("container.googleapis.com/NodePool"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -88,7 +96,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -100,7 +108,17 @@ import (
 //
 // ## Import
 //
-// CustomConstraint can be imported using any of these accepted formats:
+// CustomConstraint can be imported using any of these accepted formats* `{{parent}}/customConstraints/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CustomConstraint using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/customConstraints/{{name}}"
+//
+//	to = google_org_policy_custom_constraint.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CustomConstraint can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -297,12 +315,6 @@ func (i *CustomConstraint) ToCustomConstraintOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintOutput)
 }
 
-func (i *CustomConstraint) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraint] {
-	return pulumix.Output[*CustomConstraint]{
-		OutputState: i.ToCustomConstraintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomConstraintArrayInput is an input type that accepts CustomConstraintArray and CustomConstraintArrayOutput values.
 // You can construct a concrete instance of `CustomConstraintArrayInput` via:
 //
@@ -326,12 +338,6 @@ func (i CustomConstraintArray) ToCustomConstraintArrayOutput() CustomConstraintA
 
 func (i CustomConstraintArray) ToCustomConstraintArrayOutputWithContext(ctx context.Context) CustomConstraintArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintArrayOutput)
-}
-
-func (i CustomConstraintArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomConstraint] {
-	return pulumix.Output[[]*CustomConstraint]{
-		OutputState: i.ToCustomConstraintArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomConstraintMapInput is an input type that accepts CustomConstraintMap and CustomConstraintMapOutput values.
@@ -359,12 +365,6 @@ func (i CustomConstraintMap) ToCustomConstraintMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CustomConstraintMapOutput)
 }
 
-func (i CustomConstraintMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomConstraint] {
-	return pulumix.Output[map[string]*CustomConstraint]{
-		OutputState: i.ToCustomConstraintMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomConstraintOutput struct{ *pulumi.OutputState }
 
 func (CustomConstraintOutput) ElementType() reflect.Type {
@@ -377,12 +377,6 @@ func (o CustomConstraintOutput) ToCustomConstraintOutput() CustomConstraintOutpu
 
 func (o CustomConstraintOutput) ToCustomConstraintOutputWithContext(ctx context.Context) CustomConstraintOutput {
 	return o
-}
-
-func (o CustomConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomConstraint] {
-	return pulumix.Output[*CustomConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to take if the condition is met.
@@ -447,12 +441,6 @@ func (o CustomConstraintArrayOutput) ToCustomConstraintArrayOutputWithContext(ct
 	return o
 }
 
-func (o CustomConstraintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomConstraint] {
-	return pulumix.Output[[]*CustomConstraint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomConstraintArrayOutput) Index(i pulumi.IntInput) CustomConstraintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomConstraint {
 		return vs[0].([]*CustomConstraint)[vs[1].(int)]
@@ -471,12 +459,6 @@ func (o CustomConstraintMapOutput) ToCustomConstraintMapOutput() CustomConstrain
 
 func (o CustomConstraintMapOutput) ToCustomConstraintMapOutputWithContext(ctx context.Context) CustomConstraintMapOutput {
 	return o
-}
-
-func (o CustomConstraintMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomConstraint] {
-	return pulumix.Output[map[string]*CustomConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomConstraintMapOutput) MapIndex(k pulumi.StringInput) CustomConstraintOutput {

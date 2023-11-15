@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
@@ -124,33 +123,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+//	id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
+//
+//	to = google_healthcare_hl7_v2_store_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `hl7_v2_store_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
+//	$ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
 //
 // ```
 type Hl7StoreIamMember struct {
@@ -342,12 +329,6 @@ func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberOutput)
 }
 
-func (i *Hl7StoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamMember] {
-	return pulumix.Output[*Hl7StoreIamMember]{
-		OutputState: i.ToHl7StoreIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hl7StoreIamMemberArrayInput is an input type that accepts Hl7StoreIamMemberArray and Hl7StoreIamMemberArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreIamMemberArrayInput` via:
 //
@@ -371,12 +352,6 @@ func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemb
 
 func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutputWithContext(ctx context.Context) Hl7StoreIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberArrayOutput)
-}
-
-func (i Hl7StoreIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamMember] {
-	return pulumix.Output[[]*Hl7StoreIamMember]{
-		OutputState: i.ToHl7StoreIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Hl7StoreIamMemberMapInput is an input type that accepts Hl7StoreIamMemberMap and Hl7StoreIamMemberMapOutput values.
@@ -404,12 +379,6 @@ func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberMapOutput)
 }
 
-func (i Hl7StoreIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamMember] {
-	return pulumix.Output[map[string]*Hl7StoreIamMember]{
-		OutputState: i.ToHl7StoreIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberOutput) ElementType() reflect.Type {
@@ -422,12 +391,6 @@ func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOu
 
 func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
 	return o
-}
-
-func (o Hl7StoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamMember] {
-	return pulumix.Output[*Hl7StoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamMemberOutput) Condition() Hl7StoreIamMemberConditionPtrOutput {
@@ -481,12 +444,6 @@ func (o Hl7StoreIamMemberArrayOutput) ToHl7StoreIamMemberArrayOutputWithContext(
 	return o
 }
 
-func (o Hl7StoreIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamMember] {
-	return pulumix.Output[[]*Hl7StoreIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Hl7StoreIamMemberArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7StoreIamMember {
 		return vs[0].([]*Hl7StoreIamMember)[vs[1].(int)]
@@ -505,12 +462,6 @@ func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutput() Hl7StoreIamMe
 
 func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutputWithContext(ctx context.Context) Hl7StoreIamMemberMapOutput {
 	return o
-}
-
-func (o Hl7StoreIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamMember] {
-	return pulumix.Output[map[string]*Hl7StoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamMemberOutput {

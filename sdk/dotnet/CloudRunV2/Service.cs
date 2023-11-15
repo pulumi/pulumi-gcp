@@ -487,7 +487,15 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// ## Import
     /// 
-    /// Service can be imported using any of these accepted formats
+    /// Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Service using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/services/{{name}}"
+    /// 
+    ///  to = google_cloud_run_v2_service.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudrunv2/service:Service When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Service can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -653,7 +661,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// The location of the cloud run service
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Name of the Service.
@@ -880,8 +888,8 @@ namespace Pulumi.Gcp.CloudRunV2
         /// <summary>
         /// The location of the cloud run service
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Name of the Service.

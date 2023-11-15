@@ -75,10 +75,56 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Workstation Cluster Custom Domain
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ *     workstationClusterId: "workstation-cluster-custom-domain",
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     privateClusterConfig: {
+ *         enablePrivateEndpoint: true,
+ *     },
+ *     domainConfig: {
+ *         domain: "workstations.example.com",
+ *     },
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  *
  * ## Import
  *
- * WorkstationCluster can be imported using any of these accepted formats
+ * WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}"
+ *
+ *  to = google_workstations_workstation_cluster.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
@@ -144,6 +190,11 @@ export class WorkstationCluster extends pulumi.CustomResource {
      * Human-readable name for this resource.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * Configuration options for a custom domain.
+     * Structure is documented below.
+     */
+    public readonly domainConfig!: pulumi.Output<outputs.workstations.WorkstationClusterDomainConfig | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
@@ -227,6 +278,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["degraded"] = state ? state.degraded : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["domainConfig"] = state ? state.domainConfig : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -253,6 +305,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["domainConfig"] = args ? args.domainConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
@@ -305,6 +358,11 @@ export interface WorkstationClusterState {
      * Human-readable name for this resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Configuration options for a custom domain.
+     * Structure is documented below.
+     */
+    domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
@@ -385,6 +443,11 @@ export interface WorkstationClusterArgs {
      * Human-readable name for this resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Configuration options for a custom domain.
+     * Structure is documented below.
+     */
+    domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

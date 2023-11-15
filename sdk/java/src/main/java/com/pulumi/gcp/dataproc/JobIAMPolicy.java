@@ -132,23 +132,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Job IAM resources can be imported using the project, region, job id, role and/or member.
+ * ### Importing IAM policies IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example* `projects/{project}/regions/{region}/jobs/{job_id}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * 
+ *  id = &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
+ * 
+ *  to = google_dataproc_job_iam_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
+ *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id} roles/editor&#34;
+ *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy default &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
  * ```
- * 
- * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com&#34;
- * ```
- * 
- *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:dataproc/jobIAMPolicy:JobIAMPolicy")

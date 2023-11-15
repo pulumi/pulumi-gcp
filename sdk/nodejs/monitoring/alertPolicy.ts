@@ -100,10 +100,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Monitoring Alert Policy Promql Condition
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ *     alertStrategy: {
+ *         autoClose: "1800s",
+ *     },
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionPrometheusQueryLanguage: {
+ *             alertRule: "AlwaysOn",
+ *             duration: "60s",
+ *             evaluationInterval: "60s",
+ *             query: "compute_googleapis_com:instance_cpu_usage_time > 0",
+ *             ruleGroup: "a test",
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "My Alert Policy",
+ * });
+ * ```
  *
  * ## Import
  *
- * AlertPolicy can be imported using any of these accepted formats:
+ * AlertPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AlertPolicy using one of the formats above. For exampletf import {
+ *
+ *  id = "{{name}}"
+ *
+ *  to = google_monitoring_alert_policy.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AlertPolicy can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

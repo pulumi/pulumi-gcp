@@ -9,10 +9,18 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Project-level logging sinks can be imported using their URI, e.g.
+ * Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging sinks using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project_id}}/sinks/{{name}}"
+ *
+ *  to = google_logging_project_sink.default }
  *
  * ```sh
- *  $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+ *  $ pulumi import gcp:logging/projectSink:ProjectSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging sinks can be imported using one of the formats above. For example
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
  * ```
  */
 export class ProjectSink extends pulumi.CustomResource {
@@ -47,6 +55,13 @@ export class ProjectSink extends pulumi.CustomResource {
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
     public readonly bigqueryOptions!: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions>;
+    /**
+     * A user managed service account that will be used to write
+     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * routing logs to a destination outside this sink's project. If not specified, a Logging service account
+     * will automatically be generated.
+     */
+    public readonly customWriterIdentity!: pulumi.Output<string | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
@@ -88,8 +103,7 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */
@@ -114,6 +128,7 @@ export class ProjectSink extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectSinkState | undefined;
             resourceInputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
+            resourceInputs["customWriterIdentity"] = state ? state.customWriterIdentity : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
@@ -129,6 +144,7 @@ export class ProjectSink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'destination'");
             }
             resourceInputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
+            resourceInputs["customWriterIdentity"] = args ? args.customWriterIdentity : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
@@ -152,6 +168,13 @@ export interface ProjectSinkState {
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
     bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
+    /**
+     * A user managed service account that will be used to write
+     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * routing logs to a destination outside this sink's project. If not specified, a Logging service account
+     * will automatically be generated.
+     */
+    customWriterIdentity?: pulumi.Input<string>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
@@ -193,8 +216,7 @@ export interface ProjectSinkState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */
@@ -214,6 +236,13 @@ export interface ProjectSinkArgs {
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
     bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
+    /**
+     * A user managed service account that will be used to write
+     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * routing logs to a destination outside this sink's project. If not specified, a Logging service account
+     * will automatically be generated.
+     */
+    customWriterIdentity?: pulumi.Input<string>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
@@ -255,8 +284,7 @@ export interface ProjectSinkArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */

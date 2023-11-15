@@ -10,7 +10,18 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.tpu.V2VmArgs;
 import com.pulumi.gcp.tpu.inputs.V2VmState;
+import com.pulumi.gcp.tpu.outputs.V2VmAcceleratorConfig;
+import com.pulumi.gcp.tpu.outputs.V2VmDataDisk;
+import com.pulumi.gcp.tpu.outputs.V2VmNetworkConfig;
+import com.pulumi.gcp.tpu.outputs.V2VmNetworkEndpoint;
+import com.pulumi.gcp.tpu.outputs.V2VmSchedulingConfig;
+import com.pulumi.gcp.tpu.outputs.V2VmServiceAccount;
+import com.pulumi.gcp.tpu.outputs.V2VmShieldedInstanceConfig;
+import com.pulumi.gcp.tpu.outputs.V2VmSymptom;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -53,52 +64,18 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Tpu V2 Vm Full
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.tpu.TpuFunctions;
- * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
- * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
- * import com.pulumi.gcp.tpu.V2Vm;
- * import com.pulumi.gcp.tpu.V2VmArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
- * 
- *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
- * 
- *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
- *             .zone(&#34;us-central1-c&#34;)
- *             .description(&#34;Text description of the TPU.&#34;)
- *             .runtimeVersion(&#34;tpu-vm-tf-2.13.0&#34;)
- *             .acceleratorType(&#34;v2-8&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Vm can be imported using any of these accepted formats
+ * Vm can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/nodes/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Vm using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{zone}}/nodes/{{name}}&#34;
+ * 
+ *  to = google_tpu_v2_vm.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:tpu/v2Vm:V2Vm When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Vm can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
@@ -120,18 +97,92 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:tpu/v2Vm:V2Vm")
 public class V2Vm extends com.pulumi.resources.CustomResource {
     /**
-     * TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
+     * The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="acceleratorConfig", refs={V2VmAcceleratorConfig.class}, tree="[0]")
+    private Output<V2VmAcceleratorConfig> acceleratorConfig;
+
+    /**
+     * @return The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * Structure is documented below.
+     * 
+     */
+    public Output<V2VmAcceleratorConfig> acceleratorConfig() {
+        return this.acceleratorConfig;
+    }
+    /**
+     * TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
      * 
      */
     @Export(name="acceleratorType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> acceleratorType;
+    private Output<String> acceleratorType;
 
     /**
-     * @return TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
+     * @return TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
      * 
      */
-    public Output<Optional<String>> acceleratorType() {
-        return Codegen.optional(this.acceleratorType);
+    public Output<String> acceleratorType() {
+        return this.acceleratorType;
+    }
+    /**
+     * The API version that created this Node.
+     * 
+     */
+    @Export(name="apiVersion", refs={String.class}, tree="[0]")
+    private Output<String> apiVersion;
+
+    /**
+     * @return The API version that created this Node.
+     * 
+     */
+    public Output<String> apiVersion() {
+        return this.apiVersion;
+    }
+    /**
+     * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user&#39;s provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     * 
+     */
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
+    private Output<String> cidrBlock;
+
+    /**
+     * @return The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user&#39;s provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     * 
+     */
+    public Output<String> cidrBlock() {
+        return this.cidrBlock;
+    }
+    /**
+     * The additional data disks for the Node.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dataDisks", refs={List.class,V2VmDataDisk.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<V2VmDataDisk>> dataDisks;
+
+    /**
+     * @return The additional data disks for the Node.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<V2VmDataDisk>>> dataDisks() {
+        return Codegen.optional(this.dataDisks);
     }
     /**
      * Text description of the TPU.
@@ -148,6 +199,94 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
+     * The health status of the TPU node.
+     * 
+     */
+    @Export(name="health", refs={String.class}, tree="[0]")
+    private Output<String> health;
+
+    /**
+     * @return The health status of the TPU node.
+     * 
+     */
+    public Output<String> health() {
+        return this.health;
+    }
+    /**
+     * If this field is populated, it contains a description of why the TPU Node is unhealthy.
+     * 
+     */
+    @Export(name="healthDescription", refs={String.class}, tree="[0]")
+    private Output<String> healthDescription;
+
+    /**
+     * @return If this field is populated, it contains a description of why the TPU Node is unhealthy.
+     * 
+     */
+    public Output<String> healthDescription() {
+        return this.healthDescription;
+    }
+    /**
+     * Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
+    }
+    /**
+     * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     * 
+     */
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
+
+    /**
+     * @return Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> metadata() {
+        return Codegen.optional(this.metadata);
+    }
+    /**
+     * Whether the Node belongs to a Multislice group.
+     * 
+     */
+    @Export(name="multisliceNode", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> multisliceNode;
+
+    /**
+     * @return Whether the Node belongs to a Multislice group.
+     * 
+     */
+    public Output<Boolean> multisliceNode() {
+        return this.multisliceNode;
+    }
+    /**
      * The immutable name of the TPU.
      * 
      */
@@ -160,6 +299,40 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkConfig", refs={V2VmNetworkConfig.class}, tree="[0]")
+    private Output<V2VmNetworkConfig> networkConfig;
+
+    /**
+     * @return Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    public Output<V2VmNetworkConfig> networkConfig() {
+        return this.networkConfig;
+    }
+    /**
+     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
+     * runtime clients of the node reach out to the 0th entry in this map first.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkEndpoints", refs={List.class,V2VmNetworkEndpoint.class}, tree="[0,1]")
+    private Output<List<V2VmNetworkEndpoint>> networkEndpoints;
+
+    /**
+     * @return The network endpoints where TPU workers can be accessed and sent work. It is recommended that
+     * runtime clients of the node reach out to the 0th entry in this map first.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<V2VmNetworkEndpoint>> networkEndpoints() {
+        return this.networkEndpoints;
     }
     /**
      * The ID of the project in which the resource belongs.
@@ -178,6 +351,36 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
+     * The qualified name of the QueuedResource that requested this Node.
+     * 
+     */
+    @Export(name="queuedResource", refs={String.class}, tree="[0]")
+    private Output<String> queuedResource;
+
+    /**
+     * @return The qualified name of the QueuedResource that requested this Node.
+     * 
+     */
+    public Output<String> queuedResource() {
+        return this.queuedResource;
+    }
+    /**
      * Runtime version for the TPU.
      * 
      * ***
@@ -194,6 +397,100 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      */
     public Output<String> runtimeVersion() {
         return this.runtimeVersion;
+    }
+    /**
+     * The scheduling options for this node.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="schedulingConfig", refs={V2VmSchedulingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ V2VmSchedulingConfig> schedulingConfig;
+
+    /**
+     * @return The scheduling options for this node.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<V2VmSchedulingConfig>> schedulingConfig() {
+        return Codegen.optional(this.schedulingConfig);
+    }
+    /**
+     * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="serviceAccount", refs={V2VmServiceAccount.class}, tree="[0]")
+    private Output<V2VmServiceAccount> serviceAccount;
+
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     * 
+     */
+    public Output<V2VmServiceAccount> serviceAccount() {
+        return this.serviceAccount;
+    }
+    /**
+     * Shielded Instance options.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="shieldedInstanceConfig", refs={V2VmShieldedInstanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ V2VmShieldedInstanceConfig> shieldedInstanceConfig;
+
+    /**
+     * @return Shielded Instance options.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<V2VmShieldedInstanceConfig>> shieldedInstanceConfig() {
+        return Codegen.optional(this.shieldedInstanceConfig);
+    }
+    /**
+     * The current state for the TPU Node.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return The current state for the TPU Node.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
+    }
+    /**
+     * The Symptoms that have occurred to the TPU Node.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="symptoms", refs={List.class,V2VmSymptom.class}, tree="[0,1]")
+    private Output<List<V2VmSymptom>> symptoms;
+
+    /**
+     * @return The Symptoms that have occurred to the TPU Node.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<V2VmSymptom>> symptoms() {
+        return this.symptoms;
+    }
+    /**
+     * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
@@ -242,6 +539,10 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

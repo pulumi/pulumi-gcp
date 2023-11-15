@@ -136,14 +136,22 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// Storage buckets can be imported using the `name` or
     /// 
-    /// `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+    /// `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). * `{{project_id}}/{{bucket}}` * `{{bucket}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage buckets using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{project_id}}/{{bucket}}"
+    /// 
+    ///  to = google_storage_bucket.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+    ///  $ pulumi import gcp:storage/bucket:Bucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage buckets can be imported using one of the formats above. For example
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+    ///  $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
     /// ```
     /// 
     ///  `false` in state. If you've set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
@@ -181,6 +189,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+        /// </summary>
+        [Output("enableObjectRetention")]
+        public Output<bool?> EnableObjectRetention { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's encryption configuration. Structure is documented below.
@@ -377,6 +391,12 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? DefaultEventBasedHold { get; set; }
 
         /// <summary>
+        /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+        /// </summary>
+        [Input("enableObjectRetention")]
+        public Input<bool>? EnableObjectRetention { get; set; }
+
+        /// <summary>
         /// The bucket's encryption configuration. Structure is documented below.
         /// </summary>
         [Input("encryption")]
@@ -537,6 +557,12 @@ namespace Pulumi.Gcp.Storage
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+        /// </summary>
+        [Input("enableObjectRetention")]
+        public Input<bool>? EnableObjectRetention { get; set; }
 
         /// <summary>
         /// The bucket's encryption configuration. Structure is documented below.

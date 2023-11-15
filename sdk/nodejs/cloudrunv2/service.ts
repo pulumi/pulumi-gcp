@@ -294,7 +294,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Service can be imported using any of these accepted formats
+ * Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Service using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/services/{{name}}"
+ *
+ *  to = google_cloud_run_v2_service.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrunv2/service:Service When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Service can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -442,7 +450,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The location of the cloud run service
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the Service.
      */
@@ -551,6 +559,9 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["uri"] = state ? state.uri : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
@@ -827,7 +838,7 @@ export interface ServiceArgs {
     /**
      * The location of the cloud run service
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Name of the Service.
      */

@@ -56,18 +56,28 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
     /**
      * If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
-     * specified.
+     * specified. `require_partition_filter` is deprecated and will be removed in
+     * a future major release. Use the top level field with the same name instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
     @Import(name="requirePartitionFilter")
     private @Nullable Output<Boolean> requirePartitionFilter;
 
     /**
      * @return If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
-     * specified.
+     * specified. `require_partition_filter` is deprecated and will be removed in
+     * a future major release. Use the top level field with the same name instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
     public Optional<Output<Boolean>> requirePartitionFilter() {
         return Optional.ofNullable(this.requirePartitionFilter);
     }
@@ -167,11 +177,16 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
         /**
          * @param requirePartitionFilter If set to true, queries over this table
          * require a partition filter that can be used for partition elimination to be
-         * specified.
+         * specified. `require_partition_filter` is deprecated and will be removed in
+         * a future major release. Use the top level field with the same name instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
         public Builder requirePartitionFilter(@Nullable Output<Boolean> requirePartitionFilter) {
             $.requirePartitionFilter = requirePartitionFilter;
             return this;
@@ -180,11 +195,16 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
         /**
          * @param requirePartitionFilter If set to true, queries over this table
          * require a partition filter that can be used for partition elimination to be
-         * specified.
+         * specified. `require_partition_filter` is deprecated and will be removed in
+         * a future major release. Use the top level field with the same name instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead. */
         public Builder requirePartitionFilter(Boolean requirePartitionFilter) {
             return requirePartitionFilter(Output.of(requirePartitionFilter));
         }

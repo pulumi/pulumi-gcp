@@ -397,7 +397,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Job can be imported using any of these accepted formats
+ * Job can be imported using any of these accepted formats* `projects/{{project}}/jobs/{{job_id}}/location/{{location}}` * `projects/{{project}}/jobs/{{job_id}}` * `{{project}}/{{job_id}}/{{location}}` * `{{job_id}}/{{location}}` * `{{project}}/{{job_id}}` * `{{job_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Job using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/jobs/{{job_id}}/location/{{location}}&#34;
+ * 
+ *  to = google_bigquery_job.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/job:Job When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Job can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}

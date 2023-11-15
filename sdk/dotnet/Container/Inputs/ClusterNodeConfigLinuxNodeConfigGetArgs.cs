@@ -12,13 +12,31 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodeConfigLinuxNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("sysctls", required: true)]
+        /// <summary>
+        /// Possible cgroup modes that can be used.
+        /// Accepted values are:
+        /// </summary>
+        [Input("cgroupMode")]
+        public Input<string>? CgroupMode { get; set; }
+
+        [Input("sysctls")]
         private InputMap<string>? _sysctls;
 
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes
         /// and all pods running on the nodes. Specified as a map from the key, such as
-        /// `net.core.wmem_max`, to a string value.
+        /// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        /// Note that validations happen all server side. All attributes are optional.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public InputMap<string> Sysctls
         {

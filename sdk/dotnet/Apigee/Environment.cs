@@ -76,7 +76,15 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ## Import
     /// 
-    /// Environment can be imported using any of these accepted formats
+    /// Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{org_id}}/environments/{{name}}"
+    /// 
+    ///  to = google_apigee_environment.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigee/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
@@ -144,6 +152,16 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
+
+        /// <summary>
+        /// Types that can be selected for an Environment. Each of the types are
+        /// limited by capability and capacity. Refer to Apigee's public documentation
+        /// to understand about each of these types in details.
+        /// An Apigee org can support heterogeneous Environments.
+        /// Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -247,6 +265,16 @@ namespace Pulumi.Gcp.Apigee
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
+        /// <summary>
+        /// Types that can be selected for an Environment. Each of the types are
+        /// limited by capability and capacity. Refer to Apigee's public documentation
+        /// to understand about each of these types in details.
+        /// An Apigee org can support heterogeneous Environments.
+        /// Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public EnvironmentArgs()
         {
         }
@@ -310,6 +338,16 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Types that can be selected for an Environment. Each of the types are
+        /// limited by capability and capacity. Refer to Apigee's public documentation
+        /// to understand about each of these types in details.
+        /// An Apigee org can support heterogeneous Environments.
+        /// Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public EnvironmentState()
         {

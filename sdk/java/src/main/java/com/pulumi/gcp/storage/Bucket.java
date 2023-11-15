@@ -173,14 +173,22 @@ import javax.annotation.Nullable;
  * 
  * Storage buckets can be imported using the `name` or
  * 
- * `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+ * `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). * `{{project_id}}/{{bucket}}` * `{{bucket}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage buckets using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{project_id}}/{{bucket}}&#34;
+ * 
+ *  to = google_storage_bucket.default }
  * 
  * ```sh
- *  $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+ *  $ pulumi import gcp:storage/bucket:Bucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage buckets can be imported using one of the formats above. For example
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+ *  $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
  * ```
  * 
  *  `false` in state. If you&#39;ve set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
@@ -259,6 +267,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     * 
+     */
+    @Export(name="enableObjectRetention", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableObjectRetention;
+
+    /**
+     * @return Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
+     * 
+     */
+    public Output<Optional<Boolean>> enableObjectRetention() {
+        return Codegen.optional(this.enableObjectRetention);
     }
     /**
      * The bucket&#39;s encryption configuration. Structure is documented below.

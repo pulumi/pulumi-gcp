@@ -499,7 +499,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Service can be imported using any of these accepted formats
+ * Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Service using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/services/{{name}}&#34;
+ * 
+ *  to = google_cloud_run_v2_service.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:cloudrunv2/service:Service When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Service can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -853,14 +861,14 @@ public class Service extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return The location of the cloud run service
      * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * Name of the Service.

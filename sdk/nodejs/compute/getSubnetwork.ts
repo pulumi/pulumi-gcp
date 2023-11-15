@@ -76,6 +76,10 @@ export interface GetSubnetworkResult {
      */
     readonly id: string;
     /**
+     * The internal IPv6 address range that is assigned to this subnetwork.
+     */
+    readonly internalIpv6Prefix: string;
+    /**
      * The range of IP addresses belonging to this subnetwork
      * secondary range.
      */

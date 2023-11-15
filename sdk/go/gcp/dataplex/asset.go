@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Dataplex Asset resource
@@ -90,7 +89,17 @@ import (
 //
 // ## Import
 //
-// # Asset can be imported using any of these accepted formats
+// Asset can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}` * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}` * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Asset using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}"
+//
+//	to = google_dataplex_asset.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/asset:Asset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Asset can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -372,12 +381,6 @@ func (i *Asset) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssetOutput)
 }
 
-func (i *Asset) ToOutput(ctx context.Context) pulumix.Output[*Asset] {
-	return pulumix.Output[*Asset]{
-		OutputState: i.ToAssetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssetArrayInput is an input type that accepts AssetArray and AssetArrayOutput values.
 // You can construct a concrete instance of `AssetArrayInput` via:
 //
@@ -401,12 +404,6 @@ func (i AssetArray) ToAssetArrayOutput() AssetArrayOutput {
 
 func (i AssetArray) ToAssetArrayOutputWithContext(ctx context.Context) AssetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssetArrayOutput)
-}
-
-func (i AssetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Asset] {
-	return pulumix.Output[[]*Asset]{
-		OutputState: i.ToAssetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AssetMapInput is an input type that accepts AssetMap and AssetMapOutput values.
@@ -434,12 +431,6 @@ func (i AssetMap) ToAssetMapOutputWithContext(ctx context.Context) AssetMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AssetMapOutput)
 }
 
-func (i AssetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Asset] {
-	return pulumix.Output[map[string]*Asset]{
-		OutputState: i.ToAssetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetOutput struct{ *pulumi.OutputState }
 
 func (AssetOutput) ElementType() reflect.Type {
@@ -452,12 +443,6 @@ func (o AssetOutput) ToAssetOutput() AssetOutput {
 
 func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
-}
-
-func (o AssetOutput) ToOutput(ctx context.Context) pulumix.Output[*Asset] {
-	return pulumix.Output[*Asset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. The time when the asset was created.
@@ -572,12 +557,6 @@ func (o AssetArrayOutput) ToAssetArrayOutputWithContext(ctx context.Context) Ass
 	return o
 }
 
-func (o AssetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Asset] {
-	return pulumix.Output[[]*Asset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AssetArrayOutput) Index(i pulumi.IntInput) AssetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Asset {
 		return vs[0].([]*Asset)[vs[1].(int)]
@@ -596,12 +575,6 @@ func (o AssetMapOutput) ToAssetMapOutput() AssetMapOutput {
 
 func (o AssetMapOutput) ToAssetMapOutputWithContext(ctx context.Context) AssetMapOutput {
 	return o
-}
-
-func (o AssetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Asset] {
-	return pulumix.Output[map[string]*Asset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetMapOutput) MapIndex(k pulumi.StringInput) AssetOutput {

@@ -14,15 +14,35 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodeConfigLinuxNodeConfig
     {
         /// <summary>
+        /// Possible cgroup modes that can be used.
+        /// Accepted values are:
+        /// </summary>
+        public readonly string? CgroupMode;
+        /// <summary>
         /// The Linux kernel parameters to be applied to the nodes
         /// and all pods running on the nodes. Specified as a map from the key, such as
-        /// `net.core.wmem_max`, to a string value.
+        /// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        /// Note that validations happen all server side. All attributes are optional.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Sysctls;
+        public readonly ImmutableDictionary<string, string>? Sysctls;
 
         [OutputConstructor]
-        private ClusterNodeConfigLinuxNodeConfig(ImmutableDictionary<string, string> sysctls)
+        private ClusterNodeConfigLinuxNodeConfig(
+            string? cgroupMode,
+
+            ImmutableDictionary<string, string>? sysctls)
         {
+            CgroupMode = cgroupMode;
             Sysctls = sysctls;
         }
     }

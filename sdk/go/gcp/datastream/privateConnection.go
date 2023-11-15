@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network.
@@ -64,7 +63,17 @@ import (
 //
 // ## Import
 //
-// # PrivateConnection can be imported using any of these accepted formats
+// PrivateConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}` * `{{project}}/{{location}}/{{private_connection_id}}` * `{{location}}/{{private_connection_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PrivateConnection using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}"
+//
+//	to = google_datastream_private_connection.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:datastream/privateConnection:PrivateConnection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PrivateConnection can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -295,12 +304,6 @@ func (i *PrivateConnection) ToPrivateConnectionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionOutput)
 }
 
-func (i *PrivateConnection) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnection] {
-	return pulumix.Output[*PrivateConnection]{
-		OutputState: i.ToPrivateConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateConnectionArrayInput is an input type that accepts PrivateConnectionArray and PrivateConnectionArrayOutput values.
 // You can construct a concrete instance of `PrivateConnectionArrayInput` via:
 //
@@ -324,12 +327,6 @@ func (i PrivateConnectionArray) ToPrivateConnectionArrayOutput() PrivateConnecti
 
 func (i PrivateConnectionArray) ToPrivateConnectionArrayOutputWithContext(ctx context.Context) PrivateConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionArrayOutput)
-}
-
-func (i PrivateConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateConnection] {
-	return pulumix.Output[[]*PrivateConnection]{
-		OutputState: i.ToPrivateConnectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrivateConnectionMapInput is an input type that accepts PrivateConnectionMap and PrivateConnectionMapOutput values.
@@ -357,12 +354,6 @@ func (i PrivateConnectionMap) ToPrivateConnectionMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionMapOutput)
 }
 
-func (i PrivateConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateConnection] {
-	return pulumix.Output[map[string]*PrivateConnection]{
-		OutputState: i.ToPrivateConnectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateConnectionOutput struct{ *pulumi.OutputState }
 
 func (PrivateConnectionOutput) ElementType() reflect.Type {
@@ -375,12 +366,6 @@ func (o PrivateConnectionOutput) ToPrivateConnectionOutput() PrivateConnectionOu
 
 func (o PrivateConnectionOutput) ToPrivateConnectionOutputWithContext(ctx context.Context) PrivateConnectionOutput {
 	return o
-}
-
-func (o PrivateConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateConnection] {
-	return pulumix.Output[*PrivateConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name.
@@ -459,12 +444,6 @@ func (o PrivateConnectionArrayOutput) ToPrivateConnectionArrayOutputWithContext(
 	return o
 }
 
-func (o PrivateConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateConnection] {
-	return pulumix.Output[[]*PrivateConnection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateConnectionArrayOutput) Index(i pulumi.IntInput) PrivateConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateConnection {
 		return vs[0].([]*PrivateConnection)[vs[1].(int)]
@@ -483,12 +462,6 @@ func (o PrivateConnectionMapOutput) ToPrivateConnectionMapOutput() PrivateConnec
 
 func (o PrivateConnectionMapOutput) ToPrivateConnectionMapOutputWithContext(ctx context.Context) PrivateConnectionMapOutput {
 	return o
-}
-
-func (o PrivateConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateConnection] {
-	return pulumix.Output[map[string]*PrivateConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateConnectionMapOutput) MapIndex(k pulumi.StringInput) PrivateConnectionOutput {

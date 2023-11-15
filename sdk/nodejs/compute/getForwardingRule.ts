@@ -86,6 +86,7 @@ export interface GetForwardingRuleResult {
     readonly pscConnectionId: string;
     readonly pscConnectionStatus: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly recreateClosedPsc: boolean;
     readonly region?: string;
     readonly selfLink: string;
     readonly serviceDirectoryRegistrations: outputs.compute.GetForwardingRuleServiceDirectoryRegistration[];

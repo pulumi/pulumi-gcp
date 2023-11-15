@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceBootDiskInitializeParamsArgs Empty = new InstanceBootDiskInitializeParamsArgs();
+
+    /**
+     * Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
+    @Import(name="enableConfidentialCompute")
+    private @Nullable Output<Boolean> enableConfidentialCompute;
+
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
+    public Optional<Output<Boolean>> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
+    }
 
     /**
      * The image from which to initialize this disk. This can be
@@ -108,6 +124,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     private InstanceBootDiskInitializeParamsArgs() {}
 
     private InstanceBootDiskInitializeParamsArgs(InstanceBootDiskInitializeParamsArgs $) {
+        this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.image = $.image;
         this.labels = $.labels;
         this.resourceManagerTags = $.resourceManagerTags;
@@ -131,6 +148,27 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
 
         public Builder(InstanceBootDiskInitializeParamsArgs defaults) {
             $ = new InstanceBootDiskInitializeParamsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialCompute(@Nullable Output<Boolean> enableConfidentialCompute) {
+            $.enableConfidentialCompute = enableConfidentialCompute;
+            return this;
+        }
+
+        /**
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
+            return enableConfidentialCompute(Output.of(enableConfidentialCompute));
         }
 
         /**

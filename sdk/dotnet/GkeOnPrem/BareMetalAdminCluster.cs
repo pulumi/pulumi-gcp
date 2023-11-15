@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeOnPrem
 {
     /// <summary>
+    /// A Google Bare Metal Admin Cluster.
+    /// 
     /// ## Example Usage
     /// ### Gkeonprem Bare Metal Admin Cluster Basic
     /// 
@@ -23,26 +25,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var admin_cluster_basic = new Gcp.GkeOnPrem.BareMetalAdminCluster("admin-cluster-basic", new()
     ///     {
-    ///         Location = "us-west1",
     ///         BareMetalVersion = "1.13.4",
-    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigArgs
-    ///         {
-    ///             IslandModeCidr = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
-    ///             {
-    ///                 ServiceAddressCidrBlocks = new[]
-    ///                 {
-    ///                     "172.26.0.0/16",
-    ///                 },
-    ///                 PodAddressCidrBlocks = new[]
-    ///                 {
-    ///                     "10.240.0.0/13",
-    ///                 },
-    ///             },
-    ///         },
-    ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
-    ///         {
-    ///             MaxPodsPerNode = 250,
-    ///         },
     ///         ControlPlane = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneArgs
     ///         {
     ///             ControlPlaneNodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs
@@ -50,7 +33,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs
     ///                 {
     ///                     Labels = null,
-    ///                     OperatingSystem = "LINUX",
     ///                     NodeConfigs = new[]
     ///                     {
     ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
@@ -69,6 +51,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                             NodeIp = "10.200.0.4",
     ///                         },
     ///                     },
+    ///                     OperatingSystem = "LINUX",
     ///                 },
     ///             },
     ///         },
@@ -83,8 +66,36 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 ControlPlaneVip = "10.200.0.5",
     ///             },
     ///         },
+    ///         Location = "us-west1",
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigArgs
+    ///         {
+    ///             IslandModeCidr = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
+    ///             {
+    ///                 PodAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "10.240.0.0/13",
+    ///                 },
+    ///                 ServiceAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "172.26.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///         NodeAccessConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeAccessConfigArgs
+    ///         {
+    ///             LoginUser = "root",
+    ///         },
+    ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
+    ///         {
+    ///             MaxPodsPerNode = 250,
+    ///         },
     ///         Storage = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageArgs
     ///         {
+    ///             LvpNodeMountsConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
+    ///             {
+    ///                 Path = "/mnt/localpv-disk",
+    ///                 StorageClass = "local-disks",
+    ///             },
     ///             LvpShareConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigArgs
     ///             {
     ///                 LvpConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs
@@ -94,19 +105,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///                 SharedPathPvCount = 5,
     ///             },
-    ///             LvpNodeMountsConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
-    ///             {
-    ///                 Path = "/mnt/localpv-disk",
-    ///                 StorageClass = "local-disks",
-    ///             },
     ///         },
-    ///         NodeAccessConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeAccessConfigArgs
-    ///         {
-    ///             LoginUser = "root",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -123,39 +122,30 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// {
     ///     var admin_cluster_basic = new Gcp.GkeOnPrem.BareMetalAdminCluster("admin-cluster-basic", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Description = "test description",
-    ///         BareMetalVersion = "1.13.4",
     ///         Annotations = 
     ///         {
     ///             { "env", "test" },
     ///         },
-    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigArgs
+    ///         BareMetalVersion = "1.13.4",
+    ///         ClusterOperations = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterClusterOperationsArgs
     ///         {
-    ///             IslandModeCidr = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
-    ///             {
-    ///                 ServiceAddressCidrBlocks = new[]
-    ///                 {
-    ///                     "172.26.0.0/16",
-    ///                 },
-    ///                 PodAddressCidrBlocks = new[]
-    ///                 {
-    ///                     "10.240.0.0/13",
-    ///                 },
-    ///             },
-    ///         },
-    ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
-    ///         {
-    ///             MaxPodsPerNode = 250,
+    ///             EnableApplicationLogs = true,
     ///         },
     ///         ControlPlane = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneArgs
     ///         {
+    ///             ApiServerArgs = new[]
+    ///             {
+    ///                 new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneApiServerArgArgs
+    ///                 {
+    ///                     Argument = "test argument",
+    ///                     Value = "test value",
+    ///                 },
+    ///             },
     ///             ControlPlaneNodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs
     ///             {
     ///                 NodePoolConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs
     ///                 {
     ///                     Labels = null,
-    ///                     OperatingSystem = "LINUX",
     ///                     NodeConfigs = new[]
     ///                     {
     ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs
@@ -174,28 +164,26 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                             NodeIp = "10.200.0.4",
     ///                         },
     ///                     },
+    ///                     OperatingSystem = "LINUX",
     ///                     Taints = new[]
     ///                     {
     ///                         new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs
     ///                         {
+    ///                             Effect = "NO_EXECUTE",
     ///                             Key = "test-key",
     ///                             Value = "test-value",
-    ///                             Effect = "NO_EXECUTE",
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///             ApiServerArgs = new[]
-    ///             {
-    ///                 new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterControlPlaneApiServerArgArgs
-    ///                 {
-    ///                     Argument = "test argument",
-    ///                     Value = "test value",
-    ///                 },
-    ///             },
     ///         },
+    ///         Description = "test description",
     ///         LoadBalancer = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerArgs
     ///         {
+    ///             ManualLbConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerManualLbConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
     ///             PortConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerPortConfigArgs
     ///             {
     ///                 ControlPlaneLoadBalancerPort = 443,
@@ -204,31 +192,45 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///             {
     ///                 ControlPlaneVip = "10.200.0.5",
     ///             },
-    ///             ManualLbConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterLoadBalancerManualLbConfigArgs
+    ///         },
+    ///         Location = "us-west1",
+    ///         MaintenanceConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterMaintenanceConfigArgs
+    ///         {
+    ///             MaintenanceAddressCidrBlocks = new[]
     ///             {
-    ///                 Enabled = true,
+    ///                 "10.0.0.1/32",
+    ///                 "10.0.0.2/32",
     ///             },
     ///         },
-    ///         Storage = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageArgs
+    ///         NetworkConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigArgs
     ///         {
-    ///             LvpShareConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigArgs
+    ///             IslandModeCidr = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
     ///             {
-    ///                 LvpConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs
+    ///                 PodAddressCidrBlocks = new[]
     ///                 {
-    ///                     Path = "/mnt/localpv-share",
-    ///                     StorageClass = "local-shared",
+    ///                     "10.240.0.0/13",
     ///                 },
-    ///                 SharedPathPvCount = 5,
-    ///             },
-    ///             LvpNodeMountsConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
-    ///             {
-    ///                 Path = "/mnt/localpv-disk",
-    ///                 StorageClass = "local-disks",
+    ///                 ServiceAddressCidrBlocks = new[]
+    ///                 {
+    ///                     "172.26.0.0/16",
+    ///                 },
     ///             },
     ///         },
     ///         NodeAccessConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeAccessConfigArgs
     ///         {
     ///             LoginUser = "root",
+    ///         },
+    ///         NodeConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterNodeConfigArgs
+    ///         {
+    ///             MaxPodsPerNode = 250,
+    ///         },
+    ///         Proxy = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterProxyArgs
+    ///         {
+    ///             NoProxies = new[]
+    ///             {
+    ///                 "127.0.0.1",
+    ///             },
+    ///             Uri = "test proxy uri",
     ///         },
     ///         SecurityConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterSecurityConfigArgs
     ///         {
@@ -243,29 +245,23 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///         },
-    ///         MaintenanceConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterMaintenanceConfigArgs
+    ///         Storage = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageArgs
     ///         {
-    ///             MaintenanceAddressCidrBlocks = new[]
+    ///             LvpNodeMountsConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
     ///             {
-    ///                 "10.0.0.1/32",
-    ///                 "10.0.0.2/32",
+    ///                 Path = "/mnt/localpv-disk",
+    ///                 StorageClass = "local-disks",
+    ///             },
+    ///             LvpShareConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigArgs
+    ///             {
+    ///                 LvpConfig = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs
+    ///                 {
+    ///                     Path = "/mnt/localpv-share",
+    ///                     StorageClass = "local-shared",
+    ///                 },
+    ///                 SharedPathPvCount = 5,
     ///             },
     ///         },
-    ///         ClusterOperations = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterClusterOperationsArgs
-    ///         {
-    ///             EnableApplicationLogs = true,
-    ///         },
-    ///         Proxy = new Gcp.GkeOnPrem.Inputs.BareMetalAdminClusterProxyArgs
-    ///         {
-    ///             Uri = "test proxy uri",
-    ///             NoProxies = new[]
-    ///             {
-    ///                 "127.0.0.1",
-    ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -273,7 +269,15 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// ## Import
     /// 
-    /// BareMetalAdminCluster can be imported using any of these accepted formats
+    /// BareMetalAdminCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalAdminCluster using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}"
+    /// 
+    ///  to = google_gkeonprem_bare_metal_admin_cluster.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalAdminCluster can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}

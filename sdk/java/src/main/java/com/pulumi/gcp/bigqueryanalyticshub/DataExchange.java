@@ -60,7 +60,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DataExchange can be imported using any of these accepted formats
+ * DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DataExchange using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}&#34;
+ * 
+ *  to = google_bigquery_analytics_hub_data_exchange.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DataExchange can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}

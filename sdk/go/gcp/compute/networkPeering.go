@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a network peering within GCE. For more information see
@@ -71,11 +70,21 @@ import (
 //
 // ## Import
 //
-// # VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
+// VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering * `{{project_id}}/{{network_id}}/{{peering_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VPC network peerings using one of the formats above. For exampletf import {
+//
+//	id = "{{project_id}}/{{network_id}}/{{peering_id}}"
+//
+//	to = google_compute_network_peering.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
+//	$ pulumi import gcp:compute/networkPeering:NetworkPeering When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VPC network peerings can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}
 //
 // ```
 type NetworkPeering struct {
@@ -258,12 +267,6 @@ func (i *NetworkPeering) ToNetworkPeeringOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringOutput)
 }
 
-func (i *NetworkPeering) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeering] {
-	return pulumix.Output[*NetworkPeering]{
-		OutputState: i.ToNetworkPeeringOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkPeeringArrayInput is an input type that accepts NetworkPeeringArray and NetworkPeeringArrayOutput values.
 // You can construct a concrete instance of `NetworkPeeringArrayInput` via:
 //
@@ -287,12 +290,6 @@ func (i NetworkPeeringArray) ToNetworkPeeringArrayOutput() NetworkPeeringArrayOu
 
 func (i NetworkPeeringArray) ToNetworkPeeringArrayOutputWithContext(ctx context.Context) NetworkPeeringArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringArrayOutput)
-}
-
-func (i NetworkPeeringArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPeering] {
-	return pulumix.Output[[]*NetworkPeering]{
-		OutputState: i.ToNetworkPeeringArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkPeeringMapInput is an input type that accepts NetworkPeeringMap and NetworkPeeringMapOutput values.
@@ -320,12 +317,6 @@ func (i NetworkPeeringMap) ToNetworkPeeringMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringMapOutput)
 }
 
-func (i NetworkPeeringMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPeering] {
-	return pulumix.Output[map[string]*NetworkPeering]{
-		OutputState: i.ToNetworkPeeringMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPeeringOutput struct{ *pulumi.OutputState }
 
 func (NetworkPeeringOutput) ElementType() reflect.Type {
@@ -338,12 +329,6 @@ func (o NetworkPeeringOutput) ToNetworkPeeringOutput() NetworkPeeringOutput {
 
 func (o NetworkPeeringOutput) ToNetworkPeeringOutputWithContext(ctx context.Context) NetworkPeeringOutput {
 	return o
-}
-
-func (o NetworkPeeringOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPeering] {
-	return pulumix.Output[*NetworkPeering]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to export the custom routes to the peer network. Defaults to `false`.
@@ -412,12 +397,6 @@ func (o NetworkPeeringArrayOutput) ToNetworkPeeringArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o NetworkPeeringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPeering] {
-	return pulumix.Output[[]*NetworkPeering]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkPeeringArrayOutput) Index(i pulumi.IntInput) NetworkPeeringOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPeering {
 		return vs[0].([]*NetworkPeering)[vs[1].(int)]
@@ -436,12 +415,6 @@ func (o NetworkPeeringMapOutput) ToNetworkPeeringMapOutput() NetworkPeeringMapOu
 
 func (o NetworkPeeringMapOutput) ToNetworkPeeringMapOutputWithContext(ctx context.Context) NetworkPeeringMapOutput {
 	return o
-}
-
-func (o NetworkPeeringMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPeering] {
-	return pulumix.Output[map[string]*NetworkPeering]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkPeeringMapOutput) MapIndex(k pulumi.StringInput) NetworkPeeringOutput {

@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new MembershipIamPolicy(&#34;policy&#34;, MembershipIamPolicyArgs.builder()        
  *             .project(google_gke_hub_membership.membership().project())
+ *             .location(google_gke_hub_membership.membership().location())
  *             .membershipId(google_gke_hub_membership.membership().membership_id())
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
@@ -93,6 +94,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var binding = new MembershipIamBinding(&#34;binding&#34;, MembershipIamBindingArgs.builder()        
  *             .project(google_gke_hub_membership.membership().project())
+ *             .location(google_gke_hub_membership.membership().location())
  *             .membershipId(google_gke_hub_membership.membership().membership_id())
  *             .role(&#34;roles/viewer&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
@@ -126,6 +128,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var member = new MembershipIamMember(&#34;member&#34;, MembershipIamMemberArgs.builder()        
  *             .project(google_gke_hub_membership.membership().project())
+ *             .location(google_gke_hub_membership.membership().location())
  *             .membershipId(google_gke_hub_membership.membership().membership_id())
  *             .role(&#34;roles/viewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
@@ -175,6 +178,24 @@ public class MembershipIamPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    @Export(name="location", refs={String.class}, tree="[0]")
+    private Output<String> location;
+
+    /**
+     * @return Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    public Output<String> location() {
+        return this.location;
     }
     @Export(name="membershipId", refs={String.class}, tree="[0]")
     private Output<String> membershipId;

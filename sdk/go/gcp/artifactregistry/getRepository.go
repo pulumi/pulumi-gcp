@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a Google Artifact Registry Repository. For more information see
@@ -133,12 +132,6 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutput() LookupRep
 
 func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(ctx context.Context) LookupRepositoryResultOutput {
 	return o
-}
-
-func (o LookupRepositoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRepositoryResult] {
-	return pulumix.Output[LookupRepositoryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRepositoryResultOutput) CleanupPolicies() GetRepositoryCleanupPolicyArrayOutput {

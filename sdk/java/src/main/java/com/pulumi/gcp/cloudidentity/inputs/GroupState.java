@@ -5,8 +5,10 @@ package com.pulumi.gcp.cloudidentity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudidentity.inputs.GroupAdditionalGroupKeyArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GroupGroupKeyArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +18,23 @@ import javax.annotation.Nullable;
 public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupState Empty = new GroupState();
+
+    /**
+     * Additional group keys associated with the Group
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="additionalGroupKeys")
+    private @Nullable Output<List<GroupAdditionalGroupKeyArgs>> additionalGroupKeys;
+
+    /**
+     * @return Additional group keys associated with the Group
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<GroupAdditionalGroupKeyArgs>>> additionalGroupKeys() {
+        return Optional.ofNullable(this.additionalGroupKeys);
+    }
 
     /**
      * The time when the Group was created.
@@ -185,6 +204,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     private GroupState() {}
 
     private GroupState(GroupState $) {
+        this.additionalGroupKeys = $.additionalGroupKeys;
         this.createTime = $.createTime;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -212,6 +232,40 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupState defaults) {
             $ = new GroupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalGroupKeys Additional group keys associated with the Group
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalGroupKeys(@Nullable Output<List<GroupAdditionalGroupKeyArgs>> additionalGroupKeys) {
+            $.additionalGroupKeys = additionalGroupKeys;
+            return this;
+        }
+
+        /**
+         * @param additionalGroupKeys Additional group keys associated with the Group
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalGroupKeys(List<GroupAdditionalGroupKeyArgs> additionalGroupKeys) {
+            return additionalGroupKeys(Output.of(additionalGroupKeys));
+        }
+
+        /**
+         * @param additionalGroupKeys Additional group keys associated with the Group
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalGroupKeys(GroupAdditionalGroupKeyArgs... additionalGroupKeys) {
+            return additionalGroupKeys(List.of(additionalGroupKeys));
         }
 
         /**

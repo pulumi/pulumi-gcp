@@ -16,14 +16,16 @@ public final class VMwareClusterLoadBalancerF5ConfigArgs extends com.pulumi.reso
     public static final VMwareClusterLoadBalancerF5ConfigArgs Empty = new VMwareClusterLoadBalancerF5ConfigArgs();
 
     /**
-     * The load balancer&#39;s IP address.
+     * (Output)
+     * The vCenter IP address.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The load balancer&#39;s IP address.
+     * @return (Output)
+     * The vCenter IP address.
      * 
      */
     public Optional<Output<String>> address() {
@@ -91,7 +93,8 @@ public final class VMwareClusterLoadBalancerF5ConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param address The load balancer&#39;s IP address.
+         * @param address (Output)
+         * The vCenter IP address.
          * 
          * @return builder
          * 
@@ -102,7 +105,8 @@ public final class VMwareClusterLoadBalancerF5ConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param address The load balancer&#39;s IP address.
+         * @param address (Output)
+         * The vCenter IP address.
          * 
          * @return builder
          * 

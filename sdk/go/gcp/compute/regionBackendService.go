@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Region Backend Service defines a regionally-scoped group of virtual
@@ -29,7 +28,17 @@ import (
 //
 // ## Import
 //
-// # RegionBackendService can be imported using any of these accepted formats
+// RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionBackendService using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/backendServices/{{name}}"
+//
+//	to = google_compute_region_backend_service.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/regionBackendService:RegionBackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionBackendService can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -709,12 +718,6 @@ func (i *RegionBackendService) ToRegionBackendServiceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceOutput)
 }
 
-func (i *RegionBackendService) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendService] {
-	return pulumix.Output[*RegionBackendService]{
-		OutputState: i.ToRegionBackendServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionBackendServiceArrayInput is an input type that accepts RegionBackendServiceArray and RegionBackendServiceArrayOutput values.
 // You can construct a concrete instance of `RegionBackendServiceArrayInput` via:
 //
@@ -738,12 +741,6 @@ func (i RegionBackendServiceArray) ToRegionBackendServiceArrayOutput() RegionBac
 
 func (i RegionBackendServiceArray) ToRegionBackendServiceArrayOutputWithContext(ctx context.Context) RegionBackendServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceArrayOutput)
-}
-
-func (i RegionBackendServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendService] {
-	return pulumix.Output[[]*RegionBackendService]{
-		OutputState: i.ToRegionBackendServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionBackendServiceMapInput is an input type that accepts RegionBackendServiceMap and RegionBackendServiceMapOutput values.
@@ -771,12 +768,6 @@ func (i RegionBackendServiceMap) ToRegionBackendServiceMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceMapOutput)
 }
 
-func (i RegionBackendServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendService] {
-	return pulumix.Output[map[string]*RegionBackendService]{
-		OutputState: i.ToRegionBackendServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionBackendServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceOutput) ElementType() reflect.Type {
@@ -789,12 +780,6 @@ func (o RegionBackendServiceOutput) ToRegionBackendServiceOutput() RegionBackend
 
 func (o RegionBackendServiceOutput) ToRegionBackendServiceOutputWithContext(ctx context.Context) RegionBackendServiceOutput {
 	return o
-}
-
-func (o RegionBackendServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendService] {
-	return pulumix.Output[*RegionBackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Lifetime of cookies in seconds if sessionAffinity is
@@ -1019,12 +1004,6 @@ func (o RegionBackendServiceArrayOutput) ToRegionBackendServiceArrayOutputWithCo
 	return o
 }
 
-func (o RegionBackendServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendService] {
-	return pulumix.Output[[]*RegionBackendService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionBackendServiceArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionBackendService {
 		return vs[0].([]*RegionBackendService)[vs[1].(int)]
@@ -1043,12 +1022,6 @@ func (o RegionBackendServiceMapOutput) ToRegionBackendServiceMapOutput() RegionB
 
 func (o RegionBackendServiceMapOutput) ToRegionBackendServiceMapOutputWithContext(ctx context.Context) RegionBackendServiceMapOutput {
 	return o
-}
-
-func (o RegionBackendServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendService] {
-	return pulumix.Output[map[string]*RegionBackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionBackendServiceMapOutput) MapIndex(k pulumi.StringInput) RegionBackendServiceOutput {

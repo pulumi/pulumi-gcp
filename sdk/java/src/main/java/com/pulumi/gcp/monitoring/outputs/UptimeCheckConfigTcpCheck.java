@@ -4,11 +4,20 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigTcpCheckPingConfig;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class UptimeCheckConfigTcpCheck {
+    /**
+     * @return Contains information needed to add pings to a TCP check.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable UptimeCheckConfigTcpCheckPingConfig pingConfig;
     /**
      * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
      * 
@@ -16,6 +25,14 @@ public final class UptimeCheckConfigTcpCheck {
     private Integer port;
 
     private UptimeCheckConfigTcpCheck() {}
+    /**
+     * @return Contains information needed to add pings to a TCP check.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<UptimeCheckConfigTcpCheckPingConfig> pingConfig() {
+        return Optional.ofNullable(this.pingConfig);
+    }
     /**
      * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
      * 
@@ -33,13 +50,20 @@ public final class UptimeCheckConfigTcpCheck {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable UptimeCheckConfigTcpCheckPingConfig pingConfig;
         private Integer port;
         public Builder() {}
         public Builder(UptimeCheckConfigTcpCheck defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.pingConfig = defaults.pingConfig;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
+        public Builder pingConfig(@Nullable UptimeCheckConfigTcpCheckPingConfig pingConfig) {
+            this.pingConfig = pingConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
@@ -47,6 +71,7 @@ public final class UptimeCheckConfigTcpCheck {
         }
         public UptimeCheckConfigTcpCheck build() {
             final var o = new UptimeCheckConfigTcpCheck();
+            o.pingConfig = pingConfig;
             o.port = port;
             return o;
         }

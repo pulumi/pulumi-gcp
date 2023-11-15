@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud AI Platform Notebook runtime.
@@ -257,7 +256,17 @@ import (
 //
 // ## Import
 //
-// # Runtime can be imported using any of these accepted formats
+// Runtime can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/runtimes/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Runtime using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/runtimes/{{name}}"
+//
+//	to = google_notebooks_runtime.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:notebooks/runtime:Runtime When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Runtime can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -473,12 +482,6 @@ func (i *Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeOutput)
 }
 
-func (i *Runtime) ToOutput(ctx context.Context) pulumix.Output[*Runtime] {
-	return pulumix.Output[*Runtime]{
-		OutputState: i.ToRuntimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RuntimeArrayInput is an input type that accepts RuntimeArray and RuntimeArrayOutput values.
 // You can construct a concrete instance of `RuntimeArrayInput` via:
 //
@@ -502,12 +505,6 @@ func (i RuntimeArray) ToRuntimeArrayOutput() RuntimeArrayOutput {
 
 func (i RuntimeArray) ToRuntimeArrayOutputWithContext(ctx context.Context) RuntimeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeArrayOutput)
-}
-
-func (i RuntimeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Runtime] {
-	return pulumix.Output[[]*Runtime]{
-		OutputState: i.ToRuntimeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RuntimeMapInput is an input type that accepts RuntimeMap and RuntimeMapOutput values.
@@ -535,12 +532,6 @@ func (i RuntimeMap) ToRuntimeMapOutputWithContext(ctx context.Context) RuntimeMa
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMapOutput)
 }
 
-func (i RuntimeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Runtime] {
-	return pulumix.Output[map[string]*Runtime]{
-		OutputState: i.ToRuntimeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuntimeOutput struct{ *pulumi.OutputState }
 
 func (RuntimeOutput) ElementType() reflect.Type {
@@ -553,12 +544,6 @@ func (o RuntimeOutput) ToRuntimeOutput() RuntimeOutput {
 
 func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput {
 	return o
-}
-
-func (o RuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[*Runtime] {
-	return pulumix.Output[*Runtime]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The config settings for accessing runtime.
@@ -630,12 +615,6 @@ func (o RuntimeArrayOutput) ToRuntimeArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RuntimeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Runtime] {
-	return pulumix.Output[[]*Runtime]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuntimeArrayOutput) Index(i pulumi.IntInput) RuntimeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Runtime {
 		return vs[0].([]*Runtime)[vs[1].(int)]
@@ -654,12 +633,6 @@ func (o RuntimeMapOutput) ToRuntimeMapOutput() RuntimeMapOutput {
 
 func (o RuntimeMapOutput) ToRuntimeMapOutputWithContext(ctx context.Context) RuntimeMapOutput {
 	return o
-}
-
-func (o RuntimeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Runtime] {
-	return pulumix.Output[map[string]*Runtime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuntimeMapOutput) MapIndex(k pulumi.StringInput) RuntimeOutput {

@@ -79,6 +79,13 @@ public final class GetInstanceTemplateDisk {
      * 
      */
     private String mode;
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This
+     * sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details, see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
     private Integer provisionedIops;
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -196,6 +203,13 @@ public final class GetInstanceTemplateDisk {
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This
+     * sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details, see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
     public Integer provisionedIops() {
         return this.provisionedIops;
     }

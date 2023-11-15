@@ -128,7 +128,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Feature can be imported using any of these accepted formats
+ * Feature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Feature using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/features/{{name}}"
+ *
+ *  to = google_gke_hub_feature.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkehub/feature:Feature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Feature can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
@@ -182,6 +190,11 @@ export class Feature extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     */
+    public readonly fleetDefaultMemberConfig!: pulumi.Output<outputs.gkehub.FeatureFleetDefaultMemberConfig | undefined>;
     /**
      * GCP labels for this Feature.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -247,6 +260,7 @@ export class Feature extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["fleetDefaultMemberConfig"] = state ? state.fleetDefaultMemberConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -261,6 +275,7 @@ export class Feature extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["fleetDefaultMemberConfig"] = args ? args.fleetDefaultMemberConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -297,6 +312,11 @@ export interface FeatureState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     */
+    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfig>;
     /**
      * GCP labels for this Feature.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -351,6 +371,11 @@ export interface FeatureState {
  * The set of arguments for constructing a Feature resource.
  */
 export interface FeatureArgs {
+    /**
+     * Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     */
+    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfig>;
     /**
      * GCP labels for this Feature.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

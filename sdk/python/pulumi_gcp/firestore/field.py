@@ -37,7 +37,7 @@ class FieldArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: If set, this field is configured for TTL deletion.
+        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         pulumi.set(__self__, "collection", collection)
@@ -123,7 +123,7 @@ class FieldArgs:
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> Optional[pulumi.Input['FieldTtlConfigArgs']]:
         """
-        If set, this field is configured for TTL deletion.
+        The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         Structure is documented below.
         """
         return pulumi.get(self, "ttl_config")
@@ -160,7 +160,7 @@ class _FieldState:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: If set, this field is configured for TTL deletion.
+        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         if collection is not None:
@@ -263,7 +263,7 @@ class _FieldState:
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> Optional[pulumi.Input['FieldTtlConfigArgs']]:
         """
-        If set, this field is configured for TTL deletion.
+        The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         Structure is documented below.
         """
         return pulumi.get(self, "ttl_config")
@@ -323,8 +323,7 @@ class Field(pulumi.CustomResource):
                     ),
                 ],
             ),
-            project="my-project-name",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs())
+            project="my-project-name")
         ```
         ### Firestore Field Timestamp
 
@@ -366,7 +365,15 @@ class Field(pulumi.CustomResource):
 
         ## Import
 
-        Field can be imported using any of these accepted formats:
+        Field can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Field using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_firestore_field.default }
+
+        ```sh
+         $ pulumi import gcp:firestore/field:Field When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Field can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:firestore/field:Field default {{name}}
@@ -387,7 +394,7 @@ class Field(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']] ttl_config: If set, this field is configured for TTL deletion.
+        :param pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         ...
@@ -434,8 +441,7 @@ class Field(pulumi.CustomResource):
                     ),
                 ],
             ),
-            project="my-project-name",
-            ttl_config=gcp.firestore.FieldTtlConfigArgs())
+            project="my-project-name")
         ```
         ### Firestore Field Timestamp
 
@@ -477,7 +483,15 @@ class Field(pulumi.CustomResource):
 
         ## Import
 
-        Field can be imported using any of these accepted formats:
+        Field can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Field using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_firestore_field.default }
+
+        ```sh
+         $ pulumi import gcp:firestore/field:Field When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Field can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:firestore/field:Field default {{name}}
@@ -563,7 +577,7 @@ class Field(pulumi.CustomResource):
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']] ttl_config: If set, this field is configured for TTL deletion.
+        :param pulumi.Input[pulumi.InputType['FieldTtlConfigArgs']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -640,7 +654,7 @@ class Field(pulumi.CustomResource):
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Output[Optional['outputs.FieldTtlConfig']]:
         """
-        If set, this field is configured for TTL deletion.
+        The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         Structure is documented below.
         """
         return pulumi.get(self, "ttl_config")

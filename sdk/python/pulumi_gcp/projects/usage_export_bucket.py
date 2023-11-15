@@ -177,10 +177,18 @@ class UsageExportBucket(pulumi.CustomResource):
 
         ## Import
 
-        Projects can be imported using the `project_id`, e.g.
+        Projects can be imported using the `project_id`, e.g. * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Projects using one of the formats above. For exampletf import {
+
+         id = "{{project_id}}"
+
+         to = google_project.default }
 
         ```sh
-         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
+         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Projects can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -241,10 +249,18 @@ class UsageExportBucket(pulumi.CustomResource):
 
         ## Import
 
-        Projects can be imported using the `project_id`, e.g.
+        Projects can be imported using the `project_id`, e.g. * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Projects using one of the formats above. For exampletf import {
+
+         id = "{{project_id}}"
+
+         to = google_project.default }
 
         ```sh
-         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
+         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Projects can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
         ```
 
         :param str resource_name: The name of the resource.

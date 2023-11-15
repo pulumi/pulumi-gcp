@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureResourceStateArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureStateArgs;
@@ -63,6 +64,23 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="fleetDefaultMemberConfig")
+    private @Nullable Output<FeatureFleetDefaultMemberConfigArgs> fleetDefaultMemberConfig;
+
+    /**
+     * @return Optional. Fleet Default Membership Configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureFleetDefaultMemberConfigArgs>> fleetDefaultMemberConfig() {
+        return Optional.ofNullable(this.fleetDefaultMemberConfig);
     }
 
     /**
@@ -228,6 +246,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
         this.effectiveLabels = $.effectiveLabels;
+        this.fleetDefaultMemberConfig = $.fleetDefaultMemberConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -318,6 +337,29 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param fleetDefaultMemberConfig Optional. Fleet Default Membership Configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetDefaultMemberConfig(@Nullable Output<FeatureFleetDefaultMemberConfigArgs> fleetDefaultMemberConfig) {
+            $.fleetDefaultMemberConfig = fleetDefaultMemberConfig;
+            return this;
+        }
+
+        /**
+         * @param fleetDefaultMemberConfig Optional. Fleet Default Membership Configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs fleetDefaultMemberConfig) {
+            return fleetDefaultMemberConfig(Output.of(fleetDefaultMemberConfig));
         }
 
         /**

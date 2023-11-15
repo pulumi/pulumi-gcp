@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,18 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
     public static final RepositoryGitRemoteSettingsArgs Empty = new RepositoryGitRemoteSettingsArgs();
 
     /**
-     * The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
      * 
      */
-    @Import(name="authenticationTokenSecretVersion", required=true)
-    private Output<String> authenticationTokenSecretVersion;
+    @Import(name="authenticationTokenSecretVersion")
+    private @Nullable Output<String> authenticationTokenSecretVersion;
 
     /**
-     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
      * 
      */
-    public Output<String> authenticationTokenSecretVersion() {
-        return this.authenticationTokenSecretVersion;
+    public Optional<Output<String>> authenticationTokenSecretVersion() {
+        return Optional.ofNullable(this.authenticationTokenSecretVersion);
     }
 
     /**
@@ -43,6 +44,23 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
      */
     public Output<String> defaultBranch() {
         return this.defaultBranch;
+    }
+
+    /**
+     * Authentication fields for remote uris using SSH protocol.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sshAuthenticationConfig")
+    private @Nullable Output<RepositoryGitRemoteSettingsSshAuthenticationConfigArgs> sshAuthenticationConfig;
+
+    /**
+     * @return Authentication fields for remote uris using SSH protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryGitRemoteSettingsSshAuthenticationConfigArgs>> sshAuthenticationConfig() {
+        return Optional.ofNullable(this.sshAuthenticationConfig);
     }
 
     /**
@@ -82,6 +100,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
     private RepositoryGitRemoteSettingsArgs(RepositoryGitRemoteSettingsArgs $) {
         this.authenticationTokenSecretVersion = $.authenticationTokenSecretVersion;
         this.defaultBranch = $.defaultBranch;
+        this.sshAuthenticationConfig = $.sshAuthenticationConfig;
         this.tokenStatus = $.tokenStatus;
         this.url = $.url;
     }
@@ -105,18 +124,18 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
          * 
          * @return builder
          * 
          */
-        public Builder authenticationTokenSecretVersion(Output<String> authenticationTokenSecretVersion) {
+        public Builder authenticationTokenSecretVersion(@Nullable Output<String> authenticationTokenSecretVersion) {
             $.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
             return this;
         }
 
         /**
-         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
+         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*.
          * 
          * @return builder
          * 
@@ -144,6 +163,29 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
          */
         public Builder defaultBranch(String defaultBranch) {
             return defaultBranch(Output.of(defaultBranch));
+        }
+
+        /**
+         * @param sshAuthenticationConfig Authentication fields for remote uris using SSH protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshAuthenticationConfig(@Nullable Output<RepositoryGitRemoteSettingsSshAuthenticationConfigArgs> sshAuthenticationConfig) {
+            $.sshAuthenticationConfig = sshAuthenticationConfig;
+            return this;
+        }
+
+        /**
+         * @param sshAuthenticationConfig Authentication fields for remote uris using SSH protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshAuthenticationConfig(RepositoryGitRemoteSettingsSshAuthenticationConfigArgs sshAuthenticationConfig) {
+            return sshAuthenticationConfig(Output.of(sshAuthenticationConfig));
         }
 
         /**
@@ -191,7 +233,6 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
         }
 
         public RepositoryGitRemoteSettingsArgs build() {
-            $.authenticationTokenSecretVersion = Objects.requireNonNull($.authenticationTokenSecretVersion, "expected parameter 'authenticationTokenSecretVersion' to be non-null");
             $.defaultBranch = Objects.requireNonNull($.defaultBranch, "expected parameter 'defaultBranch' to be non-null");
             $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
             return $;

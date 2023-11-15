@@ -305,42 +305,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ * ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource&#39;s `folder_id` and the `service`, e.g* `&#34;folder/{{folder_id}} foo.googleapis.com&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
  * 
- * This member resource can be imported using the `folder`, role, and member e.g.
+ *  id = &#34;folder/{{folder_id}} foo.googleapis.com&#34;
+ * 
+ *  to = google_folder_iam_audit_config.default }
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder &#34;folder roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:folder/iAMMember:IAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
- * 
- * This binding resource can be imported using the `folder` and role, e.g.
- * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder &#34;folder roles/viewer&#34;
- * ```
- * 
- *  IAM policy imports use the identifier of the resource in question.
- * 
- * This policy resource can be imported using the `folder`.
- * 
- * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder folder
- * ```
- * 
- *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
- * 
- * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder &#34;folder foo.googleapis.com&#34;
- * ```
- * 
- *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
- * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you&#39;re importing a IAM binding with a condition block, make sure
- * 
- * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember to include the title of condition, e.g. `google_folder_iam_binding.my_folder &#34;folder roles/{{role_id}} condition-title&#34;`
+ *  $ pulumi import gcp:folder/iAMMember:IAMMember default &#34;folder/{{folder_id}} foo.googleapis.com&#34;
  * ```
  * 
  */

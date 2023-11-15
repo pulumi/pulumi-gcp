@@ -40,7 +40,8 @@ class TopicArgs:
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 31 days or less than 10 minutes.
+               The rotation period has the format of a decimal number, followed by the
+               letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -110,7 +111,8 @@ class TopicArgs:
         For instance, it allows any attached subscription to seek to a timestamp
         that is up to messageRetentionDuration in the past. If this field is not
         set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 31 days or less than 10 minutes.
+        The rotation period has the format of a decimal number, followed by the
+        letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -205,7 +207,8 @@ class _TopicState:
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 31 days or less than 10 minutes.
+               The rotation period has the format of a decimal number, followed by the
+               letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input['TopicMessageStoragePolicyArgs'] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -293,7 +296,8 @@ class _TopicState:
         For instance, it allows any attached subscription to seek to a timestamp
         that is up to messageRetentionDuration in the past. If this field is not
         set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 31 days or less than 10 minutes.
+        The rotation period has the format of a decimal number, followed by the
+        letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 
@@ -461,7 +465,15 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        Topic can be imported using any of these accepted formats
+        Topic can be imported using any of these accepted formats* `projects/{{project}}/topics/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Topic using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/topics/{{name}}"
+
+         to = google_pubsub_topic.default }
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Topic can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
@@ -492,7 +504,8 @@ class Topic(pulumi.CustomResource):
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 31 days or less than 10 minutes.
+               The rotation period has the format of a decimal number, followed by the
+               letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -589,7 +602,15 @@ class Topic(pulumi.CustomResource):
 
         ## Import
 
-        Topic can be imported using any of these accepted formats
+        Topic can be imported using any of these accepted formats* `projects/{{project}}/topics/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Topic using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/topics/{{name}}"
+
+         to = google_pubsub_topic.default }
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Topic can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
@@ -687,7 +708,8 @@ class Topic(pulumi.CustomResource):
                For instance, it allows any attached subscription to seek to a timestamp
                that is up to messageRetentionDuration in the past. If this field is not
                set, message retention is controlled by settings on individual subscriptions.
-               Cannot be more than 31 days or less than 10 minutes.
+               The rotation period has the format of a decimal number, followed by the
+               letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
@@ -759,7 +781,8 @@ class Topic(pulumi.CustomResource):
         For instance, it allows any attached subscription to seek to a timestamp
         that is up to messageRetentionDuration in the past. If this field is not
         set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 31 days or less than 10 minutes.
+        The rotation period has the format of a decimal number, followed by the
+        letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
         """
         return pulumi.get(self, "message_retention_duration")
 

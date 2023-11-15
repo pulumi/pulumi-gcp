@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a view over log entries in a bucket.
@@ -61,7 +60,17 @@ import (
 //
 // ## Import
 //
-// LogView can be imported using any of these accepted formats:
+// LogView can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import LogView using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}"
+//
+//	to = google_logging_log_view.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/logView:LogView When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), LogView can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -227,12 +236,6 @@ func (i *LogView) ToLogViewOutputWithContext(ctx context.Context) LogViewOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LogViewOutput)
 }
 
-func (i *LogView) ToOutput(ctx context.Context) pulumix.Output[*LogView] {
-	return pulumix.Output[*LogView]{
-		OutputState: i.ToLogViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LogViewArrayInput is an input type that accepts LogViewArray and LogViewArrayOutput values.
 // You can construct a concrete instance of `LogViewArrayInput` via:
 //
@@ -256,12 +259,6 @@ func (i LogViewArray) ToLogViewArrayOutput() LogViewArrayOutput {
 
 func (i LogViewArray) ToLogViewArrayOutputWithContext(ctx context.Context) LogViewArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogViewArrayOutput)
-}
-
-func (i LogViewArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogView] {
-	return pulumix.Output[[]*LogView]{
-		OutputState: i.ToLogViewArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LogViewMapInput is an input type that accepts LogViewMap and LogViewMapOutput values.
@@ -289,12 +286,6 @@ func (i LogViewMap) ToLogViewMapOutputWithContext(ctx context.Context) LogViewMa
 	return pulumi.ToOutputWithContext(ctx, i).(LogViewMapOutput)
 }
 
-func (i LogViewMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogView] {
-	return pulumix.Output[map[string]*LogView]{
-		OutputState: i.ToLogViewMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LogViewOutput struct{ *pulumi.OutputState }
 
 func (LogViewOutput) ElementType() reflect.Type {
@@ -307,12 +298,6 @@ func (o LogViewOutput) ToLogViewOutput() LogViewOutput {
 
 func (o LogViewOutput) ToLogViewOutputWithContext(ctx context.Context) LogViewOutput {
 	return o
-}
-
-func (o LogViewOutput) ToOutput(ctx context.Context) pulumix.Output[*LogView] {
-	return pulumix.Output[*LogView]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bucket of the resource
@@ -371,12 +356,6 @@ func (o LogViewArrayOutput) ToLogViewArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o LogViewArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogView] {
-	return pulumix.Output[[]*LogView]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LogViewArrayOutput) Index(i pulumi.IntInput) LogViewOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogView {
 		return vs[0].([]*LogView)[vs[1].(int)]
@@ -395,12 +374,6 @@ func (o LogViewMapOutput) ToLogViewMapOutput() LogViewMapOutput {
 
 func (o LogViewMapOutput) ToLogViewMapOutputWithContext(ctx context.Context) LogViewMapOutput {
 	return o
-}
-
-func (o LogViewMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogView] {
-	return pulumix.Output[map[string]*LogView]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogViewMapOutput) MapIndex(k pulumi.StringInput) LogViewOutput {

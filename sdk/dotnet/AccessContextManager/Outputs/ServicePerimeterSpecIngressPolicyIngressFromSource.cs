@@ -14,14 +14,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimeterSpecIngressPolicyIngressFromSource
     {
         /// <summary>
-        /// An `AccessLevel` resource name that allow resources within the
-        /// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-        /// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-        /// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-        /// resources within the perimeter can only be accessed via Google Cloud calls
-        /// with request origins within the perimeter.
-        /// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-        /// If * is specified, then all IngressSources will be allowed.
+        /// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>

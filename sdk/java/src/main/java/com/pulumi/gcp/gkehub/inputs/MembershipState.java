@@ -122,6 +122,23 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Location of the membership.
+     * The default value is `global`.
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Location of the membership.
+     * The default value is `global`.
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
+    /**
      * The client-provided identifier of the membership.
      * 
      * ***
@@ -197,6 +214,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         this.effectiveLabels = $.effectiveLabels;
         this.endpoint = $.endpoint;
         this.labels = $.labels;
+        this.location = $.location;
         this.membershipId = $.membershipId;
         this.name = $.name;
         this.project = $.project;
@@ -352,6 +370,29 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         /**

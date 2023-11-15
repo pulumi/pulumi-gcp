@@ -850,7 +850,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * UrlMap can be imported using any of these accepted formats
+ * UrlMap can be imported using any of these accepted formats* `projects/{{project}}/global/urlMaps/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UrlMap using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/urlMaps/{{name}}&#34;
+ * 
+ *  to = google_compute_url_map.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/uRLMap:URLMap When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UrlMap can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -88,7 +87,17 @@ import (
 //
 // ## Import
 //
-// # Environment can be imported using any of these accepted formats
+// Environment can be imported using any of these accepted formats* `{{parent}}/environments/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/environments/{{name}}"
+//
+//	to = google_dialogflow_cx_environment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -243,12 +252,6 @@ func (i *CxEnvironment) ToCxEnvironmentOutputWithContext(ctx context.Context) Cx
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentOutput)
 }
 
-func (i *CxEnvironment) ToOutput(ctx context.Context) pulumix.Output[*CxEnvironment] {
-	return pulumix.Output[*CxEnvironment]{
-		OutputState: i.ToCxEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxEnvironmentArrayInput is an input type that accepts CxEnvironmentArray and CxEnvironmentArrayOutput values.
 // You can construct a concrete instance of `CxEnvironmentArrayInput` via:
 //
@@ -272,12 +275,6 @@ func (i CxEnvironmentArray) ToCxEnvironmentArrayOutput() CxEnvironmentArrayOutpu
 
 func (i CxEnvironmentArray) ToCxEnvironmentArrayOutputWithContext(ctx context.Context) CxEnvironmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentArrayOutput)
-}
-
-func (i CxEnvironmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxEnvironment] {
-	return pulumix.Output[[]*CxEnvironment]{
-		OutputState: i.ToCxEnvironmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxEnvironmentMapInput is an input type that accepts CxEnvironmentMap and CxEnvironmentMapOutput values.
@@ -305,12 +302,6 @@ func (i CxEnvironmentMap) ToCxEnvironmentMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentMapOutput)
 }
 
-func (i CxEnvironmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxEnvironment] {
-	return pulumix.Output[map[string]*CxEnvironment]{
-		OutputState: i.ToCxEnvironmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentOutput) ElementType() reflect.Type {
@@ -323,12 +314,6 @@ func (o CxEnvironmentOutput) ToCxEnvironmentOutput() CxEnvironmentOutput {
 
 func (o CxEnvironmentOutput) ToCxEnvironmentOutputWithContext(ctx context.Context) CxEnvironmentOutput {
 	return o
-}
-
-func (o CxEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CxEnvironment] {
-	return pulumix.Output[*CxEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -377,12 +362,6 @@ func (o CxEnvironmentArrayOutput) ToCxEnvironmentArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o CxEnvironmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxEnvironment] {
-	return pulumix.Output[[]*CxEnvironment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxEnvironmentArrayOutput) Index(i pulumi.IntInput) CxEnvironmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxEnvironment {
 		return vs[0].([]*CxEnvironment)[vs[1].(int)]
@@ -401,12 +380,6 @@ func (o CxEnvironmentMapOutput) ToCxEnvironmentMapOutput() CxEnvironmentMapOutpu
 
 func (o CxEnvironmentMapOutput) ToCxEnvironmentMapOutputWithContext(ctx context.Context) CxEnvironmentMapOutput {
 	return o
-}
-
-func (o CxEnvironmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxEnvironment] {
-	return pulumix.Output[map[string]*CxEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxEnvironmentMapOutput) MapIndex(k pulumi.StringInput) CxEnvironmentOutput {

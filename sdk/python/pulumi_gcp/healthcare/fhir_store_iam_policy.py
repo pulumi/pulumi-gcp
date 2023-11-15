@@ -217,28 +217,18 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+        ### Importing IAM policies IAM policy imports use the identifier of the Healthcare FHIR store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
-        This member resource can be imported using the `fhir_store_id`, role, and account e.g.
+         id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
+
+         to = google_healthcare_fhir_store_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
-         IAM binding imports use space-delimited identifiers; the resource in question and the role.
-
-        This binding resource can be imported using the `fhir_store_id` and role, e.g.
-
         ```sh
-         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer"
-        ```
-
-         IAM policy imports use the identifier of the resource in question.
-
-        This policy resource can be imported using the `fhir_store_id`, role, and account e.g.
-
-        ```sh
-         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
+         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -317,28 +307,18 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+        ### Importing IAM policies IAM policy imports use the identifier of the Healthcare FHIR store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
-        This member resource can be imported using the `fhir_store_id`, role, and account e.g.
+         id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
+
+         to = google_healthcare_fhir_store_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
-         IAM binding imports use space-delimited identifiers; the resource in question and the role.
-
-        This binding resource can be imported using the `fhir_store_id` and role, e.g.
-
         ```sh
-         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer"
-        ```
-
-         IAM policy imports use the identifier of the resource in question.
-
-        This policy resource can be imported using the `fhir_store_id`, role, and account e.g.
-
-        ```sh
-         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
+         $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -21,6 +21,9 @@ __all__ = [
     'ConfigSignInEmail',
     'ConfigSignInHashConfig',
     'ConfigSignInPhoneNumber',
+    'ConfigSmsRegionConfig',
+    'ConfigSmsRegionConfigAllowByDefault',
+    'ConfigSmsRegionConfigAllowlistOnly',
     'InboundSamlConfigIdpConfig',
     'InboundSamlConfigIdpConfigIdpCertificate',
     'InboundSamlConfigSpConfig',
@@ -629,6 +632,132 @@ class ConfigSignInPhoneNumber(dict):
         A map of <test phone number, fake code> that can be used for phone auth testing.
         """
         return pulumi.get(self, "test_phone_numbers")
+
+
+@pulumi.output_type
+class ConfigSmsRegionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowByDefault":
+            suggest = "allow_by_default"
+        elif key == "allowlistOnly":
+            suggest = "allowlist_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigSmsRegionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigSmsRegionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigSmsRegionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_by_default: Optional['outputs.ConfigSmsRegionConfigAllowByDefault'] = None,
+                 allowlist_only: Optional['outputs.ConfigSmsRegionConfigAllowlistOnly'] = None):
+        """
+        :param 'ConfigSmsRegionConfigAllowByDefaultArgs' allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+               Structure is documented below.
+        :param 'ConfigSmsRegionConfigAllowlistOnlyArgs' allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
+               Structure is documented below.
+        """
+        if allow_by_default is not None:
+            pulumi.set(__self__, "allow_by_default", allow_by_default)
+        if allowlist_only is not None:
+            pulumi.set(__self__, "allowlist_only", allowlist_only)
+
+    @property
+    @pulumi.getter(name="allowByDefault")
+    def allow_by_default(self) -> Optional['outputs.ConfigSmsRegionConfigAllowByDefault']:
+        """
+        A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allow_by_default")
+
+    @property
+    @pulumi.getter(name="allowlistOnly")
+    def allowlist_only(self) -> Optional['outputs.ConfigSmsRegionConfigAllowlistOnly']:
+        """
+        A policy of only allowing regions by explicitly adding them to an allowlist.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowlist_only")
+
+
+@pulumi.output_type
+class ConfigSmsRegionConfigAllowByDefault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disallowedRegions":
+            suggest = "disallowed_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigSmsRegionConfigAllowByDefault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigSmsRegionConfigAllowByDefault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigSmsRegionConfigAllowByDefault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disallowed_regions: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] disallowed_regions: Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        if disallowed_regions is not None:
+            pulumi.set(__self__, "disallowed_regions", disallowed_regions)
+
+    @property
+    @pulumi.getter(name="disallowedRegions")
+    def disallowed_regions(self) -> Optional[Sequence[str]]:
+        """
+        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "disallowed_regions")
+
+
+@pulumi.output_type
+class ConfigSmsRegionConfigAllowlistOnly(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedRegions":
+            suggest = "allowed_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigSmsRegionConfigAllowlistOnly. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigSmsRegionConfigAllowlistOnly.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigSmsRegionConfigAllowlistOnly.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_regions: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowed_regions: Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        if allowed_regions is not None:
+            pulumi.set(__self__, "allowed_regions", allowed_regions)
+
+    @property
+    @pulumi.getter(name="allowedRegions")
+    def allowed_regions(self) -> Optional[Sequence[str]]:
+        """
+        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "allowed_regions")
 
 
 @pulumi.output_type

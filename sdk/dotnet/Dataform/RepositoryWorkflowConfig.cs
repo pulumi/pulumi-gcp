@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Dataform
     /// 
     ///     var dataformSa = new Gcp.ServiceAccount.Account("dataformSa", new()
     ///     {
-    ///         AccountId = "dataform-workflow-sa",
+    ///         AccountId = "dataform-sa",
     ///         DisplayName = "Dataform Service Account",
     ///     }, new CustomResourceOptions
     ///     {
@@ -149,7 +149,15 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// ## Import
     /// 
-    /// RepositoryWorkflowConfig can be imported using any of these accepted formats
+    /// RepositoryWorkflowConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}` * `{{project}}/{{region}}/{{repository}}/{{name}}` * `{{region}}/{{repository}}/{{name}}` * `{{repository}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RepositoryWorkflowConfig using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}"
+    /// 
+    ///  to = google_dataform_repository_workflow_config.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RepositoryWorkflowConfig can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}

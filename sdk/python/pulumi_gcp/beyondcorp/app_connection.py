@@ -467,7 +467,15 @@ class AppConnection(pulumi.CustomResource):
 
         ## Import
 
-        AppConnection can be imported using any of these accepted formats
+        AppConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/appConnections/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AppConnection using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/appConnections/{{name}}"
+
+         to = google_beyondcorp_app_connection.default }
+
+        ```sh
+         $ pulumi import gcp:beyondcorp/appConnection:AppConnection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AppConnection can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}
@@ -581,7 +589,15 @@ class AppConnection(pulumi.CustomResource):
 
         ## Import
 
-        AppConnection can be imported using any of these accepted formats
+        AppConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/appConnections/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AppConnection using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{region}}/appConnections/{{name}}"
+
+         to = google_beyondcorp_app_connection.default }
+
+        ```sh
+         $ pulumi import gcp:beyondcorp/appConnection:AppConnection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AppConnection can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}

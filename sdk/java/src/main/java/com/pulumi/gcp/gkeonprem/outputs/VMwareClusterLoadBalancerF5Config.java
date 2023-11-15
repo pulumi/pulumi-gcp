@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VMwareClusterLoadBalancerF5Config {
     /**
-     * @return The load balancer&#39;s IP address.
+     * @return (Output)
+     * The vCenter IP address.
      * 
      */
     private @Nullable String address;
@@ -31,7 +32,8 @@ public final class VMwareClusterLoadBalancerF5Config {
 
     private VMwareClusterLoadBalancerF5Config() {}
     /**
-     * @return The load balancer&#39;s IP address.
+     * @return (Output)
+     * The vCenter IP address.
      * 
      */
     public Optional<String> address() {

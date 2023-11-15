@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource has been deprecated, please refer to ServicePerimeterIngressPolicy.
@@ -21,7 +20,17 @@ import (
 //
 // ## Import
 //
-// IngressPolicy can be imported using any of these accepted formats:
+// IngressPolicy can be imported using any of these accepted formats* `{{ingress_policy_name}}/{{resource}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import IngressPolicy using one of the formats above. For exampletf import {
+//
+//	id = "{{ingress_policy_name}}/{{resource}}"
+//
+//	to = google_access_context_manager_ingress_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:accesscontextmanager/ingressPolicy:IngressPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), IngressPolicy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -138,12 +147,6 @@ func (i *IngressPolicy) ToIngressPolicyOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyOutput)
 }
 
-func (i *IngressPolicy) ToOutput(ctx context.Context) pulumix.Output[*IngressPolicy] {
-	return pulumix.Output[*IngressPolicy]{
-		OutputState: i.ToIngressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IngressPolicyArrayInput is an input type that accepts IngressPolicyArray and IngressPolicyArrayOutput values.
 // You can construct a concrete instance of `IngressPolicyArrayInput` via:
 //
@@ -167,12 +170,6 @@ func (i IngressPolicyArray) ToIngressPolicyArrayOutput() IngressPolicyArrayOutpu
 
 func (i IngressPolicyArray) ToIngressPolicyArrayOutputWithContext(ctx context.Context) IngressPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyArrayOutput)
-}
-
-func (i IngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IngressPolicy] {
-	return pulumix.Output[[]*IngressPolicy]{
-		OutputState: i.ToIngressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IngressPolicyMapInput is an input type that accepts IngressPolicyMap and IngressPolicyMapOutput values.
@@ -200,12 +197,6 @@ func (i IngressPolicyMap) ToIngressPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyMapOutput)
 }
 
-func (i IngressPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IngressPolicy] {
-	return pulumix.Output[map[string]*IngressPolicy]{
-		OutputState: i.ToIngressPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IngressPolicyOutput struct{ *pulumi.OutputState }
 
 func (IngressPolicyOutput) ElementType() reflect.Type {
@@ -218,12 +209,6 @@ func (o IngressPolicyOutput) ToIngressPolicyOutput() IngressPolicyOutput {
 
 func (o IngressPolicyOutput) ToIngressPolicyOutputWithContext(ctx context.Context) IngressPolicyOutput {
 	return o
-}
-
-func (o IngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IngressPolicy] {
-	return pulumix.Output[*IngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Service Perimeter to add this resource to.
@@ -252,12 +237,6 @@ func (o IngressPolicyArrayOutput) ToIngressPolicyArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o IngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IngressPolicy] {
-	return pulumix.Output[[]*IngressPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IngressPolicyArrayOutput) Index(i pulumi.IntInput) IngressPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IngressPolicy {
 		return vs[0].([]*IngressPolicy)[vs[1].(int)]
@@ -276,12 +255,6 @@ func (o IngressPolicyMapOutput) ToIngressPolicyMapOutput() IngressPolicyMapOutpu
 
 func (o IngressPolicyMapOutput) ToIngressPolicyMapOutputWithContext(ctx context.Context) IngressPolicyMapOutput {
 	return o
-}
-
-func (o IngressPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IngressPolicy] {
-	return pulumix.Output[map[string]*IngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngressPolicyMapOutput) MapIndex(k pulumi.StringInput) IngressPolicyOutput {

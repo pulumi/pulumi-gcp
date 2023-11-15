@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -256,12 +255,6 @@ func (i *MetastoreFederationIamMember) ToMetastoreFederationIamMemberOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberOutput)
 }
 
-func (i *MetastoreFederationIamMember) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamMember] {
-	return pulumix.Output[*MetastoreFederationIamMember]{
-		OutputState: i.ToMetastoreFederationIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreFederationIamMemberArrayInput is an input type that accepts MetastoreFederationIamMemberArray and MetastoreFederationIamMemberArrayOutput values.
 // You can construct a concrete instance of `MetastoreFederationIamMemberArrayInput` via:
 //
@@ -285,12 +278,6 @@ func (i MetastoreFederationIamMemberArray) ToMetastoreFederationIamMemberArrayOu
 
 func (i MetastoreFederationIamMemberArray) ToMetastoreFederationIamMemberArrayOutputWithContext(ctx context.Context) MetastoreFederationIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberArrayOutput)
-}
-
-func (i MetastoreFederationIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederationIamMember] {
-	return pulumix.Output[[]*MetastoreFederationIamMember]{
-		OutputState: i.ToMetastoreFederationIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreFederationIamMemberMapInput is an input type that accepts MetastoreFederationIamMemberMap and MetastoreFederationIamMemberMapOutput values.
@@ -318,12 +305,6 @@ func (i MetastoreFederationIamMemberMap) ToMetastoreFederationIamMemberMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationIamMemberMapOutput)
 }
 
-func (i MetastoreFederationIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederationIamMember] {
-	return pulumix.Output[map[string]*MetastoreFederationIamMember]{
-		OutputState: i.ToMetastoreFederationIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationIamMemberOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationIamMemberOutput) ElementType() reflect.Type {
@@ -336,12 +317,6 @@ func (o MetastoreFederationIamMemberOutput) ToMetastoreFederationIamMemberOutput
 
 func (o MetastoreFederationIamMemberOutput) ToMetastoreFederationIamMemberOutputWithContext(ctx context.Context) MetastoreFederationIamMemberOutput {
 	return o
-}
-
-func (o MetastoreFederationIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederationIamMember] {
-	return pulumix.Output[*MetastoreFederationIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamMemberOutput) Condition() MetastoreFederationIamMemberConditionPtrOutput {
@@ -408,12 +383,6 @@ func (o MetastoreFederationIamMemberArrayOutput) ToMetastoreFederationIamMemberA
 	return o
 }
 
-func (o MetastoreFederationIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederationIamMember] {
-	return pulumix.Output[[]*MetastoreFederationIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreFederationIamMemberArrayOutput) Index(i pulumi.IntInput) MetastoreFederationIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreFederationIamMember {
 		return vs[0].([]*MetastoreFederationIamMember)[vs[1].(int)]
@@ -432,12 +401,6 @@ func (o MetastoreFederationIamMemberMapOutput) ToMetastoreFederationIamMemberMap
 
 func (o MetastoreFederationIamMemberMapOutput) ToMetastoreFederationIamMemberMapOutputWithContext(ctx context.Context) MetastoreFederationIamMemberMapOutput {
 	return o
-}
-
-func (o MetastoreFederationIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederationIamMember] {
-	return pulumix.Output[map[string]*MetastoreFederationIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationIamMemberMapOutput) MapIndex(k pulumi.StringInput) MetastoreFederationIamMemberOutput {

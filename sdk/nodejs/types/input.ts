@@ -79,6 +79,11 @@ export namespace accesscontextmanager {
          * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
          */
         requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+         * Structure is documented below.
+         */
+        vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelBasicConditionVpcNetworkSource>[]>;
     }
 
     export interface AccessLevelBasicConditionDevicePolicy {
@@ -133,6 +138,25 @@ export namespace accesscontextmanager {
         requireVerifiedChromeOs?: pulumi.Input<boolean>;
     }
 
+    export interface AccessLevelBasicConditionVpcNetworkSource {
+        /**
+         * Sub networks within a VPC network.
+         * Structure is documented below.
+         */
+        vpcSubnetwork?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork>;
+    }
+
+    export interface AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+        /**
+         * Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * CIDR block IP subnetwork specification. Must be IPv4.
+         */
+        vpcIpSubnetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface AccessLevelConditionDevicePolicy {
         /**
          * A list of allowed device management levels.
@@ -179,6 +203,25 @@ export namespace accesscontextmanager {
          * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          */
         osType: pulumi.Input<string>;
+    }
+
+    export interface AccessLevelConditionVpcNetworkSource {
+        /**
+         * Sub networks within a VPC network.
+         * Structure is documented below.
+         */
+        vpcSubnetwork?: pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSourceVpcSubnetwork>;
+    }
+
+    export interface AccessLevelConditionVpcNetworkSourceVpcSubnetwork {
+        /**
+         * Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * CIDR block IP subnetwork specification. Must be IPv4.
+         */
+        vpcIpSubnetworks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AccessLevelCustom {
@@ -307,6 +350,11 @@ export namespace accesscontextmanager {
          * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
          */
         requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+         * Structure is documented below.
+         */
+        vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevelBasicConditionVpcNetworkSource>[]>;
     }
 
     export interface AccessLevelsAccessLevelBasicConditionDevicePolicy {
@@ -355,6 +403,25 @@ export namespace accesscontextmanager {
          * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          */
         osType: pulumi.Input<string>;
+    }
+
+    export interface AccessLevelsAccessLevelBasicConditionVpcNetworkSource {
+        /**
+         * Sub networks within a VPC network.
+         * Structure is documented below.
+         */
+        vpcSubnetwork?: pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork>;
+    }
+
+    export interface AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+        /**
+         * Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * CIDR block IP subnetwork specification. Must be IPv4.
+         */
+        vpcIpSubnetworks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AccessLevelsAccessLevelCustom {
@@ -412,6 +479,23 @@ export namespace accesscontextmanager {
          * Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: pulumi.Input<string>;
+        /**
+         * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         */
+        sourceRestriction?: pulumi.Input<string>;
+        /**
+         * Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterEgressPolicyEgressFromSource>[]>;
+    }
+
+    export interface ServicePerimeterEgressPolicyEgressFromSource {
+        /**
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+         */
+        accessLevel?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterEgressPolicyEgressTo {
@@ -642,6 +726,23 @@ export namespace accesscontextmanager {
          * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: pulumi.Input<string>;
+        /**
+         * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         */
+        sourceRestriction?: pulumi.Input<string>;
+        /**
+         * Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressFromSource>[]>;
+    }
+
+    export interface ServicePerimeterSpecEgressPolicyEgressFromSource {
+        /**
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+         */
+        accessLevel?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterSpecEgressPolicyEgressTo {
@@ -736,14 +837,7 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecIngressPolicyIngressFromSource {
         /**
-         * An `AccessLevel` resource name that allow resources within the
-         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-         * resources within the perimeter can only be accessed via Google Cloud calls
-         * with request origins within the perimeter.
-         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-         * If * is specified, then all IngressSources will be allowed.
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: pulumi.Input<string>;
         /**
@@ -900,6 +994,23 @@ export namespace accesscontextmanager {
          * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: pulumi.Input<string>;
+        /**
+         * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         */
+        sourceRestriction?: pulumi.Input<string>;
+        /**
+         * Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFromSource>[]>;
+    }
+
+    export interface ServicePerimeterStatusEgressPolicyEgressFromSource {
+        /**
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+         */
+        accessLevel?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterStatusEgressPolicyEgressTo {
@@ -994,14 +1105,7 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusIngressPolicyIngressFromSource {
         /**
-         * An `AccessLevel` resource name that allow resources within the
-         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-         * resources within the perimeter can only be accessed via Google Cloud calls
-         * with request origins within the perimeter.
-         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-         * If * is specified, then all IngressSources will be allowed.
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: pulumi.Input<string>;
         /**
@@ -1232,6 +1336,23 @@ export namespace accesscontextmanager {
          * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: pulumi.Input<string>;
+        /**
+         * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         */
+        sourceRestriction?: pulumi.Input<string>;
+        /**
+         * Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource {
+        /**
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+         */
+        accessLevel?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
@@ -1326,14 +1447,7 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
         /**
-         * An `AccessLevel` resource name that allow resources within the
-         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-         * resources within the perimeter can only be accessed via Google Cloud calls
-         * with request origins within the perimeter.
-         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-         * If * is specified, then all IngressSources will be allowed.
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: pulumi.Input<string>;
         /**
@@ -1490,6 +1604,23 @@ export namespace accesscontextmanager {
          * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: pulumi.Input<string>;
+        /**
+         * Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+         * Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+         */
+        sourceRestriction?: pulumi.Input<string>;
+        /**
+         * Sources that this EgressPolicy authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
+        /**
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+         */
+        accessLevel?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
@@ -1584,14 +1715,7 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
         /**
-         * An `AccessLevel` resource name that allow resources within the
-         * `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-         * must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-         * `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-         * resources within the perimeter can only be accessed via Google Cloud calls
-         * with request origins within the perimeter.
-         * Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-         * If * is specified, then all IngressSources will be allowed.
+         * An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
          */
         accessLevel?: pulumi.Input<string>;
         /**
@@ -1943,6 +2067,34 @@ export namespace alloydb {
          * The point in time that this cluster is restored to, in RFC 3339 format.
          */
         pointInTime: pulumi.Input<string>;
+    }
+
+    export interface ClusterSecondaryConfig {
+        /**
+         * Name of the primary cluster must be in the format
+         * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+         */
+        primaryClusterName: pulumi.Input<string>;
+    }
+
+    export interface InstanceClientConnectionConfig {
+        /**
+         * Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
+         */
+        requireConnectors?: pulumi.Input<boolean>;
+        /**
+         * SSL config option for this instance.
+         * Structure is documented below.
+         */
+        sslConfig?: pulumi.Input<inputs.alloydb.InstanceClientConnectionConfigSslConfig>;
+    }
+
+    export interface InstanceClientConnectionConfigSslConfig {
+        /**
+         * SSL mode. Specifies client-server SSL/TLS connection behavior.
+         * Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
+         */
+        sslMode?: pulumi.Input<string>;
     }
 
     export interface InstanceMachineConfig {
@@ -3474,7 +3626,7 @@ export namespace artifactregistry {
          */
         repositoryBase: pulumi.Input<string>;
         /**
-         * Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+         * Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
          */
         repositoryPath: pulumi.Input<string>;
     }
@@ -3530,7 +3682,7 @@ export namespace artifactregistry {
          */
         repositoryBase: pulumi.Input<string>;
         /**
-         * Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+         * Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
          */
         repositoryPath: pulumi.Input<string>;
     }
@@ -3562,6 +3714,17 @@ export namespace artifactregistry {
 }
 
 export namespace assuredworkloads {
+    export interface WorkloadComplianceStatus {
+        acknowledgedViolationCounts?: pulumi.Input<pulumi.Input<number>[]>;
+        activeViolationCounts?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface WorkloadEkmProvisioningResponse {
+        ekmProvisioningErrorDomain?: pulumi.Input<string>;
+        ekmProvisioningErrorMapping?: pulumi.Input<string>;
+        ekmProvisioningState?: pulumi.Input<string>;
+    }
+
     export interface WorkloadKmsSettings {
         /**
          * Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
@@ -3573,9 +3736,24 @@ export namespace assuredworkloads {
         rotationPeriod: pulumi.Input<string>;
     }
 
+    export interface WorkloadPartnerPermissions {
+        /**
+         * Optional. Allow partner to view violation alerts.
+         */
+        assuredWorkloadsMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Allow the partner to view inspectability logs and monitoring violations.
+         */
+        dataLogsViewer?: pulumi.Input<boolean>;
+        /**
+         * Optional. Allow partner to view access approval logs.
+         */
+        serviceAccessApprover?: pulumi.Input<boolean>;
+    }
+
     export interface WorkloadResource {
         /**
-         * Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
          */
         resourceId?: pulumi.Input<number>;
         /**
@@ -3586,13 +3764,22 @@ export namespace assuredworkloads {
 
     export interface WorkloadResourceSetting {
         /**
-         * Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         * User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folderId is assigned by Google.
          */
         resourceId?: pulumi.Input<string>;
         /**
          * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
          */
         resourceType?: pulumi.Input<string>;
+    }
+
+    export interface WorkloadSaaEnrollmentResponse {
+        setupErrors?: pulumi.Input<pulumi.Input<string>[]>;
+        setupStatus?: pulumi.Input<string>;
     }
 }
 
@@ -3837,15 +4024,32 @@ export namespace bigquery {
 
     export interface ConnectionCloudSpanner {
         /**
-         * Cloud Spanner database in the form `project/instance/database'
+         * Cloud Spanner database in the form `project/instance/database'.
          */
         database: pulumi.Input<string>;
         /**
-         * If parallelism should be used when reading from Cloud Spanner
+         * Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+         */
+        databaseRole?: pulumi.Input<string>;
+        /**
+         * Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+         */
+        maxParallelism?: pulumi.Input<number>;
+        /**
+         * If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
+         */
+        useDataBoost?: pulumi.Input<boolean>;
+        /**
+         * If parallelism should be used when reading from Cloud Spanner.
          */
         useParallelism?: pulumi.Input<boolean>;
         /**
-         * If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+         * (Optional, Deprecated)
+         * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+         *
+         * > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
+         *
+         * @deprecated `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          */
         useServerlessAnalytics?: pulumi.Input<boolean>;
     }
@@ -3956,6 +4160,11 @@ export namespace bigquery {
          * An email address of a Google Group to grant access to.
          */
         groupByEmail?: pulumi.Input<string>;
+        /**
+         * Some other type of member that appears in the IAM Policy but isn't a user,
+         * group, domain, or special group. For example: `allUsers`
+         */
+        iamMember?: pulumi.Input<string>;
         /**
          * Describes the rights granted to the user specified by the other
          * member of the access object. Basic, predefined, and custom roles
@@ -5150,7 +5359,10 @@ export namespace bigquery {
         /**
          * If set to true, queries over this table
          * require a partition filter that can be used for partition elimination to be
-         * specified.
+         * specified. `requirePartitionFilter` is deprecated and will be removed in
+         * a future major release. Use the top level field with the same name instead.
+         *
+         * @deprecated This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.
          */
         requirePartitionFilter?: pulumi.Input<boolean>;
         /**
@@ -9609,6 +9821,67 @@ export namespace cloudfunctionsv2 {
 }
 
 export namespace cloudidentity {
+    export interface GetGroupLookupGroupKey {
+        /**
+         * (Required) The ID of the entity.
+         * For Google-managed entities, the id is the email address of an existing group or user.
+         * For external-identity-mapped entities, the id is a string conforming
+         * to the Identity Source's requirements.
+         */
+        id: string;
+        /**
+         * (Optional) The namespace in which the entity exists.
+         * If not populated, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         * If populated, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of `identitysources/{identity_source_id}`.
+         */
+        namespace?: string;
+    }
+
+    export interface GetGroupLookupGroupKeyArgs {
+        /**
+         * (Required) The ID of the entity.
+         * For Google-managed entities, the id is the email address of an existing group or user.
+         * For external-identity-mapped entities, the id is a string conforming
+         * to the Identity Source's requirements.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * (Optional) The namespace in which the entity exists.
+         * If not populated, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         * If populated, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of `identitysources/{identity_source_id}`.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GroupAdditionalGroupKey {
+        /**
+         * The ID of the entity.
+         * For Google-managed entities, the id must be the email address of an existing
+         * group or user.
+         * For external-identity-mapped entities, the id must be a string conforming
+         * to the Identity Source's requirements.
+         * Must be unique within a namespace.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * The namespace in which the entity exists.
+         * If not specified, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         * If specified, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of `identitysources/{identity_source_id}`.
+         *
+         * - - -
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
     export interface GroupGroupKey {
         /**
          * The ID of the entity.
@@ -12127,6 +12400,10 @@ export namespace composer {
         storageGb?: pulumi.Input<number>;
     }
 
+    export interface EnvironmentStorageConfig {
+        bucket: pulumi.Input<string>;
+    }
+
 }
 
 export namespace compute {
@@ -13601,7 +13878,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
          */
         type: pulumi.Input<string>;
     }
@@ -13776,6 +14053,10 @@ export namespace compute {
 
     export interface InstanceBootDiskInitializeParams {
         /**
+         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: pulumi.Input<boolean>;
+        /**
          * The image from which to initialize this disk. This can be
          * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -13838,6 +14119,7 @@ export namespace compute {
     }
 
     export interface InstanceFromMachineImageBootDiskInitializeParams {
+        enableConfidentialCompute?: pulumi.Input<boolean>;
         image?: pulumi.Input<string>;
         labels?: pulumi.Input<{[key: string]: any}>;
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
@@ -13950,6 +14232,7 @@ export namespace compute {
     }
 
     export interface InstanceFromMachineImageScratchDisk {
+        deviceName?: pulumi.Input<string>;
         interface: pulumi.Input<string>;
         size?: pulumi.Input<number>;
     }
@@ -13992,6 +14275,7 @@ export namespace compute {
     }
 
     export interface InstanceFromTemplateBootDiskInitializeParams {
+        enableConfidentialCompute?: pulumi.Input<boolean>;
         image?: pulumi.Input<string>;
         labels?: pulumi.Input<{[key: string]: any}>;
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
@@ -14104,6 +14388,7 @@ export namespace compute {
     }
 
     export interface InstanceFromTemplateScratchDisk {
+        deviceName?: pulumi.Input<string>;
         interface: pulumi.Input<string>;
         size?: pulumi.Input<number>;
     }
@@ -14644,6 +14929,11 @@ export namespace compute {
 
     export interface InstanceScratchDisk {
         /**
+         * Name with which the attached disk will be accessible
+         * under `/dev/disk/by-id/google-*`
+         */
+        deviceName?: pulumi.Input<string>;
+        /**
          * The disk interface to use for attaching this disk; either SCSI or NVME.
          */
         interface: pulumi.Input<string>;
@@ -14667,6 +14957,13 @@ export namespace compute {
          * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         scopes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InstanceSettingsMetadata {
+        /**
+         * A metadata key/value items map. The total size of all keys and values must be less than 512KB
+         */
+        items?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceShieldedInstanceConfig {
@@ -14771,6 +15068,12 @@ export namespace compute {
          * read-write mode.
          */
         mode?: pulumi.Input<string>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This
+         * sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details, see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         */
         provisionedIops?: pulumi.Input<number>;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -14904,6 +15207,9 @@ export namespace compute {
          * `subnetwork` for custom subnetted networks.
          */
         network?: pulumi.Input<string>;
+        /**
+         * ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment?: pulumi.Input<string>;
         /**
          * The private IP address to assign to the instance. If
@@ -15051,7 +15357,7 @@ export namespace compute {
          */
         preemptible?: pulumi.Input<boolean>;
         /**
-         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
          * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -15579,7 +15885,15 @@ export namespace compute {
          * Structure is documented below.
          */
         disks?: pulumi.Input<pulumi.Input<inputs.compute.PerInstanceConfigPreservedStateDisk>[]>;
+        /**
+         * Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         */
         externalIps?: pulumi.Input<pulumi.Input<inputs.compute.PerInstanceConfigPreservedStateExternalIp>[]>;
+        /**
+         * Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         */
         internalIps?: pulumi.Input<pulumi.Input<inputs.compute.PerInstanceConfigPreservedStateInternalIp>[]>;
         /**
          * Preserved metadata defined for this instance. This is a list of key->value pairs.
@@ -17105,6 +17419,12 @@ export namespace compute {
          * read-write mode.
          */
         mode?: pulumi.Input<string>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This
+         * sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details, see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         */
         provisionedIops?: pulumi.Input<number>;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -17652,7 +17972,15 @@ export namespace compute {
          * Structure is documented below.
          */
         disks?: pulumi.Input<pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedStateDisk>[]>;
+        /**
+         * Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         */
         externalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedStateExternalIp>[]>;
+        /**
+         * Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+         * Structure is documented below.
+         */
         internalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedStateInternalIp>[]>;
         /**
          * Preserved metadata defined for this instance. This is a list of key->value pairs.
@@ -22462,6 +22790,14 @@ export namespace config {
 export namespace container {
     export interface AttachedClusterAuthorization {
         /**
+         * Groups that can perform operations as a cluster admin. A managed
+         * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+         * to the groups. Up to ten admin groups can be provided.
+         * For more info on RBAC, see
+         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Users that can perform operations as a cluster admin. A managed
          * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
          * to the users. Up to ten admin users can be provided.
@@ -22561,9 +22897,20 @@ export namespace container {
 
     export interface AwsClusterAuthorization {
         /**
+         * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminGroups?: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminGroup>[]>;
+        /**
          * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminUser>[]>;
+    }
+
+    export interface AwsClusterAuthorizationAdminGroup {
+        /**
+         * The name of the group, e.g. `my-group@domain.com`.
+         */
+        group: pulumi.Input<string>;
     }
 
     export interface AwsClusterAuthorizationAdminUser {
@@ -22685,7 +23032,7 @@ export namespace container {
          */
         sizeGib?: pulumi.Input<number>;
         /**
-         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -22719,7 +23066,7 @@ export namespace container {
          */
         sizeGib?: pulumi.Input<number>;
         /**
-         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -22907,7 +23254,7 @@ export namespace container {
          */
         sizeGib?: pulumi.Input<number>;
         /**
-         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -22981,9 +23328,20 @@ export namespace container {
 
     export interface AzureClusterAuthorization {
         /**
+         * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         */
+        adminGroups?: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminGroup>[]>;
+        /**
          * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminUser>[]>;
+    }
+
+    export interface AzureClusterAuthorizationAdminGroup {
+        /**
+         * The name of the group, e.g. `my-group@domain.com`.
+         */
+        group: pulumi.Input<string>;
     }
 
     export interface AzureClusterAuthorizationAdminUser {
@@ -23674,6 +24032,15 @@ export namespace container {
         enabledApis: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface ClusterFleet {
+        membership?: pulumi.Input<string>;
+        preRegistered?: pulumi.Input<boolean>;
+        /**
+         * The name of the Fleet host project where this cluster will be registered.
+         */
+        project?: pulumi.Input<string>;
+    }
+
     export interface ClusterGatewayApiConfig {
         /**
          * Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
@@ -23954,6 +24321,11 @@ export namespace container {
         diskType?: pulumi.Input<string>;
         effectiveTaints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigEffectiveTaint>[]>;
         /**
+         * )
+         * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+         */
+        enableConfidentialStorage?: pulumi.Input<boolean>;
+        /**
          * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
@@ -24028,13 +24400,7 @@ export namespace container {
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-         * Note that validations happen all server side. All attributes are optional.
-         * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Parameters that can be configured on Linux nodes. Structure is documented below.
          */
         linuxNodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfigLinuxNodeConfig>;
         /**
@@ -24295,11 +24661,21 @@ export namespace container {
 
     export interface ClusterNodeConfigLinuxNodeConfig {
         /**
+         * Possible cgroup modes that can be used.
+         * Accepted values are:
+         */
+        cgroupMode?: pulumi.Input<string>;
+        /**
          * The Linux kernel parameters to be applied to the nodes
          * and all pods running on the nodes. Specified as a map from the key, such as
-         * `net.core.wmem_max`, to a string value.
+         * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Note that validations happen all server side. All attributes are optional.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
-        sysctls: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface ClusterNodeConfigLocalNvmeSsdBlockConfig {
@@ -24611,6 +24987,11 @@ export namespace container {
         diskType?: pulumi.Input<string>;
         effectiveTaints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEffectiveTaint>[]>;
         /**
+         * )
+         * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+         */
+        enableConfidentialStorage?: pulumi.Input<boolean>;
+        /**
          * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
@@ -24685,13 +25066,7 @@ export namespace container {
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-         * Note that validations happen all server side. All attributes are optional.
-         * Structure is documented below.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Parameters that can be configured on Linux nodes. Structure is documented below.
          */
         linuxNodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigLinuxNodeConfig>;
         /**
@@ -24952,11 +25327,21 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigLinuxNodeConfig {
         /**
+         * Possible cgroup modes that can be used.
+         * Accepted values are:
+         */
+        cgroupMode?: pulumi.Input<string>;
+        /**
          * The Linux kernel parameters to be applied to the nodes
          * and all pods running on the nodes. Specified as a map from the key, such as
-         * `net.core.wmem_max`, to a string value.
+         * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+         * Note that validations happen all server side. All attributes are optional.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
-        sysctls: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
@@ -25281,7 +25666,7 @@ export namespace container {
          */
         mode?: pulumi.Input<string>;
         /**
-         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
          */
         vulnerabilityMode?: pulumi.Input<string>;
     }
@@ -25434,6 +25819,7 @@ export namespace container {
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         effectiveTaints?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigEffectiveTaint>[]>;
+        enableConfidentialStorage?: pulumi.Input<boolean>;
         ephemeralStorageConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageConfig>;
         ephemeralStorageLocalSsdConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageLocalSsdConfig>;
         fastSocket?: pulumi.Input<inputs.container.NodePoolNodeConfigFastSocket>;
@@ -25550,7 +25936,8 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigLinuxNodeConfig {
-        sysctls: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        cgroupMode?: pulumi.Input<string>;
+        sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface NodePoolNodeConfigLocalNvmeSsdBlockConfig {
@@ -26066,6 +26453,117 @@ export namespace databasemigrationservice {
         type?: pulumi.Input<string>;
     }
 
+    export interface ConnectionProfileOracle {
+        /**
+         * Required. Database service for the Oracle connection.
+         */
+        databaseService: pulumi.Input<string>;
+        /**
+         * SSL configuration for the destination to connect to the source database.
+         * Structure is documented below.
+         */
+        forwardSshConnectivity?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracleForwardSshConnectivity>;
+        /**
+         * Required. The IP or hostname of the source Oracle database.
+         */
+        host: pulumi.Input<string>;
+        /**
+         * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Indicates If this connection profile password is stored.
+         */
+        passwordSet?: pulumi.Input<boolean>;
+        /**
+         * Required. The network port of the source Oracle database.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Configuration for using a private network to communicate with the source database
+         * Structure is documented below.
+         */
+        privateConnectivity?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOraclePrivateConnectivity>;
+        /**
+         * SSL configuration for the destination to connect to the source database.
+         * Structure is documented below.
+         */
+        ssl?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracleSsl>;
+        /**
+         * This object has no nested fields.
+         * Static IP address connectivity configured on service project.
+         */
+        staticServiceIpConnectivity?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivity>;
+        /**
+         * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileOracleForwardSshConnectivity {
+        /**
+         * Required. Hostname for the SSH tunnel.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * Input only. SSH password. Only one of `password` and `privateKey` can be configured.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Port for the SSH tunnel, default value is 22.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        privateKey?: pulumi.Input<string>;
+        /**
+         * Required. Username for the SSH tunnel.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileOraclePrivateConnectivity {
+        /**
+         * Required. The resource name (URI) of the private connection.
+         */
+        privateConnection: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileOracleSsl {
+        /**
+         * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+         * The replica will use this certificate to verify it's connecting to the right host.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        caCertificate: pulumi.Input<string>;
+        /**
+         * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+         * If this field is used then the 'clientKey' field is mandatory
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientCertificate?: pulumi.Input<string>;
+        /**
+         * Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+         * If this field is used then the 'clientCertificate' field is mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientKey?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current connection profile state.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileOracleStaticServiceIpConnectivity {
+    }
+
     export interface ConnectionProfilePostgresql {
         /**
          * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -26130,6 +26628,31 @@ export namespace databasemigrationservice {
          * The current connection profile state.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface PrivateConnectionError {
+        /**
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A message containing more information about the error that occurred.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface PrivateConnectionVpcPeeringConfig {
+        /**
+         * A free subnet for peering. (CIDR of /29)
+         *
+         * - - -
+         */
+        subnet: pulumi.Input<string>;
+        /**
+         * Fully qualified name of the VPC that Database Migration Service will peer to.
+         * Format: projects/{project}/global/{networks}/{name}
+         */
+        vpcName: pulumi.Input<string>;
     }
 }
 
@@ -26681,13 +27204,18 @@ export namespace dataflow {
 export namespace dataform {
     export interface RepositoryGitRemoteSettings {
         /**
-         * The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+         * The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
          */
-        authenticationTokenSecretVersion: pulumi.Input<string>;
+        authenticationTokenSecretVersion?: pulumi.Input<string>;
         /**
          * The Git remote's default branch name.
          */
         defaultBranch: pulumi.Input<string>;
+        /**
+         * Authentication fields for remote uris using SSH protocol.
+         * Structure is documented below.
+         */
+        sshAuthenticationConfig?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfig>;
         /**
          * (Output)
          * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
@@ -26697,6 +27225,17 @@ export namespace dataform {
          * The Git remote's URL.
          */
         url: pulumi.Input<string>;
+    }
+
+    export interface RepositoryGitRemoteSettingsSshAuthenticationConfig {
+        /**
+         * Content of a public SSH key to verify an identity of a remote Git host.
+         */
+        hostPublicKey: pulumi.Input<string>;
+        /**
+         * The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+         */
+        userPrivateKeySecretVersion: pulumi.Input<string>;
     }
 
     export interface RepositoryReleaseConfigCodeCompilationConfig {
@@ -26846,15 +27385,15 @@ export namespace dataform {
 
     export interface RepositoryWorkspaceCompilationOverrides {
         /**
-         * Optional. The default database (Google Cloud project ID).
+         * The default database (Google Cloud project ID).
          */
         defaultDatabase?: pulumi.Input<string>;
         /**
-         * Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+         * The suffix that should be appended to all schema (BigQuery dataset ID) names.
          */
         schemaSuffix?: pulumi.Input<string>;
         /**
-         * Optional. The prefix that should be prepended to all table names.
+         * The prefix that should be prepended to all table names.
          */
         tablePrefix?: pulumi.Input<string>;
     }
@@ -33199,6 +33738,10 @@ export namespace dataproc {
          * Disk Config
          */
         diskConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig>;
+        /**
+         * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+         */
+        instanceFlexibilityPolicy?: pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy>;
         instanceNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Specifies the number of preemptible nodes to create.
@@ -33234,6 +33777,35 @@ export namespace dataproc {
          * attached to each master cluster node. Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number>;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
+        /**
+         * List of instance selection options that the group will use when creating new VMs.
+         */
+        instanceSelectionLists?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>[]>;
+        instanceSelectionResults?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>[]>;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+        /**
+         * Full machine-type names, e.g. `"n1-standard-16"`.
+         */
+        machineTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+         *
+         * - - -
+         */
+        rank?: pulumi.Input<number>;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+        /**
+         * The name of a Compute Engine machine type.
+         */
+        machineType?: pulumi.Input<string>;
+        vmCount?: pulumi.Input<number>;
     }
 
     export interface ClusterClusterConfigSecurityConfig {
@@ -33381,6 +33953,10 @@ export namespace dataproc {
          * for details about which CPU families are available (and defaulted) for each zone.
          */
         minCpuPlatform?: pulumi.Input<string>;
+        /**
+         * The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
+         */
+        minNumInstances?: pulumi.Input<number>;
         /**
          * Specifies the number of worker nodes to create.
          * If not specified, GCP will default to a predetermined computed value (currently 2).
@@ -36250,11 +36826,95 @@ export namespace deploymentmanager {
 }
 
 export namespace diagflow {
+    export interface CxAgentAdvancedSettings {
+        /**
+         * If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * Structure is documented below.
+         */
+        audioExportGcsDestination?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettingsAudioExportGcsDestination>;
+        /**
+         * Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        dtmfSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettingsDtmfSettings>;
+    }
+
+    export interface CxAgentAdvancedSettingsAudioExportGcsDestination {
+        /**
+         * The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+         * Format: gs://bucket/object-name-or-prefix
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface CxAgentAdvancedSettingsDtmfSettings {
+        /**
+         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The digit that terminates a DTMF digit sequence.
+         */
+        finishDigit?: pulumi.Input<string>;
+        /**
+         * Max length of DTMF digits.
+         */
+        maxDigits?: pulumi.Input<number>;
+    }
+
+    export interface CxAgentGitIntegrationSettings {
+        /**
+         * Settings of integration with GitHub.
+         * Structure is documented below.
+         */
+        githubSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettingsGithubSettings>;
+    }
+
+    export interface CxAgentGitIntegrationSettingsGithubSettings {
+        /**
+         * The access token used to authenticate the access to the GitHub repository.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        accessToken?: pulumi.Input<string>;
+        /**
+         * A list of branches configured to be used from Dialogflow.
+         */
+        branches?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The unique repository display name for the GitHub repository.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * The GitHub repository URI related to the agent.
+         */
+        repositoryUri?: pulumi.Input<string>;
+        /**
+         * The branch of the GitHub repository tracked for this agent.
+         */
+        trackingBranch?: pulumi.Input<string>;
+    }
+
     export interface CxAgentSpeechToTextSettings {
         /**
          * Whether to use speech adaptation for speech recognition.
          */
         enableSpeechAdaptation?: pulumi.Input<boolean>;
+    }
+
+    export interface CxAgentTextToSpeechSettings {
+        /**
+         * Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+         * These settings affect:
+         * * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+         * * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+         */
+        synthesizeSpeechConfigs?: pulumi.Input<string>;
     }
 
     export interface CxEntityTypeEntity {
@@ -36287,6 +36947,48 @@ export namespace diagflow {
          * - - -
          */
         version: pulumi.Input<string>;
+    }
+
+    export interface CxFlowAdvancedSettings {
+        /**
+         * If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * Structure is documented below.
+         */
+        audioExportGcsDestination?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettingsAudioExportGcsDestination>;
+        /**
+         * Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        dtmfSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettingsDtmfSettings>;
+    }
+
+    export interface CxFlowAdvancedSettingsAudioExportGcsDestination {
+        /**
+         * The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+         * Format: gs://bucket/object-name-or-prefix
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowAdvancedSettingsDtmfSettings {
+        /**
+         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The digit that terminates a DTMF digit sequence.
+         */
+        finishDigit?: pulumi.Input<string>;
+        /**
+         * Max length of DTMF digits.
+         */
+        maxDigits?: pulumi.Input<number>;
     }
 
     export interface CxFlowEventHandler {
@@ -36744,6 +37446,33 @@ export namespace diagflow {
         text: pulumi.Input<string>;
     }
 
+    export interface CxPageAdvancedSettings {
+        /**
+         * Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        dtmfSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettingsDtmfSettings>;
+    }
+
+    export interface CxPageAdvancedSettingsDtmfSettings {
+        /**
+         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The digit that terminates a DTMF digit sequence.
+         */
+        finishDigit?: pulumi.Input<string>;
+        /**
+         * Max length of DTMF digits.
+         */
+        maxDigits?: pulumi.Input<number>;
+    }
+
     export interface CxPageEntryFulfillment {
         /**
          * Conditional cases for this fulfillment.
@@ -37099,6 +37828,12 @@ export namespace diagflow {
 
     export interface CxPageFormParameter {
         /**
+         * Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+         * Structure is documented below.
+         */
+        advancedSettings?: pulumi.Input<inputs.diagflow.CxPageFormParameterAdvancedSettings>;
+        /**
          * The default value of an optional parameter. If the parameter is required, the default value will be ignored.
          */
         defaultValue?: pulumi.Input<string>;
@@ -37130,6 +37865,33 @@ export namespace diagflow {
          * Required parameters must be filled before form filling concludes.
          */
         required?: pulumi.Input<boolean>;
+    }
+
+    export interface CxPageFormParameterAdvancedSettings {
+        /**
+         * Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        dtmfSettings?: pulumi.Input<inputs.diagflow.CxPageFormParameterAdvancedSettingsDtmfSettings>;
+    }
+
+    export interface CxPageFormParameterAdvancedSettingsDtmfSettings {
+        /**
+         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The digit that terminates a DTMF digit sequence.
+         */
+        finishDigit?: pulumi.Input<string>;
+        /**
+         * Max length of DTMF digits.
+         */
+        maxDigits?: pulumi.Input<number>;
     }
 
     export interface CxPageFormParameterFillBehavior {
@@ -38093,14 +38855,14 @@ export namespace diagflow {
          * Indicates NLU model training mode.
          * * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
          * * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-         * Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+         * Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
          */
         modelTrainingMode?: pulumi.Input<string>;
         /**
          * Indicates the type of NLU model.
          * * MODEL_TYPE_STANDARD: Use standard NLU model.
          * * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-         * Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+         * Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
          */
         modelType?: pulumi.Input<string>;
     }
@@ -38689,6 +39451,360 @@ export namespace dns {
          * Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
          */
         type: pulumi.Input<string>;
+    }
+}
+
+export namespace edgecontainer {
+    export interface ClusterAuthorization {
+        /**
+         * User that will be granted the cluster-admin role on the cluster, providing
+         * full access to the cluster. Currently, this is a singular field, but will
+         * be expanded to allow multiple admins in the future.
+         * Structure is documented below.
+         */
+        adminUsers: pulumi.Input<inputs.edgecontainer.ClusterAuthorizationAdminUsers>;
+    }
+
+    export interface ClusterAuthorizationAdminUsers {
+        /**
+         * An active Google username.
+         *
+         * - - -
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ClusterControlPlane {
+        /**
+         * Local control plane configuration.
+         * Structure is documented below.
+         */
+        local?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneLocal>;
+        /**
+         * Remote control plane configuration.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneRemote>;
+    }
+
+    export interface ClusterControlPlaneEncryption {
+        /**
+         * The Cloud KMS CryptoKey e.g.
+         * projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+         * to use for protecting control plane disks. If not specified, a
+         * Google-managed key will be used instead.
+         */
+        kmsKey?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Cloud KMS CryptoKeyVersion currently in use for protecting control
+         * plane disks. Only applicable if kmsKey is set.
+         */
+        kmsKeyActiveVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
+         * nodes may go offline as they cannot access their local data. This can be
+         * caused by a lack of permissions to use the key, or if the key is disabled
+         * or deleted.
+         */
+        kmsKeyState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Error status returned by Cloud KMS when using this key. This field may be
+         * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+         * If populated, this field contains the error status reported by Cloud KMS.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+         */
+        kmsStatuses?: pulumi.Input<pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryptionKmsStatus>[]>;
+    }
+
+    export interface ClusterControlPlaneEncryptionKmsStatus {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface ClusterControlPlaneLocal {
+        /**
+         * Only machines matching this filter will be allowed to host control
+         * plane nodes. The filtering language accepts strings like "name=<name>",
+         * and is documented here: [AIP-160](https://google.aip.dev/160).
+         */
+        machineFilter?: pulumi.Input<string>;
+        /**
+         * The number of nodes to serve as replicas of the Control Plane.
+         * Only 1 and 3 are supported.
+         */
+        nodeCount?: pulumi.Input<number>;
+        /**
+         * Name of the Google Distributed Cloud Edge zones where this node pool
+         * will be created. For example: `us-central1-edge-customer-a`.
+         */
+        nodeLocation?: pulumi.Input<string>;
+        /**
+         * Policy configuration about how user applications are deployed.
+         * Possible values are: `SHARED_DEPLOYMENT_POLICY_UNSPECIFIED`, `ALLOWED`, `DISALLOWED`.
+         */
+        sharedDeploymentPolicy?: pulumi.Input<string>;
+    }
+
+    export interface ClusterControlPlaneRemote {
+        /**
+         * Name of the Google Distributed Cloud Edge zones where this node pool
+         * will be created. For example: `us-central1-edge-customer-a`.
+         */
+        nodeLocation?: pulumi.Input<string>;
+    }
+
+    export interface ClusterFleet {
+        /**
+         * (Output)
+         * The name of the managed Hub Membership resource associated to this cluster.
+         * Membership names are formatted as
+         * `projects/<project-number>/locations/global/membership/<cluster-id>`.
+         */
+        membership?: pulumi.Input<string>;
+        /**
+         * The name of the Fleet host project where this cluster will be registered.
+         * Project names are formatted as
+         * `projects/<project-number>`.
+         */
+        project: pulumi.Input<string>;
+    }
+
+    export interface ClusterMaintenanceEvent {
+        /**
+         * (Output)
+         * The time when the maintenance event request was created.
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * The time that the window ends. The end time must take place after the
+         * start time.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The operation for running the maintenance event. Specified in the format
+         * projects/*&#47;locations/*&#47;operations/*. If the maintenance event is split
+         * into multiple operations (e.g. due to maintenance windows), the latest
+         * one is recorded.
+         */
+        operation?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The schedule of the maintenance event.
+         */
+        schedule?: pulumi.Input<string>;
+        /**
+         * The time that the window first starts.
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Indicates the maintenance event state.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * The target cluster version. For example: "1.5.0".
+         */
+        targetVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Indicates the maintenance event type.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time when the maintenance event message was updated.
+         */
+        updateTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * UUID of the maintenance event.
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ClusterMaintenancePolicy {
+        /**
+         * Specifies the maintenance window in which maintenance may be performed.
+         * Structure is documented below.
+         */
+        window: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicyWindow>;
+    }
+
+    export interface ClusterMaintenancePolicyWindow {
+        /**
+         * Represents an arbitrary window of time that recurs.
+         * Structure is documented below.
+         */
+        recurringWindow: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindow>;
+    }
+
+    export interface ClusterMaintenancePolicyWindowRecurringWindow {
+        /**
+         * An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+         * this window recurs. They go on for the span of time between the start and
+         * end time.
+         */
+        recurrence?: pulumi.Input<string>;
+        /**
+         * Represents an arbitrary window of time.
+         * Structure is documented below.
+         */
+        window?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicyWindowRecurringWindowWindow>;
+    }
+
+    export interface ClusterMaintenancePolicyWindowRecurringWindowWindow {
+        /**
+         * The time that the window ends. The end time must take place after the
+         * start time.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * The time that the window first starts.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworking {
+        /**
+         * All pods in the cluster are assigned an RFC1918 IPv4 address from these
+         * blocks. Only a single block is supported. This field cannot be changed
+         * after creation.
+         */
+        clusterIpv4CidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * If specified, dual stack mode is enabled and all pods in the cluster are
+         * assigned an IPv6 address from these blocks alongside from an IPv4
+         * address. Only a single block is supported. This field cannot be changed
+         * after creation.
+         */
+        clusterIpv6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
+         */
+        networkType?: pulumi.Input<string>;
+        /**
+         * All services in the cluster are assigned an RFC1918 IPv4 address from these
+         * blocks. Only a single block is supported. This field cannot be changed
+         * after creation.
+         */
+        servicesIpv4CidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * If specified, dual stack mode is enabled and all services in the cluster are
+         * assigned an IPv6 address from these blocks alongside from an IPv4
+         * address. Only a single block is supported. This field cannot be changed
+         * after creation.
+         */
+        servicesIpv6CidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterSystemAddonsConfig {
+        /**
+         * Config for the Ingress add-on which allows customers to create an Ingress
+         * object to manage external access to the servers in a cluster. The add-on
+         * consists of istiod and istio-ingress.
+         * Structure is documented below.
+         */
+        ingress?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfigIngress>;
+    }
+
+    export interface ClusterSystemAddonsConfigIngress {
+        /**
+         * Whether Ingress is disabled.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Ingress VIP.
+         */
+        ipv4Vip?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolLocalDiskEncryption {
+        /**
+         * The Cloud KMS CryptoKey e.g. projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} to use for protecting node local disks.
+         * If not specified, a Google-managed key will be used instead.
+         */
+        kmsKey?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Cloud KMS CryptoKeyVersion currently in use for protecting node local disks. Only applicable if kmsKey is set.
+         */
+        kmsKeyActiveVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Availability of the Cloud KMS CryptoKey. If not KEY_AVAILABLE, then nodes may go offline as they cannot access their local data.
+         * This can be caused by a lack of permissions to use the key, or if the key is disabled or deleted.
+         */
+        kmsKeyState?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolNodeConfig {
+        /**
+         * "The Kubernetes node labels"
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface VpnConnectionDetail {
+        /**
+         * (Output)
+         * The Cloud Router info.
+         * Structure is documented below.
+         */
+        cloudRouters?: pulumi.Input<pulumi.Input<inputs.edgecontainer.VpnConnectionDetailCloudRouter>[]>;
+        /**
+         * (Output)
+         * Each connection has multiple Cloud VPN gateways.
+         * Structure is documented below.
+         */
+        cloudVpns?: pulumi.Input<pulumi.Input<inputs.edgecontainer.VpnConnectionDetailCloudVpn>[]>;
+        /**
+         * (Output)
+         * The error message. This is only populated when state=ERROR.
+         */
+        error?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current connection state.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface VpnConnectionDetailCloudRouter {
+        /**
+         * The resource name of VPN connection
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface VpnConnectionDetailCloudVpn {
+        /**
+         * (Output)
+         * The created Cloud VPN gateway name.
+         */
+        gateway?: pulumi.Input<string>;
+    }
+
+    export interface VpnConnectionVpcProject {
+        /**
+         * The project of the VPC to connect to. If not specified, it is the same as the cluster project.
+         */
+        projectId?: pulumi.Input<string>;
     }
 }
 
@@ -39302,6 +40418,263 @@ export namespace firebase {
         state?: pulumi.Input<string>;
     }
 
+    export interface HostingCustomDomainCert {
+        /**
+         * The state of the certificate. Only the `CERT_ACTIVE` and
+         * `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+         * state is `PROPAGATING` and Hosting had an active cert for the domain name
+         * before, that formerly-active cert provides SSL coverage for the domain name
+         * until the current cert propagates.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * The record's type, which determines what data the record contains.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * A set of ACME challenges you can add to your DNS records or existing,
+         * non-Hosting hosting provider to allow Hosting to create an SSL certificate
+         * for your domain name before you point traffic toward hosting. You can use
+         * thse challenges as part of a zero downtime transition from your old
+         * provider to Hosting.
+         * Structure is documented below.
+         */
+        verification?: pulumi.Input<inputs.firebase.HostingCustomDomainCertVerification>;
+    }
+
+    export interface HostingCustomDomainCertVerification {
+        /**
+         * A `TXT` record to add to your DNS records that confirms your intent to
+         * let Hosting create an SSL cert for your domain name.
+         * Structure is documented below.
+         */
+        dns?: pulumi.Input<inputs.firebase.HostingCustomDomainCertVerificationDns>;
+        /**
+         * A file to add to your existing, non-Hosting hosting service that confirms
+         * your intent to let Hosting create an SSL cert for your domain name.
+         * Structure is documented below.
+         */
+        http?: pulumi.Input<inputs.firebase.HostingCustomDomainCertVerificationHttp>;
+    }
+
+    export interface HostingCustomDomainCertVerificationDns {
+        /**
+         * (Output)
+         * The last time Hosting checked your CustomDomain's DNS records.
+         */
+        checkTime?: pulumi.Input<string>;
+        /**
+         * A text string to serve at the path.
+         */
+        desireds?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainCertVerificationDnsDesired>[]>;
+        /**
+         * Whether Hosting was able to find the required file contents on the
+         * specified path during its last check.
+         */
+        discovereds?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainCertVerificationDnsDiscovered>[]>;
+    }
+
+    export interface HostingCustomDomainCertVerificationDnsDesired {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * Records on the domain
+         * Structure is documented below.
+         */
+        records?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainCertVerificationDnsDesiredRecord>[]>;
+    }
+
+    export interface HostingCustomDomainCertVerificationDnsDesiredRecord {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * The data of the record. The meaning of the value depends on record type:
+         * - A and AAAA: IP addresses for the domain name.
+         * - CNAME: Another domain to check for records.
+         * - TXT: Arbitrary text strings associated with the domain name. Hosting
+         * uses TXT records to determine a which Firebase Projects have
+         * permission to act on the domain name's behalf.
+         * - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+         */
+        rdata?: pulumi.Input<string>;
+        /**
+         * Indicates the a required action for this record.
+         */
+        requiredAction?: pulumi.Input<string>;
+        /**
+         * The record's type, which determines what data the record contains.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface HostingCustomDomainCertVerificationDnsDiscovered {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * Records on the domain
+         * Structure is documented below.
+         */
+        records?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainCertVerificationDnsDiscoveredRecord>[]>;
+    }
+
+    export interface HostingCustomDomainCertVerificationDnsDiscoveredRecord {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * The data of the record. The meaning of the value depends on record type:
+         * - A and AAAA: IP addresses for the domain name.
+         * - CNAME: Another domain to check for records.
+         * - TXT: Arbitrary text strings associated with the domain name. Hosting
+         * uses TXT records to determine a which Firebase Projects have
+         * permission to act on the domain name's behalf.
+         * - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+         */
+        rdata?: pulumi.Input<string>;
+        /**
+         * Indicates the a required action for this record.
+         */
+        requiredAction?: pulumi.Input<string>;
+        /**
+         * The record's type, which determines what data the record contains.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface HostingCustomDomainCertVerificationHttp {
+        /**
+         * A text string to serve at the path.
+         */
+        desired?: pulumi.Input<string>;
+        /**
+         * Whether Hosting was able to find the required file contents on the
+         * specified path during its last check.
+         */
+        discovered?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The last time Hosting systems checked for the file contents.
+         */
+        lastCheckTime?: pulumi.Input<string>;
+        /**
+         * The path to the file.
+         */
+        path?: pulumi.Input<string>;
+    }
+
+    export interface HostingCustomDomainIssue {
+        /**
+         * The status code, which should be an enum value of `google.rpc.Code`
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        /**
+         * Error message
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface HostingCustomDomainRequiredDnsUpdate {
+        /**
+         * (Output)
+         * The last time Hosting checked your CustomDomain's DNS records.
+         */
+        checkTime?: pulumi.Input<string>;
+        /**
+         * A text string to serve at the path.
+         */
+        desireds?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainRequiredDnsUpdateDesired>[]>;
+        /**
+         * Whether Hosting was able to find the required file contents on the
+         * specified path during its last check.
+         */
+        discovereds?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainRequiredDnsUpdateDiscovered>[]>;
+    }
+
+    export interface HostingCustomDomainRequiredDnsUpdateDesired {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * Records on the domain
+         * Structure is documented below.
+         */
+        records?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainRequiredDnsUpdateDesiredRecord>[]>;
+    }
+
+    export interface HostingCustomDomainRequiredDnsUpdateDesiredRecord {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * The data of the record. The meaning of the value depends on record type:
+         * - A and AAAA: IP addresses for the domain name.
+         * - CNAME: Another domain to check for records.
+         * - TXT: Arbitrary text strings associated with the domain name. Hosting
+         * uses TXT records to determine a which Firebase Projects have
+         * permission to act on the domain name's behalf.
+         * - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+         */
+        rdata?: pulumi.Input<string>;
+        /**
+         * Indicates the a required action for this record.
+         */
+        requiredAction?: pulumi.Input<string>;
+        /**
+         * The record's type, which determines what data the record contains.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface HostingCustomDomainRequiredDnsUpdateDiscovered {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * Records on the domain
+         * Structure is documented below.
+         */
+        records?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainRequiredDnsUpdateDiscoveredRecord>[]>;
+    }
+
+    export interface HostingCustomDomainRequiredDnsUpdateDiscoveredRecord {
+        /**
+         * The domain name the record pertains to, e.g. `foo.bar.com.`.
+         */
+        domainName?: pulumi.Input<string>;
+        /**
+         * The data of the record. The meaning of the value depends on record type:
+         * - A and AAAA: IP addresses for the domain name.
+         * - CNAME: Another domain to check for records.
+         * - TXT: Arbitrary text strings associated with the domain name. Hosting
+         * uses TXT records to determine a which Firebase Projects have
+         * permission to act on the domain name's behalf.
+         * - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+         */
+        rdata?: pulumi.Input<string>;
+        /**
+         * Indicates the a required action for this record.
+         */
+        requiredAction?: pulumi.Input<string>;
+        /**
+         * The record's type, which determines what data the record contains.
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface HostingVersionConfig {
         /**
          * An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -39408,6 +40781,17 @@ export namespace firebaserules {
 }
 
 export namespace firestore {
+    export interface BackupScheduleDailyRecurrence {
+    }
+
+    export interface BackupScheduleWeeklyRecurrence {
+        /**
+         * The day of week to run.
+         * Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        day?: pulumi.Input<string>;
+    }
+
     export interface FieldIndexConfig {
         /**
          * The indexes to configure on the field. Order or array contains must be specified.
@@ -39442,7 +40826,7 @@ export namespace firestore {
     export interface FieldTtlConfig {
         /**
          * (Output)
-         * The state of the TTL configuration.
+         * The state of TTL (time-to-live) configuration for documents that have this Field set.
          */
         state?: pulumi.Input<string>;
     }
@@ -39999,6 +41383,114 @@ export namespace gkebackup {
 }
 
 export namespace gkehub {
+    export interface FeatureFleetDefaultMemberConfig {
+        /**
+         * Config Management spec
+         * Structure is documented below.
+         */
+        configmanagement?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagement>;
+        /**
+         * Service Mesh spec
+         * Structure is documented below.
+         */
+        mesh?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigMesh>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigConfigmanagement {
+        /**
+         * ConfigSync configuration for the cluster
+         * Structure is documented below.
+         */
+        configSync?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+        /**
+         * Git repo configuration for the cluster
+         * Structure is documented below.
+         */
+        git?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit>;
+        /**
+         * OCI repo configuration for the cluster
+         * Structure is documented below.
+         */
+        oci?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci>;
+        /**
+         * Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+         */
+        sourceFormat?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+        /**
+         * The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+         */
+        gcpServiceAccountEmail?: pulumi.Input<string>;
+        /**
+         * URL for the HTTPS Proxy to be used when communicating with the Git repo
+         */
+        httpsProxy?: pulumi.Input<string>;
+        /**
+         * The path within the Git repository that represents the top level of the repo to sync
+         */
+        policyDir?: pulumi.Input<string>;
+        /**
+         * Type of secret configured for access to the Git repo
+         */
+        secretType: pulumi.Input<string>;
+        /**
+         * The branch of the repository to sync from. Default: master
+         */
+        syncBranch?: pulumi.Input<string>;
+        /**
+         * The URL of the Git repository to use as the source of truth
+         */
+        syncRepo?: pulumi.Input<string>;
+        /**
+         * Git revision (tag or hash) to check out. Default HEAD
+         */
+        syncRev?: pulumi.Input<string>;
+        /**
+         * Period in seconds between consecutive syncs. Default: 15
+         */
+        syncWaitSecs?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+        /**
+         * The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+         */
+        gcpServiceAccountEmail?: pulumi.Input<string>;
+        /**
+         * The absolute path of the directory that contains the local resources. Default: the root directory of the image
+         */
+        policyDir?: pulumi.Input<string>;
+        /**
+         * Type of secret configured for access to the Git repo
+         */
+        secretType: pulumi.Input<string>;
+        /**
+         * The OCI image repository URL for the package to sync from
+         */
+        syncRepo?: pulumi.Input<string>;
+        /**
+         * Period in seconds between consecutive syncs. Default: 15
+         */
+        syncWaitSecs?: pulumi.Input<string>;
+        /**
+         * Version of ACM installed
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigMesh {
+        /**
+         * Whether to automatically manage Service Mesh
+         * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+         */
+        management: pulumi.Input<string>;
+    }
+
     export interface FeatureIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -40046,6 +41538,7 @@ export namespace gkehub {
          * (Optional) Structure is documented below.
          */
         git?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit>;
+        metricsGcpServiceAccountEmail?: pulumi.Input<string>;
         /**
          * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
          *
@@ -40281,6 +41774,14 @@ export namespace gkehub {
          * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
          */
         updateTime?: pulumi.Input<string>;
+    }
+
+    export interface FleetState {
+        /**
+         * (Output)
+         * Describes the state of a Fleet resource.
+         */
+        code?: pulumi.Input<string>;
     }
 
     export interface MembershipAuthority {
@@ -41785,7 +43286,8 @@ export namespace gkeonprem {
 
     export interface VMwareClusterLoadBalancerF5Config {
         /**
-         * The load balancer's IP address.
+         * (Output)
+         * The vCenter IP address.
          */
         address?: pulumi.Input<string>;
         /**
@@ -42124,44 +43626,36 @@ export namespace gkeonprem {
 
     export interface VMwareClusterVcenter {
         /**
-         * The load balancer's IP address.
+         * (Output)
+         * The vCenter IP address.
          */
         address?: pulumi.Input<string>;
         /**
-         * (Output)
          * Contains the vCenter CA certificate public key for SSL verification.
          */
         caCertData?: pulumi.Input<string>;
         /**
-         * (Output)
          * The name of the vCenter cluster for the user cluster.
          */
         cluster?: pulumi.Input<string>;
         /**
-         * (Output)
          * The name of the vCenter datacenter for the user cluster.
          */
         datacenter?: pulumi.Input<string>;
         /**
-         * (Output)
-         * The Vsphere datastore used by the Control Plane Node.
+         * The name of the vCenter datastore for the user cluster.
          */
         datastore?: pulumi.Input<string>;
         /**
-         * (Output)
          * The name of the vCenter folder for the user cluster.
          */
         folder?: pulumi.Input<string>;
         /**
-         * (Output)
          * The name of the vCenter resource pool for the user cluster.
          */
         resourcePool?: pulumi.Input<string>;
         /**
-         * (Output)
-         * The Vsphere storage policy used by the control plane Node.
-         *
-         * - - -
+         * The name of the vCenter storage policy for the user cluster.
          */
         storagePolicyName?: pulumi.Input<string>;
     }
@@ -42703,6 +44197,17 @@ export namespace iam {
          * The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
          */
         issuerUri: pulumi.Input<string>;
+        /**
+         * OIDC JWKs in JSON String format. For details on definition of a
+         * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+         * use the `jwksUri` from the discovery document fetched from the
+         * .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
+         * keys are supported. The JWK must use following format and include only
+         * the following fields:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
         jwksJson?: pulumi.Input<string>;
         /**
          * Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
@@ -43293,6 +44798,33 @@ export namespace identityplatform {
         testPhoneNumbers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
+    export interface ConfigSmsRegionConfig {
+        /**
+         * A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+         * Structure is documented below.
+         */
+        allowByDefault?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfigAllowByDefault>;
+        /**
+         * A policy of only allowing regions by explicitly adding them to an allowlist.
+         * Structure is documented below.
+         */
+        allowlistOnly?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfigAllowlistOnly>;
+    }
+
+    export interface ConfigSmsRegionConfigAllowByDefault {
+        /**
+         * Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         */
+        disallowedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ConfigSmsRegionConfigAllowlistOnly {
+        /**
+         * Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         */
+        allowedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface InboundSamlConfigIdpConfig {
         /**
          * The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -43491,6 +45023,729 @@ export namespace identityplatform {
     }
 }
 
+export namespace integrationconnectors {
+    export interface ConnectionAuthConfig {
+        /**
+         * List containing additional auth configs.
+         * Structure is documented below.
+         */
+        additionalVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigAdditionalVariable>[]>;
+        /**
+         * The type of authentication configured.
+         */
+        authKey?: pulumi.Input<string>;
+        /**
+         * authType of the Connection
+         * Possible values are: `USER_PASSWORD`.
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * Parameters to support Oauth 2.0 Auth Code Grant Authentication.
+         * Structure is documented below.
+         */
+        oauth2AuthCodeFlow?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2AuthCodeFlow>;
+        /**
+         * OAuth3 Client Credentials for Authentication.
+         * Structure is documented below.
+         */
+        oauth2ClientCredentials?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2ClientCredentials>;
+        /**
+         * OAuth2 JWT Bearer for Authentication.
+         * Structure is documented below.
+         */
+        oauth2JwtBearer?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2JwtBearer>;
+        /**
+         * SSH Public Key for Authentication.
+         * Structure is documented below.
+         */
+        sshPublicKey?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigSshPublicKey>;
+        /**
+         * User password for Authentication.
+         * Structure is documented below.
+         */
+        userPassword?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigUserPassword>;
+    }
+
+    export interface ConnectionAuthConfigAdditionalVariable {
+        /**
+         * Boolean Value of configVariable.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Encription key value of configVariable.
+         * Structure is documented below.
+         */
+        encryptionKeyValue?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValue>;
+        /**
+         * Integer Value of configVariable.
+         */
+        integerValue?: pulumi.Input<number>;
+        /**
+         * Key for the configVariable
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Secret value of configVariable
+         * Structure is documented below.
+         */
+        secretValue?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValue>;
+        /**
+         * String Value of configVariabley.
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
+        /**
+         * The [KMS key name] with which the content of the Operation is encrypted. The expected
+         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * Will be empty string if google managed.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * Type of Encryption Key
+         * Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigAdditionalVariableSecretValue {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigOauth2AuthCodeFlow {
+        /**
+         * Auth URL for Authorization Code Flow.
+         */
+        authUri?: pulumi.Input<string>;
+        /**
+         * Secret version of Password for Authentication.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * Secret version reference containing the client secret.
+         * Structure is documented below.
+         */
+        clientSecret?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2AuthCodeFlowClientSecret>;
+        /**
+         * Whether to enable PKCE when the user performs the auth code flow.
+         */
+        enablePkce?: pulumi.Input<boolean>;
+        /**
+         * Scopes the connection will request when the user performs the auth code flow.
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigOauth2ClientCredentials {
+        /**
+         * Secret version of Password for Authentication.
+         */
+        clientId: pulumi.Input<string>;
+        /**
+         * Secret version reference containing the client secret.
+         * Structure is documented below.
+         */
+        clientSecret?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2ClientCredentialsClientSecret>;
+    }
+
+    export interface ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigOauth2JwtBearer {
+        /**
+         * Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
+         * This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
+         * Specified in the form as: projects/*&#47;secrets/*&#47;versions/*.
+         * Structure is documented below.
+         */
+        clientKey?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2JwtBearerClientKey>;
+        /**
+         * JwtClaims providers fields to generate the token.
+         * Structure is documented below.
+         */
+        jwtClaims?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigOauth2JwtBearerJwtClaims>;
+    }
+
+    export interface ConnectionAuthConfigOauth2JwtBearerClientKey {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigOauth2JwtBearerJwtClaims {
+        /**
+         * Value for the "aud" claim.
+         *
+         * <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+         */
+        audience?: pulumi.Input<string>;
+        /**
+         * Value for the "iss" claim.
+         */
+        issuer?: pulumi.Input<string>;
+        /**
+         * Value for the "sub" claim.
+         */
+        subject?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigSshPublicKey {
+        /**
+         * Format of SSH Client cert.
+         */
+        certType?: pulumi.Input<string>;
+        /**
+         * SSH Client Cert. It should contain both public and private key.
+         * Structure is documented below.
+         */
+        sshClientCert?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigSshPublicKeySshClientCert>;
+        /**
+         * Password (passphrase) for ssh client certificate if it has one.
+         * Structure is documented below.
+         */
+        sshClientCertPass?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigSshPublicKeySshClientCertPass>;
+        /**
+         * The user account used to authenticate.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigSshPublicKeySshClientCert {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigSshPublicKeySshClientCertPass {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         *
+         * <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigUserPassword {
+        /**
+         * Password for Authentication.
+         * Structure is documented below.
+         */
+        password?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfigUserPasswordPassword>;
+        /**
+         * Username for Authentication.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionAuthConfigUserPasswordPassword {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionConfigVariable {
+        /**
+         * Boolean Value of configVariable
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Encription key value of configVariable.
+         * Structure is documented below.
+         */
+        encryptionKeyValue?: pulumi.Input<inputs.integrationconnectors.ConnectionConfigVariableEncryptionKeyValue>;
+        /**
+         * Integer Value of configVariable
+         */
+        integerValue?: pulumi.Input<number>;
+        /**
+         * Key for the configVariable
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Secret value of configVariable.
+         * Structure is documented below.
+         */
+        secretValue?: pulumi.Input<inputs.integrationconnectors.ConnectionConfigVariableSecretValue>;
+        /**
+         * String Value of configVariabley
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionConfigVariableEncryptionKeyValue {
+        /**
+         * The [KMS key name] with which the content of the Operation is encrypted. The expected
+         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * Will be empty string if google managed.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * Type of Encryption Key
+         * Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ConnectionConfigVariableSecretValue {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionConnectorVersionInfraConfig {
+        /**
+         * (Output)
+         * Max QPS supported by the connector version before throttling of requests.
+         */
+        ratelimitThreshold?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionDestinationConfig {
+        /**
+         * The destinations for the key.
+         * Structure is documented below.
+         */
+        destinations?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionDestinationConfigDestination>[]>;
+        /**
+         * The key is the destination identifier that is supported by the Connector.
+         */
+        key: pulumi.Input<string>;
+    }
+
+    export interface ConnectionDestinationConfigDestination {
+        /**
+         * Host
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * port number
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Service Attachment
+         */
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfig {
+        /**
+         * List containing additional auth configs.
+         * Structure is documented below.
+         */
+        additionalVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAdditionalVariable>[]>;
+        /**
+         * authConfig for Eventing Configuration.
+         * Structure is documented below.
+         */
+        authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfig>;
+        /**
+         * Enrichment Enabled.
+         */
+        enrichmentEnabled?: pulumi.Input<boolean>;
+        /**
+         * registrationDestinationConfig
+         * Structure is documented below.
+         */
+        registrationDestinationConfig: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfig>;
+    }
+
+    export interface ConnectionEventingConfigAdditionalVariable {
+        /**
+         * Boolean Value of configVariable.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Encription key value of configVariable.
+         * Structure is documented below.
+         */
+        encryptionKeyValue?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValue>;
+        /**
+         * Integer Value of configVariable.
+         */
+        integerValue?: pulumi.Input<number>;
+        /**
+         * Key for the configVariable
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Secret value of configVariable
+         * Structure is documented below.
+         */
+        secretValue?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValue>;
+        /**
+         * String Value of configVariabley.
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAdditionalVariableEncryptionKeyValue {
+        /**
+         * The [KMS key name] with which the content of the Operation is encrypted. The expected
+         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * Will be empty string if google managed.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * Type of Encryption Key
+         * Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAdditionalVariableSecretValue {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAuthConfig {
+        /**
+         * List containing additional auth configs.
+         * Structure is documented below.
+         */
+        additionalVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariable>[]>;
+        /**
+         * The type of authentication configured.
+         */
+        authKey?: pulumi.Input<string>;
+        /**
+         * authType of the Connection
+         * Possible values are: `USER_PASSWORD`.
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * User password for Authentication.
+         * Structure is documented below.
+         */
+        userPassword: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfigUserPassword>;
+    }
+
+    export interface ConnectionEventingConfigAuthConfigAdditionalVariable {
+        /**
+         * Boolean Value of configVariable.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Encription key value of configVariable.
+         * Structure is documented below.
+         */
+        encryptionKeyValue?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue>;
+        /**
+         * Integer Value of configVariable.
+         */
+        integerValue?: pulumi.Input<number>;
+        /**
+         * Key for the configVariable
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Secret value of configVariable
+         * Structure is documented below.
+         */
+        secretValue?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue>;
+        /**
+         * String Value of configVariabley.
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue {
+        /**
+         * The [KMS key name] with which the content of the Operation is encrypted. The expected
+         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * Will be empty string if google managed.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * Type of Encryption Key
+         * Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAuthConfigUserPassword {
+        /**
+         * Password for Authentication.
+         * Structure is documented below.
+         */
+        password?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPassword>;
+        /**
+         * Username for Authentication.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigAuthConfigUserPasswordPassword {
+        /**
+         * The resource name of the secret version in the format,
+         * format as: projects/*&#47;secrets/*&#47;versions/*.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigRegistrationDestinationConfig {
+        /**
+         * destinations for the connection
+         * Structure is documented below.
+         */
+        destinations?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestination>[]>;
+        /**
+         * Key for the connection
+         */
+        key?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingConfigRegistrationDestinationConfigDestination {
+        /**
+         * Host
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * port number
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Service Attachment
+         */
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionEventingRuntimeData {
+        /**
+         * Events listener endpoint. The value will populated after provisioning the events listener.
+         */
+        eventsListenerEndpoint?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Current status of eventing.
+         * Structure is documented below.
+         */
+        statuses?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingRuntimeDataStatus>[]>;
+    }
+
+    export interface ConnectionEventingRuntimeDataStatus {
+        /**
+         * An arbitrary description for the Conection.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * State of the Eventing
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionLockConfig {
+        /**
+         * Indicates whether or not the connection is locked.
+         */
+        locked: pulumi.Input<boolean>;
+        /**
+         * Describes why a connection is locked.
+         */
+        reason?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionLogConfig {
+        /**
+         * Enabled represents whether logging is enabled or not for a connection.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ConnectionNodeConfig {
+        /**
+         * Minimum number of nodes in the runtime nodes.
+         */
+        maxNodeCount?: pulumi.Input<number>;
+        /**
+         * Minimum number of nodes in the runtime nodes.
+         */
+        minNodeCount?: pulumi.Input<number>;
+    }
+
+    export interface ConnectionSslConfig {
+        /**
+         * Additional SSL related field values.
+         * Structure is documented below.
+         */
+        additionalVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigAdditionalVariable>[]>;
+        /**
+         * Type of Client Cert (PEM/JKS/.. etc.)
+         * Possible values are: `PEM`.
+         */
+        clientCertType?: pulumi.Input<string>;
+        /**
+         * Client Certificate
+         * Structure is documented below.
+         */
+        clientCertificate?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigClientCertificate>;
+        /**
+         * Client Private Key
+         * Structure is documented below.
+         */
+        clientPrivateKey?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigClientPrivateKey>;
+        /**
+         * Secret containing the passphrase protecting the Client Private Key
+         * Structure is documented below.
+         */
+        clientPrivateKeyPass?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigClientPrivateKeyPass>;
+        /**
+         * Private Server Certificate. Needs to be specified if trust model is PRIVATE.
+         * Structure is documented below.
+         */
+        privateServerCertificate?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigPrivateServerCertificate>;
+        /**
+         * Type of Server Cert (PEM/JKS/.. etc.)
+         * Possible values are: `PEM`.
+         */
+        serverCertType?: pulumi.Input<string>;
+        /**
+         * Enum for Trust Model
+         * Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
+         */
+        trustModel?: pulumi.Input<string>;
+        /**
+         * Enum for controlling the SSL Type (TLS/MTLS)
+         * Possible values are: `TLS`, `MTLS`.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Bool for enabling SSL
+         */
+        useSsl?: pulumi.Input<boolean>;
+    }
+
+    export interface ConnectionSslConfigAdditionalVariable {
+        /**
+         * Boolean Value of configVariable.
+         */
+        booleanValue?: pulumi.Input<boolean>;
+        /**
+         * Encription key value of configVariable.
+         * Structure is documented below.
+         */
+        encryptionKeyValue?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValue>;
+        /**
+         * Integer Value of configVariable.
+         */
+        integerValue?: pulumi.Input<number>;
+        /**
+         * Key for the configVariable
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Secret value of configVariable
+         * Structure is documented below.
+         */
+        secretValue?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValue>;
+        /**
+         * String Value of configVariabley.
+         */
+        stringValue?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSslConfigAdditionalVariableEncryptionKeyValue {
+        /**
+         * The [KMS key name] with which the content of the Operation is encrypted. The expected
+         * format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * Will be empty string if google managed.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * Type of Encryption Key
+         * Possible values are: `GOOGLE_MANAGED`, `CUSTOMER_MANAGED`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSslConfigAdditionalVariableSecretValue {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSslConfigClientCertificate {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSslConfigClientPrivateKey {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSslConfigClientPrivateKeyPass {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSslConfigPrivateServerCertificate {
+        /**
+         * Secret version of Secret Value for Config variable.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionStatus {
+        /**
+         * An arbitrary description for the Conection.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * State of the Eventing
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Current status of eventing.
+         * Structure is documented below.
+         */
+        status?: pulumi.Input<string>;
+    }
+}
+
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         /**
@@ -43664,6 +45919,18 @@ export namespace logging {
         serviceAccountId?: pulumi.Input<string>;
     }
 
+    export interface BillingAccountBucketConfigIndexConfig {
+        /**
+         * The LogEntry field path to index.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         */
+        fieldPath: pulumi.Input<string>;
+        /**
+         * The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface BillingAccountSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -43702,6 +45969,18 @@ export namespace logging {
          */
         name?: pulumi.Input<string>;
         serviceAccountId?: pulumi.Input<string>;
+    }
+
+    export interface FolderBucketConfigIndexConfig {
+        /**
+         * The LogEntry field path to index.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         */
+        fieldPath: pulumi.Input<string>;
+        /**
+         * The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface FolderSinkBigqueryOptions {
@@ -43866,6 +46145,18 @@ export namespace logging {
         serviceAccountId?: pulumi.Input<string>;
     }
 
+    export interface OrganizationBucketConfigIndexConfig {
+        /**
+         * The LogEntry field path to index.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         */
+        fieldPath: pulumi.Input<string>;
+        /**
+         * The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface OrganizationSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -43925,6 +46216,18 @@ export namespace logging {
          * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
          */
         serviceAccountId?: pulumi.Input<string>;
+    }
+
+    export interface ProjectBucketConfigIndexConfig {
+        /**
+         * The LogEntry field path to index.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         */
+        fieldPath: pulumi.Input<string>;
+        /**
+         * The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface ProjectSinkBigqueryOptions {
@@ -44344,7 +46647,6 @@ export namespace monitoring {
          */
         conditionMonitoringQueryLanguage?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionMonitoringQueryLanguage>;
         /**
-         * A Monitoring Query Language query that outputs a boolean stream
          * A condition type that allows alert policies to be defined using
          * Prometheus Query Language (PromQL).
          * The PrometheusQueryLanguageCondition message contains information
@@ -44660,9 +46962,7 @@ export namespace monitoring {
          * in order to refer to the original Prometheus configuration file.
          * The rule group name and the alert name are necessary to update the
          * relevant AlertPolicies in case the definition of the rule group changes
-         * in the future.
-         * This field is optional. If this field is not empty, then it must be a
-         * valid Prometheus label name.
+         * in the future. This field is optional.
          */
         ruleGroup?: pulumi.Input<string>;
     }
@@ -45037,6 +47337,13 @@ export namespace monitoring {
          * "text/markdown" is supported.
          */
         mimeType?: pulumi.Input<string>;
+        /**
+         * The subject line of the notification. The subject line may not
+         * exceed 10,240 bytes. In notifications generated by this policy the contents
+         * of the subject line after variable expansion will be truncated to 255 bytes
+         * or shorter at the latest UTF-8 character boundary.
+         */
+        subject?: pulumi.Input<string>;
     }
 
     export interface CustomServiceTelemetry {
@@ -45593,9 +47900,13 @@ export namespace monitoring {
         body?: pulumi.Input<string>;
         /**
          * The content type to use for the check.
-         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
          */
         contentType?: pulumi.Input<string>;
+        /**
+         * A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType`, as well as the following 1. `contentType` is `URL_ENCODED` and `customContentType` is set. 2. `contentType` is `USER_PROVIDED` and `customContentType` is not set.
+         */
+        customContentType?: pulumi.Input<string>;
         /**
          * The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
          */
@@ -45608,6 +47919,11 @@ export namespace monitoring {
          * The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
          */
         path?: pulumi.Input<string>;
+        /**
+         * Contains information needed to add pings to an HTTP check.
+         * Structure is documented below.
+         */
+        pingConfig?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckPingConfig>;
         /**
          * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
          */
@@ -45650,6 +47966,13 @@ export namespace monitoring {
          * The username to authenticate.
          */
         username: pulumi.Input<string>;
+    }
+
+    export interface UptimeCheckConfigHttpCheckPingConfig {
+        /**
+         * Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+         */
+        pingsCount: pulumi.Input<number>;
     }
 
     export interface UptimeCheckConfigMonitoredResource {
@@ -45695,15 +48018,81 @@ export namespace monitoring {
 
     export interface UptimeCheckConfigTcpCheck {
         /**
+         * Contains information needed to add pings to a TCP check.
+         * Structure is documented below.
+         */
+        pingConfig?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheckPingConfig>;
+        /**
          * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
          */
         port: pulumi.Input<number>;
+    }
+
+    export interface UptimeCheckConfigTcpCheckPingConfig {
+        /**
+         * Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+         */
+        pingsCount: pulumi.Input<number>;
     }
 }
 
 export namespace networkconnectivity {
     export interface HubRoutingVpc {
         uri?: pulumi.Input<string>;
+    }
+
+    export interface PolicyBasedRouteFilter {
+        /**
+         * The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+         *
+         * - - -
+         */
+        destRange?: pulumi.Input<string>;
+        /**
+         * The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+         */
+        ipProtocol?: pulumi.Input<string>;
+        /**
+         * Internet protocol versions this policy-based route applies to.
+         * Possible values are: `IPV4`.
+         */
+        protocolVersion: pulumi.Input<string>;
+        /**
+         * The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+         */
+        srcRange?: pulumi.Input<string>;
+    }
+
+    export interface PolicyBasedRouteInterconnectAttachment {
+        /**
+         * Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+         */
+        region: pulumi.Input<string>;
+    }
+
+    export interface PolicyBasedRouteVirtualMachine {
+        /**
+         * A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+         */
+        tags: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PolicyBasedRouteWarning {
+        /**
+         * (Output)
+         * A warning code, if applicable.
+         */
+        code?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+         */
+        data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * A human-readable description of the warning code.
+         */
+        warningMessage?: pulumi.Input<string>;
     }
 
     export interface ServiceConnectionPolicyPscConfig {
@@ -50487,6 +52876,18 @@ export namespace pubsub {
         period?: pulumi.Input<string>;
     }
 
+    export interface SchemaIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SchemaIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface SubscriptionBigqueryConfig {
         /**
          * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
@@ -51681,6 +54082,50 @@ export namespace spanner {
         title: pulumi.Input<string>;
     }
 
+    export interface InstanceAutoscalingConfig {
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        autoscalingLimits?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAutoscalingLimits>;
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        autoscalingTargets?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAutoscalingTargets>;
+    }
+
+    export interface InstanceAutoscalingConfigAutoscalingLimits {
+        /**
+         * Specifies maximum number of processing units allocated to the instance.
+         * If set, this number should be multiples of 1000 and be greater than or equal to
+         * min_processing_units.
+         */
+        maxProcessingUnits?: pulumi.Input<number>;
+        /**
+         * Specifies minimum number of processing units allocated to the instance.
+         * If set, this number should be multiples of 1000.
+         */
+        minProcessingUnits?: pulumi.Input<number>;
+    }
+
+    export interface InstanceAutoscalingConfigAutoscalingTargets {
+        /**
+         * Specifies the target high priority cpu utilization percentage that the autoscaler
+         * should be trying to achieve for the instance.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+         */
+        highPriorityCpuUtilizationPercent?: pulumi.Input<number>;
+        /**
+         * Specifies the target storage utilization percentage that the autoscaler
+         * should be trying to achieve for the instance.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+         */
+        storageUtilizationPercent?: pulumi.Input<number>;
+    }
+
     export interface InstanceIAMBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -51951,8 +54396,7 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsDataCacheConfig {
         /**
-         * Whether data cache is enabled for the instance. Defaults to `false`
-         * Can only be used with MYSQL.
+         * Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
          */
         dataCacheEnabled?: pulumi.Input<boolean>;
     }
@@ -52034,9 +54478,16 @@ export namespace sql {
         privateNetwork?: pulumi.Input<string>;
         pscConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig>[]>;
         /**
-         * Whether SSL connections over IP are enforced or not.
+         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
          */
         requireSsl?: pulumi.Input<boolean>;
+        /**
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
+         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
+         * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+         * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+         */
+        sslMode?: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
@@ -52195,6 +54646,10 @@ export namespace storage {
          * While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
          */
         enabled: pulumi.Input<boolean>;
+        /**
+         * The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+         */
+        terminalStorageClass?: pulumi.Input<string>;
     }
 
     export interface BucketCor {
@@ -52371,6 +54826,19 @@ export namespace storage {
          * Base64 encoded Customer-Supplied Encryption Key.
          */
         encryptionKey: pulumi.Input<string>;
+    }
+
+    export interface BucketObjectRetention {
+        /**
+         * The retention policy mode. Either `Locked` or `Unlocked`.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
+         *
+         * <a name>
+         */
+        retainUntilTime: pulumi.Input<string>;
     }
 
     export interface BucketRetentionPolicy {
@@ -52881,6 +55349,140 @@ export namespace tpu {
          */
         preemptible: pulumi.Input<boolean>;
     }
+
+    export interface V2VmAcceleratorConfig {
+        /**
+         * Topology of TPU in chips.
+         */
+        topology: pulumi.Input<string>;
+        /**
+         * Type of TPU.
+         * Possible values are: `V2`, `V3`, `V4`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface V2VmDataDisk {
+        /**
+         * The mode in which to attach this disk. If not specified, the default is READ_WRITE
+         * mode. Only applicable to dataDisks.
+         * Default value is `READ_WRITE`.
+         * Possible values are: `READ_WRITE`, `READ_ONLY`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Specifies the full path to an existing disk. For example:
+         * "projects/my-project/zones/us-central1-c/disks/my-disk".
+         */
+        sourceDisk: pulumi.Input<string>;
+    }
+
+    export interface V2VmNetworkConfig {
+        /**
+         * Allows the TPU node to send and receive packets with non-matching destination or source
+         * IPs. This is required if you plan to use the TPU workers to forward routes.
+         */
+        canIpForward?: pulumi.Input<boolean>;
+        /**
+         * Indicates that external IP addresses would be associated with the TPU workers. If set to
+         * false, the specified subnetwork or network should have Private Google Access enabled.
+         */
+        enableExternalIps?: pulumi.Input<boolean>;
+        /**
+         * The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+         * network. If both network and subnetwork are specified, the given subnetwork must belong
+         * to the given network. If network is not specified, it will be looked up from the
+         * subnetwork if one is provided, or otherwise use "default".
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+         * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+         * must belong to the given network. If subnetwork is not specified, the subnetwork with the
+         * same name as the network will be used.
+         */
+        subnetwork?: pulumi.Input<string>;
+    }
+
+    export interface V2VmNetworkEndpoint {
+        /**
+         * (Output)
+         * The access config for the TPU worker.
+         * Structure is documented below.
+         */
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmNetworkEndpointAccessConfig>[]>;
+        /**
+         * (Output)
+         * The internal IP address of this network endpoint.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The port of this network endpoint.
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface V2VmNetworkEndpointAccessConfig {
+        /**
+         * (Output)
+         * An external IP address associated with the TPU worker.
+         */
+        externalIp?: pulumi.Input<string>;
+    }
+
+    export interface V2VmSchedulingConfig {
+        /**
+         * Defines whether the node is preemptible.
+         */
+        preemptible?: pulumi.Input<boolean>;
+        /**
+         * Whether the node is created under a reservation.
+         */
+        reserved?: pulumi.Input<boolean>;
+    }
+
+    export interface V2VmServiceAccount {
+        /**
+         * Email address of the service account. If empty, default Compute service account will be used.
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * The list of scopes to be made available for this service account. If empty, access to all
+         * Cloud APIs will be allowed.
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface V2VmShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has Secure Boot enabled.
+         */
+        enableSecureBoot: pulumi.Input<boolean>;
+    }
+
+    export interface V2VmSymptom {
+        /**
+         * (Output)
+         * Timestamp when the Symptom is created.
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Detailed information of the current Symptom.
+         */
+        details?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Type of the Symptom.
+         */
+        symptomType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A string used to uniquely distinguish a worker within a TPU node.
+         */
+        workerId?: pulumi.Input<string>;
+    }
 }
 
 export namespace vertex {
@@ -53195,6 +55797,17 @@ export namespace vertex {
          * A resource name of the IndexEndpoint.
          */
         indexEndpoint?: pulumi.Input<string>;
+    }
+
+    export interface AiIndexEndpointPrivateServiceConnectConfig {
+        /**
+         * If set to true, the IndexEndpoint is created without private service access.
+         */
+        enablePrivateServiceConnect: pulumi.Input<boolean>;
+        /**
+         * A list of Projects from which the forwarding rule will target the service attachment.
+         */
+        projectAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AiIndexIndexStat {
@@ -53521,6 +56134,13 @@ export namespace workstations {
          * Human readable message indicating details about the current status.
          */
         message?: pulumi.Input<string>;
+    }
+
+    export interface WorkstationClusterDomainConfig {
+        /**
+         * Domain used by Workstations for HTTP ingress.
+         */
+        domain: pulumi.Input<string>;
     }
 
     export interface WorkstationClusterPrivateClusterConfig {

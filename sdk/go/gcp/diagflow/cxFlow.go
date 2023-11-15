@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Flows represents the conversation flows when you build your chatbot agent.
@@ -22,14 +21,12 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
 // ## Example Usage
-// ### Dialogflowcx Flow Full
+// ### Dialogflowcx Flow Basic
 //
 // ```go
 // package main
 //
 // import (
-//
-//	"encoding/json"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/diagflow"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -55,6 +52,116 @@ import (
 //				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
 //					EnableSpeechAdaptation: pulumi.Bool(true),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxFlow(ctx, "basicFlow", &diagflow.CxFlowArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyFlow"),
+//				Description: pulumi.String("Test Flow"),
+//				NluSettings: &diagflow.CxFlowNluSettingsArgs{
+//					ClassificationThreshold: pulumi.Float64(0.3),
+//					ModelType:               pulumi.String("MODEL_TYPE_STANDARD"),
+//				},
+//				EventHandlers: diagflow.CxFlowEventHandlerArray{
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("custom-event"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(false),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("I didn't get that. Can you say it again?"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("sys.no-match-default"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(false),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("Sorry, could you say that again?"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("sys.no-input-default"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(false),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("One more time?"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflowcx Flow Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("fr"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -383,6 +490,18 @@ import (
 //						TargetFlow: agent.StartFlow,
 //					},
 //				},
+//				AdvancedSettings: &diagflow.CxFlowAdvancedSettingsArgs{
+//					AudioExportGcsDestination: &diagflow.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs{
+//						Uri: bucket.Url.ApplyT(func(url string) (string, error) {
+//							return fmt.Sprintf("%v/prefix-", url), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					DtmfSettings: &diagflow.CxFlowAdvancedSettingsDtmfSettingsArgs{
+//						Enabled:     pulumi.Bool(true),
+//						MaxDigits:   pulumi.Int(1),
+//						FinishDigit: pulumi.String("#"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -395,7 +514,17 @@ import (
 //
 // ## Import
 //
-// # Flow can be imported using any of these accepted formats
+// Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/flows/{{name}}"
+//
+//	to = google_dialogflow_cx_flow.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -411,6 +540,10 @@ import (
 type CxFlow struct {
 	pulumi.CustomResourceState
 
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxFlowAdvancedSettingsPtrOutput `pulumi:"advancedSettings"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the flow.
@@ -423,6 +556,11 @@ type CxFlow struct {
 	// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	// Structure is documented below.
 	EventHandlers CxFlowEventHandlerArrayOutput `pulumi:"eventHandlers"`
+	// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+	// The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+	IsDefaultStartFlow pulumi.BoolPtrOutput `pulumi:"isDefaultStartFlow"`
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -488,6 +626,10 @@ func GetCxFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxFlow resources.
 type cxFlowState struct {
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxFlowAdvancedSettings `pulumi:"advancedSettings"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
@@ -500,6 +642,11 @@ type cxFlowState struct {
 	// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	// Structure is documented below.
 	EventHandlers []CxFlowEventHandler `pulumi:"eventHandlers"`
+	// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+	// The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+	IsDefaultStartFlow *bool `pulumi:"isDefaultStartFlow"`
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -533,6 +680,10 @@ type cxFlowState struct {
 }
 
 type CxFlowState struct {
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxFlowAdvancedSettingsPtrInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
@@ -545,6 +696,11 @@ type CxFlowState struct {
 	// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	// Structure is documented below.
 	EventHandlers CxFlowEventHandlerArrayInput
+	// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+	// The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+	IsDefaultStartFlow pulumi.BoolPtrInput
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -582,6 +738,10 @@ func (CxFlowState) ElementType() reflect.Type {
 }
 
 type cxFlowArgs struct {
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxFlowAdvancedSettings `pulumi:"advancedSettings"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
@@ -594,6 +754,11 @@ type cxFlowArgs struct {
 	// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	// Structure is documented below.
 	EventHandlers []CxFlowEventHandler `pulumi:"eventHandlers"`
+	// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+	// The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+	IsDefaultStartFlow *bool `pulumi:"isDefaultStartFlow"`
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -625,6 +790,10 @@ type cxFlowArgs struct {
 
 // The set of arguments for constructing a CxFlow resource.
 type CxFlowArgs struct {
+	// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxFlowAdvancedSettingsPtrInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
@@ -637,6 +806,11 @@ type CxFlowArgs struct {
 	// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	// Structure is documented below.
 	EventHandlers CxFlowEventHandlerArrayInput
+	// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+	// The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+	IsDefaultStartFlow pulumi.BoolPtrInput
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -689,12 +863,6 @@ func (i *CxFlow) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowOutput)
 }
 
-func (i *CxFlow) ToOutput(ctx context.Context) pulumix.Output[*CxFlow] {
-	return pulumix.Output[*CxFlow]{
-		OutputState: i.ToCxFlowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowArrayInput is an input type that accepts CxFlowArray and CxFlowArrayOutput values.
 // You can construct a concrete instance of `CxFlowArrayInput` via:
 //
@@ -718,12 +886,6 @@ func (i CxFlowArray) ToCxFlowArrayOutput() CxFlowArrayOutput {
 
 func (i CxFlowArray) ToCxFlowArrayOutputWithContext(ctx context.Context) CxFlowArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowArrayOutput)
-}
-
-func (i CxFlowArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxFlow] {
-	return pulumix.Output[[]*CxFlow]{
-		OutputState: i.ToCxFlowArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxFlowMapInput is an input type that accepts CxFlowMap and CxFlowMapOutput values.
@@ -751,12 +913,6 @@ func (i CxFlowMap) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlowMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowMapOutput)
 }
 
-func (i CxFlowMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxFlow] {
-	return pulumix.Output[map[string]*CxFlow]{
-		OutputState: i.ToCxFlowMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowOutput struct{ *pulumi.OutputState }
 
 func (CxFlowOutput) ElementType() reflect.Type {
@@ -771,10 +927,11 @@ func (o CxFlowOutput) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutpu
 	return o
 }
 
-func (o CxFlowOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlow] {
-	return pulumix.Output[*CxFlow]{
-		OutputState: o.OutputState,
-	}
+// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxFlowOutput) AdvancedSettings() CxFlowAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlow) CxFlowAdvancedSettingsPtrOutput { return v.AdvancedSettings }).(CxFlowAdvancedSettingsPtrOutput)
 }
 
 // The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -796,6 +953,14 @@ func (o CxFlowOutput) DisplayName() pulumi.StringOutput {
 // Structure is documented below.
 func (o CxFlowOutput) EventHandlers() CxFlowEventHandlerArrayOutput {
 	return o.ApplyT(func(v *CxFlow) CxFlowEventHandlerArrayOutput { return v.EventHandlers }).(CxFlowEventHandlerArrayOutput)
+}
+
+// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+// The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+//
+// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+func (o CxFlowOutput) IsDefaultStartFlow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlow) pulumi.BoolPtrOutput { return v.IsDefaultStartFlow }).(pulumi.BoolPtrOutput)
 }
 
 // The language of the following fields in flow:
@@ -860,12 +1025,6 @@ func (o CxFlowArrayOutput) ToCxFlowArrayOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o CxFlowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxFlow] {
-	return pulumix.Output[[]*CxFlow]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxFlowArrayOutput) Index(i pulumi.IntInput) CxFlowOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxFlow {
 		return vs[0].([]*CxFlow)[vs[1].(int)]
@@ -884,12 +1043,6 @@ func (o CxFlowMapOutput) ToCxFlowMapOutput() CxFlowMapOutput {
 
 func (o CxFlowMapOutput) ToCxFlowMapOutputWithContext(ctx context.Context) CxFlowMapOutput {
 	return o
-}
-
-func (o CxFlowMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxFlow] {
-	return pulumix.Output[map[string]*CxFlow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowMapOutput) MapIndex(k pulumi.StringInput) CxFlowOutput {

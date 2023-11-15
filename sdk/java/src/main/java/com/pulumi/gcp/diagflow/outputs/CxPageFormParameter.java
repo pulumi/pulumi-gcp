@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterAdvancedSettings;
 import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterFillBehavior;
 import java.lang.Boolean;
 import java.lang.String;
@@ -13,6 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CxPageFormParameter {
+    /**
+     * @return Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CxPageFormParameterAdvancedSettings advancedSettings;
     /**
      * @return The default value of an optional parameter. If the parameter is required, the default value will be ignored.
      * 
@@ -54,6 +62,15 @@ public final class CxPageFormParameter {
     private @Nullable Boolean required;
 
     private CxPageFormParameter() {}
+    /**
+     * @return Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CxPageFormParameterAdvancedSettings> advancedSettings() {
+        return Optional.ofNullable(this.advancedSettings);
+    }
     /**
      * @return The default value of an optional parameter. If the parameter is required, the default value will be ignored.
      * 
@@ -117,6 +134,7 @@ public final class CxPageFormParameter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable CxPageFormParameterAdvancedSettings advancedSettings;
         private @Nullable String defaultValue;
         private @Nullable String displayName;
         private @Nullable String entityType;
@@ -127,6 +145,7 @@ public final class CxPageFormParameter {
         public Builder() {}
         public Builder(CxPageFormParameter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.advancedSettings = defaults.advancedSettings;
     	      this.defaultValue = defaults.defaultValue;
     	      this.displayName = defaults.displayName;
     	      this.entityType = defaults.entityType;
@@ -136,6 +155,11 @@ public final class CxPageFormParameter {
     	      this.required = defaults.required;
         }
 
+        @CustomType.Setter
+        public Builder advancedSettings(@Nullable CxPageFormParameterAdvancedSettings advancedSettings) {
+            this.advancedSettings = advancedSettings;
+            return this;
+        }
         @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
             this.defaultValue = defaultValue;
@@ -173,6 +197,7 @@ public final class CxPageFormParameter {
         }
         public CxPageFormParameter build() {
             final var o = new CxPageFormParameter();
+            o.advancedSettings = advancedSettings;
             o.defaultValue = defaultValue;
             o.displayName = displayName;
             o.entityType = entityType;

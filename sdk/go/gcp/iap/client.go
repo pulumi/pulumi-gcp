@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contains the data that describes an Identity Aware Proxy owned client.
@@ -82,7 +81,17 @@ import (
 //
 // ## Import
 //
-// # Client can be imported using any of these accepted formats
+// Client can be imported using any of these accepted formats* `{{brand}}/identityAwareProxyClients/{{client_id}}` * `{{brand}}/{{client_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Client using one of the formats above. For exampletf import {
+//
+//	id = "{{brand}}/identityAwareProxyClients/{{client_id}}"
+//
+//	to = google_iap_client.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:iap/client:Client When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Client can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -234,12 +243,6 @@ func (i *Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientOutput)
 }
 
-func (i *Client) ToOutput(ctx context.Context) pulumix.Output[*Client] {
-	return pulumix.Output[*Client]{
-		OutputState: i.ToClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientArrayInput is an input type that accepts ClientArray and ClientArrayOutput values.
 // You can construct a concrete instance of `ClientArrayInput` via:
 //
@@ -263,12 +266,6 @@ func (i ClientArray) ToClientArrayOutput() ClientArrayOutput {
 
 func (i ClientArray) ToClientArrayOutputWithContext(ctx context.Context) ClientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientArrayOutput)
-}
-
-func (i ClientArray) ToOutput(ctx context.Context) pulumix.Output[[]*Client] {
-	return pulumix.Output[[]*Client]{
-		OutputState: i.ToClientArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClientMapInput is an input type that accepts ClientMap and ClientMapOutput values.
@@ -296,12 +293,6 @@ func (i ClientMap) ToClientMapOutputWithContext(ctx context.Context) ClientMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ClientMapOutput)
 }
 
-func (i ClientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Client] {
-	return pulumix.Output[map[string]*Client]{
-		OutputState: i.ToClientMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientOutput struct{ *pulumi.OutputState }
 
 func (ClientOutput) ElementType() reflect.Type {
@@ -314,12 +305,6 @@ func (o ClientOutput) ToClientOutput() ClientOutput {
 
 func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 	return o
-}
-
-func (o ClientOutput) ToOutput(ctx context.Context) pulumix.Output[*Client] {
-	return pulumix.Output[*Client]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the brand to which this client
@@ -361,12 +346,6 @@ func (o ClientArrayOutput) ToClientArrayOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o ClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Client] {
-	return pulumix.Output[[]*Client]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientArrayOutput) Index(i pulumi.IntInput) ClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Client {
 		return vs[0].([]*Client)[vs[1].(int)]
@@ -385,12 +364,6 @@ func (o ClientMapOutput) ToClientMapOutput() ClientMapOutput {
 
 func (o ClientMapOutput) ToClientMapOutputWithContext(ctx context.Context) ClientMapOutput {
 	return o
-}
-
-func (o ClientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Client] {
-	return pulumix.Output[map[string]*Client]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientMapOutput) MapIndex(k pulumi.StringInput) ClientOutput {

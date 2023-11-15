@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An isolated set of Cloud Spanner resources on which databases can be
@@ -116,7 +115,17 @@ import (
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/instances/{{name}}"
+//
+//	to = google_spanner_instance.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:spanner/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -138,6 +147,12 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// When autoscaling is enabled, numNodes and processingUnits are treated as,
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+	// the instance.
+	// Structure is documented below.
+	AutoscalingConfig InstanceAutoscalingConfigPtrOutput `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
@@ -224,6 +239,12 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// When autoscaling is enabled, numNodes and processingUnits are treated as,
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+	// the instance.
+	// Structure is documented below.
+	AutoscalingConfig *InstanceAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
@@ -270,6 +291,12 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// When autoscaling is enabled, numNodes and processingUnits are treated as,
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+	// the instance.
+	// Structure is documented below.
+	AutoscalingConfig InstanceAutoscalingConfigPtrInput
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
@@ -320,6 +347,12 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// When autoscaling is enabled, numNodes and processingUnits are treated as,
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+	// the instance.
+	// Structure is documented below.
+	AutoscalingConfig *InstanceAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
@@ -360,6 +393,12 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The autoscaling configuration. Autoscaling is enabled if this field is set.
+	// When autoscaling is enabled, numNodes and processingUnits are treated as,
+	// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+	// the instance.
+	// Structure is documented below.
+	AutoscalingConfig InstanceAutoscalingConfigPtrInput
 	// The name of the instance's configuration (similar but not
 	// quite the same as a region) which defines the geographic placement and
 	// replication of your databases in this instance. It determines where your data
@@ -421,12 +460,6 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
 }
 
-func (i *Instance) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: i.ToInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
@@ -450,12 +483,6 @@ func (i InstanceArray) ToInstanceArrayOutput() InstanceArrayOutput {
 
 func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) InstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceArrayOutput)
-}
-
-func (i InstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: i.ToInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
@@ -483,12 +510,6 @@ func (i InstanceMap) ToInstanceMapOutputWithContext(ctx context.Context) Instanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMapOutput)
 }
 
-func (i InstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: i.ToInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceOutput struct{ *pulumi.OutputState }
 
 func (InstanceOutput) ElementType() reflect.Type {
@@ -503,10 +524,13 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: o.OutputState,
-	}
+// The autoscaling configuration. Autoscaling is enabled if this field is set.
+// When autoscaling is enabled, numNodes and processingUnits are treated as,
+// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+// the instance.
+// Structure is documented below.
+func (o InstanceOutput) AutoscalingConfig() InstanceAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceAutoscalingConfigPtrOutput { return v.AutoscalingConfig }).(InstanceAutoscalingConfigPtrOutput)
 }
 
 // The name of the instance's configuration (similar but not
@@ -599,12 +623,6 @@ func (o InstanceArrayOutput) ToInstanceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceArrayOutput) Index(i pulumi.IntInput) InstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Instance {
 		return vs[0].([]*Instance)[vs[1].(int)]
@@ -623,12 +641,6 @@ func (o InstanceMapOutput) ToInstanceMapOutput() InstanceMapOutput {
 
 func (o InstanceMapOutput) ToInstanceMapOutputWithContext(ctx context.Context) InstanceMapOutput {
 	return o
-}
-
-func (o InstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMapOutput) MapIndex(k pulumi.StringInput) InstanceOutput {

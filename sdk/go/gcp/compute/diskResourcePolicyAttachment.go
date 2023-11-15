@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Adds existing resource policies to a disk. You can only add one policy
@@ -78,7 +77,17 @@ import (
 //
 // ## Import
 //
-// # DiskResourcePolicyAttachment can be imported using any of these accepted formats
+// DiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}` * `{{project}}/{{zone}}/{{disk}}/{{name}}` * `{{zone}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DiskResourcePolicyAttachment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}"
+//
+//	to = google_compute_disk_resource_policy_attachment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DiskResourcePolicyAttachment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -240,12 +249,6 @@ func (i *DiskResourcePolicyAttachment) ToDiskResourcePolicyAttachmentOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DiskResourcePolicyAttachmentOutput)
 }
 
-func (i *DiskResourcePolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*DiskResourcePolicyAttachment] {
-	return pulumix.Output[*DiskResourcePolicyAttachment]{
-		OutputState: i.ToDiskResourcePolicyAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskResourcePolicyAttachmentArrayInput is an input type that accepts DiskResourcePolicyAttachmentArray and DiskResourcePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `DiskResourcePolicyAttachmentArrayInput` via:
 //
@@ -269,12 +272,6 @@ func (i DiskResourcePolicyAttachmentArray) ToDiskResourcePolicyAttachmentArrayOu
 
 func (i DiskResourcePolicyAttachmentArray) ToDiskResourcePolicyAttachmentArrayOutputWithContext(ctx context.Context) DiskResourcePolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskResourcePolicyAttachmentArrayOutput)
-}
-
-func (i DiskResourcePolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*DiskResourcePolicyAttachment] {
-	return pulumix.Output[[]*DiskResourcePolicyAttachment]{
-		OutputState: i.ToDiskResourcePolicyAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DiskResourcePolicyAttachmentMapInput is an input type that accepts DiskResourcePolicyAttachmentMap and DiskResourcePolicyAttachmentMapOutput values.
@@ -302,12 +299,6 @@ func (i DiskResourcePolicyAttachmentMap) ToDiskResourcePolicyAttachmentMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DiskResourcePolicyAttachmentMapOutput)
 }
 
-func (i DiskResourcePolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskResourcePolicyAttachment] {
-	return pulumix.Output[map[string]*DiskResourcePolicyAttachment]{
-		OutputState: i.ToDiskResourcePolicyAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiskResourcePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (DiskResourcePolicyAttachmentOutput) ElementType() reflect.Type {
@@ -320,12 +311,6 @@ func (o DiskResourcePolicyAttachmentOutput) ToDiskResourcePolicyAttachmentOutput
 
 func (o DiskResourcePolicyAttachmentOutput) ToDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) DiskResourcePolicyAttachmentOutput {
 	return o
-}
-
-func (o DiskResourcePolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskResourcePolicyAttachment] {
-	return pulumix.Output[*DiskResourcePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the disk in which the resource policies are attached to.
@@ -366,12 +351,6 @@ func (o DiskResourcePolicyAttachmentArrayOutput) ToDiskResourcePolicyAttachmentA
 	return o
 }
 
-func (o DiskResourcePolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DiskResourcePolicyAttachment] {
-	return pulumix.Output[[]*DiskResourcePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskResourcePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) DiskResourcePolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskResourcePolicyAttachment {
 		return vs[0].([]*DiskResourcePolicyAttachment)[vs[1].(int)]
@@ -390,12 +369,6 @@ func (o DiskResourcePolicyAttachmentMapOutput) ToDiskResourcePolicyAttachmentMap
 
 func (o DiskResourcePolicyAttachmentMapOutput) ToDiskResourcePolicyAttachmentMapOutputWithContext(ctx context.Context) DiskResourcePolicyAttachmentMapOutput {
 	return o
-}
-
-func (o DiskResourcePolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskResourcePolicyAttachment] {
-	return pulumix.Output[map[string]*DiskResourcePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskResourcePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) DiskResourcePolicyAttachmentOutput {

@@ -36,7 +36,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Reservation can be imported using any of these accepted formats
+ * Reservation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/reservations/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Reservation using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/reservations/{{name}}"
+ *
+ *  to = google_bigquery_reservation.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/reservation:Reservation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Reservation can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:bigquery/reservation:Reservation default projects/{{project}}/locations/{{location}}/reservations/{{name}}

@@ -6,8 +6,10 @@ package com.pulumi.gcp.logging;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigCmekSettingsArgs;
+import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigIndexConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -67,6 +69,21 @@ public final class OrganizationBucketConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    @Import(name="indexConfigs")
+    private @Nullable Output<List<OrganizationBucketConfigIndexConfigArgs>> indexConfigs;
+
+    /**
+     * @return A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<OrganizationBucketConfigIndexConfigArgs>>> indexConfigs() {
+        return Optional.ofNullable(this.indexConfigs);
+    }
+
+    /**
      * The location of the bucket. The supported locations are: &#34;global&#34; &#34;us-central1&#34;
      * 
      */
@@ -117,6 +134,7 @@ public final class OrganizationBucketConfigArgs extends com.pulumi.resources.Res
         this.bucketId = $.bucketId;
         this.cmekSettings = $.cmekSettings;
         this.description = $.description;
+        this.indexConfigs = $.indexConfigs;
         this.location = $.location;
         this.organization = $.organization;
         this.retentionDays = $.retentionDays;
@@ -205,6 +223,37 @@ public final class OrganizationBucketConfigArgs extends com.pulumi.resources.Res
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param indexConfigs A list of indexed fields and related configuration data. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexConfigs(@Nullable Output<List<OrganizationBucketConfigIndexConfigArgs>> indexConfigs) {
+            $.indexConfigs = indexConfigs;
+            return this;
+        }
+
+        /**
+         * @param indexConfigs A list of indexed fields and related configuration data. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexConfigs(List<OrganizationBucketConfigIndexConfigArgs> indexConfigs) {
+            return indexConfigs(Output.of(indexConfigs));
+        }
+
+        /**
+         * @param indexConfigs A list of indexed fields and related configuration data. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexConfigs(OrganizationBucketConfigIndexConfigArgs... indexConfigs) {
+            return indexConfigs(List.of(indexConfigs));
         }
 
         /**

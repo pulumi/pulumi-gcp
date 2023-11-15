@@ -200,6 +200,13 @@ namespace Pulumi.Gcp.AccessContextManager
         [Output("requiredAccessLevels")]
         public Output<ImmutableArray<string>> RequiredAccessLevels { get; private set; } = null!;
 
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vpcNetworkSources")]
+        public Output<ImmutableArray<Outputs.AccessLevelConditionVpcNetworkSource>> VpcNetworkSources { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AccessLevelCondition resource with the given unique name, arguments, and options.
@@ -341,6 +348,19 @@ namespace Pulumi.Gcp.AccessContextManager
             set => _requiredAccessLevels = value;
         }
 
+        [Input("vpcNetworkSources")]
+        private InputList<Inputs.AccessLevelConditionVpcNetworkSourceArgs>? _vpcNetworkSources;
+
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AccessLevelConditionVpcNetworkSourceArgs> VpcNetworkSources
+        {
+            get => _vpcNetworkSources ?? (_vpcNetworkSources = new InputList<Inputs.AccessLevelConditionVpcNetworkSourceArgs>());
+            set => _vpcNetworkSources = value;
+        }
+
         public AccessLevelConditionArgs()
         {
         }
@@ -442,6 +462,19 @@ namespace Pulumi.Gcp.AccessContextManager
         {
             get => _requiredAccessLevels ?? (_requiredAccessLevels = new InputList<string>());
             set => _requiredAccessLevels = value;
+        }
+
+        [Input("vpcNetworkSources")]
+        private InputList<Inputs.AccessLevelConditionVpcNetworkSourceGetArgs>? _vpcNetworkSources;
+
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AccessLevelConditionVpcNetworkSourceGetArgs> VpcNetworkSources
+        {
+            get => _vpcNetworkSources ?? (_vpcNetworkSources = new InputList<Inputs.AccessLevelConditionVpcNetworkSourceGetArgs>());
+            set => _vpcNetworkSources = value;
         }
 
         public AccessLevelConditionState()

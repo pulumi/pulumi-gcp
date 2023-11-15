@@ -17,14 +17,14 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
     public static final WorkloadResourceArgs Empty = new WorkloadResourceArgs();
 
     /**
-     * Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+     * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<Integer> resourceId;
 
     /**
-     * @return Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
      * 
      */
     public Optional<Output<Integer>> resourceId() {
@@ -72,7 +72,7 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WorkloadResourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
          * 
          * @return builder
          * 

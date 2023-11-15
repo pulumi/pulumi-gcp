@@ -97,18 +97,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Database instances can be imported using one of any of these accepted formats
+ * Database instances can be imported using one of any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Database instances using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/instances/{{name}}"
+ *
+ *  to = google_sql_database_instance.default }
  *
  * ```sh
- *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main projects/{{project}}/instances/{{name}}
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Database instances can be imported using one of the formats above. For example
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{project}}/{{name}}
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance main {{name}}
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
  * ```
  *
  *  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.

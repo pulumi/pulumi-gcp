@@ -29,6 +29,15 @@ __all__ = [
     'GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult',
     'GetSecretRotationResult',
     'GetSecretTopicResult',
+    'GetSecretsSecretResult',
+    'GetSecretsSecretReplicationResult',
+    'GetSecretsSecretReplicationAutoResult',
+    'GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult',
+    'GetSecretsSecretReplicationUserManagedResult',
+    'GetSecretsSecretReplicationUserManagedReplicaResult',
+    'GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult',
+    'GetSecretsSecretRotationResult',
+    'GetSecretsSecretTopicResult',
 ]
 
 @pulumi.output_type
@@ -514,6 +523,351 @@ class GetSecretTopicResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSecretsSecretResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 create_time: str,
+                 effective_annotations: Mapping[str, str],
+                 effective_labels: Mapping[str, str],
+                 expire_time: str,
+                 labels: Mapping[str, str],
+                 name: str,
+                 project: str,
+                 pulumi_labels: Mapping[str, str],
+                 replications: Sequence['outputs.GetSecretsSecretReplicationResult'],
+                 rotations: Sequence['outputs.GetSecretsSecretRotationResult'],
+                 secret_id: str,
+                 topics: Sequence['outputs.GetSecretsSecretTopicResult'],
+                 ttl: str,
+                 version_aliases: Mapping[str, str]):
+        """
+        :param Mapping[str, str] annotations: Custom metadata about the secret.
+        :param str create_time: The time at which the Secret was created.
+        :param str expire_time: Timestamp in UTC when the Secret is scheduled to expire.
+        :param Mapping[str, str] labels: The labels assigned to this Secret.
+        :param str name: The resource name of the Pub/Sub topic that will be published to.
+        :param str project: The ID of the project.
+        :param Sequence['GetSecretsSecretReplicationArgs'] replications: The replication policy of the secret data attached to the Secret.
+               Structure is documented below.
+        :param Sequence['GetSecretsSecretRotationArgs'] rotations: The rotation time and period for a Secret.
+               Structure is documented below.
+        :param Sequence['GetSecretsSecretTopicArgs'] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param Mapping[str, str] version_aliases: Mapping from version alias to version name.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "effective_annotations", effective_annotations)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "replications", replications)
+        pulumi.set(__self__, "rotations", rotations)
+        pulumi.set(__self__, "secret_id", secret_id)
+        pulumi.set(__self__, "topics", topics)
+        pulumi.set(__self__, "ttl", ttl)
+        pulumi.set(__self__, "version_aliases", version_aliases)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        Custom metadata about the secret.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time at which the Secret was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Timestamp in UTC when the Secret is scheduled to expire.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The labels assigned to this Secret.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def replications(self) -> Sequence['outputs.GetSecretsSecretReplicationResult']:
+        """
+        The replication policy of the secret data attached to the Secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replications")
+
+    @property
+    @pulumi.getter
+    def rotations(self) -> Sequence['outputs.GetSecretsSecretRotationResult']:
+        """
+        The rotation time and period for a Secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rotations")
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> str:
+        return pulumi.get(self, "secret_id")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Sequence['outputs.GetSecretsSecretTopicResult']:
+        """
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> str:
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Mapping[str, str]:
+        """
+        Mapping from version alias to version name.
+        """
+        return pulumi.get(self, "version_aliases")
+
+
+@pulumi.output_type
+class GetSecretsSecretReplicationResult(dict):
+    def __init__(__self__, *,
+                 autos: Sequence['outputs.GetSecretsSecretReplicationAutoResult'],
+                 user_manageds: Sequence['outputs.GetSecretsSecretReplicationUserManagedResult']):
+        """
+        :param Sequence['GetSecretsSecretReplicationAutoArgs'] autos: The Secret will automatically be replicated without any restrictions.
+               Structure is documented below.
+        :param Sequence['GetSecretsSecretReplicationUserManagedArgs'] user_manageds: The Secret will be replicated to the regions specified by the user.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "autos", autos)
+        pulumi.set(__self__, "user_manageds", user_manageds)
+
+    @property
+    @pulumi.getter
+    def autos(self) -> Sequence['outputs.GetSecretsSecretReplicationAutoResult']:
+        """
+        The Secret will automatically be replicated without any restrictions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autos")
+
+    @property
+    @pulumi.getter(name="userManageds")
+    def user_manageds(self) -> Sequence['outputs.GetSecretsSecretReplicationUserManagedResult']:
+        """
+        The Secret will be replicated to the regions specified by the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_manageds")
+
+
+@pulumi.output_type
+class GetSecretsSecretReplicationAutoResult(dict):
+    def __init__(__self__, *,
+                 customer_managed_encryptions: Sequence['outputs.GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult']):
+        """
+        :param Sequence['GetSecretsSecretReplicationAutoCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the secret.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptions")
+    def customer_managed_encryptions(self) -> Sequence['outputs.GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult']:
+        """
+        Customer Managed Encryption for the secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryptions")
+
+
+@pulumi.output_type
+class GetSecretsSecretReplicationAutoCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetSecretsSecretReplicationUserManagedResult(dict):
+    def __init__(__self__, *,
+                 replicas: Sequence['outputs.GetSecretsSecretReplicationUserManagedReplicaResult']):
+        """
+        :param Sequence['GetSecretsSecretReplicationUserManagedReplicaArgs'] replicas: The list of Replicas for this Secret.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "replicas", replicas)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Sequence['outputs.GetSecretsSecretReplicationUserManagedReplicaResult']:
+        """
+        The list of Replicas for this Secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replicas")
+
+
+@pulumi.output_type
+class GetSecretsSecretReplicationUserManagedReplicaResult(dict):
+    def __init__(__self__, *,
+                 customer_managed_encryptions: Sequence['outputs.GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult'],
+                 location: str):
+        """
+        :param Sequence['GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the secret.
+               Structure is documented below.
+        :param str location: The canonical IDs of the location to replicate data.
+        """
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptions")
+    def customer_managed_encryptions(self) -> Sequence['outputs.GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult']:
+        """
+        Customer Managed Encryption for the secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryptions")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The canonical IDs of the location to replicate data.
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetSecretsSecretRotationResult(dict):
+    def __init__(__self__, *,
+                 next_rotation_time: str,
+                 rotation_period: str):
+        """
+        :param str next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
+        :param str rotation_period: The Duration between rotation notifications.
+        """
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> str:
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> str:
+        """
+        The Duration between rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class GetSecretsSecretTopicResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The resource name of the Pub/Sub topic that will be published to.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to.
+        """
         return pulumi.get(self, "name")
 
 

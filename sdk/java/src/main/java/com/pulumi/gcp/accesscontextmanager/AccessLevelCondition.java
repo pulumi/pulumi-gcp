@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.accesscontextmanager.AccessLevelConditionArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionState;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelConditionDevicePolicy;
+import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelConditionVpcNetworkSource;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -283,6 +284,22 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> requiredAccessLevels() {
         return Codegen.optional(this.requiredAccessLevels);
+    }
+    /**
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="vpcNetworkSources", refs={List.class,AccessLevelConditionVpcNetworkSource.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AccessLevelConditionVpcNetworkSource>> vpcNetworkSources;
+
+    /**
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<AccessLevelConditionVpcNetworkSource>>> vpcNetworkSources() {
+        return Codegen.optional(this.vpcNetworkSources);
     }
 
     /**

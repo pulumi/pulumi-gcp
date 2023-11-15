@@ -10,17 +10,8 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// A managed alloydb cluster instance.
-//
-// To get more information about Instance, see:
-//
-// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
-// * How-to Guides
-//   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
-//
 // ## Example Usage
 // ### Alloydb Instance Basic
 //
@@ -95,10 +86,121 @@ import (
 //	}
 //
 // ```
+// ### Alloydb Secondary Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			primaryCluster, err := alloydb.NewCluster(ctx, "primaryCluster", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-primary-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: _default.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryInstance, err := alloydb.NewInstance(ctx, "primaryInstance", &alloydb.InstanceArgs{
+//				Cluster:      primaryCluster.Name,
+//				InstanceId:   pulumi.String("alloydb-primary-instance"),
+//				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			secondaryCluster, err := alloydb.NewCluster(ctx, "secondaryCluster", &alloydb.ClusterArgs{
+//				ClusterId:   pulumi.String("alloydb-secondary-cluster"),
+//				Location:    pulumi.String("us-east1"),
+//				Network:     _default.ID(),
+//				ClusterType: pulumi.String("SECONDARY"),
+//				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
+//				SecondaryConfig: &alloydb.ClusterSecondaryConfigArgs{
+//					PrimaryClusterName: primaryCluster.Name,
+//				},
+//				DeletionPolicy: pulumi.String("FORCE"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primaryInstance,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alloydb.NewInstance(ctx, "secondaryInstance", &alloydb.InstanceArgs{
+//				Cluster:      secondaryCluster.Name,
+//				InstanceId:   pulumi.String("alloydb-secondary-instance"),
+//				InstanceType: secondaryCluster.ClusterType,
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}` * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}` * `{{location}}/{{cluster}}/{{instance_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}"
+//
+//	to = google_alloydb_instance.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:alloydb/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -132,6 +234,9 @@ type Instance struct {
 	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringOutput `pulumi:"availabilityType"`
+	// Client connection specific configurations.
+	// Structure is documented below.
+	ClientConnectionConfig InstanceClientConnectionConfigOutput `pulumi:"clientConnectionConfig"`
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
@@ -152,8 +257,15 @@ type Instance struct {
 	//
 	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
-	// Possible values are: `PRIMARY`, `READ_POOL`.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+	// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+	// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+	// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of {instance_type = SECONDARY} If the instance
+	// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+	// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+	// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+	// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+	// "SECONDARY"]
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -241,6 +353,9 @@ type instanceState struct {
 	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
+	// Client connection specific configurations.
+	// Structure is documented below.
+	ClientConnectionConfig *InstanceClientConnectionConfig `pulumi:"clientConnectionConfig"`
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster *string `pulumi:"cluster"`
@@ -261,8 +376,15 @@ type instanceState struct {
 	//
 	// ***
 	InstanceId *string `pulumi:"instanceId"`
-	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
-	// Possible values are: `PRIMARY`, `READ_POOL`.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+	// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+	// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+	// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of {instance_type = SECONDARY} If the instance
+	// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+	// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+	// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+	// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+	// "SECONDARY"]
 	InstanceType *string `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -307,6 +429,9 @@ type InstanceState struct {
 	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
+	// Client connection specific configurations.
+	// Structure is documented below.
+	ClientConnectionConfig InstanceClientConnectionConfigPtrInput
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster pulumi.StringPtrInput
@@ -327,8 +452,15 @@ type InstanceState struct {
 	//
 	// ***
 	InstanceId pulumi.StringPtrInput
-	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
-	// Possible values are: `PRIMARY`, `READ_POOL`.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+	// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+	// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+	// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of {instance_type = SECONDARY} If the instance
+	// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+	// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+	// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+	// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+	// "SECONDARY"]
 	InstanceType pulumi.StringPtrInput
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress pulumi.StringPtrInput
@@ -377,6 +509,9 @@ type instanceArgs struct {
 	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
+	// Client connection specific configurations.
+	// Structure is documented below.
+	ClientConnectionConfig *InstanceClientConnectionConfig `pulumi:"clientConnectionConfig"`
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster string `pulumi:"cluster"`
@@ -390,8 +525,15 @@ type instanceArgs struct {
 	//
 	// ***
 	InstanceId string `pulumi:"instanceId"`
-	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
-	// Possible values are: `PRIMARY`, `READ_POOL`.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+	// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+	// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+	// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of {instance_type = SECONDARY} If the instance
+	// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+	// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+	// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+	// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+	// "SECONDARY"]
 	InstanceType string `pulumi:"instanceType"`
 	// User-defined labels for the alloydb instance.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -422,6 +564,9 @@ type InstanceArgs struct {
 	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
+	// Client connection specific configurations.
+	// Structure is documented below.
+	ClientConnectionConfig InstanceClientConnectionConfigPtrInput
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster pulumi.StringInput
@@ -435,8 +580,15 @@ type InstanceArgs struct {
 	//
 	// ***
 	InstanceId pulumi.StringInput
-	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
-	// Possible values are: `PRIMARY`, `READ_POOL`.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+	// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+	// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+	// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of {instance_type = SECONDARY} If the instance
+	// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+	// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+	// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+	// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+	// "SECONDARY"]
 	InstanceType pulumi.StringInput
 	// User-defined labels for the alloydb instance.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -476,12 +628,6 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
 }
 
-func (i *Instance) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: i.ToInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
@@ -505,12 +651,6 @@ func (i InstanceArray) ToInstanceArrayOutput() InstanceArrayOutput {
 
 func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) InstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceArrayOutput)
-}
-
-func (i InstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: i.ToInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
@@ -538,12 +678,6 @@ func (i InstanceMap) ToInstanceMapOutputWithContext(ctx context.Context) Instanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMapOutput)
 }
 
-func (i InstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: i.ToInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceOutput struct{ *pulumi.OutputState }
 
 func (InstanceOutput) ElementType() reflect.Type {
@@ -556,12 +690,6 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
-}
-
-func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
@@ -580,6 +708,12 @@ func (o InstanceOutput) Annotations() pulumi.StringMapOutput {
 // Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 func (o InstanceOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityType }).(pulumi.StringOutput)
+}
+
+// Client connection specific configurations.
+// Structure is documented below.
+func (o InstanceOutput) ClientConnectionConfig() InstanceClientConnectionConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceClientConnectionConfigOutput { return v.ClientConnectionConfig }).(InstanceClientConnectionConfigOutput)
 }
 
 // Identifies the alloydb cluster. Must be in the format
@@ -626,8 +760,15 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
-// Possible values are: `PRIMARY`, `READ_POOL`.
+// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+// 'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+// secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+// google_alloydb_cluster.<secondary_cluster_name>.cluster_type} instead of {instance_type = SECONDARY} If the instance
+// type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+// instead. Use deletion_policy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete
+// the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+// importing the deleted secondary instance by calling terraform import. Possible values: ["PRIMARY", "READ_POOL",
+// "SECONDARY"]
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -707,12 +848,6 @@ func (o InstanceArrayOutput) ToInstanceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceArrayOutput) Index(i pulumi.IntInput) InstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Instance {
 		return vs[0].([]*Instance)[vs[1].(int)]
@@ -731,12 +866,6 @@ func (o InstanceMapOutput) ToInstanceMapOutput() InstanceMapOutput {
 
 func (o InstanceMapOutput) ToInstanceMapOutputWithContext(ctx context.Context) InstanceMapOutput {
 	return o
-}
-
-func (o InstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMapOutput) MapIndex(k pulumi.StringInput) InstanceOutput {

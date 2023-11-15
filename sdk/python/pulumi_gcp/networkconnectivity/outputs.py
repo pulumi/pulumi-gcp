@@ -12,6 +12,10 @@ from . import outputs
 
 __all__ = [
     'HubRoutingVpc',
+    'PolicyBasedRouteFilter',
+    'PolicyBasedRouteInterconnectAttachment',
+    'PolicyBasedRouteVirtualMachine',
+    'PolicyBasedRouteWarning',
     'ServiceConnectionPolicyPscConfig',
     'ServiceConnectionPolicyPscConnection',
     'ServiceConnectionPolicyPscConnectionError',
@@ -34,6 +38,191 @@ class HubRoutingVpc(dict):
     @pulumi.getter
     def uri(self) -> Optional[str]:
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class PolicyBasedRouteFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protocolVersion":
+            suggest = "protocol_version"
+        elif key == "destRange":
+            suggest = "dest_range"
+        elif key == "ipProtocol":
+            suggest = "ip_protocol"
+        elif key == "srcRange":
+            suggest = "src_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyBasedRouteFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyBasedRouteFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyBasedRouteFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 protocol_version: str,
+                 dest_range: Optional[str] = None,
+                 ip_protocol: Optional[str] = None,
+                 src_range: Optional[str] = None):
+        """
+        :param str protocol_version: Internet protocol versions this policy-based route applies to.
+               Possible values are: `IPV4`.
+        :param str dest_range: The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+               
+               - - -
+        :param str ip_protocol: The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        :param str src_range: The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        pulumi.set(__self__, "protocol_version", protocol_version)
+        if dest_range is not None:
+            pulumi.set(__self__, "dest_range", dest_range)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if src_range is not None:
+            pulumi.set(__self__, "src_range", src_range)
+
+    @property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> str:
+        """
+        Internet protocol versions this policy-based route applies to.
+        Possible values are: `IPV4`.
+        """
+        return pulumi.get(self, "protocol_version")
+
+    @property
+    @pulumi.getter(name="destRange")
+    def dest_range(self) -> Optional[str]:
+        """
+        The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+
+        - - -
+        """
+        return pulumi.get(self, "dest_range")
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[str]:
+        """
+        The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter(name="srcRange")
+    def src_range(self) -> Optional[str]:
+        """
+        The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+        return pulumi.get(self, "src_range")
+
+
+@pulumi.output_type
+class PolicyBasedRouteInterconnectAttachment(dict):
+    def __init__(__self__, *,
+                 region: str):
+        """
+        :param str region: Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class PolicyBasedRouteVirtualMachine(dict):
+    def __init__(__self__, *,
+                 tags: Sequence[str]):
+        """
+        :param Sequence[str] tags: A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class PolicyBasedRouteWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyBasedRouteWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyBasedRouteWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyBasedRouteWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 data: Optional[Mapping[str, str]] = None,
+                 warning_message: Optional[str] = None):
+        """
+        :param str code: (Output)
+               A warning code, if applicable.
+        :param Mapping[str, str] data: (Output)
+               Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+        :param str warning_message: (Output)
+               A human-readable description of the warning code.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+        if warning_message is not None:
+            pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        A warning code, if applicable.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> Optional[str]:
+        """
+        (Output)
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "warning_message")
 
 
 @pulumi.output_type

@@ -326,21 +326,7 @@ class IAMMember(pulumi.CustomResource):
 
         ## Import
 
-        Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
-
-        ```sh
-         $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
-        ```
-
-        ```sh
-         $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
-        ```
-
-        ```sh
-         $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
-        ```
-
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
+        ### Importing with conditionsHere are examples of importing IAM memberships and bindings that include conditions
 
         ```sh
          $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
@@ -480,21 +466,7 @@ class IAMMember(pulumi.CustomResource):
 
         ## Import
 
-        Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
-
-        ```sh
-         $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
-        ```
-
-        ```sh
-         $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
-        ```
-
-        ```sh
-         $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
-        ```
-
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
+        ### Importing with conditionsHere are examples of importing IAM memberships and bindings that include conditions
 
         ```sh
          $ pulumi import gcp:serviceaccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"

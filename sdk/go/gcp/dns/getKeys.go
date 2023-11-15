@@ -9,12 +9,18 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+// Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+//
+// For more information see the
 // [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
 // and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+//
+// > A dns.ManagedZone resource must have DNSSEC enabled in order
+// to contain any DNSKEYs. Queries to managed zones without this setting
+// enabled will result in a 404 error as the collection of DNSKEYs does
+// not exist in the DNS API.
 //
 // ## Example Usage
 //
@@ -119,12 +125,6 @@ func (o GetKeysResultOutput) ToGetKeysResultOutput() GetKeysResultOutput {
 
 func (o GetKeysResultOutput) ToGetKeysResultOutputWithContext(ctx context.Context) GetKeysResultOutput {
 	return o
-}
-
-func (o GetKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysResult] {
-	return pulumix.Output[GetKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique identifier for the resource; defined by the server.

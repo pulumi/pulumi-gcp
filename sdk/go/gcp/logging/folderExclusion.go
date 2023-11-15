@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a folder-level logging exclusion. For more information see:
@@ -59,11 +58,21 @@ import (
 //
 // ## Import
 //
-// Folder-level logging exclusions can be imported using their URI, e.g.
+// Folder-level logging exclusions can be imported using their URI, e.g. * `folders/{{folder}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import folder-level logging exclusions using one of the formats above. For exampletf import {
+//
+//	id = "folders/{{folder}}/exclusions/{{name}}"
+//
+//	to = google_logging_folder_exclusion.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+//	$ pulumi import gcp:logging/folderExclusion:FolderExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), folder-level logging exclusions can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:logging/folderExclusion:FolderExclusion default folders/{{folder}}/exclusions/{{name}}
 //
 // ```
 type FolderExclusion struct {
@@ -216,12 +225,6 @@ func (i *FolderExclusion) ToFolderExclusionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionOutput)
 }
 
-func (i *FolderExclusion) ToOutput(ctx context.Context) pulumix.Output[*FolderExclusion] {
-	return pulumix.Output[*FolderExclusion]{
-		OutputState: i.ToFolderExclusionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FolderExclusionArrayInput is an input type that accepts FolderExclusionArray and FolderExclusionArrayOutput values.
 // You can construct a concrete instance of `FolderExclusionArrayInput` via:
 //
@@ -245,12 +248,6 @@ func (i FolderExclusionArray) ToFolderExclusionArrayOutput() FolderExclusionArra
 
 func (i FolderExclusionArray) ToFolderExclusionArrayOutputWithContext(ctx context.Context) FolderExclusionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionArrayOutput)
-}
-
-func (i FolderExclusionArray) ToOutput(ctx context.Context) pulumix.Output[[]*FolderExclusion] {
-	return pulumix.Output[[]*FolderExclusion]{
-		OutputState: i.ToFolderExclusionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FolderExclusionMapInput is an input type that accepts FolderExclusionMap and FolderExclusionMapOutput values.
@@ -278,12 +275,6 @@ func (i FolderExclusionMap) ToFolderExclusionMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionMapOutput)
 }
 
-func (i FolderExclusionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderExclusion] {
-	return pulumix.Output[map[string]*FolderExclusion]{
-		OutputState: i.ToFolderExclusionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderExclusionOutput struct{ *pulumi.OutputState }
 
 func (FolderExclusionOutput) ElementType() reflect.Type {
@@ -296,12 +287,6 @@ func (o FolderExclusionOutput) ToFolderExclusionOutput() FolderExclusionOutput {
 
 func (o FolderExclusionOutput) ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput {
 	return o
-}
-
-func (o FolderExclusionOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderExclusion] {
-	return pulumix.Output[*FolderExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human-readable description.
@@ -347,12 +332,6 @@ func (o FolderExclusionArrayOutput) ToFolderExclusionArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o FolderExclusionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FolderExclusion] {
-	return pulumix.Output[[]*FolderExclusion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FolderExclusionArrayOutput) Index(i pulumi.IntInput) FolderExclusionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderExclusion {
 		return vs[0].([]*FolderExclusion)[vs[1].(int)]
@@ -371,12 +350,6 @@ func (o FolderExclusionMapOutput) ToFolderExclusionMapOutput() FolderExclusionMa
 
 func (o FolderExclusionMapOutput) ToFolderExclusionMapOutputWithContext(ctx context.Context) FolderExclusionMapOutput {
 	return o
-}
-
-func (o FolderExclusionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderExclusion] {
-	return pulumix.Output[map[string]*FolderExclusion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderExclusionMapOutput) MapIndex(k pulumi.StringInput) FolderExclusionOutput {

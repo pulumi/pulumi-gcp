@@ -132,10 +132,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
-     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-     * served from non-core Google data centers.
+     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+     * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * see https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones
      * 
      */
     @Import(name="scope")
@@ -145,10 +145,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
      * @return The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
-     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-     * served from non-core Google data centers.
+     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+     * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * see https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones
      * 
      */
     public Optional<Output<String>> scope() {
@@ -357,10 +357,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * @param scope The scope of the certificate.
          * DEFAULT: Certificates with default scope are served from core Google data centers.
          * If unsure, choose this option.
-         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-         * served from non-core Google data centers.
+         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+         * See https://cloud.google.com/vpc/docs/edge-locations.
          * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-         * see https://cloud.google.com/compute/docs/regions-zones
+         * See https://cloud.google.com/compute/docs/regions-zones
          * 
          * @return builder
          * 
@@ -374,10 +374,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * @param scope The scope of the certificate.
          * DEFAULT: Certificates with default scope are served from core Google data centers.
          * If unsure, choose this option.
-         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-         * served from non-core Google data centers.
+         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+         * See https://cloud.google.com/vpc/docs/edge-locations.
          * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-         * see https://cloud.google.com/compute/docs/regions-zones
+         * See https://cloud.google.com/compute/docs/regions-zones
          * 
          * @return builder
          * 

@@ -64,7 +64,15 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Import
     /// 
-    /// ObjectAccessControl can be imported using any of these accepted formats:
+    /// ObjectAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{object}}/{{entity}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ObjectAccessControl using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{bucket}}/{{object}}/{{entity}}"
+    /// 
+    ///  to = google_storage_object_access_control.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ObjectAccessControl can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}

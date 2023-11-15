@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
@@ -124,33 +123,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the Healthcare DICOM store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `dicom_store_id`, role, and account e.g.
+//	id = "{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"
+//
+//	to = google_healthcare_dicom_store_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `dicom_store_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `dicom_store_id`, role, and account e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
+//	$ pulumi import gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
 //
 // ```
 type DicomStoreIamMember struct {
@@ -342,12 +329,6 @@ func (i *DicomStoreIamMember) ToDicomStoreIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberOutput)
 }
 
-func (i *DicomStoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamMember] {
-	return pulumix.Output[*DicomStoreIamMember]{
-		OutputState: i.ToDicomStoreIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DicomStoreIamMemberArrayInput is an input type that accepts DicomStoreIamMemberArray and DicomStoreIamMemberArrayOutput values.
 // You can construct a concrete instance of `DicomStoreIamMemberArrayInput` via:
 //
@@ -371,12 +352,6 @@ func (i DicomStoreIamMemberArray) ToDicomStoreIamMemberArrayOutput() DicomStoreI
 
 func (i DicomStoreIamMemberArray) ToDicomStoreIamMemberArrayOutputWithContext(ctx context.Context) DicomStoreIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberArrayOutput)
-}
-
-func (i DicomStoreIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamMember] {
-	return pulumix.Output[[]*DicomStoreIamMember]{
-		OutputState: i.ToDicomStoreIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DicomStoreIamMemberMapInput is an input type that accepts DicomStoreIamMemberMap and DicomStoreIamMemberMapOutput values.
@@ -404,12 +379,6 @@ func (i DicomStoreIamMemberMap) ToDicomStoreIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberMapOutput)
 }
 
-func (i DicomStoreIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamMember] {
-	return pulumix.Output[map[string]*DicomStoreIamMember]{
-		OutputState: i.ToDicomStoreIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamMemberOutput) ElementType() reflect.Type {
@@ -422,12 +391,6 @@ func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberOutput() DicomStoreIamMe
 
 func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberOutputWithContext(ctx context.Context) DicomStoreIamMemberOutput {
 	return o
-}
-
-func (o DicomStoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamMember] {
-	return pulumix.Output[*DicomStoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamMemberOutput) Condition() DicomStoreIamMemberConditionPtrOutput {
@@ -481,12 +444,6 @@ func (o DicomStoreIamMemberArrayOutput) ToDicomStoreIamMemberArrayOutputWithCont
 	return o
 }
 
-func (o DicomStoreIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamMember] {
-	return pulumix.Output[[]*DicomStoreIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DicomStoreIamMemberArrayOutput) Index(i pulumi.IntInput) DicomStoreIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStoreIamMember {
 		return vs[0].([]*DicomStoreIamMember)[vs[1].(int)]
@@ -505,12 +462,6 @@ func (o DicomStoreIamMemberMapOutput) ToDicomStoreIamMemberMapOutput() DicomStor
 
 func (o DicomStoreIamMemberMapOutput) ToDicomStoreIamMemberMapOutputWithContext(ctx context.Context) DicomStoreIamMemberMapOutput {
 	return o
-}
-
-func (o DicomStoreIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamMember] {
-	return pulumix.Output[map[string]*DicomStoreIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) DicomStoreIamMemberOutput {

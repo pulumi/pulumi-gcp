@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The AssuredWorkloads Workload resource
@@ -33,7 +32,7 @@ import (
 //			_, err := assuredworkloads.NewWorkload(ctx, "primary", &assuredworkloads.WorkloadArgs{
 //				BillingAccount:   pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
 //				ComplianceRegime: pulumi.String("FEDRAMP_MODERATE"),
-//				DisplayName:      pulumi.String("Workload Example"),
+//				DisplayName:      pulumi.String("{{display}}"),
 //				KmsSettings: &assuredworkloads.WorkloadKmsSettingsArgs{
 //					NextRotationTime: pulumi.String("9999-10-02T15:01:23Z"),
 //					RotationPeriod:   pulumi.String("10368000s"),
@@ -46,7 +45,8 @@ import (
 //				ProvisionedResourcesParent: pulumi.String("folders/519620126891"),
 //				ResourceSettings: assuredworkloads.WorkloadResourceSettingArray{
 //					&assuredworkloads.WorkloadResourceSettingArgs{
-//						ResourceType: pulumi.String("CONSUMER_PROJECT"),
+//						DisplayName:  pulumi.String("folder-display-name"),
+//						ResourceType: pulumi.String("CONSUMER_FOLDER"),
 //					},
 //					&assuredworkloads.WorkloadResourceSettingArgs{
 //						ResourceType: pulumi.String("ENCRYPTION_KEYS_PROJECT"),
@@ -56,7 +56,57 @@ import (
 //						ResourceType: pulumi.String("KEYRING"),
 //					},
 //				},
+//				ViolationNotificationsEnabled: pulumi.Bool(true),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Sovereign_controls_workload
+// A Sovereign Controls test of the assuredworkloads api
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/assuredworkloads"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := assuredworkloads.NewWorkload(ctx, "primary", &assuredworkloads.WorkloadArgs{
+//				ComplianceRegime:        pulumi.String("EU_REGIONS_AND_SUPPORT"),
+//				DisplayName:             pulumi.String("display"),
+//				Location:                pulumi.String("europe-west9"),
+//				Organization:            pulumi.String("123456789"),
+//				BillingAccount:          pulumi.String("billingAccounts/000000-0000000-0000000-000000"),
+//				EnableSovereignControls: pulumi.Bool(true),
+//				KmsSettings: &assuredworkloads.WorkloadKmsSettingsArgs{
+//					NextRotationTime: pulumi.String("9999-10-02T15:01:23Z"),
+//					RotationPeriod:   pulumi.String("10368000s"),
+//				},
+//				ResourceSettings: assuredworkloads.WorkloadResourceSettingArray{
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceType: pulumi.String("CONSUMER_FOLDER"),
+//					},
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceType: pulumi.String("ENCRYPTION_KEYS_PROJECT"),
+//					},
+//					&assuredworkloads.WorkloadResourceSettingArgs{
+//						ResourceId:   pulumi.String("ring"),
+//						ResourceType: pulumi.String("KEYRING"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -68,7 +118,17 @@ import (
 //
 // ## Import
 //
-// # Workload can be imported using any of these accepted formats
+// Workload can be imported using any of these accepted formats* `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}` * `{{organization}}/{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Workload using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{organization}}/locations/{{location}}/workloads/{{name}}"
+//
+//	to = google_assured_workloads_workload.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:assuredworkloads/workload:Workload When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Workload can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -84,17 +144,27 @@ import (
 type Workload struct {
 	pulumi.CustomResourceState
 
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+	// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
+	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
 	ComplianceRegime pulumi.StringOutput `pulumi:"complianceRegime"`
+	// Output only. Count of active Violations in the Workload.
+	ComplianceStatuses WorkloadComplianceStatusArrayOutput `pulumi:"complianceStatuses"`
+	// Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
+	CompliantButDisallowedServices pulumi.StringArrayOutput `pulumi:"compliantButDisallowedServices"`
 	// Output only. Immutable. The Workload creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	// Optional. Represents the Ekm Provisioning State of the given workload.
+	EkmProvisioningResponses WorkloadEkmProvisioningResponseArrayOutput `pulumi:"ekmProvisioningResponses"`
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls pulumi.BoolOutput `pulumi:"enableSovereignControls"`
+	// Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
+	KajEnrollmentState pulumi.StringOutput `pulumi:"kajEnrollmentState"`
+	// **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 	KmsSettings WorkloadKmsSettingsPtrOutput `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	//
@@ -109,7 +179,11 @@ type Workload struct {
 	//
 	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
-	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+	Partner pulumi.StringPtrOutput `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions WorkloadPartnerPermissionsPtrOutput `pulumi:"partnerPermissions"`
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrOutput `pulumi:"provisionedResourcesParent"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
@@ -117,6 +191,10 @@ type Workload struct {
 	ResourceSettings WorkloadResourceSettingArrayOutput `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayOutput `pulumi:"resources"`
+	// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+	SaaEnrollmentResponses WorkloadSaaEnrollmentResponseArrayOutput `pulumi:"saaEnrollmentResponses"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled pulumi.BoolOutput `pulumi:"violationNotificationsEnabled"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -126,9 +204,6 @@ func NewWorkload(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BillingAccount == nil {
-		return nil, errors.New("invalid value for required argument 'BillingAccount'")
-	}
 	if args.ComplianceRegime == nil {
 		return nil, errors.New("invalid value for required argument 'ComplianceRegime'")
 	}
@@ -169,17 +244,27 @@ func GetWorkload(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workload resources.
 type workloadState struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
+	// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount *string `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
 	ComplianceRegime *string `pulumi:"complianceRegime"`
+	// Output only. Count of active Violations in the Workload.
+	ComplianceStatuses []WorkloadComplianceStatus `pulumi:"complianceStatuses"`
+	// Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
+	CompliantButDisallowedServices []string `pulumi:"compliantButDisallowedServices"`
 	// Output only. Immutable. The Workload creation timestamp.
 	CreateTime *string `pulumi:"createTime"`
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	// Optional. Represents the Ekm Provisioning State of the given workload.
+	EkmProvisioningResponses []WorkloadEkmProvisioningResponse `pulumi:"ekmProvisioningResponses"`
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls *bool `pulumi:"enableSovereignControls"`
+	// Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
+	KajEnrollmentState *string `pulumi:"kajEnrollmentState"`
+	// **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 	KmsSettings *WorkloadKmsSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	//
@@ -194,7 +279,11 @@ type workloadState struct {
 	//
 	// ***
 	Organization *string `pulumi:"organization"`
-	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+	Partner *string `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions *WorkloadPartnerPermissions `pulumi:"partnerPermissions"`
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
@@ -202,20 +291,34 @@ type workloadState struct {
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources []WorkloadResource `pulumi:"resources"`
+	// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+	SaaEnrollmentResponses []WorkloadSaaEnrollmentResponse `pulumi:"saaEnrollmentResponses"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
 }
 
 type WorkloadState struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
+	// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount pulumi.StringPtrInput
-	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
 	ComplianceRegime pulumi.StringPtrInput
+	// Output only. Count of active Violations in the Workload.
+	ComplianceStatuses WorkloadComplianceStatusArrayInput
+	// Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
+	CompliantButDisallowedServices pulumi.StringArrayInput
 	// Output only. Immutable. The Workload creation timestamp.
 	CreateTime pulumi.StringPtrInput
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	// Optional. Represents the Ekm Provisioning State of the given workload.
+	EkmProvisioningResponses WorkloadEkmProvisioningResponseArrayInput
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls pulumi.BoolPtrInput
+	// Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
+	KajEnrollmentState pulumi.StringPtrInput
+	// **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 	KmsSettings WorkloadKmsSettingsPtrInput
 	// Optional. Labels applied to the workload.
 	//
@@ -230,7 +333,11 @@ type WorkloadState struct {
 	//
 	// ***
 	Organization pulumi.StringPtrInput
-	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+	Partner pulumi.StringPtrInput
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions WorkloadPartnerPermissionsPtrInput
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.MapInput
@@ -238,6 +345,10 @@ type WorkloadState struct {
 	ResourceSettings WorkloadResourceSettingArrayInput
 	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayInput
+	// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+	SaaEnrollmentResponses WorkloadSaaEnrollmentResponseArrayInput
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled pulumi.BoolPtrInput
 }
 
 func (WorkloadState) ElementType() reflect.Type {
@@ -245,13 +356,15 @@ func (WorkloadState) ElementType() reflect.Type {
 }
 
 type workloadArgs struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount string `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+	// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount *string `pulumi:"billingAccount"`
+	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
 	ComplianceRegime string `pulumi:"complianceRegime"`
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName string `pulumi:"displayName"`
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls *bool `pulumi:"enableSovereignControls"`
+	// **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 	KmsSettings *WorkloadKmsSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	//
@@ -264,21 +377,29 @@ type workloadArgs struct {
 	//
 	// ***
 	Organization string `pulumi:"organization"`
-	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+	Partner *string `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions *WorkloadPartnerPermissions `pulumi:"partnerPermissions"`
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
 }
 
 // The set of arguments for constructing a Workload resource.
 type WorkloadArgs struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount pulumi.StringInput
-	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+	// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount pulumi.StringPtrInput
+	// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
 	ComplianceRegime pulumi.StringInput
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringInput
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+	EnableSovereignControls pulumi.BoolPtrInput
+	// **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 	KmsSettings WorkloadKmsSettingsPtrInput
 	// Optional. Labels applied to the workload.
 	//
@@ -291,10 +412,16 @@ type WorkloadArgs struct {
 	//
 	// ***
 	Organization pulumi.StringInput
-	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+	Partner pulumi.StringPtrInput
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions WorkloadPartnerPermissionsPtrInput
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayInput
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled pulumi.BoolPtrInput
 }
 
 func (WorkloadArgs) ElementType() reflect.Type {
@@ -318,12 +445,6 @@ func (i *Workload) ToWorkloadOutput() WorkloadOutput {
 
 func (i *Workload) ToWorkloadOutputWithContext(ctx context.Context) WorkloadOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadOutput)
-}
-
-func (i *Workload) ToOutput(ctx context.Context) pulumix.Output[*Workload] {
-	return pulumix.Output[*Workload]{
-		OutputState: i.ToWorkloadOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkloadArrayInput is an input type that accepts WorkloadArray and WorkloadArrayOutput values.
@@ -351,12 +472,6 @@ func (i WorkloadArray) ToWorkloadArrayOutputWithContext(ctx context.Context) Wor
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadArrayOutput)
 }
 
-func (i WorkloadArray) ToOutput(ctx context.Context) pulumix.Output[[]*Workload] {
-	return pulumix.Output[[]*Workload]{
-		OutputState: i.ToWorkloadArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkloadMapInput is an input type that accepts WorkloadMap and WorkloadMapOutput values.
 // You can construct a concrete instance of `WorkloadMapInput` via:
 //
@@ -382,12 +497,6 @@ func (i WorkloadMap) ToWorkloadMapOutputWithContext(ctx context.Context) Workloa
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadMapOutput)
 }
 
-func (i WorkloadMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Workload] {
-	return pulumix.Output[map[string]*Workload]{
-		OutputState: i.ToWorkloadMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadOutput struct{ *pulumi.OutputState }
 
 func (WorkloadOutput) ElementType() reflect.Type {
@@ -402,20 +511,24 @@ func (o WorkloadOutput) ToWorkloadOutputWithContext(ctx context.Context) Workloa
 	return o
 }
 
-func (o WorkloadOutput) ToOutput(ctx context.Context) pulumix.Output[*Workload] {
-	return pulumix.Output[*Workload]{
-		OutputState: o.OutputState,
-	}
+// Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+func (o WorkloadOutput) BillingAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringPtrOutput { return v.BillingAccount }).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
-func (o WorkloadOutput) BillingAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.BillingAccount }).(pulumi.StringOutput)
-}
-
-// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
 func (o WorkloadOutput) ComplianceRegime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.ComplianceRegime }).(pulumi.StringOutput)
+}
+
+// Output only. Count of active Violations in the Workload.
+func (o WorkloadOutput) ComplianceStatuses() WorkloadComplianceStatusArrayOutput {
+	return o.ApplyT(func(v *Workload) WorkloadComplianceStatusArrayOutput { return v.ComplianceStatuses }).(WorkloadComplianceStatusArrayOutput)
+}
+
+// Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
+func (o WorkloadOutput) CompliantButDisallowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringArrayOutput { return v.CompliantButDisallowedServices }).(pulumi.StringArrayOutput)
 }
 
 // Output only. Immutable. The Workload creation timestamp.
@@ -433,7 +546,22 @@ func (o WorkloadOutput) EffectiveLabels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Workload) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
 }
 
-// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+// Optional. Represents the Ekm Provisioning State of the given workload.
+func (o WorkloadOutput) EkmProvisioningResponses() WorkloadEkmProvisioningResponseArrayOutput {
+	return o.ApplyT(func(v *Workload) WorkloadEkmProvisioningResponseArrayOutput { return v.EkmProvisioningResponses }).(WorkloadEkmProvisioningResponseArrayOutput)
+}
+
+// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+func (o WorkloadOutput) EnableSovereignControls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.EnableSovereignControls }).(pulumi.BoolOutput)
+}
+
+// Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
+func (o WorkloadOutput) KajEnrollmentState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.KajEnrollmentState }).(pulumi.StringOutput)
+}
+
+// **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 func (o WorkloadOutput) KmsSettings() WorkloadKmsSettingsPtrOutput {
 	return o.ApplyT(func(v *Workload) WorkloadKmsSettingsPtrOutput { return v.KmsSettings }).(WorkloadKmsSettingsPtrOutput)
 }
@@ -463,7 +591,17 @@ func (o WorkloadOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }
 
-// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+func (o WorkloadOutput) Partner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringPtrOutput { return v.Partner }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Permissions granted to the AW Partner SA account for the customer workload
+func (o WorkloadOutput) PartnerPermissions() WorkloadPartnerPermissionsPtrOutput {
+	return o.ApplyT(func(v *Workload) WorkloadPartnerPermissionsPtrOutput { return v.PartnerPermissions }).(WorkloadPartnerPermissionsPtrOutput)
+}
+
+// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 func (o WorkloadOutput) ProvisionedResourcesParent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringPtrOutput { return v.ProvisionedResourcesParent }).(pulumi.StringPtrOutput)
 }
@@ -483,6 +621,16 @@ func (o WorkloadOutput) Resources() WorkloadResourceArrayOutput {
 	return o.ApplyT(func(v *Workload) WorkloadResourceArrayOutput { return v.Resources }).(WorkloadResourceArrayOutput)
 }
 
+// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
+func (o WorkloadOutput) SaaEnrollmentResponses() WorkloadSaaEnrollmentResponseArrayOutput {
+	return o.ApplyT(func(v *Workload) WorkloadSaaEnrollmentResponseArrayOutput { return v.SaaEnrollmentResponses }).(WorkloadSaaEnrollmentResponseArrayOutput)
+}
+
+// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+func (o WorkloadOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
+}
+
 type WorkloadArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkloadArrayOutput) ElementType() reflect.Type {
@@ -495,12 +643,6 @@ func (o WorkloadArrayOutput) ToWorkloadArrayOutput() WorkloadArrayOutput {
 
 func (o WorkloadArrayOutput) ToWorkloadArrayOutputWithContext(ctx context.Context) WorkloadArrayOutput {
 	return o
-}
-
-func (o WorkloadArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Workload] {
-	return pulumix.Output[[]*Workload]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadArrayOutput) Index(i pulumi.IntInput) WorkloadOutput {
@@ -521,12 +663,6 @@ func (o WorkloadMapOutput) ToWorkloadMapOutput() WorkloadMapOutput {
 
 func (o WorkloadMapOutput) ToWorkloadMapOutputWithContext(ctx context.Context) WorkloadMapOutput {
 	return o
-}
-
-func (o WorkloadMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Workload] {
-	return pulumix.Output[map[string]*Workload]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadMapOutput) MapIndex(k pulumi.StringInput) WorkloadOutput {

@@ -12,10 +12,18 @@ namespace Pulumi.Gcp.Logging
     /// <summary>
     /// ## Import
     /// 
-    /// Project-level logging sinks can be imported using their URI, e.g.
+    /// Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging sinks using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project_id}}/sinks/{{name}}"
+    /// 
+    ///  to = google_logging_project_sink.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+    ///  $ pulumi import gcp:logging/projectSink:ProjectSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging sinks can be imported using one of the formats above. For example
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/projectSink:ProjectSink")]
@@ -26,6 +34,15 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("bigqueryOptions")]
         public Output<Outputs.ProjectSinkBigqueryOptions> BigqueryOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// A user managed service account that will be used to write
+        /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        /// will automatically be generated.
+        /// </summary>
+        [Output("customWriterIdentity")]
+        public Output<string?> CustomWriterIdentity { get; private set; } = null!;
 
         /// <summary>
         /// A description of this sink. The maximum length of the description is 8000 characters.
@@ -82,8 +99,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `false`
-        /// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
         /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
         /// `bigquery_options`, you must set `unique_writer_identity` to true.
         /// </summary>
@@ -150,6 +166,15 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.ProjectSinkBigqueryOptionsArgs>? BigqueryOptions { get; set; }
 
         /// <summary>
+        /// A user managed service account that will be used to write
+        /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        /// will automatically be generated.
+        /// </summary>
+        [Input("customWriterIdentity")]
+        public Input<string>? CustomWriterIdentity { get; set; }
+
+        /// <summary>
         /// A description of this sink. The maximum length of the description is 8000 characters.
         /// </summary>
         [Input("description")]
@@ -210,8 +235,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `false`
-        /// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
         /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
         /// `bigquery_options`, you must set `unique_writer_identity` to true.
         /// </summary>
@@ -231,6 +255,15 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("bigqueryOptions")]
         public Input<Inputs.ProjectSinkBigqueryOptionsGetArgs>? BigqueryOptions { get; set; }
+
+        /// <summary>
+        /// A user managed service account that will be used to write
+        /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        /// will automatically be generated.
+        /// </summary>
+        [Input("customWriterIdentity")]
+        public Input<string>? CustomWriterIdentity { get; set; }
 
         /// <summary>
         /// A description of this sink. The maximum length of the description is 8000 characters.
@@ -293,8 +326,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `false`
-        /// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
         /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
         /// `bigquery_options`, you must set `unique_writer_identity` to true.
         /// </summary>

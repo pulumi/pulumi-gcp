@@ -11,11 +11,40 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BackupScheduleDailyRecurrence',
+    'BackupScheduleWeeklyRecurrence',
     'FieldIndexConfig',
     'FieldIndexConfigIndex',
     'FieldTtlConfig',
     'IndexField',
 ]
+
+@pulumi.output_type
+class BackupScheduleDailyRecurrence(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class BackupScheduleWeeklyRecurrence(dict):
+    def __init__(__self__, *,
+                 day: Optional[str] = None):
+        """
+        :param str day: The day of week to run.
+               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[str]:
+        """
+        The day of week to run.
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "day")
+
 
 @pulumi.output_type
 class FieldIndexConfig(dict):
@@ -122,7 +151,7 @@ class FieldTtlConfig(dict):
                  state: Optional[str] = None):
         """
         :param str state: (Output)
-               The state of the TTL configuration.
+               The state of TTL (time-to-live) configuration for documents that have this Field set.
         """
         if state is not None:
             pulumi.set(__self__, "state", state)
@@ -132,7 +161,7 @@ class FieldTtlConfig(dict):
     def state(self) -> Optional[str]:
         """
         (Output)
-        The state of the TTL configuration.
+        The state of TTL (time-to-live) configuration for documents that have this Field set.
         """
         return pulumi.get(self, "state")
 

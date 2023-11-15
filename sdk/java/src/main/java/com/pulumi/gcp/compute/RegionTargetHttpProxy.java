@@ -142,7 +142,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RegionTargetHttpProxy can be imported using any of these accepted formats
+ * RegionTargetHttpProxy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionTargetHttpProxy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}&#34;
+ * 
+ *  to = google_compute_region_target_http_proxy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionTargetHttpProxy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}

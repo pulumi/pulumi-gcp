@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("diskConfig")]
         public Input<Inputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigGetArgs>? DiskConfig { get; set; }
 
+        /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyGetArgs>? InstanceFlexibilityPolicy { get; set; }
+
         [Input("instanceNames")]
         private InputList<string>? _instanceNames;
         public InputList<string> InstanceNames

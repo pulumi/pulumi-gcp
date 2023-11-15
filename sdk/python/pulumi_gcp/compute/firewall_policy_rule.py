@@ -446,7 +446,15 @@ class FirewallPolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        FirewallPolicyRule can be imported using any of these accepted formats
+        FirewallPolicyRule can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}` * `{{firewall_policy}}/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FirewallPolicyRule using one of the formats above. For exampletf import {
+
+         id = "locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}"
+
+         to = google_compute_firewall_policy_rule.default }
+
+        ```sh
+         $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FirewallPolicyRule can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
@@ -529,7 +537,15 @@ class FirewallPolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        FirewallPolicyRule can be imported using any of these accepted formats
+        FirewallPolicyRule can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}` * `{{firewall_policy}}/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FirewallPolicyRule using one of the formats above. For exampletf import {
+
+         id = "locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}"
+
+         to = google_compute_firewall_policy_rule.default }
+
+        ```sh
+         $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FirewallPolicyRule can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}

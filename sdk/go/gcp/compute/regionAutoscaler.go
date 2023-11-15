@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an Autoscaler resource.
@@ -123,7 +122,17 @@ import (
 //
 // ## Import
 //
-// # RegionAutoscaler can be imported using any of these accepted formats
+// RegionAutoscaler can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionAutoscaler using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/autoscalers/{{name}}"
+//
+//	to = google_compute_region_autoscaler.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionAutoscaler can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -350,12 +359,6 @@ func (i *RegionAutoscaler) ToRegionAutoscalerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerOutput)
 }
 
-func (i *RegionAutoscaler) ToOutput(ctx context.Context) pulumix.Output[*RegionAutoscaler] {
-	return pulumix.Output[*RegionAutoscaler]{
-		OutputState: i.ToRegionAutoscalerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionAutoscalerArrayInput is an input type that accepts RegionAutoscalerArray and RegionAutoscalerArrayOutput values.
 // You can construct a concrete instance of `RegionAutoscalerArrayInput` via:
 //
@@ -379,12 +382,6 @@ func (i RegionAutoscalerArray) ToRegionAutoscalerArrayOutput() RegionAutoscalerA
 
 func (i RegionAutoscalerArray) ToRegionAutoscalerArrayOutputWithContext(ctx context.Context) RegionAutoscalerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerArrayOutput)
-}
-
-func (i RegionAutoscalerArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionAutoscaler] {
-	return pulumix.Output[[]*RegionAutoscaler]{
-		OutputState: i.ToRegionAutoscalerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionAutoscalerMapInput is an input type that accepts RegionAutoscalerMap and RegionAutoscalerMapOutput values.
@@ -412,12 +409,6 @@ func (i RegionAutoscalerMap) ToRegionAutoscalerMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerMapOutput)
 }
 
-func (i RegionAutoscalerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionAutoscaler] {
-	return pulumix.Output[map[string]*RegionAutoscaler]{
-		OutputState: i.ToRegionAutoscalerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerOutput) ElementType() reflect.Type {
@@ -430,12 +421,6 @@ func (o RegionAutoscalerOutput) ToRegionAutoscalerOutput() RegionAutoscalerOutpu
 
 func (o RegionAutoscalerOutput) ToRegionAutoscalerOutputWithContext(ctx context.Context) RegionAutoscalerOutput {
 	return o
-}
-
-func (o RegionAutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionAutoscaler] {
-	return pulumix.Output[*RegionAutoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration parameters for the autoscaling algorithm. You can
@@ -502,12 +487,6 @@ func (o RegionAutoscalerArrayOutput) ToRegionAutoscalerArrayOutputWithContext(ct
 	return o
 }
 
-func (o RegionAutoscalerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionAutoscaler] {
-	return pulumix.Output[[]*RegionAutoscaler]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionAutoscalerArrayOutput) Index(i pulumi.IntInput) RegionAutoscalerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionAutoscaler {
 		return vs[0].([]*RegionAutoscaler)[vs[1].(int)]
@@ -526,12 +505,6 @@ func (o RegionAutoscalerMapOutput) ToRegionAutoscalerMapOutput() RegionAutoscale
 
 func (o RegionAutoscalerMapOutput) ToRegionAutoscalerMapOutputWithContext(ctx context.Context) RegionAutoscalerMapOutput {
 	return o
-}
-
-func (o RegionAutoscalerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionAutoscaler] {
-	return pulumix.Output[map[string]*RegionAutoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionAutoscalerMapOutput) MapIndex(k pulumi.StringInput) RegionAutoscalerOutput {

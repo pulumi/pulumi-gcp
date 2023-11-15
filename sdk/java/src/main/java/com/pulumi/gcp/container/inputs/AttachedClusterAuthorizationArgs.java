@@ -17,6 +17,29 @@ public final class AttachedClusterAuthorizationArgs extends com.pulumi.resources
     public static final AttachedClusterAuthorizationArgs Empty = new AttachedClusterAuthorizationArgs();
 
     /**
+     * Groups that can perform operations as a cluster admin. A managed
+     * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+     * to the groups. Up to ten admin groups can be provided.
+     * For more info on RBAC, see
+     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    @Import(name="adminGroups")
+    private @Nullable Output<List<String>> adminGroups;
+
+    /**
+     * @return Groups that can perform operations as a cluster admin. A managed
+     * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+     * to the groups. Up to ten admin groups can be provided.
+     * For more info on RBAC, see
+     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    public Optional<Output<List<String>>> adminGroups() {
+        return Optional.ofNullable(this.adminGroups);
+    }
+
+    /**
      * Users that can perform operations as a cluster admin. A managed
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
      * to the users. Up to ten admin users can be provided.
@@ -42,6 +65,7 @@ public final class AttachedClusterAuthorizationArgs extends com.pulumi.resources
     private AttachedClusterAuthorizationArgs() {}
 
     private AttachedClusterAuthorizationArgs(AttachedClusterAuthorizationArgs $) {
+        this.adminGroups = $.adminGroups;
         this.adminUsers = $.adminUsers;
     }
 
@@ -61,6 +85,49 @@ public final class AttachedClusterAuthorizationArgs extends com.pulumi.resources
 
         public Builder(AttachedClusterAuthorizationArgs defaults) {
             $ = new AttachedClusterAuthorizationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param adminGroups Groups that can perform operations as a cluster admin. A managed
+         * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+         * to the groups. Up to ten admin groups can be provided.
+         * For more info on RBAC, see
+         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminGroups(@Nullable Output<List<String>> adminGroups) {
+            $.adminGroups = adminGroups;
+            return this;
+        }
+
+        /**
+         * @param adminGroups Groups that can perform operations as a cluster admin. A managed
+         * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+         * to the groups. Up to ten admin groups can be provided.
+         * For more info on RBAC, see
+         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminGroups(List<String> adminGroups) {
+            return adminGroups(Output.of(adminGroups));
+        }
+
+        /**
+         * @param adminGroups Groups that can perform operations as a cluster admin. A managed
+         * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+         * to the groups. Up to ten admin groups can be provided.
+         * For more info on RBAC, see
+         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminGroups(String... adminGroups) {
+            return adminGroups(List.of(adminGroups));
         }
 
         /**

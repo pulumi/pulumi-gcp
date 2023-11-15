@@ -63,6 +63,7 @@ import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as diagflow from "./diagflow";
 import * as dns from "./dns";
+import * as edgecontainer from "./edgecontainer";
 import * as edgenetwork from "./edgenetwork";
 import * as endpoints from "./endpoints";
 import * as essentialcontacts from "./essentialcontacts";
@@ -79,6 +80,7 @@ import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
 import * as identityplatform from "./identityplatform";
+import * as integrationconnectors from "./integrationconnectors";
 import * as kms from "./kms";
 import * as logging from "./logging";
 import * as looker from "./looker";
@@ -170,6 +172,7 @@ export {
     deploymentmanager,
     diagflow,
     dns,
+    edgecontainer,
     edgenetwork,
     endpoints,
     essentialcontacts,
@@ -186,6 +189,7 @@ export {
     iam,
     iap,
     identityplatform,
+    integrationconnectors,
     kms,
     logging,
     looker,

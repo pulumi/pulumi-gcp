@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An attestor that attests to container image artifacts.
@@ -158,7 +157,17 @@ import (
 //
 // ## Import
 //
-// # Attestor can be imported using any of these accepted formats
+// Attestor can be imported using any of these accepted formats* `projects/{{project}}/attestors/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Attestor using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/attestors/{{name}}"
+//
+//	to = google_binary_authorization_attestor.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:binaryauthorization/attestor:Attestor When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Attestor can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -309,12 +318,6 @@ func (i *Attestor) ToAttestorOutputWithContext(ctx context.Context) AttestorOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorOutput)
 }
 
-func (i *Attestor) ToOutput(ctx context.Context) pulumix.Output[*Attestor] {
-	return pulumix.Output[*Attestor]{
-		OutputState: i.ToAttestorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestorArrayInput is an input type that accepts AttestorArray and AttestorArrayOutput values.
 // You can construct a concrete instance of `AttestorArrayInput` via:
 //
@@ -338,12 +341,6 @@ func (i AttestorArray) ToAttestorArrayOutput() AttestorArrayOutput {
 
 func (i AttestorArray) ToAttestorArrayOutputWithContext(ctx context.Context) AttestorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorArrayOutput)
-}
-
-func (i AttestorArray) ToOutput(ctx context.Context) pulumix.Output[[]*Attestor] {
-	return pulumix.Output[[]*Attestor]{
-		OutputState: i.ToAttestorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AttestorMapInput is an input type that accepts AttestorMap and AttestorMapOutput values.
@@ -371,12 +368,6 @@ func (i AttestorMap) ToAttestorMapOutputWithContext(ctx context.Context) Attesto
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorMapOutput)
 }
 
-func (i AttestorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Attestor] {
-	return pulumix.Output[map[string]*Attestor]{
-		OutputState: i.ToAttestorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AttestorOutput struct{ *pulumi.OutputState }
 
 func (AttestorOutput) ElementType() reflect.Type {
@@ -389,12 +380,6 @@ func (o AttestorOutput) ToAttestorOutput() AttestorOutput {
 
 func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) AttestorOutput {
 	return o
-}
-
-func (o AttestorOutput) ToOutput(ctx context.Context) pulumix.Output[*Attestor] {
-	return pulumix.Output[*Attestor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
@@ -434,12 +419,6 @@ func (o AttestorArrayOutput) ToAttestorArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AttestorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Attestor] {
-	return pulumix.Output[[]*Attestor]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AttestorArrayOutput) Index(i pulumi.IntInput) AttestorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Attestor {
 		return vs[0].([]*Attestor)[vs[1].(int)]
@@ -458,12 +437,6 @@ func (o AttestorMapOutput) ToAttestorMapOutput() AttestorMapOutput {
 
 func (o AttestorMapOutput) ToAttestorMapOutputWithContext(ctx context.Context) AttestorMapOutput {
 	return o
-}
-
-func (o AttestorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Attestor] {
-	return pulumix.Output[map[string]*Attestor]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestorMapOutput) MapIndex(k pulumi.StringInput) AttestorOutput {

@@ -21,6 +21,7 @@ class OrganizationBucketConfigArgs:
                  organization: pulumi.Input[str],
                  cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a OrganizationBucketConfig resource.
@@ -31,6 +32,7 @@ class OrganizationBucketConfigArgs:
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
@@ -40,6 +42,8 @@ class OrganizationBucketConfigArgs:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if index_configs is not None:
+            pulumi.set(__self__, "index_configs", index_configs)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
@@ -106,6 +110,18 @@ class OrganizationBucketConfigArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
+
+    @index_configs.setter
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]]):
+        pulumi.set(self, "index_configs", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -124,6 +140,7 @@ class _OrganizationBucketConfigState:
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -136,6 +153,7 @@ class _OrganizationBucketConfigState:
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
@@ -148,6 +166,8 @@ class _OrganizationBucketConfigState:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if index_configs is not None:
+            pulumi.set(__self__, "index_configs", index_configs)
         if lifecycle_state is not None:
             pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if location is not None:
@@ -196,6 +216,18 @@ class _OrganizationBucketConfigState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
+
+    @index_configs.setter
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]]):
+        pulumi.set(self, "index_configs", value)
 
     @property
     @pulumi.getter(name="lifecycleState")
@@ -266,6 +298,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationBucketConfigIndexConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
@@ -288,12 +321,24 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             organization=default.organization,
             location="global",
             retention_days=30,
-            bucket_id="_Default")
+            bucket_id="_Default",
+            index_configs={
+                "filePath": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            })
         ```
 
         ## Import
 
-        This resource can be imported using the following format:
+        This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+
+         id = "organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}"
+
+         to = google_logging_organization_bucket_config.default }
+
+        ```sh
+         $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -306,6 +351,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] organization: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
@@ -334,12 +380,24 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             organization=default.organization,
             location="global",
             retention_days=30,
-            bucket_id="_Default")
+            bucket_id="_Default",
+            index_configs={
+                "filePath": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            })
         ```
 
         ## Import
 
-        This resource can be imported using the following format:
+        This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+
+         id = "organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}"
+
+         to = google_logging_organization_bucket_config.default }
+
+        ```sh
+         $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -363,6 +421,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationBucketConfigIndexConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
@@ -380,6 +439,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             __props__.__dict__["bucket_id"] = bucket_id
             __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
+            __props__.__dict__["index_configs"] = index_configs
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -402,6 +462,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             bucket_id: Optional[pulumi.Input[str]] = None,
             cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationBucketConfigIndexConfigArgs']]]]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -419,6 +480,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
@@ -432,6 +494,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         __props__.__dict__["bucket_id"] = bucket_id
         __props__.__dict__["cmek_settings"] = cmek_settings
         __props__.__dict__["description"] = description
+        __props__.__dict__["index_configs"] = index_configs
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -464,6 +527,14 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         Describes this bucket.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> pulumi.Output[Optional[Sequence['outputs.OrganizationBucketConfigIndexConfig']]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
 
     @property
     @pulumi.getter(name="lifecycleState")

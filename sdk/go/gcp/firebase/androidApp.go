@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -102,7 +101,17 @@ import (
 //
 // ## Import
 //
-// # AndroidApp can be imported using any of these accepted formats
+// AndroidApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/androidApps/{{app_id}}` * `projects/{{project}}/androidApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `androidApps/{{app_id}}` * `{{app_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AndroidApp using one of the formats above. For exampletf import {
+//
+//	id = "{{project}} projects/{{project}}/androidApps/{{app_id}}"
+//
+//	to = google_firebase_android_app.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:firebase/androidApp:AndroidApp When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AndroidApp can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -347,12 +356,6 @@ func (i *AndroidApp) ToAndroidAppOutputWithContext(ctx context.Context) AndroidA
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppOutput)
 }
 
-func (i *AndroidApp) ToOutput(ctx context.Context) pulumix.Output[*AndroidApp] {
-	return pulumix.Output[*AndroidApp]{
-		OutputState: i.ToAndroidAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AndroidAppArrayInput is an input type that accepts AndroidAppArray and AndroidAppArrayOutput values.
 // You can construct a concrete instance of `AndroidAppArrayInput` via:
 //
@@ -376,12 +379,6 @@ func (i AndroidAppArray) ToAndroidAppArrayOutput() AndroidAppArrayOutput {
 
 func (i AndroidAppArray) ToAndroidAppArrayOutputWithContext(ctx context.Context) AndroidAppArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppArrayOutput)
-}
-
-func (i AndroidAppArray) ToOutput(ctx context.Context) pulumix.Output[[]*AndroidApp] {
-	return pulumix.Output[[]*AndroidApp]{
-		OutputState: i.ToAndroidAppArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AndroidAppMapInput is an input type that accepts AndroidAppMap and AndroidAppMapOutput values.
@@ -409,12 +406,6 @@ func (i AndroidAppMap) ToAndroidAppMapOutputWithContext(ctx context.Context) And
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppMapOutput)
 }
 
-func (i AndroidAppMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AndroidApp] {
-	return pulumix.Output[map[string]*AndroidApp]{
-		OutputState: i.ToAndroidAppMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AndroidAppOutput struct{ *pulumi.OutputState }
 
 func (AndroidAppOutput) ElementType() reflect.Type {
@@ -427,12 +418,6 @@ func (o AndroidAppOutput) ToAndroidAppOutput() AndroidAppOutput {
 
 func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) AndroidAppOutput {
 	return o
-}
-
-func (o AndroidAppOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidApp] {
-	return pulumix.Output[*AndroidApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
@@ -510,12 +495,6 @@ func (o AndroidAppArrayOutput) ToAndroidAppArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AndroidAppArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AndroidApp] {
-	return pulumix.Output[[]*AndroidApp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AndroidAppArrayOutput) Index(i pulumi.IntInput) AndroidAppOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AndroidApp {
 		return vs[0].([]*AndroidApp)[vs[1].(int)]
@@ -534,12 +513,6 @@ func (o AndroidAppMapOutput) ToAndroidAppMapOutput() AndroidAppMapOutput {
 
 func (o AndroidAppMapOutput) ToAndroidAppMapOutputWithContext(ctx context.Context) AndroidAppMapOutput {
 	return o
-}
-
-func (o AndroidAppMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AndroidApp] {
-	return pulumix.Output[map[string]*AndroidApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidAppMapOutput) MapIndex(k pulumi.StringInput) AndroidAppOutput {

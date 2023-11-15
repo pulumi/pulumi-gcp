@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  *     project: "my-project-name",
- *     ttlConfig: {},
  * });
  * ```
  * ### Firestore Field Timestamp
@@ -90,7 +89,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Field can be imported using any of these accepted formats:
+ * Field can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Field using one of the formats above. For exampletf import {
+ *
+ *  id = "{{name}}"
+ *
+ *  to = google_firestore_field.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:firestore/field:Field When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Field can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:firestore/field:Field default {{name}}
@@ -158,7 +165,7 @@ export class Field extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * If set, this field is configured for TTL deletion.
+     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
     public readonly ttlConfig!: pulumi.Output<outputs.firestore.FieldTtlConfig | undefined>;
@@ -242,7 +249,7 @@ export interface FieldState {
      */
     project?: pulumi.Input<string>;
     /**
-     * If set, this field is configured for TTL deletion.
+     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
     ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig>;
@@ -281,7 +288,7 @@ export interface FieldArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * If set, this field is configured for TTL deletion.
+     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
     ttlConfig?: pulumi.Input<inputs.firestore.FieldTtlConfig>;

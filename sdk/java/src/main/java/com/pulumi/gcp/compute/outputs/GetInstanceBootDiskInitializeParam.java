@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -12,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceBootDiskInitializeParam {
+    private Boolean enableConfidentialCompute;
     /**
      * @return The image from which this disk was initialised.
      * 
@@ -35,6 +37,9 @@ public final class GetInstanceBootDiskInitializeParam {
     private String type;
 
     private GetInstanceBootDiskInitializeParam() {}
+    public Boolean enableConfidentialCompute() {
+        return this.enableConfidentialCompute;
+    }
     /**
      * @return The image from which this disk was initialised.
      * 
@@ -76,6 +81,7 @@ public final class GetInstanceBootDiskInitializeParam {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enableConfidentialCompute;
         private String image;
         private Map<String,Object> labels;
         private Map<String,Object> resourceManagerTags;
@@ -84,6 +90,7 @@ public final class GetInstanceBootDiskInitializeParam {
         public Builder() {}
         public Builder(GetInstanceBootDiskInitializeParam defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
@@ -91,6 +98,11 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
+            this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
+            return this;
+        }
         @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
@@ -118,6 +130,7 @@ public final class GetInstanceBootDiskInitializeParam {
         }
         public GetInstanceBootDiskInitializeParam build() {
             final var o = new GetInstanceBootDiskInitializeParam();
+            o.enableConfidentialCompute = enableConfidentialCompute;
             o.image = image;
             o.labels = labels;
             o.resourceManagerTags = resourceManagerTags;

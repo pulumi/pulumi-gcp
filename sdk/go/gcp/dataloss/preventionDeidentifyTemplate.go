@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows creation of templates to de-identify content.
@@ -83,7 +82,17 @@ import (
 //
 // ## Import
 //
-// # DeidentifyTemplate can be imported using any of these accepted formats
+// DeidentifyTemplate can be imported using any of these accepted formats* `{{parent}}/deidentifyTemplates/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DeidentifyTemplate using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/deidentifyTemplates/{{name}}"
+//
+//	to = google_data_loss_prevention_deidentify_template.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DeidentifyTemplate can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -279,12 +288,6 @@ func (i *PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateOutput)
 }
 
-func (i *PreventionDeidentifyTemplate) ToOutput(ctx context.Context) pulumix.Output[*PreventionDeidentifyTemplate] {
-	return pulumix.Output[*PreventionDeidentifyTemplate]{
-		OutputState: i.ToPreventionDeidentifyTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PreventionDeidentifyTemplateArrayInput is an input type that accepts PreventionDeidentifyTemplateArray and PreventionDeidentifyTemplateArrayOutput values.
 // You can construct a concrete instance of `PreventionDeidentifyTemplateArrayInput` via:
 //
@@ -308,12 +311,6 @@ func (i PreventionDeidentifyTemplateArray) ToPreventionDeidentifyTemplateArrayOu
 
 func (i PreventionDeidentifyTemplateArray) ToPreventionDeidentifyTemplateArrayOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateArrayOutput)
-}
-
-func (i PreventionDeidentifyTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionDeidentifyTemplate] {
-	return pulumix.Output[[]*PreventionDeidentifyTemplate]{
-		OutputState: i.ToPreventionDeidentifyTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PreventionDeidentifyTemplateMapInput is an input type that accepts PreventionDeidentifyTemplateMap and PreventionDeidentifyTemplateMapOutput values.
@@ -341,12 +338,6 @@ func (i PreventionDeidentifyTemplateMap) ToPreventionDeidentifyTemplateMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateMapOutput)
 }
 
-func (i PreventionDeidentifyTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionDeidentifyTemplate] {
-	return pulumix.Output[map[string]*PreventionDeidentifyTemplate]{
-		OutputState: i.ToPreventionDeidentifyTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PreventionDeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
 func (PreventionDeidentifyTemplateOutput) ElementType() reflect.Type {
@@ -359,12 +350,6 @@ func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplateOutput
 
 func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput {
 	return o
-}
-
-func (o PreventionDeidentifyTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*PreventionDeidentifyTemplate] {
-	return pulumix.Output[*PreventionDeidentifyTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation timestamp of an deidentifyTemplate. Set by the server.
@@ -430,12 +415,6 @@ func (o PreventionDeidentifyTemplateArrayOutput) ToPreventionDeidentifyTemplateA
 	return o
 }
 
-func (o PreventionDeidentifyTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionDeidentifyTemplate] {
-	return pulumix.Output[[]*PreventionDeidentifyTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PreventionDeidentifyTemplateArrayOutput) Index(i pulumi.IntInput) PreventionDeidentifyTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreventionDeidentifyTemplate {
 		return vs[0].([]*PreventionDeidentifyTemplate)[vs[1].(int)]
@@ -454,12 +433,6 @@ func (o PreventionDeidentifyTemplateMapOutput) ToPreventionDeidentifyTemplateMap
 
 func (o PreventionDeidentifyTemplateMapOutput) ToPreventionDeidentifyTemplateMapOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateMapOutput {
 	return o
-}
-
-func (o PreventionDeidentifyTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionDeidentifyTemplate] {
-	return pulumix.Output[map[string]*PreventionDeidentifyTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PreventionDeidentifyTemplateMapOutput) MapIndex(k pulumi.StringInput) PreventionDeidentifyTemplateOutput {

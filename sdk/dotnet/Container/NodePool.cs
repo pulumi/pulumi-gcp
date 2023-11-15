@@ -59,14 +59,22 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Import
     /// 
-    /// Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples
+    /// Node pools can be imported using the `project`, `location`, `cluster` and `name`. If the project is omitted, the project value in the provider configuration will be used. Examples* `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}` * `{{location}}/{{cluster_id}}/{{pool_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import node pools using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}"
+    /// 
+    ///  to = google_container_node_pool.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
+    ///  $ pulumi import gcp:container/nodePool:NodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), node pools can be imported using one of the formats above. For example
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1/my-cluster/main-pool
+    ///  $ pulumi import gcp:container/nodePool:NodePool default {{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/nodePool:NodePool default {{location}}/{{cluster_id}}/{{pool_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:container/nodePool:NodePool")]

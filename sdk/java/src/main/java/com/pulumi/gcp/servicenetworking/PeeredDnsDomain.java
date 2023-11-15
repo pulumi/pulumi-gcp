@@ -54,13 +54,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, e.g.
+ * Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where- `service` is the service connection, defaults to `servicenetworking.googleapis.com`. - `project` is the producer project name. - `network` is the consumer network name. - `name` is the name of your peered DNS domain. * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project peered DNS domains using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}&#34;
+ * 
+ *  to = google_service_networking_peered_dns_domain.default }
  * 
  * ```sh
- *  $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain my_domain services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
+ *  $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project peered DNS domains can be imported using one of the formats above. For example
  * ```
  * 
- *  Where- `service` is the service connection, defaults to `servicenetworking.googleapis.com`. - `project` is the producer project name. - `network` is the consumer network name. - `name` is the name of your peered DNS domain.
+ * ```sh
+ *  $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
+ * ```
  * 
  */
 @ResourceType(type="gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain")

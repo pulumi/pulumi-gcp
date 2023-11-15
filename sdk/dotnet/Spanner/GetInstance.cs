@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.Spanner
     [OutputType]
     public sealed class GetInstanceResult
     {
+        public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigResult> AutoscalingConfigs;
         public readonly string? Config;
         public readonly string? DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -149,6 +150,8 @@ namespace Pulumi.Gcp.Spanner
 
         [OutputConstructor]
         private GetInstanceResult(
+            ImmutableArray<Outputs.GetInstanceAutoscalingConfigResult> autoscalingConfigs,
+
             string? config,
 
             string? displayName,
@@ -173,6 +176,7 @@ namespace Pulumi.Gcp.Spanner
 
             string state)
         {
+            AutoscalingConfigs = autoscalingConfigs;
             Config = config;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;

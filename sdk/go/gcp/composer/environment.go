@@ -9,12 +9,21 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
 //
-// # Environment can be imported using any of these accepted formats
+// Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{region}}/environments/{{name}}"
+//
+//	to = google_composer_environment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:composer/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -57,6 +66,8 @@ type Environment struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Configuration options for storage used by Composer environment.
+	StorageConfig EnvironmentStorageConfigOutput `pulumi:"storageConfig"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +126,8 @@ type environmentState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The location or Compute Engine region for the environment.
 	Region *string `pulumi:"region"`
+	// Configuration options for storage used by Composer environment.
+	StorageConfig *EnvironmentStorageConfig `pulumi:"storageConfig"`
 }
 
 type EnvironmentState struct {
@@ -139,6 +152,8 @@ type EnvironmentState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrInput
+	// Configuration options for storage used by Composer environment.
+	StorageConfig EnvironmentStorageConfigPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -162,6 +177,8 @@ type environmentArgs struct {
 	Project *string `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
 	Region *string `pulumi:"region"`
+	// Configuration options for storage used by Composer environment.
+	StorageConfig *EnvironmentStorageConfig `pulumi:"storageConfig"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -182,6 +199,8 @@ type EnvironmentArgs struct {
 	Project pulumi.StringPtrInput
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrInput
+	// Configuration options for storage used by Composer environment.
+	StorageConfig EnvironmentStorageConfigPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -205,12 +224,6 @@ func (i *Environment) ToEnvironmentOutput() EnvironmentOutput {
 
 func (i *Environment) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput)
-}
-
-func (i *Environment) ToOutput(ctx context.Context) pulumix.Output[*Environment] {
-	return pulumix.Output[*Environment]{
-		OutputState: i.ToEnvironmentOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvironmentArrayInput is an input type that accepts EnvironmentArray and EnvironmentArrayOutput values.
@@ -238,12 +251,6 @@ func (i EnvironmentArray) ToEnvironmentArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentArrayOutput)
 }
 
-func (i EnvironmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Environment] {
-	return pulumix.Output[[]*Environment]{
-		OutputState: i.ToEnvironmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentMapInput is an input type that accepts EnvironmentMap and EnvironmentMapOutput values.
 // You can construct a concrete instance of `EnvironmentMapInput` via:
 //
@@ -269,12 +276,6 @@ func (i EnvironmentMap) ToEnvironmentMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentMapOutput)
 }
 
-func (i EnvironmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Environment] {
-	return pulumix.Output[map[string]*Environment]{
-		OutputState: i.ToEnvironmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvironmentOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentOutput) ElementType() reflect.Type {
@@ -287,12 +288,6 @@ func (o EnvironmentOutput) ToEnvironmentOutput() EnvironmentOutput {
 
 func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
 	return o
-}
-
-func (o EnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*Environment] {
-	return pulumix.Output[*Environment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration parameters for this environment.
@@ -337,6 +332,11 @@ func (o EnvironmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// Configuration options for storage used by Composer environment.
+func (o EnvironmentOutput) StorageConfig() EnvironmentStorageConfigOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentStorageConfigOutput { return v.StorageConfig }).(EnvironmentStorageConfigOutput)
+}
+
 type EnvironmentArrayOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentArrayOutput) ElementType() reflect.Type {
@@ -349,12 +349,6 @@ func (o EnvironmentArrayOutput) ToEnvironmentArrayOutput() EnvironmentArrayOutpu
 
 func (o EnvironmentArrayOutput) ToEnvironmentArrayOutputWithContext(ctx context.Context) EnvironmentArrayOutput {
 	return o
-}
-
-func (o EnvironmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Environment] {
-	return pulumix.Output[[]*Environment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentArrayOutput) Index(i pulumi.IntInput) EnvironmentOutput {
@@ -375,12 +369,6 @@ func (o EnvironmentMapOutput) ToEnvironmentMapOutput() EnvironmentMapOutput {
 
 func (o EnvironmentMapOutput) ToEnvironmentMapOutputWithContext(ctx context.Context) EnvironmentMapOutput {
 	return o
-}
-
-func (o EnvironmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Environment] {
-	return pulumix.Output[map[string]*Environment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentMapOutput) MapIndex(k pulumi.StringInput) EnvironmentOutput {

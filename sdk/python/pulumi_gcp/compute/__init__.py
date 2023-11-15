@@ -60,6 +60,7 @@ from .get_netblock_ip_ranges import *
 from .get_network import *
 from .get_network_endpoint_group import *
 from .get_network_peering import *
+from .get_networks import *
 from .get_node_types import *
 from .get_region_backend_service_iam_policy import *
 from .get_region_disk_iam_policy import *
@@ -100,6 +101,7 @@ from .instance_group_named_port import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
+from .instance_settings import *
 from .instance_template import *
 from .interconnect_attachment import *
 from .machine_image import *

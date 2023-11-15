@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
@@ -356,12 +355,6 @@ func (i *BackupPlanIamPolicy) ToBackupPlanIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamPolicyOutput)
 }
 
-func (i *BackupPlanIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamPolicy] {
-	return pulumix.Output[*BackupPlanIamPolicy]{
-		OutputState: i.ToBackupPlanIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackupPlanIamPolicyArrayInput is an input type that accepts BackupPlanIamPolicyArray and BackupPlanIamPolicyArrayOutput values.
 // You can construct a concrete instance of `BackupPlanIamPolicyArrayInput` via:
 //
@@ -385,12 +378,6 @@ func (i BackupPlanIamPolicyArray) ToBackupPlanIamPolicyArrayOutput() BackupPlanI
 
 func (i BackupPlanIamPolicyArray) ToBackupPlanIamPolicyArrayOutputWithContext(ctx context.Context) BackupPlanIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamPolicyArrayOutput)
-}
-
-func (i BackupPlanIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlanIamPolicy] {
-	return pulumix.Output[[]*BackupPlanIamPolicy]{
-		OutputState: i.ToBackupPlanIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BackupPlanIamPolicyMapInput is an input type that accepts BackupPlanIamPolicyMap and BackupPlanIamPolicyMapOutput values.
@@ -418,12 +405,6 @@ func (i BackupPlanIamPolicyMap) ToBackupPlanIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamPolicyMapOutput)
 }
 
-func (i BackupPlanIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlanIamPolicy] {
-	return pulumix.Output[map[string]*BackupPlanIamPolicy]{
-		OutputState: i.ToBackupPlanIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupPlanIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanIamPolicyOutput) ElementType() reflect.Type {
@@ -436,12 +417,6 @@ func (o BackupPlanIamPolicyOutput) ToBackupPlanIamPolicyOutput() BackupPlanIamPo
 
 func (o BackupPlanIamPolicyOutput) ToBackupPlanIamPolicyOutputWithContext(ctx context.Context) BackupPlanIamPolicyOutput {
 	return o
-}
-
-func (o BackupPlanIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamPolicy] {
-	return pulumix.Output[*BackupPlanIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -498,12 +473,6 @@ func (o BackupPlanIamPolicyArrayOutput) ToBackupPlanIamPolicyArrayOutputWithCont
 	return o
 }
 
-func (o BackupPlanIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlanIamPolicy] {
-	return pulumix.Output[[]*BackupPlanIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackupPlanIamPolicyArrayOutput) Index(i pulumi.IntInput) BackupPlanIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPlanIamPolicy {
 		return vs[0].([]*BackupPlanIamPolicy)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o BackupPlanIamPolicyMapOutput) ToBackupPlanIamPolicyMapOutput() BackupPla
 
 func (o BackupPlanIamPolicyMapOutput) ToBackupPlanIamPolicyMapOutputWithContext(ctx context.Context) BackupPlanIamPolicyMapOutput {
 	return o
-}
-
-func (o BackupPlanIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlanIamPolicy] {
-	return pulumix.Output[map[string]*BackupPlanIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupPlanIamPolicyMapOutput) MapIndex(k pulumi.StringInput) BackupPlanIamPolicyOutput {

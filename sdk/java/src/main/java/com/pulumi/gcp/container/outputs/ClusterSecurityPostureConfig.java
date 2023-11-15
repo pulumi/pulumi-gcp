@@ -17,7 +17,7 @@ public final class ClusterSecurityPostureConfig {
      */
     private @Nullable String mode;
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
      * 
      */
     private @Nullable String vulnerabilityMode;
@@ -31,7 +31,7 @@ public final class ClusterSecurityPostureConfig {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
      * 
      */
     public Optional<String> vulnerabilityMode() {

@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Sql.Inputs
     public sealed class DatabaseInstanceSettingsDataCacheConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether data cache is enabled for the instance. Defaults to `false`
-        /// Can only be used with MYSQL.
+        /// Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
         /// </summary>
         [Input("dataCacheEnabled")]
         public Input<bool>? DataCacheEnabled { get; set; }

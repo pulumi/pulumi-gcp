@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Bigquery Analytics Hub data exchange listing
@@ -76,7 +75,17 @@ import (
 //
 // ## Import
 //
-// # Listing can be imported using any of these accepted formats
+// Listing can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}` * `{{location}}/{{data_exchange_id}}/{{listing_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Listing using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}"
+//
+//	to = google_bigquery_analytics_hub_listing.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:bigqueryanalyticshub/listing:Listing When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Listing can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -350,12 +359,6 @@ func (i *Listing) ToListingOutputWithContext(ctx context.Context) ListingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ListingOutput)
 }
 
-func (i *Listing) ToOutput(ctx context.Context) pulumix.Output[*Listing] {
-	return pulumix.Output[*Listing]{
-		OutputState: i.ToListingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListingArrayInput is an input type that accepts ListingArray and ListingArrayOutput values.
 // You can construct a concrete instance of `ListingArrayInput` via:
 //
@@ -379,12 +382,6 @@ func (i ListingArray) ToListingArrayOutput() ListingArrayOutput {
 
 func (i ListingArray) ToListingArrayOutputWithContext(ctx context.Context) ListingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListingArrayOutput)
-}
-
-func (i ListingArray) ToOutput(ctx context.Context) pulumix.Output[[]*Listing] {
-	return pulumix.Output[[]*Listing]{
-		OutputState: i.ToListingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ListingMapInput is an input type that accepts ListingMap and ListingMapOutput values.
@@ -412,12 +409,6 @@ func (i ListingMap) ToListingMapOutputWithContext(ctx context.Context) ListingMa
 	return pulumi.ToOutputWithContext(ctx, i).(ListingMapOutput)
 }
 
-func (i ListingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Listing] {
-	return pulumix.Output[map[string]*Listing]{
-		OutputState: i.ToListingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListingOutput struct{ *pulumi.OutputState }
 
 func (ListingOutput) ElementType() reflect.Type {
@@ -430,12 +421,6 @@ func (o ListingOutput) ToListingOutput() ListingOutput {
 
 func (o ListingOutput) ToListingOutputWithContext(ctx context.Context) ListingOutput {
 	return o
-}
-
-func (o ListingOutput) ToOutput(ctx context.Context) pulumix.Output[*Listing] {
-	return pulumix.Output[*Listing]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Shared dataset i.e. BigQuery dataset source.
@@ -531,12 +516,6 @@ func (o ListingArrayOutput) ToListingArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ListingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Listing] {
-	return pulumix.Output[[]*Listing]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ListingArrayOutput) Index(i pulumi.IntInput) ListingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Listing {
 		return vs[0].([]*Listing)[vs[1].(int)]
@@ -555,12 +534,6 @@ func (o ListingMapOutput) ToListingMapOutput() ListingMapOutput {
 
 func (o ListingMapOutput) ToListingMapOutputWithContext(ctx context.Context) ListingMapOutput {
 	return o
-}
-
-func (o ListingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Listing] {
-	return pulumix.Output[map[string]*Listing]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListingMapOutput) MapIndex(k pulumi.StringInput) ListingOutput {

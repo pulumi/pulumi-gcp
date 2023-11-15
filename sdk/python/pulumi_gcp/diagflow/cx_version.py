@@ -263,7 +263,15 @@ class CxVersion(pulumi.CustomResource):
 
         ## Import
 
-        Version can be imported using any of these accepted formats
+        Version can be imported using any of these accepted formats* `{{parent}}/versions/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Version using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/versions/{{name}}"
+
+         to = google_dialogflow_cx_version.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxVersion:CxVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Version can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}
@@ -331,7 +339,15 @@ class CxVersion(pulumi.CustomResource):
 
         ## Import
 
-        Version can be imported using any of these accepted formats
+        Version can be imported using any of these accepted formats* `{{parent}}/versions/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Version using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/versions/{{name}}"
+
+         to = google_dialogflow_cx_version.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxVersion:CxVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Version can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}

@@ -132,33 +132,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ * ### Importing IAM policies IAM policy imports use the identifier of the Healthcase Dataset resource. For example* `&#34;{{project_id}}/{{location}}/{{dataset}}&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
  * 
- * This member resource can be imported using the `dataset_id`, role, and account e.g.
+ *  id = &#34;{{project_id}}/{{location}}/{{dataset}}&#34;
  * 
- * ```sh
- *  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam &#34;your-project-id/location-name/dataset-name roles/viewer user:foo@example.com&#34;
- * ```
- * 
- *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
- * 
- * This binding resource can be imported using the `dataset_id` and role, e.g.
+ *  to = google_healthcare_dataset_iam_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam &#34;your-project-id/location-name/dataset-name roles/viewer&#34;
+ *  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
- * 
- *  IAM policy imports use the identifier of the resource in question.
- * 
- * This policy resource can be imported using the `dataset_id`, role, and account e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam your-project-id/location-name/dataset-name
+ *  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember default {{project_id}}/{{location}}/{{dataset}}
  * ```
- * 
- *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:healthcare/datasetIamMember:DatasetIamMember")

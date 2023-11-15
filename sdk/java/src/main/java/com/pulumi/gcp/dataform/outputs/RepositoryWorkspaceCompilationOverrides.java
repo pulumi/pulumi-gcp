@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RepositoryWorkspaceCompilationOverrides {
     /**
-     * @return Optional. The default database (Google Cloud project ID).
+     * @return The default database (Google Cloud project ID).
      * 
      */
     private @Nullable String defaultDatabase;
     /**
-     * @return Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+     * @return The suffix that should be appended to all schema (BigQuery dataset ID) names.
      * 
      */
     private @Nullable String schemaSuffix;
     /**
-     * @return Optional. The prefix that should be prepended to all table names.
+     * @return The prefix that should be prepended to all table names.
      * 
      */
     private @Nullable String tablePrefix;
 
     private RepositoryWorkspaceCompilationOverrides() {}
     /**
-     * @return Optional. The default database (Google Cloud project ID).
+     * @return The default database (Google Cloud project ID).
      * 
      */
     public Optional<String> defaultDatabase() {
         return Optional.ofNullable(this.defaultDatabase);
     }
     /**
-     * @return Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+     * @return The suffix that should be appended to all schema (BigQuery dataset ID) names.
      * 
      */
     public Optional<String> schemaSuffix() {
         return Optional.ofNullable(this.schemaSuffix);
     }
     /**
-     * @return Optional. The prefix that should be prepended to all table names.
+     * @return The prefix that should be prepended to all table names.
      * 
      */
     public Optional<String> tablePrefix() {

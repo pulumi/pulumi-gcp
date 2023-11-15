@@ -461,7 +461,15 @@ class Database(pulumi.CustomResource):
 
         ## Import
 
-        Database can be imported using any of these accepted formats
+        Database can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance}}/databases/{{name}}` * `instances/{{instance}}/databases/{{name}}` * `{{project}}/{{instance}}/{{name}}` * `{{instance}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Database using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/instances/{{instance}}/databases/{{name}}"
+
+         to = google_spanner_database.default }
+
+        ```sh
+         $ pulumi import gcp:spanner/database:Database When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Database can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
@@ -551,7 +559,15 @@ class Database(pulumi.CustomResource):
 
         ## Import
 
-        Database can be imported using any of these accepted formats
+        Database can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance}}/databases/{{name}}` * `instances/{{instance}}/databases/{{name}}` * `{{project}}/{{instance}}/{{name}}` * `{{instance}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Database using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/instances/{{instance}}/databases/{{name}}"
+
+         to = google_spanner_database.default }
+
+        ```sh
+         $ pulumi import gcp:spanner/database:Database When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Database can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}

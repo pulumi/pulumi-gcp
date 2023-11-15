@@ -16,6 +16,8 @@ __all__ = [
     'LiteTopicPartitionConfigCapacity',
     'LiteTopicReservationConfig',
     'LiteTopicRetentionConfig',
+    'SchemaIamBindingCondition',
+    'SchemaIamMemberCondition',
     'SubscriptionBigqueryConfig',
     'SubscriptionCloudStorageConfig',
     'SubscriptionCloudStorageConfigAvroConfig',
@@ -252,6 +254,60 @@ class LiteTopicRetentionConfig(dict):
         Example: "3.5s".
         """
         return pulumi.get(self, "period")
+
+
+@pulumi.output_type
+class SchemaIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class SchemaIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

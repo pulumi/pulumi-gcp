@@ -100,7 +100,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Backup can be imported using any of these accepted formats
+ * Backup can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}` * `{{project}}/{{location}}/{{backup_id}}` * `{{location}}/{{backup_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Backup using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/backups/{{backup_id}}"
+ *
+ *  to = google_alloydb_backup.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:alloydb/backup:Backup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Backup can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}

@@ -18,10 +18,168 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ### Network Attachment Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.id())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var rejectedProducerProject = new Project(&#34;rejectedProducerProject&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;prj-rejected&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var acceptedProducerProject = new Project(&#34;acceptedProducerProject&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;prj-accepted&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultNetworkAttachment = new NetworkAttachment(&#34;defaultNetworkAttachment&#34;, NetworkAttachmentArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;basic network attachment description&#34;)
+ *             .connectionPreference(&#34;ACCEPT_MANUAL&#34;)
+ *             .subnetworks(defaultSubnetwork.selfLink())
+ *             .producerAcceptLists(acceptedProducerProject.projectId())
+ *             .producerRejectLists(rejectedProducerProject.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Network Attachment Instance Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.id())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultNetworkAttachment = new NetworkAttachment(&#34;defaultNetworkAttachment&#34;, NetworkAttachmentArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;my basic network attachment&#34;)
+ *             .subnetworks(defaultSubnetwork.id())
+ *             .connectionPreference(&#34;ACCEPT_AUTOMATIC&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .machineType(&#34;e2-micro&#34;)
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .build())
+ *                 .build())
+ *             .networkInterfaces(            
+ *                 InstanceNetworkInterfaceArgs.builder()
+ *                     .network(&#34;default&#34;)
+ *                     .build(),
+ *                 InstanceNetworkInterfaceArgs.builder()
+ *                     .networkAttachment(defaultNetworkAttachment.selfLink())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * NetworkAttachment can be imported using any of these accepted formats
+ * NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkAttachment using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}&#34;
+ * 
+ *  to = google_compute_network_attachment.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/networkAttachment:NetworkAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkAttachment can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}

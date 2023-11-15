@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Catalogs are top-level containers for Databases and Tables.
@@ -50,7 +49,17 @@ import (
 //
 // ## Import
 //
-// # Catalog can be imported using any of these accepted formats
+// Catalog can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/catalogs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Catalog using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/catalogs/{{name}}"
+//
+//	to = google_biglake_catalog.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:biglake/catalog:Catalog When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Catalog can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -247,12 +256,6 @@ func (i *Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogOutput)
 }
 
-func (i *Catalog) ToOutput(ctx context.Context) pulumix.Output[*Catalog] {
-	return pulumix.Output[*Catalog]{
-		OutputState: i.ToCatalogOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CatalogArrayInput is an input type that accepts CatalogArray and CatalogArrayOutput values.
 // You can construct a concrete instance of `CatalogArrayInput` via:
 //
@@ -276,12 +279,6 @@ func (i CatalogArray) ToCatalogArrayOutput() CatalogArrayOutput {
 
 func (i CatalogArray) ToCatalogArrayOutputWithContext(ctx context.Context) CatalogArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogArrayOutput)
-}
-
-func (i CatalogArray) ToOutput(ctx context.Context) pulumix.Output[[]*Catalog] {
-	return pulumix.Output[[]*Catalog]{
-		OutputState: i.ToCatalogArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CatalogMapInput is an input type that accepts CatalogMap and CatalogMapOutput values.
@@ -309,12 +306,6 @@ func (i CatalogMap) ToCatalogMapOutputWithContext(ctx context.Context) CatalogMa
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogMapOutput)
 }
 
-func (i CatalogMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Catalog] {
-	return pulumix.Output[map[string]*Catalog]{
-		OutputState: i.ToCatalogMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CatalogOutput struct{ *pulumi.OutputState }
 
 func (CatalogOutput) ElementType() reflect.Type {
@@ -327,12 +318,6 @@ func (o CatalogOutput) ToCatalogOutput() CatalogOutput {
 
 func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
 	return o
-}
-
-func (o CatalogOutput) ToOutput(ctx context.Context) pulumix.Output[*Catalog] {
-	return pulumix.Output[*Catalog]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. The creation time of the catalog. A timestamp in RFC3339 UTC
@@ -397,12 +382,6 @@ func (o CatalogArrayOutput) ToCatalogArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CatalogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Catalog] {
-	return pulumix.Output[[]*Catalog]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CatalogArrayOutput) Index(i pulumi.IntInput) CatalogOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Catalog {
 		return vs[0].([]*Catalog)[vs[1].(int)]
@@ -421,12 +400,6 @@ func (o CatalogMapOutput) ToCatalogMapOutput() CatalogMapOutput {
 
 func (o CatalogMapOutput) ToCatalogMapOutputWithContext(ctx context.Context) CatalogMapOutput {
 	return o
-}
-
-func (o CatalogMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Catalog] {
-	return pulumix.Output[map[string]*Catalog]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CatalogMapOutput) MapIndex(k pulumi.StringInput) CatalogOutput {

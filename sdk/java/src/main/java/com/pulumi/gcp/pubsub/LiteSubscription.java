@@ -85,7 +85,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Subscription can be imported using any of these accepted formats
+ * Subscription can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subscription using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}&#34;
+ * 
+ *  to = google_pubsub_lite_subscription.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subscription can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}

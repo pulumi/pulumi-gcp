@@ -154,7 +154,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * WebApp can be imported using any of these accepted formats
+ * WebApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/webApps/{{app_id}}` * `projects/{{project}}/webApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `webApps/{{app_id}}` * `{{app_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WebApp using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{project}} projects/{{project}}/webApps/{{app_id}}&#34;
+ * 
+ *  to = google_firebase_web_app.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:firebase/webApp:WebApp When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WebApp can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}

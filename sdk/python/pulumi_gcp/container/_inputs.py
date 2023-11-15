@@ -21,6 +21,7 @@ __all__ = [
     'AttachedClusterOidcConfigArgs',
     'AttachedClusterWorkloadIdentityConfigArgs',
     'AwsClusterAuthorizationArgs',
+    'AwsClusterAuthorizationAdminGroupArgs',
     'AwsClusterAuthorizationAdminUserArgs',
     'AwsClusterBinaryAuthorizationArgs',
     'AwsClusterControlPlaneArgs',
@@ -52,6 +53,7 @@ __all__ = [
     'AwsNodePoolUpdateSettingsArgs',
     'AwsNodePoolUpdateSettingsSurgeSettingsArgs',
     'AzureClusterAuthorizationArgs',
+    'AzureClusterAuthorizationAdminGroupArgs',
     'AzureClusterAuthorizationAdminUserArgs',
     'AzureClusterAzureServicesAuthenticationArgs',
     'AzureClusterControlPlaneArgs',
@@ -104,6 +106,7 @@ __all__ = [
     'ClusterDefaultSnatStatusArgs',
     'ClusterDnsConfigArgs',
     'ClusterEnableK8sBetaApisArgs',
+    'ClusterFleetArgs',
     'ClusterGatewayApiConfigArgs',
     'ClusterIdentityServiceConfigArgs',
     'ClusterIpAllocationPolicyArgs',
@@ -240,16 +243,40 @@ __all__ = [
 @pulumi.input_type
 class AttachedClusterAuthorizationArgs:
     def __init__(__self__, *,
+                 admin_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  admin_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_groups: Groups that can perform operations as a cluster admin. A managed
+               ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+               to the groups. Up to ten admin groups can be provided.
+               For more info on RBAC, see
+               https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_users: Users that can perform operations as a cluster admin. A managed
                ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
                to the users. Up to ten admin users can be provided.
                For more info on RBAC, see
                https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
+        if admin_groups is not None:
+            pulumi.set(__self__, "admin_groups", admin_groups)
         if admin_users is not None:
             pulumi.set(__self__, "admin_users", admin_users)
+
+    @property
+    @pulumi.getter(name="adminGroups")
+    def admin_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Groups that can perform operations as a cluster admin. A managed
+        ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
+        to the groups. Up to ten admin groups can be provided.
+        For more info on RBAC, see
+        https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        return pulumi.get(self, "admin_groups")
+
+    @admin_groups.setter
+    def admin_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "admin_groups", value)
 
     @property
     @pulumi.getter(name="adminUsers")
@@ -558,11 +585,15 @@ class AttachedClusterWorkloadIdentityConfigArgs:
 @pulumi.input_type
 class AwsClusterAuthorizationArgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]],
+                 admin_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]] admin_groups: Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
+        if admin_groups is not None:
+            pulumi.set(__self__, "admin_groups", admin_groups)
 
     @property
     @pulumi.getter(name="adminUsers")
@@ -575,6 +606,40 @@ class AwsClusterAuthorizationArgs:
     @admin_users.setter
     def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
         pulumi.set(self, "admin_users", value)
+
+    @property
+    @pulumi.getter(name="adminGroups")
+    def admin_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]]]:
+        """
+        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        return pulumi.get(self, "admin_groups")
+
+    @admin_groups.setter
+    def admin_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]]]):
+        pulumi.set(self, "admin_groups", value)
+
+
+@pulumi.input_type
+class AwsClusterAuthorizationAdminGroupArgs:
+    def __init__(__self__, *,
+                 group: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] group: The name of the group, e.g. `my-group@domain.com`.
+        """
+        pulumi.set(__self__, "group", group)
+
+    @property
+    @pulumi.getter
+    def group(self) -> pulumi.Input[str]:
+        """
+        The name of the group, e.g. `my-group@domain.com`.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group", value)
 
 
 @pulumi.input_type
@@ -964,7 +1029,7 @@ class AwsClusterControlPlaneMainVolumeArgs:
         :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
         :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         if iops is not None:
@@ -1018,7 +1083,7 @@ class AwsClusterControlPlaneMainVolumeArgs:
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         """
         return pulumi.get(self, "throughput")
 
@@ -1088,7 +1153,7 @@ class AwsClusterControlPlaneRootVolumeArgs:
         :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
         :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         if iops is not None:
@@ -1142,7 +1207,7 @@ class AwsClusterControlPlaneRootVolumeArgs:
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         """
         return pulumi.get(self, "throughput")
 
@@ -1781,7 +1846,7 @@ class AwsNodePoolConfigRootVolumeArgs:
         :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
         :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         if iops is not None:
@@ -1835,7 +1900,7 @@ class AwsNodePoolConfigRootVolumeArgs:
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
         """
         return pulumi.get(self, "throughput")
 
@@ -2066,11 +2131,15 @@ class AwsNodePoolUpdateSettingsSurgeSettingsArgs:
 @pulumi.input_type
 class AzureClusterAuthorizationArgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]],
+                 admin_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]] admin_groups: Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
+        if admin_groups is not None:
+            pulumi.set(__self__, "admin_groups", admin_groups)
 
     @property
     @pulumi.getter(name="adminUsers")
@@ -2083,6 +2152,40 @@ class AzureClusterAuthorizationArgs:
     @admin_users.setter
     def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
         pulumi.set(self, "admin_users", value)
+
+    @property
+    @pulumi.getter(name="adminGroups")
+    def admin_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]]]:
+        """
+        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        """
+        return pulumi.get(self, "admin_groups")
+
+    @admin_groups.setter
+    def admin_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]]]):
+        pulumi.set(self, "admin_groups", value)
+
+
+@pulumi.input_type
+class AzureClusterAuthorizationAdminGroupArgs:
+    def __init__(__self__, *,
+                 group: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] group: The name of the group, e.g. `my-group@domain.com`.
+        """
+        pulumi.set(__self__, "group", group)
+
+    @property
+    @pulumi.getter
+    def group(self) -> pulumi.Input[str]:
+        """
+        The name of the group, e.g. `my-group@domain.com`.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group", value)
 
 
 @pulumi.input_type
@@ -4418,6 +4521,53 @@ class ClusterEnableK8sBetaApisArgs:
 
 
 @pulumi.input_type
+class ClusterFleetArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None,
+                 pre_registered: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] project: The name of the Fleet host project where this cluster will be registered.
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+        if pre_registered is not None:
+            pulumi.set(__self__, "pre_registered", pre_registered)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
+
+    @property
+    @pulumi.getter(name="preRegistered")
+    def pre_registered(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pre_registered")
+
+    @pre_registered.setter
+    def pre_registered(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pre_registered", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Fleet host project where this cluster will be registered.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
 class ClusterGatewayApiConfigArgs:
     def __init__(__self__, *,
                  channel: pulumi.Input[str]):
@@ -5299,6 +5449,7 @@ class ClusterNodeConfigArgs:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]] = None,
+                 enable_confidential_storage: Optional[pulumi.Input[bool]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['ClusterNodeConfigFastSocketArgs']] = None,
@@ -5338,6 +5489,8 @@ class ClusterNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input[bool] enable_confidential_storage: )
+               Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
@@ -5384,13 +5537,7 @@ class ClusterNodeConfigArgs:
                ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-               Note that validations happen all server side. All attributes are optional.
-               Structure is documented below.
-               
-               ```python
-               import pulumi
-               ```
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
@@ -5456,6 +5603,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if effective_taints is not None:
             pulumi.set(__self__, "effective_taints", effective_taints)
+        if enable_confidential_storage is not None:
+            pulumi.set(__self__, "enable_confidential_storage", enable_confidential_storage)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -5588,6 +5737,19 @@ class ClusterNodeConfigArgs:
     @effective_taints.setter
     def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]):
         pulumi.set(self, "effective_taints", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialStorage")
+    def enable_confidential_storage(self) -> Optional[pulumi.Input[bool]]:
+        """
+        )
+        Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+        """
+        return pulumi.get(self, "enable_confidential_storage")
+
+    @enable_confidential_storage.setter
+    def enable_confidential_storage(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_storage", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -5747,13 +5909,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="linuxNodeConfig")
     def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']]:
         """
-        Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-        Note that validations happen all server side. All attributes are optional.
-        Structure is documented below.
-
-        ```python
-        import pulumi
-        ```
+        Parameters that can be configured on Linux nodes. Structure is documented below.
         """
         return pulumi.get(self, "linux_node_config")
 
@@ -6501,26 +6657,55 @@ class ClusterNodeConfigKubeletConfigArgs:
 @pulumi.input_type
 class ClusterNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
-                 sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+                 cgroup_mode: Optional[pulumi.Input[str]] = None,
+                 sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] cgroup_mode: Possible cgroup modes that can be used.
+               Accepted values are:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
-               `net.core.wmem_max`, to a string value.
+               `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Note that validations happen all server side. All attributes are optional.
+               
+               ```python
+               import pulumi
+               ```
         """
-        pulumi.set(__self__, "sysctls", sysctls)
+        if cgroup_mode is not None:
+            pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Possible cgroup modes that can be used.
+        Accepted values are:
+        """
+        return pulumi.get(self, "cgroup_mode")
+
+    @cgroup_mode.setter
+    def cgroup_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cgroup_mode", value)
 
     @property
     @pulumi.getter
-    def sysctls(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The Linux kernel parameters to be applied to the nodes
         and all pods running on the nodes. Specified as a map from the key, such as
-        `net.core.wmem_max`, to a string value.
+        `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Note that validations happen all server side. All attributes are optional.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "sysctls")
 
     @sysctls.setter
-    def sysctls(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
 
 
@@ -7588,6 +7773,7 @@ class ClusterNodePoolNodeConfigArgs:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]] = None,
+                 enable_confidential_storage: Optional[pulumi.Input[bool]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs']] = None,
@@ -7627,6 +7813,8 @@ class ClusterNodePoolNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input[bool] enable_confidential_storage: )
+               Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
@@ -7673,13 +7861,7 @@ class ClusterNodePoolNodeConfigArgs:
                ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-               Note that validations happen all server side. All attributes are optional.
-               Structure is documented below.
-               
-               ```python
-               import pulumi
-               ```
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
@@ -7745,6 +7927,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if effective_taints is not None:
             pulumi.set(__self__, "effective_taints", effective_taints)
+        if enable_confidential_storage is not None:
+            pulumi.set(__self__, "enable_confidential_storage", enable_confidential_storage)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -7877,6 +8061,19 @@ class ClusterNodePoolNodeConfigArgs:
     @effective_taints.setter
     def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]):
         pulumi.set(self, "effective_taints", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialStorage")
+    def enable_confidential_storage(self) -> Optional[pulumi.Input[bool]]:
+        """
+        )
+        Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+        """
+        return pulumi.get(self, "enable_confidential_storage")
+
+    @enable_confidential_storage.setter
+    def enable_confidential_storage(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_storage", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -8036,13 +8233,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="linuxNodeConfig")
     def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]:
         """
-        Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-        Note that validations happen all server side. All attributes are optional.
-        Structure is documented below.
-
-        ```python
-        import pulumi
-        ```
+        Parameters that can be configured on Linux nodes. Structure is documented below.
         """
         return pulumi.get(self, "linux_node_config")
 
@@ -8790,26 +8981,55 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
 @pulumi.input_type
 class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
-                 sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+                 cgroup_mode: Optional[pulumi.Input[str]] = None,
+                 sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] cgroup_mode: Possible cgroup modes that can be used.
+               Accepted values are:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
-               `net.core.wmem_max`, to a string value.
+               `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+               Note that validations happen all server side. All attributes are optional.
+               
+               ```python
+               import pulumi
+               ```
         """
-        pulumi.set(__self__, "sysctls", sysctls)
+        if cgroup_mode is not None:
+            pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Possible cgroup modes that can be used.
+        Accepted values are:
+        """
+        return pulumi.get(self, "cgroup_mode")
+
+    @cgroup_mode.setter
+    def cgroup_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cgroup_mode", value)
 
     @property
     @pulumi.getter
-    def sysctls(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The Linux kernel parameters to be applied to the nodes
         and all pods running on the nodes. Specified as a map from the key, such as
-        `net.core.wmem_max`, to a string value.
+        `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        Note that validations happen all server side. All attributes are optional.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "sysctls")
 
     @sysctls.setter
-    def sysctls(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
 
 
@@ -9857,7 +10077,7 @@ class ClusterSecurityPostureConfigArgs:
                  vulnerability_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] mode: Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
-        :param pulumi.Input[str] vulnerability_mode: Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+        :param pulumi.Input[str] vulnerability_mode: Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
@@ -9880,7 +10100,7 @@ class ClusterSecurityPostureConfigArgs:
     @pulumi.getter(name="vulnerabilityMode")
     def vulnerability_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+        Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
         """
         return pulumi.get(self, "vulnerability_mode")
 
@@ -10394,6 +10614,7 @@ class NodePoolNodeConfigArgs:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]] = None,
+                 enable_confidential_storage: Optional[pulumi.Input[bool]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['NodePoolNodeConfigFastSocketArgs']] = None,
@@ -10439,6 +10660,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if effective_taints is not None:
             pulumi.set(__self__, "effective_taints", effective_taints)
+        if enable_confidential_storage is not None:
+            pulumi.set(__self__, "enable_confidential_storage", enable_confidential_storage)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
@@ -10556,6 +10779,15 @@ class NodePoolNodeConfigArgs:
     @effective_taints.setter
     def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]]):
         pulumi.set(self, "effective_taints", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialStorage")
+    def enable_confidential_storage(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_confidential_storage")
+
+    @enable_confidential_storage.setter
+    def enable_confidential_storage(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_storage", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
@@ -11200,16 +11432,29 @@ class NodePoolNodeConfigKubeletConfigArgs:
 @pulumi.input_type
 class NodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
-                 sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
-        pulumi.set(__self__, "sysctls", sysctls)
+                 cgroup_mode: Optional[pulumi.Input[str]] = None,
+                 sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        if cgroup_mode is not None:
+            pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cgroup_mode")
+
+    @cgroup_mode.setter
+    def cgroup_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cgroup_mode", value)
 
     @property
     @pulumi.getter
-    def sysctls(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "sysctls")
 
     @sysctls.setter
-    def sysctls(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
 
 

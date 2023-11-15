@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAuthInfoArgs;
+import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckPingConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -72,7 +73,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
     /**
      * The content type to use for the check.
-     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
      * 
      */
     @Import(name="contentType")
@@ -80,11 +81,26 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
     /**
      * @return The content type to use for the check.
-     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
      * 
      */
     public Optional<Output<String>> contentType() {
         return Optional.ofNullable(this.contentType);
+    }
+
+    /**
+     * A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+     * 
+     */
+    @Import(name="customContentType")
+    private @Nullable Output<String> customContentType;
+
+    /**
+     * @return A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+     * 
+     */
+    public Optional<Output<String>> customContentType() {
+        return Optional.ofNullable(this.customContentType);
     }
 
     /**
@@ -130,6 +146,23 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
+    }
+
+    /**
+     * Contains information needed to add pings to an HTTP check.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pingConfig")
+    private @Nullable Output<UptimeCheckConfigHttpCheckPingConfigArgs> pingConfig;
+
+    /**
+     * @return Contains information needed to add pings to an HTTP check.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<UptimeCheckConfigHttpCheckPingConfigArgs>> pingConfig() {
+        return Optional.ofNullable(this.pingConfig);
     }
 
     /**
@@ -203,9 +236,11 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
         this.authInfo = $.authInfo;
         this.body = $.body;
         this.contentType = $.contentType;
+        this.customContentType = $.customContentType;
         this.headers = $.headers;
         this.maskHeaders = $.maskHeaders;
         this.path = $.path;
+        this.pingConfig = $.pingConfig;
         this.port = $.port;
         this.requestMethod = $.requestMethod;
         this.useSsl = $.useSsl;
@@ -310,7 +345,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
         /**
          * @param contentType The content type to use for the check.
-         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
          * 
          * @return builder
          * 
@@ -322,13 +357,34 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
         /**
          * @param contentType The content type to use for the check.
-         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
          * 
          * @return builder
          * 
          */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
+        }
+
+        /**
+         * @param customContentType A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customContentType(@Nullable Output<String> customContentType) {
+            $.customContentType = customContentType;
+            return this;
+        }
+
+        /**
+         * @param customContentType A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customContentType(String customContentType) {
+            return customContentType(Output.of(customContentType));
         }
 
         /**
@@ -392,6 +448,29 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param pingConfig Contains information needed to add pings to an HTTP check.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pingConfig(@Nullable Output<UptimeCheckConfigHttpCheckPingConfigArgs> pingConfig) {
+            $.pingConfig = pingConfig;
+            return this;
+        }
+
+        /**
+         * @param pingConfig Contains information needed to add pings to an HTTP check.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pingConfig(UptimeCheckConfigHttpCheckPingConfigArgs pingConfig) {
+            return pingConfig(Output.of(pingConfig));
         }
 
         /**

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Compute FirewallPolicyRule resource
@@ -112,7 +111,17 @@ import (
 //
 // ## Import
 //
-// # FirewallPolicyRule can be imported using any of these accepted formats
+// FirewallPolicyRule can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}` * `{{firewall_policy}}/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FirewallPolicyRule using one of the formats above. For exampletf import {
+//
+//	id = "locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}"
+//
+//	to = google_compute_firewall_policy_rule.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FirewallPolicyRule can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -326,12 +335,6 @@ func (i *FirewallPolicyRule) ToFirewallPolicyRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleOutput)
 }
 
-func (i *FirewallPolicyRule) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRule] {
-	return pulumix.Output[*FirewallPolicyRule]{
-		OutputState: i.ToFirewallPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallPolicyRuleArrayInput is an input type that accepts FirewallPolicyRuleArray and FirewallPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyRuleArrayInput` via:
 //
@@ -355,12 +358,6 @@ func (i FirewallPolicyRuleArray) ToFirewallPolicyRuleArrayOutput() FirewallPolic
 
 func (i FirewallPolicyRuleArray) ToFirewallPolicyRuleArrayOutputWithContext(ctx context.Context) FirewallPolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleArrayOutput)
-}
-
-func (i FirewallPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallPolicyRule] {
-	return pulumix.Output[[]*FirewallPolicyRule]{
-		OutputState: i.ToFirewallPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FirewallPolicyRuleMapInput is an input type that accepts FirewallPolicyRuleMap and FirewallPolicyRuleMapOutput values.
@@ -388,12 +385,6 @@ func (i FirewallPolicyRuleMap) ToFirewallPolicyRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMapOutput)
 }
 
-func (i FirewallPolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallPolicyRule] {
-	return pulumix.Output[map[string]*FirewallPolicyRule]{
-		OutputState: i.ToFirewallPolicyRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyRuleOutput) ElementType() reflect.Type {
@@ -406,12 +397,6 @@ func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutput() FirewallPolicyRul
 
 func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutputWithContext(ctx context.Context) FirewallPolicyRuleOutput {
 	return o
-}
-
-func (o FirewallPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRule] {
-	return pulumix.Output[*FirewallPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
@@ -488,12 +473,6 @@ func (o FirewallPolicyRuleArrayOutput) ToFirewallPolicyRuleArrayOutputWithContex
 	return o
 }
 
-func (o FirewallPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallPolicyRule] {
-	return pulumix.Output[[]*FirewallPolicyRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallPolicyRule {
 		return vs[0].([]*FirewallPolicyRule)[vs[1].(int)]
@@ -512,12 +491,6 @@ func (o FirewallPolicyRuleMapOutput) ToFirewallPolicyRuleMapOutput() FirewallPol
 
 func (o FirewallPolicyRuleMapOutput) ToFirewallPolicyRuleMapOutputWithContext(ctx context.Context) FirewallPolicyRuleMapOutput {
 	return o
-}
-
-func (o FirewallPolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallPolicyRule] {
-	return pulumix.Output[map[string]*FirewallPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyRuleMapOutput) MapIndex(k pulumi.StringInput) FirewallPolicyRuleOutput {

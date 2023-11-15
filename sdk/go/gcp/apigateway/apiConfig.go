@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An API Configuration is an association of an API Controller Config and a Gateway Config
@@ -76,7 +75,17 @@ import (
 //
 // ## Import
 //
-// # ApiConfig can be imported using any of these accepted formats
+// ApiConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}` * `{{project}}/{{api}}/{{api_config_id}}` * `{{api}}/{{api_config_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ApiConfig using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}"
+//
+//	to = google_api_gateway_api_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigateway/apiConfig:ApiConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ApiConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -369,12 +378,6 @@ func (i *ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOutput)
 }
 
-func (i *ApiConfig) ToOutput(ctx context.Context) pulumix.Output[*ApiConfig] {
-	return pulumix.Output[*ApiConfig]{
-		OutputState: i.ToApiConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiConfigArrayInput is an input type that accepts ApiConfigArray and ApiConfigArrayOutput values.
 // You can construct a concrete instance of `ApiConfigArrayInput` via:
 //
@@ -398,12 +401,6 @@ func (i ApiConfigArray) ToApiConfigArrayOutput() ApiConfigArrayOutput {
 
 func (i ApiConfigArray) ToApiConfigArrayOutputWithContext(ctx context.Context) ApiConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigArrayOutput)
-}
-
-func (i ApiConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiConfig] {
-	return pulumix.Output[[]*ApiConfig]{
-		OutputState: i.ToApiConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiConfigMapInput is an input type that accepts ApiConfigMap and ApiConfigMapOutput values.
@@ -431,12 +428,6 @@ func (i ApiConfigMap) ToApiConfigMapOutputWithContext(ctx context.Context) ApiCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigMapOutput)
 }
 
-func (i ApiConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiConfig] {
-	return pulumix.Output[map[string]*ApiConfig]{
-		OutputState: i.ToApiConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigOutput) ElementType() reflect.Type {
@@ -449,12 +440,6 @@ func (o ApiConfigOutput) ToApiConfigOutput() ApiConfigOutput {
 
 func (o ApiConfigOutput) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput {
 	return o
-}
-
-func (o ApiConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfig] {
-	return pulumix.Output[*ApiConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API to attach the config to.
@@ -555,12 +540,6 @@ func (o ApiConfigArrayOutput) ToApiConfigArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ApiConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiConfig] {
-	return pulumix.Output[[]*ApiConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiConfigArrayOutput) Index(i pulumi.IntInput) ApiConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiConfig {
 		return vs[0].([]*ApiConfig)[vs[1].(int)]
@@ -579,12 +558,6 @@ func (o ApiConfigMapOutput) ToApiConfigMapOutput() ApiConfigMapOutput {
 
 func (o ApiConfigMapOutput) ToApiConfigMapOutputWithContext(ctx context.Context) ApiConfigMapOutput {
 	return o
-}
-
-func (o ApiConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiConfig] {
-	return pulumix.Output[map[string]*ApiConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigMapOutput) MapIndex(k pulumi.StringInput) ApiConfigOutput {

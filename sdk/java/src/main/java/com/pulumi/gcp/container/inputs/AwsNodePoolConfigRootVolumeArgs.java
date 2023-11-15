@@ -62,14 +62,14 @@ public final class AwsNodePoolConfigRootVolumeArgs extends com.pulumi.resources.
     }
 
     /**
-     * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
      * 
      */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
     /**
-     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -183,7 +183,7 @@ public final class AwsNodePoolConfigRootVolumeArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param throughput Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * @param throughput Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class AwsNodePoolConfigRootVolumeArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param throughput Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * @param throughput Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3. If volume type is gp3 and throughput is not specified, the throughput will defaults to 125.
          * 
          * @return builder
          * 

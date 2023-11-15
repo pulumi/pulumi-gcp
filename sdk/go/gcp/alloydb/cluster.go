@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed alloydb cluster.
@@ -243,10 +242,107 @@ import (
 //	}
 //
 // ```
+// ### Alloydb Secondary Cluster Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			primaryCluster, err := alloydb.NewCluster(ctx, "primaryCluster", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-primary-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: _default.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryInstance, err := alloydb.NewInstance(ctx, "primaryInstance", &alloydb.InstanceArgs{
+//				Cluster:      primaryCluster.Name,
+//				InstanceId:   pulumi.String("alloydb-primary-instance"),
+//				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alloydb.NewCluster(ctx, "secondary", &alloydb.ClusterArgs{
+//				ClusterId:   pulumi.String("alloydb-secondary-cluster"),
+//				Location:    pulumi.String("us-east1"),
+//				Network:     _default.ID(),
+//				ClusterType: pulumi.String("SECONDARY"),
+//				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
+//				SecondaryConfig: &alloydb.ClusterSecondaryConfigArgs{
+//					PrimaryClusterName: primaryCluster.Name,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primaryInstance,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # Cluster can be imported using any of these accepted formats
+// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
+//
+//	to = google_alloydb_cluster.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -288,6 +384,10 @@ type Cluster struct {
 	BackupSources ClusterBackupSourceArrayOutput `pulumi:"backupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The type of cluster. If not set, defaults to PRIMARY.
+	// Default value is `PRIMARY`.
+	// Possible values are: `PRIMARY`, `SECONDARY`.
+	ClusterType pulumi.StringPtrOutput `pulumi:"clusterType"`
 	// The continuous backup config for this cluster.
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
@@ -297,6 +397,10 @@ type Cluster struct {
 	ContinuousBackupInfos ClusterContinuousBackupInfoArrayOutput `pulumi:"continuousBackupInfos"`
 	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
+	// Policy to determine if the cluster should be deleted forcefully.
+	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -356,6 +460,9 @@ type Cluster struct {
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrOutput `pulumi:"restoreContinuousBackupSource"`
+	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+	// Structure is documented below.
+	SecondaryConfig ClusterSecondaryConfigPtrOutput `pulumi:"secondaryConfig"`
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The system-generated UID of the resource.
@@ -417,6 +524,10 @@ type clusterState struct {
 	BackupSources []ClusterBackupSource `pulumi:"backupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId *string `pulumi:"clusterId"`
+	// The type of cluster. If not set, defaults to PRIMARY.
+	// Default value is `PRIMARY`.
+	// Possible values are: `PRIMARY`, `SECONDARY`.
+	ClusterType *string `pulumi:"clusterType"`
 	// The continuous backup config for this cluster.
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
@@ -426,6 +537,10 @@ type clusterState struct {
 	ContinuousBackupInfos []ClusterContinuousBackupInfo `pulumi:"continuousBackupInfos"`
 	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// Policy to determine if the cluster should be deleted forcefully.
+	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -485,6 +600,9 @@ type clusterState struct {
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
+	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+	// Structure is documented below.
+	SecondaryConfig *ClusterSecondaryConfig `pulumi:"secondaryConfig"`
 	// Output only. The current serving state of the cluster.
 	State *string `pulumi:"state"`
 	// The system-generated UID of the resource.
@@ -506,6 +624,10 @@ type ClusterState struct {
 	BackupSources ClusterBackupSourceArrayInput
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringPtrInput
+	// The type of cluster. If not set, defaults to PRIMARY.
+	// Default value is `PRIMARY`.
+	// Possible values are: `PRIMARY`, `SECONDARY`.
+	ClusterType pulumi.StringPtrInput
 	// The continuous backup config for this cluster.
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
@@ -515,6 +637,10 @@ type ClusterState struct {
 	ContinuousBackupInfos ClusterContinuousBackupInfoArrayInput
 	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringPtrInput
+	// Policy to determine if the cluster should be deleted forcefully.
+	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -574,6 +700,9 @@ type ClusterState struct {
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
+	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+	// Structure is documented below.
+	SecondaryConfig ClusterSecondaryConfigPtrInput
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringPtrInput
 	// The system-generated UID of the resource.
@@ -596,10 +725,18 @@ type clusterArgs struct {
 	AutomatedBackupPolicy *ClusterAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
 	// The ID of the alloydb cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// The type of cluster. If not set, defaults to PRIMARY.
+	// Default value is `PRIMARY`.
+	// Possible values are: `PRIMARY`, `SECONDARY`.
+	ClusterType *string `pulumi:"clusterType"`
 	// The continuous backup config for this cluster.
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
 	ContinuousBackupConfig *ClusterContinuousBackupConfig `pulumi:"continuousBackupConfig"`
+	// Policy to determine if the cluster should be deleted forcefully.
+	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -638,6 +775,9 @@ type clusterArgs struct {
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
+	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+	// Structure is documented below.
+	SecondaryConfig *ClusterSecondaryConfig `pulumi:"secondaryConfig"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -653,10 +793,18 @@ type ClusterArgs struct {
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrInput
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringInput
+	// The type of cluster. If not set, defaults to PRIMARY.
+	// Default value is `PRIMARY`.
+	// Possible values are: `PRIMARY`, `SECONDARY`.
+	ClusterType pulumi.StringPtrInput
 	// The continuous backup config for this cluster.
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
 	ContinuousBackupConfig ClusterContinuousBackupConfigPtrInput
+	// Policy to determine if the cluster should be deleted forcefully.
+	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -695,6 +843,9 @@ type ClusterArgs struct {
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
+	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+	// Structure is documented below.
+	SecondaryConfig ClusterSecondaryConfigPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -718,12 +869,6 @@ func (i *Cluster) ToClusterOutput() ClusterOutput {
 
 func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
-}
-
-func (i *Cluster) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
-	return pulumix.Output[*Cluster]{
-		OutputState: i.ToClusterOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
@@ -751,12 +896,6 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterArrayOutput)
 }
 
-func (i ClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*Cluster] {
-	return pulumix.Output[[]*Cluster]{
-		OutputState: i.ToClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
@@ -782,12 +921,6 @@ func (i ClusterMap) ToClusterMapOutputWithContext(ctx context.Context) ClusterMa
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMapOutput)
 }
 
-func (i ClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cluster] {
-	return pulumix.Output[map[string]*Cluster]{
-		OutputState: i.ToClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterOutput struct{ *pulumi.OutputState }
 
 func (ClusterOutput) ElementType() reflect.Type {
@@ -800,12 +933,6 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
-}
-
-func (o ClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
-	return pulumix.Output[*Cluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
@@ -834,6 +961,13 @@ func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The type of cluster. If not set, defaults to PRIMARY.
+// Default value is `PRIMARY`.
+// Possible values are: `PRIMARY`, `SECONDARY`.
+func (o ClusterOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
 // The continuous backup config for this cluster.
 // If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 // Structure is documented below.
@@ -850,6 +984,13 @@ func (o ClusterOutput) ContinuousBackupInfos() ClusterContinuousBackupInfoArrayO
 // The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// Policy to determine if the cluster should be deleted forcefully.
+// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+func (o ClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // User-settable and human-readable display name for the Cluster.
@@ -965,6 +1106,12 @@ func (o ClusterOutput) RestoreContinuousBackupSource() ClusterRestoreContinuousB
 	return o.ApplyT(func(v *Cluster) ClusterRestoreContinuousBackupSourcePtrOutput { return v.RestoreContinuousBackupSource }).(ClusterRestoreContinuousBackupSourcePtrOutput)
 }
 
+// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+// Structure is documented below.
+func (o ClusterOutput) SecondaryConfig() ClusterSecondaryConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterSecondaryConfigPtrOutput { return v.SecondaryConfig }).(ClusterSecondaryConfigPtrOutput)
+}
+
 // Output only. The current serving state of the cluster.
 func (o ClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
@@ -989,12 +1136,6 @@ func (o ClusterArrayOutput) ToClusterArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Cluster] {
-	return pulumix.Output[[]*Cluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterArrayOutput) Index(i pulumi.IntInput) ClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cluster {
 		return vs[0].([]*Cluster)[vs[1].(int)]
@@ -1013,12 +1154,6 @@ func (o ClusterMapOutput) ToClusterMapOutput() ClusterMapOutput {
 
 func (o ClusterMapOutput) ToClusterMapOutputWithContext(ctx context.Context) ClusterMapOutput {
 	return o
-}
-
-func (o ClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cluster] {
-	return pulumix.Output[map[string]*Cluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterMapOutput) MapIndex(k pulumi.StringInput) ClusterOutput {

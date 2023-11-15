@@ -10,9 +10,10 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The googleGkeHub is the Fleet API.
+//
 // ## Example Usage
 // ### Config Management
 //
@@ -242,7 +243,17 @@ import (
 //
 // ## Import
 //
-// # FeatureMembership can be imported using any of these accepted formats
+// FeatureMembership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}` * `{{project}}/{{location}}/{{feature}}/{{membership}}` * `{{location}}/{{feature}}/{{membership}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeatureMembership using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}"
+//
+//	to = google_gke_hub_feature_membership.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkehub/featureMembership:FeatureMembership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeatureMembership can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -404,12 +415,6 @@ func (i *FeatureMembership) ToFeatureMembershipOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipOutput)
 }
 
-func (i *FeatureMembership) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembership] {
-	return pulumix.Output[*FeatureMembership]{
-		OutputState: i.ToFeatureMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureMembershipArrayInput is an input type that accepts FeatureMembershipArray and FeatureMembershipArrayOutput values.
 // You can construct a concrete instance of `FeatureMembershipArrayInput` via:
 //
@@ -433,12 +438,6 @@ func (i FeatureMembershipArray) ToFeatureMembershipArrayOutput() FeatureMembersh
 
 func (i FeatureMembershipArray) ToFeatureMembershipArrayOutputWithContext(ctx context.Context) FeatureMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipArrayOutput)
-}
-
-func (i FeatureMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*FeatureMembership] {
-	return pulumix.Output[[]*FeatureMembership]{
-		OutputState: i.ToFeatureMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FeatureMembershipMapInput is an input type that accepts FeatureMembershipMap and FeatureMembershipMapOutput values.
@@ -466,12 +465,6 @@ func (i FeatureMembershipMap) ToFeatureMembershipMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMapOutput)
 }
 
-func (i FeatureMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FeatureMembership] {
-	return pulumix.Output[map[string]*FeatureMembership]{
-		OutputState: i.ToFeatureMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureMembershipOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipOutput) ElementType() reflect.Type {
@@ -484,12 +477,6 @@ func (o FeatureMembershipOutput) ToFeatureMembershipOutput() FeatureMembershipOu
 
 func (o FeatureMembershipOutput) ToFeatureMembershipOutputWithContext(ctx context.Context) FeatureMembershipOutput {
 	return o
-}
-
-func (o FeatureMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembership] {
-	return pulumix.Output[*FeatureMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config Management-specific spec. Structure is documented below.
@@ -536,12 +523,6 @@ func (o FeatureMembershipArrayOutput) ToFeatureMembershipArrayOutputWithContext(
 	return o
 }
 
-func (o FeatureMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FeatureMembership] {
-	return pulumix.Output[[]*FeatureMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureMembershipArrayOutput) Index(i pulumi.IntInput) FeatureMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FeatureMembership {
 		return vs[0].([]*FeatureMembership)[vs[1].(int)]
@@ -560,12 +541,6 @@ func (o FeatureMembershipMapOutput) ToFeatureMembershipMapOutput() FeatureMember
 
 func (o FeatureMembershipMapOutput) ToFeatureMembershipMapOutputWithContext(ctx context.Context) FeatureMembershipMapOutput {
 	return o
-}
-
-func (o FeatureMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FeatureMembership] {
-	return pulumix.Output[map[string]*FeatureMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMembershipMapOutput) MapIndex(k pulumi.StringInput) FeatureMembershipOutput {

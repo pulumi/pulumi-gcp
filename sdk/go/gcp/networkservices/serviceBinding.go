@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -65,7 +64,17 @@ import (
 //
 // ## Import
 //
-// # ServiceBinding can be imported using any of these accepted formats
+// ServiceBinding can be imported using any of these accepted formats* `projects/{{project}}/locations/global/serviceBindings/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceBinding using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/global/serviceBindings/{{name}}"
+//
+//	to = google_network_services_service_binding.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networkservices/serviceBinding:ServiceBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceBinding can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -273,12 +282,6 @@ func (i *ServiceBinding) ToServiceBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBindingOutput)
 }
 
-func (i *ServiceBinding) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinding] {
-	return pulumix.Output[*ServiceBinding]{
-		OutputState: i.ToServiceBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceBindingArrayInput is an input type that accepts ServiceBindingArray and ServiceBindingArrayOutput values.
 // You can construct a concrete instance of `ServiceBindingArrayInput` via:
 //
@@ -302,12 +305,6 @@ func (i ServiceBindingArray) ToServiceBindingArrayOutput() ServiceBindingArrayOu
 
 func (i ServiceBindingArray) ToServiceBindingArrayOutputWithContext(ctx context.Context) ServiceBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBindingArrayOutput)
-}
-
-func (i ServiceBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceBinding] {
-	return pulumix.Output[[]*ServiceBinding]{
-		OutputState: i.ToServiceBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceBindingMapInput is an input type that accepts ServiceBindingMap and ServiceBindingMapOutput values.
@@ -335,12 +332,6 @@ func (i ServiceBindingMap) ToServiceBindingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBindingMapOutput)
 }
 
-func (i ServiceBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceBinding] {
-	return pulumix.Output[map[string]*ServiceBinding]{
-		OutputState: i.ToServiceBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceBindingOutput struct{ *pulumi.OutputState }
 
 func (ServiceBindingOutput) ElementType() reflect.Type {
@@ -353,12 +344,6 @@ func (o ServiceBindingOutput) ToServiceBindingOutput() ServiceBindingOutput {
 
 func (o ServiceBindingOutput) ToServiceBindingOutputWithContext(ctx context.Context) ServiceBindingOutput {
 	return o
-}
-
-func (o ServiceBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinding] {
-	return pulumix.Output[*ServiceBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the ServiceBinding was created in UTC.
@@ -427,12 +412,6 @@ func (o ServiceBindingArrayOutput) ToServiceBindingArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ServiceBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceBinding] {
-	return pulumix.Output[[]*ServiceBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceBindingArrayOutput) Index(i pulumi.IntInput) ServiceBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceBinding {
 		return vs[0].([]*ServiceBinding)[vs[1].(int)]
@@ -451,12 +430,6 @@ func (o ServiceBindingMapOutput) ToServiceBindingMapOutput() ServiceBindingMapOu
 
 func (o ServiceBindingMapOutput) ToServiceBindingMapOutputWithContext(ctx context.Context) ServiceBindingMapOutput {
 	return o
-}
-
-func (o ServiceBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceBinding] {
-	return pulumix.Output[map[string]*ServiceBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceBindingMapOutput) MapIndex(k pulumi.StringInput) ServiceBindingOutput {

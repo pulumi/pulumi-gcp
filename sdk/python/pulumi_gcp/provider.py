@@ -85,6 +85,7 @@ class ProviderArgs:
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 edgecontainer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -112,6 +113,7 @@ class ProviderArgs:
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 integration_connectors_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -158,6 +160,7 @@ class ProviderArgs:
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 universe_domain: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -308,6 +311,8 @@ class ProviderArgs:
             pulumi.set(__self__, "document_ai_custom_endpoint", document_ai_custom_endpoint)
         if document_ai_warehouse_custom_endpoint is not None:
             pulumi.set(__self__, "document_ai_warehouse_custom_endpoint", document_ai_warehouse_custom_endpoint)
+        if edgecontainer_custom_endpoint is not None:
+            pulumi.set(__self__, "edgecontainer_custom_endpoint", edgecontainer_custom_endpoint)
         if edgenetwork_custom_endpoint is not None:
             pulumi.set(__self__, "edgenetwork_custom_endpoint", edgenetwork_custom_endpoint)
         if essential_contacts_custom_endpoint is not None:
@@ -362,6 +367,8 @@ class ProviderArgs:
             pulumi.set(__self__, "impersonate_service_account", impersonate_service_account)
         if impersonate_service_account_delegates is not None:
             pulumi.set(__self__, "impersonate_service_account_delegates", impersonate_service_account_delegates)
+        if integration_connectors_custom_endpoint is not None:
+            pulumi.set(__self__, "integration_connectors_custom_endpoint", integration_connectors_custom_endpoint)
         if kms_custom_endpoint is not None:
             pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
         if logging_custom_endpoint is not None:
@@ -458,6 +465,8 @@ class ProviderArgs:
             pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
         if tpu_v2_custom_endpoint is not None:
             pulumi.set(__self__, "tpu_v2_custom_endpoint", tpu_v2_custom_endpoint)
+        if universe_domain is not None:
+            pulumi.set(__self__, "universe_domain", universe_domain)
         if user_project_override is not None:
             pulumi.set(__self__, "user_project_override", user_project_override)
         if vertex_ai_custom_endpoint is not None:
@@ -1106,6 +1115,15 @@ class ProviderArgs:
         pulumi.set(self, "document_ai_warehouse_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="edgecontainerCustomEndpoint")
+    def edgecontainer_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edgecontainer_custom_endpoint")
+
+    @edgecontainer_custom_endpoint.setter
+    def edgecontainer_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edgecontainer_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="edgenetworkCustomEndpoint")
     def edgenetwork_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "edgenetwork_custom_endpoint")
@@ -1347,6 +1365,15 @@ class ProviderArgs:
     @impersonate_service_account_delegates.setter
     def impersonate_service_account_delegates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "impersonate_service_account_delegates", value)
+
+    @property
+    @pulumi.getter(name="integrationConnectorsCustomEndpoint")
+    def integration_connectors_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "integration_connectors_custom_endpoint")
+
+    @integration_connectors_custom_endpoint.setter
+    def integration_connectors_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_connectors_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="kmsCustomEndpoint")
@@ -1763,6 +1790,15 @@ class ProviderArgs:
         pulumi.set(self, "tpu_v2_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="universeDomain")
+    def universe_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "universe_domain")
+
+    @universe_domain.setter
+    def universe_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "universe_domain", value)
+
+    @property
     @pulumi.getter(name="userProjectOverride")
     def user_project_override(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "user_project_override")
@@ -1901,6 +1937,7 @@ class Provider(pulumi.ProviderResource):
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 edgecontainer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1928,6 +1965,7 @@ class Provider(pulumi.ProviderResource):
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 integration_connectors_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1974,6 +2012,7 @@ class Provider(pulumi.ProviderResource):
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 universe_domain: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2088,6 +2127,7 @@ class Provider(pulumi.ProviderResource):
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 edgecontainer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2115,6 +2155,7 @@ class Provider(pulumi.ProviderResource):
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 integration_connectors_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2161,6 +2202,7 @@ class Provider(pulumi.ProviderResource):
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 universe_domain: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2247,6 +2289,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
             __props__.__dict__["document_ai_warehouse_custom_endpoint"] = document_ai_warehouse_custom_endpoint
+            __props__.__dict__["edgecontainer_custom_endpoint"] = edgecontainer_custom_endpoint
             __props__.__dict__["edgenetwork_custom_endpoint"] = edgenetwork_custom_endpoint
             __props__.__dict__["essential_contacts_custom_endpoint"] = essential_contacts_custom_endpoint
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
@@ -2274,6 +2317,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["identity_platform_custom_endpoint"] = identity_platform_custom_endpoint
             __props__.__dict__["impersonate_service_account"] = impersonate_service_account
             __props__.__dict__["impersonate_service_account_delegates"] = pulumi.Output.from_input(impersonate_service_account_delegates).apply(pulumi.runtime.to_json) if impersonate_service_account_delegates is not None else None
+            __props__.__dict__["integration_connectors_custom_endpoint"] = integration_connectors_custom_endpoint
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
@@ -2324,6 +2368,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tags_location_custom_endpoint"] = tags_location_custom_endpoint
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["tpu_v2_custom_endpoint"] = tpu_v2_custom_endpoint
+            __props__.__dict__["universe_domain"] = universe_domain
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vmwareengine_custom_endpoint"] = vmwareengine_custom_endpoint
@@ -2675,6 +2720,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "document_ai_warehouse_custom_endpoint")
 
     @property
+    @pulumi.getter(name="edgecontainerCustomEndpoint")
+    def edgecontainer_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "edgecontainer_custom_endpoint")
+
+    @property
     @pulumi.getter(name="edgenetworkCustomEndpoint")
     def edgenetwork_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "edgenetwork_custom_endpoint")
@@ -2803,6 +2853,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="impersonateServiceAccount")
     def impersonate_service_account(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "impersonate_service_account")
+
+    @property
+    @pulumi.getter(name="integrationConnectorsCustomEndpoint")
+    def integration_connectors_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "integration_connectors_custom_endpoint")
 
     @property
     @pulumi.getter(name="kmsCustomEndpoint")
@@ -3028,6 +3083,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tpuV2CustomEndpoint")
     def tpu_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "tpu_v2_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="universeDomain")
+    def universe_domain(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "universe_domain")
 
     @property
     @pulumi.getter(name="vertexAiCustomEndpoint")

@@ -424,6 +424,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> documentAiWarehouseCustomEndpoint() {
         return Codegen.optional(this.documentAiWarehouseCustomEndpoint);
     }
+    @Export(name="edgecontainerCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> edgecontainerCustomEndpoint;
+
+    public Output<Optional<String>> edgecontainerCustomEndpoint() {
+        return Codegen.optional(this.edgecontainerCustomEndpoint);
+    }
     @Export(name="edgenetworkCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgenetworkCustomEndpoint;
 
@@ -579,6 +585,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> impersonateServiceAccount() {
         return Codegen.optional(this.impersonateServiceAccount);
+    }
+    @Export(name="integrationConnectorsCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> integrationConnectorsCustomEndpoint;
+
+    public Output<Optional<String>> integrationConnectorsCustomEndpoint() {
+        return Codegen.optional(this.integrationConnectorsCustomEndpoint);
     }
     @Export(name="kmsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsCustomEndpoint;
@@ -849,6 +861,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> tpuV2CustomEndpoint() {
         return Codegen.optional(this.tpuV2CustomEndpoint);
+    }
+    @Export(name="universeDomain", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> universeDomain;
+
+    public Output<Optional<String>> universeDomain() {
+        return Codegen.optional(this.universeDomain);
     }
     @Export(name="vertexAiCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vertexAiCustomEndpoint;

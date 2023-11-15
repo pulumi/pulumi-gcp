@@ -30,7 +30,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ProjectFeed can be imported using any of these accepted formats
+ * ProjectFeed can be imported using any of these accepted formats* `projects/{{project}}/feeds/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ProjectFeed using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/feeds/{{name}}&#34;
+ * 
+ *  to = google_cloud_asset_project_feed.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ProjectFeed can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}

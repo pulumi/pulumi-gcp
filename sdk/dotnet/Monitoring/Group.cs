@@ -68,7 +68,15 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// Group can be imported using any of these accepted formats:
+    /// Group can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Group using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_monitoring_group.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/group:Group When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Group can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/group:Group default {{name}}

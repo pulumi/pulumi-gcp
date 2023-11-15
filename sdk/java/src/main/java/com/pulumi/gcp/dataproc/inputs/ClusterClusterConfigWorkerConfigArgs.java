@@ -114,6 +114,21 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * 
+     */
+    @Import(name="minNumInstances")
+    private @Nullable Output<Integer> minNumInstances;
+
+    /**
+     * @return The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * 
+     */
+    public Optional<Output<Integer>> minNumInstances() {
+        return Optional.ofNullable(this.minNumInstances);
+    }
+
+    /**
      * Specifies the number of worker nodes to create.
      * If not specified, GCP will default to a predetermined computed value (currently 2).
      * There is currently a beta feature which allows you to run a
@@ -149,6 +164,7 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
         this.instanceNames = $.instanceNames;
         this.machineType = $.machineType;
         this.minCpuPlatform = $.minCpuPlatform;
+        this.minNumInstances = $.minNumInstances;
         this.numInstances = $.numInstances;
     }
 
@@ -308,6 +324,27 @@ public final class ClusterClusterConfigWorkerConfigArgs extends com.pulumi.resou
          */
         public Builder minCpuPlatform(String minCpuPlatform) {
             return minCpuPlatform(Output.of(minCpuPlatform));
+        }
+
+        /**
+         * @param minNumInstances The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNumInstances(@Nullable Output<Integer> minNumInstances) {
+            $.minNumInstances = minNumInstances;
+            return this;
+        }
+
+        /**
+         * @param minNumInstances The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNumInstances(Integer minNumInstances) {
+            return minNumInstances(Output.of(minNumInstances));
         }
 
         /**

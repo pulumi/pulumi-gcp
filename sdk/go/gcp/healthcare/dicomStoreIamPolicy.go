@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
@@ -124,33 +123,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the Healthcare DICOM store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `dicom_store_id`, role, and account e.g.
+//	id = "{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"
+//
+//	to = google_healthcare_dicom_store_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `dicom_store_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam "your-project-id/location-name/dataset-name/dicom-store-name roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `dicom_store_id`, role, and account e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
+//	$ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
 //
 // ```
 type DicomStoreIamPolicy struct {
@@ -324,12 +311,6 @@ func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyOutput)
 }
 
-func (i *DicomStoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamPolicy] {
-	return pulumix.Output[*DicomStoreIamPolicy]{
-		OutputState: i.ToDicomStoreIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DicomStoreIamPolicyArrayInput is an input type that accepts DicomStoreIamPolicyArray and DicomStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DicomStoreIamPolicyArrayInput` via:
 //
@@ -353,12 +334,6 @@ func (i DicomStoreIamPolicyArray) ToDicomStoreIamPolicyArrayOutput() DicomStoreI
 
 func (i DicomStoreIamPolicyArray) ToDicomStoreIamPolicyArrayOutputWithContext(ctx context.Context) DicomStoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyArrayOutput)
-}
-
-func (i DicomStoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamPolicy] {
-	return pulumix.Output[[]*DicomStoreIamPolicy]{
-		OutputState: i.ToDicomStoreIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DicomStoreIamPolicyMapInput is an input type that accepts DicomStoreIamPolicyMap and DicomStoreIamPolicyMapOutput values.
@@ -386,12 +361,6 @@ func (i DicomStoreIamPolicyMap) ToDicomStoreIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyMapOutput)
 }
 
-func (i DicomStoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamPolicy] {
-	return pulumix.Output[map[string]*DicomStoreIamPolicy]{
-		OutputState: i.ToDicomStoreIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DicomStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamPolicyOutput) ElementType() reflect.Type {
@@ -404,12 +373,6 @@ func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutput() DicomStoreIamPo
 
 func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutputWithContext(ctx context.Context) DicomStoreIamPolicyOutput {
 	return o
-}
-
-func (o DicomStoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamPolicy] {
-	return pulumix.Output[*DicomStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DICOM store ID, in the form
@@ -454,12 +417,6 @@ func (o DicomStoreIamPolicyArrayOutput) ToDicomStoreIamPolicyArrayOutputWithCont
 	return o
 }
 
-func (o DicomStoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamPolicy] {
-	return pulumix.Output[[]*DicomStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DicomStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) DicomStoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStoreIamPolicy {
 		return vs[0].([]*DicomStoreIamPolicy)[vs[1].(int)]
@@ -478,12 +435,6 @@ func (o DicomStoreIamPolicyMapOutput) ToDicomStoreIamPolicyMapOutput() DicomStor
 
 func (o DicomStoreIamPolicyMapOutput) ToDicomStoreIamPolicyMapOutputWithContext(ctx context.Context) DicomStoreIamPolicyMapOutput {
 	return o
-}
-
-func (o DicomStoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamPolicy] {
-	return pulumix.Output[map[string]*DicomStoreIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DicomStoreIamPolicyOutput {

@@ -18,6 +18,7 @@ class ProjectSinkArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str],
                  bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]]] = None,
@@ -38,6 +39,10 @@ class ProjectSinkArgs:
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
+               the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+               routing logs to a destination outside this sink's project. If not specified, a Logging service account
+               will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
@@ -47,14 +52,15 @@ class ProjectSinkArgs:
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
-        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`
-               (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
                then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
                `bigquery_options`, you must set `unique_writer_identity` to true.
         """
         pulumi.set(__self__, "destination", destination)
         if bigquery_options is not None:
             pulumi.set(__self__, "bigquery_options", bigquery_options)
+        if custom_writer_identity is not None:
+            pulumi.set(__self__, "custom_writer_identity", custom_writer_identity)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -102,6 +108,21 @@ class ProjectSinkArgs:
     @bigquery_options.setter
     def bigquery_options(self, value: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']]):
         pulumi.set(self, "bigquery_options", value)
+
+    @property
+    @pulumi.getter(name="customWriterIdentity")
+    def custom_writer_identity(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user managed service account that will be used to write
+        the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+        routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        will automatically be generated.
+        """
+        return pulumi.get(self, "custom_writer_identity")
+
+    @custom_writer_identity.setter
+    def custom_writer_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_writer_identity", value)
 
     @property
     @pulumi.getter
@@ -182,8 +203,7 @@ class ProjectSinkArgs:
     @pulumi.getter(name="uniqueWriterIdentity")
     def unique_writer_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to create a unique identity associated with this sink. If `false`
-        (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
         then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
         `bigquery_options`, you must set `unique_writer_identity` to true.
         """
@@ -198,6 +218,7 @@ class ProjectSinkArgs:
 class _ProjectSinkState:
     def __init__(__self__, *,
                  bigquery_options: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -210,6 +231,10 @@ class _ProjectSinkState:
         """
         Input properties used for looking up and filtering ProjectSink resources.
         :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
+               the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+               routing logs to a destination outside this sink's project. If not specified, a Logging service account
+               will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
@@ -229,8 +254,7 @@ class _ProjectSinkState:
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
-        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`
-               (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
                then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
                `bigquery_options`, you must set `unique_writer_identity` to true.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
@@ -238,6 +262,8 @@ class _ProjectSinkState:
         """
         if bigquery_options is not None:
             pulumi.set(__self__, "bigquery_options", bigquery_options)
+        if custom_writer_identity is not None:
+            pulumi.set(__self__, "custom_writer_identity", custom_writer_identity)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if destination is not None:
@@ -268,6 +294,21 @@ class _ProjectSinkState:
     @bigquery_options.setter
     def bigquery_options(self, value: Optional[pulumi.Input['ProjectSinkBigqueryOptionsArgs']]):
         pulumi.set(self, "bigquery_options", value)
+
+    @property
+    @pulumi.getter(name="customWriterIdentity")
+    def custom_writer_identity(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user managed service account that will be used to write
+        the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+        routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        will automatically be generated.
+        """
+        return pulumi.get(self, "custom_writer_identity")
+
+    @custom_writer_identity.setter
+    def custom_writer_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_writer_identity", value)
 
     @property
     @pulumi.getter
@@ -369,8 +410,7 @@ class _ProjectSinkState:
     @pulumi.getter(name="uniqueWriterIdentity")
     def unique_writer_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to create a unique identity associated with this sink. If `false`
-        (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
         then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
         `bigquery_options`, you must set `unique_writer_identity` to true.
         """
@@ -400,6 +440,7 @@ class ProjectSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -412,15 +453,27 @@ class ProjectSink(pulumi.CustomResource):
         """
         ## Import
 
-        Project-level logging sinks can be imported using their URI, e.g.
+        Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging sinks using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/sinks/{{name}}"
+
+         to = google_logging_project_sink.default }
 
         ```sh
-         $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+         $ pulumi import gcp:logging/projectSink:ProjectSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging sinks can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
+               the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+               routing logs to a destination outside this sink's project. If not specified, a Logging service account
+               will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
@@ -440,8 +493,7 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
-        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`
-               (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
                then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
                `bigquery_options`, you must set `unique_writer_identity` to true.
         """
@@ -454,10 +506,18 @@ class ProjectSink(pulumi.CustomResource):
         """
         ## Import
 
-        Project-level logging sinks can be imported using their URI, e.g.
+        Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging sinks using one of the formats above. For exampletf import {
+
+         id = "projects/{{project_id}}/sinks/{{name}}"
+
+         to = google_logging_project_sink.default }
 
         ```sh
-         $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+         $ pulumi import gcp:logging/projectSink:ProjectSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging sinks can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -476,6 +536,7 @@ class ProjectSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+                 custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -494,6 +555,7 @@ class ProjectSink(pulumi.CustomResource):
             __props__ = ProjectSinkArgs.__new__(ProjectSinkArgs)
 
             __props__.__dict__["bigquery_options"] = bigquery_options
+            __props__.__dict__["custom_writer_identity"] = custom_writer_identity
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
@@ -516,6 +578,7 @@ class ProjectSink(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+            custom_writer_identity: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
@@ -533,6 +596,10 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[str] custom_writer_identity: A user managed service account that will be used to write
+               the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+               routing logs to a destination outside this sink's project. If not specified, a Logging service account
+               will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
@@ -552,8 +619,7 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
-        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`
-               (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
                then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
                `bigquery_options`, you must set `unique_writer_identity` to true.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
@@ -564,6 +630,7 @@ class ProjectSink(pulumi.CustomResource):
         __props__ = _ProjectSinkState.__new__(_ProjectSinkState)
 
         __props__.__dict__["bigquery_options"] = bigquery_options
+        __props__.__dict__["custom_writer_identity"] = custom_writer_identity
         __props__.__dict__["description"] = description
         __props__.__dict__["destination"] = destination
         __props__.__dict__["disabled"] = disabled
@@ -582,6 +649,17 @@ class ProjectSink(pulumi.CustomResource):
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
+
+    @property
+    @pulumi.getter(name="customWriterIdentity")
+    def custom_writer_identity(self) -> pulumi.Output[Optional[str]]:
+        """
+        A user managed service account that will be used to write
+        the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+        routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        will automatically be generated.
+        """
+        return pulumi.get(self, "custom_writer_identity")
 
     @property
     @pulumi.getter
@@ -655,8 +733,7 @@ class ProjectSink(pulumi.CustomResource):
     @pulumi.getter(name="uniqueWriterIdentity")
     def unique_writer_identity(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to create a unique identity associated with this sink. If `false`
-        (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+        Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
         then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
         `bigquery_options`, you must set `unique_writer_identity` to true.
         """

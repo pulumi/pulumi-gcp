@@ -86,7 +86,22 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * The service account to run workflow invocations under.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return The service account to run workflow invocations under.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
+     * If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      * 
      */
@@ -94,7 +109,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<RepositoryWorkspaceCompilationOverridesArgs> workspaceCompilationOverrides;
 
     /**
-     * @return Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * @return If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      * 
      */
@@ -109,6 +124,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
+        this.serviceAccount = $.serviceAccount;
         this.workspaceCompilationOverrides = $.workspaceCompilationOverrides;
     }
 
@@ -223,7 +239,28 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceCompilationOverrides Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+         * @param serviceAccount The service account to run workflow invocations under.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The service account to run workflow invocations under.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param workspaceCompilationOverrides If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
          * Structure is documented below.
          * 
          * @return builder
@@ -235,7 +272,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceCompilationOverrides Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+         * @param workspaceCompilationOverrides If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
          * Structure is documented below.
          * 
          * @return builder

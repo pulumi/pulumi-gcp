@@ -58,7 +58,15 @@ namespace Pulumi.Gcp.Datastore
     /// 
     /// ## Import
     /// 
-    /// Index can be imported using any of these accepted formats
+    /// Index can be imported using any of these accepted formats* `projects/{{project}}/indexes/{{index_id}}` * `{{project}}/{{index_id}}` * `{{index_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/indexes/{{index_id}}"
+    /// 
+    ///  to = google_datastore_index.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}

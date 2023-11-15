@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows management of Google Cloud Platform project default service accounts.
@@ -217,12 +216,6 @@ func (i *DefaultServiceAccounts) ToDefaultServiceAccountsOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultServiceAccountsOutput)
 }
 
-func (i *DefaultServiceAccounts) ToOutput(ctx context.Context) pulumix.Output[*DefaultServiceAccounts] {
-	return pulumix.Output[*DefaultServiceAccounts]{
-		OutputState: i.ToDefaultServiceAccountsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DefaultServiceAccountsArrayInput is an input type that accepts DefaultServiceAccountsArray and DefaultServiceAccountsArrayOutput values.
 // You can construct a concrete instance of `DefaultServiceAccountsArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i DefaultServiceAccountsArray) ToDefaultServiceAccountsArrayOutput() Defau
 
 func (i DefaultServiceAccountsArray) ToDefaultServiceAccountsArrayOutputWithContext(ctx context.Context) DefaultServiceAccountsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultServiceAccountsArrayOutput)
-}
-
-func (i DefaultServiceAccountsArray) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultServiceAccounts] {
-	return pulumix.Output[[]*DefaultServiceAccounts]{
-		OutputState: i.ToDefaultServiceAccountsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DefaultServiceAccountsMapInput is an input type that accepts DefaultServiceAccountsMap and DefaultServiceAccountsMapOutput values.
@@ -279,12 +266,6 @@ func (i DefaultServiceAccountsMap) ToDefaultServiceAccountsMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultServiceAccountsMapOutput)
 }
 
-func (i DefaultServiceAccountsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultServiceAccounts] {
-	return pulumix.Output[map[string]*DefaultServiceAccounts]{
-		OutputState: i.ToDefaultServiceAccountsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DefaultServiceAccountsOutput struct{ *pulumi.OutputState }
 
 func (DefaultServiceAccountsOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o DefaultServiceAccountsOutput) ToDefaultServiceAccountsOutput() DefaultSe
 
 func (o DefaultServiceAccountsOutput) ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput {
 	return o
-}
-
-func (o DefaultServiceAccountsOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultServiceAccounts] {
-	return pulumix.Output[*DefaultServiceAccounts]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
@@ -342,12 +317,6 @@ func (o DefaultServiceAccountsArrayOutput) ToDefaultServiceAccountsArrayOutputWi
 	return o
 }
 
-func (o DefaultServiceAccountsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultServiceAccounts] {
-	return pulumix.Output[[]*DefaultServiceAccounts]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DefaultServiceAccountsArrayOutput) Index(i pulumi.IntInput) DefaultServiceAccountsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultServiceAccounts {
 		return vs[0].([]*DefaultServiceAccounts)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o DefaultServiceAccountsMapOutput) ToDefaultServiceAccountsMapOutput() Def
 
 func (o DefaultServiceAccountsMapOutput) ToDefaultServiceAccountsMapOutputWithContext(ctx context.Context) DefaultServiceAccountsMapOutput {
 	return o
-}
-
-func (o DefaultServiceAccountsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultServiceAccounts] {
-	return pulumix.Output[map[string]*DefaultServiceAccounts]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultServiceAccountsMapOutput) MapIndex(k pulumi.StringInput) DefaultServiceAccountsOutput {

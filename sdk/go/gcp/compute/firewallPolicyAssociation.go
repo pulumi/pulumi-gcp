@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
@@ -54,7 +53,17 @@ import (
 //
 // ## Import
 //
-// # FirewallPolicyAssociation can be imported using any of these accepted formats
+// FirewallPolicyAssociation can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}` * `{{firewall_policy}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FirewallPolicyAssociation using one of the formats above. For exampletf import {
+//
+//	id = "locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}"
+//
+//	to = google_compute_firewall_policy_association.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FirewallPolicyAssociation can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -193,12 +202,6 @@ func (i *FirewallPolicyAssociation) ToFirewallPolicyAssociationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationOutput)
 }
 
-func (i *FirewallPolicyAssociation) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyAssociation] {
-	return pulumix.Output[*FirewallPolicyAssociation]{
-		OutputState: i.ToFirewallPolicyAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallPolicyAssociationArrayInput is an input type that accepts FirewallPolicyAssociationArray and FirewallPolicyAssociationArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyAssociationArrayInput` via:
 //
@@ -222,12 +225,6 @@ func (i FirewallPolicyAssociationArray) ToFirewallPolicyAssociationArrayOutput()
 
 func (i FirewallPolicyAssociationArray) ToFirewallPolicyAssociationArrayOutputWithContext(ctx context.Context) FirewallPolicyAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationArrayOutput)
-}
-
-func (i FirewallPolicyAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallPolicyAssociation] {
-	return pulumix.Output[[]*FirewallPolicyAssociation]{
-		OutputState: i.ToFirewallPolicyAssociationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FirewallPolicyAssociationMapInput is an input type that accepts FirewallPolicyAssociationMap and FirewallPolicyAssociationMapOutput values.
@@ -255,12 +252,6 @@ func (i FirewallPolicyAssociationMap) ToFirewallPolicyAssociationMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationMapOutput)
 }
 
-func (i FirewallPolicyAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallPolicyAssociation] {
-	return pulumix.Output[map[string]*FirewallPolicyAssociation]{
-		OutputState: i.ToFirewallPolicyAssociationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallPolicyAssociationOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyAssociationOutput) ElementType() reflect.Type {
@@ -273,12 +264,6 @@ func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutput() Fir
 
 func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutputWithContext(ctx context.Context) FirewallPolicyAssociationOutput {
 	return o
-}
-
-func (o FirewallPolicyAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyAssociation] {
-	return pulumix.Output[*FirewallPolicyAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The target that the firewall policy is attached to.
@@ -317,12 +302,6 @@ func (o FirewallPolicyAssociationArrayOutput) ToFirewallPolicyAssociationArrayOu
 	return o
 }
 
-func (o FirewallPolicyAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallPolicyAssociation] {
-	return pulumix.Output[[]*FirewallPolicyAssociation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallPolicyAssociationArrayOutput) Index(i pulumi.IntInput) FirewallPolicyAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallPolicyAssociation {
 		return vs[0].([]*FirewallPolicyAssociation)[vs[1].(int)]
@@ -341,12 +320,6 @@ func (o FirewallPolicyAssociationMapOutput) ToFirewallPolicyAssociationMapOutput
 
 func (o FirewallPolicyAssociationMapOutput) ToFirewallPolicyAssociationMapOutputWithContext(ctx context.Context) FirewallPolicyAssociationMapOutput {
 	return o
-}
-
-func (o FirewallPolicyAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallPolicyAssociation] {
-	return pulumix.Output[map[string]*FirewallPolicyAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyAssociationMapOutput) MapIndex(k pulumi.StringInput) FirewallPolicyAssociationOutput {

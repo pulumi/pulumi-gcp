@@ -32,6 +32,7 @@ __all__ = [
     'AiFeatureStoreOnlineServingConfig',
     'AiFeatureStoreOnlineServingConfigScaling',
     'AiIndexDeployedIndex',
+    'AiIndexEndpointPrivateServiceConnectConfig',
     'AiIndexIndexStat',
     'AiIndexMetadata',
     'AiIndexMetadataConfig',
@@ -1241,6 +1242,55 @@ class AiIndexDeployedIndex(dict):
         A resource name of the IndexEndpoint.
         """
         return pulumi.get(self, "index_endpoint")
+
+
+@pulumi.output_type
+class AiIndexEndpointPrivateServiceConnectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablePrivateServiceConnect":
+            suggest = "enable_private_service_connect"
+        elif key == "projectAllowlists":
+            suggest = "project_allowlists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiIndexEndpointPrivateServiceConnectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiIndexEndpointPrivateServiceConnectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiIndexEndpointPrivateServiceConnectConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_private_service_connect: bool,
+                 project_allowlists: Optional[Sequence[str]] = None):
+        """
+        :param bool enable_private_service_connect: If set to true, the IndexEndpoint is created without private service access.
+        :param Sequence[str] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
+        if project_allowlists is not None:
+            pulumi.set(__self__, "project_allowlists", project_allowlists)
+
+    @property
+    @pulumi.getter(name="enablePrivateServiceConnect")
+    def enable_private_service_connect(self) -> bool:
+        """
+        If set to true, the IndexEndpoint is created without private service access.
+        """
+        return pulumi.get(self, "enable_private_service_connect")
+
+    @property
+    @pulumi.getter(name="projectAllowlists")
+    def project_allowlists(self) -> Optional[Sequence[str]]:
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        return pulumi.get(self, "project_allowlists")
 
 
 @pulumi.output_type

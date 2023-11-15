@@ -24,6 +24,25 @@ public final class MembershipIamBindingArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Location of the membership.
+     * The default value is `global`.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
     @Import(name="members", required=true)
     private Output<List<String>> members;
 
@@ -102,6 +121,7 @@ public final class MembershipIamBindingArgs extends com.pulumi.resources.Resourc
 
     private MembershipIamBindingArgs(MembershipIamBindingArgs $) {
         this.condition = $.condition;
+        this.location = $.location;
         this.members = $.members;
         this.membershipId = $.membershipId;
         this.project = $.project;
@@ -133,6 +153,31 @@ public final class MembershipIamBindingArgs extends com.pulumi.resources.Resourc
 
         public Builder condition(MembershipIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Location of the membership.
+         * The default value is `global`.
+         * Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         public Builder members(Output<List<String>> members) {

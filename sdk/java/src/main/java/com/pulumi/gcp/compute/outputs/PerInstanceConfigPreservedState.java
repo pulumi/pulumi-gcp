@@ -21,7 +21,17 @@ public final class PerInstanceConfigPreservedState {
      * 
      */
     private @Nullable List<PerInstanceConfigPreservedStateDisk> disks;
+    /**
+     * @return Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<PerInstanceConfigPreservedStateExternalIp> externalIps;
+    /**
+     * @return Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<PerInstanceConfigPreservedStateInternalIp> internalIps;
     /**
      * @return Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
@@ -38,9 +48,19 @@ public final class PerInstanceConfigPreservedState {
     public List<PerInstanceConfigPreservedStateDisk> disks() {
         return this.disks == null ? List.of() : this.disks;
     }
+    /**
+     * @return Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     public List<PerInstanceConfigPreservedStateExternalIp> externalIps() {
         return this.externalIps == null ? List.of() : this.externalIps;
     }
+    /**
+     * @return Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+     * Structure is documented below.
+     * 
+     */
     public List<PerInstanceConfigPreservedStateInternalIp> internalIps() {
         return this.internalIps == null ? List.of() : this.internalIps;
     }

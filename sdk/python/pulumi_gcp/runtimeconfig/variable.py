@@ -274,14 +274,24 @@ class Variable(pulumi.CustomResource):
 
         ## Import
 
-        Runtime Config Variables can be imported using the `name` or full variable name, e.g.
+        Runtime Config Variables can be imported using the `name` or full variable name, e.g. * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}` * `{{config_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Runtime Config Variables using one of the formats above. For exampletf import {
+
+         id = "projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}"
+
+         to = google_runtimeconfig_variable.default }
 
         ```sh
-         $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+         $ pulumi import gcp:runtimeconfig/variable:Variable When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Runtime Config Variables can be imported using one of the formats above. For example
         ```
+
         ```sh
-        $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+         $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
         ```
+
+        ```sh
+         $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
+        ```
+
          When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
@@ -338,14 +348,24 @@ class Variable(pulumi.CustomResource):
 
         ## Import
 
-        Runtime Config Variables can be imported using the `name` or full variable name, e.g.
+        Runtime Config Variables can be imported using the `name` or full variable name, e.g. * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}` * `{{config_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Runtime Config Variables using one of the formats above. For exampletf import {
+
+         id = "projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}"
+
+         to = google_runtimeconfig_variable.default }
 
         ```sh
-         $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+         $ pulumi import gcp:runtimeconfig/variable:Variable When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Runtime Config Variables can be imported using one of the formats above. For example
         ```
+
         ```sh
-        $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+         $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
         ```
+
+        ```sh
+         $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
+        ```
+
          When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.

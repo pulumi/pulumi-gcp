@@ -21,6 +21,7 @@ class FolderBucketConfigArgs:
                  location: pulumi.Input[str],
                  cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FolderBucketConfig resource.
@@ -31,6 +32,7 @@ class FolderBucketConfigArgs:
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
@@ -40,6 +42,8 @@ class FolderBucketConfigArgs:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if index_configs is not None:
+            pulumi.set(__self__, "index_configs", index_configs)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
@@ -106,6 +110,18 @@ class FolderBucketConfigArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
+
+    @index_configs.setter
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]]]):
+        pulumi.set(self, "index_configs", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -125,6 +141,7 @@ class _FolderBucketConfigState:
                  cmek_settings: Optional[pulumi.Input['FolderBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -137,6 +154,7 @@ class _FolderBucketConfigState:
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] folder: The parent resource that contains the logging bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
@@ -150,6 +168,8 @@ class _FolderBucketConfigState:
             pulumi.set(__self__, "description", description)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
+        if index_configs is not None:
+            pulumi.set(__self__, "index_configs", index_configs)
         if lifecycle_state is not None:
             pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if location is not None:
@@ -210,6 +230,18 @@ class _FolderBucketConfigState:
         pulumi.set(self, "folder", value)
 
     @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
+
+    @index_configs.setter
+    def index_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderBucketConfigIndexConfigArgs']]]]):
+        pulumi.set(self, "index_configs", value)
+
+    @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -267,6 +299,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderBucketConfigIndexConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -290,12 +323,24 @@ class FolderBucketConfig(pulumi.CustomResource):
             folder=default.name,
             location="global",
             retention_days=30,
-            bucket_id="_Default")
+            bucket_id="_Default",
+            index_configs={
+                "filePath": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            })
         ```
 
         ## Import
 
-        This resource can be imported using the following format:
+        This resource can be imported using the following format* `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+
+         id = "folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}"
+
+         to = google_logging_folder_bucket_config.default }
+
+        ```sh
+         $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -309,6 +354,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] folder: The parent resource that contains the logging bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
@@ -338,12 +384,24 @@ class FolderBucketConfig(pulumi.CustomResource):
             folder=default.name,
             location="global",
             retention_days=30,
-            bucket_id="_Default")
+            bucket_id="_Default",
+            index_configs={
+                "filePath": "jsonPayload.request.status",
+                "type": "INDEX_TYPE_STRING",
+            })
         ```
 
         ## Import
 
-        This resource can be imported using the following format:
+        This resource can be imported using the following format* `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+
+         id = "folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}"
+
+         to = google_logging_folder_bucket_config.default }
+
+        ```sh
+         $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -368,6 +426,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderBucketConfigIndexConfigArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -387,6 +446,7 @@ class FolderBucketConfig(pulumi.CustomResource):
             if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")
             __props__.__dict__["folder"] = folder
+            __props__.__dict__["index_configs"] = index_configs
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -407,6 +467,7 @@ class FolderBucketConfig(pulumi.CustomResource):
             cmek_settings: Optional[pulumi.Input[pulumi.InputType['FolderBucketConfigCmekSettingsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
+            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderBucketConfigIndexConfigArgs']]]]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -424,6 +485,7 @@ class FolderBucketConfig(pulumi.CustomResource):
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] folder: The parent resource that contains the logging bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
@@ -437,6 +499,7 @@ class FolderBucketConfig(pulumi.CustomResource):
         __props__.__dict__["cmek_settings"] = cmek_settings
         __props__.__dict__["description"] = description
         __props__.__dict__["folder"] = folder
+        __props__.__dict__["index_configs"] = index_configs
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -476,6 +539,14 @@ class FolderBucketConfig(pulumi.CustomResource):
         The parent resource that contains the logging bucket.
         """
         return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter(name="indexConfigs")
+    def index_configs(self) -> pulumi.Output[Optional[Sequence['outputs.FolderBucketConfigIndexConfig']]]:
+        """
+        A list of indexed fields and related configuration data. Structure is documented below.
+        """
+        return pulumi.get(self, "index_configs")
 
     @property
     @pulumi.getter(name="lifecycleState")

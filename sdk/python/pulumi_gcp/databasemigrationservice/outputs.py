@@ -23,8 +23,15 @@ __all__ = [
     'ConnectionProfileError',
     'ConnectionProfileMysql',
     'ConnectionProfileMysqlSsl',
+    'ConnectionProfileOracle',
+    'ConnectionProfileOracleForwardSshConnectivity',
+    'ConnectionProfileOraclePrivateConnectivity',
+    'ConnectionProfileOracleSsl',
+    'ConnectionProfileOracleStaticServiceIpConnectivity',
     'ConnectionProfilePostgresql',
     'ConnectionProfilePostgresqlSsl',
+    'PrivateConnectionError',
+    'PrivateConnectionVpcPeeringConfig',
 ]
 
 @pulumi.output_type
@@ -1102,6 +1109,382 @@ class ConnectionProfileMysqlSsl(dict):
 
 
 @pulumi.output_type
+class ConnectionProfileOracle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseService":
+            suggest = "database_service"
+        elif key == "forwardSshConnectivity":
+            suggest = "forward_ssh_connectivity"
+        elif key == "passwordSet":
+            suggest = "password_set"
+        elif key == "privateConnectivity":
+            suggest = "private_connectivity"
+        elif key == "staticServiceIpConnectivity":
+            suggest = "static_service_ip_connectivity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileOracle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileOracle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileOracle.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_service: str,
+                 host: str,
+                 password: str,
+                 port: int,
+                 username: str,
+                 forward_ssh_connectivity: Optional['outputs.ConnectionProfileOracleForwardSshConnectivity'] = None,
+                 password_set: Optional[bool] = None,
+                 private_connectivity: Optional['outputs.ConnectionProfileOraclePrivateConnectivity'] = None,
+                 ssl: Optional['outputs.ConnectionProfileOracleSsl'] = None,
+                 static_service_ip_connectivity: Optional['outputs.ConnectionProfileOracleStaticServiceIpConnectivity'] = None):
+        """
+        :param str database_service: Required. Database service for the Oracle connection.
+        :param str host: Required. The IP or hostname of the source Oracle database.
+        :param str password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+               This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param int port: Required. The network port of the source Oracle database.
+        :param str username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        :param 'ConnectionProfileOracleForwardSshConnectivityArgs' forward_ssh_connectivity: SSL configuration for the destination to connect to the source database.
+               Structure is documented below.
+        :param bool password_set: (Output)
+               Output only. Indicates If this connection profile password is stored.
+        :param 'ConnectionProfileOraclePrivateConnectivityArgs' private_connectivity: Configuration for using a private network to communicate with the source database
+               Structure is documented below.
+        :param 'ConnectionProfileOracleSslArgs' ssl: SSL configuration for the destination to connect to the source database.
+               Structure is documented below.
+        :param 'ConnectionProfileOracleStaticServiceIpConnectivityArgs' static_service_ip_connectivity: This object has no nested fields.
+               Static IP address connectivity configured on service project.
+        """
+        pulumi.set(__self__, "database_service", database_service)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+        if forward_ssh_connectivity is not None:
+            pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
+        if password_set is not None:
+            pulumi.set(__self__, "password_set", password_set)
+        if private_connectivity is not None:
+            pulumi.set(__self__, "private_connectivity", private_connectivity)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if static_service_ip_connectivity is not None:
+            pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
+
+    @property
+    @pulumi.getter(name="databaseService")
+    def database_service(self) -> str:
+        """
+        Required. Database service for the Oracle connection.
+        """
+        return pulumi.get(self, "database_service")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Required. The IP or hostname of the source Oracle database.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Required. The network port of the source Oracle database.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="forwardSshConnectivity")
+    def forward_ssh_connectivity(self) -> Optional['outputs.ConnectionProfileOracleForwardSshConnectivity']:
+        """
+        SSL configuration for the destination to connect to the source database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forward_ssh_connectivity")
+
+    @property
+    @pulumi.getter(name="passwordSet")
+    def password_set(self) -> Optional[bool]:
+        """
+        (Output)
+        Output only. Indicates If this connection profile password is stored.
+        """
+        return pulumi.get(self, "password_set")
+
+    @property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> Optional['outputs.ConnectionProfileOraclePrivateConnectivity']:
+        """
+        Configuration for using a private network to communicate with the source database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_connectivity")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional['outputs.ConnectionProfileOracleSsl']:
+        """
+        SSL configuration for the destination to connect to the source database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter(name="staticServiceIpConnectivity")
+    def static_service_ip_connectivity(self) -> Optional['outputs.ConnectionProfileOracleStaticServiceIpConnectivity']:
+        """
+        This object has no nested fields.
+        Static IP address connectivity configured on service project.
+        """
+        return pulumi.get(self, "static_service_ip_connectivity")
+
+
+@pulumi.output_type
+class ConnectionProfileOracleForwardSshConnectivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileOracleForwardSshConnectivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileOracleForwardSshConnectivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileOracleForwardSshConnectivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 port: int,
+                 username: str,
+                 password: Optional[str] = None,
+                 private_key: Optional[str] = None):
+        """
+        :param str hostname: Required. Hostname for the SSH tunnel.
+        :param int port: Port for the SSH tunnel, default value is 22.
+        :param str username: Required. Username for the SSH tunnel.
+        :param str password: Input only. SSH password. Only one of `password` and `private_key` can be configured.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str private_key: Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Required. Hostname for the SSH tunnel.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port for the SSH tunnel, default value is 22.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Required. Username for the SSH tunnel.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Input only. SSH password. Only one of `password` and `private_key` can be configured.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "private_key")
+
+
+@pulumi.output_type
+class ConnectionProfileOraclePrivateConnectivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateConnection":
+            suggest = "private_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileOraclePrivateConnectivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileOraclePrivateConnectivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileOraclePrivateConnectivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_connection: str):
+        """
+        :param str private_connection: Required. The resource name (URI) of the private connection.
+        """
+        pulumi.set(__self__, "private_connection", private_connection)
+
+    @property
+    @pulumi.getter(name="privateConnection")
+    def private_connection(self) -> str:
+        """
+        Required. The resource name (URI) of the private connection.
+        """
+        return pulumi.get(self, "private_connection")
+
+
+@pulumi.output_type
+class ConnectionProfileOracleSsl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileOracleSsl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileOracleSsl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileOracleSsl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: str,
+                 client_certificate: Optional[str] = None,
+                 client_key: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+               The replica will use this certificate to verify it's connecting to the right host.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+               If this field is used then the 'clientKey' field is mandatory
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str client_key: Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+               If this field is used then the 'clientCertificate' field is mandatory.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str type: (Output)
+               The current connection profile state.
+        """
+        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> str:
+        """
+        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        The replica will use this certificate to verify it's connecting to the right host.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[str]:
+        """
+        Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+        If this field is used then the 'clientKey' field is mandatory
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[str]:
+        """
+        Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+        If this field is used then the 'clientCertificate' field is mandatory.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        (Output)
+        The current connection profile state.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ConnectionProfileOracleStaticServiceIpConnectivity(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class ConnectionProfilePostgresql(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1318,5 +1701,88 @@ class ConnectionProfilePostgresqlSsl(dict):
         The current connection profile state.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PrivateConnectionError(dict):
+    def __init__(__self__, *,
+                 details: Optional[Mapping[str, str]] = None,
+                 message: Optional[str] = None):
+        """
+        :param Mapping[str, str] details: A list of messages that carry the error details.
+        :param str message: A message containing more information about the error that occurred.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        A message containing more information about the error that occurred.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class PrivateConnectionVpcPeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcName":
+            suggest = "vpc_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateConnectionVpcPeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateConnectionVpcPeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateConnectionVpcPeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet: str,
+                 vpc_name: str):
+        """
+        :param str subnet: A free subnet for peering. (CIDR of /29)
+               
+               - - -
+        :param str vpc_name: Fully qualified name of the VPC that Database Migration Service will peer to.
+               Format: projects/{project}/global/{networks}/{name}
+        """
+        pulumi.set(__self__, "subnet", subnet)
+        pulumi.set(__self__, "vpc_name", vpc_name)
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> str:
+        """
+        A free subnet for peering. (CIDR of /29)
+
+        - - -
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> str:
+        """
+        Fully qualified name of the VPC that Database Migration Service will peer to.
+        Format: projects/{project}/global/{networks}/{name}
+        """
+        return pulumi.get(self, "vpc_name")
 
 

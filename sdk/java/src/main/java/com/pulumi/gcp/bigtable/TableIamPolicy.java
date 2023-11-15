@@ -134,23 +134,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Table IAM resources can be imported using the project, table name, role and/or member.
+ * ### Importing IAM policies IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example* `&#34;projects/{project}/tables/{table}&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * 
+ *  id = &#34;projects/{project}/tables/{table}&#34;
+ * 
+ *  to = google_bigtable_table_iam_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor &#34;projects/{project}/tables/{table}&#34;
+ *  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor &#34;projects/{project}/tables/{table} roles/editor&#34;
+ *  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy default projects/{project}/tables/{table}
  * ```
- * 
- * ```sh
- *  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor &#34;projects/{project}/tables/{table} roles/editor user:jane@example.com&#34;
- * ```
- * 
- *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:bigtable/tableIamPolicy:TableIamPolicy")

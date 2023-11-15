@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceFromTemplateBootDiskInitializeParamsArgs Empty = new InstanceFromTemplateBootDiskInitializeParamsArgs();
+
+    @Import(name="enableConfidentialCompute")
+    private @Nullable Output<Boolean> enableConfidentialCompute;
+
+    public Optional<Output<Boolean>> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
+    }
 
     @Import(name="image")
     private @Nullable Output<String> image;
@@ -56,6 +64,7 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
     private InstanceFromTemplateBootDiskInitializeParamsArgs() {}
 
     private InstanceFromTemplateBootDiskInitializeParamsArgs(InstanceFromTemplateBootDiskInitializeParamsArgs $) {
+        this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.image = $.image;
         this.labels = $.labels;
         this.resourceManagerTags = $.resourceManagerTags;
@@ -79,6 +88,15 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
 
         public Builder(InstanceFromTemplateBootDiskInitializeParamsArgs defaults) {
             $ = new InstanceFromTemplateBootDiskInitializeParamsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder enableConfidentialCompute(@Nullable Output<Boolean> enableConfidentialCompute) {
+            $.enableConfidentialCompute = enableConfidentialCompute;
+            return this;
+        }
+
+        public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
+            return enableConfidentialCompute(Output.of(enableConfidentialCompute));
         }
 
         public Builder image(@Nullable Output<String> image) {

@@ -5,9 +5,11 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +20,25 @@ import javax.annotation.Nullable;
 public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxFlowArgs Empty = new CxFlowArgs();
+
+    /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedSettings")
+    private @Nullable Output<CxFlowAdvancedSettingsArgs> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxFlowAdvancedSettingsArgs>> advancedSettings() {
+        return Optional.ofNullable(this.advancedSettings);
+    }
 
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -74,6 +95,27 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<CxFlowEventHandlerArgs>>> eventHandlers() {
         return Optional.ofNullable(this.eventHandlers);
+    }
+
+    /**
+     * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     * 
+     */
+    @Import(name="isDefaultStartFlow")
+    private @Nullable Output<Boolean> isDefaultStartFlow;
+
+    /**
+     * @return Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     * 
+     * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefaultStartFlow() {
+        return Optional.ofNullable(this.isDefaultStartFlow);
     }
 
     /**
@@ -188,9 +230,11 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
     private CxFlowArgs() {}
 
     private CxFlowArgs(CxFlowArgs $) {
+        this.advancedSettings = $.advancedSettings;
         this.description = $.description;
         this.displayName = $.displayName;
         this.eventHandlers = $.eventHandlers;
+        this.isDefaultStartFlow = $.isDefaultStartFlow;
         this.languageCode = $.languageCode;
         this.nluSettings = $.nluSettings;
         this.parent = $.parent;
@@ -214,6 +258,31 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CxFlowArgs defaults) {
             $ = new CxFlowArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(@Nullable Output<CxFlowAdvancedSettingsArgs> advancedSettings) {
+            $.advancedSettings = advancedSettings;
+            return this;
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(CxFlowAdvancedSettingsArgs advancedSettings) {
+            return advancedSettings(Output.of(advancedSettings));
         }
 
         /**
@@ -303,6 +372,33 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventHandlers(CxFlowEventHandlerArgs... eventHandlers) {
             return eventHandlers(List.of(eventHandlers));
+        }
+
+        /**
+         * @param isDefaultStartFlow Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+         * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+         * 
+         * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultStartFlow(@Nullable Output<Boolean> isDefaultStartFlow) {
+            $.isDefaultStartFlow = isDefaultStartFlow;
+            return this;
+        }
+
+        /**
+         * @param isDefaultStartFlow Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+         * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+         * 
+         * &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultStartFlow(Boolean isDefaultStartFlow) {
+            return isDefaultStartFlow(Output.of(isDefaultStartFlow));
         }
 
         /**

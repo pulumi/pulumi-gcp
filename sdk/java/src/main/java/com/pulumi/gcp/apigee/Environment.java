@@ -93,7 +93,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Environment can be imported using any of these accepted formats
+ * Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{org_id}}/environments/{{name}}&#34;
+ * 
+ *  to = google_apigee_environment.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}
@@ -229,6 +237,28 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> orgId() {
         return this.orgId;
+    }
+    /**
+     * Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee&#39;s public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return Types that can be selected for an Environment. Each of the types are
+     * limited by capability and capacity. Refer to Apigee&#39;s public documentation
+     * to understand about each of these types in details.
+     * An Apigee org can support heterogeneous Environments.
+     * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

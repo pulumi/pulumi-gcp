@@ -6,7 +6,9 @@ package com.pulumi.gcp.assuredworkloads;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
+import com.pulumi.gcp.assuredworkloads.inputs.WorkloadPartnerPermissionsArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,29 +22,29 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkloadArgs Empty = new WorkloadArgs();
 
     /**
-     * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
+     * Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      * 
      */
-    @Import(name="billingAccount", required=true)
-    private Output<String> billingAccount;
+    @Import(name="billingAccount")
+    private @Nullable Output<String> billingAccount;
 
     /**
-     * @return Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
+     * @return Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      * 
      */
-    public Output<String> billingAccount() {
-        return this.billingAccount;
+    public Optional<Output<String>> billingAccount() {
+        return Optional.ofNullable(this.billingAccount);
     }
 
     /**
-     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
      * 
      */
     @Import(name="complianceRegime", required=true)
     private Output<String> complianceRegime;
 
     /**
-     * @return Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+     * @return Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
      * 
      */
     public Output<String> complianceRegime() {
@@ -65,14 +67,29 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+     * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     * 
+     */
+    @Import(name="enableSovereignControls")
+    private @Nullable Output<Boolean> enableSovereignControls;
+
+    /**
+     * @return Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSovereignControls() {
+        return Optional.ofNullable(this.enableSovereignControls);
+    }
+
+    /**
+     * **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
      * 
      */
     @Import(name="kmsSettings")
     private @Nullable Output<WorkloadKmsSettingsArgs> kmsSettings;
 
     /**
-     * @return Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+     * @return **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
      * 
      */
     public Optional<Output<WorkloadKmsSettingsArgs>> kmsSettings() {
@@ -135,14 +152,44 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * 
+     */
+    @Import(name="partner")
+    private @Nullable Output<String> partner;
+
+    /**
+     * @return Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * 
+     */
+    public Optional<Output<String>> partner() {
+        return Optional.ofNullable(this.partner);
+    }
+
+    /**
+     * Optional. Permissions granted to the AW Partner SA account for the customer workload
+     * 
+     */
+    @Import(name="partnerPermissions")
+    private @Nullable Output<WorkloadPartnerPermissionsArgs> partnerPermissions;
+
+    /**
+     * @return Optional. Permissions granted to the AW Partner SA account for the customer workload
+     * 
+     */
+    public Optional<Output<WorkloadPartnerPermissionsArgs>> partnerPermissions() {
+        return Optional.ofNullable(this.partnerPermissions);
+    }
+
+    /**
+     * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      * 
      */
     @Import(name="provisionedResourcesParent")
     private @Nullable Output<String> provisionedResourcesParent;
 
     /**
-     * @return Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+     * @return Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      * 
      */
     public Optional<Output<String>> provisionedResourcesParent() {
@@ -164,18 +211,37 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceSettings);
     }
 
+    /**
+     * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     * 
+     */
+    @Import(name="violationNotificationsEnabled")
+    private @Nullable Output<Boolean> violationNotificationsEnabled;
+
+    /**
+     * @return Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     * 
+     */
+    public Optional<Output<Boolean>> violationNotificationsEnabled() {
+        return Optional.ofNullable(this.violationNotificationsEnabled);
+    }
+
     private WorkloadArgs() {}
 
     private WorkloadArgs(WorkloadArgs $) {
         this.billingAccount = $.billingAccount;
         this.complianceRegime = $.complianceRegime;
         this.displayName = $.displayName;
+        this.enableSovereignControls = $.enableSovereignControls;
         this.kmsSettings = $.kmsSettings;
         this.labels = $.labels;
         this.location = $.location;
         this.organization = $.organization;
+        this.partner = $.partner;
+        this.partnerPermissions = $.partnerPermissions;
         this.provisionedResourcesParent = $.provisionedResourcesParent;
         this.resourceSettings = $.resourceSettings;
+        this.violationNotificationsEnabled = $.violationNotificationsEnabled;
     }
 
     public static Builder builder() {
@@ -197,18 +263,18 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingAccount Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
+         * @param billingAccount Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
          * 
          * @return builder
          * 
          */
-        public Builder billingAccount(Output<String> billingAccount) {
+        public Builder billingAccount(@Nullable Output<String> billingAccount) {
             $.billingAccount = billingAccount;
             return this;
         }
 
         /**
-         * @param billingAccount Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
+         * @param billingAccount Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
          * 
          * @return builder
          * 
@@ -218,7 +284,7 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param complianceRegime Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+         * @param complianceRegime Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
          * 
          * @return builder
          * 
@@ -229,7 +295,7 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param complianceRegime Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
+         * @param complianceRegime Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
          * 
          * @return builder
          * 
@@ -260,7 +326,28 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsSettings Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+         * @param enableSovereignControls Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSovereignControls(@Nullable Output<Boolean> enableSovereignControls) {
+            $.enableSovereignControls = enableSovereignControls;
+            return this;
+        }
+
+        /**
+         * @param enableSovereignControls Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSovereignControls(Boolean enableSovereignControls) {
+            return enableSovereignControls(Output.of(enableSovereignControls));
+        }
+
+        /**
+         * @param kmsSettings **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
          * 
          * @return builder
          * 
@@ -271,7 +358,7 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsSettings Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+         * @param kmsSettings **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
          * 
          * @return builder
          * 
@@ -354,7 +441,49 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionedResourcesParent Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+         * @param partner Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partner(@Nullable Output<String> partner) {
+            $.partner = partner;
+            return this;
+        }
+
+        /**
+         * @param partner Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partner(String partner) {
+            return partner(Output.of(partner));
+        }
+
+        /**
+         * @param partnerPermissions Optional. Permissions granted to the AW Partner SA account for the customer workload
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partnerPermissions(@Nullable Output<WorkloadPartnerPermissionsArgs> partnerPermissions) {
+            $.partnerPermissions = partnerPermissions;
+            return this;
+        }
+
+        /**
+         * @param partnerPermissions Optional. Permissions granted to the AW Partner SA account for the customer workload
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partnerPermissions(WorkloadPartnerPermissionsArgs partnerPermissions) {
+            return partnerPermissions(Output.of(partnerPermissions));
+        }
+
+        /**
+         * @param provisionedResourcesParent Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
          * 
          * @return builder
          * 
@@ -365,7 +494,7 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionedResourcesParent Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
+         * @param provisionedResourcesParent Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
          * 
          * @return builder
          * 
@@ -405,8 +534,28 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
             return resourceSettings(List.of(resourceSettings));
         }
 
+        /**
+         * @param violationNotificationsEnabled Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder violationNotificationsEnabled(@Nullable Output<Boolean> violationNotificationsEnabled) {
+            $.violationNotificationsEnabled = violationNotificationsEnabled;
+            return this;
+        }
+
+        /**
+         * @param violationNotificationsEnabled Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder violationNotificationsEnabled(Boolean violationNotificationsEnabled) {
+            return violationNotificationsEnabled(Output.of(violationNotificationsEnabled));
+        }
+
         public WorkloadArgs build() {
-            $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
             $.complianceRegime = Objects.requireNonNull($.complianceRegime, "expected parameter 'complianceRegime' to be non-null");
             $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");

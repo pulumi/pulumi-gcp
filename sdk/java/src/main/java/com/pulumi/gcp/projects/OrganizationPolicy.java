@@ -180,18 +180,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Project organization policies can be imported using any of the follow formats
+ * Project organization policies can be imported using any of the follow formats* `projects/{{project_id}}:constraints/{{constraint}}` * `{{project_id}}:constraints/{{constraint}}` * `{{project_id}}:{{constraint}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project organization policies using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project_id}}:constraints/{{constraint}}&#34;
+ * 
+ *  to = google_project_organization_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy projects/test-project:constraints/serviceuser.services
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project organization policies can be imported using one of the formats above. For example
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy test-project:constraints/serviceuser.services
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default projects/{{project_id}}:constraints/{{constraint}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy test-project:serviceuser.services
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:constraints/{{constraint}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:{{constraint}}
  * ```
  * 
  */

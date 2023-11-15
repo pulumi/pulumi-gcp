@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a sharedflow attachment to a flowhook point.
@@ -23,7 +22,17 @@ import (
 //
 // ## Import
 //
-// # Flowhook can be imported using any of these accepted formats
+// Flowhook can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}` * `{{org_id}}/{{environment}}/{{flow_hook_point}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flowhook using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}"
+//
+//	to = google_apigee_flowhook.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/flowhook:Flowhook When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flowhook can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -182,12 +191,6 @@ func (i *Flowhook) ToFlowhookOutputWithContext(ctx context.Context) FlowhookOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FlowhookOutput)
 }
 
-func (i *Flowhook) ToOutput(ctx context.Context) pulumix.Output[*Flowhook] {
-	return pulumix.Output[*Flowhook]{
-		OutputState: i.ToFlowhookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlowhookArrayInput is an input type that accepts FlowhookArray and FlowhookArrayOutput values.
 // You can construct a concrete instance of `FlowhookArrayInput` via:
 //
@@ -211,12 +214,6 @@ func (i FlowhookArray) ToFlowhookArrayOutput() FlowhookArrayOutput {
 
 func (i FlowhookArray) ToFlowhookArrayOutputWithContext(ctx context.Context) FlowhookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowhookArrayOutput)
-}
-
-func (i FlowhookArray) ToOutput(ctx context.Context) pulumix.Output[[]*Flowhook] {
-	return pulumix.Output[[]*Flowhook]{
-		OutputState: i.ToFlowhookArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlowhookMapInput is an input type that accepts FlowhookMap and FlowhookMapOutput values.
@@ -244,12 +241,6 @@ func (i FlowhookMap) ToFlowhookMapOutputWithContext(ctx context.Context) Flowhoo
 	return pulumi.ToOutputWithContext(ctx, i).(FlowhookMapOutput)
 }
 
-func (i FlowhookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flowhook] {
-	return pulumix.Output[map[string]*Flowhook]{
-		OutputState: i.ToFlowhookMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlowhookOutput struct{ *pulumi.OutputState }
 
 func (FlowhookOutput) ElementType() reflect.Type {
@@ -262,12 +253,6 @@ func (o FlowhookOutput) ToFlowhookOutput() FlowhookOutput {
 
 func (o FlowhookOutput) ToFlowhookOutputWithContext(ctx context.Context) FlowhookOutput {
 	return o
-}
-
-func (o FlowhookOutput) ToOutput(ctx context.Context) pulumix.Output[*Flowhook] {
-	return pulumix.Output[*Flowhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
@@ -314,12 +299,6 @@ func (o FlowhookArrayOutput) ToFlowhookArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o FlowhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Flowhook] {
-	return pulumix.Output[[]*Flowhook]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlowhookArrayOutput) Index(i pulumi.IntInput) FlowhookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Flowhook {
 		return vs[0].([]*Flowhook)[vs[1].(int)]
@@ -338,12 +317,6 @@ func (o FlowhookMapOutput) ToFlowhookMapOutput() FlowhookMapOutput {
 
 func (o FlowhookMapOutput) ToFlowhookMapOutputWithContext(ctx context.Context) FlowhookMapOutput {
 	return o
-}
-
-func (o FlowhookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flowhook] {
-	return pulumix.Output[map[string]*Flowhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlowhookMapOutput) MapIndex(k pulumi.StringInput) FlowhookOutput {

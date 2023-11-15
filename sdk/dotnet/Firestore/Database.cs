@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// If you wish to use Firestore with App Engine, use the
     /// `gcp.appengine.Application`
-    /// resource instead.
+    /// resource instead. If you were previously using the `gcp.appengine.Application` resource exclusively for managing a Firestore database
+    /// and would like to use the `gcp.firestore.Database` resource instead, please follow the instructions
+    /// [here](https://cloud.google.com/firestore/docs/app-engine-requirement).
     /// 
     /// To get more information about Database, see:
     /// 
@@ -52,7 +54,15 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// ## Import
     /// 
-    /// Database can be imported using any of these accepted formats
+    /// Database can be imported using any of these accepted formats* `projects/{{project}}/databases/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Database using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/databases/{{name}}"
+    /// 
+    ///  to = google_firestore_database.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firestore/database:Database When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Database can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}

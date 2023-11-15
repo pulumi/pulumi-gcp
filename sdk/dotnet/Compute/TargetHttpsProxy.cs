@@ -20,10 +20,95 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
     /// 
     /// ## Example Usage
+    /// ### Target Https Proxy Certificate Manager Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("defaultCertificate", new()
+    ///     {
+    ///         Scope = "ALL_REGIONS",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new()
+    ///     {
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///     });
+    /// 
+    ///     var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new()
+    ///     {
+    ///         Description = "a description",
+    ///         DefaultService = defaultBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("defaultTargetHttpsProxy", new()
+    ///     {
+    ///         UrlMap = defaultURLMap.Id,
+    ///         CertificateManagerCertificates = new[]
+    ///         {
+    ///             defaultCertificate.Id.Apply(id =&gt; $"//certificatemanager.googleapis.com/{id}"),
+    ///         },
+    ///     });
+    /// 
+    ///     // [google_certificate_manager_certificate.default.id] is also acceptable
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// TargetHttpsProxy can be imported using any of these accepted formats
+    /// TargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpsProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpsProxy using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/global/targetHttpsProxies/{{name}}"
+    /// 
+    ///  to = google_compute_target_https_proxy.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpsProxy can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
@@ -40,6 +125,15 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/targetHttpsProxy:TargetHttpsProxy")]
     public partial class TargetHttpsProxy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        /// sslCertificates and certificateManagerCertificates fields can not be defined together.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+        /// </summary>
+        [Output("certificateManagerCertificates")]
+        public Output<ImmutableArray<string>> CertificateManagerCertificates { get; private set; } = null!;
+
         /// <summary>
         /// A reference to the CertificateMap resource uri that identifies a certificate map
         /// associated with the given target proxy. This field can only be set for global target proxies.
@@ -135,8 +229,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-        /// connections between users and the load balancer. At least one resource must be specified.
+        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        /// sslCertificates and certificateManagerCertificates can not be defined together.
         /// </summary>
         [Output("sslCertificates")]
         public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
@@ -205,6 +300,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class TargetHttpsProxyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("certificateManagerCertificates")]
+        private InputList<string>? _certificateManagerCertificates;
+
+        /// <summary>
+        /// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        /// sslCertificates and certificateManagerCertificates fields can not be defined together.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+        /// </summary>
+        public InputList<string> CertificateManagerCertificates
+        {
+            get => _certificateManagerCertificates ?? (_certificateManagerCertificates = new InputList<string>());
+            set => _certificateManagerCertificates = value;
+        }
+
         /// <summary>
         /// A reference to the CertificateMap resource uri that identifies a certificate map
         /// associated with the given target proxy. This field can only be set for global target proxies.
@@ -285,8 +395,9 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _sslCertificates;
 
         /// <summary>
-        /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-        /// connections between users and the load balancer. At least one resource must be specified.
+        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        /// sslCertificates and certificateManagerCertificates can not be defined together.
         /// </summary>
         public InputList<string> SslCertificates
         {
@@ -320,6 +431,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class TargetHttpsProxyState : global::Pulumi.ResourceArgs
     {
+        [Input("certificateManagerCertificates")]
+        private InputList<string>? _certificateManagerCertificates;
+
+        /// <summary>
+        /// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        /// sslCertificates and certificateManagerCertificates fields can not be defined together.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+        /// </summary>
+        public InputList<string> CertificateManagerCertificates
+        {
+            get => _certificateManagerCertificates ?? (_certificateManagerCertificates = new InputList<string>());
+            set => _certificateManagerCertificates = value;
+        }
+
         /// <summary>
         /// A reference to the CertificateMap resource uri that identifies a certificate map
         /// associated with the given target proxy. This field can only be set for global target proxies.
@@ -418,8 +544,9 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _sslCertificates;
 
         /// <summary>
-        /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-        /// connections between users and the load balancer. At least one resource must be specified.
+        /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        /// sslCertificates and certificateManagerCertificates can not be defined together.
         /// </summary>
         public InputList<string> SslCertificates
         {

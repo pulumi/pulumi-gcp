@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Restore Plan instance.
@@ -505,7 +504,17 @@ import (
 //
 // ## Import
 //
-// # RestorePlan can be imported using any of these accepted formats
+// RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RestorePlan using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/restorePlans/{{name}}"
+//
+//	to = google_gke_backup_restore_plan.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkebackup/restorePlan:RestorePlan When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RestorePlan can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -768,12 +777,6 @@ func (i *RestorePlan) ToRestorePlanOutputWithContext(ctx context.Context) Restor
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanOutput)
 }
 
-func (i *RestorePlan) ToOutput(ctx context.Context) pulumix.Output[*RestorePlan] {
-	return pulumix.Output[*RestorePlan]{
-		OutputState: i.ToRestorePlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanArrayInput is an input type that accepts RestorePlanArray and RestorePlanArrayOutput values.
 // You can construct a concrete instance of `RestorePlanArrayInput` via:
 //
@@ -797,12 +800,6 @@ func (i RestorePlanArray) ToRestorePlanArrayOutput() RestorePlanArrayOutput {
 
 func (i RestorePlanArray) ToRestorePlanArrayOutputWithContext(ctx context.Context) RestorePlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanArrayOutput)
-}
-
-func (i RestorePlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlan] {
-	return pulumix.Output[[]*RestorePlan]{
-		OutputState: i.ToRestorePlanArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RestorePlanMapInput is an input type that accepts RestorePlanMap and RestorePlanMapOutput values.
@@ -830,12 +827,6 @@ func (i RestorePlanMap) ToRestorePlanMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanMapOutput)
 }
 
-func (i RestorePlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlan] {
-	return pulumix.Output[map[string]*RestorePlan]{
-		OutputState: i.ToRestorePlanMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanOutput) ElementType() reflect.Type {
@@ -848,12 +839,6 @@ func (o RestorePlanOutput) ToRestorePlanOutput() RestorePlanOutput {
 
 func (o RestorePlanOutput) ToRestorePlanOutputWithContext(ctx context.Context) RestorePlanOutput {
 	return o
-}
-
-func (o RestorePlanOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlan] {
-	return pulumix.Output[*RestorePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the BackupPlan from which Backups may be used
@@ -944,12 +929,6 @@ func (o RestorePlanArrayOutput) ToRestorePlanArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o RestorePlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlan] {
-	return pulumix.Output[[]*RestorePlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestorePlanArrayOutput) Index(i pulumi.IntInput) RestorePlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RestorePlan {
 		return vs[0].([]*RestorePlan)[vs[1].(int)]
@@ -968,12 +947,6 @@ func (o RestorePlanMapOutput) ToRestorePlanMapOutput() RestorePlanMapOutput {
 
 func (o RestorePlanMapOutput) ToRestorePlanMapOutputWithContext(ctx context.Context) RestorePlanMapOutput {
 	return o
-}
-
-func (o RestorePlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlan] {
-	return pulumix.Output[map[string]*RestorePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanMapOutput) MapIndex(k pulumi.StringInput) RestorePlanOutput {

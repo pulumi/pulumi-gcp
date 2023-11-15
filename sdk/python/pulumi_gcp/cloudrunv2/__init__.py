@@ -5,7 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_job import *
 from .get_job_iam_policy import *
+from .get_service import *
 from .get_service_iam_policy import *
 from .job import *
 from .job_iam_binding import *

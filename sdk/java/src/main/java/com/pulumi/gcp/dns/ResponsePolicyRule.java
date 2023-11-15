@@ -89,7 +89,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ResponsePolicyRule can be imported using any of these accepted formats
+ * ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResponsePolicyRule using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}&#34;
+ * 
+ *  to = google_dns_response_policy_rule.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResponsePolicyRule can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}

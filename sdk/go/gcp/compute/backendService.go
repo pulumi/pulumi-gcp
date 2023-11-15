@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Backend Service defines a group of virtual machines that will serve
@@ -165,7 +164,17 @@ import (
 //
 // ## Import
 //
-// # BackendService can be imported using any of these accepted formats
+// BackendService can be imported using any of these accepted formats* `projects/{{project}}/global/backendServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackendService using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/backendServices/{{name}}"
+//
+//	to = google_compute_backend_service.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/backendService:BackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackendService can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -281,8 +290,8 @@ type BackendService struct {
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the loadBalancingScheme is set
-	// to INTERNAL_SELF_MANAGED.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
 	// Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
@@ -442,8 +451,8 @@ type backendServiceState struct {
 	// ***
 	Name *string `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the loadBalancingScheme is set
-	// to INTERNAL_SELF_MANAGED.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
 	// Structure is documented below.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
@@ -574,8 +583,8 @@ type BackendServiceState struct {
 	// ***
 	Name pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the loadBalancingScheme is set
-	// to INTERNAL_SELF_MANAGED.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
 	// Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
@@ -703,8 +712,8 @@ type backendServiceArgs struct {
 	// ***
 	Name *string `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the loadBalancingScheme is set
-	// to INTERNAL_SELF_MANAGED.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
 	// Structure is documented below.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
@@ -827,8 +836,8 @@ type BackendServiceArgs struct {
 	// ***
 	Name pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the loadBalancingScheme is set
-	// to INTERNAL_SELF_MANAGED.
+	// Applicable backend service types can be a global backend service with the
+	// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
 	// Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
@@ -885,12 +894,6 @@ func (i *BackendService) ToBackendServiceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceOutput)
 }
 
-func (i *BackendService) ToOutput(ctx context.Context) pulumix.Output[*BackendService] {
-	return pulumix.Output[*BackendService]{
-		OutputState: i.ToBackendServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackendServiceArrayInput is an input type that accepts BackendServiceArray and BackendServiceArrayOutput values.
 // You can construct a concrete instance of `BackendServiceArrayInput` via:
 //
@@ -914,12 +917,6 @@ func (i BackendServiceArray) ToBackendServiceArrayOutput() BackendServiceArrayOu
 
 func (i BackendServiceArray) ToBackendServiceArrayOutputWithContext(ctx context.Context) BackendServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceArrayOutput)
-}
-
-func (i BackendServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendService] {
-	return pulumix.Output[[]*BackendService]{
-		OutputState: i.ToBackendServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BackendServiceMapInput is an input type that accepts BackendServiceMap and BackendServiceMapOutput values.
@@ -947,12 +944,6 @@ func (i BackendServiceMap) ToBackendServiceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceMapOutput)
 }
 
-func (i BackendServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendService] {
-	return pulumix.Output[map[string]*BackendService]{
-		OutputState: i.ToBackendServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackendServiceOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceOutput) ElementType() reflect.Type {
@@ -965,12 +956,6 @@ func (o BackendServiceOutput) ToBackendServiceOutput() BackendServiceOutput {
 
 func (o BackendServiceOutput) ToBackendServiceOutputWithContext(ctx context.Context) BackendServiceOutput {
 	return o
-}
-
-func (o BackendServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendService] {
-	return pulumix.Output[*BackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Lifetime of cookies in seconds if sessionAffinity is
@@ -1133,8 +1118,8 @@ func (o BackendServiceOutput) Name() pulumi.StringOutput {
 }
 
 // Settings controlling eviction of unhealthy hosts from the load balancing pool.
-// This field is applicable only when the loadBalancingScheme is set
-// to INTERNAL_SELF_MANAGED.
+// Applicable backend service types can be a global backend service with the
+// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
 // Structure is documented below.
 func (o BackendServiceOutput) OutlierDetection() BackendServiceOutlierDetectionPtrOutput {
 	return o.ApplyT(func(v *BackendService) BackendServiceOutlierDetectionPtrOutput { return v.OutlierDetection }).(BackendServiceOutlierDetectionPtrOutput)
@@ -1209,12 +1194,6 @@ func (o BackendServiceArrayOutput) ToBackendServiceArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o BackendServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendService] {
-	return pulumix.Output[[]*BackendService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackendServiceArrayOutput) Index(i pulumi.IntInput) BackendServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendService {
 		return vs[0].([]*BackendService)[vs[1].(int)]
@@ -1233,12 +1212,6 @@ func (o BackendServiceMapOutput) ToBackendServiceMapOutput() BackendServiceMapOu
 
 func (o BackendServiceMapOutput) ToBackendServiceMapOutputWithContext(ctx context.Context) BackendServiceMapOutput {
 	return o
-}
-
-func (o BackendServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendService] {
-	return pulumix.Output[map[string]*BackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendServiceMapOutput) MapIndex(k pulumi.StringInput) BackendServiceOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A policy is a collection of DNS rules applied to one or more Virtual
@@ -83,7 +82,17 @@ import (
 //
 // ## Import
 //
-// # Policy can be imported using any of these accepted formats
+// Policy can be imported using any of these accepted formats* `projects/{{project}}/policies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Policy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/policies/{{name}}"
+//
+//	to = google_dns_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dns/policy:Policy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Policy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -301,12 +310,6 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i *Policy) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: i.ToPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyArrayInput is an input type that accepts PolicyArray and PolicyArrayOutput values.
 // You can construct a concrete instance of `PolicyArrayInput` via:
 //
@@ -330,12 +333,6 @@ func (i PolicyArray) ToPolicyArrayOutput() PolicyArrayOutput {
 
 func (i PolicyArray) ToPolicyArrayOutputWithContext(ctx context.Context) PolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyArrayOutput)
-}
-
-func (i PolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Policy] {
-	return pulumix.Output[[]*Policy]{
-		OutputState: i.ToPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PolicyMapInput is an input type that accepts PolicyMap and PolicyMapOutput values.
@@ -363,12 +360,6 @@ func (i PolicyMap) ToPolicyMapOutputWithContext(ctx context.Context) PolicyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyMapOutput)
 }
 
-func (i PolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Policy] {
-	return pulumix.Output[map[string]*Policy]{
-		OutputState: i.ToPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyOutput struct{ *pulumi.OutputState }
 
 func (PolicyOutput) ElementType() reflect.Type {
@@ -381,12 +372,6 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
-}
-
-func (o PolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets an alternative name server for the associated networks.
@@ -449,12 +434,6 @@ func (o PolicyArrayOutput) ToPolicyArrayOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o PolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Policy] {
-	return pulumix.Output[[]*Policy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyArrayOutput) Index(i pulumi.IntInput) PolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Policy {
 		return vs[0].([]*Policy)[vs[1].(int)]
@@ -473,12 +452,6 @@ func (o PolicyMapOutput) ToPolicyMapOutput() PolicyMapOutput {
 
 func (o PolicyMapOutput) ToPolicyMapOutputWithContext(ctx context.Context) PolicyMapOutput {
 	return o
-}
-
-func (o PolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Policy] {
-	return pulumix.Output[map[string]*Policy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyMapOutput) MapIndex(k pulumi.StringInput) PolicyOutput {

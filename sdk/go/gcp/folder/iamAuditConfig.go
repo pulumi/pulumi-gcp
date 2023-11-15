@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -290,51 +289,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g* `"folder/{{folder_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
 //
-// This member resource can be imported using the `folder`, role, and member e.g.
+//	id = "folder/{{folder_id}} foo.googleapis.com"
+//
+//	to = google_folder_iam_audit_config.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `folder` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `folder`.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder folder
-//
-// ```
-//
-//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig my_folder "folder foo.googleapis.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"
 //
 // ```
 type IamAuditConfig struct {
@@ -456,12 +425,6 @@ func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigOutput)
 }
 
-func (i *IamAuditConfig) ToOutput(ctx context.Context) pulumix.Output[*IamAuditConfig] {
-	return pulumix.Output[*IamAuditConfig]{
-		OutputState: i.ToIamAuditConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IamAuditConfigArrayInput is an input type that accepts IamAuditConfigArray and IamAuditConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigArrayInput` via:
 //
@@ -485,12 +448,6 @@ func (i IamAuditConfigArray) ToIamAuditConfigArrayOutput() IamAuditConfigArrayOu
 
 func (i IamAuditConfigArray) ToIamAuditConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigArrayOutput)
-}
-
-func (i IamAuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamAuditConfig] {
-	return pulumix.Output[[]*IamAuditConfig]{
-		OutputState: i.ToIamAuditConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IamAuditConfigMapInput is an input type that accepts IamAuditConfigMap and IamAuditConfigMapOutput values.
@@ -518,12 +475,6 @@ func (i IamAuditConfigMap) ToIamAuditConfigMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigMapOutput)
 }
 
-func (i IamAuditConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamAuditConfig] {
-	return pulumix.Output[map[string]*IamAuditConfig]{
-		OutputState: i.ToIamAuditConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IamAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigOutput) ElementType() reflect.Type {
@@ -536,12 +487,6 @@ func (o IamAuditConfigOutput) ToIamAuditConfigOutput() IamAuditConfigOutput {
 
 func (o IamAuditConfigOutput) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
 	return o
-}
-
-func (o IamAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*IamAuditConfig] {
-	return pulumix.Output[*IamAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
@@ -578,12 +523,6 @@ func (o IamAuditConfigArrayOutput) ToIamAuditConfigArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o IamAuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamAuditConfig] {
-	return pulumix.Output[[]*IamAuditConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IamAuditConfigArrayOutput) Index(i pulumi.IntInput) IamAuditConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamAuditConfig {
 		return vs[0].([]*IamAuditConfig)[vs[1].(int)]
@@ -602,12 +541,6 @@ func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutput() IamAuditConfigMapOu
 
 func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutputWithContext(ctx context.Context) IamAuditConfigMapOutput {
 	return o
-}
-
-func (o IamAuditConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamAuditConfig] {
-	return pulumix.Output[map[string]*IamAuditConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IamAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IamAuditConfigOutput {

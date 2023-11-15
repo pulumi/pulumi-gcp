@@ -238,10 +238,18 @@ class FolderExclusion(pulumi.CustomResource):
 
         ## Import
 
-        Folder-level logging exclusions can be imported using their URI, e.g.
+        Folder-level logging exclusions can be imported using their URI, e.g. * `folders/{{folder}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import folder-level logging exclusions using one of the formats above. For exampletf import {
+
+         id = "folders/{{folder}}/exclusions/{{name}}"
+
+         to = google_logging_folder_exclusion.default }
 
         ```sh
-         $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+         $ pulumi import gcp:logging/folderExclusion:FolderExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), folder-level logging exclusions can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:logging/folderExclusion:FolderExclusion default folders/{{folder}}/exclusions/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -288,10 +296,18 @@ class FolderExclusion(pulumi.CustomResource):
 
         ## Import
 
-        Folder-level logging exclusions can be imported using their URI, e.g.
+        Folder-level logging exclusions can be imported using their URI, e.g. * `folders/{{folder}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import folder-level logging exclusions using one of the formats above. For exampletf import {
+
+         id = "folders/{{folder}}/exclusions/{{name}}"
+
+         to = google_logging_folder_exclusion.default }
 
         ```sh
-         $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+         $ pulumi import gcp:logging/folderExclusion:FolderExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), folder-level logging exclusions can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:logging/folderExclusion:FolderExclusion default folders/{{folder}}/exclusions/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -10,14 +10,17 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyPlainArgs;
+import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyPlainArgs;
+import com.pulumi.gcp.bigquery.inputs.GetDatasetPlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountPlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyPlainArgs;
 import com.pulumi.gcp.bigquery.outputs.GetConnectionIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetIamPolicyResult;
+import com.pulumi.gcp.bigquery.outputs.GetDatasetResult;
 import com.pulumi.gcp.bigquery.outputs.GetDefaultServiceAccountResult;
 import com.pulumi.gcp.bigquery.outputs.GetTableIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
@@ -178,6 +181,166 @@ public final class BigqueryFunctions {
      */
     public static CompletableFuture<GetConnectionIamPolicyResult> getConnectionIamPolicyPlain(GetConnectionIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
+     *             .datasetId(&#34;my-bq-dataset&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatasetResult> getDataset(GetDatasetArgs args) {
+        return getDataset(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
+     *             .datasetId(&#34;my-bq-dataset&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatasetResult> getDatasetPlain(GetDatasetPlainArgs args) {
+        return getDatasetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
+     *             .datasetId(&#34;my-bq-dataset&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatasetResult> getDataset(GetDatasetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getDataset:getDataset", TypeShape.of(GetDatasetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
+     *             .datasetId(&#34;my-bq-dataset&#34;)
+     *             .project(&#34;my-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatasetResult> getDatasetPlain(GetDatasetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:bigquery/getDataset:getDataset", TypeShape.of(GetDatasetResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for a BigQuery dataset.

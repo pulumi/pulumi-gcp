@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelsAccessLevelBasicConditionDevicePolicy;
+import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSource;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -70,6 +71,12 @@ public final class AccessLevelsAccessLevelBasicCondition {
      * 
      */
     private @Nullable List<String> requiredAccessLevels;
+    /**
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources;
 
     private AccessLevelsAccessLevelBasicCondition() {}
     /**
@@ -140,6 +147,14 @@ public final class AccessLevelsAccessLevelBasicCondition {
     public List<String> requiredAccessLevels() {
         return this.requiredAccessLevels == null ? List.of() : this.requiredAccessLevels;
     }
+    /**
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    public List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources() {
+        return this.vpcNetworkSources == null ? List.of() : this.vpcNetworkSources;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -156,6 +171,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
         private @Nullable Boolean negate;
         private @Nullable List<String> regions;
         private @Nullable List<String> requiredAccessLevels;
+        private @Nullable List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources;
         public Builder() {}
         public Builder(AccessLevelsAccessLevelBasicCondition defaults) {
     	      Objects.requireNonNull(defaults);
@@ -165,6 +181,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
     	      this.negate = defaults.negate;
     	      this.regions = defaults.regions;
     	      this.requiredAccessLevels = defaults.requiredAccessLevels;
+    	      this.vpcNetworkSources = defaults.vpcNetworkSources;
         }
 
         @CustomType.Setter
@@ -209,6 +226,14 @@ public final class AccessLevelsAccessLevelBasicCondition {
         public Builder requiredAccessLevels(String... requiredAccessLevels) {
             return requiredAccessLevels(List.of(requiredAccessLevels));
         }
+        @CustomType.Setter
+        public Builder vpcNetworkSources(@Nullable List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources) {
+            this.vpcNetworkSources = vpcNetworkSources;
+            return this;
+        }
+        public Builder vpcNetworkSources(AccessLevelsAccessLevelBasicConditionVpcNetworkSource... vpcNetworkSources) {
+            return vpcNetworkSources(List.of(vpcNetworkSources));
+        }
         public AccessLevelsAccessLevelBasicCondition build() {
             final var o = new AccessLevelsAccessLevelBasicCondition();
             o.devicePolicy = devicePolicy;
@@ -217,6 +242,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
             o.negate = negate;
             o.regions = regions;
             o.requiredAccessLevels = requiredAccessLevels;
+            o.vpcNetworkSources = vpcNetworkSources;
             return o;
         }
     }

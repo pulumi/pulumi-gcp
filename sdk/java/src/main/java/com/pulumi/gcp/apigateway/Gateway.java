@@ -87,7 +87,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Gateway can be imported using any of these accepted formats
+ * Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Gateway using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}&#34;
+ * 
+ *  to = google_api_gateway_gateway.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigateway/gateway:Gateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Gateway can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}

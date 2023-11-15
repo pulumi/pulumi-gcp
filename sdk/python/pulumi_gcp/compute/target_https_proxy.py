@@ -15,6 +15,7 @@ __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
 class TargetHttpsProxyArgs:
     def __init__(__self__, *,
                  url_map: pulumi.Input[str],
+                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -32,6 +33,10 @@ class TargetHttpsProxyArgs:
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -68,13 +73,16 @@ class TargetHttpsProxyArgs:
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-               connections between users and the load balancer. At least one resource must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates can not be defined together.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
         """
         pulumi.set(__self__, "url_map", url_map)
+        if certificate_manager_certificates is not None:
+            pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
         if certificate_map is not None:
             pulumi.set(__self__, "certificate_map", certificate_map)
         if description is not None:
@@ -111,6 +119,21 @@ class TargetHttpsProxyArgs:
     @url_map.setter
     def url_map(self, value: pulumi.Input[str]):
         pulumi.set(self, "url_map", value)
+
+    @property
+    @pulumi.getter(name="certificateManagerCertificates")
+    def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        sslCertificates and certificateManagerCertificates fields can not be defined together.
+        Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+        """
+        return pulumi.get(self, "certificate_manager_certificates")
+
+    @certificate_manager_certificates.setter
+    def certificate_manager_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "certificate_manager_certificates", value)
 
     @property
     @pulumi.getter(name="certificateMap")
@@ -240,8 +263,9 @@ class TargetHttpsProxyArgs:
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-        connections between users and the load balancer. At least one resource must be specified.
+        URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        sslCertificates and certificateManagerCertificates can not be defined together.
         """
         return pulumi.get(self, "ssl_certificates")
 
@@ -267,6 +291,7 @@ class TargetHttpsProxyArgs:
 @pulumi.input_type
 class _TargetHttpsProxyState:
     def __init__(__self__, *,
+                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -283,6 +308,10 @@ class _TargetHttpsProxyState:
                  url_map: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TargetHttpsProxy resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -322,8 +351,9 @@ class _TargetHttpsProxyState:
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-               connections between users and the load balancer. At least one resource must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates can not be defined together.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -333,6 +363,8 @@ class _TargetHttpsProxyState:
                
                - - -
         """
+        if certificate_manager_certificates is not None:
+            pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
         if certificate_map is not None:
             pulumi.set(__self__, "certificate_map", certificate_map)
         if creation_timestamp is not None:
@@ -361,6 +393,21 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
         if url_map is not None:
             pulumi.set(__self__, "url_map", url_map)
+
+    @property
+    @pulumi.getter(name="certificateManagerCertificates")
+    def certificate_manager_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        sslCertificates and certificateManagerCertificates fields can not be defined together.
+        Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+        """
+        return pulumi.get(self, "certificate_manager_certificates")
+
+    @certificate_manager_certificates.setter
+    def certificate_manager_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "certificate_manager_certificates", value)
 
     @property
     @pulumi.getter(name="certificateMap")
@@ -526,8 +573,9 @@ class _TargetHttpsProxyState:
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-        connections between users and the load balancer. At least one resource must be specified.
+        URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        sslCertificates and certificateManagerCertificates can not be defined together.
         """
         return pulumi.get(self, "ssl_certificates")
 
@@ -571,6 +619,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -594,10 +643,55 @@ class TargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Target Https Proxy Certificate Manager Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+            scope="ALL_REGIONS",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+            ))
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
+            url_map=default_url_map.id,
+            certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
+        # [google_certificate_manager_certificate.default.id] is also acceptable
+        ```
 
         ## Import
 
-        TargetHttpsProxy can be imported using any of these accepted formats
+        TargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpsProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpsProxy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/targetHttpsProxies/{{name}}"
+
+         to = google_compute_target_https_proxy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpsProxy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
@@ -613,6 +707,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -649,8 +747,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-               connections between users and the load balancer. At least one resource must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates can not be defined together.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -677,10 +776,55 @@ class TargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Target Https Proxy Certificate Manager Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+            scope="ALL_REGIONS",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
+            ))
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED")
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.id,
+            host_rules=[gcp.compute.URLMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_backend_service.id,
+                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_backend_service.id,
+                )],
+            )])
+        default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
+            url_map=default_url_map.id,
+            certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
+        # [google_certificate_manager_certificate.default.id] is also acceptable
+        ```
 
         ## Import
 
-        TargetHttpsProxy can be imported using any of these accepted formats
+        TargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpsProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpsProxy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/global/targetHttpsProxies/{{name}}"
+
+         to = google_compute_target_https_proxy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpsProxy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
@@ -709,6 +853,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -729,6 +874,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TargetHttpsProxyArgs.__new__(TargetHttpsProxyArgs)
 
+            __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
             __props__.__dict__["certificate_map"] = certificate_map
             __props__.__dict__["description"] = description
             __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
@@ -755,6 +901,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             certificate_map: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -776,6 +923,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates fields can not be defined together.
+               Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -815,8 +966,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-               connections between users and the load balancer. At least one resource must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+               Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+               sslCertificates and certificateManagerCertificates can not be defined together.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -830,6 +982,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         __props__ = _TargetHttpsProxyState.__new__(_TargetHttpsProxyState)
 
+        __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
         __props__.__dict__["certificate_map"] = certificate_map
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
@@ -845,6 +998,17 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["ssl_policy"] = ssl_policy
         __props__.__dict__["url_map"] = url_map
         return TargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateManagerCertificates")
+    def certificate_manager_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+        Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        sslCertificates and certificateManagerCertificates fields can not be defined together.
+        Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+        """
+        return pulumi.get(self, "certificate_manager_certificates")
 
     @property
     @pulumi.getter(name="certificateMap")
@@ -966,8 +1130,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-        connections between users and the load balancer. At least one resource must be specified.
+        URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+        sslCertificates and certificateManagerCertificates can not be defined together.
         """
         return pulumi.get(self, "ssl_certificates")
 

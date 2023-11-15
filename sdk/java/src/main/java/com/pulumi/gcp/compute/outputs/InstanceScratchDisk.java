@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceScratchDisk {
     /**
+     * @return Name with which the attached disk will be accessible
+     * under `/dev/disk/by-id/google-*`
+     * 
+     */
+    private @Nullable String deviceName;
+    /**
      * @return The disk interface to use for attaching this disk; either SCSI or NVME.
      * 
      */
@@ -25,6 +31,14 @@ public final class InstanceScratchDisk {
     private @Nullable Integer size;
 
     private InstanceScratchDisk() {}
+    /**
+     * @return Name with which the attached disk will be accessible
+     * under `/dev/disk/by-id/google-*`
+     * 
+     */
+    public Optional<String> deviceName() {
+        return Optional.ofNullable(this.deviceName);
+    }
     /**
      * @return The disk interface to use for attaching this disk; either SCSI or NVME.
      * 
@@ -50,15 +64,22 @@ public final class InstanceScratchDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deviceName;
         private String interface_;
         private @Nullable Integer size;
         public Builder() {}
         public Builder(InstanceScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deviceName = defaults.deviceName;
     	      this.interface_ = defaults.interface_;
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
+        public Builder deviceName(@Nullable String deviceName) {
+            this.deviceName = deviceName;
+            return this;
+        }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
@@ -71,6 +92,7 @@ public final class InstanceScratchDisk {
         }
         public InstanceScratchDisk build() {
             final var o = new InstanceScratchDisk();
+            o.deviceName = deviceName;
             o.interface_ = interface_;
             o.size = size;
             return o;

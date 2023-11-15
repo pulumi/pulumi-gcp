@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
@@ -90,10 +89,11 @@ type LookupBucketObjectResult struct {
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash string `pulumi:"md5hash"`
 	// (Computed) A url reference to download this object.
-	MediaLink  string            `pulumi:"mediaLink"`
-	Metadata   map[string]string `pulumi:"metadata"`
-	Name       *string           `pulumi:"name"`
-	OutputName string            `pulumi:"outputName"`
+	MediaLink  string                     `pulumi:"mediaLink"`
+	Metadata   map[string]string          `pulumi:"metadata"`
+	Name       *string                    `pulumi:"name"`
+	OutputName string                     `pulumi:"outputName"`
+	Retentions []GetBucketObjectRetention `pulumi:"retentions"`
 	// (Computed) A url reference to this object.
 	SelfLink string `pulumi:"selfLink"`
 	Source   string `pulumi:"source"`
@@ -143,12 +143,6 @@ func (o LookupBucketObjectResultOutput) ToLookupBucketObjectResultOutput() Looku
 
 func (o LookupBucketObjectResultOutput) ToLookupBucketObjectResultOutputWithContext(ctx context.Context) LookupBucketObjectResultOutput {
 	return o
-}
-
-func (o LookupBucketObjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBucketObjectResult] {
-	return pulumix.Output[LookupBucketObjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupBucketObjectResultOutput) Bucket() pulumi.StringPtrOutput {
@@ -232,6 +226,10 @@ func (o LookupBucketObjectResultOutput) Name() pulumi.StringPtrOutput {
 
 func (o LookupBucketObjectResultOutput) OutputName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.OutputName }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketObjectResultOutput) Retentions() GetBucketObjectRetentionArrayOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) []GetBucketObjectRetention { return v.Retentions }).(GetBucketObjectRetentionArrayOutput)
 }
 
 // (Computed) A url reference to this object.

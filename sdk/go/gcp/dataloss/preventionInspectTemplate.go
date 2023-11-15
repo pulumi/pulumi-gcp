@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An inspect job template.
@@ -205,7 +204,17 @@ import (
 //
 // ## Import
 //
-// # InspectTemplate can be imported using any of these accepted formats
+// InspectTemplate can be imported using any of these accepted formats* `{{parent}}/inspectTemplates/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InspectTemplate using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/inspectTemplates/{{name}}"
+//
+//	to = google_data_loss_prevention_inspect_template.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InspectTemplate can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -399,12 +408,6 @@ func (i *PreventionInspectTemplate) ToPreventionInspectTemplateOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateOutput)
 }
 
-func (i *PreventionInspectTemplate) ToOutput(ctx context.Context) pulumix.Output[*PreventionInspectTemplate] {
-	return pulumix.Output[*PreventionInspectTemplate]{
-		OutputState: i.ToPreventionInspectTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PreventionInspectTemplateArrayInput is an input type that accepts PreventionInspectTemplateArray and PreventionInspectTemplateArrayOutput values.
 // You can construct a concrete instance of `PreventionInspectTemplateArrayInput` via:
 //
@@ -428,12 +431,6 @@ func (i PreventionInspectTemplateArray) ToPreventionInspectTemplateArrayOutput()
 
 func (i PreventionInspectTemplateArray) ToPreventionInspectTemplateArrayOutputWithContext(ctx context.Context) PreventionInspectTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateArrayOutput)
-}
-
-func (i PreventionInspectTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionInspectTemplate] {
-	return pulumix.Output[[]*PreventionInspectTemplate]{
-		OutputState: i.ToPreventionInspectTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PreventionInspectTemplateMapInput is an input type that accepts PreventionInspectTemplateMap and PreventionInspectTemplateMapOutput values.
@@ -461,12 +458,6 @@ func (i PreventionInspectTemplateMap) ToPreventionInspectTemplateMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateMapOutput)
 }
 
-func (i PreventionInspectTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionInspectTemplate] {
-	return pulumix.Output[map[string]*PreventionInspectTemplate]{
-		OutputState: i.ToPreventionInspectTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PreventionInspectTemplateOutput struct{ *pulumi.OutputState }
 
 func (PreventionInspectTemplateOutput) ElementType() reflect.Type {
@@ -479,12 +470,6 @@ func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutput() Pre
 
 func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutputWithContext(ctx context.Context) PreventionInspectTemplateOutput {
 	return o
-}
-
-func (o PreventionInspectTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*PreventionInspectTemplate] {
-	return pulumix.Output[*PreventionInspectTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of the inspect template.
@@ -543,12 +528,6 @@ func (o PreventionInspectTemplateArrayOutput) ToPreventionInspectTemplateArrayOu
 	return o
 }
 
-func (o PreventionInspectTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionInspectTemplate] {
-	return pulumix.Output[[]*PreventionInspectTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PreventionInspectTemplateArrayOutput) Index(i pulumi.IntInput) PreventionInspectTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreventionInspectTemplate {
 		return vs[0].([]*PreventionInspectTemplate)[vs[1].(int)]
@@ -567,12 +546,6 @@ func (o PreventionInspectTemplateMapOutput) ToPreventionInspectTemplateMapOutput
 
 func (o PreventionInspectTemplateMapOutput) ToPreventionInspectTemplateMapOutputWithContext(ctx context.Context) PreventionInspectTemplateMapOutput {
 	return o
-}
-
-func (o PreventionInspectTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionInspectTemplate] {
-	return pulumix.Output[map[string]*PreventionInspectTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PreventionInspectTemplateMapOutput) MapIndex(k pulumi.StringInput) PreventionInspectTemplateOutput {

@@ -56,6 +56,7 @@ export interface GetEnvironmentResult {
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
+    readonly storageConfigs: outputs.composer.GetEnvironmentStorageConfig[];
 }
 /**
  * Provides access to Cloud Composer environment configuration in a region for a given project.

@@ -12,6 +12,8 @@ from .. import _utilities
 __all__ = [
     'ManagementServerManagementUri',
     'ManagementServerNetwork',
+    'GetManagementServerManagementUriResult',
+    'GetManagementServerNetworkResult',
 ]
 
 @pulumi.output_type
@@ -118,6 +120,44 @@ class ManagementServerNetwork(dict):
 
         - - -
         """
+        return pulumi.get(self, "peering_mode")
+
+
+@pulumi.output_type
+class GetManagementServerManagementUriResult(dict):
+    def __init__(__self__, *,
+                 api: str,
+                 web_ui: str):
+        pulumi.set(__self__, "api", api)
+        pulumi.set(__self__, "web_ui", web_ui)
+
+    @property
+    @pulumi.getter
+    def api(self) -> str:
+        return pulumi.get(self, "api")
+
+    @property
+    @pulumi.getter(name="webUi")
+    def web_ui(self) -> str:
+        return pulumi.get(self, "web_ui")
+
+
+@pulumi.output_type
+class GetManagementServerNetworkResult(dict):
+    def __init__(__self__, *,
+                 network: str,
+                 peering_mode: str):
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "peering_mode", peering_mode)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="peeringMode")
+    def peering_mode(self) -> str:
         return pulumi.get(self, "peering_mode")
 
 

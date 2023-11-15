@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i JobBinaryAuthorizationArgs) ToJobBinaryAuthorizationOutput() JobBinaryAu
 
 func (i JobBinaryAuthorizationArgs) ToJobBinaryAuthorizationOutputWithContext(ctx context.Context) JobBinaryAuthorizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobBinaryAuthorizationOutput)
-}
-
-func (i JobBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[JobBinaryAuthorization] {
-	return pulumix.Output[JobBinaryAuthorization]{
-		OutputState: i.ToJobBinaryAuthorizationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i JobBinaryAuthorizationArgs) ToJobBinaryAuthorizationPtrOutput() JobBinaryAuthorizationPtrOutput {
@@ -98,12 +91,6 @@ func (i *jobBinaryAuthorizationPtrType) ToJobBinaryAuthorizationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobBinaryAuthorizationPtrOutput)
 }
 
-func (i *jobBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobBinaryAuthorization] {
-	return pulumix.Output[*JobBinaryAuthorization]{
-		OutputState: i.ToJobBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobBinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (JobBinaryAuthorizationOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o JobBinaryAuthorizationOutput) ToJobBinaryAuthorizationPtrOutputWithConte
 	}).(JobBinaryAuthorizationPtrOutput)
 }
 
-func (o JobBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[JobBinaryAuthorization] {
-	return pulumix.Output[JobBinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o JobBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobBinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
@@ -156,12 +137,6 @@ func (o JobBinaryAuthorizationPtrOutput) ToJobBinaryAuthorizationPtrOutput() Job
 
 func (o JobBinaryAuthorizationPtrOutput) ToJobBinaryAuthorizationPtrOutputWithContext(ctx context.Context) JobBinaryAuthorizationPtrOutput {
 	return o
-}
-
-func (o JobBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobBinaryAuthorization] {
-	return pulumix.Output[*JobBinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobBinaryAuthorizationPtrOutput) Elem() JobBinaryAuthorizationOutput {
@@ -273,12 +248,6 @@ func (i JobConditionArgs) ToJobConditionOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobConditionOutput)
 }
 
-func (i JobConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobCondition] {
-	return pulumix.Output[JobCondition]{
-		OutputState: i.ToJobConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobConditionArrayInput is an input type that accepts JobConditionArray and JobConditionArrayOutput values.
 // You can construct a concrete instance of `JobConditionArrayInput` via:
 //
@@ -304,12 +273,6 @@ func (i JobConditionArray) ToJobConditionArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobConditionArrayOutput)
 }
 
-func (i JobConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]JobCondition] {
-	return pulumix.Output[[]JobCondition]{
-		OutputState: i.ToJobConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobConditionOutput struct{ *pulumi.OutputState }
 
 func (JobConditionOutput) ElementType() reflect.Type {
@@ -322,12 +285,6 @@ func (o JobConditionOutput) ToJobConditionOutput() JobConditionOutput {
 
 func (o JobConditionOutput) ToJobConditionOutputWithContext(ctx context.Context) JobConditionOutput {
 	return o
-}
-
-func (o JobConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobCondition] {
-	return pulumix.Output[JobCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -393,12 +350,6 @@ func (o JobConditionArrayOutput) ToJobConditionArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o JobConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobCondition] {
-	return pulumix.Output[[]JobCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobConditionArrayOutput) Index(i pulumi.IntInput) JobConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobCondition {
 		return vs[0].([]JobCondition)[vs[1].(int)]
@@ -438,12 +389,6 @@ func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutput() JobIamBindi
 
 func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutputWithContext(ctx context.Context) JobIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionOutput)
-}
-
-func (i JobIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobIamBindingCondition] {
-	return pulumix.Output[JobIamBindingCondition]{
-		OutputState: i.ToJobIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i JobIamBindingConditionArgs) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
@@ -487,12 +432,6 @@ func (i *jobIamBindingConditionPtrType) ToJobIamBindingConditionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionPtrOutput)
 }
 
-func (i *jobIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobIamBindingCondition] {
-	return pulumix.Output[*JobIamBindingCondition]{
-		OutputState: i.ToJobIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (JobIamBindingConditionOutput) ElementType() reflect.Type {
@@ -515,12 +454,6 @@ func (o JobIamBindingConditionOutput) ToJobIamBindingConditionPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamBindingCondition) *JobIamBindingCondition {
 		return &v
 	}).(JobIamBindingConditionPtrOutput)
-}
-
-func (o JobIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobIamBindingCondition] {
-	return pulumix.Output[JobIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -547,12 +480,6 @@ func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutput() Job
 
 func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o JobIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamBindingCondition] {
-	return pulumix.Output[*JobIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIamBindingConditionPtrOutput) Elem() JobIamBindingConditionOutput {
@@ -627,12 +554,6 @@ func (i JobIamMemberConditionArgs) ToJobIamMemberConditionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionOutput)
 }
 
-func (i JobIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobIamMemberCondition] {
-	return pulumix.Output[JobIamMemberCondition]{
-		OutputState: i.ToJobIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobIamMemberConditionArgs) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
 	return i.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -674,12 +595,6 @@ func (i *jobIamMemberConditionPtrType) ToJobIamMemberConditionPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionPtrOutput)
 }
 
-func (i *jobIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobIamMemberCondition] {
-	return pulumix.Output[*JobIamMemberCondition]{
-		OutputState: i.ToJobIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (JobIamMemberConditionOutput) ElementType() reflect.Type {
@@ -702,12 +617,6 @@ func (o JobIamMemberConditionOutput) ToJobIamMemberConditionPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamMemberCondition) *JobIamMemberCondition {
 		return &v
 	}).(JobIamMemberConditionPtrOutput)
-}
-
-func (o JobIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobIamMemberCondition] {
-	return pulumix.Output[JobIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -734,12 +643,6 @@ func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutput() JobIa
 
 func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o JobIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamMemberCondition] {
-	return pulumix.Output[*JobIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobIamMemberConditionPtrOutput) Elem() JobIamMemberConditionOutput {
@@ -828,12 +731,6 @@ func (i JobLatestCreatedExecutionArgs) ToJobLatestCreatedExecutionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobLatestCreatedExecutionOutput)
 }
 
-func (i JobLatestCreatedExecutionArgs) ToOutput(ctx context.Context) pulumix.Output[JobLatestCreatedExecution] {
-	return pulumix.Output[JobLatestCreatedExecution]{
-		OutputState: i.ToJobLatestCreatedExecutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobLatestCreatedExecutionArrayInput is an input type that accepts JobLatestCreatedExecutionArray and JobLatestCreatedExecutionArrayOutput values.
 // You can construct a concrete instance of `JobLatestCreatedExecutionArrayInput` via:
 //
@@ -859,12 +756,6 @@ func (i JobLatestCreatedExecutionArray) ToJobLatestCreatedExecutionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobLatestCreatedExecutionArrayOutput)
 }
 
-func (i JobLatestCreatedExecutionArray) ToOutput(ctx context.Context) pulumix.Output[[]JobLatestCreatedExecution] {
-	return pulumix.Output[[]JobLatestCreatedExecution]{
-		OutputState: i.ToJobLatestCreatedExecutionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobLatestCreatedExecutionOutput struct{ *pulumi.OutputState }
 
 func (JobLatestCreatedExecutionOutput) ElementType() reflect.Type {
@@ -877,12 +768,6 @@ func (o JobLatestCreatedExecutionOutput) ToJobLatestCreatedExecutionOutput() Job
 
 func (o JobLatestCreatedExecutionOutput) ToJobLatestCreatedExecutionOutputWithContext(ctx context.Context) JobLatestCreatedExecutionOutput {
 	return o
-}
-
-func (o JobLatestCreatedExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[JobLatestCreatedExecution] {
-	return pulumix.Output[JobLatestCreatedExecution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -916,12 +801,6 @@ func (o JobLatestCreatedExecutionArrayOutput) ToJobLatestCreatedExecutionArrayOu
 
 func (o JobLatestCreatedExecutionArrayOutput) ToJobLatestCreatedExecutionArrayOutputWithContext(ctx context.Context) JobLatestCreatedExecutionArrayOutput {
 	return o
-}
-
-func (o JobLatestCreatedExecutionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobLatestCreatedExecution] {
-	return pulumix.Output[[]JobLatestCreatedExecution]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobLatestCreatedExecutionArrayOutput) Index(i pulumi.IntInput) JobLatestCreatedExecutionOutput {
@@ -995,12 +874,6 @@ func (i JobTemplateArgs) ToJobTemplateOutputWithContext(ctx context.Context) Job
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateOutput)
 }
 
-func (i JobTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplate] {
-	return pulumix.Output[JobTemplate]{
-		OutputState: i.ToJobTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateArgs) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
 	return i.ToJobTemplatePtrOutputWithContext(context.Background())
 }
@@ -1042,12 +915,6 @@ func (i *jobTemplatePtrType) ToJobTemplatePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplatePtrOutput)
 }
 
-func (i *jobTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplate] {
-	return pulumix.Output[*JobTemplate]{
-		OutputState: i.ToJobTemplatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateOutput) ElementType() reflect.Type {
@@ -1070,12 +937,6 @@ func (o JobTemplateOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplate) *JobTemplate {
 		return &v
 	}).(JobTemplatePtrOutput)
-}
-
-func (o JobTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplate] {
-	return pulumix.Output[JobTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -1123,12 +984,6 @@ func (o JobTemplatePtrOutput) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
 
 func (o JobTemplatePtrOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput {
 	return o
-}
-
-func (o JobTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplate] {
-	return pulumix.Output[*JobTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplatePtrOutput) Elem() JobTemplateOutput {
@@ -1270,12 +1125,6 @@ func (i JobTemplateTemplateArgs) ToJobTemplateTemplateOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateOutput)
 }
 
-func (i JobTemplateTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplate] {
-	return pulumix.Output[JobTemplateTemplate]{
-		OutputState: i.ToJobTemplateTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateTemplateArgs) ToJobTemplateTemplatePtrOutput() JobTemplateTemplatePtrOutput {
 	return i.ToJobTemplateTemplatePtrOutputWithContext(context.Background())
 }
@@ -1317,12 +1166,6 @@ func (i *jobTemplateTemplatePtrType) ToJobTemplateTemplatePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplatePtrOutput)
 }
 
-func (i *jobTemplateTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplate] {
-	return pulumix.Output[*JobTemplateTemplate]{
-		OutputState: i.ToJobTemplateTemplatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateOutput) ElementType() reflect.Type {
@@ -1345,12 +1188,6 @@ func (o JobTemplateTemplateOutput) ToJobTemplateTemplatePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplate) *JobTemplateTemplate {
 		return &v
 	}).(JobTemplateTemplatePtrOutput)
-}
-
-func (o JobTemplateTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplate] {
-	return pulumix.Output[JobTemplateTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Holds the single container that defines the unit of execution for this task.
@@ -1410,12 +1247,6 @@ func (o JobTemplateTemplatePtrOutput) ToJobTemplateTemplatePtrOutput() JobTempla
 
 func (o JobTemplateTemplatePtrOutput) ToJobTemplateTemplatePtrOutputWithContext(ctx context.Context) JobTemplateTemplatePtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplate] {
-	return pulumix.Output[*JobTemplateTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplatePtrOutput) Elem() JobTemplateTemplateOutput {
@@ -1588,12 +1419,6 @@ func (i JobTemplateTemplateContainerArgs) ToJobTemplateTemplateContainerOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerOutput)
 }
 
-func (i JobTemplateTemplateContainerArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainer] {
-	return pulumix.Output[JobTemplateTemplateContainer]{
-		OutputState: i.ToJobTemplateTemplateContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateContainerArrayInput is an input type that accepts JobTemplateTemplateContainerArray and JobTemplateTemplateContainerArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerArrayInput` via:
 //
@@ -1619,12 +1444,6 @@ func (i JobTemplateTemplateContainerArray) ToJobTemplateTemplateContainerArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerArrayOutput)
 }
 
-func (i JobTemplateTemplateContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainer] {
-	return pulumix.Output[[]JobTemplateTemplateContainer]{
-		OutputState: i.ToJobTemplateTemplateContainerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerOutput) ElementType() reflect.Type {
@@ -1637,12 +1456,6 @@ func (o JobTemplateTemplateContainerOutput) ToJobTemplateTemplateContainerOutput
 
 func (o JobTemplateTemplateContainerOutput) ToJobTemplateTemplateContainerOutputWithContext(ctx context.Context) JobTemplateTemplateContainerOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainer] {
-	return pulumix.Output[JobTemplateTemplateContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -1709,12 +1522,6 @@ func (o JobTemplateTemplateContainerArrayOutput) ToJobTemplateTemplateContainerA
 	return o
 }
 
-func (o JobTemplateTemplateContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainer] {
-	return pulumix.Output[[]JobTemplateTemplateContainer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateContainer {
 		return vs[0].([]JobTemplateTemplateContainer)[vs[1].(int)]
@@ -1764,12 +1571,6 @@ func (i JobTemplateTemplateContainerEnvArgs) ToJobTemplateTemplateContainerEnvOu
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvOutput)
 }
 
-func (i JobTemplateTemplateContainerEnvArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnv] {
-	return pulumix.Output[JobTemplateTemplateContainerEnv]{
-		OutputState: i.ToJobTemplateTemplateContainerEnvOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateContainerEnvArrayInput is an input type that accepts JobTemplateTemplateContainerEnvArray and JobTemplateTemplateContainerEnvArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerEnvArrayInput` via:
 //
@@ -1795,12 +1596,6 @@ func (i JobTemplateTemplateContainerEnvArray) ToJobTemplateTemplateContainerEnvA
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvArrayOutput)
 }
 
-func (i JobTemplateTemplateContainerEnvArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerEnv] {
-	return pulumix.Output[[]JobTemplateTemplateContainerEnv]{
-		OutputState: i.ToJobTemplateTemplateContainerEnvArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerEnvOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerEnvOutput) ElementType() reflect.Type {
@@ -1813,12 +1608,6 @@ func (o JobTemplateTemplateContainerEnvOutput) ToJobTemplateTemplateContainerEnv
 
 func (o JobTemplateTemplateContainerEnvOutput) ToJobTemplateTemplateContainerEnvOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerEnvOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnv] {
-	return pulumix.Output[JobTemplateTemplateContainerEnv]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -1851,12 +1640,6 @@ func (o JobTemplateTemplateContainerEnvArrayOutput) ToJobTemplateTemplateContain
 
 func (o JobTemplateTemplateContainerEnvArrayOutput) ToJobTemplateTemplateContainerEnvArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvArrayOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerEnvArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerEnv] {
-	return pulumix.Output[[]JobTemplateTemplateContainerEnv]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerEnvOutput {
@@ -1900,12 +1683,6 @@ func (i JobTemplateTemplateContainerEnvValueSourceArgs) ToJobTemplateTemplateCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourceOutput)
 }
 
-func (i JobTemplateTemplateContainerEnvValueSourceArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSource] {
-	return pulumix.Output[JobTemplateTemplateContainerEnvValueSource]{
-		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateTemplateContainerEnvValueSourceArgs) ToJobTemplateTemplateContainerEnvValueSourcePtrOutput() JobTemplateTemplateContainerEnvValueSourcePtrOutput {
 	return i.ToJobTemplateTemplateContainerEnvValueSourcePtrOutputWithContext(context.Background())
 }
@@ -1947,12 +1724,6 @@ func (i *jobTemplateTemplateContainerEnvValueSourcePtrType) ToJobTemplateTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourcePtrOutput)
 }
 
-func (i *jobTemplateTemplateContainerEnvValueSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSource] {
-	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSource]{
-		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerEnvValueSourceOutput) ElementType() reflect.Type {
@@ -1977,12 +1748,6 @@ func (o JobTemplateTemplateContainerEnvValueSourceOutput) ToJobTemplateTemplateC
 	}).(JobTemplateTemplateContainerEnvValueSourcePtrOutput)
 }
 
-func (o JobTemplateTemplateContainerEnvValueSourceOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSource] {
-	return pulumix.Output[JobTemplateTemplateContainerEnvValueSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Selects a secret and a specific version from Cloud Secret Manager.
 // Structure is documented below.
 func (o JobTemplateTemplateContainerEnvValueSourceOutput) SecretKeyRef() JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
@@ -2003,12 +1768,6 @@ func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) ToJobTemplateTempla
 
 func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) ToJobTemplateTemplateContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvValueSourcePtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSource] {
-	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) Elem() JobTemplateTemplateContainerEnvValueSourceOutput {
@@ -2069,12 +1828,6 @@ func (i JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToJobTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
-func (i JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput() JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return i.ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
 }
@@ -2116,12 +1869,6 @@ func (i *jobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToJobTem
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
-func (i *jobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
@@ -2146,12 +1893,6 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToJobTempl
 	}).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
-func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
@@ -2174,12 +1915,6 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToJobTe
 
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
@@ -2249,12 +1984,6 @@ func (i JobTemplateTemplateContainerPortArgs) ToJobTemplateTemplateContainerPort
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerPortOutput)
 }
 
-func (i JobTemplateTemplateContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerPort] {
-	return pulumix.Output[JobTemplateTemplateContainerPort]{
-		OutputState: i.ToJobTemplateTemplateContainerPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateContainerPortArrayInput is an input type that accepts JobTemplateTemplateContainerPortArray and JobTemplateTemplateContainerPortArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerPortArrayInput` via:
 //
@@ -2280,12 +2009,6 @@ func (i JobTemplateTemplateContainerPortArray) ToJobTemplateTemplateContainerPor
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerPortArrayOutput)
 }
 
-func (i JobTemplateTemplateContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerPort] {
-	return pulumix.Output[[]JobTemplateTemplateContainerPort]{
-		OutputState: i.ToJobTemplateTemplateContainerPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerPortOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerPortOutput) ElementType() reflect.Type {
@@ -2298,12 +2021,6 @@ func (o JobTemplateTemplateContainerPortOutput) ToJobTemplateTemplateContainerPo
 
 func (o JobTemplateTemplateContainerPortOutput) ToJobTemplateTemplateContainerPortOutputWithContext(ctx context.Context) JobTemplateTemplateContainerPortOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerPort] {
-	return pulumix.Output[JobTemplateTemplateContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -2328,12 +2045,6 @@ func (o JobTemplateTemplateContainerPortArrayOutput) ToJobTemplateTemplateContai
 
 func (o JobTemplateTemplateContainerPortArrayOutput) ToJobTemplateTemplateContainerPortArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerPortArrayOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerPort] {
-	return pulumix.Output[[]JobTemplateTemplateContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerPortOutput {
@@ -2373,12 +2084,6 @@ func (i JobTemplateTemplateContainerResourcesArgs) ToJobTemplateTemplateContaine
 
 func (i JobTemplateTemplateContainerResourcesArgs) ToJobTemplateTemplateContainerResourcesOutputWithContext(ctx context.Context) JobTemplateTemplateContainerResourcesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerResourcesOutput)
-}
-
-func (i JobTemplateTemplateContainerResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerResources] {
-	return pulumix.Output[JobTemplateTemplateContainerResources]{
-		OutputState: i.ToJobTemplateTemplateContainerResourcesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i JobTemplateTemplateContainerResourcesArgs) ToJobTemplateTemplateContainerResourcesPtrOutput() JobTemplateTemplateContainerResourcesPtrOutput {
@@ -2422,12 +2127,6 @@ func (i *jobTemplateTemplateContainerResourcesPtrType) ToJobTemplateTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
-func (i *jobTemplateTemplateContainerResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerResources] {
-	return pulumix.Output[*JobTemplateTemplateContainerResources]{
-		OutputState: i.ToJobTemplateTemplateContainerResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerResourcesOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerResourcesOutput) ElementType() reflect.Type {
@@ -2452,12 +2151,6 @@ func (o JobTemplateTemplateContainerResourcesOutput) ToJobTemplateTemplateContai
 	}).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
-func (o JobTemplateTemplateContainerResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerResources] {
-	return pulumix.Output[JobTemplateTemplateContainerResources]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o JobTemplateTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
@@ -2475,12 +2168,6 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) ToJobTemplateTemplateCon
 
 func (o JobTemplateTemplateContainerResourcesPtrOutput) ToJobTemplateTemplateContainerResourcesPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerResourcesPtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerResources] {
-	return pulumix.Output[*JobTemplateTemplateContainerResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateContainerResourcesPtrOutput) Elem() JobTemplateTemplateContainerResourcesOutput {
@@ -2540,12 +2227,6 @@ func (i JobTemplateTemplateContainerVolumeMountArgs) ToJobTemplateTemplateContai
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerVolumeMountOutput)
 }
 
-func (i JobTemplateTemplateContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerVolumeMount] {
-	return pulumix.Output[JobTemplateTemplateContainerVolumeMount]{
-		OutputState: i.ToJobTemplateTemplateContainerVolumeMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateContainerVolumeMountArrayInput is an input type that accepts JobTemplateTemplateContainerVolumeMountArray and JobTemplateTemplateContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerVolumeMountArrayInput` via:
 //
@@ -2571,12 +2252,6 @@ func (i JobTemplateTemplateContainerVolumeMountArray) ToJobTemplateTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerVolumeMountArrayOutput)
 }
 
-func (i JobTemplateTemplateContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerVolumeMount] {
-	return pulumix.Output[[]JobTemplateTemplateContainerVolumeMount]{
-		OutputState: i.ToJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -2589,12 +2264,6 @@ func (o JobTemplateTemplateContainerVolumeMountOutput) ToJobTemplateTemplateCont
 
 func (o JobTemplateTemplateContainerVolumeMountOutput) ToJobTemplateTemplateContainerVolumeMountOutputWithContext(ctx context.Context) JobTemplateTemplateContainerVolumeMountOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerVolumeMount] {
-	return pulumix.Output[JobTemplateTemplateContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
@@ -2619,12 +2288,6 @@ func (o JobTemplateTemplateContainerVolumeMountArrayOutput) ToJobTemplateTemplat
 
 func (o JobTemplateTemplateContainerVolumeMountArrayOutput) ToJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerVolumeMountArrayOutput {
 	return o
-}
-
-func (o JobTemplateTemplateContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerVolumeMount] {
-	return pulumix.Output[[]JobTemplateTemplateContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerVolumeMountOutput {
@@ -2680,12 +2343,6 @@ func (i JobTemplateTemplateVolumeArgs) ToJobTemplateTemplateVolumeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeOutput)
 }
 
-func (i JobTemplateTemplateVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolume] {
-	return pulumix.Output[JobTemplateTemplateVolume]{
-		OutputState: i.ToJobTemplateTemplateVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateVolumeArrayInput is an input type that accepts JobTemplateTemplateVolumeArray and JobTemplateTemplateVolumeArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateVolumeArrayInput` via:
 //
@@ -2711,12 +2368,6 @@ func (i JobTemplateTemplateVolumeArray) ToJobTemplateTemplateVolumeArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeArrayOutput)
 }
 
-func (i JobTemplateTemplateVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolume] {
-	return pulumix.Output[[]JobTemplateTemplateVolume]{
-		OutputState: i.ToJobTemplateTemplateVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVolumeOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeOutput) ElementType() reflect.Type {
@@ -2729,12 +2380,6 @@ func (o JobTemplateTemplateVolumeOutput) ToJobTemplateTemplateVolumeOutput() Job
 
 func (o JobTemplateTemplateVolumeOutput) ToJobTemplateTemplateVolumeOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolume] {
-	return pulumix.Output[JobTemplateTemplateVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -2774,12 +2419,6 @@ func (o JobTemplateTemplateVolumeArrayOutput) ToJobTemplateTemplateVolumeArrayOu
 	return o
 }
 
-func (o JobTemplateTemplateVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolume] {
-	return pulumix.Output[[]JobTemplateTemplateVolume]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobTemplateTemplateVolumeArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateVolume {
 		return vs[0].([]JobTemplateTemplateVolume)[vs[1].(int)]
@@ -2817,12 +2456,6 @@ func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToJobTemplateTemplateVolu
 
 func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeCloudSqlInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeCloudSqlInstanceOutput)
-}
-
-func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance]{
-		OutputState: i.ToJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToJobTemplateTemplateVolumeCloudSqlInstancePtrOutput() JobTemplateTemplateVolumeCloudSqlInstancePtrOutput {
@@ -2866,12 +2499,6 @@ func (i *jobTemplateTemplateVolumeCloudSqlInstancePtrType) ToJobTemplateTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-func (i *jobTemplateTemplateVolumeCloudSqlInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance]{
-		OutputState: i.ToJobTemplateTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
@@ -2896,12 +2523,6 @@ func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) ToJobTemplateTemplateVo
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
@@ -2919,12 +2540,6 @@ func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) ToJobTemplateTemplat
 
 func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) ToJobTemplateTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeCloudSqlInstancePtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) Elem() JobTemplateTemplateVolumeCloudSqlInstanceOutput {
@@ -2988,12 +2603,6 @@ func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyD
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirOutput)
 }
 
-func (i JobTemplateTemplateVolumeEmptyDirArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeEmptyDir] {
-	return pulumix.Output[JobTemplateTemplateVolumeEmptyDir]{
-		OutputState: i.ToJobTemplateTemplateVolumeEmptyDirOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return i.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
 }
@@ -3035,12 +2644,6 @@ func (i *jobTemplateTemplateVolumeEmptyDirPtrType) ToJobTemplateTemplateVolumeEm
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
 }
 
-func (i *jobTemplateTemplateVolumeEmptyDirPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeEmptyDir] {
-	return pulumix.Output[*JobTemplateTemplateVolumeEmptyDir]{
-		OutputState: i.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
@@ -3063,12 +2666,6 @@ func (o JobTemplateTemplateVolumeEmptyDirOutput) ToJobTemplateTemplateVolumeEmpt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeEmptyDir) *JobTemplateTemplateVolumeEmptyDir {
 		return &v
 	}).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
-}
-
-func (o JobTemplateTemplateVolumeEmptyDirOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeEmptyDir] {
-	return pulumix.Output[JobTemplateTemplateVolumeEmptyDir]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The different types of medium supported for EmptyDir.
@@ -3095,12 +2692,6 @@ func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToJobTemplateTemplateVolumeE
 
 func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeEmptyDir] {
-	return pulumix.Output[*JobTemplateTemplateVolumeEmptyDir]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) Elem() JobTemplateTemplateVolumeEmptyDirOutput {
@@ -3178,12 +2769,6 @@ func (i JobTemplateTemplateVolumeSecretArgs) ToJobTemplateTemplateVolumeSecretOu
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretOutput)
 }
 
-func (i JobTemplateTemplateVolumeSecretArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecret] {
-	return pulumix.Output[JobTemplateTemplateVolumeSecret]{
-		OutputState: i.ToJobTemplateTemplateVolumeSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateTemplateVolumeSecretArgs) ToJobTemplateTemplateVolumeSecretPtrOutput() JobTemplateTemplateVolumeSecretPtrOutput {
 	return i.ToJobTemplateTemplateVolumeSecretPtrOutputWithContext(context.Background())
 }
@@ -3225,12 +2810,6 @@ func (i *jobTemplateTemplateVolumeSecretPtrType) ToJobTemplateTemplateVolumeSecr
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretPtrOutput)
 }
 
-func (i *jobTemplateTemplateVolumeSecretPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeSecret] {
-	return pulumix.Output[*JobTemplateTemplateVolumeSecret]{
-		OutputState: i.ToJobTemplateTemplateVolumeSecretPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVolumeSecretOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeSecretOutput) ElementType() reflect.Type {
@@ -3253,12 +2832,6 @@ func (o JobTemplateTemplateVolumeSecretOutput) ToJobTemplateTemplateVolumeSecret
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeSecret) *JobTemplateTemplateVolumeSecret {
 		return &v
 	}).(JobTemplateTemplateVolumeSecretPtrOutput)
-}
-
-func (o JobTemplateTemplateVolumeSecretOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecret] {
-	return pulumix.Output[JobTemplateTemplateVolumeSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -3289,12 +2862,6 @@ func (o JobTemplateTemplateVolumeSecretPtrOutput) ToJobTemplateTemplateVolumeSec
 
 func (o JobTemplateTemplateVolumeSecretPtrOutput) ToJobTemplateTemplateVolumeSecretPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeSecretPtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVolumeSecretPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeSecret] {
-	return pulumix.Output[*JobTemplateTemplateVolumeSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateVolumeSecretPtrOutput) Elem() JobTemplateTemplateVolumeSecretOutput {
@@ -3379,12 +2946,6 @@ func (i JobTemplateTemplateVolumeSecretItemArgs) ToJobTemplateTemplateVolumeSecr
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretItemOutput)
 }
 
-func (i JobTemplateTemplateVolumeSecretItemArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecretItem] {
-	return pulumix.Output[JobTemplateTemplateVolumeSecretItem]{
-		OutputState: i.ToJobTemplateTemplateVolumeSecretItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateVolumeSecretItemArrayInput is an input type that accepts JobTemplateTemplateVolumeSecretItemArray and JobTemplateTemplateVolumeSecretItemArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateVolumeSecretItemArrayInput` via:
 //
@@ -3410,12 +2971,6 @@ func (i JobTemplateTemplateVolumeSecretItemArray) ToJobTemplateTemplateVolumeSec
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretItemArrayOutput)
 }
 
-func (i JobTemplateTemplateVolumeSecretItemArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolumeSecretItem] {
-	return pulumix.Output[[]JobTemplateTemplateVolumeSecretItem]{
-		OutputState: i.ToJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVolumeSecretItemOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeSecretItemOutput) ElementType() reflect.Type {
@@ -3428,12 +2983,6 @@ func (o JobTemplateTemplateVolumeSecretItemOutput) ToJobTemplateTemplateVolumeSe
 
 func (o JobTemplateTemplateVolumeSecretItemOutput) ToJobTemplateTemplateVolumeSecretItemOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeSecretItemOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVolumeSecretItemOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecretItem] {
-	return pulumix.Output[JobTemplateTemplateVolumeSecretItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
@@ -3463,12 +3012,6 @@ func (o JobTemplateTemplateVolumeSecretItemArrayOutput) ToJobTemplateTemplateVol
 
 func (o JobTemplateTemplateVolumeSecretItemArrayOutput) ToJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeSecretItemArrayOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVolumeSecretItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolumeSecretItem] {
-	return pulumix.Output[[]JobTemplateTemplateVolumeSecretItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateVolumeSecretItemOutput {
@@ -3522,12 +3065,6 @@ func (i JobTemplateTemplateVpcAccessArgs) ToJobTemplateTemplateVpcAccessOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessOutput)
 }
 
-func (i JobTemplateTemplateVpcAccessArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccess] {
-	return pulumix.Output[JobTemplateTemplateVpcAccess]{
-		OutputState: i.ToJobTemplateTemplateVpcAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JobTemplateTemplateVpcAccessArgs) ToJobTemplateTemplateVpcAccessPtrOutput() JobTemplateTemplateVpcAccessPtrOutput {
 	return i.ToJobTemplateTemplateVpcAccessPtrOutputWithContext(context.Background())
 }
@@ -3569,12 +3106,6 @@ func (i *jobTemplateTemplateVpcAccessPtrType) ToJobTemplateTemplateVpcAccessPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessPtrOutput)
 }
 
-func (i *jobTemplateTemplateVpcAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVpcAccess] {
-	return pulumix.Output[*JobTemplateTemplateVpcAccess]{
-		OutputState: i.ToJobTemplateTemplateVpcAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVpcAccessOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVpcAccessOutput) ElementType() reflect.Type {
@@ -3597,12 +3128,6 @@ func (o JobTemplateTemplateVpcAccessOutput) ToJobTemplateTemplateVpcAccessPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVpcAccess) *JobTemplateTemplateVpcAccess {
 		return &v
 	}).(JobTemplateTemplateVpcAccessPtrOutput)
-}
-
-func (o JobTemplateTemplateVpcAccessOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccess] {
-	return pulumix.Output[JobTemplateTemplateVpcAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
@@ -3636,12 +3161,6 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) ToJobTemplateTemplateVpcAccessPtr
 
 func (o JobTemplateTemplateVpcAccessPtrOutput) ToJobTemplateTemplateVpcAccessPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessPtrOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVpcAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVpcAccess] {
-	return pulumix.Output[*JobTemplateTemplateVpcAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateVpcAccessPtrOutput) Elem() JobTemplateTemplateVpcAccessOutput {
@@ -3739,12 +3258,6 @@ func (i JobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToJobTemplateTemplateV
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessNetworkInterfaceOutput)
 }
 
-func (i JobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface]{
-		OutputState: i.ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput is an input type that accepts JobTemplateTemplateVpcAccessNetworkInterfaceArray and JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput` via:
 //
@@ -3770,12 +3283,6 @@ func (i JobTemplateTemplateVpcAccessNetworkInterfaceArray) ToJobTemplateTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput)
 }
 
-func (i JobTemplateTemplateVpcAccessNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface]{
-		OutputState: i.ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTemplateTemplateVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -3788,12 +3295,6 @@ func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToJobTemplateTemplat
 
 func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
@@ -3829,12 +3330,6 @@ func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToJobTemplateTe
 
 func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
 	return o
-}
-
-func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
@@ -3922,12 +3417,6 @@ func (i JobTerminalConditionArgs) ToJobTerminalConditionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(JobTerminalConditionOutput)
 }
 
-func (i JobTerminalConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobTerminalCondition] {
-	return pulumix.Output[JobTerminalCondition]{
-		OutputState: i.ToJobTerminalConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobTerminalConditionArrayInput is an input type that accepts JobTerminalConditionArray and JobTerminalConditionArrayOutput values.
 // You can construct a concrete instance of `JobTerminalConditionArrayInput` via:
 //
@@ -3953,12 +3442,6 @@ func (i JobTerminalConditionArray) ToJobTerminalConditionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(JobTerminalConditionArrayOutput)
 }
 
-func (i JobTerminalConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTerminalCondition] {
-	return pulumix.Output[[]JobTerminalCondition]{
-		OutputState: i.ToJobTerminalConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTerminalConditionOutput struct{ *pulumi.OutputState }
 
 func (JobTerminalConditionOutput) ElementType() reflect.Type {
@@ -3971,12 +3454,6 @@ func (o JobTerminalConditionOutput) ToJobTerminalConditionOutput() JobTerminalCo
 
 func (o JobTerminalConditionOutput) ToJobTerminalConditionOutputWithContext(ctx context.Context) JobTerminalConditionOutput {
 	return o
-}
-
-func (o JobTerminalConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobTerminalCondition] {
-	return pulumix.Output[JobTerminalCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4042,12 +3519,6 @@ func (o JobTerminalConditionArrayOutput) ToJobTerminalConditionArrayOutputWithCo
 	return o
 }
 
-func (o JobTerminalConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTerminalCondition] {
-	return pulumix.Output[[]JobTerminalCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobTerminalConditionArrayOutput) Index(i pulumi.IntInput) JobTerminalConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTerminalCondition {
 		return vs[0].([]JobTerminalCondition)[vs[1].(int)]
@@ -4091,12 +3562,6 @@ func (i ServiceBinaryAuthorizationArgs) ToServiceBinaryAuthorizationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBinaryAuthorizationOutput)
 }
 
-func (i ServiceBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceBinaryAuthorization] {
-	return pulumix.Output[ServiceBinaryAuthorization]{
-		OutputState: i.ToServiceBinaryAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceBinaryAuthorizationArgs) ToServiceBinaryAuthorizationPtrOutput() ServiceBinaryAuthorizationPtrOutput {
 	return i.ToServiceBinaryAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -4138,12 +3603,6 @@ func (i *serviceBinaryAuthorizationPtrType) ToServiceBinaryAuthorizationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBinaryAuthorizationPtrOutput)
 }
 
-func (i *serviceBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinaryAuthorization] {
-	return pulumix.Output[*ServiceBinaryAuthorization]{
-		OutputState: i.ToServiceBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceBinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (ServiceBinaryAuthorizationOutput) ElementType() reflect.Type {
@@ -4168,12 +3627,6 @@ func (o ServiceBinaryAuthorizationOutput) ToServiceBinaryAuthorizationPtrOutputW
 	}).(ServiceBinaryAuthorizationPtrOutput)
 }
 
-func (o ServiceBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBinaryAuthorization] {
-	return pulumix.Output[ServiceBinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o ServiceBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceBinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
@@ -4196,12 +3649,6 @@ func (o ServiceBinaryAuthorizationPtrOutput) ToServiceBinaryAuthorizationPtrOutp
 
 func (o ServiceBinaryAuthorizationPtrOutput) ToServiceBinaryAuthorizationPtrOutputWithContext(ctx context.Context) ServiceBinaryAuthorizationPtrOutput {
 	return o
-}
-
-func (o ServiceBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinaryAuthorization] {
-	return pulumix.Output[*ServiceBinaryAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceBinaryAuthorizationPtrOutput) Elem() ServiceBinaryAuthorizationOutput {
@@ -4313,12 +3760,6 @@ func (i ServiceConditionArgs) ToServiceConditionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConditionOutput)
 }
 
-func (i ServiceConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceCondition] {
-	return pulumix.Output[ServiceCondition]{
-		OutputState: i.ToServiceConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceConditionArrayInput is an input type that accepts ServiceConditionArray and ServiceConditionArrayOutput values.
 // You can construct a concrete instance of `ServiceConditionArrayInput` via:
 //
@@ -4344,12 +3785,6 @@ func (i ServiceConditionArray) ToServiceConditionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConditionArrayOutput)
 }
 
-func (i ServiceConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceCondition] {
-	return pulumix.Output[[]ServiceCondition]{
-		OutputState: i.ToServiceConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceConditionOutput) ElementType() reflect.Type {
@@ -4362,12 +3797,6 @@ func (o ServiceConditionOutput) ToServiceConditionOutput() ServiceConditionOutpu
 
 func (o ServiceConditionOutput) ToServiceConditionOutputWithContext(ctx context.Context) ServiceConditionOutput {
 	return o
-}
-
-func (o ServiceConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceCondition] {
-	return pulumix.Output[ServiceCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4433,12 +3862,6 @@ func (o ServiceConditionArrayOutput) ToServiceConditionArrayOutputWithContext(ct
 	return o
 }
 
-func (o ServiceConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceCondition] {
-	return pulumix.Output[[]ServiceCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceConditionArrayOutput) Index(i pulumi.IntInput) ServiceConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCondition {
 		return vs[0].([]ServiceCondition)[vs[1].(int)]
@@ -4478,12 +3901,6 @@ func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutput() Ser
 
 func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutputWithContext(ctx context.Context) ServiceIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput)
-}
-
-func (i ServiceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
-	return pulumix.Output[ServiceIamBindingCondition]{
-		OutputState: i.ToServiceIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
@@ -4527,12 +3944,6 @@ func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionPtrOutput)
 }
 
-func (i *serviceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
-	return pulumix.Output[*ServiceIamBindingCondition]{
-		OutputState: i.ToServiceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -4555,12 +3966,6 @@ func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBindingCondition) *ServiceIamBindingCondition {
 		return &v
 	}).(ServiceIamBindingConditionPtrOutput)
-}
-
-func (o ServiceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
-	return pulumix.Output[ServiceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4587,12 +3992,6 @@ func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutp
 
 func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o ServiceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
-	return pulumix.Output[*ServiceIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
@@ -4667,12 +4066,6 @@ func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput)
 }
 
-func (i ServiceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
-	return pulumix.Output[ServiceIamMemberCondition]{
-		OutputState: i.ToServiceIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
 	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -4714,12 +4107,6 @@ func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionPtrOutput)
 }
 
-func (i *serviceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
-	return pulumix.Output[*ServiceIamMemberCondition]{
-		OutputState: i.ToServiceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -4742,12 +4129,6 @@ func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMemberCondition) *ServiceIamMemberCondition {
 		return &v
 	}).(ServiceIamMemberConditionPtrOutput)
-}
-
-func (o ServiceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
-	return pulumix.Output[ServiceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4774,12 +4155,6 @@ func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput
 
 func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o ServiceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
-	return pulumix.Output[*ServiceIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {
@@ -4924,12 +4299,6 @@ func (i ServiceTemplateArgs) ToServiceTemplateOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateOutput)
 }
 
-func (i ServiceTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplate] {
-	return pulumix.Output[ServiceTemplate]{
-		OutputState: i.ToServiceTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateArgs) ToServiceTemplatePtrOutput() ServiceTemplatePtrOutput {
 	return i.ToServiceTemplatePtrOutputWithContext(context.Background())
 }
@@ -4971,12 +4340,6 @@ func (i *serviceTemplatePtrType) ToServiceTemplatePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplatePtrOutput)
 }
 
-func (i *serviceTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplate] {
-	return pulumix.Output[*ServiceTemplate]{
-		OutputState: i.ToServiceTemplatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateOutput) ElementType() reflect.Type {
@@ -4999,12 +4362,6 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplate) *ServiceTemplate {
 		return &v
 	}).(ServiceTemplatePtrOutput)
-}
-
-func (o ServiceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplate] {
-	return pulumix.Output[ServiceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -5096,12 +4453,6 @@ func (o ServiceTemplatePtrOutput) ToServiceTemplatePtrOutput() ServiceTemplatePt
 
 func (o ServiceTemplatePtrOutput) ToServiceTemplatePtrOutputWithContext(ctx context.Context) ServiceTemplatePtrOutput {
 	return o
-}
-
-func (o ServiceTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplate] {
-	return pulumix.Output[*ServiceTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
@@ -5345,12 +4696,6 @@ func (i ServiceTemplateContainerArgs) ToServiceTemplateContainerOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerOutput)
 }
 
-func (i ServiceTemplateContainerArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainer] {
-	return pulumix.Output[ServiceTemplateContainer]{
-		OutputState: i.ToServiceTemplateContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateContainerArrayInput is an input type that accepts ServiceTemplateContainerArray and ServiceTemplateContainerArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerArrayInput` via:
 //
@@ -5376,12 +4721,6 @@ func (i ServiceTemplateContainerArray) ToServiceTemplateContainerArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerArrayOutput)
 }
 
-func (i ServiceTemplateContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainer] {
-	return pulumix.Output[[]ServiceTemplateContainer]{
-		OutputState: i.ToServiceTemplateContainerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerOutput) ElementType() reflect.Type {
@@ -5394,12 +4733,6 @@ func (o ServiceTemplateContainerOutput) ToServiceTemplateContainerOutput() Servi
 
 func (o ServiceTemplateContainerOutput) ToServiceTemplateContainerOutputWithContext(ctx context.Context) ServiceTemplateContainerOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainer] {
-	return pulumix.Output[ServiceTemplateContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -5482,12 +4815,6 @@ func (o ServiceTemplateContainerArrayOutput) ToServiceTemplateContainerArrayOutp
 	return o
 }
 
-func (o ServiceTemplateContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainer] {
-	return pulumix.Output[[]ServiceTemplateContainer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateContainer {
 		return vs[0].([]ServiceTemplateContainer)[vs[1].(int)]
@@ -5537,12 +4864,6 @@ func (i ServiceTemplateContainerEnvArgs) ToServiceTemplateContainerEnvOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvOutput)
 }
 
-func (i ServiceTemplateContainerEnvArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnv] {
-	return pulumix.Output[ServiceTemplateContainerEnv]{
-		OutputState: i.ToServiceTemplateContainerEnvOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateContainerEnvArrayInput is an input type that accepts ServiceTemplateContainerEnvArray and ServiceTemplateContainerEnvArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerEnvArrayInput` via:
 //
@@ -5568,12 +4889,6 @@ func (i ServiceTemplateContainerEnvArray) ToServiceTemplateContainerEnvArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvArrayOutput)
 }
 
-func (i ServiceTemplateContainerEnvArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerEnv] {
-	return pulumix.Output[[]ServiceTemplateContainerEnv]{
-		OutputState: i.ToServiceTemplateContainerEnvArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerEnvOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerEnvOutput) ElementType() reflect.Type {
@@ -5586,12 +4901,6 @@ func (o ServiceTemplateContainerEnvOutput) ToServiceTemplateContainerEnvOutput()
 
 func (o ServiceTemplateContainerEnvOutput) ToServiceTemplateContainerEnvOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerEnvOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnv] {
-	return pulumix.Output[ServiceTemplateContainerEnv]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -5622,12 +4931,6 @@ func (o ServiceTemplateContainerEnvArrayOutput) ToServiceTemplateContainerEnvArr
 
 func (o ServiceTemplateContainerEnvArrayOutput) ToServiceTemplateContainerEnvArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerEnvArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerEnv] {
-	return pulumix.Output[[]ServiceTemplateContainerEnv]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerEnvOutput {
@@ -5671,12 +4974,6 @@ func (i ServiceTemplateContainerEnvValueSourceArgs) ToServiceTemplateContainerEn
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourceOutput)
 }
 
-func (i ServiceTemplateContainerEnvValueSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSource] {
-	return pulumix.Output[ServiceTemplateContainerEnvValueSource]{
-		OutputState: i.ToServiceTemplateContainerEnvValueSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerEnvValueSourceArgs) ToServiceTemplateContainerEnvValueSourcePtrOutput() ServiceTemplateContainerEnvValueSourcePtrOutput {
 	return i.ToServiceTemplateContainerEnvValueSourcePtrOutputWithContext(context.Background())
 }
@@ -5718,12 +5015,6 @@ func (i *serviceTemplateContainerEnvValueSourcePtrType) ToServiceTemplateContain
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourcePtrOutput)
 }
 
-func (i *serviceTemplateContainerEnvValueSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSource] {
-	return pulumix.Output[*ServiceTemplateContainerEnvValueSource]{
-		OutputState: i.ToServiceTemplateContainerEnvValueSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerEnvValueSourceOutput) ElementType() reflect.Type {
@@ -5748,12 +5039,6 @@ func (o ServiceTemplateContainerEnvValueSourceOutput) ToServiceTemplateContainer
 	}).(ServiceTemplateContainerEnvValueSourcePtrOutput)
 }
 
-func (o ServiceTemplateContainerEnvValueSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSource] {
-	return pulumix.Output[ServiceTemplateContainerEnvValueSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Selects a secret and a specific version from Cloud Secret Manager.
 // Structure is documented below.
 func (o ServiceTemplateContainerEnvValueSourceOutput) SecretKeyRef() ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
@@ -5774,12 +5059,6 @@ func (o ServiceTemplateContainerEnvValueSourcePtrOutput) ToServiceTemplateContai
 
 func (o ServiceTemplateContainerEnvValueSourcePtrOutput) ToServiceTemplateContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvValueSourcePtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerEnvValueSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSource] {
-	return pulumix.Output[*ServiceTemplateContainerEnvValueSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerEnvValueSourcePtrOutput) Elem() ServiceTemplateContainerEnvValueSourceOutput {
@@ -5840,12 +5119,6 @@ func (i ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToServiceTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
-func (i ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: i.ToServiceTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput() ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return i.ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
 }
@@ -5887,12 +5160,6 @@ func (i *serviceTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToServiceTem
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
-func (i *serviceTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: i.ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
@@ -5917,12 +5184,6 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToServiceTempl
 	}).(ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
-func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
@@ -5945,12 +5206,6 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToServiceTe
 
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
-	return pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
@@ -6040,12 +5295,6 @@ func (i ServiceTemplateContainerLivenessProbeArgs) ToServiceTemplateContainerLiv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeOutput)
 }
 
-func (i ServiceTemplateContainerLivenessProbeArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbe] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbe]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerLivenessProbeArgs) ToServiceTemplateContainerLivenessProbePtrOutput() ServiceTemplateContainerLivenessProbePtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbePtrOutputWithContext(context.Background())
 }
@@ -6087,12 +5336,6 @@ func (i *serviceTemplateContainerLivenessProbePtrType) ToServiceTemplateContaine
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbePtrOutput)
 }
 
-func (i *serviceTemplateContainerLivenessProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbe] {
-	return pulumix.Output[*ServiceTemplateContainerLivenessProbe]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerLivenessProbeOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeOutput) ElementType() reflect.Type {
@@ -6115,12 +5358,6 @@ func (o ServiceTemplateContainerLivenessProbeOutput) ToServiceTemplateContainerL
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbe {
 		return &v
 	}).(ServiceTemplateContainerLivenessProbePtrOutput)
-}
-
-func (o ServiceTemplateContainerLivenessProbeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbe] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -6171,12 +5408,6 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) ToServiceTemplateContain
 
 func (o ServiceTemplateContainerLivenessProbePtrOutput) ToServiceTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbePtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerLivenessProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbe] {
-	return pulumix.Output[*ServiceTemplateContainerLivenessProbe]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerLivenessProbePtrOutput) Elem() ServiceTemplateContainerLivenessProbeOutput {
@@ -6294,12 +5525,6 @@ func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContaine
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcOutput)
 }
 
-func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeGrpcOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
 }
@@ -6341,12 +5566,6 @@ func (i *serviceTemplateContainerLivenessProbeGrpcPtrType) ToServiceTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
 }
 
-func (i *serviceTemplateContainerLivenessProbeGrpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc] {
-	return pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
@@ -6369,12 +5588,6 @@ func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbeGrpc) *ServiceTemplateContainerLivenessProbeGrpc {
 		return &v
 	}).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
-}
-
-func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
@@ -6402,12 +5615,6 @@ func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToServiceTemplateCon
 
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc] {
-	return pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Elem() ServiceTemplateContainerLivenessProbeGrpcOutput {
@@ -6488,12 +5695,6 @@ func (i ServiceTemplateContainerLivenessProbeHttpGetArgs) ToServiceTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetOutput)
 }
 
-func (i ServiceTemplateContainerLivenessProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerLivenessProbeHttpGetArgs) ToServiceTemplateContainerLivenessProbeHttpGetPtrOutput() ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
 }
@@ -6535,12 +5736,6 @@ func (i *serviceTemplateContainerLivenessProbeHttpGetPtrType) ToServiceTemplateC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput)
 }
 
-func (i *serviceTemplateContainerLivenessProbeHttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet] {
-	return pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
@@ -6563,12 +5758,6 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) ToServiceTemplateCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbeHttpGet) *ServiceTemplateContainerLivenessProbeHttpGet {
 		return &v
 	}).(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput)
-}
-
-func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -6602,12 +5791,6 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ToServiceTemplate
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ToServiceTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet] {
-	return pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) Elem() ServiceTemplateContainerLivenessProbeHttpGetOutput {
@@ -6689,12 +5872,6 @@ func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToServiceTem
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
-func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray and ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
 //
@@ -6720,12 +5897,6 @@ func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToServiceTe
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
-	return pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
-		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
@@ -6738,12 +5909,6 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToServiceT
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
-	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The header field name
@@ -6768,12 +5933,6 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToSer
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
-	return pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
@@ -6819,12 +5978,6 @@ func (i ServiceTemplateContainerPortArgs) ToServiceTemplateContainerPortOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortOutput)
 }
 
-func (i ServiceTemplateContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerPort] {
-	return pulumix.Output[ServiceTemplateContainerPort]{
-		OutputState: i.ToServiceTemplateContainerPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateContainerPortArrayInput is an input type that accepts ServiceTemplateContainerPortArray and ServiceTemplateContainerPortArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerPortArrayInput` via:
 //
@@ -6850,12 +6003,6 @@ func (i ServiceTemplateContainerPortArray) ToServiceTemplateContainerPortArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortArrayOutput)
 }
 
-func (i ServiceTemplateContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerPort] {
-	return pulumix.Output[[]ServiceTemplateContainerPort]{
-		OutputState: i.ToServiceTemplateContainerPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerPortOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerPortOutput) ElementType() reflect.Type {
@@ -6868,12 +6015,6 @@ func (o ServiceTemplateContainerPortOutput) ToServiceTemplateContainerPortOutput
 
 func (o ServiceTemplateContainerPortOutput) ToServiceTemplateContainerPortOutputWithContext(ctx context.Context) ServiceTemplateContainerPortOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerPort] {
-	return pulumix.Output[ServiceTemplateContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -6898,12 +6039,6 @@ func (o ServiceTemplateContainerPortArrayOutput) ToServiceTemplateContainerPortA
 
 func (o ServiceTemplateContainerPortArrayOutput) ToServiceTemplateContainerPortArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerPortArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerPort] {
-	return pulumix.Output[[]ServiceTemplateContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerPortOutput {
@@ -6953,12 +6088,6 @@ func (i ServiceTemplateContainerResourcesArgs) ToServiceTemplateContainerResourc
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerResourcesOutput)
 }
 
-func (i ServiceTemplateContainerResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerResources] {
-	return pulumix.Output[ServiceTemplateContainerResources]{
-		OutputState: i.ToServiceTemplateContainerResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerResourcesArgs) ToServiceTemplateContainerResourcesPtrOutput() ServiceTemplateContainerResourcesPtrOutput {
 	return i.ToServiceTemplateContainerResourcesPtrOutputWithContext(context.Background())
 }
@@ -7000,12 +6129,6 @@ func (i *serviceTemplateContainerResourcesPtrType) ToServiceTemplateContainerRes
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerResourcesPtrOutput)
 }
 
-func (i *serviceTemplateContainerResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerResources] {
-	return pulumix.Output[*ServiceTemplateContainerResources]{
-		OutputState: i.ToServiceTemplateContainerResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerResourcesOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerResourcesOutput) ElementType() reflect.Type {
@@ -7028,12 +6151,6 @@ func (o ServiceTemplateContainerResourcesOutput) ToServiceTemplateContainerResou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerResources) *ServiceTemplateContainerResources {
 		return &v
 	}).(ServiceTemplateContainerResourcesPtrOutput)
-}
-
-func (o ServiceTemplateContainerResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerResources] {
-	return pulumix.Output[ServiceTemplateContainerResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines whether CPU should be throttled or not outside of requests.
@@ -7063,12 +6180,6 @@ func (o ServiceTemplateContainerResourcesPtrOutput) ToServiceTemplateContainerRe
 
 func (o ServiceTemplateContainerResourcesPtrOutput) ToServiceTemplateContainerResourcesPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerResourcesPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerResources] {
-	return pulumix.Output[*ServiceTemplateContainerResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerResourcesPtrOutput) Elem() ServiceTemplateContainerResourcesOutput {
@@ -7174,12 +6285,6 @@ func (i ServiceTemplateContainerStartupProbeArgs) ToServiceTemplateContainerStar
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeOutput)
 }
 
-func (i ServiceTemplateContainerStartupProbeArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbe] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbe]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerStartupProbeArgs) ToServiceTemplateContainerStartupProbePtrOutput() ServiceTemplateContainerStartupProbePtrOutput {
 	return i.ToServiceTemplateContainerStartupProbePtrOutputWithContext(context.Background())
 }
@@ -7221,12 +6326,6 @@ func (i *serviceTemplateContainerStartupProbePtrType) ToServiceTemplateContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbePtrOutput)
 }
 
-func (i *serviceTemplateContainerStartupProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbe] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbe]{
-		OutputState: i.ToServiceTemplateContainerStartupProbePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
@@ -7249,12 +6348,6 @@ func (o ServiceTemplateContainerStartupProbeOutput) ToServiceTemplateContainerSt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbe) *ServiceTemplateContainerStartupProbe {
 		return &v
 	}).(ServiceTemplateContainerStartupProbePtrOutput)
-}
-
-func (o ServiceTemplateContainerStartupProbeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbe] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -7311,12 +6404,6 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) ToServiceTemplateContaine
 
 func (o ServiceTemplateContainerStartupProbePtrOutput) ToServiceTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbePtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerStartupProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbe] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbe]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerStartupProbePtrOutput) Elem() ServiceTemplateContainerStartupProbeOutput {
@@ -7445,12 +6532,6 @@ func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcOutput)
 }
 
-func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeGrpc] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeGrpc]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeGrpcOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
 	return i.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
 }
@@ -7492,12 +6573,6 @@ func (i *serviceTemplateContainerStartupProbeGrpcPtrType) ToServiceTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
 }
 
-func (i *serviceTemplateContainerStartupProbeGrpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
@@ -7520,12 +6595,6 @@ func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContain
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbeGrpc) *ServiceTemplateContainerStartupProbeGrpc {
 		return &v
 	}).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
-}
-
-func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeGrpc] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeGrpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
@@ -7553,12 +6622,6 @@ func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToServiceTemplateCont
 
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Elem() ServiceTemplateContainerStartupProbeGrpcOutput {
@@ -7639,12 +6702,6 @@ func (i ServiceTemplateContainerStartupProbeHttpGetArgs) ToServiceTemplateContai
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetOutput)
 }
 
-func (i ServiceTemplateContainerStartupProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerStartupProbeHttpGetArgs) ToServiceTemplateContainerStartupProbeHttpGetPtrOutput() ServiceTemplateContainerStartupProbeHttpGetPtrOutput {
 	return i.ToServiceTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
 }
@@ -7686,12 +6743,6 @@ func (i *serviceTemplateContainerStartupProbeHttpGetPtrType) ToServiceTemplateCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetPtrOutput)
 }
 
-func (i *serviceTemplateContainerStartupProbeHttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
@@ -7714,12 +6765,6 @@ func (o ServiceTemplateContainerStartupProbeHttpGetOutput) ToServiceTemplateCont
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbeHttpGet) *ServiceTemplateContainerStartupProbeHttpGet {
 		return &v
 	}).(ServiceTemplateContainerStartupProbeHttpGetPtrOutput)
-}
-
-func (o ServiceTemplateContainerStartupProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -7753,12 +6798,6 @@ func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ToServiceTemplateC
 
 func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ToServiceTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeHttpGetPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) Elem() ServiceTemplateContainerStartupProbeHttpGetOutput {
@@ -7840,12 +6879,6 @@ func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToServiceTemp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
-func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray and ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
 //
@@ -7871,12 +6904,6 @@ func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToServiceTem
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
-	return pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
@@ -7889,12 +6916,6 @@ func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTe
 
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The header field name
@@ -7919,12 +6940,6 @@ func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToServ
 
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
-	return pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
@@ -7968,12 +6983,6 @@ func (i ServiceTemplateContainerStartupProbeTcpSocketArgs) ToServiceTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeTcpSocketOutput)
 }
 
-func (i ServiceTemplateContainerStartupProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateContainerStartupProbeTcpSocketArgs) ToServiceTemplateContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateContainerStartupProbeTcpSocketPtrOutput {
 	return i.ToServiceTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
 }
@@ -8015,12 +7024,6 @@ func (i *serviceTemplateContainerStartupProbeTcpSocketPtrType) ToServiceTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
-func (i *serviceTemplateContainerStartupProbeTcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket]{
-		OutputState: i.ToServiceTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -8045,12 +7048,6 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) ToServiceTemplateCo
 	}).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
-func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket] {
-	return pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Port number to access on the container. Must be in the range 1 to 65535.
 // If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
@@ -8069,12 +7066,6 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) ToServiceTemplat
 
 func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) ToServiceTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeTcpSocketPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket] {
-	return pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) Elem() ServiceTemplateContainerStartupProbeTcpSocketOutput {
@@ -8135,12 +7126,6 @@ func (i ServiceTemplateContainerVolumeMountArgs) ToServiceTemplateContainerVolum
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerVolumeMountOutput)
 }
 
-func (i ServiceTemplateContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerVolumeMount] {
-	return pulumix.Output[ServiceTemplateContainerVolumeMount]{
-		OutputState: i.ToServiceTemplateContainerVolumeMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateContainerVolumeMountArrayInput is an input type that accepts ServiceTemplateContainerVolumeMountArray and ServiceTemplateContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerVolumeMountArrayInput` via:
 //
@@ -8166,12 +7151,6 @@ func (i ServiceTemplateContainerVolumeMountArray) ToServiceTemplateContainerVolu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerVolumeMountArrayOutput)
 }
 
-func (i ServiceTemplateContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerVolumeMount] {
-	return pulumix.Output[[]ServiceTemplateContainerVolumeMount]{
-		OutputState: i.ToServiceTemplateContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -8184,12 +7163,6 @@ func (o ServiceTemplateContainerVolumeMountOutput) ToServiceTemplateContainerVol
 
 func (o ServiceTemplateContainerVolumeMountOutput) ToServiceTemplateContainerVolumeMountOutputWithContext(ctx context.Context) ServiceTemplateContainerVolumeMountOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerVolumeMount] {
-	return pulumix.Output[ServiceTemplateContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
@@ -8214,12 +7187,6 @@ func (o ServiceTemplateContainerVolumeMountArrayOutput) ToServiceTemplateContain
 
 func (o ServiceTemplateContainerVolumeMountArrayOutput) ToServiceTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerVolumeMountArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerVolumeMount] {
-	return pulumix.Output[[]ServiceTemplateContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerVolumeMountOutput {
@@ -8265,12 +7232,6 @@ func (i ServiceTemplateScalingArgs) ToServiceTemplateScalingOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateScalingOutput)
 }
 
-func (i ServiceTemplateScalingArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateScaling] {
-	return pulumix.Output[ServiceTemplateScaling]{
-		OutputState: i.ToServiceTemplateScalingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateScalingArgs) ToServiceTemplateScalingPtrOutput() ServiceTemplateScalingPtrOutput {
 	return i.ToServiceTemplateScalingPtrOutputWithContext(context.Background())
 }
@@ -8312,12 +7273,6 @@ func (i *serviceTemplateScalingPtrType) ToServiceTemplateScalingPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateScalingPtrOutput)
 }
 
-func (i *serviceTemplateScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateScaling] {
-	return pulumix.Output[*ServiceTemplateScaling]{
-		OutputState: i.ToServiceTemplateScalingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateScalingOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateScalingOutput) ElementType() reflect.Type {
@@ -8342,12 +7297,6 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
-func (o ServiceTemplateScalingOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateScaling] {
-	return pulumix.Output[ServiceTemplateScaling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of serving instances that this resource should have.
 func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
@@ -8370,12 +7319,6 @@ func (o ServiceTemplateScalingPtrOutput) ToServiceTemplateScalingPtrOutput() Ser
 
 func (o ServiceTemplateScalingPtrOutput) ToServiceTemplateScalingPtrOutputWithContext(ctx context.Context) ServiceTemplateScalingPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateScaling] {
-	return pulumix.Output[*ServiceTemplateScaling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
@@ -8455,12 +7398,6 @@ func (i ServiceTemplateVolumeArgs) ToServiceTemplateVolumeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeOutput)
 }
 
-func (i ServiceTemplateVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolume] {
-	return pulumix.Output[ServiceTemplateVolume]{
-		OutputState: i.ToServiceTemplateVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateVolumeArrayInput is an input type that accepts ServiceTemplateVolumeArray and ServiceTemplateVolumeArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateVolumeArrayInput` via:
 //
@@ -8486,12 +7423,6 @@ func (i ServiceTemplateVolumeArray) ToServiceTemplateVolumeArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeArrayOutput)
 }
 
-func (i ServiceTemplateVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolume] {
-	return pulumix.Output[[]ServiceTemplateVolume]{
-		OutputState: i.ToServiceTemplateVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVolumeOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeOutput) ElementType() reflect.Type {
@@ -8504,12 +7435,6 @@ func (o ServiceTemplateVolumeOutput) ToServiceTemplateVolumeOutput() ServiceTemp
 
 func (o ServiceTemplateVolumeOutput) ToServiceTemplateVolumeOutputWithContext(ctx context.Context) ServiceTemplateVolumeOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolume] {
-	return pulumix.Output[ServiceTemplateVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -8545,12 +7470,6 @@ func (o ServiceTemplateVolumeArrayOutput) ToServiceTemplateVolumeArrayOutput() S
 
 func (o ServiceTemplateVolumeArrayOutput) ToServiceTemplateVolumeArrayOutputWithContext(ctx context.Context) ServiceTemplateVolumeArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolume] {
-	return pulumix.Output[[]ServiceTemplateVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTemplateVolumeOutput {
@@ -8590,12 +7509,6 @@ func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToServiceTemplateVolumeCloudS
 
 func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToServiceTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) ServiceTemplateVolumeCloudSqlInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeCloudSqlInstanceOutput)
-}
-
-func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[ServiceTemplateVolumeCloudSqlInstance]{
-		OutputState: i.ToServiceTemplateVolumeCloudSqlInstanceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToServiceTemplateVolumeCloudSqlInstancePtrOutput() ServiceTemplateVolumeCloudSqlInstancePtrOutput {
@@ -8639,12 +7552,6 @@ func (i *serviceTemplateVolumeCloudSqlInstancePtrType) ToServiceTemplateVolumeCl
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-func (i *serviceTemplateVolumeCloudSqlInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance]{
-		OutputState: i.ToServiceTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
@@ -8669,12 +7576,6 @@ func (o ServiceTemplateVolumeCloudSqlInstanceOutput) ToServiceTemplateVolumeClou
 	}).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-func (o ServiceTemplateVolumeCloudSqlInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[ServiceTemplateVolumeCloudSqlInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o ServiceTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
@@ -8692,12 +7593,6 @@ func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) ToServiceTemplateVolumeC
 
 func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) ToServiceTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeCloudSqlInstancePtrOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance] {
-	return pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Elem() ServiceTemplateVolumeCloudSqlInstanceOutput {
@@ -8765,12 +7660,6 @@ func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirOutput)
 }
 
-func (i ServiceTemplateVolumeEmptyDirArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeEmptyDir] {
-	return pulumix.Output[ServiceTemplateVolumeEmptyDir]{
-		OutputState: i.ToServiceTemplateVolumeEmptyDirOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput {
 	return i.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
 }
@@ -8812,12 +7701,6 @@ func (i *serviceTemplateVolumeEmptyDirPtrType) ToServiceTemplateVolumeEmptyDirPt
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
 
-func (i *serviceTemplateVolumeEmptyDirPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeEmptyDir] {
-	return pulumix.Output[*ServiceTemplateVolumeEmptyDir]{
-		OutputState: i.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
@@ -8840,12 +7723,6 @@ func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeEmptyDir) *ServiceTemplateVolumeEmptyDir {
 		return &v
 	}).(ServiceTemplateVolumeEmptyDirPtrOutput)
-}
-
-func (o ServiceTemplateVolumeEmptyDirOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeEmptyDir] {
-	return pulumix.Output[ServiceTemplateVolumeEmptyDir]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The different types of medium supported for EmptyDir.
@@ -8874,12 +7751,6 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToServiceTemplateVolumeEmptyDirP
 
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeEmptyDir] {
-	return pulumix.Output[*ServiceTemplateVolumeEmptyDir]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) Elem() ServiceTemplateVolumeEmptyDirOutput {
@@ -8959,12 +7830,6 @@ func (i ServiceTemplateVolumeSecretArgs) ToServiceTemplateVolumeSecretOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretOutput)
 }
 
-func (i ServiceTemplateVolumeSecretArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecret] {
-	return pulumix.Output[ServiceTemplateVolumeSecret]{
-		OutputState: i.ToServiceTemplateVolumeSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateVolumeSecretArgs) ToServiceTemplateVolumeSecretPtrOutput() ServiceTemplateVolumeSecretPtrOutput {
 	return i.ToServiceTemplateVolumeSecretPtrOutputWithContext(context.Background())
 }
@@ -9006,12 +7871,6 @@ func (i *serviceTemplateVolumeSecretPtrType) ToServiceTemplateVolumeSecretPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretPtrOutput)
 }
 
-func (i *serviceTemplateVolumeSecretPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeSecret] {
-	return pulumix.Output[*ServiceTemplateVolumeSecret]{
-		OutputState: i.ToServiceTemplateVolumeSecretPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVolumeSecretOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeSecretOutput) ElementType() reflect.Type {
@@ -9034,12 +7893,6 @@ func (o ServiceTemplateVolumeSecretOutput) ToServiceTemplateVolumeSecretPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeSecret) *ServiceTemplateVolumeSecret {
 		return &v
 	}).(ServiceTemplateVolumeSecretPtrOutput)
-}
-
-func (o ServiceTemplateVolumeSecretOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecret] {
-	return pulumix.Output[ServiceTemplateVolumeSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -9070,12 +7923,6 @@ func (o ServiceTemplateVolumeSecretPtrOutput) ToServiceTemplateVolumeSecretPtrOu
 
 func (o ServiceTemplateVolumeSecretPtrOutput) ToServiceTemplateVolumeSecretPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeSecretPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeSecretPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeSecret] {
-	return pulumix.Output[*ServiceTemplateVolumeSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVolumeSecretPtrOutput) Elem() ServiceTemplateVolumeSecretOutput {
@@ -9160,12 +8007,6 @@ func (i ServiceTemplateVolumeSecretItemArgs) ToServiceTemplateVolumeSecretItemOu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretItemOutput)
 }
 
-func (i ServiceTemplateVolumeSecretItemArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecretItem] {
-	return pulumix.Output[ServiceTemplateVolumeSecretItem]{
-		OutputState: i.ToServiceTemplateVolumeSecretItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateVolumeSecretItemArrayInput is an input type that accepts ServiceTemplateVolumeSecretItemArray and ServiceTemplateVolumeSecretItemArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateVolumeSecretItemArrayInput` via:
 //
@@ -9191,12 +8032,6 @@ func (i ServiceTemplateVolumeSecretItemArray) ToServiceTemplateVolumeSecretItemA
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretItemArrayOutput)
 }
 
-func (i ServiceTemplateVolumeSecretItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolumeSecretItem] {
-	return pulumix.Output[[]ServiceTemplateVolumeSecretItem]{
-		OutputState: i.ToServiceTemplateVolumeSecretItemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVolumeSecretItemOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeSecretItemOutput) ElementType() reflect.Type {
@@ -9209,12 +8044,6 @@ func (o ServiceTemplateVolumeSecretItemOutput) ToServiceTemplateVolumeSecretItem
 
 func (o ServiceTemplateVolumeSecretItemOutput) ToServiceTemplateVolumeSecretItemOutputWithContext(ctx context.Context) ServiceTemplateVolumeSecretItemOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeSecretItemOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecretItem] {
-	return pulumix.Output[ServiceTemplateVolumeSecretItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
@@ -9244,12 +8073,6 @@ func (o ServiceTemplateVolumeSecretItemArrayOutput) ToServiceTemplateVolumeSecre
 
 func (o ServiceTemplateVolumeSecretItemArrayOutput) ToServiceTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) ServiceTemplateVolumeSecretItemArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateVolumeSecretItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolumeSecretItem] {
-	return pulumix.Output[[]ServiceTemplateVolumeSecretItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) ServiceTemplateVolumeSecretItemOutput {
@@ -9303,12 +8126,6 @@ func (i ServiceTemplateVpcAccessArgs) ToServiceTemplateVpcAccessOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessOutput)
 }
 
-func (i ServiceTemplateVpcAccessArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccess] {
-	return pulumix.Output[ServiceTemplateVpcAccess]{
-		OutputState: i.ToServiceTemplateVpcAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceTemplateVpcAccessArgs) ToServiceTemplateVpcAccessPtrOutput() ServiceTemplateVpcAccessPtrOutput {
 	return i.ToServiceTemplateVpcAccessPtrOutputWithContext(context.Background())
 }
@@ -9350,12 +8167,6 @@ func (i *serviceTemplateVpcAccessPtrType) ToServiceTemplateVpcAccessPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessPtrOutput)
 }
 
-func (i *serviceTemplateVpcAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVpcAccess] {
-	return pulumix.Output[*ServiceTemplateVpcAccess]{
-		OutputState: i.ToServiceTemplateVpcAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVpcAccessOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVpcAccessOutput) ElementType() reflect.Type {
@@ -9378,12 +8189,6 @@ func (o ServiceTemplateVpcAccessOutput) ToServiceTemplateVpcAccessPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVpcAccess) *ServiceTemplateVpcAccess {
 		return &v
 	}).(ServiceTemplateVpcAccessPtrOutput)
-}
-
-func (o ServiceTemplateVpcAccessOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccess] {
-	return pulumix.Output[ServiceTemplateVpcAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
@@ -9417,12 +8222,6 @@ func (o ServiceTemplateVpcAccessPtrOutput) ToServiceTemplateVpcAccessPtrOutput()
 
 func (o ServiceTemplateVpcAccessPtrOutput) ToServiceTemplateVpcAccessPtrOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessPtrOutput {
 	return o
-}
-
-func (o ServiceTemplateVpcAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVpcAccess] {
-	return pulumix.Output[*ServiceTemplateVpcAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVpcAccessPtrOutput) Elem() ServiceTemplateVpcAccessOutput {
@@ -9516,12 +8315,6 @@ func (i ServiceTemplateVpcAccessNetworkInterfaceArgs) ToServiceTemplateVpcAccess
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessNetworkInterfaceOutput)
 }
 
-func (i ServiceTemplateVpcAccessNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[ServiceTemplateVpcAccessNetworkInterface]{
-		OutputState: i.ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTemplateVpcAccessNetworkInterfaceArrayInput is an input type that accepts ServiceTemplateVpcAccessNetworkInterfaceArray and ServiceTemplateVpcAccessNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateVpcAccessNetworkInterfaceArrayInput` via:
 //
@@ -9547,12 +8340,6 @@ func (i ServiceTemplateVpcAccessNetworkInterfaceArray) ToServiceTemplateVpcAcces
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessNetworkInterfaceArrayOutput)
 }
 
-func (i ServiceTemplateVpcAccessNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface]{
-		OutputState: i.ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTemplateVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -9565,12 +8352,6 @@ func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) ToServiceTemplateVpcAcce
 
 func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessNetworkInterfaceOutput {
 	return o
-}
-
-func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[ServiceTemplateVpcAccessNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
@@ -9604,12 +8385,6 @@ func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToServiceTemplateVp
 
 func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
 	return o
-}
-
-func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface] {
-	return pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ServiceTemplateVpcAccessNetworkInterfaceOutput {
@@ -9697,12 +8472,6 @@ func (i ServiceTerminalConditionArgs) ToServiceTerminalConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTerminalConditionOutput)
 }
 
-func (i ServiceTerminalConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTerminalCondition] {
-	return pulumix.Output[ServiceTerminalCondition]{
-		OutputState: i.ToServiceTerminalConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTerminalConditionArrayInput is an input type that accepts ServiceTerminalConditionArray and ServiceTerminalConditionArrayOutput values.
 // You can construct a concrete instance of `ServiceTerminalConditionArrayInput` via:
 //
@@ -9728,12 +8497,6 @@ func (i ServiceTerminalConditionArray) ToServiceTerminalConditionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTerminalConditionArrayOutput)
 }
 
-func (i ServiceTerminalConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTerminalCondition] {
-	return pulumix.Output[[]ServiceTerminalCondition]{
-		OutputState: i.ToServiceTerminalConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTerminalConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceTerminalConditionOutput) ElementType() reflect.Type {
@@ -9746,12 +8509,6 @@ func (o ServiceTerminalConditionOutput) ToServiceTerminalConditionOutput() Servi
 
 func (o ServiceTerminalConditionOutput) ToServiceTerminalConditionOutputWithContext(ctx context.Context) ServiceTerminalConditionOutput {
 	return o
-}
-
-func (o ServiceTerminalConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTerminalCondition] {
-	return pulumix.Output[ServiceTerminalCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -9817,12 +8574,6 @@ func (o ServiceTerminalConditionArrayOutput) ToServiceTerminalConditionArrayOutp
 	return o
 }
 
-func (o ServiceTerminalConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTerminalCondition] {
-	return pulumix.Output[[]ServiceTerminalCondition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceTerminalConditionArrayOutput) Index(i pulumi.IntInput) ServiceTerminalConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTerminalCondition {
 		return vs[0].([]ServiceTerminalCondition)[vs[1].(int)]
@@ -9876,12 +8627,6 @@ func (i ServiceTrafficArgs) ToServiceTrafficOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficOutput)
 }
 
-func (i ServiceTrafficArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTraffic] {
-	return pulumix.Output[ServiceTraffic]{
-		OutputState: i.ToServiceTrafficOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTrafficArrayInput is an input type that accepts ServiceTrafficArray and ServiceTrafficArrayOutput values.
 // You can construct a concrete instance of `ServiceTrafficArrayInput` via:
 //
@@ -9907,12 +8652,6 @@ func (i ServiceTrafficArray) ToServiceTrafficArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficArrayOutput)
 }
 
-func (i ServiceTrafficArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTraffic] {
-	return pulumix.Output[[]ServiceTraffic]{
-		OutputState: i.ToServiceTrafficArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTrafficOutput struct{ *pulumi.OutputState }
 
 func (ServiceTrafficOutput) ElementType() reflect.Type {
@@ -9925,12 +8664,6 @@ func (o ServiceTrafficOutput) ToServiceTrafficOutput() ServiceTrafficOutput {
 
 func (o ServiceTrafficOutput) ToServiceTrafficOutputWithContext(ctx context.Context) ServiceTrafficOutput {
 	return o
-}
-
-func (o ServiceTrafficOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTraffic] {
-	return pulumix.Output[ServiceTraffic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -9966,12 +8699,6 @@ func (o ServiceTrafficArrayOutput) ToServiceTrafficArrayOutput() ServiceTrafficA
 
 func (o ServiceTrafficArrayOutput) ToServiceTrafficArrayOutputWithContext(ctx context.Context) ServiceTrafficArrayOutput {
 	return o
-}
-
-func (o ServiceTrafficArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTraffic] {
-	return pulumix.Output[[]ServiceTraffic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTrafficArrayOutput) Index(i pulumi.IntInput) ServiceTrafficOutput {
@@ -10033,12 +8760,6 @@ func (i ServiceTrafficStatusArgs) ToServiceTrafficStatusOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficStatusOutput)
 }
 
-func (i ServiceTrafficStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTrafficStatus] {
-	return pulumix.Output[ServiceTrafficStatus]{
-		OutputState: i.ToServiceTrafficStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTrafficStatusArrayInput is an input type that accepts ServiceTrafficStatusArray and ServiceTrafficStatusArrayOutput values.
 // You can construct a concrete instance of `ServiceTrafficStatusArrayInput` via:
 //
@@ -10064,12 +8785,6 @@ func (i ServiceTrafficStatusArray) ToServiceTrafficStatusArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficStatusArrayOutput)
 }
 
-func (i ServiceTrafficStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTrafficStatus] {
-	return pulumix.Output[[]ServiceTrafficStatus]{
-		OutputState: i.ToServiceTrafficStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTrafficStatusOutput struct{ *pulumi.OutputState }
 
 func (ServiceTrafficStatusOutput) ElementType() reflect.Type {
@@ -10082,12 +8797,6 @@ func (o ServiceTrafficStatusOutput) ToServiceTrafficStatusOutput() ServiceTraffi
 
 func (o ServiceTrafficStatusOutput) ToServiceTrafficStatusOutputWithContext(ctx context.Context) ServiceTrafficStatusOutput {
 	return o
-}
-
-func (o ServiceTrafficStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTrafficStatus] {
-	return pulumix.Output[ServiceTrafficStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -10131,16 +8840,5605 @@ func (o ServiceTrafficStatusArrayOutput) ToServiceTrafficStatusArrayOutputWithCo
 	return o
 }
 
-func (o ServiceTrafficStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTrafficStatus] {
-	return pulumix.Output[[]ServiceTrafficStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceTrafficStatusArrayOutput) Index(i pulumi.IntInput) ServiceTrafficStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTrafficStatus {
 		return vs[0].([]ServiceTrafficStatus)[vs[1].(int)]
 	}).(ServiceTrafficStatusOutput)
+}
+
+type GetJobBinaryAuthorization struct {
+	BreakglassJustification string `pulumi:"breakglassJustification"`
+	UseDefault              bool   `pulumi:"useDefault"`
+}
+
+// GetJobBinaryAuthorizationInput is an input type that accepts GetJobBinaryAuthorizationArgs and GetJobBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `GetJobBinaryAuthorizationInput` via:
+//
+//	GetJobBinaryAuthorizationArgs{...}
+type GetJobBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetJobBinaryAuthorizationOutput() GetJobBinaryAuthorizationOutput
+	ToGetJobBinaryAuthorizationOutputWithContext(context.Context) GetJobBinaryAuthorizationOutput
+}
+
+type GetJobBinaryAuthorizationArgs struct {
+	BreakglassJustification pulumi.StringInput `pulumi:"breakglassJustification"`
+	UseDefault              pulumi.BoolInput   `pulumi:"useDefault"`
+}
+
+func (GetJobBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobBinaryAuthorization)(nil)).Elem()
+}
+
+func (i GetJobBinaryAuthorizationArgs) ToGetJobBinaryAuthorizationOutput() GetJobBinaryAuthorizationOutput {
+	return i.ToGetJobBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetJobBinaryAuthorizationArgs) ToGetJobBinaryAuthorizationOutputWithContext(ctx context.Context) GetJobBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobBinaryAuthorizationOutput)
+}
+
+// GetJobBinaryAuthorizationArrayInput is an input type that accepts GetJobBinaryAuthorizationArray and GetJobBinaryAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetJobBinaryAuthorizationArrayInput` via:
+//
+//	GetJobBinaryAuthorizationArray{ GetJobBinaryAuthorizationArgs{...} }
+type GetJobBinaryAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetJobBinaryAuthorizationArrayOutput() GetJobBinaryAuthorizationArrayOutput
+	ToGetJobBinaryAuthorizationArrayOutputWithContext(context.Context) GetJobBinaryAuthorizationArrayOutput
+}
+
+type GetJobBinaryAuthorizationArray []GetJobBinaryAuthorizationInput
+
+func (GetJobBinaryAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobBinaryAuthorization)(nil)).Elem()
+}
+
+func (i GetJobBinaryAuthorizationArray) ToGetJobBinaryAuthorizationArrayOutput() GetJobBinaryAuthorizationArrayOutput {
+	return i.ToGetJobBinaryAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobBinaryAuthorizationArray) ToGetJobBinaryAuthorizationArrayOutputWithContext(ctx context.Context) GetJobBinaryAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobBinaryAuthorizationArrayOutput)
+}
+
+type GetJobBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetJobBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobBinaryAuthorization)(nil)).Elem()
+}
+
+func (o GetJobBinaryAuthorizationOutput) ToGetJobBinaryAuthorizationOutput() GetJobBinaryAuthorizationOutput {
+	return o
+}
+
+func (o GetJobBinaryAuthorizationOutput) ToGetJobBinaryAuthorizationOutputWithContext(ctx context.Context) GetJobBinaryAuthorizationOutput {
+	return o
+}
+
+func (o GetJobBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobBinaryAuthorization) string { return v.BreakglassJustification }).(pulumi.StringOutput)
+}
+
+func (o GetJobBinaryAuthorizationOutput) UseDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobBinaryAuthorization) bool { return v.UseDefault }).(pulumi.BoolOutput)
+}
+
+type GetJobBinaryAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobBinaryAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobBinaryAuthorization)(nil)).Elem()
+}
+
+func (o GetJobBinaryAuthorizationArrayOutput) ToGetJobBinaryAuthorizationArrayOutput() GetJobBinaryAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetJobBinaryAuthorizationArrayOutput) ToGetJobBinaryAuthorizationArrayOutputWithContext(ctx context.Context) GetJobBinaryAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetJobBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetJobBinaryAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobBinaryAuthorization {
+		return vs[0].([]GetJobBinaryAuthorization)[vs[1].(int)]
+	}).(GetJobBinaryAuthorizationOutput)
+}
+
+type GetJobCondition struct {
+	ExecutionReason    string `pulumi:"executionReason"`
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	Message            string `pulumi:"message"`
+	Reason             string `pulumi:"reason"`
+	RevisionReason     string `pulumi:"revisionReason"`
+	Severity           string `pulumi:"severity"`
+	State              string `pulumi:"state"`
+	Type               string `pulumi:"type"`
+}
+
+// GetJobConditionInput is an input type that accepts GetJobConditionArgs and GetJobConditionOutput values.
+// You can construct a concrete instance of `GetJobConditionInput` via:
+//
+//	GetJobConditionArgs{...}
+type GetJobConditionInput interface {
+	pulumi.Input
+
+	ToGetJobConditionOutput() GetJobConditionOutput
+	ToGetJobConditionOutputWithContext(context.Context) GetJobConditionOutput
+}
+
+type GetJobConditionArgs struct {
+	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
+	Message            pulumi.StringInput `pulumi:"message"`
+	Reason             pulumi.StringInput `pulumi:"reason"`
+	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
+	Severity           pulumi.StringInput `pulumi:"severity"`
+	State              pulumi.StringInput `pulumi:"state"`
+	Type               pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetJobConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobCondition)(nil)).Elem()
+}
+
+func (i GetJobConditionArgs) ToGetJobConditionOutput() GetJobConditionOutput {
+	return i.ToGetJobConditionOutputWithContext(context.Background())
+}
+
+func (i GetJobConditionArgs) ToGetJobConditionOutputWithContext(ctx context.Context) GetJobConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobConditionOutput)
+}
+
+// GetJobConditionArrayInput is an input type that accepts GetJobConditionArray and GetJobConditionArrayOutput values.
+// You can construct a concrete instance of `GetJobConditionArrayInput` via:
+//
+//	GetJobConditionArray{ GetJobConditionArgs{...} }
+type GetJobConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobConditionArrayOutput() GetJobConditionArrayOutput
+	ToGetJobConditionArrayOutputWithContext(context.Context) GetJobConditionArrayOutput
+}
+
+type GetJobConditionArray []GetJobConditionInput
+
+func (GetJobConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobCondition)(nil)).Elem()
+}
+
+func (i GetJobConditionArray) ToGetJobConditionArrayOutput() GetJobConditionArrayOutput {
+	return i.ToGetJobConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobConditionArray) ToGetJobConditionArrayOutputWithContext(ctx context.Context) GetJobConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobConditionArrayOutput)
+}
+
+type GetJobConditionOutput struct{ *pulumi.OutputState }
+
+func (GetJobConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobCondition)(nil)).Elem()
+}
+
+func (o GetJobConditionOutput) ToGetJobConditionOutput() GetJobConditionOutput {
+	return o
+}
+
+func (o GetJobConditionOutput) ToGetJobConditionOutputWithContext(ctx context.Context) GetJobConditionOutput {
+	return o
+}
+
+func (o GetJobConditionOutput) ExecutionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) RevisionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetJobConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetJobConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobCondition)(nil)).Elem()
+}
+
+func (o GetJobConditionArrayOutput) ToGetJobConditionArrayOutput() GetJobConditionArrayOutput {
+	return o
+}
+
+func (o GetJobConditionArrayOutput) ToGetJobConditionArrayOutputWithContext(ctx context.Context) GetJobConditionArrayOutput {
+	return o
+}
+
+func (o GetJobConditionArrayOutput) Index(i pulumi.IntInput) GetJobConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobCondition {
+		return vs[0].([]GetJobCondition)[vs[1].(int)]
+	}).(GetJobConditionOutput)
+}
+
+type GetJobLatestCreatedExecution struct {
+	CompletionTime string `pulumi:"completionTime"`
+	CreateTime     string `pulumi:"createTime"`
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+}
+
+// GetJobLatestCreatedExecutionInput is an input type that accepts GetJobLatestCreatedExecutionArgs and GetJobLatestCreatedExecutionOutput values.
+// You can construct a concrete instance of `GetJobLatestCreatedExecutionInput` via:
+//
+//	GetJobLatestCreatedExecutionArgs{...}
+type GetJobLatestCreatedExecutionInput interface {
+	pulumi.Input
+
+	ToGetJobLatestCreatedExecutionOutput() GetJobLatestCreatedExecutionOutput
+	ToGetJobLatestCreatedExecutionOutputWithContext(context.Context) GetJobLatestCreatedExecutionOutput
+}
+
+type GetJobLatestCreatedExecutionArgs struct {
+	CompletionTime pulumi.StringInput `pulumi:"completionTime"`
+	CreateTime     pulumi.StringInput `pulumi:"createTime"`
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetJobLatestCreatedExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobLatestCreatedExecution)(nil)).Elem()
+}
+
+func (i GetJobLatestCreatedExecutionArgs) ToGetJobLatestCreatedExecutionOutput() GetJobLatestCreatedExecutionOutput {
+	return i.ToGetJobLatestCreatedExecutionOutputWithContext(context.Background())
+}
+
+func (i GetJobLatestCreatedExecutionArgs) ToGetJobLatestCreatedExecutionOutputWithContext(ctx context.Context) GetJobLatestCreatedExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobLatestCreatedExecutionOutput)
+}
+
+// GetJobLatestCreatedExecutionArrayInput is an input type that accepts GetJobLatestCreatedExecutionArray and GetJobLatestCreatedExecutionArrayOutput values.
+// You can construct a concrete instance of `GetJobLatestCreatedExecutionArrayInput` via:
+//
+//	GetJobLatestCreatedExecutionArray{ GetJobLatestCreatedExecutionArgs{...} }
+type GetJobLatestCreatedExecutionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobLatestCreatedExecutionArrayOutput() GetJobLatestCreatedExecutionArrayOutput
+	ToGetJobLatestCreatedExecutionArrayOutputWithContext(context.Context) GetJobLatestCreatedExecutionArrayOutput
+}
+
+type GetJobLatestCreatedExecutionArray []GetJobLatestCreatedExecutionInput
+
+func (GetJobLatestCreatedExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobLatestCreatedExecution)(nil)).Elem()
+}
+
+func (i GetJobLatestCreatedExecutionArray) ToGetJobLatestCreatedExecutionArrayOutput() GetJobLatestCreatedExecutionArrayOutput {
+	return i.ToGetJobLatestCreatedExecutionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobLatestCreatedExecutionArray) ToGetJobLatestCreatedExecutionArrayOutputWithContext(ctx context.Context) GetJobLatestCreatedExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobLatestCreatedExecutionArrayOutput)
+}
+
+type GetJobLatestCreatedExecutionOutput struct{ *pulumi.OutputState }
+
+func (GetJobLatestCreatedExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobLatestCreatedExecution)(nil)).Elem()
+}
+
+func (o GetJobLatestCreatedExecutionOutput) ToGetJobLatestCreatedExecutionOutput() GetJobLatestCreatedExecutionOutput {
+	return o
+}
+
+func (o GetJobLatestCreatedExecutionOutput) ToGetJobLatestCreatedExecutionOutputWithContext(ctx context.Context) GetJobLatestCreatedExecutionOutput {
+	return o
+}
+
+func (o GetJobLatestCreatedExecutionOutput) CompletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobLatestCreatedExecution) string { return v.CompletionTime }).(pulumi.StringOutput)
+}
+
+func (o GetJobLatestCreatedExecutionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobLatestCreatedExecution) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobLatestCreatedExecutionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobLatestCreatedExecution) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetJobLatestCreatedExecutionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobLatestCreatedExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobLatestCreatedExecution)(nil)).Elem()
+}
+
+func (o GetJobLatestCreatedExecutionArrayOutput) ToGetJobLatestCreatedExecutionArrayOutput() GetJobLatestCreatedExecutionArrayOutput {
+	return o
+}
+
+func (o GetJobLatestCreatedExecutionArrayOutput) ToGetJobLatestCreatedExecutionArrayOutputWithContext(ctx context.Context) GetJobLatestCreatedExecutionArrayOutput {
+	return o
+}
+
+func (o GetJobLatestCreatedExecutionArrayOutput) Index(i pulumi.IntInput) GetJobLatestCreatedExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobLatestCreatedExecution {
+		return vs[0].([]GetJobLatestCreatedExecution)[vs[1].(int)]
+	}).(GetJobLatestCreatedExecutionOutput)
+}
+
+type GetJobTemplate struct {
+	Annotations map[string]string        `pulumi:"annotations"`
+	Labels      map[string]string        `pulumi:"labels"`
+	Parallelism int                      `pulumi:"parallelism"`
+	TaskCount   int                      `pulumi:"taskCount"`
+	Templates   []GetJobTemplateTemplate `pulumi:"templates"`
+}
+
+// GetJobTemplateInput is an input type that accepts GetJobTemplateArgs and GetJobTemplateOutput values.
+// You can construct a concrete instance of `GetJobTemplateInput` via:
+//
+//	GetJobTemplateArgs{...}
+type GetJobTemplateInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateOutput() GetJobTemplateOutput
+	ToGetJobTemplateOutputWithContext(context.Context) GetJobTemplateOutput
+}
+
+type GetJobTemplateArgs struct {
+	Annotations pulumi.StringMapInput            `pulumi:"annotations"`
+	Labels      pulumi.StringMapInput            `pulumi:"labels"`
+	Parallelism pulumi.IntInput                  `pulumi:"parallelism"`
+	TaskCount   pulumi.IntInput                  `pulumi:"taskCount"`
+	Templates   GetJobTemplateTemplateArrayInput `pulumi:"templates"`
+}
+
+func (GetJobTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplate)(nil)).Elem()
+}
+
+func (i GetJobTemplateArgs) ToGetJobTemplateOutput() GetJobTemplateOutput {
+	return i.ToGetJobTemplateOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateArgs) ToGetJobTemplateOutputWithContext(ctx context.Context) GetJobTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateOutput)
+}
+
+// GetJobTemplateArrayInput is an input type that accepts GetJobTemplateArray and GetJobTemplateArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateArrayInput` via:
+//
+//	GetJobTemplateArray{ GetJobTemplateArgs{...} }
+type GetJobTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateArrayOutput() GetJobTemplateArrayOutput
+	ToGetJobTemplateArrayOutputWithContext(context.Context) GetJobTemplateArrayOutput
+}
+
+type GetJobTemplateArray []GetJobTemplateInput
+
+func (GetJobTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplate)(nil)).Elem()
+}
+
+func (i GetJobTemplateArray) ToGetJobTemplateArrayOutput() GetJobTemplateArrayOutput {
+	return i.ToGetJobTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateArray) ToGetJobTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateArrayOutput)
+}
+
+type GetJobTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplate)(nil)).Elem()
+}
+
+func (o GetJobTemplateOutput) ToGetJobTemplateOutput() GetJobTemplateOutput {
+	return o
+}
+
+func (o GetJobTemplateOutput) ToGetJobTemplateOutputWithContext(ctx context.Context) GetJobTemplateOutput {
+	return o
+}
+
+func (o GetJobTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobTemplateOutput) Parallelism() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplate) int { return v.Parallelism }).(pulumi.IntOutput)
+}
+
+func (o GetJobTemplateOutput) TaskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplate) int { return v.TaskCount }).(pulumi.IntOutput)
+}
+
+func (o GetJobTemplateOutput) Templates() GetJobTemplateTemplateArrayOutput {
+	return o.ApplyT(func(v GetJobTemplate) []GetJobTemplateTemplate { return v.Templates }).(GetJobTemplateTemplateArrayOutput)
+}
+
+type GetJobTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplate)(nil)).Elem()
+}
+
+func (o GetJobTemplateArrayOutput) ToGetJobTemplateArrayOutput() GetJobTemplateArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateArrayOutput) ToGetJobTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplateArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplate {
+		return vs[0].([]GetJobTemplate)[vs[1].(int)]
+	}).(GetJobTemplateOutput)
+}
+
+type GetJobTemplateTemplate struct {
+	Containers           []GetJobTemplateTemplateContainer `pulumi:"containers"`
+	EncryptionKey        string                            `pulumi:"encryptionKey"`
+	ExecutionEnvironment string                            `pulumi:"executionEnvironment"`
+	MaxRetries           int                               `pulumi:"maxRetries"`
+	ServiceAccount       string                            `pulumi:"serviceAccount"`
+	Timeout              string                            `pulumi:"timeout"`
+	Volumes              []GetJobTemplateTemplateVolume    `pulumi:"volumes"`
+	VpcAccesses          []GetJobTemplateTemplateVpcAccess `pulumi:"vpcAccesses"`
+}
+
+// GetJobTemplateTemplateInput is an input type that accepts GetJobTemplateTemplateArgs and GetJobTemplateTemplateOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateInput` via:
+//
+//	GetJobTemplateTemplateArgs{...}
+type GetJobTemplateTemplateInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateOutput() GetJobTemplateTemplateOutput
+	ToGetJobTemplateTemplateOutputWithContext(context.Context) GetJobTemplateTemplateOutput
+}
+
+type GetJobTemplateTemplateArgs struct {
+	Containers           GetJobTemplateTemplateContainerArrayInput `pulumi:"containers"`
+	EncryptionKey        pulumi.StringInput                        `pulumi:"encryptionKey"`
+	ExecutionEnvironment pulumi.StringInput                        `pulumi:"executionEnvironment"`
+	MaxRetries           pulumi.IntInput                           `pulumi:"maxRetries"`
+	ServiceAccount       pulumi.StringInput                        `pulumi:"serviceAccount"`
+	Timeout              pulumi.StringInput                        `pulumi:"timeout"`
+	Volumes              GetJobTemplateTemplateVolumeArrayInput    `pulumi:"volumes"`
+	VpcAccesses          GetJobTemplateTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
+}
+
+func (GetJobTemplateTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplate)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateArgs) ToGetJobTemplateTemplateOutput() GetJobTemplateTemplateOutput {
+	return i.ToGetJobTemplateTemplateOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateArgs) ToGetJobTemplateTemplateOutputWithContext(ctx context.Context) GetJobTemplateTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateOutput)
+}
+
+// GetJobTemplateTemplateArrayInput is an input type that accepts GetJobTemplateTemplateArray and GetJobTemplateTemplateArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateArrayInput` via:
+//
+//	GetJobTemplateTemplateArray{ GetJobTemplateTemplateArgs{...} }
+type GetJobTemplateTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateArrayOutput() GetJobTemplateTemplateArrayOutput
+	ToGetJobTemplateTemplateArrayOutputWithContext(context.Context) GetJobTemplateTemplateArrayOutput
+}
+
+type GetJobTemplateTemplateArray []GetJobTemplateTemplateInput
+
+func (GetJobTemplateTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplate)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateArray) ToGetJobTemplateTemplateArrayOutput() GetJobTemplateTemplateArrayOutput {
+	return i.ToGetJobTemplateTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateArray) ToGetJobTemplateTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateArrayOutput)
+}
+
+type GetJobTemplateTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplate)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateOutput) ToGetJobTemplateTemplateOutput() GetJobTemplateTemplateOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateOutput) ToGetJobTemplateTemplateOutputWithContext(ctx context.Context) GetJobTemplateTemplateOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateOutput) Containers() GetJobTemplateTemplateContainerArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateContainer { return v.Containers }).(GetJobTemplateTemplateContainerArrayOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) Volumes() GetJobTemplateTemplateVolumeArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateVolume { return v.Volumes }).(GetJobTemplateTemplateVolumeArrayOutput)
+}
+
+func (o GetJobTemplateTemplateOutput) VpcAccesses() GetJobTemplateTemplateVpcAccessArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateVpcAccess { return v.VpcAccesses }).(GetJobTemplateTemplateVpcAccessArrayOutput)
+}
+
+type GetJobTemplateTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplate)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateArrayOutput) ToGetJobTemplateTemplateArrayOutput() GetJobTemplateTemplateArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateArrayOutput) ToGetJobTemplateTemplateArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplate {
+		return vs[0].([]GetJobTemplateTemplate)[vs[1].(int)]
+	}).(GetJobTemplateTemplateOutput)
+}
+
+type GetJobTemplateTemplateContainer struct {
+	Args     []string                             `pulumi:"args"`
+	Commands []string                             `pulumi:"commands"`
+	Envs     []GetJobTemplateTemplateContainerEnv `pulumi:"envs"`
+	Image    string                               `pulumi:"image"`
+	// The name of the Cloud Run v2 Job.
+	Name         string                                       `pulumi:"name"`
+	Ports        []GetJobTemplateTemplateContainerPort        `pulumi:"ports"`
+	Resources    []GetJobTemplateTemplateContainerResource    `pulumi:"resources"`
+	VolumeMounts []GetJobTemplateTemplateContainerVolumeMount `pulumi:"volumeMounts"`
+	WorkingDir   string                                       `pulumi:"workingDir"`
+}
+
+// GetJobTemplateTemplateContainerInput is an input type that accepts GetJobTemplateTemplateContainerArgs and GetJobTemplateTemplateContainerOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerInput` via:
+//
+//	GetJobTemplateTemplateContainerArgs{...}
+type GetJobTemplateTemplateContainerInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerOutput() GetJobTemplateTemplateContainerOutput
+	ToGetJobTemplateTemplateContainerOutputWithContext(context.Context) GetJobTemplateTemplateContainerOutput
+}
+
+type GetJobTemplateTemplateContainerArgs struct {
+	Args     pulumi.StringArrayInput                      `pulumi:"args"`
+	Commands pulumi.StringArrayInput                      `pulumi:"commands"`
+	Envs     GetJobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
+	Image    pulumi.StringInput                           `pulumi:"image"`
+	// The name of the Cloud Run v2 Job.
+	Name         pulumi.StringInput                                   `pulumi:"name"`
+	Ports        GetJobTemplateTemplateContainerPortArrayInput        `pulumi:"ports"`
+	Resources    GetJobTemplateTemplateContainerResourceArrayInput    `pulumi:"resources"`
+	VolumeMounts GetJobTemplateTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
+	WorkingDir   pulumi.StringInput                                   `pulumi:"workingDir"`
+}
+
+func (GetJobTemplateTemplateContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainer)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerArgs) ToGetJobTemplateTemplateContainerOutput() GetJobTemplateTemplateContainerOutput {
+	return i.ToGetJobTemplateTemplateContainerOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerArgs) ToGetJobTemplateTemplateContainerOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerOutput)
+}
+
+// GetJobTemplateTemplateContainerArrayInput is an input type that accepts GetJobTemplateTemplateContainerArray and GetJobTemplateTemplateContainerArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerArray{ GetJobTemplateTemplateContainerArgs{...} }
+type GetJobTemplateTemplateContainerArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerArrayOutput() GetJobTemplateTemplateContainerArrayOutput
+	ToGetJobTemplateTemplateContainerArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerArrayOutput
+}
+
+type GetJobTemplateTemplateContainerArray []GetJobTemplateTemplateContainerInput
+
+func (GetJobTemplateTemplateContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainer)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerArray) ToGetJobTemplateTemplateContainerArrayOutput() GetJobTemplateTemplateContainerArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerArray) ToGetJobTemplateTemplateContainerArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainer)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerOutput) ToGetJobTemplateTemplateContainerOutput() GetJobTemplateTemplateContainerOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerOutput) ToGetJobTemplateTemplateContainerOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) Envs() GetJobTemplateTemplateContainerEnvArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerEnv { return v.Envs }).(GetJobTemplateTemplateContainerEnvArrayOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) Ports() GetJobTemplateTemplateContainerPortArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerPort { return v.Ports }).(GetJobTemplateTemplateContainerPortArrayOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) Resources() GetJobTemplateTemplateContainerResourceArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerResource { return v.Resources }).(GetJobTemplateTemplateContainerResourceArrayOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) VolumeMounts() GetJobTemplateTemplateContainerVolumeMountArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerVolumeMount {
+		return v.VolumeMounts
+	}).(GetJobTemplateTemplateContainerVolumeMountArrayOutput)
+}
+
+func (o GetJobTemplateTemplateContainerOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainer)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerArrayOutput) ToGetJobTemplateTemplateContainerArrayOutput() GetJobTemplateTemplateContainerArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerArrayOutput) ToGetJobTemplateTemplateContainerArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainer {
+		return vs[0].([]GetJobTemplateTemplateContainer)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerOutput)
+}
+
+type GetJobTemplateTemplateContainerEnv struct {
+	// The name of the Cloud Run v2 Job.
+	Name         string                                          `pulumi:"name"`
+	Value        string                                          `pulumi:"value"`
+	ValueSources []GetJobTemplateTemplateContainerEnvValueSource `pulumi:"valueSources"`
+}
+
+// GetJobTemplateTemplateContainerEnvInput is an input type that accepts GetJobTemplateTemplateContainerEnvArgs and GetJobTemplateTemplateContainerEnvOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerEnvInput` via:
+//
+//	GetJobTemplateTemplateContainerEnvArgs{...}
+type GetJobTemplateTemplateContainerEnvInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerEnvOutput() GetJobTemplateTemplateContainerEnvOutput
+	ToGetJobTemplateTemplateContainerEnvOutputWithContext(context.Context) GetJobTemplateTemplateContainerEnvOutput
+}
+
+type GetJobTemplateTemplateContainerEnvArgs struct {
+	// The name of the Cloud Run v2 Job.
+	Name         pulumi.StringInput                                      `pulumi:"name"`
+	Value        pulumi.StringInput                                      `pulumi:"value"`
+	ValueSources GetJobTemplateTemplateContainerEnvValueSourceArrayInput `pulumi:"valueSources"`
+}
+
+func (GetJobTemplateTemplateContainerEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerEnv)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerEnvArgs) ToGetJobTemplateTemplateContainerEnvOutput() GetJobTemplateTemplateContainerEnvOutput {
+	return i.ToGetJobTemplateTemplateContainerEnvOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerEnvArgs) ToGetJobTemplateTemplateContainerEnvOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerEnvOutput)
+}
+
+// GetJobTemplateTemplateContainerEnvArrayInput is an input type that accepts GetJobTemplateTemplateContainerEnvArray and GetJobTemplateTemplateContainerEnvArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerEnvArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerEnvArray{ GetJobTemplateTemplateContainerEnvArgs{...} }
+type GetJobTemplateTemplateContainerEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerEnvArrayOutput() GetJobTemplateTemplateContainerEnvArrayOutput
+	ToGetJobTemplateTemplateContainerEnvArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerEnvArrayOutput
+}
+
+type GetJobTemplateTemplateContainerEnvArray []GetJobTemplateTemplateContainerEnvInput
+
+func (GetJobTemplateTemplateContainerEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerEnv)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerEnvArray) ToGetJobTemplateTemplateContainerEnvArrayOutput() GetJobTemplateTemplateContainerEnvArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerEnvArray) ToGetJobTemplateTemplateContainerEnvArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerEnvArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerEnv)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerEnvOutput) ToGetJobTemplateTemplateContainerEnvOutput() GetJobTemplateTemplateContainerEnvOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvOutput) ToGetJobTemplateTemplateContainerEnvOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateContainerEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateContainerEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateContainerEnvOutput) ValueSources() GetJobTemplateTemplateContainerEnvValueSourceArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) []GetJobTemplateTemplateContainerEnvValueSource {
+		return v.ValueSources
+	}).(GetJobTemplateTemplateContainerEnvValueSourceArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerEnv)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerEnvArrayOutput) ToGetJobTemplateTemplateContainerEnvArrayOutput() GetJobTemplateTemplateContainerEnvArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvArrayOutput) ToGetJobTemplateTemplateContainerEnvArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerEnv {
+		return vs[0].([]GetJobTemplateTemplateContainerEnv)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerEnvOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvValueSource struct {
+	SecretKeyReves []GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef `pulumi:"secretKeyReves"`
+}
+
+// GetJobTemplateTemplateContainerEnvValueSourceInput is an input type that accepts GetJobTemplateTemplateContainerEnvValueSourceArgs and GetJobTemplateTemplateContainerEnvValueSourceOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerEnvValueSourceInput` via:
+//
+//	GetJobTemplateTemplateContainerEnvValueSourceArgs{...}
+type GetJobTemplateTemplateContainerEnvValueSourceInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerEnvValueSourceOutput() GetJobTemplateTemplateContainerEnvValueSourceOutput
+	ToGetJobTemplateTemplateContainerEnvValueSourceOutputWithContext(context.Context) GetJobTemplateTemplateContainerEnvValueSourceOutput
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceArgs struct {
+	SecretKeyReves GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayInput `pulumi:"secretKeyReves"`
+}
+
+func (GetJobTemplateTemplateContainerEnvValueSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceArgs) ToGetJobTemplateTemplateContainerEnvValueSourceOutput() GetJobTemplateTemplateContainerEnvValueSourceOutput {
+	return i.ToGetJobTemplateTemplateContainerEnvValueSourceOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceArgs) ToGetJobTemplateTemplateContainerEnvValueSourceOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerEnvValueSourceOutput)
+}
+
+// GetJobTemplateTemplateContainerEnvValueSourceArrayInput is an input type that accepts GetJobTemplateTemplateContainerEnvValueSourceArray and GetJobTemplateTemplateContainerEnvValueSourceArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerEnvValueSourceArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerEnvValueSourceArray{ GetJobTemplateTemplateContainerEnvValueSourceArgs{...} }
+type GetJobTemplateTemplateContainerEnvValueSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutput() GetJobTemplateTemplateContainerEnvValueSourceArrayOutput
+	ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerEnvValueSourceArrayOutput
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceArray []GetJobTemplateTemplateContainerEnvValueSourceInput
+
+func (GetJobTemplateTemplateContainerEnvValueSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceArray) ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutput() GetJobTemplateTemplateContainerEnvValueSourceArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceArray) ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerEnvValueSourceArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerEnvValueSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceOutput) ToGetJobTemplateTemplateContainerEnvValueSourceOutput() GetJobTemplateTemplateContainerEnvValueSourceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceOutput) ToGetJobTemplateTemplateContainerEnvValueSourceOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceOutput) SecretKeyReves() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnvValueSource) []GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
+		return v.SecretKeyReves
+	}).(GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerEnvValueSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceArrayOutput) ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutput() GetJobTemplateTemplateContainerEnvValueSourceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceArrayOutput) ToGetJobTemplateTemplateContainerEnvValueSourceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerEnvValueSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerEnvValueSource {
+		return vs[0].([]GetJobTemplateTemplateContainerEnvValueSource)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerEnvValueSourceOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef struct {
+	Secret  string `pulumi:"secret"`
+	Version string `pulumi:"version"`
+}
+
+// GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput is an input type that accepts GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs and GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput` via:
+//
+//	GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs{...}
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput
+	ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(context.Context) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs struct {
+	Secret  pulumi.StringInput `pulumi:"secret"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return i.ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput)
+}
+
+// GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayInput is an input type that accepts GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray and GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray{ GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs{...} }
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput
+	ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray []GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput
+
+func (GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) ToGetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
+		return vs[0].([]GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput)
+}
+
+type GetJobTemplateTemplateContainerPort struct {
+	ContainerPort int `pulumi:"containerPort"`
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+}
+
+// GetJobTemplateTemplateContainerPortInput is an input type that accepts GetJobTemplateTemplateContainerPortArgs and GetJobTemplateTemplateContainerPortOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerPortInput` via:
+//
+//	GetJobTemplateTemplateContainerPortArgs{...}
+type GetJobTemplateTemplateContainerPortInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerPortOutput() GetJobTemplateTemplateContainerPortOutput
+	ToGetJobTemplateTemplateContainerPortOutputWithContext(context.Context) GetJobTemplateTemplateContainerPortOutput
+}
+
+type GetJobTemplateTemplateContainerPortArgs struct {
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetJobTemplateTemplateContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerPort)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerPortArgs) ToGetJobTemplateTemplateContainerPortOutput() GetJobTemplateTemplateContainerPortOutput {
+	return i.ToGetJobTemplateTemplateContainerPortOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerPortArgs) ToGetJobTemplateTemplateContainerPortOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerPortOutput)
+}
+
+// GetJobTemplateTemplateContainerPortArrayInput is an input type that accepts GetJobTemplateTemplateContainerPortArray and GetJobTemplateTemplateContainerPortArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerPortArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerPortArray{ GetJobTemplateTemplateContainerPortArgs{...} }
+type GetJobTemplateTemplateContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerPortArrayOutput() GetJobTemplateTemplateContainerPortArrayOutput
+	ToGetJobTemplateTemplateContainerPortArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerPortArrayOutput
+}
+
+type GetJobTemplateTemplateContainerPortArray []GetJobTemplateTemplateContainerPortInput
+
+func (GetJobTemplateTemplateContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerPort)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerPortArray) ToGetJobTemplateTemplateContainerPortArrayOutput() GetJobTemplateTemplateContainerPortArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerPortArray) ToGetJobTemplateTemplateContainerPortArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerPortArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerPortOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerPort)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerPortOutput) ToGetJobTemplateTemplateContainerPortOutput() GetJobTemplateTemplateContainerPortOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerPortOutput) ToGetJobTemplateTemplateContainerPortOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerPortOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerPortOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateContainerPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerPort)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerPortArrayOutput) ToGetJobTemplateTemplateContainerPortArrayOutput() GetJobTemplateTemplateContainerPortArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerPortArrayOutput) ToGetJobTemplateTemplateContainerPortArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerPortArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerPort {
+		return vs[0].([]GetJobTemplateTemplateContainerPort)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerPortOutput)
+}
+
+type GetJobTemplateTemplateContainerResource struct {
+	Limits map[string]string `pulumi:"limits"`
+}
+
+// GetJobTemplateTemplateContainerResourceInput is an input type that accepts GetJobTemplateTemplateContainerResourceArgs and GetJobTemplateTemplateContainerResourceOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerResourceInput` via:
+//
+//	GetJobTemplateTemplateContainerResourceArgs{...}
+type GetJobTemplateTemplateContainerResourceInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerResourceOutput() GetJobTemplateTemplateContainerResourceOutput
+	ToGetJobTemplateTemplateContainerResourceOutputWithContext(context.Context) GetJobTemplateTemplateContainerResourceOutput
+}
+
+type GetJobTemplateTemplateContainerResourceArgs struct {
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+}
+
+func (GetJobTemplateTemplateContainerResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerResource)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerResourceArgs) ToGetJobTemplateTemplateContainerResourceOutput() GetJobTemplateTemplateContainerResourceOutput {
+	return i.ToGetJobTemplateTemplateContainerResourceOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerResourceArgs) ToGetJobTemplateTemplateContainerResourceOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerResourceOutput)
+}
+
+// GetJobTemplateTemplateContainerResourceArrayInput is an input type that accepts GetJobTemplateTemplateContainerResourceArray and GetJobTemplateTemplateContainerResourceArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerResourceArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerResourceArray{ GetJobTemplateTemplateContainerResourceArgs{...} }
+type GetJobTemplateTemplateContainerResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerResourceArrayOutput() GetJobTemplateTemplateContainerResourceArrayOutput
+	ToGetJobTemplateTemplateContainerResourceArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerResourceArrayOutput
+}
+
+type GetJobTemplateTemplateContainerResourceArray []GetJobTemplateTemplateContainerResourceInput
+
+func (GetJobTemplateTemplateContainerResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerResource)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerResourceArray) ToGetJobTemplateTemplateContainerResourceArrayOutput() GetJobTemplateTemplateContainerResourceArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerResourceArray) ToGetJobTemplateTemplateContainerResourceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerResourceArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerResourceOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerResource)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerResourceOutput) ToGetJobTemplateTemplateContainerResourceOutput() GetJobTemplateTemplateContainerResourceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerResourceOutput) ToGetJobTemplateTemplateContainerResourceOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerResourceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerResourceOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+type GetJobTemplateTemplateContainerResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerResource)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerResourceArrayOutput) ToGetJobTemplateTemplateContainerResourceArrayOutput() GetJobTemplateTemplateContainerResourceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerResourceArrayOutput) ToGetJobTemplateTemplateContainerResourceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerResourceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerResourceArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerResource {
+		return vs[0].([]GetJobTemplateTemplateContainerResource)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerResourceOutput)
+}
+
+type GetJobTemplateTemplateContainerVolumeMount struct {
+	MountPath string `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Job.
+	Name string `pulumi:"name"`
+}
+
+// GetJobTemplateTemplateContainerVolumeMountInput is an input type that accepts GetJobTemplateTemplateContainerVolumeMountArgs and GetJobTemplateTemplateContainerVolumeMountOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerVolumeMountInput` via:
+//
+//	GetJobTemplateTemplateContainerVolumeMountArgs{...}
+type GetJobTemplateTemplateContainerVolumeMountInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerVolumeMountOutput() GetJobTemplateTemplateContainerVolumeMountOutput
+	ToGetJobTemplateTemplateContainerVolumeMountOutputWithContext(context.Context) GetJobTemplateTemplateContainerVolumeMountOutput
+}
+
+type GetJobTemplateTemplateContainerVolumeMountArgs struct {
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Job.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetJobTemplateTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerVolumeMountArgs) ToGetJobTemplateTemplateContainerVolumeMountOutput() GetJobTemplateTemplateContainerVolumeMountOutput {
+	return i.ToGetJobTemplateTemplateContainerVolumeMountOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerVolumeMountArgs) ToGetJobTemplateTemplateContainerVolumeMountOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerVolumeMountOutput)
+}
+
+// GetJobTemplateTemplateContainerVolumeMountArrayInput is an input type that accepts GetJobTemplateTemplateContainerVolumeMountArray and GetJobTemplateTemplateContainerVolumeMountArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateContainerVolumeMountArrayInput` via:
+//
+//	GetJobTemplateTemplateContainerVolumeMountArray{ GetJobTemplateTemplateContainerVolumeMountArgs{...} }
+type GetJobTemplateTemplateContainerVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateContainerVolumeMountArrayOutput() GetJobTemplateTemplateContainerVolumeMountArrayOutput
+	ToGetJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(context.Context) GetJobTemplateTemplateContainerVolumeMountArrayOutput
+}
+
+type GetJobTemplateTemplateContainerVolumeMountArray []GetJobTemplateTemplateContainerVolumeMountInput
+
+func (GetJobTemplateTemplateContainerVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateContainerVolumeMountArray) ToGetJobTemplateTemplateContainerVolumeMountArrayOutput() GetJobTemplateTemplateContainerVolumeMountArrayOutput {
+	return i.ToGetJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateContainerVolumeMountArray) ToGetJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateContainerVolumeMountArrayOutput)
+}
+
+type GetJobTemplateTemplateContainerVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerVolumeMountOutput) ToGetJobTemplateTemplateContainerVolumeMountOutput() GetJobTemplateTemplateContainerVolumeMountOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerVolumeMountOutput) ToGetJobTemplateTemplateContainerVolumeMountOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerVolumeMountOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateContainerVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateContainerVolumeMountArrayOutput) ToGetJobTemplateTemplateContainerVolumeMountArrayOutput() GetJobTemplateTemplateContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerVolumeMountArrayOutput) ToGetJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateContainerVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateContainerVolumeMount {
+		return vs[0].([]GetJobTemplateTemplateContainerVolumeMount)[vs[1].(int)]
+	}).(GetJobTemplateTemplateContainerVolumeMountOutput)
+}
+
+type GetJobTemplateTemplateVolume struct {
+	CloudSqlInstances []GetJobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
+	EmptyDirs         []GetJobTemplateTemplateVolumeEmptyDir         `pulumi:"emptyDirs"`
+	// The name of the Cloud Run v2 Job.
+	Name    string                               `pulumi:"name"`
+	Secrets []GetJobTemplateTemplateVolumeSecret `pulumi:"secrets"`
+}
+
+// GetJobTemplateTemplateVolumeInput is an input type that accepts GetJobTemplateTemplateVolumeArgs and GetJobTemplateTemplateVolumeOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeInput` via:
+//
+//	GetJobTemplateTemplateVolumeArgs{...}
+type GetJobTemplateTemplateVolumeInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeOutput() GetJobTemplateTemplateVolumeOutput
+	ToGetJobTemplateTemplateVolumeOutputWithContext(context.Context) GetJobTemplateTemplateVolumeOutput
+}
+
+type GetJobTemplateTemplateVolumeArgs struct {
+	CloudSqlInstances GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
+	EmptyDirs         GetJobTemplateTemplateVolumeEmptyDirArrayInput         `pulumi:"emptyDirs"`
+	// The name of the Cloud Run v2 Job.
+	Name    pulumi.StringInput                           `pulumi:"name"`
+	Secrets GetJobTemplateTemplateVolumeSecretArrayInput `pulumi:"secrets"`
+}
+
+func (GetJobTemplateTemplateVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolume)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeArgs) ToGetJobTemplateTemplateVolumeOutput() GetJobTemplateTemplateVolumeOutput {
+	return i.ToGetJobTemplateTemplateVolumeOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeArgs) ToGetJobTemplateTemplateVolumeOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeOutput)
+}
+
+// GetJobTemplateTemplateVolumeArrayInput is an input type that accepts GetJobTemplateTemplateVolumeArray and GetJobTemplateTemplateVolumeArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeArray{ GetJobTemplateTemplateVolumeArgs{...} }
+type GetJobTemplateTemplateVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeArrayOutput() GetJobTemplateTemplateVolumeArrayOutput
+	ToGetJobTemplateTemplateVolumeArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeArray []GetJobTemplateTemplateVolumeInput
+
+func (GetJobTemplateTemplateVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolume)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeArray) ToGetJobTemplateTemplateVolumeArrayOutput() GetJobTemplateTemplateVolumeArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeArray) ToGetJobTemplateTemplateVolumeArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolume)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeOutput) ToGetJobTemplateTemplateVolumeOutput() GetJobTemplateTemplateVolumeOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeOutput) ToGetJobTemplateTemplateVolumeOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeOutput) CloudSqlInstances() GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeCloudSqlInstance {
+		return v.CloudSqlInstances
+	}).(GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeOutput) EmptyDirs() GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetJobTemplateTemplateVolumeEmptyDirArrayOutput)
+}
+
+// The name of the Cloud Run v2 Job.
+func (o GetJobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeOutput) Secrets() GetJobTemplateTemplateVolumeSecretArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeSecret { return v.Secrets }).(GetJobTemplateTemplateVolumeSecretArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolume)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeArrayOutput) ToGetJobTemplateTemplateVolumeArrayOutput() GetJobTemplateTemplateVolumeArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeArrayOutput) ToGetJobTemplateTemplateVolumeArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolume {
+		return vs[0].([]GetJobTemplateTemplateVolume)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeOutput)
+}
+
+type GetJobTemplateTemplateVolumeCloudSqlInstance struct {
+	Instances []string `pulumi:"instances"`
+}
+
+// GetJobTemplateTemplateVolumeCloudSqlInstanceInput is an input type that accepts GetJobTemplateTemplateVolumeCloudSqlInstanceArgs and GetJobTemplateTemplateVolumeCloudSqlInstanceOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeCloudSqlInstanceInput` via:
+//
+//	GetJobTemplateTemplateVolumeCloudSqlInstanceArgs{...}
+type GetJobTemplateTemplateVolumeCloudSqlInstanceInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutput() GetJobTemplateTemplateVolumeCloudSqlInstanceOutput
+	ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(context.Context) GetJobTemplateTemplateVolumeCloudSqlInstanceOutput
+}
+
+type GetJobTemplateTemplateVolumeCloudSqlInstanceArgs struct {
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+}
+
+func (GetJobTemplateTemplateVolumeCloudSqlInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeCloudSqlInstanceArgs) ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutput() GetJobTemplateTemplateVolumeCloudSqlInstanceOutput {
+	return i.ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeCloudSqlInstanceArgs) ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeCloudSqlInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeCloudSqlInstanceOutput)
+}
+
+// GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput is an input type that accepts GetJobTemplateTemplateVolumeCloudSqlInstanceArray and GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeCloudSqlInstanceArray{ GetJobTemplateTemplateVolumeCloudSqlInstanceArgs{...} }
+type GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput() GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput
+	ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeCloudSqlInstanceArray []GetJobTemplateTemplateVolumeCloudSqlInstanceInput
+
+func (GetJobTemplateTemplateVolumeCloudSqlInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeCloudSqlInstanceArray) ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput() GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeCloudSqlInstanceArray) ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeCloudSqlInstanceOutput) ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutput() GetJobTemplateTemplateVolumeCloudSqlInstanceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeCloudSqlInstanceOutput) ToGetJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeCloudSqlInstanceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput) ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput() GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput) ToGetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeCloudSqlInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeCloudSqlInstance {
+		return vs[0].([]GetJobTemplateTemplateVolumeCloudSqlInstance)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeCloudSqlInstanceOutput)
+}
+
+type GetJobTemplateTemplateVolumeEmptyDir struct {
+	Medium    string `pulumi:"medium"`
+	SizeLimit string `pulumi:"sizeLimit"`
+}
+
+// GetJobTemplateTemplateVolumeEmptyDirInput is an input type that accepts GetJobTemplateTemplateVolumeEmptyDirArgs and GetJobTemplateTemplateVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeEmptyDirInput` via:
+//
+//	GetJobTemplateTemplateVolumeEmptyDirArgs{...}
+type GetJobTemplateTemplateVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeEmptyDirOutput() GetJobTemplateTemplateVolumeEmptyDirOutput
+	ToGetJobTemplateTemplateVolumeEmptyDirOutputWithContext(context.Context) GetJobTemplateTemplateVolumeEmptyDirOutput
+}
+
+type GetJobTemplateTemplateVolumeEmptyDirArgs struct {
+	Medium    pulumi.StringInput `pulumi:"medium"`
+	SizeLimit pulumi.StringInput `pulumi:"sizeLimit"`
+}
+
+func (GetJobTemplateTemplateVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeEmptyDirArgs) ToGetJobTemplateTemplateVolumeEmptyDirOutput() GetJobTemplateTemplateVolumeEmptyDirOutput {
+	return i.ToGetJobTemplateTemplateVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeEmptyDirArgs) ToGetJobTemplateTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeEmptyDirOutput)
+}
+
+// GetJobTemplateTemplateVolumeEmptyDirArrayInput is an input type that accepts GetJobTemplateTemplateVolumeEmptyDirArray and GetJobTemplateTemplateVolumeEmptyDirArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeEmptyDirArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeEmptyDirArray{ GetJobTemplateTemplateVolumeEmptyDirArgs{...} }
+type GetJobTemplateTemplateVolumeEmptyDirArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeEmptyDirArrayOutput() GetJobTemplateTemplateVolumeEmptyDirArrayOutput
+	ToGetJobTemplateTemplateVolumeEmptyDirArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeEmptyDirArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeEmptyDirArray []GetJobTemplateTemplateVolumeEmptyDirInput
+
+func (GetJobTemplateTemplateVolumeEmptyDirArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeEmptyDirArray) ToGetJobTemplateTemplateVolumeEmptyDirArrayOutput() GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeEmptyDirArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeEmptyDirArray) ToGetJobTemplateTemplateVolumeEmptyDirArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeEmptyDirArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirOutput) ToGetJobTemplateTemplateVolumeEmptyDirOutput() GetJobTemplateTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirOutput) ToGetJobTemplateTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeEmptyDir) string { return v.Medium }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeEmptyDir) string { return v.SizeLimit }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateVolumeEmptyDirArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeEmptyDirArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirArrayOutput) ToGetJobTemplateTemplateVolumeEmptyDirArrayOutput() GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirArrayOutput) ToGetJobTemplateTemplateVolumeEmptyDirArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeEmptyDirOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeEmptyDir {
+		return vs[0].([]GetJobTemplateTemplateVolumeEmptyDir)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeEmptyDirOutput)
+}
+
+type GetJobTemplateTemplateVolumeSecret struct {
+	DefaultMode int                                      `pulumi:"defaultMode"`
+	Items       []GetJobTemplateTemplateVolumeSecretItem `pulumi:"items"`
+	Secret      string                                   `pulumi:"secret"`
+}
+
+// GetJobTemplateTemplateVolumeSecretInput is an input type that accepts GetJobTemplateTemplateVolumeSecretArgs and GetJobTemplateTemplateVolumeSecretOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeSecretInput` via:
+//
+//	GetJobTemplateTemplateVolumeSecretArgs{...}
+type GetJobTemplateTemplateVolumeSecretInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeSecretOutput() GetJobTemplateTemplateVolumeSecretOutput
+	ToGetJobTemplateTemplateVolumeSecretOutputWithContext(context.Context) GetJobTemplateTemplateVolumeSecretOutput
+}
+
+type GetJobTemplateTemplateVolumeSecretArgs struct {
+	DefaultMode pulumi.IntInput                                  `pulumi:"defaultMode"`
+	Items       GetJobTemplateTemplateVolumeSecretItemArrayInput `pulumi:"items"`
+	Secret      pulumi.StringInput                               `pulumi:"secret"`
+}
+
+func (GetJobTemplateTemplateVolumeSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeSecretArgs) ToGetJobTemplateTemplateVolumeSecretOutput() GetJobTemplateTemplateVolumeSecretOutput {
+	return i.ToGetJobTemplateTemplateVolumeSecretOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeSecretArgs) ToGetJobTemplateTemplateVolumeSecretOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeSecretOutput)
+}
+
+// GetJobTemplateTemplateVolumeSecretArrayInput is an input type that accepts GetJobTemplateTemplateVolumeSecretArray and GetJobTemplateTemplateVolumeSecretArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeSecretArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeSecretArray{ GetJobTemplateTemplateVolumeSecretArgs{...} }
+type GetJobTemplateTemplateVolumeSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeSecretArrayOutput() GetJobTemplateTemplateVolumeSecretArrayOutput
+	ToGetJobTemplateTemplateVolumeSecretArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeSecretArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeSecretArray []GetJobTemplateTemplateVolumeSecretInput
+
+func (GetJobTemplateTemplateVolumeSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeSecretArray) ToGetJobTemplateTemplateVolumeSecretArrayOutput() GetJobTemplateTemplateVolumeSecretArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeSecretArray) ToGetJobTemplateTemplateVolumeSecretArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeSecretArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeSecretOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeSecretOutput) ToGetJobTemplateTemplateVolumeSecretOutput() GetJobTemplateTemplateVolumeSecretOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretOutput) ToGetJobTemplateTemplateVolumeSecretOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretOutput) DefaultMode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecret) int { return v.DefaultMode }).(pulumi.IntOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeSecretOutput) Items() GetJobTemplateTemplateVolumeSecretItemArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecret) []GetJobTemplateTemplateVolumeSecretItem { return v.Items }).(GetJobTemplateTemplateVolumeSecretItemArrayOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeSecretOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecret) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateVolumeSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeSecretArrayOutput) ToGetJobTemplateTemplateVolumeSecretArrayOutput() GetJobTemplateTemplateVolumeSecretArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretArrayOutput) ToGetJobTemplateTemplateVolumeSecretArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeSecret {
+		return vs[0].([]GetJobTemplateTemplateVolumeSecret)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeSecretOutput)
+}
+
+type GetJobTemplateTemplateVolumeSecretItem struct {
+	Mode    int    `pulumi:"mode"`
+	Path    string `pulumi:"path"`
+	Version string `pulumi:"version"`
+}
+
+// GetJobTemplateTemplateVolumeSecretItemInput is an input type that accepts GetJobTemplateTemplateVolumeSecretItemArgs and GetJobTemplateTemplateVolumeSecretItemOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeSecretItemInput` via:
+//
+//	GetJobTemplateTemplateVolumeSecretItemArgs{...}
+type GetJobTemplateTemplateVolumeSecretItemInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeSecretItemOutput() GetJobTemplateTemplateVolumeSecretItemOutput
+	ToGetJobTemplateTemplateVolumeSecretItemOutputWithContext(context.Context) GetJobTemplateTemplateVolumeSecretItemOutput
+}
+
+type GetJobTemplateTemplateVolumeSecretItemArgs struct {
+	Mode    pulumi.IntInput    `pulumi:"mode"`
+	Path    pulumi.StringInput `pulumi:"path"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetJobTemplateTemplateVolumeSecretItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeSecretItemArgs) ToGetJobTemplateTemplateVolumeSecretItemOutput() GetJobTemplateTemplateVolumeSecretItemOutput {
+	return i.ToGetJobTemplateTemplateVolumeSecretItemOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeSecretItemArgs) ToGetJobTemplateTemplateVolumeSecretItemOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeSecretItemOutput)
+}
+
+// GetJobTemplateTemplateVolumeSecretItemArrayInput is an input type that accepts GetJobTemplateTemplateVolumeSecretItemArray and GetJobTemplateTemplateVolumeSecretItemArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeSecretItemArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeSecretItemArray{ GetJobTemplateTemplateVolumeSecretItemArgs{...} }
+type GetJobTemplateTemplateVolumeSecretItemArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeSecretItemArrayOutput() GetJobTemplateTemplateVolumeSecretItemArrayOutput
+	ToGetJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeSecretItemArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeSecretItemArray []GetJobTemplateTemplateVolumeSecretItemInput
+
+func (GetJobTemplateTemplateVolumeSecretItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeSecretItemArray) ToGetJobTemplateTemplateVolumeSecretItemArrayOutput() GetJobTemplateTemplateVolumeSecretItemArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeSecretItemArray) ToGetJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeSecretItemArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeSecretItemOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeSecretItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemOutput) ToGetJobTemplateTemplateVolumeSecretItemOutput() GetJobTemplateTemplateVolumeSecretItemOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemOutput) ToGetJobTemplateTemplateVolumeSecretItemOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretItemOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemOutput) Mode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecretItem) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecretItem) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateVolumeSecretItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeSecretItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemArrayOutput) ToGetJobTemplateTemplateVolumeSecretItemArrayOutput() GetJobTemplateTemplateVolumeSecretItemArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemArrayOutput) ToGetJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeSecretItemArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeSecretItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeSecretItem {
+		return vs[0].([]GetJobTemplateTemplateVolumeSecretItem)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeSecretItemOutput)
+}
+
+type GetJobTemplateTemplateVpcAccess struct {
+	Connector         string                                            `pulumi:"connector"`
+	Egress            string                                            `pulumi:"egress"`
+	NetworkInterfaces []GetJobTemplateTemplateVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
+}
+
+// GetJobTemplateTemplateVpcAccessInput is an input type that accepts GetJobTemplateTemplateVpcAccessArgs and GetJobTemplateTemplateVpcAccessOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVpcAccessInput` via:
+//
+//	GetJobTemplateTemplateVpcAccessArgs{...}
+type GetJobTemplateTemplateVpcAccessInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVpcAccessOutput() GetJobTemplateTemplateVpcAccessOutput
+	ToGetJobTemplateTemplateVpcAccessOutputWithContext(context.Context) GetJobTemplateTemplateVpcAccessOutput
+}
+
+type GetJobTemplateTemplateVpcAccessArgs struct {
+	Connector         pulumi.StringInput                                        `pulumi:"connector"`
+	Egress            pulumi.StringInput                                        `pulumi:"egress"`
+	NetworkInterfaces GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+}
+
+func (GetJobTemplateTemplateVpcAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVpcAccess)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVpcAccessArgs) ToGetJobTemplateTemplateVpcAccessOutput() GetJobTemplateTemplateVpcAccessOutput {
+	return i.ToGetJobTemplateTemplateVpcAccessOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVpcAccessArgs) ToGetJobTemplateTemplateVpcAccessOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVpcAccessOutput)
+}
+
+// GetJobTemplateTemplateVpcAccessArrayInput is an input type that accepts GetJobTemplateTemplateVpcAccessArray and GetJobTemplateTemplateVpcAccessArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVpcAccessArrayInput` via:
+//
+//	GetJobTemplateTemplateVpcAccessArray{ GetJobTemplateTemplateVpcAccessArgs{...} }
+type GetJobTemplateTemplateVpcAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVpcAccessArrayOutput() GetJobTemplateTemplateVpcAccessArrayOutput
+	ToGetJobTemplateTemplateVpcAccessArrayOutputWithContext(context.Context) GetJobTemplateTemplateVpcAccessArrayOutput
+}
+
+type GetJobTemplateTemplateVpcAccessArray []GetJobTemplateTemplateVpcAccessInput
+
+func (GetJobTemplateTemplateVpcAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVpcAccess)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVpcAccessArray) ToGetJobTemplateTemplateVpcAccessArrayOutput() GetJobTemplateTemplateVpcAccessArrayOutput {
+	return i.ToGetJobTemplateTemplateVpcAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVpcAccessArray) ToGetJobTemplateTemplateVpcAccessArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVpcAccessArrayOutput)
+}
+
+type GetJobTemplateTemplateVpcAccessOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVpcAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVpcAccess)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVpcAccessOutput) ToGetJobTemplateTemplateVpcAccessOutput() GetJobTemplateTemplateVpcAccessOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessOutput) ToGetJobTemplateTemplateVpcAccessOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessOutput) Connector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccess) string { return v.Connector }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVpcAccessOutput) Egress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccess) string { return v.Egress }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVpcAccessOutput) NetworkInterfaces() GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccess) []GetJobTemplateTemplateVpcAccessNetworkInterface {
+		return v.NetworkInterfaces
+	}).(GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type GetJobTemplateTemplateVpcAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVpcAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVpcAccess)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVpcAccessArrayOutput) ToGetJobTemplateTemplateVpcAccessArrayOutput() GetJobTemplateTemplateVpcAccessArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessArrayOutput) ToGetJobTemplateTemplateVpcAccessArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVpcAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVpcAccess {
+		return vs[0].([]GetJobTemplateTemplateVpcAccess)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVpcAccessOutput)
+}
+
+type GetJobTemplateTemplateVpcAccessNetworkInterface struct {
+	Network    string   `pulumi:"network"`
+	Subnetwork string   `pulumi:"subnetwork"`
+	Tags       []string `pulumi:"tags"`
+}
+
+// GetJobTemplateTemplateVpcAccessNetworkInterfaceInput is an input type that accepts GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs and GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVpcAccessNetworkInterfaceInput` via:
+//
+//	GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs{...}
+type GetJobTemplateTemplateVpcAccessNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutput() GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput
+	ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Context) GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput
+}
+
+type GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs struct {
+	Network    pulumi.StringInput      `pulumi:"network"`
+	Subnetwork pulumi.StringInput      `pulumi:"subnetwork"`
+	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutput() GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return i.ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+// GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput is an input type that accepts GetJobTemplateTemplateVpcAccessNetworkInterfaceArray and GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput` via:
+//
+//	GetJobTemplateTemplateVpcAccessNetworkInterfaceArray{ GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs{...} }
+type GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput() GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput
+	ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Context) GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput
+}
+
+type GetJobTemplateTemplateVpcAccessNetworkInterfaceArray []GetJobTemplateTemplateVpcAccessNetworkInterfaceInput
+
+func (GetJobTemplateTemplateVpcAccessNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVpcAccessNetworkInterfaceArray) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput() GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return i.ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVpcAccessNetworkInterfaceArray) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutput() GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccessNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccessNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput() GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToGetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVpcAccessNetworkInterface {
+		return vs[0].([]GetJobTemplateTemplateVpcAccessNetworkInterface)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+type GetJobTerminalCondition struct {
+	ExecutionReason    string `pulumi:"executionReason"`
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	Message            string `pulumi:"message"`
+	Reason             string `pulumi:"reason"`
+	RevisionReason     string `pulumi:"revisionReason"`
+	Severity           string `pulumi:"severity"`
+	State              string `pulumi:"state"`
+	Type               string `pulumi:"type"`
+}
+
+// GetJobTerminalConditionInput is an input type that accepts GetJobTerminalConditionArgs and GetJobTerminalConditionOutput values.
+// You can construct a concrete instance of `GetJobTerminalConditionInput` via:
+//
+//	GetJobTerminalConditionArgs{...}
+type GetJobTerminalConditionInput interface {
+	pulumi.Input
+
+	ToGetJobTerminalConditionOutput() GetJobTerminalConditionOutput
+	ToGetJobTerminalConditionOutputWithContext(context.Context) GetJobTerminalConditionOutput
+}
+
+type GetJobTerminalConditionArgs struct {
+	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
+	Message            pulumi.StringInput `pulumi:"message"`
+	Reason             pulumi.StringInput `pulumi:"reason"`
+	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
+	Severity           pulumi.StringInput `pulumi:"severity"`
+	State              pulumi.StringInput `pulumi:"state"`
+	Type               pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetJobTerminalConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTerminalCondition)(nil)).Elem()
+}
+
+func (i GetJobTerminalConditionArgs) ToGetJobTerminalConditionOutput() GetJobTerminalConditionOutput {
+	return i.ToGetJobTerminalConditionOutputWithContext(context.Background())
+}
+
+func (i GetJobTerminalConditionArgs) ToGetJobTerminalConditionOutputWithContext(ctx context.Context) GetJobTerminalConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTerminalConditionOutput)
+}
+
+// GetJobTerminalConditionArrayInput is an input type that accepts GetJobTerminalConditionArray and GetJobTerminalConditionArrayOutput values.
+// You can construct a concrete instance of `GetJobTerminalConditionArrayInput` via:
+//
+//	GetJobTerminalConditionArray{ GetJobTerminalConditionArgs{...} }
+type GetJobTerminalConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTerminalConditionArrayOutput() GetJobTerminalConditionArrayOutput
+	ToGetJobTerminalConditionArrayOutputWithContext(context.Context) GetJobTerminalConditionArrayOutput
+}
+
+type GetJobTerminalConditionArray []GetJobTerminalConditionInput
+
+func (GetJobTerminalConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTerminalCondition)(nil)).Elem()
+}
+
+func (i GetJobTerminalConditionArray) ToGetJobTerminalConditionArrayOutput() GetJobTerminalConditionArrayOutput {
+	return i.ToGetJobTerminalConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTerminalConditionArray) ToGetJobTerminalConditionArrayOutputWithContext(ctx context.Context) GetJobTerminalConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTerminalConditionArrayOutput)
+}
+
+type GetJobTerminalConditionOutput struct{ *pulumi.OutputState }
+
+func (GetJobTerminalConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTerminalCondition)(nil)).Elem()
+}
+
+func (o GetJobTerminalConditionOutput) ToGetJobTerminalConditionOutput() GetJobTerminalConditionOutput {
+	return o
+}
+
+func (o GetJobTerminalConditionOutput) ToGetJobTerminalConditionOutputWithContext(ctx context.Context) GetJobTerminalConditionOutput {
+	return o
+}
+
+func (o GetJobTerminalConditionOutput) ExecutionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) RevisionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetJobTerminalConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetJobTerminalConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTerminalConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTerminalCondition)(nil)).Elem()
+}
+
+func (o GetJobTerminalConditionArrayOutput) ToGetJobTerminalConditionArrayOutput() GetJobTerminalConditionArrayOutput {
+	return o
+}
+
+func (o GetJobTerminalConditionArrayOutput) ToGetJobTerminalConditionArrayOutputWithContext(ctx context.Context) GetJobTerminalConditionArrayOutput {
+	return o
+}
+
+func (o GetJobTerminalConditionArrayOutput) Index(i pulumi.IntInput) GetJobTerminalConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTerminalCondition {
+		return vs[0].([]GetJobTerminalCondition)[vs[1].(int)]
+	}).(GetJobTerminalConditionOutput)
+}
+
+type GetServiceBinaryAuthorization struct {
+	BreakglassJustification string `pulumi:"breakglassJustification"`
+	UseDefault              bool   `pulumi:"useDefault"`
+}
+
+// GetServiceBinaryAuthorizationInput is an input type that accepts GetServiceBinaryAuthorizationArgs and GetServiceBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `GetServiceBinaryAuthorizationInput` via:
+//
+//	GetServiceBinaryAuthorizationArgs{...}
+type GetServiceBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetServiceBinaryAuthorizationOutput() GetServiceBinaryAuthorizationOutput
+	ToGetServiceBinaryAuthorizationOutputWithContext(context.Context) GetServiceBinaryAuthorizationOutput
+}
+
+type GetServiceBinaryAuthorizationArgs struct {
+	BreakglassJustification pulumi.StringInput `pulumi:"breakglassJustification"`
+	UseDefault              pulumi.BoolInput   `pulumi:"useDefault"`
+}
+
+func (GetServiceBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceBinaryAuthorization)(nil)).Elem()
+}
+
+func (i GetServiceBinaryAuthorizationArgs) ToGetServiceBinaryAuthorizationOutput() GetServiceBinaryAuthorizationOutput {
+	return i.ToGetServiceBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetServiceBinaryAuthorizationArgs) ToGetServiceBinaryAuthorizationOutputWithContext(ctx context.Context) GetServiceBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceBinaryAuthorizationOutput)
+}
+
+// GetServiceBinaryAuthorizationArrayInput is an input type that accepts GetServiceBinaryAuthorizationArray and GetServiceBinaryAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetServiceBinaryAuthorizationArrayInput` via:
+//
+//	GetServiceBinaryAuthorizationArray{ GetServiceBinaryAuthorizationArgs{...} }
+type GetServiceBinaryAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceBinaryAuthorizationArrayOutput() GetServiceBinaryAuthorizationArrayOutput
+	ToGetServiceBinaryAuthorizationArrayOutputWithContext(context.Context) GetServiceBinaryAuthorizationArrayOutput
+}
+
+type GetServiceBinaryAuthorizationArray []GetServiceBinaryAuthorizationInput
+
+func (GetServiceBinaryAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceBinaryAuthorization)(nil)).Elem()
+}
+
+func (i GetServiceBinaryAuthorizationArray) ToGetServiceBinaryAuthorizationArrayOutput() GetServiceBinaryAuthorizationArrayOutput {
+	return i.ToGetServiceBinaryAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceBinaryAuthorizationArray) ToGetServiceBinaryAuthorizationArrayOutputWithContext(ctx context.Context) GetServiceBinaryAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceBinaryAuthorizationArrayOutput)
+}
+
+type GetServiceBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceBinaryAuthorization)(nil)).Elem()
+}
+
+func (o GetServiceBinaryAuthorizationOutput) ToGetServiceBinaryAuthorizationOutput() GetServiceBinaryAuthorizationOutput {
+	return o
+}
+
+func (o GetServiceBinaryAuthorizationOutput) ToGetServiceBinaryAuthorizationOutputWithContext(ctx context.Context) GetServiceBinaryAuthorizationOutput {
+	return o
+}
+
+func (o GetServiceBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBinaryAuthorization) string { return v.BreakglassJustification }).(pulumi.StringOutput)
+}
+
+func (o GetServiceBinaryAuthorizationOutput) UseDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceBinaryAuthorization) bool { return v.UseDefault }).(pulumi.BoolOutput)
+}
+
+type GetServiceBinaryAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceBinaryAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceBinaryAuthorization)(nil)).Elem()
+}
+
+func (o GetServiceBinaryAuthorizationArrayOutput) ToGetServiceBinaryAuthorizationArrayOutput() GetServiceBinaryAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetServiceBinaryAuthorizationArrayOutput) ToGetServiceBinaryAuthorizationArrayOutputWithContext(ctx context.Context) GetServiceBinaryAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetServiceBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetServiceBinaryAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceBinaryAuthorization {
+		return vs[0].([]GetServiceBinaryAuthorization)[vs[1].(int)]
+	}).(GetServiceBinaryAuthorizationOutput)
+}
+
+type GetServiceCondition struct {
+	ExecutionReason    string `pulumi:"executionReason"`
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	Message            string `pulumi:"message"`
+	Reason             string `pulumi:"reason"`
+	RevisionReason     string `pulumi:"revisionReason"`
+	Severity           string `pulumi:"severity"`
+	State              string `pulumi:"state"`
+	Type               string `pulumi:"type"`
+}
+
+// GetServiceConditionInput is an input type that accepts GetServiceConditionArgs and GetServiceConditionOutput values.
+// You can construct a concrete instance of `GetServiceConditionInput` via:
+//
+//	GetServiceConditionArgs{...}
+type GetServiceConditionInput interface {
+	pulumi.Input
+
+	ToGetServiceConditionOutput() GetServiceConditionOutput
+	ToGetServiceConditionOutputWithContext(context.Context) GetServiceConditionOutput
+}
+
+type GetServiceConditionArgs struct {
+	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
+	Message            pulumi.StringInput `pulumi:"message"`
+	Reason             pulumi.StringInput `pulumi:"reason"`
+	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
+	Severity           pulumi.StringInput `pulumi:"severity"`
+	State              pulumi.StringInput `pulumi:"state"`
+	Type               pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServiceConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceCondition)(nil)).Elem()
+}
+
+func (i GetServiceConditionArgs) ToGetServiceConditionOutput() GetServiceConditionOutput {
+	return i.ToGetServiceConditionOutputWithContext(context.Background())
+}
+
+func (i GetServiceConditionArgs) ToGetServiceConditionOutputWithContext(ctx context.Context) GetServiceConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceConditionOutput)
+}
+
+// GetServiceConditionArrayInput is an input type that accepts GetServiceConditionArray and GetServiceConditionArrayOutput values.
+// You can construct a concrete instance of `GetServiceConditionArrayInput` via:
+//
+//	GetServiceConditionArray{ GetServiceConditionArgs{...} }
+type GetServiceConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceConditionArrayOutput() GetServiceConditionArrayOutput
+	ToGetServiceConditionArrayOutputWithContext(context.Context) GetServiceConditionArrayOutput
+}
+
+type GetServiceConditionArray []GetServiceConditionInput
+
+func (GetServiceConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceCondition)(nil)).Elem()
+}
+
+func (i GetServiceConditionArray) ToGetServiceConditionArrayOutput() GetServiceConditionArrayOutput {
+	return i.ToGetServiceConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceConditionArray) ToGetServiceConditionArrayOutputWithContext(ctx context.Context) GetServiceConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceConditionArrayOutput)
+}
+
+type GetServiceConditionOutput struct{ *pulumi.OutputState }
+
+func (GetServiceConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceCondition)(nil)).Elem()
+}
+
+func (o GetServiceConditionOutput) ToGetServiceConditionOutput() GetServiceConditionOutput {
+	return o
+}
+
+func (o GetServiceConditionOutput) ToGetServiceConditionOutputWithContext(ctx context.Context) GetServiceConditionOutput {
+	return o
+}
+
+func (o GetServiceConditionOutput) ExecutionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) RevisionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetServiceConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServiceConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceCondition)(nil)).Elem()
+}
+
+func (o GetServiceConditionArrayOutput) ToGetServiceConditionArrayOutput() GetServiceConditionArrayOutput {
+	return o
+}
+
+func (o GetServiceConditionArrayOutput) ToGetServiceConditionArrayOutputWithContext(ctx context.Context) GetServiceConditionArrayOutput {
+	return o
+}
+
+func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceCondition {
+		return vs[0].([]GetServiceCondition)[vs[1].(int)]
+	}).(GetServiceConditionOutput)
+}
+
+type GetServiceTemplate struct {
+	Annotations                   map[string]string             `pulumi:"annotations"`
+	Containers                    []GetServiceTemplateContainer `pulumi:"containers"`
+	EncryptionKey                 string                        `pulumi:"encryptionKey"`
+	ExecutionEnvironment          string                        `pulumi:"executionEnvironment"`
+	Labels                        map[string]string             `pulumi:"labels"`
+	MaxInstanceRequestConcurrency int                           `pulumi:"maxInstanceRequestConcurrency"`
+	Revision                      string                        `pulumi:"revision"`
+	Scalings                      []GetServiceTemplateScaling   `pulumi:"scalings"`
+	ServiceAccount                string                        `pulumi:"serviceAccount"`
+	SessionAffinity               bool                          `pulumi:"sessionAffinity"`
+	Timeout                       string                        `pulumi:"timeout"`
+	Volumes                       []GetServiceTemplateVolume    `pulumi:"volumes"`
+	VpcAccesses                   []GetServiceTemplateVpcAccess `pulumi:"vpcAccesses"`
+}
+
+// GetServiceTemplateInput is an input type that accepts GetServiceTemplateArgs and GetServiceTemplateOutput values.
+// You can construct a concrete instance of `GetServiceTemplateInput` via:
+//
+//	GetServiceTemplateArgs{...}
+type GetServiceTemplateInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateOutput() GetServiceTemplateOutput
+	ToGetServiceTemplateOutputWithContext(context.Context) GetServiceTemplateOutput
+}
+
+type GetServiceTemplateArgs struct {
+	Annotations                   pulumi.StringMapInput                 `pulumi:"annotations"`
+	Containers                    GetServiceTemplateContainerArrayInput `pulumi:"containers"`
+	EncryptionKey                 pulumi.StringInput                    `pulumi:"encryptionKey"`
+	ExecutionEnvironment          pulumi.StringInput                    `pulumi:"executionEnvironment"`
+	Labels                        pulumi.StringMapInput                 `pulumi:"labels"`
+	MaxInstanceRequestConcurrency pulumi.IntInput                       `pulumi:"maxInstanceRequestConcurrency"`
+	Revision                      pulumi.StringInput                    `pulumi:"revision"`
+	Scalings                      GetServiceTemplateScalingArrayInput   `pulumi:"scalings"`
+	ServiceAccount                pulumi.StringInput                    `pulumi:"serviceAccount"`
+	SessionAffinity               pulumi.BoolInput                      `pulumi:"sessionAffinity"`
+	Timeout                       pulumi.StringInput                    `pulumi:"timeout"`
+	Volumes                       GetServiceTemplateVolumeArrayInput    `pulumi:"volumes"`
+	VpcAccesses                   GetServiceTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
+}
+
+func (GetServiceTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplate)(nil)).Elem()
+}
+
+func (i GetServiceTemplateArgs) ToGetServiceTemplateOutput() GetServiceTemplateOutput {
+	return i.ToGetServiceTemplateOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateArgs) ToGetServiceTemplateOutputWithContext(ctx context.Context) GetServiceTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateOutput)
+}
+
+// GetServiceTemplateArrayInput is an input type that accepts GetServiceTemplateArray and GetServiceTemplateArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateArrayInput` via:
+//
+//	GetServiceTemplateArray{ GetServiceTemplateArgs{...} }
+type GetServiceTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateArrayOutput() GetServiceTemplateArrayOutput
+	ToGetServiceTemplateArrayOutputWithContext(context.Context) GetServiceTemplateArrayOutput
+}
+
+type GetServiceTemplateArray []GetServiceTemplateInput
+
+func (GetServiceTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplate)(nil)).Elem()
+}
+
+func (i GetServiceTemplateArray) ToGetServiceTemplateArrayOutput() GetServiceTemplateArrayOutput {
+	return i.ToGetServiceTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateArray) ToGetServiceTemplateArrayOutputWithContext(ctx context.Context) GetServiceTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateArrayOutput)
+}
+
+type GetServiceTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplate)(nil)).Elem()
+}
+
+func (o GetServiceTemplateOutput) ToGetServiceTemplateOutput() GetServiceTemplateOutput {
+	return o
+}
+
+func (o GetServiceTemplateOutput) ToGetServiceTemplateOutputWithContext(ctx context.Context) GetServiceTemplateOutput {
+	return o
+}
+
+func (o GetServiceTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o GetServiceTemplateOutput) Containers() GetServiceTemplateContainerArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateContainer { return v.Containers }).(GetServiceTemplateContainerArrayOutput)
+}
+
+func (o GetServiceTemplateOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplate) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateOutput) ExecutionEnvironment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplate) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplate) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplate) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateOutput) Scalings() GetServiceTemplateScalingArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateScaling { return v.Scalings }).(GetServiceTemplateScalingArrayOutput)
+}
+
+func (o GetServiceTemplateOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplate) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateOutput) SessionAffinity() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplate) bool { return v.SessionAffinity }).(pulumi.BoolOutput)
+}
+
+func (o GetServiceTemplateOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplate) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateOutput) Volumes() GetServiceTemplateVolumeArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateVolume { return v.Volumes }).(GetServiceTemplateVolumeArrayOutput)
+}
+
+func (o GetServiceTemplateOutput) VpcAccesses() GetServiceTemplateVpcAccessArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateVpcAccess { return v.VpcAccesses }).(GetServiceTemplateVpcAccessArrayOutput)
+}
+
+type GetServiceTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplate)(nil)).Elem()
+}
+
+func (o GetServiceTemplateArrayOutput) ToGetServiceTemplateArrayOutput() GetServiceTemplateArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateArrayOutput) ToGetServiceTemplateArrayOutputWithContext(ctx context.Context) GetServiceTemplateArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplate {
+		return vs[0].([]GetServiceTemplate)[vs[1].(int)]
+	}).(GetServiceTemplateOutput)
+}
+
+type GetServiceTemplateContainer struct {
+	Args           []string                                   `pulumi:"args"`
+	Commands       []string                                   `pulumi:"commands"`
+	DependsOns     []string                                   `pulumi:"dependsOns"`
+	Envs           []GetServiceTemplateContainerEnv           `pulumi:"envs"`
+	Image          string                                     `pulumi:"image"`
+	LivenessProbes []GetServiceTemplateContainerLivenessProbe `pulumi:"livenessProbes"`
+	// The name of the Cloud Run v2 Service.
+	Name          string                                    `pulumi:"name"`
+	Ports         []GetServiceTemplateContainerPort         `pulumi:"ports"`
+	Resources     []GetServiceTemplateContainerResource     `pulumi:"resources"`
+	StartupProbes []GetServiceTemplateContainerStartupProbe `pulumi:"startupProbes"`
+	VolumeMounts  []GetServiceTemplateContainerVolumeMount  `pulumi:"volumeMounts"`
+	WorkingDir    string                                    `pulumi:"workingDir"`
+}
+
+// GetServiceTemplateContainerInput is an input type that accepts GetServiceTemplateContainerArgs and GetServiceTemplateContainerOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerInput` via:
+//
+//	GetServiceTemplateContainerArgs{...}
+type GetServiceTemplateContainerInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerOutput() GetServiceTemplateContainerOutput
+	ToGetServiceTemplateContainerOutputWithContext(context.Context) GetServiceTemplateContainerOutput
+}
+
+type GetServiceTemplateContainerArgs struct {
+	Args           pulumi.StringArrayInput                            `pulumi:"args"`
+	Commands       pulumi.StringArrayInput                            `pulumi:"commands"`
+	DependsOns     pulumi.StringArrayInput                            `pulumi:"dependsOns"`
+	Envs           GetServiceTemplateContainerEnvArrayInput           `pulumi:"envs"`
+	Image          pulumi.StringInput                                 `pulumi:"image"`
+	LivenessProbes GetServiceTemplateContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
+	// The name of the Cloud Run v2 Service.
+	Name          pulumi.StringInput                                `pulumi:"name"`
+	Ports         GetServiceTemplateContainerPortArrayInput         `pulumi:"ports"`
+	Resources     GetServiceTemplateContainerResourceArrayInput     `pulumi:"resources"`
+	StartupProbes GetServiceTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
+	VolumeMounts  GetServiceTemplateContainerVolumeMountArrayInput  `pulumi:"volumeMounts"`
+	WorkingDir    pulumi.StringInput                                `pulumi:"workingDir"`
+}
+
+func (GetServiceTemplateContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainer)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerArgs) ToGetServiceTemplateContainerOutput() GetServiceTemplateContainerOutput {
+	return i.ToGetServiceTemplateContainerOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerArgs) ToGetServiceTemplateContainerOutputWithContext(ctx context.Context) GetServiceTemplateContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerOutput)
+}
+
+// GetServiceTemplateContainerArrayInput is an input type that accepts GetServiceTemplateContainerArray and GetServiceTemplateContainerArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerArrayInput` via:
+//
+//	GetServiceTemplateContainerArray{ GetServiceTemplateContainerArgs{...} }
+type GetServiceTemplateContainerArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerArrayOutput() GetServiceTemplateContainerArrayOutput
+	ToGetServiceTemplateContainerArrayOutputWithContext(context.Context) GetServiceTemplateContainerArrayOutput
+}
+
+type GetServiceTemplateContainerArray []GetServiceTemplateContainerInput
+
+func (GetServiceTemplateContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainer)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerArray) ToGetServiceTemplateContainerArrayOutput() GetServiceTemplateContainerArrayOutput {
+	return i.ToGetServiceTemplateContainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerArray) ToGetServiceTemplateContainerArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerArrayOutput)
+}
+
+type GetServiceTemplateContainerOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainer)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerOutput) ToGetServiceTemplateContainerOutput() GetServiceTemplateContainerOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerOutput) ToGetServiceTemplateContainerOutputWithContext(ctx context.Context) GetServiceTemplateContainerOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) Envs() GetServiceTemplateContainerEnvArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerEnv { return v.Envs }).(GetServiceTemplateContainerEnvArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) LivenessProbes() GetServiceTemplateContainerLivenessProbeArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerLivenessProbe {
+		return v.LivenessProbes
+	}).(GetServiceTemplateContainerLivenessProbeArrayOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) Ports() GetServiceTemplateContainerPortArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerPort { return v.Ports }).(GetServiceTemplateContainerPortArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) Resources() GetServiceTemplateContainerResourceArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerResource { return v.Resources }).(GetServiceTemplateContainerResourceArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) StartupProbes() GetServiceTemplateContainerStartupProbeArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerStartupProbe { return v.StartupProbes }).(GetServiceTemplateContainerStartupProbeArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) VolumeMounts() GetServiceTemplateContainerVolumeMountArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerVolumeMount { return v.VolumeMounts }).(GetServiceTemplateContainerVolumeMountArrayOutput)
+}
+
+func (o GetServiceTemplateContainerOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainer)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerArrayOutput) ToGetServiceTemplateContainerArrayOutput() GetServiceTemplateContainerArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerArrayOutput) ToGetServiceTemplateContainerArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainer {
+		return vs[0].([]GetServiceTemplateContainer)[vs[1].(int)]
+	}).(GetServiceTemplateContainerOutput)
+}
+
+type GetServiceTemplateContainerEnv struct {
+	// The name of the Cloud Run v2 Service.
+	Name         string                                      `pulumi:"name"`
+	Value        string                                      `pulumi:"value"`
+	ValueSources []GetServiceTemplateContainerEnvValueSource `pulumi:"valueSources"`
+}
+
+// GetServiceTemplateContainerEnvInput is an input type that accepts GetServiceTemplateContainerEnvArgs and GetServiceTemplateContainerEnvOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerEnvInput` via:
+//
+//	GetServiceTemplateContainerEnvArgs{...}
+type GetServiceTemplateContainerEnvInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerEnvOutput() GetServiceTemplateContainerEnvOutput
+	ToGetServiceTemplateContainerEnvOutputWithContext(context.Context) GetServiceTemplateContainerEnvOutput
+}
+
+type GetServiceTemplateContainerEnvArgs struct {
+	// The name of the Cloud Run v2 Service.
+	Name         pulumi.StringInput                                  `pulumi:"name"`
+	Value        pulumi.StringInput                                  `pulumi:"value"`
+	ValueSources GetServiceTemplateContainerEnvValueSourceArrayInput `pulumi:"valueSources"`
+}
+
+func (GetServiceTemplateContainerEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerEnv)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerEnvArgs) ToGetServiceTemplateContainerEnvOutput() GetServiceTemplateContainerEnvOutput {
+	return i.ToGetServiceTemplateContainerEnvOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerEnvArgs) ToGetServiceTemplateContainerEnvOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerEnvOutput)
+}
+
+// GetServiceTemplateContainerEnvArrayInput is an input type that accepts GetServiceTemplateContainerEnvArray and GetServiceTemplateContainerEnvArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerEnvArrayInput` via:
+//
+//	GetServiceTemplateContainerEnvArray{ GetServiceTemplateContainerEnvArgs{...} }
+type GetServiceTemplateContainerEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerEnvArrayOutput() GetServiceTemplateContainerEnvArrayOutput
+	ToGetServiceTemplateContainerEnvArrayOutputWithContext(context.Context) GetServiceTemplateContainerEnvArrayOutput
+}
+
+type GetServiceTemplateContainerEnvArray []GetServiceTemplateContainerEnvInput
+
+func (GetServiceTemplateContainerEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerEnv)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerEnvArray) ToGetServiceTemplateContainerEnvArrayOutput() GetServiceTemplateContainerEnvArrayOutput {
+	return i.ToGetServiceTemplateContainerEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerEnvArray) ToGetServiceTemplateContainerEnvArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerEnvArrayOutput)
+}
+
+type GetServiceTemplateContainerEnvOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerEnv)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerEnvOutput) ToGetServiceTemplateContainerEnvOutput() GetServiceTemplateContainerEnvOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvOutput) ToGetServiceTemplateContainerEnvOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateContainerEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerEnvOutput) ValueSources() GetServiceTemplateContainerEnvValueSourceArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerEnv) []GetServiceTemplateContainerEnvValueSource {
+		return v.ValueSources
+	}).(GetServiceTemplateContainerEnvValueSourceArrayOutput)
+}
+
+type GetServiceTemplateContainerEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerEnv)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerEnvArrayOutput) ToGetServiceTemplateContainerEnvArrayOutput() GetServiceTemplateContainerEnvArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvArrayOutput) ToGetServiceTemplateContainerEnvArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerEnv {
+		return vs[0].([]GetServiceTemplateContainerEnv)[vs[1].(int)]
+	}).(GetServiceTemplateContainerEnvOutput)
+}
+
+type GetServiceTemplateContainerEnvValueSource struct {
+	SecretKeyReves []GetServiceTemplateContainerEnvValueSourceSecretKeyRef `pulumi:"secretKeyReves"`
+}
+
+// GetServiceTemplateContainerEnvValueSourceInput is an input type that accepts GetServiceTemplateContainerEnvValueSourceArgs and GetServiceTemplateContainerEnvValueSourceOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerEnvValueSourceInput` via:
+//
+//	GetServiceTemplateContainerEnvValueSourceArgs{...}
+type GetServiceTemplateContainerEnvValueSourceInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerEnvValueSourceOutput() GetServiceTemplateContainerEnvValueSourceOutput
+	ToGetServiceTemplateContainerEnvValueSourceOutputWithContext(context.Context) GetServiceTemplateContainerEnvValueSourceOutput
+}
+
+type GetServiceTemplateContainerEnvValueSourceArgs struct {
+	SecretKeyReves GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayInput `pulumi:"secretKeyReves"`
+}
+
+func (GetServiceTemplateContainerEnvValueSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceArgs) ToGetServiceTemplateContainerEnvValueSourceOutput() GetServiceTemplateContainerEnvValueSourceOutput {
+	return i.ToGetServiceTemplateContainerEnvValueSourceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceArgs) ToGetServiceTemplateContainerEnvValueSourceOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerEnvValueSourceOutput)
+}
+
+// GetServiceTemplateContainerEnvValueSourceArrayInput is an input type that accepts GetServiceTemplateContainerEnvValueSourceArray and GetServiceTemplateContainerEnvValueSourceArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerEnvValueSourceArrayInput` via:
+//
+//	GetServiceTemplateContainerEnvValueSourceArray{ GetServiceTemplateContainerEnvValueSourceArgs{...} }
+type GetServiceTemplateContainerEnvValueSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerEnvValueSourceArrayOutput() GetServiceTemplateContainerEnvValueSourceArrayOutput
+	ToGetServiceTemplateContainerEnvValueSourceArrayOutputWithContext(context.Context) GetServiceTemplateContainerEnvValueSourceArrayOutput
+}
+
+type GetServiceTemplateContainerEnvValueSourceArray []GetServiceTemplateContainerEnvValueSourceInput
+
+func (GetServiceTemplateContainerEnvValueSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceArray) ToGetServiceTemplateContainerEnvValueSourceArrayOutput() GetServiceTemplateContainerEnvValueSourceArrayOutput {
+	return i.ToGetServiceTemplateContainerEnvValueSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceArray) ToGetServiceTemplateContainerEnvValueSourceArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerEnvValueSourceArrayOutput)
+}
+
+type GetServiceTemplateContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerEnvValueSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceOutput) ToGetServiceTemplateContainerEnvValueSourceOutput() GetServiceTemplateContainerEnvValueSourceOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceOutput) ToGetServiceTemplateContainerEnvValueSourceOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceOutput) SecretKeyReves() GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerEnvValueSource) []GetServiceTemplateContainerEnvValueSourceSecretKeyRef {
+		return v.SecretKeyReves
+	}).(GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput)
+}
+
+type GetServiceTemplateContainerEnvValueSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerEnvValueSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerEnvValueSource)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceArrayOutput) ToGetServiceTemplateContainerEnvValueSourceArrayOutput() GetServiceTemplateContainerEnvValueSourceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceArrayOutput) ToGetServiceTemplateContainerEnvValueSourceArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerEnvValueSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerEnvValueSource {
+		return vs[0].([]GetServiceTemplateContainerEnvValueSource)[vs[1].(int)]
+	}).(GetServiceTemplateContainerEnvValueSourceOutput)
+}
+
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRef struct {
+	Secret  string `pulumi:"secret"`
+	Version string `pulumi:"version"`
+}
+
+// GetServiceTemplateContainerEnvValueSourceSecretKeyRefInput is an input type that accepts GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs and GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerEnvValueSourceSecretKeyRefInput` via:
+//
+//	GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs{...}
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRefInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput() GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput
+	ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(context.Context) GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput
+}
+
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs struct {
+	Secret  pulumi.StringInput `pulumi:"secret"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput() GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return i.ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput)
+}
+
+// GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayInput is an input type that accepts GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray and GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayInput` via:
+//
+//	GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray{ GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs{...} }
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput() GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput
+	ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(context.Context) GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput
+}
+
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray []GetServiceTemplateContainerEnvValueSourceSecretKeyRefInput
+
+func (GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput() GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return i.ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput)
+}
+
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput() GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerEnvValueSourceSecretKeyRef)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput() GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) ToGetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerEnvValueSourceSecretKeyRef {
+		return vs[0].([]GetServiceTemplateContainerEnvValueSourceSecretKeyRef)[vs[1].(int)]
+	}).(GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbe struct {
+	FailureThreshold    int                                               `pulumi:"failureThreshold"`
+	Grpcs               []GetServiceTemplateContainerLivenessProbeGrpc    `pulumi:"grpcs"`
+	HttpGets            []GetServiceTemplateContainerLivenessProbeHttpGet `pulumi:"httpGets"`
+	InitialDelaySeconds int                                               `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       int                                               `pulumi:"periodSeconds"`
+	TimeoutSeconds      int                                               `pulumi:"timeoutSeconds"`
+}
+
+// GetServiceTemplateContainerLivenessProbeInput is an input type that accepts GetServiceTemplateContainerLivenessProbeArgs and GetServiceTemplateContainerLivenessProbeOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeArgs{...}
+type GetServiceTemplateContainerLivenessProbeInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeOutput() GetServiceTemplateContainerLivenessProbeOutput
+	ToGetServiceTemplateContainerLivenessProbeOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeArgs struct {
+	FailureThreshold    pulumi.IntInput                                           `pulumi:"failureThreshold"`
+	Grpcs               GetServiceTemplateContainerLivenessProbeGrpcArrayInput    `pulumi:"grpcs"`
+	HttpGets            GetServiceTemplateContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
+	InitialDelaySeconds pulumi.IntInput                                           `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       pulumi.IntInput                                           `pulumi:"periodSeconds"`
+	TimeoutSeconds      pulumi.IntInput                                           `pulumi:"timeoutSeconds"`
+}
+
+func (GetServiceTemplateContainerLivenessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeArgs) ToGetServiceTemplateContainerLivenessProbeOutput() GetServiceTemplateContainerLivenessProbeOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeArgs) ToGetServiceTemplateContainerLivenessProbeOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeOutput)
+}
+
+// GetServiceTemplateContainerLivenessProbeArrayInput is an input type that accepts GetServiceTemplateContainerLivenessProbeArray and GetServiceTemplateContainerLivenessProbeArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeArrayInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeArray{ GetServiceTemplateContainerLivenessProbeArgs{...} }
+type GetServiceTemplateContainerLivenessProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeArrayOutput() GetServiceTemplateContainerLivenessProbeArrayOutput
+	ToGetServiceTemplateContainerLivenessProbeArrayOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeArrayOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeArray []GetServiceTemplateContainerLivenessProbeInput
+
+func (GetServiceTemplateContainerLivenessProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeArray) ToGetServiceTemplateContainerLivenessProbeArrayOutput() GetServiceTemplateContainerLivenessProbeArrayOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeArray) ToGetServiceTemplateContainerLivenessProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeArrayOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) ToGetServiceTemplateContainerLivenessProbeOutput() GetServiceTemplateContainerLivenessProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) ToGetServiceTemplateContainerLivenessProbeOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) Grpcs() GetServiceTemplateContainerLivenessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) []GetServiceTemplateContainerLivenessProbeGrpc {
+		return v.Grpcs
+	}).(GetServiceTemplateContainerLivenessProbeGrpcArrayOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) HttpGets() GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) []GetServiceTemplateContainerLivenessProbeHttpGet {
+		return v.HttpGets
+	}).(GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeArrayOutput) ToGetServiceTemplateContainerLivenessProbeArrayOutput() GetServiceTemplateContainerLivenessProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeArrayOutput) ToGetServiceTemplateContainerLivenessProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerLivenessProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerLivenessProbe {
+		return vs[0].([]GetServiceTemplateContainerLivenessProbe)[vs[1].(int)]
+	}).(GetServiceTemplateContainerLivenessProbeOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeGrpc struct {
+	Port    int    `pulumi:"port"`
+	Service string `pulumi:"service"`
+}
+
+// GetServiceTemplateContainerLivenessProbeGrpcInput is an input type that accepts GetServiceTemplateContainerLivenessProbeGrpcArgs and GetServiceTemplateContainerLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeGrpcInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeGrpcArgs{...}
+type GetServiceTemplateContainerLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeGrpcOutput() GetServiceTemplateContainerLivenessProbeGrpcOutput
+	ToGetServiceTemplateContainerLivenessProbeGrpcOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeGrpcOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeGrpcArgs struct {
+	Port    pulumi.IntInput    `pulumi:"port"`
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetServiceTemplateContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeGrpcArgs) ToGetServiceTemplateContainerLivenessProbeGrpcOutput() GetServiceTemplateContainerLivenessProbeGrpcOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeGrpcArgs) ToGetServiceTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeGrpcOutput)
+}
+
+// GetServiceTemplateContainerLivenessProbeGrpcArrayInput is an input type that accepts GetServiceTemplateContainerLivenessProbeGrpcArray and GetServiceTemplateContainerLivenessProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeGrpcArrayInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeGrpcArray{ GetServiceTemplateContainerLivenessProbeGrpcArgs{...} }
+type GetServiceTemplateContainerLivenessProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutput() GetServiceTemplateContainerLivenessProbeGrpcArrayOutput
+	ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeGrpcArrayOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeGrpcArray []GetServiceTemplateContainerLivenessProbeGrpcInput
+
+func (GetServiceTemplateContainerLivenessProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeGrpcArray) ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutput() GetServiceTemplateContainerLivenessProbeGrpcArrayOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeGrpcArray) ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeGrpcArrayOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) ToGetServiceTemplateContainerLivenessProbeGrpcOutput() GetServiceTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) ToGetServiceTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcArrayOutput) ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutput() GetServiceTemplateContainerLivenessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcArrayOutput) ToGetServiceTemplateContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerLivenessProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerLivenessProbeGrpc {
+		return vs[0].([]GetServiceTemplateContainerLivenessProbeGrpc)[vs[1].(int)]
+	}).(GetServiceTemplateContainerLivenessProbeGrpcOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGet struct {
+	HttpHeaders []GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	Path        string                                                      `pulumi:"path"`
+	Port        int                                                         `pulumi:"port"`
+}
+
+// GetServiceTemplateContainerLivenessProbeHttpGetInput is an input type that accepts GetServiceTemplateContainerLivenessProbeHttpGetArgs and GetServiceTemplateContainerLivenessProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeHttpGetInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeHttpGetArgs{...}
+type GetServiceTemplateContainerLivenessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeHttpGetOutput() GetServiceTemplateContainerLivenessProbeHttpGetOutput
+	ToGetServiceTemplateContainerLivenessProbeHttpGetOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeHttpGetOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetArgs struct {
+	HttpHeaders GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	Path        pulumi.StringInput                                                  `pulumi:"path"`
+	Port        pulumi.IntInput                                                     `pulumi:"port"`
+}
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetArgs) ToGetServiceTemplateContainerLivenessProbeHttpGetOutput() GetServiceTemplateContainerLivenessProbeHttpGetOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetArgs) ToGetServiceTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeHttpGetOutput)
+}
+
+// GetServiceTemplateContainerLivenessProbeHttpGetArrayInput is an input type that accepts GetServiceTemplateContainerLivenessProbeHttpGetArray and GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeHttpGetArrayInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeHttpGetArray{ GetServiceTemplateContainerLivenessProbeHttpGetArgs{...} }
+type GetServiceTemplateContainerLivenessProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutput() GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput
+	ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetArray []GetServiceTemplateContainerLivenessProbeHttpGetInput
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetArray) ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutput() GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetArray) ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetOutput() GetServiceTemplateContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGet) []GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutput() GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerLivenessProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerLivenessProbeHttpGet {
+		return vs[0].([]GetServiceTemplateContainerLivenessProbeHttpGet)[vs[1].(int)]
+	}).(GetServiceTemplateContainerLivenessProbeHttpGetOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader struct {
+	// The name of the Cloud Run v2 Service.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs and GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...}
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
+	ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
+	// The name of the Cloud Run v2 Service.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+// GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray and GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray{ GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray []GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToGetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type GetServiceTemplateContainerPort struct {
+	ContainerPort int `pulumi:"containerPort"`
+	// The name of the Cloud Run v2 Service.
+	Name string `pulumi:"name"`
+}
+
+// GetServiceTemplateContainerPortInput is an input type that accepts GetServiceTemplateContainerPortArgs and GetServiceTemplateContainerPortOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerPortInput` via:
+//
+//	GetServiceTemplateContainerPortArgs{...}
+type GetServiceTemplateContainerPortInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerPortOutput() GetServiceTemplateContainerPortOutput
+	ToGetServiceTemplateContainerPortOutputWithContext(context.Context) GetServiceTemplateContainerPortOutput
+}
+
+type GetServiceTemplateContainerPortArgs struct {
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// The name of the Cloud Run v2 Service.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetServiceTemplateContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerPort)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerPortArgs) ToGetServiceTemplateContainerPortOutput() GetServiceTemplateContainerPortOutput {
+	return i.ToGetServiceTemplateContainerPortOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerPortArgs) ToGetServiceTemplateContainerPortOutputWithContext(ctx context.Context) GetServiceTemplateContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerPortOutput)
+}
+
+// GetServiceTemplateContainerPortArrayInput is an input type that accepts GetServiceTemplateContainerPortArray and GetServiceTemplateContainerPortArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerPortArrayInput` via:
+//
+//	GetServiceTemplateContainerPortArray{ GetServiceTemplateContainerPortArgs{...} }
+type GetServiceTemplateContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerPortArrayOutput() GetServiceTemplateContainerPortArrayOutput
+	ToGetServiceTemplateContainerPortArrayOutputWithContext(context.Context) GetServiceTemplateContainerPortArrayOutput
+}
+
+type GetServiceTemplateContainerPortArray []GetServiceTemplateContainerPortInput
+
+func (GetServiceTemplateContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerPort)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerPortArray) ToGetServiceTemplateContainerPortArrayOutput() GetServiceTemplateContainerPortArrayOutput {
+	return i.ToGetServiceTemplateContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerPortArray) ToGetServiceTemplateContainerPortArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerPortArrayOutput)
+}
+
+type GetServiceTemplateContainerPortOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerPort)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerPortOutput) ToGetServiceTemplateContainerPortOutput() GetServiceTemplateContainerPortOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerPortOutput) ToGetServiceTemplateContainerPortOutputWithContext(ctx context.Context) GetServiceTemplateContainerPortOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerPortOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateContainerPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerPort)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerPortArrayOutput) ToGetServiceTemplateContainerPortArrayOutput() GetServiceTemplateContainerPortArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerPortArrayOutput) ToGetServiceTemplateContainerPortArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerPortArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerPort {
+		return vs[0].([]GetServiceTemplateContainerPort)[vs[1].(int)]
+	}).(GetServiceTemplateContainerPortOutput)
+}
+
+type GetServiceTemplateContainerResource struct {
+	CpuIdle         bool              `pulumi:"cpuIdle"`
+	Limits          map[string]string `pulumi:"limits"`
+	StartupCpuBoost bool              `pulumi:"startupCpuBoost"`
+}
+
+// GetServiceTemplateContainerResourceInput is an input type that accepts GetServiceTemplateContainerResourceArgs and GetServiceTemplateContainerResourceOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerResourceInput` via:
+//
+//	GetServiceTemplateContainerResourceArgs{...}
+type GetServiceTemplateContainerResourceInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerResourceOutput() GetServiceTemplateContainerResourceOutput
+	ToGetServiceTemplateContainerResourceOutputWithContext(context.Context) GetServiceTemplateContainerResourceOutput
+}
+
+type GetServiceTemplateContainerResourceArgs struct {
+	CpuIdle         pulumi.BoolInput      `pulumi:"cpuIdle"`
+	Limits          pulumi.StringMapInput `pulumi:"limits"`
+	StartupCpuBoost pulumi.BoolInput      `pulumi:"startupCpuBoost"`
+}
+
+func (GetServiceTemplateContainerResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerResource)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerResourceArgs) ToGetServiceTemplateContainerResourceOutput() GetServiceTemplateContainerResourceOutput {
+	return i.ToGetServiceTemplateContainerResourceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerResourceArgs) ToGetServiceTemplateContainerResourceOutputWithContext(ctx context.Context) GetServiceTemplateContainerResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerResourceOutput)
+}
+
+// GetServiceTemplateContainerResourceArrayInput is an input type that accepts GetServiceTemplateContainerResourceArray and GetServiceTemplateContainerResourceArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerResourceArrayInput` via:
+//
+//	GetServiceTemplateContainerResourceArray{ GetServiceTemplateContainerResourceArgs{...} }
+type GetServiceTemplateContainerResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerResourceArrayOutput() GetServiceTemplateContainerResourceArrayOutput
+	ToGetServiceTemplateContainerResourceArrayOutputWithContext(context.Context) GetServiceTemplateContainerResourceArrayOutput
+}
+
+type GetServiceTemplateContainerResourceArray []GetServiceTemplateContainerResourceInput
+
+func (GetServiceTemplateContainerResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerResource)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerResourceArray) ToGetServiceTemplateContainerResourceArrayOutput() GetServiceTemplateContainerResourceArrayOutput {
+	return i.ToGetServiceTemplateContainerResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerResourceArray) ToGetServiceTemplateContainerResourceArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerResourceArrayOutput)
+}
+
+type GetServiceTemplateContainerResourceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerResource)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerResourceOutput) ToGetServiceTemplateContainerResourceOutput() GetServiceTemplateContainerResourceOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerResourceOutput) ToGetServiceTemplateContainerResourceOutputWithContext(ctx context.Context) GetServiceTemplateContainerResourceOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerResourceOutput) CpuIdle() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerResource) bool { return v.CpuIdle }).(pulumi.BoolOutput)
+}
+
+func (o GetServiceTemplateContainerResourceOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+func (o GetServiceTemplateContainerResourceOutput) StartupCpuBoost() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerResource) bool { return v.StartupCpuBoost }).(pulumi.BoolOutput)
+}
+
+type GetServiceTemplateContainerResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerResource)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerResourceArrayOutput) ToGetServiceTemplateContainerResourceArrayOutput() GetServiceTemplateContainerResourceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerResourceArrayOutput) ToGetServiceTemplateContainerResourceArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerResourceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerResourceArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerResource {
+		return vs[0].([]GetServiceTemplateContainerResource)[vs[1].(int)]
+	}).(GetServiceTemplateContainerResourceOutput)
+}
+
+type GetServiceTemplateContainerStartupProbe struct {
+	FailureThreshold    int                                                `pulumi:"failureThreshold"`
+	Grpcs               []GetServiceTemplateContainerStartupProbeGrpc      `pulumi:"grpcs"`
+	HttpGets            []GetServiceTemplateContainerStartupProbeHttpGet   `pulumi:"httpGets"`
+	InitialDelaySeconds int                                                `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       int                                                `pulumi:"periodSeconds"`
+	TcpSockets          []GetServiceTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
+	TimeoutSeconds      int                                                `pulumi:"timeoutSeconds"`
+}
+
+// GetServiceTemplateContainerStartupProbeInput is an input type that accepts GetServiceTemplateContainerStartupProbeArgs and GetServiceTemplateContainerStartupProbeOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeArgs{...}
+type GetServiceTemplateContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeOutput() GetServiceTemplateContainerStartupProbeOutput
+	ToGetServiceTemplateContainerStartupProbeOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeOutput
+}
+
+type GetServiceTemplateContainerStartupProbeArgs struct {
+	FailureThreshold    pulumi.IntInput                                            `pulumi:"failureThreshold"`
+	Grpcs               GetServiceTemplateContainerStartupProbeGrpcArrayInput      `pulumi:"grpcs"`
+	HttpGets            GetServiceTemplateContainerStartupProbeHttpGetArrayInput   `pulumi:"httpGets"`
+	InitialDelaySeconds pulumi.IntInput                                            `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       pulumi.IntInput                                            `pulumi:"periodSeconds"`
+	TcpSockets          GetServiceTemplateContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	TimeoutSeconds      pulumi.IntInput                                            `pulumi:"timeoutSeconds"`
+}
+
+func (GetServiceTemplateContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeArgs) ToGetServiceTemplateContainerStartupProbeOutput() GetServiceTemplateContainerStartupProbeOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeArgs) ToGetServiceTemplateContainerStartupProbeOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeOutput)
+}
+
+// GetServiceTemplateContainerStartupProbeArrayInput is an input type that accepts GetServiceTemplateContainerStartupProbeArray and GetServiceTemplateContainerStartupProbeArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeArrayInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeArray{ GetServiceTemplateContainerStartupProbeArgs{...} }
+type GetServiceTemplateContainerStartupProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeArrayOutput() GetServiceTemplateContainerStartupProbeArrayOutput
+	ToGetServiceTemplateContainerStartupProbeArrayOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeArrayOutput
+}
+
+type GetServiceTemplateContainerStartupProbeArray []GetServiceTemplateContainerStartupProbeInput
+
+func (GetServiceTemplateContainerStartupProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeArray) ToGetServiceTemplateContainerStartupProbeArrayOutput() GetServiceTemplateContainerStartupProbeArrayOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeArray) ToGetServiceTemplateContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeArrayOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) ToGetServiceTemplateContainerStartupProbeOutput() GetServiceTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) ToGetServiceTemplateContainerStartupProbeOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) Grpcs() GetServiceTemplateContainerStartupProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) []GetServiceTemplateContainerStartupProbeGrpc {
+		return v.Grpcs
+	}).(GetServiceTemplateContainerStartupProbeGrpcArrayOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) HttpGets() GetServiceTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) []GetServiceTemplateContainerStartupProbeHttpGet {
+		return v.HttpGets
+	}).(GetServiceTemplateContainerStartupProbeHttpGetArrayOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) TcpSockets() GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) []GetServiceTemplateContainerStartupProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeArrayOutput) ToGetServiceTemplateContainerStartupProbeArrayOutput() GetServiceTemplateContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeArrayOutput) ToGetServiceTemplateContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerStartupProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerStartupProbe {
+		return vs[0].([]GetServiceTemplateContainerStartupProbe)[vs[1].(int)]
+	}).(GetServiceTemplateContainerStartupProbeOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeGrpc struct {
+	Port    int    `pulumi:"port"`
+	Service string `pulumi:"service"`
+}
+
+// GetServiceTemplateContainerStartupProbeGrpcInput is an input type that accepts GetServiceTemplateContainerStartupProbeGrpcArgs and GetServiceTemplateContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeGrpcInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeGrpcArgs{...}
+type GetServiceTemplateContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeGrpcOutput() GetServiceTemplateContainerStartupProbeGrpcOutput
+	ToGetServiceTemplateContainerStartupProbeGrpcOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeGrpcOutput
+}
+
+type GetServiceTemplateContainerStartupProbeGrpcArgs struct {
+	Port    pulumi.IntInput    `pulumi:"port"`
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetServiceTemplateContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeGrpcArgs) ToGetServiceTemplateContainerStartupProbeGrpcOutput() GetServiceTemplateContainerStartupProbeGrpcOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeGrpcArgs) ToGetServiceTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeGrpcOutput)
+}
+
+// GetServiceTemplateContainerStartupProbeGrpcArrayInput is an input type that accepts GetServiceTemplateContainerStartupProbeGrpcArray and GetServiceTemplateContainerStartupProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeGrpcArrayInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeGrpcArray{ GetServiceTemplateContainerStartupProbeGrpcArgs{...} }
+type GetServiceTemplateContainerStartupProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeGrpcArrayOutput() GetServiceTemplateContainerStartupProbeGrpcArrayOutput
+	ToGetServiceTemplateContainerStartupProbeGrpcArrayOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeGrpcArrayOutput
+}
+
+type GetServiceTemplateContainerStartupProbeGrpcArray []GetServiceTemplateContainerStartupProbeGrpcInput
+
+func (GetServiceTemplateContainerStartupProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeGrpcArray) ToGetServiceTemplateContainerStartupProbeGrpcArrayOutput() GetServiceTemplateContainerStartupProbeGrpcArrayOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeGrpcArray) ToGetServiceTemplateContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeGrpcArrayOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcOutput) ToGetServiceTemplateContainerStartupProbeGrpcOutput() GetServiceTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcOutput) ToGetServiceTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcArrayOutput) ToGetServiceTemplateContainerStartupProbeGrpcArrayOutput() GetServiceTemplateContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcArrayOutput) ToGetServiceTemplateContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerStartupProbeGrpc {
+		return vs[0].([]GetServiceTemplateContainerStartupProbeGrpc)[vs[1].(int)]
+	}).(GetServiceTemplateContainerStartupProbeGrpcOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGet struct {
+	HttpHeaders []GetServiceTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	Path        string                                                     `pulumi:"path"`
+	Port        int                                                        `pulumi:"port"`
+}
+
+// GetServiceTemplateContainerStartupProbeHttpGetInput is an input type that accepts GetServiceTemplateContainerStartupProbeHttpGetArgs and GetServiceTemplateContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeHttpGetInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeHttpGetArgs{...}
+type GetServiceTemplateContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeHttpGetOutput() GetServiceTemplateContainerStartupProbeHttpGetOutput
+	ToGetServiceTemplateContainerStartupProbeHttpGetOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeHttpGetOutput
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetArgs struct {
+	HttpHeaders GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	Path        pulumi.StringInput                                                 `pulumi:"path"`
+	Port        pulumi.IntInput                                                    `pulumi:"port"`
+}
+
+func (GetServiceTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetArgs) ToGetServiceTemplateContainerStartupProbeHttpGetOutput() GetServiceTemplateContainerStartupProbeHttpGetOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetArgs) ToGetServiceTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeHttpGetOutput)
+}
+
+// GetServiceTemplateContainerStartupProbeHttpGetArrayInput is an input type that accepts GetServiceTemplateContainerStartupProbeHttpGetArray and GetServiceTemplateContainerStartupProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeHttpGetArrayInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeHttpGetArray{ GetServiceTemplateContainerStartupProbeHttpGetArgs{...} }
+type GetServiceTemplateContainerStartupProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutput() GetServiceTemplateContainerStartupProbeHttpGetArrayOutput
+	ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeHttpGetArrayOutput
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetArray []GetServiceTemplateContainerStartupProbeHttpGetInput
+
+func (GetServiceTemplateContainerStartupProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetArray) ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutput() GetServiceTemplateContainerStartupProbeHttpGetArrayOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetArray) ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeHttpGetArrayOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) ToGetServiceTemplateContainerStartupProbeHttpGetOutput() GetServiceTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) ToGetServiceTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGet) []GetServiceTemplateContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetArrayOutput) ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutput() GetServiceTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetArrayOutput) ToGetServiceTemplateContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerStartupProbeHttpGet {
+		return vs[0].([]GetServiceTemplateContainerStartupProbeHttpGet)[vs[1].(int)]
+	}).(GetServiceTemplateContainerStartupProbeHttpGetOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeader struct {
+	// The name of the Cloud Run v2 Service.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs and GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+	ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// The name of the Cloud Run v2 Service.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray and GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray{ GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray []GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput
+
+func (GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]GetServiceTemplateContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeTcpSocket struct {
+	Port int `pulumi:"port"`
+}
+
+// GetServiceTemplateContainerStartupProbeTcpSocketInput is an input type that accepts GetServiceTemplateContainerStartupProbeTcpSocketArgs and GetServiceTemplateContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeTcpSocketInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeTcpSocketArgs{...}
+type GetServiceTemplateContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeTcpSocketOutput() GetServiceTemplateContainerStartupProbeTcpSocketOutput
+	ToGetServiceTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeTcpSocketOutput
+}
+
+type GetServiceTemplateContainerStartupProbeTcpSocketArgs struct {
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetServiceTemplateContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeTcpSocketArgs) ToGetServiceTemplateContainerStartupProbeTcpSocketOutput() GetServiceTemplateContainerStartupProbeTcpSocketOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeTcpSocketArgs) ToGetServiceTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+// GetServiceTemplateContainerStartupProbeTcpSocketArrayInput is an input type that accepts GetServiceTemplateContainerStartupProbeTcpSocketArray and GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerStartupProbeTcpSocketArrayInput` via:
+//
+//	GetServiceTemplateContainerStartupProbeTcpSocketArray{ GetServiceTemplateContainerStartupProbeTcpSocketArgs{...} }
+type GetServiceTemplateContainerStartupProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutput() GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput
+	ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(context.Context) GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput
+}
+
+type GetServiceTemplateContainerStartupProbeTcpSocketArray []GetServiceTemplateContainerStartupProbeTcpSocketInput
+
+func (GetServiceTemplateContainerStartupProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerStartupProbeTcpSocketArray) ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutput() GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return i.ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerStartupProbeTcpSocketArray) ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeTcpSocketOutput) ToGetServiceTemplateContainerStartupProbeTcpSocketOutput() GetServiceTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeTcpSocketOutput) ToGetServiceTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput) ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutput() GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput) ToGetServiceTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerStartupProbeTcpSocket {
+		return vs[0].([]GetServiceTemplateContainerStartupProbeTcpSocket)[vs[1].(int)]
+	}).(GetServiceTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+type GetServiceTemplateContainerVolumeMount struct {
+	MountPath string `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Service.
+	Name string `pulumi:"name"`
+}
+
+// GetServiceTemplateContainerVolumeMountInput is an input type that accepts GetServiceTemplateContainerVolumeMountArgs and GetServiceTemplateContainerVolumeMountOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerVolumeMountInput` via:
+//
+//	GetServiceTemplateContainerVolumeMountArgs{...}
+type GetServiceTemplateContainerVolumeMountInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerVolumeMountOutput() GetServiceTemplateContainerVolumeMountOutput
+	ToGetServiceTemplateContainerVolumeMountOutputWithContext(context.Context) GetServiceTemplateContainerVolumeMountOutput
+}
+
+type GetServiceTemplateContainerVolumeMountArgs struct {
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Service.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetServiceTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerVolumeMountArgs) ToGetServiceTemplateContainerVolumeMountOutput() GetServiceTemplateContainerVolumeMountOutput {
+	return i.ToGetServiceTemplateContainerVolumeMountOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerVolumeMountArgs) ToGetServiceTemplateContainerVolumeMountOutputWithContext(ctx context.Context) GetServiceTemplateContainerVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerVolumeMountOutput)
+}
+
+// GetServiceTemplateContainerVolumeMountArrayInput is an input type that accepts GetServiceTemplateContainerVolumeMountArray and GetServiceTemplateContainerVolumeMountArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerVolumeMountArrayInput` via:
+//
+//	GetServiceTemplateContainerVolumeMountArray{ GetServiceTemplateContainerVolumeMountArgs{...} }
+type GetServiceTemplateContainerVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerVolumeMountArrayOutput() GetServiceTemplateContainerVolumeMountArrayOutput
+	ToGetServiceTemplateContainerVolumeMountArrayOutputWithContext(context.Context) GetServiceTemplateContainerVolumeMountArrayOutput
+}
+
+type GetServiceTemplateContainerVolumeMountArray []GetServiceTemplateContainerVolumeMountInput
+
+func (GetServiceTemplateContainerVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerVolumeMountArray) ToGetServiceTemplateContainerVolumeMountArrayOutput() GetServiceTemplateContainerVolumeMountArrayOutput {
+	return i.ToGetServiceTemplateContainerVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerVolumeMountArray) ToGetServiceTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerVolumeMountArrayOutput)
+}
+
+type GetServiceTemplateContainerVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerVolumeMountOutput) ToGetServiceTemplateContainerVolumeMountOutput() GetServiceTemplateContainerVolumeMountOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerVolumeMountOutput) ToGetServiceTemplateContainerVolumeMountOutputWithContext(ctx context.Context) GetServiceTemplateContainerVolumeMountOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerVolumeMount)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerVolumeMountArrayOutput) ToGetServiceTemplateContainerVolumeMountArrayOutput() GetServiceTemplateContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerVolumeMountArrayOutput) ToGetServiceTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerVolumeMount {
+		return vs[0].([]GetServiceTemplateContainerVolumeMount)[vs[1].(int)]
+	}).(GetServiceTemplateContainerVolumeMountOutput)
+}
+
+type GetServiceTemplateScaling struct {
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// GetServiceTemplateScalingInput is an input type that accepts GetServiceTemplateScalingArgs and GetServiceTemplateScalingOutput values.
+// You can construct a concrete instance of `GetServiceTemplateScalingInput` via:
+//
+//	GetServiceTemplateScalingArgs{...}
+type GetServiceTemplateScalingInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateScalingOutput() GetServiceTemplateScalingOutput
+	ToGetServiceTemplateScalingOutputWithContext(context.Context) GetServiceTemplateScalingOutput
+}
+
+type GetServiceTemplateScalingArgs struct {
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (GetServiceTemplateScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateScaling)(nil)).Elem()
+}
+
+func (i GetServiceTemplateScalingArgs) ToGetServiceTemplateScalingOutput() GetServiceTemplateScalingOutput {
+	return i.ToGetServiceTemplateScalingOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateScalingArgs) ToGetServiceTemplateScalingOutputWithContext(ctx context.Context) GetServiceTemplateScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateScalingOutput)
+}
+
+// GetServiceTemplateScalingArrayInput is an input type that accepts GetServiceTemplateScalingArray and GetServiceTemplateScalingArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateScalingArrayInput` via:
+//
+//	GetServiceTemplateScalingArray{ GetServiceTemplateScalingArgs{...} }
+type GetServiceTemplateScalingArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateScalingArrayOutput() GetServiceTemplateScalingArrayOutput
+	ToGetServiceTemplateScalingArrayOutputWithContext(context.Context) GetServiceTemplateScalingArrayOutput
+}
+
+type GetServiceTemplateScalingArray []GetServiceTemplateScalingInput
+
+func (GetServiceTemplateScalingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateScaling)(nil)).Elem()
+}
+
+func (i GetServiceTemplateScalingArray) ToGetServiceTemplateScalingArrayOutput() GetServiceTemplateScalingArrayOutput {
+	return i.ToGetServiceTemplateScalingArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateScalingArray) ToGetServiceTemplateScalingArrayOutputWithContext(ctx context.Context) GetServiceTemplateScalingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateScalingArrayOutput)
+}
+
+type GetServiceTemplateScalingOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateScaling)(nil)).Elem()
+}
+
+func (o GetServiceTemplateScalingOutput) ToGetServiceTemplateScalingOutput() GetServiceTemplateScalingOutput {
+	return o
+}
+
+func (o GetServiceTemplateScalingOutput) ToGetServiceTemplateScalingOutputWithContext(ctx context.Context) GetServiceTemplateScalingOutput {
+	return o
+}
+
+func (o GetServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateScaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateScalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateScaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateScalingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateScalingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateScaling)(nil)).Elem()
+}
+
+func (o GetServiceTemplateScalingArrayOutput) ToGetServiceTemplateScalingArrayOutput() GetServiceTemplateScalingArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateScalingArrayOutput) ToGetServiceTemplateScalingArrayOutputWithContext(ctx context.Context) GetServiceTemplateScalingArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateScalingArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateScalingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateScaling {
+		return vs[0].([]GetServiceTemplateScaling)[vs[1].(int)]
+	}).(GetServiceTemplateScalingOutput)
+}
+
+type GetServiceTemplateVolume struct {
+	CloudSqlInstances []GetServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
+	EmptyDirs         []GetServiceTemplateVolumeEmptyDir         `pulumi:"emptyDirs"`
+	// The name of the Cloud Run v2 Service.
+	Name    string                           `pulumi:"name"`
+	Secrets []GetServiceTemplateVolumeSecret `pulumi:"secrets"`
+}
+
+// GetServiceTemplateVolumeInput is an input type that accepts GetServiceTemplateVolumeArgs and GetServiceTemplateVolumeOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeInput` via:
+//
+//	GetServiceTemplateVolumeArgs{...}
+type GetServiceTemplateVolumeInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeOutput() GetServiceTemplateVolumeOutput
+	ToGetServiceTemplateVolumeOutputWithContext(context.Context) GetServiceTemplateVolumeOutput
+}
+
+type GetServiceTemplateVolumeArgs struct {
+	CloudSqlInstances GetServiceTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
+	EmptyDirs         GetServiceTemplateVolumeEmptyDirArrayInput         `pulumi:"emptyDirs"`
+	// The name of the Cloud Run v2 Service.
+	Name    pulumi.StringInput                       `pulumi:"name"`
+	Secrets GetServiceTemplateVolumeSecretArrayInput `pulumi:"secrets"`
+}
+
+func (GetServiceTemplateVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolume)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeArgs) ToGetServiceTemplateVolumeOutput() GetServiceTemplateVolumeOutput {
+	return i.ToGetServiceTemplateVolumeOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeArgs) ToGetServiceTemplateVolumeOutputWithContext(ctx context.Context) GetServiceTemplateVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeOutput)
+}
+
+// GetServiceTemplateVolumeArrayInput is an input type that accepts GetServiceTemplateVolumeArray and GetServiceTemplateVolumeArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeArrayInput` via:
+//
+//	GetServiceTemplateVolumeArray{ GetServiceTemplateVolumeArgs{...} }
+type GetServiceTemplateVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeArrayOutput() GetServiceTemplateVolumeArrayOutput
+	ToGetServiceTemplateVolumeArrayOutputWithContext(context.Context) GetServiceTemplateVolumeArrayOutput
+}
+
+type GetServiceTemplateVolumeArray []GetServiceTemplateVolumeInput
+
+func (GetServiceTemplateVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolume)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeArray) ToGetServiceTemplateVolumeArrayOutput() GetServiceTemplateVolumeArrayOutput {
+	return i.ToGetServiceTemplateVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeArray) ToGetServiceTemplateVolumeArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeArrayOutput)
+}
+
+type GetServiceTemplateVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolume)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeOutput) ToGetServiceTemplateVolumeOutput() GetServiceTemplateVolumeOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeOutput) ToGetServiceTemplateVolumeOutputWithContext(ctx context.Context) GetServiceTemplateVolumeOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeOutput) CloudSqlInstances() GetServiceTemplateVolumeCloudSqlInstanceArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeCloudSqlInstance {
+		return v.CloudSqlInstances
+	}).(GetServiceTemplateVolumeCloudSqlInstanceArrayOutput)
+}
+
+func (o GetServiceTemplateVolumeOutput) EmptyDirs() GetServiceTemplateVolumeEmptyDirArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateVolumeEmptyDirArrayOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVolumeOutput) Secrets() GetServiceTemplateVolumeSecretArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeSecret { return v.Secrets }).(GetServiceTemplateVolumeSecretArrayOutput)
+}
+
+type GetServiceTemplateVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolume)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeArrayOutput) ToGetServiceTemplateVolumeArrayOutput() GetServiceTemplateVolumeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeArrayOutput) ToGetServiceTemplateVolumeArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolume {
+		return vs[0].([]GetServiceTemplateVolume)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeOutput)
+}
+
+type GetServiceTemplateVolumeCloudSqlInstance struct {
+	Instances []string `pulumi:"instances"`
+}
+
+// GetServiceTemplateVolumeCloudSqlInstanceInput is an input type that accepts GetServiceTemplateVolumeCloudSqlInstanceArgs and GetServiceTemplateVolumeCloudSqlInstanceOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeCloudSqlInstanceInput` via:
+//
+//	GetServiceTemplateVolumeCloudSqlInstanceArgs{...}
+type GetServiceTemplateVolumeCloudSqlInstanceInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeCloudSqlInstanceOutput() GetServiceTemplateVolumeCloudSqlInstanceOutput
+	ToGetServiceTemplateVolumeCloudSqlInstanceOutputWithContext(context.Context) GetServiceTemplateVolumeCloudSqlInstanceOutput
+}
+
+type GetServiceTemplateVolumeCloudSqlInstanceArgs struct {
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+}
+
+func (GetServiceTemplateVolumeCloudSqlInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeCloudSqlInstanceArgs) ToGetServiceTemplateVolumeCloudSqlInstanceOutput() GetServiceTemplateVolumeCloudSqlInstanceOutput {
+	return i.ToGetServiceTemplateVolumeCloudSqlInstanceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeCloudSqlInstanceArgs) ToGetServiceTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) GetServiceTemplateVolumeCloudSqlInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeCloudSqlInstanceOutput)
+}
+
+// GetServiceTemplateVolumeCloudSqlInstanceArrayInput is an input type that accepts GetServiceTemplateVolumeCloudSqlInstanceArray and GetServiceTemplateVolumeCloudSqlInstanceArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeCloudSqlInstanceArrayInput` via:
+//
+//	GetServiceTemplateVolumeCloudSqlInstanceArray{ GetServiceTemplateVolumeCloudSqlInstanceArgs{...} }
+type GetServiceTemplateVolumeCloudSqlInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutput() GetServiceTemplateVolumeCloudSqlInstanceArrayOutput
+	ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutputWithContext(context.Context) GetServiceTemplateVolumeCloudSqlInstanceArrayOutput
+}
+
+type GetServiceTemplateVolumeCloudSqlInstanceArray []GetServiceTemplateVolumeCloudSqlInstanceInput
+
+func (GetServiceTemplateVolumeCloudSqlInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeCloudSqlInstanceArray) ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutput() GetServiceTemplateVolumeCloudSqlInstanceArrayOutput {
+	return i.ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeCloudSqlInstanceArray) ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeCloudSqlInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeCloudSqlInstanceArrayOutput)
+}
+
+type GetServiceTemplateVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeCloudSqlInstanceOutput) ToGetServiceTemplateVolumeCloudSqlInstanceOutput() GetServiceTemplateVolumeCloudSqlInstanceOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeCloudSqlInstanceOutput) ToGetServiceTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) GetServiceTemplateVolumeCloudSqlInstanceOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceTemplateVolumeCloudSqlInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeCloudSqlInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeCloudSqlInstance)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeCloudSqlInstanceArrayOutput) ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutput() GetServiceTemplateVolumeCloudSqlInstanceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeCloudSqlInstanceArrayOutput) ToGetServiceTemplateVolumeCloudSqlInstanceArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeCloudSqlInstanceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeCloudSqlInstanceArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeCloudSqlInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeCloudSqlInstance {
+		return vs[0].([]GetServiceTemplateVolumeCloudSqlInstance)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeCloudSqlInstanceOutput)
+}
+
+type GetServiceTemplateVolumeEmptyDir struct {
+	Medium    string `pulumi:"medium"`
+	SizeLimit string `pulumi:"sizeLimit"`
+}
+
+// GetServiceTemplateVolumeEmptyDirInput is an input type that accepts GetServiceTemplateVolumeEmptyDirArgs and GetServiceTemplateVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeEmptyDirInput` via:
+//
+//	GetServiceTemplateVolumeEmptyDirArgs{...}
+type GetServiceTemplateVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeEmptyDirOutput() GetServiceTemplateVolumeEmptyDirOutput
+	ToGetServiceTemplateVolumeEmptyDirOutputWithContext(context.Context) GetServiceTemplateVolumeEmptyDirOutput
+}
+
+type GetServiceTemplateVolumeEmptyDirArgs struct {
+	Medium    pulumi.StringInput `pulumi:"medium"`
+	SizeLimit pulumi.StringInput `pulumi:"sizeLimit"`
+}
+
+func (GetServiceTemplateVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeEmptyDirArgs) ToGetServiceTemplateVolumeEmptyDirOutput() GetServiceTemplateVolumeEmptyDirOutput {
+	return i.ToGetServiceTemplateVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeEmptyDirArgs) ToGetServiceTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) GetServiceTemplateVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeEmptyDirOutput)
+}
+
+// GetServiceTemplateVolumeEmptyDirArrayInput is an input type that accepts GetServiceTemplateVolumeEmptyDirArray and GetServiceTemplateVolumeEmptyDirArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeEmptyDirArrayInput` via:
+//
+//	GetServiceTemplateVolumeEmptyDirArray{ GetServiceTemplateVolumeEmptyDirArgs{...} }
+type GetServiceTemplateVolumeEmptyDirArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeEmptyDirArrayOutput() GetServiceTemplateVolumeEmptyDirArrayOutput
+	ToGetServiceTemplateVolumeEmptyDirArrayOutputWithContext(context.Context) GetServiceTemplateVolumeEmptyDirArrayOutput
+}
+
+type GetServiceTemplateVolumeEmptyDirArray []GetServiceTemplateVolumeEmptyDirInput
+
+func (GetServiceTemplateVolumeEmptyDirArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeEmptyDirArray) ToGetServiceTemplateVolumeEmptyDirArrayOutput() GetServiceTemplateVolumeEmptyDirArrayOutput {
+	return i.ToGetServiceTemplateVolumeEmptyDirArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeEmptyDirArray) ToGetServiceTemplateVolumeEmptyDirArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeEmptyDirArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeEmptyDirArrayOutput)
+}
+
+type GetServiceTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeEmptyDirOutput) ToGetServiceTemplateVolumeEmptyDirOutput() GetServiceTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeEmptyDirOutput) ToGetServiceTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) GetServiceTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeEmptyDir) string { return v.Medium }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeEmptyDir) string { return v.SizeLimit }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateVolumeEmptyDirArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeEmptyDirArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeEmptyDirArrayOutput) ToGetServiceTemplateVolumeEmptyDirArrayOutput() GetServiceTemplateVolumeEmptyDirArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeEmptyDirArrayOutput) ToGetServiceTemplateVolumeEmptyDirArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeEmptyDirArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeEmptyDirOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeEmptyDir {
+		return vs[0].([]GetServiceTemplateVolumeEmptyDir)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeEmptyDirOutput)
+}
+
+type GetServiceTemplateVolumeSecret struct {
+	DefaultMode int                                  `pulumi:"defaultMode"`
+	Items       []GetServiceTemplateVolumeSecretItem `pulumi:"items"`
+	Secret      string                               `pulumi:"secret"`
+}
+
+// GetServiceTemplateVolumeSecretInput is an input type that accepts GetServiceTemplateVolumeSecretArgs and GetServiceTemplateVolumeSecretOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeSecretInput` via:
+//
+//	GetServiceTemplateVolumeSecretArgs{...}
+type GetServiceTemplateVolumeSecretInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeSecretOutput() GetServiceTemplateVolumeSecretOutput
+	ToGetServiceTemplateVolumeSecretOutputWithContext(context.Context) GetServiceTemplateVolumeSecretOutput
+}
+
+type GetServiceTemplateVolumeSecretArgs struct {
+	DefaultMode pulumi.IntInput                              `pulumi:"defaultMode"`
+	Items       GetServiceTemplateVolumeSecretItemArrayInput `pulumi:"items"`
+	Secret      pulumi.StringInput                           `pulumi:"secret"`
+}
+
+func (GetServiceTemplateVolumeSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeSecretArgs) ToGetServiceTemplateVolumeSecretOutput() GetServiceTemplateVolumeSecretOutput {
+	return i.ToGetServiceTemplateVolumeSecretOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeSecretArgs) ToGetServiceTemplateVolumeSecretOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeSecretOutput)
+}
+
+// GetServiceTemplateVolumeSecretArrayInput is an input type that accepts GetServiceTemplateVolumeSecretArray and GetServiceTemplateVolumeSecretArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeSecretArrayInput` via:
+//
+//	GetServiceTemplateVolumeSecretArray{ GetServiceTemplateVolumeSecretArgs{...} }
+type GetServiceTemplateVolumeSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeSecretArrayOutput() GetServiceTemplateVolumeSecretArrayOutput
+	ToGetServiceTemplateVolumeSecretArrayOutputWithContext(context.Context) GetServiceTemplateVolumeSecretArrayOutput
+}
+
+type GetServiceTemplateVolumeSecretArray []GetServiceTemplateVolumeSecretInput
+
+func (GetServiceTemplateVolumeSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeSecretArray) ToGetServiceTemplateVolumeSecretArrayOutput() GetServiceTemplateVolumeSecretArrayOutput {
+	return i.ToGetServiceTemplateVolumeSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeSecretArray) ToGetServiceTemplateVolumeSecretArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeSecretArrayOutput)
+}
+
+type GetServiceTemplateVolumeSecretOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeSecretOutput) ToGetServiceTemplateVolumeSecretOutput() GetServiceTemplateVolumeSecretOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretOutput) ToGetServiceTemplateVolumeSecretOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretOutput) DefaultMode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeSecret) int { return v.DefaultMode }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateVolumeSecretOutput) Items() GetServiceTemplateVolumeSecretItemArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeSecret) []GetServiceTemplateVolumeSecretItem { return v.Items }).(GetServiceTemplateVolumeSecretItemArrayOutput)
+}
+
+func (o GetServiceTemplateVolumeSecretOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeSecret) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateVolumeSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeSecret)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeSecretArrayOutput) ToGetServiceTemplateVolumeSecretArrayOutput() GetServiceTemplateVolumeSecretArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretArrayOutput) ToGetServiceTemplateVolumeSecretArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeSecret {
+		return vs[0].([]GetServiceTemplateVolumeSecret)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeSecretOutput)
+}
+
+type GetServiceTemplateVolumeSecretItem struct {
+	Mode    int    `pulumi:"mode"`
+	Path    string `pulumi:"path"`
+	Version string `pulumi:"version"`
+}
+
+// GetServiceTemplateVolumeSecretItemInput is an input type that accepts GetServiceTemplateVolumeSecretItemArgs and GetServiceTemplateVolumeSecretItemOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeSecretItemInput` via:
+//
+//	GetServiceTemplateVolumeSecretItemArgs{...}
+type GetServiceTemplateVolumeSecretItemInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeSecretItemOutput() GetServiceTemplateVolumeSecretItemOutput
+	ToGetServiceTemplateVolumeSecretItemOutputWithContext(context.Context) GetServiceTemplateVolumeSecretItemOutput
+}
+
+type GetServiceTemplateVolumeSecretItemArgs struct {
+	Mode    pulumi.IntInput    `pulumi:"mode"`
+	Path    pulumi.StringInput `pulumi:"path"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetServiceTemplateVolumeSecretItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeSecretItemArgs) ToGetServiceTemplateVolumeSecretItemOutput() GetServiceTemplateVolumeSecretItemOutput {
+	return i.ToGetServiceTemplateVolumeSecretItemOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeSecretItemArgs) ToGetServiceTemplateVolumeSecretItemOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeSecretItemOutput)
+}
+
+// GetServiceTemplateVolumeSecretItemArrayInput is an input type that accepts GetServiceTemplateVolumeSecretItemArray and GetServiceTemplateVolumeSecretItemArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeSecretItemArrayInput` via:
+//
+//	GetServiceTemplateVolumeSecretItemArray{ GetServiceTemplateVolumeSecretItemArgs{...} }
+type GetServiceTemplateVolumeSecretItemArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeSecretItemArrayOutput() GetServiceTemplateVolumeSecretItemArrayOutput
+	ToGetServiceTemplateVolumeSecretItemArrayOutputWithContext(context.Context) GetServiceTemplateVolumeSecretItemArrayOutput
+}
+
+type GetServiceTemplateVolumeSecretItemArray []GetServiceTemplateVolumeSecretItemInput
+
+func (GetServiceTemplateVolumeSecretItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeSecretItemArray) ToGetServiceTemplateVolumeSecretItemArrayOutput() GetServiceTemplateVolumeSecretItemArrayOutput {
+	return i.ToGetServiceTemplateVolumeSecretItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeSecretItemArray) ToGetServiceTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeSecretItemArrayOutput)
+}
+
+type GetServiceTemplateVolumeSecretItemOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeSecretItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeSecretItemOutput) ToGetServiceTemplateVolumeSecretItemOutput() GetServiceTemplateVolumeSecretItemOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretItemOutput) ToGetServiceTemplateVolumeSecretItemOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretItemOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretItemOutput) Mode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateVolumeSecretItemOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeSecretItem) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVolumeSecretItemOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeSecretItem) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateVolumeSecretItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeSecretItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeSecretItem)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeSecretItemArrayOutput) ToGetServiceTemplateVolumeSecretItemArrayOutput() GetServiceTemplateVolumeSecretItemArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretItemArrayOutput) ToGetServiceTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeSecretItemArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeSecretItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeSecretItem {
+		return vs[0].([]GetServiceTemplateVolumeSecretItem)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeSecretItemOutput)
+}
+
+type GetServiceTemplateVpcAccess struct {
+	Connector         string                                        `pulumi:"connector"`
+	Egress            string                                        `pulumi:"egress"`
+	NetworkInterfaces []GetServiceTemplateVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
+}
+
+// GetServiceTemplateVpcAccessInput is an input type that accepts GetServiceTemplateVpcAccessArgs and GetServiceTemplateVpcAccessOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVpcAccessInput` via:
+//
+//	GetServiceTemplateVpcAccessArgs{...}
+type GetServiceTemplateVpcAccessInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVpcAccessOutput() GetServiceTemplateVpcAccessOutput
+	ToGetServiceTemplateVpcAccessOutputWithContext(context.Context) GetServiceTemplateVpcAccessOutput
+}
+
+type GetServiceTemplateVpcAccessArgs struct {
+	Connector         pulumi.StringInput                                    `pulumi:"connector"`
+	Egress            pulumi.StringInput                                    `pulumi:"egress"`
+	NetworkInterfaces GetServiceTemplateVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+}
+
+func (GetServiceTemplateVpcAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVpcAccess)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVpcAccessArgs) ToGetServiceTemplateVpcAccessOutput() GetServiceTemplateVpcAccessOutput {
+	return i.ToGetServiceTemplateVpcAccessOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVpcAccessArgs) ToGetServiceTemplateVpcAccessOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVpcAccessOutput)
+}
+
+// GetServiceTemplateVpcAccessArrayInput is an input type that accepts GetServiceTemplateVpcAccessArray and GetServiceTemplateVpcAccessArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVpcAccessArrayInput` via:
+//
+//	GetServiceTemplateVpcAccessArray{ GetServiceTemplateVpcAccessArgs{...} }
+type GetServiceTemplateVpcAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVpcAccessArrayOutput() GetServiceTemplateVpcAccessArrayOutput
+	ToGetServiceTemplateVpcAccessArrayOutputWithContext(context.Context) GetServiceTemplateVpcAccessArrayOutput
+}
+
+type GetServiceTemplateVpcAccessArray []GetServiceTemplateVpcAccessInput
+
+func (GetServiceTemplateVpcAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVpcAccess)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVpcAccessArray) ToGetServiceTemplateVpcAccessArrayOutput() GetServiceTemplateVpcAccessArrayOutput {
+	return i.ToGetServiceTemplateVpcAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVpcAccessArray) ToGetServiceTemplateVpcAccessArrayOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVpcAccessArrayOutput)
+}
+
+type GetServiceTemplateVpcAccessOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVpcAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVpcAccess)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVpcAccessOutput) ToGetServiceTemplateVpcAccessOutput() GetServiceTemplateVpcAccessOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessOutput) ToGetServiceTemplateVpcAccessOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessOutput) Connector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVpcAccess) string { return v.Connector }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVpcAccessOutput) Egress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVpcAccess) string { return v.Egress }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVpcAccessOutput) NetworkInterfaces() GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVpcAccess) []GetServiceTemplateVpcAccessNetworkInterface {
+		return v.NetworkInterfaces
+	}).(GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type GetServiceTemplateVpcAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVpcAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVpcAccess)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVpcAccessArrayOutput) ToGetServiceTemplateVpcAccessArrayOutput() GetServiceTemplateVpcAccessArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessArrayOutput) ToGetServiceTemplateVpcAccessArrayOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVpcAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVpcAccess {
+		return vs[0].([]GetServiceTemplateVpcAccess)[vs[1].(int)]
+	}).(GetServiceTemplateVpcAccessOutput)
+}
+
+type GetServiceTemplateVpcAccessNetworkInterface struct {
+	Network    string   `pulumi:"network"`
+	Subnetwork string   `pulumi:"subnetwork"`
+	Tags       []string `pulumi:"tags"`
+}
+
+// GetServiceTemplateVpcAccessNetworkInterfaceInput is an input type that accepts GetServiceTemplateVpcAccessNetworkInterfaceArgs and GetServiceTemplateVpcAccessNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVpcAccessNetworkInterfaceInput` via:
+//
+//	GetServiceTemplateVpcAccessNetworkInterfaceArgs{...}
+type GetServiceTemplateVpcAccessNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVpcAccessNetworkInterfaceOutput() GetServiceTemplateVpcAccessNetworkInterfaceOutput
+	ToGetServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Context) GetServiceTemplateVpcAccessNetworkInterfaceOutput
+}
+
+type GetServiceTemplateVpcAccessNetworkInterfaceArgs struct {
+	Network    pulumi.StringInput      `pulumi:"network"`
+	Subnetwork pulumi.StringInput      `pulumi:"subnetwork"`
+	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetServiceTemplateVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVpcAccessNetworkInterfaceArgs) ToGetServiceTemplateVpcAccessNetworkInterfaceOutput() GetServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return i.ToGetServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVpcAccessNetworkInterfaceArgs) ToGetServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+// GetServiceTemplateVpcAccessNetworkInterfaceArrayInput is an input type that accepts GetServiceTemplateVpcAccessNetworkInterfaceArray and GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVpcAccessNetworkInterfaceArrayInput` via:
+//
+//	GetServiceTemplateVpcAccessNetworkInterfaceArray{ GetServiceTemplateVpcAccessNetworkInterfaceArgs{...} }
+type GetServiceTemplateVpcAccessNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutput() GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput
+	ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Context) GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput
+}
+
+type GetServiceTemplateVpcAccessNetworkInterfaceArray []GetServiceTemplateVpcAccessNetworkInterfaceInput
+
+func (GetServiceTemplateVpcAccessNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVpcAccessNetworkInterfaceArray) ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutput() GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return i.ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVpcAccessNetworkInterfaceArray) ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type GetServiceTemplateVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) ToGetServiceTemplateVpcAccessNetworkInterfaceOutput() GetServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) ToGetServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVpcAccessNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVpcAccessNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutput() GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToGetServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVpcAccessNetworkInterface {
+		return vs[0].([]GetServiceTemplateVpcAccessNetworkInterface)[vs[1].(int)]
+	}).(GetServiceTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+type GetServiceTerminalCondition struct {
+	ExecutionReason    string `pulumi:"executionReason"`
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	Message            string `pulumi:"message"`
+	Reason             string `pulumi:"reason"`
+	RevisionReason     string `pulumi:"revisionReason"`
+	Severity           string `pulumi:"severity"`
+	State              string `pulumi:"state"`
+	Type               string `pulumi:"type"`
+}
+
+// GetServiceTerminalConditionInput is an input type that accepts GetServiceTerminalConditionArgs and GetServiceTerminalConditionOutput values.
+// You can construct a concrete instance of `GetServiceTerminalConditionInput` via:
+//
+//	GetServiceTerminalConditionArgs{...}
+type GetServiceTerminalConditionInput interface {
+	pulumi.Input
+
+	ToGetServiceTerminalConditionOutput() GetServiceTerminalConditionOutput
+	ToGetServiceTerminalConditionOutputWithContext(context.Context) GetServiceTerminalConditionOutput
+}
+
+type GetServiceTerminalConditionArgs struct {
+	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
+	Message            pulumi.StringInput `pulumi:"message"`
+	Reason             pulumi.StringInput `pulumi:"reason"`
+	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
+	Severity           pulumi.StringInput `pulumi:"severity"`
+	State              pulumi.StringInput `pulumi:"state"`
+	Type               pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServiceTerminalConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTerminalCondition)(nil)).Elem()
+}
+
+func (i GetServiceTerminalConditionArgs) ToGetServiceTerminalConditionOutput() GetServiceTerminalConditionOutput {
+	return i.ToGetServiceTerminalConditionOutputWithContext(context.Background())
+}
+
+func (i GetServiceTerminalConditionArgs) ToGetServiceTerminalConditionOutputWithContext(ctx context.Context) GetServiceTerminalConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTerminalConditionOutput)
+}
+
+// GetServiceTerminalConditionArrayInput is an input type that accepts GetServiceTerminalConditionArray and GetServiceTerminalConditionArrayOutput values.
+// You can construct a concrete instance of `GetServiceTerminalConditionArrayInput` via:
+//
+//	GetServiceTerminalConditionArray{ GetServiceTerminalConditionArgs{...} }
+type GetServiceTerminalConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTerminalConditionArrayOutput() GetServiceTerminalConditionArrayOutput
+	ToGetServiceTerminalConditionArrayOutputWithContext(context.Context) GetServiceTerminalConditionArrayOutput
+}
+
+type GetServiceTerminalConditionArray []GetServiceTerminalConditionInput
+
+func (GetServiceTerminalConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTerminalCondition)(nil)).Elem()
+}
+
+func (i GetServiceTerminalConditionArray) ToGetServiceTerminalConditionArrayOutput() GetServiceTerminalConditionArrayOutput {
+	return i.ToGetServiceTerminalConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTerminalConditionArray) ToGetServiceTerminalConditionArrayOutputWithContext(ctx context.Context) GetServiceTerminalConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTerminalConditionArrayOutput)
+}
+
+type GetServiceTerminalConditionOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTerminalConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTerminalCondition)(nil)).Elem()
+}
+
+func (o GetServiceTerminalConditionOutput) ToGetServiceTerminalConditionOutput() GetServiceTerminalConditionOutput {
+	return o
+}
+
+func (o GetServiceTerminalConditionOutput) ToGetServiceTerminalConditionOutputWithContext(ctx context.Context) GetServiceTerminalConditionOutput {
+	return o
+}
+
+func (o GetServiceTerminalConditionOutput) ExecutionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Message }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) RevisionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTerminalConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServiceTerminalConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTerminalConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTerminalCondition)(nil)).Elem()
+}
+
+func (o GetServiceTerminalConditionArrayOutput) ToGetServiceTerminalConditionArrayOutput() GetServiceTerminalConditionArrayOutput {
+	return o
+}
+
+func (o GetServiceTerminalConditionArrayOutput) ToGetServiceTerminalConditionArrayOutputWithContext(ctx context.Context) GetServiceTerminalConditionArrayOutput {
+	return o
+}
+
+func (o GetServiceTerminalConditionArrayOutput) Index(i pulumi.IntInput) GetServiceTerminalConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTerminalCondition {
+		return vs[0].([]GetServiceTerminalCondition)[vs[1].(int)]
+	}).(GetServiceTerminalConditionOutput)
+}
+
+type GetServiceTraffic struct {
+	Percent  int    `pulumi:"percent"`
+	Revision string `pulumi:"revision"`
+	Tag      string `pulumi:"tag"`
+	Type     string `pulumi:"type"`
+}
+
+// GetServiceTrafficInput is an input type that accepts GetServiceTrafficArgs and GetServiceTrafficOutput values.
+// You can construct a concrete instance of `GetServiceTrafficInput` via:
+//
+//	GetServiceTrafficArgs{...}
+type GetServiceTrafficInput interface {
+	pulumi.Input
+
+	ToGetServiceTrafficOutput() GetServiceTrafficOutput
+	ToGetServiceTrafficOutputWithContext(context.Context) GetServiceTrafficOutput
+}
+
+type GetServiceTrafficArgs struct {
+	Percent  pulumi.IntInput    `pulumi:"percent"`
+	Revision pulumi.StringInput `pulumi:"revision"`
+	Tag      pulumi.StringInput `pulumi:"tag"`
+	Type     pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServiceTrafficArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTraffic)(nil)).Elem()
+}
+
+func (i GetServiceTrafficArgs) ToGetServiceTrafficOutput() GetServiceTrafficOutput {
+	return i.ToGetServiceTrafficOutputWithContext(context.Background())
+}
+
+func (i GetServiceTrafficArgs) ToGetServiceTrafficOutputWithContext(ctx context.Context) GetServiceTrafficOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTrafficOutput)
+}
+
+// GetServiceTrafficArrayInput is an input type that accepts GetServiceTrafficArray and GetServiceTrafficArrayOutput values.
+// You can construct a concrete instance of `GetServiceTrafficArrayInput` via:
+//
+//	GetServiceTrafficArray{ GetServiceTrafficArgs{...} }
+type GetServiceTrafficArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTrafficArrayOutput() GetServiceTrafficArrayOutput
+	ToGetServiceTrafficArrayOutputWithContext(context.Context) GetServiceTrafficArrayOutput
+}
+
+type GetServiceTrafficArray []GetServiceTrafficInput
+
+func (GetServiceTrafficArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTraffic)(nil)).Elem()
+}
+
+func (i GetServiceTrafficArray) ToGetServiceTrafficArrayOutput() GetServiceTrafficArrayOutput {
+	return i.ToGetServiceTrafficArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTrafficArray) ToGetServiceTrafficArrayOutputWithContext(ctx context.Context) GetServiceTrafficArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTrafficArrayOutput)
+}
+
+type GetServiceTrafficOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTrafficOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTraffic)(nil)).Elem()
+}
+
+func (o GetServiceTrafficOutput) ToGetServiceTrafficOutput() GetServiceTrafficOutput {
+	return o
+}
+
+func (o GetServiceTrafficOutput) ToGetServiceTrafficOutputWithContext(ctx context.Context) GetServiceTrafficOutput {
+	return o
+}
+
+func (o GetServiceTrafficOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTraffic) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTrafficOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTraffic) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTraffic) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTraffic) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServiceTrafficArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTrafficArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTraffic)(nil)).Elem()
+}
+
+func (o GetServiceTrafficArrayOutput) ToGetServiceTrafficArrayOutput() GetServiceTrafficArrayOutput {
+	return o
+}
+
+func (o GetServiceTrafficArrayOutput) ToGetServiceTrafficArrayOutputWithContext(ctx context.Context) GetServiceTrafficArrayOutput {
+	return o
+}
+
+func (o GetServiceTrafficArrayOutput) Index(i pulumi.IntInput) GetServiceTrafficOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTraffic {
+		return vs[0].([]GetServiceTraffic)[vs[1].(int)]
+	}).(GetServiceTrafficOutput)
+}
+
+type GetServiceTrafficStatus struct {
+	Percent  int    `pulumi:"percent"`
+	Revision string `pulumi:"revision"`
+	Tag      string `pulumi:"tag"`
+	Type     string `pulumi:"type"`
+	Uri      string `pulumi:"uri"`
+}
+
+// GetServiceTrafficStatusInput is an input type that accepts GetServiceTrafficStatusArgs and GetServiceTrafficStatusOutput values.
+// You can construct a concrete instance of `GetServiceTrafficStatusInput` via:
+//
+//	GetServiceTrafficStatusArgs{...}
+type GetServiceTrafficStatusInput interface {
+	pulumi.Input
+
+	ToGetServiceTrafficStatusOutput() GetServiceTrafficStatusOutput
+	ToGetServiceTrafficStatusOutputWithContext(context.Context) GetServiceTrafficStatusOutput
+}
+
+type GetServiceTrafficStatusArgs struct {
+	Percent  pulumi.IntInput    `pulumi:"percent"`
+	Revision pulumi.StringInput `pulumi:"revision"`
+	Tag      pulumi.StringInput `pulumi:"tag"`
+	Type     pulumi.StringInput `pulumi:"type"`
+	Uri      pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetServiceTrafficStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTrafficStatus)(nil)).Elem()
+}
+
+func (i GetServiceTrafficStatusArgs) ToGetServiceTrafficStatusOutput() GetServiceTrafficStatusOutput {
+	return i.ToGetServiceTrafficStatusOutputWithContext(context.Background())
+}
+
+func (i GetServiceTrafficStatusArgs) ToGetServiceTrafficStatusOutputWithContext(ctx context.Context) GetServiceTrafficStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTrafficStatusOutput)
+}
+
+// GetServiceTrafficStatusArrayInput is an input type that accepts GetServiceTrafficStatusArray and GetServiceTrafficStatusArrayOutput values.
+// You can construct a concrete instance of `GetServiceTrafficStatusArrayInput` via:
+//
+//	GetServiceTrafficStatusArray{ GetServiceTrafficStatusArgs{...} }
+type GetServiceTrafficStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTrafficStatusArrayOutput() GetServiceTrafficStatusArrayOutput
+	ToGetServiceTrafficStatusArrayOutputWithContext(context.Context) GetServiceTrafficStatusArrayOutput
+}
+
+type GetServiceTrafficStatusArray []GetServiceTrafficStatusInput
+
+func (GetServiceTrafficStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTrafficStatus)(nil)).Elem()
+}
+
+func (i GetServiceTrafficStatusArray) ToGetServiceTrafficStatusArrayOutput() GetServiceTrafficStatusArrayOutput {
+	return i.ToGetServiceTrafficStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTrafficStatusArray) ToGetServiceTrafficStatusArrayOutputWithContext(ctx context.Context) GetServiceTrafficStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTrafficStatusArrayOutput)
+}
+
+type GetServiceTrafficStatusOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTrafficStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTrafficStatus)(nil)).Elem()
+}
+
+func (o GetServiceTrafficStatusOutput) ToGetServiceTrafficStatusOutput() GetServiceTrafficStatusOutput {
+	return o
+}
+
+func (o GetServiceTrafficStatusOutput) ToGetServiceTrafficStatusOutputWithContext(ctx context.Context) GetServiceTrafficStatusOutput {
+	return o
+}
+
+func (o GetServiceTrafficStatusOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTrafficStatus) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTrafficStatusOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficStatusOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficStatusOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTrafficStatusOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetServiceTrafficStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTrafficStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTrafficStatus)(nil)).Elem()
+}
+
+func (o GetServiceTrafficStatusArrayOutput) ToGetServiceTrafficStatusArrayOutput() GetServiceTrafficStatusArrayOutput {
+	return o
+}
+
+func (o GetServiceTrafficStatusArrayOutput) ToGetServiceTrafficStatusArrayOutputWithContext(ctx context.Context) GetServiceTrafficStatusArrayOutput {
+	return o
+}
+
+func (o GetServiceTrafficStatusArrayOutput) Index(i pulumi.IntInput) GetServiceTrafficStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTrafficStatus {
+		return vs[0].([]GetServiceTrafficStatus)[vs[1].(int)]
+	}).(GetServiceTrafficStatusOutput)
 }
 
 func init() {
@@ -10252,6 +14550,106 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTrafficArrayInput)(nil)).Elem(), ServiceTrafficArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTrafficStatusInput)(nil)).Elem(), ServiceTrafficStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTrafficStatusArrayInput)(nil)).Elem(), ServiceTrafficStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobBinaryAuthorizationInput)(nil)).Elem(), GetJobBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobBinaryAuthorizationArrayInput)(nil)).Elem(), GetJobBinaryAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobConditionInput)(nil)).Elem(), GetJobConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobConditionArrayInput)(nil)).Elem(), GetJobConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobLatestCreatedExecutionInput)(nil)).Elem(), GetJobLatestCreatedExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobLatestCreatedExecutionArrayInput)(nil)).Elem(), GetJobLatestCreatedExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateInput)(nil)).Elem(), GetJobTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateArrayInput)(nil)).Elem(), GetJobTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateInput)(nil)).Elem(), GetJobTemplateTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateArrayInput)(nil)).Elem(), GetJobTemplateTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerInput)(nil)).Elem(), GetJobTemplateTemplateContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerEnvInput)(nil)).Elem(), GetJobTemplateTemplateContainerEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerEnvArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSourceInput)(nil)).Elem(), GetJobTemplateTemplateContainerEnvValueSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSourceArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerEnvValueSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput)(nil)).Elem(), GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerPortInput)(nil)).Elem(), GetJobTemplateTemplateContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerPortArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerResourceInput)(nil)).Elem(), GetJobTemplateTemplateContainerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerResourceArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetJobTemplateTemplateContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), GetJobTemplateTemplateVolumeCloudSqlInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeCloudSqlInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDirInput)(nil)).Elem(), GetJobTemplateTemplateVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDirArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeEmptyDirArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretItemInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretItemArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessArrayInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTerminalConditionInput)(nil)).Elem(), GetJobTerminalConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTerminalConditionArrayInput)(nil)).Elem(), GetJobTerminalConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBinaryAuthorizationInput)(nil)).Elem(), GetServiceBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBinaryAuthorizationArrayInput)(nil)).Elem(), GetServiceBinaryAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionInput)(nil)).Elem(), GetServiceConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionArrayInput)(nil)).Elem(), GetServiceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateInput)(nil)).Elem(), GetServiceTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateArrayInput)(nil)).Elem(), GetServiceTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerInput)(nil)).Elem(), GetServiceTemplateContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerArrayInput)(nil)).Elem(), GetServiceTemplateContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvInput)(nil)).Elem(), GetServiceTemplateContainerEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvArrayInput)(nil)).Elem(), GetServiceTemplateContainerEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceInput)(nil)).Elem(), GetServiceTemplateContainerEnvValueSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceArrayInput)(nil)).Elem(), GetServiceTemplateContainerEnvValueSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceSecretKeyRefInput)(nil)).Elem(), GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayInput)(nil)).Elem(), GetServiceTemplateContainerEnvValueSourceSecretKeyRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeGrpcInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeGrpcArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerPortInput)(nil)).Elem(), GetServiceTemplateContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerPortArrayInput)(nil)).Elem(), GetServiceTemplateContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerResourceInput)(nil)).Elem(), GetServiceTemplateContainerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerResourceArrayInput)(nil)).Elem(), GetServiceTemplateContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeGrpcArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGetArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeHttpGetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeTcpSocketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerVolumeMountInput)(nil)).Elem(), GetServiceTemplateContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingInput)(nil)).Elem(), GetServiceTemplateScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingArrayInput)(nil)).Elem(), GetServiceTemplateScalingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeInput)(nil)).Elem(), GetServiceTemplateVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeArrayInput)(nil)).Elem(), GetServiceTemplateVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), GetServiceTemplateVolumeCloudSqlInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeCloudSqlInstanceArrayInput)(nil)).Elem(), GetServiceTemplateVolumeCloudSqlInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeEmptyDirInput)(nil)).Elem(), GetServiceTemplateVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeEmptyDirArrayInput)(nil)).Elem(), GetServiceTemplateVolumeEmptyDirArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretInput)(nil)).Elem(), GetServiceTemplateVolumeSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretArrayInput)(nil)).Elem(), GetServiceTemplateVolumeSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretItemInput)(nil)).Elem(), GetServiceTemplateVolumeSecretItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretItemArrayInput)(nil)).Elem(), GetServiceTemplateVolumeSecretItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessInput)(nil)).Elem(), GetServiceTemplateVpcAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessArrayInput)(nil)).Elem(), GetServiceTemplateVpcAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), GetServiceTemplateVpcAccessNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), GetServiceTemplateVpcAccessNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTerminalConditionInput)(nil)).Elem(), GetServiceTerminalConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTerminalConditionArrayInput)(nil)).Elem(), GetServiceTerminalConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficInput)(nil)).Elem(), GetServiceTrafficArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficArrayInput)(nil)).Elem(), GetServiceTrafficArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficStatusInput)(nil)).Elem(), GetServiceTrafficStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficStatusArrayInput)(nil)).Elem(), GetServiceTrafficStatusArray{})
 	pulumi.RegisterOutputType(JobBinaryAuthorizationOutput{})
 	pulumi.RegisterOutputType(JobBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(JobConditionOutput{})
@@ -10360,4 +14758,104 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTrafficArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTrafficStatusOutput{})
 	pulumi.RegisterOutputType(ServiceTrafficStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetJobBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetJobBinaryAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetJobConditionOutput{})
+	pulumi.RegisterOutputType(GetJobConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetJobLatestCreatedExecutionOutput{})
+	pulumi.RegisterOutputType(GetJobLatestCreatedExecutionArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerEnvOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerEnvValueSourceOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerEnvValueSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerPortOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerResourceOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeCloudSqlInstanceOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeEmptyDirArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretItemOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretItemArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTerminalConditionOutput{})
+	pulumi.RegisterOutputType(GetJobTerminalConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetServiceBinaryAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceConditionOutput{})
+	pulumi.RegisterOutputType(GetServiceConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvValueSourceOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvValueSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerPortOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerResourceOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeHttpGetArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerVolumeMountOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateScalingOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateScalingArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeCloudSqlInstanceOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeCloudSqlInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeEmptyDirArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretItemOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretItemArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTerminalConditionOutput{})
+	pulumi.RegisterOutputType(GetServiceTerminalConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTrafficOutput{})
+	pulumi.RegisterOutputType(GetServiceTrafficArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTrafficStatusOutput{})
+	pulumi.RegisterOutputType(GetServiceTrafficStatusArrayOutput{})
 }

@@ -134,7 +134,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NatAddress can be imported using any of these accepted formats
+ * NatAddress can be imported using any of these accepted formats* `{{instance_id}}/natAddresses/{{name}}` * `{{instance_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NatAddress using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{instance_id}}/natAddresses/{{name}}&#34;
+ * 
+ *  to = google_apigee_nat_address.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/natAddress:NatAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NatAddress can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/natAddresses/{{name}}

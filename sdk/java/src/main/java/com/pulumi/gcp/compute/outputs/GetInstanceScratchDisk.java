@@ -11,6 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceScratchDisk {
     /**
+     * @return Name with which the attached disk is accessible
+     * under `/dev/disk/by-id/`
+     * 
+     */
+    private String deviceName;
+    /**
      * @return The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
      * 
      */
@@ -22,6 +28,14 @@ public final class GetInstanceScratchDisk {
     private Integer size;
 
     private GetInstanceScratchDisk() {}
+    /**
+     * @return Name with which the attached disk is accessible
+     * under `/dev/disk/by-id/`
+     * 
+     */
+    public String deviceName() {
+        return this.deviceName;
+    }
     /**
      * @return The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
      * 
@@ -46,15 +60,22 @@ public final class GetInstanceScratchDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deviceName;
         private String interface_;
         private Integer size;
         public Builder() {}
         public Builder(GetInstanceScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deviceName = defaults.deviceName;
     	      this.interface_ = defaults.interface_;
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
+        public Builder deviceName(String deviceName) {
+            this.deviceName = Objects.requireNonNull(deviceName);
+            return this;
+        }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
@@ -67,6 +88,7 @@ public final class GetInstanceScratchDisk {
         }
         public GetInstanceScratchDisk build() {
             final var o = new GetInstanceScratchDisk();
+            o.deviceName = deviceName;
             o.interface_ = interface_;
             o.size = size;
             return o;

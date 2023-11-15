@@ -132,23 +132,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
+ * ### Importing IAM policies IAM policy imports use the identifier of the Pubsub Subscription resource. For example* `&#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * 
+ *  id = &#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;
+ * 
+ *  to = google_pubsub_subscription_iam_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+ *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor &#34;projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor&#34;
+ *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember default projects/{{project_id}}/subscriptions/{{subscription}}
  * ```
- * 
- * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor &#34;projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com&#34;
- * ```
- * 
- *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember")

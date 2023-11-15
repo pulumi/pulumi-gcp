@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to Cloud Composer environment configuration in a region for a given project.
@@ -40,12 +39,13 @@ type LookupEnvironmentResult struct {
 	Configs         []GetEnvironmentConfig `pulumi:"configs"`
 	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string            `pulumi:"id"`
-	Labels       map[string]string `pulumi:"labels"`
-	Name         string            `pulumi:"name"`
-	Project      *string           `pulumi:"project"`
-	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	Region       *string           `pulumi:"region"`
+	Id             string                        `pulumi:"id"`
+	Labels         map[string]string             `pulumi:"labels"`
+	Name           string                        `pulumi:"name"`
+	Project        *string                       `pulumi:"project"`
+	PulumiLabels   map[string]string             `pulumi:"pulumiLabels"`
+	Region         *string                       `pulumi:"region"`
+	StorageConfigs []GetEnvironmentStorageConfig `pulumi:"storageConfigs"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -91,12 +91,6 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 	return o
 }
 
-func (o LookupEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvironmentResult] {
-	return pulumix.Output[LookupEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration parameters for the environment.
 func (o LookupEnvironmentResultOutput) Configs() GetEnvironmentConfigArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentConfig { return v.Configs }).(GetEnvironmentConfigArrayOutput)
@@ -129,6 +123,10 @@ func (o LookupEnvironmentResultOutput) PulumiLabels() pulumi.StringMapOutput {
 
 func (o LookupEnvironmentResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupEnvironmentResultOutput) StorageConfigs() GetEnvironmentStorageConfigArrayOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentStorageConfig { return v.StorageConfigs }).(GetEnvironmentStorageConfigArrayOutput)
 }
 
 func init() {

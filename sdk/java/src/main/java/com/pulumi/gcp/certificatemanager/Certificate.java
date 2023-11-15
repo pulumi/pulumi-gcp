@@ -274,10 +274,179 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfig;
+ * import com.pulumi.gcp.certificatemanager.CertificateIssuanceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new CaPool(&#34;pool&#34;, CaPoolArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .pool(pool.name())
+ *             .certificateAuthorityId(&#34;ca-authority&#34;)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization(&#34;HashiCorp&#34;)
+ *                         .commonName(&#34;my-certificate-authority&#34;)
+ *                         .build())
+ *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .dnsNames(&#34;hashicorp.com&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .build());
+ * 
+ *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
+ *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
+ *             .certificateAuthorityConfig(CertificateIssuanceConfigCertificateAuthorityConfigArgs.builder()
+ *                 .certificateAuthorityServiceConfig(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs.builder()
+ *                     .caPool(pool.id())
+ *                     .build())
+ *                 .build())
+ *             .lifetime(&#34;1814400s&#34;)
+ *             .rotationWindowPercentage(34)
+ *             .keyAlgorithm(&#34;ECDSA_P256&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(caAuthority)
+ *                 .build());
+ * 
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .description(&#34;sample google managed all_regions certificate with issuance config for terraform&#34;)
+ *             .scope(&#34;ALL_REGIONS&#34;)
+ *             .managed(CertificateManagedArgs.builder()
+ *                 .domains(&#34;terraform.subdomain1.com&#34;)
+ *                 .issuanceConfig(issuanceconfig.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Certificate Manager Google Managed Certificate Dns All Regions
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .description(&#34;The default dnss&#34;)
+ *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
+ *             .description(&#34;The default dnss&#34;)
+ *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .description(&#34;The default cert&#34;)
+ *             .scope(&#34;ALL_REGIONS&#34;)
+ *             .managed(CertificateManagedArgs.builder()
+ *                 .domains(                
+ *                     instance.domain(),
+ *                     instance2.domain())
+ *                 .dnsAuthorizations(                
+ *                     instance.id(),
+ *                     instance2.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * Certificate can be imported using any of these accepted formats
+ * Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/certificates/{{name}}&#34;
+ * 
+ *  to = google_certificate_manager_certificate.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
@@ -432,10 +601,10 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
-     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-     * served from non-core Google data centers.
+     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+     * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * see https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -445,10 +614,10 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * @return The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
-     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
-     * served from non-core Google data centers.
+     * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+     * See https://cloud.google.com/vpc/docs/edge-locations.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * see https://cloud.google.com/compute/docs/regions-zones
+     * See https://cloud.google.com/compute/docs/regions-zones
      * 
      */
     public Output<Optional<String>> scope() {

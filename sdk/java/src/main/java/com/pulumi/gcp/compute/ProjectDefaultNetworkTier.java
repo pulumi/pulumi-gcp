@@ -53,10 +53,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using the project ID
+ * Compute Engine Default Network Tier can be imported using any of these accepted formats* `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Compute Engine Default Network Tier using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{project_id}}&#34;
+ * 
+ *  to = google_compute_project_default_network_tier.default }
  * 
  * ```sh
- *  $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default project-id`
+ *  $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Compute Engine Default Network Tier can be imported using one of the formats above. For example
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}
  * ```
  * 
  */

@@ -157,6 +157,7 @@ __all__ = [
     'InstanceSchedulingNodeAffinity',
     'InstanceScratchDisk',
     'InstanceServiceAccount',
+    'InstanceSettingsMetadata',
     'InstanceShieldedInstanceConfig',
     'InstanceTemplateAdvancedMachineFeatures',
     'InstanceTemplateConfidentialInstanceConfig',
@@ -5324,7 +5325,7 @@ class ImageGuestOsFeature(dict):
                  type: str):
         """
         :param str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5333,7 +5334,7 @@ class ImageGuestOsFeature(dict):
     def type(self) -> str:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
@@ -5903,7 +5904,9 @@ class InstanceBootDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceManagerTags":
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+        elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
 
         if suggest:
@@ -5918,12 +5921,14 @@ class InstanceBootDiskInitializeParams(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enable_confidential_compute: Optional[bool] = None,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
         """
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         :param str image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -5939,6 +5944,8 @@ class InstanceBootDiskInitializeParams(dict):
                will inherit the size of its base image.
         :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
@@ -5949,6 +5956,14 @@ class InstanceBootDiskInitializeParams(dict):
             pulumi.set(__self__, "size", size)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[bool]:
+        """
+        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter
@@ -6259,7 +6274,9 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceManagerTags":
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+        elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
 
         if suggest:
@@ -6274,11 +6291,14 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enable_confidential_compute: Optional[bool] = None,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
@@ -6289,6 +6309,11 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
             pulumi.set(__self__, "size", size)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter
@@ -7031,10 +7056,30 @@ class InstanceFromMachineImageSchedulingNodeAffinity(dict):
 
 @pulumi.output_type
 class InstanceFromMachineImageScratchDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageScratchDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageScratchDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageScratchDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interface: str,
+                 device_name: Optional[str] = None,
                  size: Optional[int] = None):
         pulumi.set(__self__, "interface", interface)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
         if size is not None:
             pulumi.set(__self__, "size", size)
 
@@ -7042,6 +7087,11 @@ class InstanceFromMachineImageScratchDisk(dict):
     @pulumi.getter
     def interface(self) -> str:
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
@@ -7345,7 +7395,9 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceManagerTags":
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+        elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
 
         if suggest:
@@ -7360,11 +7412,14 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enable_confidential_compute: Optional[bool] = None,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
@@ -7375,6 +7430,11 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
             pulumi.set(__self__, "size", size)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter
@@ -8117,10 +8177,30 @@ class InstanceFromTemplateSchedulingNodeAffinity(dict):
 
 @pulumi.output_type
 class InstanceFromTemplateScratchDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateScratchDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateScratchDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateScratchDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interface: str,
+                 device_name: Optional[str] = None,
                  size: Optional[int] = None):
         pulumi.set(__self__, "interface", interface)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
         if size is not None:
             pulumi.set(__self__, "size", size)
 
@@ -8128,6 +8208,11 @@ class InstanceFromTemplateScratchDisk(dict):
     @pulumi.getter
     def interface(self) -> str:
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
@@ -10074,15 +10159,37 @@ class InstanceSchedulingNodeAffinity(dict):
 
 @pulumi.output_type
 class InstanceScratchDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceScratchDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceScratchDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceScratchDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interface: str,
+                 device_name: Optional[str] = None,
                  size: Optional[int] = None):
         """
         :param str interface: The disk interface to use for attaching this disk; either SCSI or NVME.
+        :param str device_name: Name with which the attached disk will be accessible
+               under `/dev/disk/by-id/google-*`
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         """
         pulumi.set(__self__, "interface", interface)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
         if size is not None:
             pulumi.set(__self__, "size", size)
 
@@ -10093,6 +10200,15 @@ class InstanceScratchDisk(dict):
         The disk interface to use for attaching this disk; either SCSI or NVME.
         """
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        """
+        Name with which the attached disk will be accessible
+        under `/dev/disk/by-id/google-*`
+        """
+        return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
@@ -10140,6 +10256,25 @@ class InstanceServiceAccount(dict):
         **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class InstanceSettingsMetadata(dict):
+    def __init__(__self__, *,
+                 items: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] items: A metadata key/value items map. The total size of all keys and values must be less than 512KB
+        """
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Mapping[str, str]]:
+        """
+        A metadata key/value items map. The total size of all keys and values must be less than 512KB
+        """
+        return pulumi.get(self, "items")
 
 
 @pulumi.output_type
@@ -10403,6 +10538,10 @@ class InstanceTemplateDisk(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This
+               sets the number of I/O operations per second that the disk can handle.
+               Values must be between 10,000 and 120,000. For more details, see the
+               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -10571,6 +10710,12 @@ class InstanceTemplateDisk(dict):
     @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[int]:
+        """
+        Indicates how many IOPS to provision for the disk. This
+        sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details, see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @property
@@ -10900,6 +11045,7 @@ class InstanceTemplateNetworkInterface(dict):
         :param str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
+        :param str network_attachment: ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
@@ -11012,6 +11158,9 @@ class InstanceTemplateNetworkInterface(dict):
     @property
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[str]:
+        """
+        ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
         return pulumi.get(self, "network_attachment")
 
     @property
@@ -11449,7 +11598,7 @@ class InstanceTemplateScheduling(dict):
         :param bool preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
-        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -11552,7 +11701,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         """
-        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -13243,6 +13392,10 @@ class PerInstanceConfigPreservedState(dict):
         """
         :param Sequence['PerInstanceConfigPreservedStateDiskArgs'] disks: Stateful disks for the instance.
                Structure is documented below.
+        :param Sequence['PerInstanceConfigPreservedStateExternalIpArgs'] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+               Structure is documented below.
+        :param Sequence['PerInstanceConfigPreservedStateInternalIpArgs'] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+               Structure is documented below.
         :param Mapping[str, str] metadata: Preserved metadata defined for this instance. This is a list of key->value pairs.
         """
         if disks is not None:
@@ -13266,11 +13419,19 @@ class PerInstanceConfigPreservedState(dict):
     @property
     @pulumi.getter(name="externalIps")
     def external_ips(self) -> Optional[Sequence['outputs.PerInstanceConfigPreservedStateExternalIp']]:
+        """
+        Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
         return pulumi.get(self, "external_ips")
 
     @property
     @pulumi.getter(name="internalIps")
     def internal_ips(self) -> Optional[Sequence['outputs.PerInstanceConfigPreservedStateInternalIp']]:
+        """
+        Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
         return pulumi.get(self, "internal_ips")
 
     @property
@@ -18118,6 +18279,10 @@ class RegionInstanceTemplateDisk(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This
+               sets the number of I/O operations per second that the disk can handle.
+               Values must be between 10,000 and 120,000. For more details, see the
+               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -18286,6 +18451,12 @@ class RegionInstanceTemplateDisk(dict):
     @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[int]:
+        """
+        Indicates how many IOPS to provision for the disk. This
+        sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details, see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @property
@@ -20121,6 +20292,10 @@ class RegionPerInstanceConfigPreservedState(dict):
         """
         :param Sequence['RegionPerInstanceConfigPreservedStateDiskArgs'] disks: Stateful disks for the instance.
                Structure is documented below.
+        :param Sequence['RegionPerInstanceConfigPreservedStateExternalIpArgs'] external_ips: Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+               Structure is documented below.
+        :param Sequence['RegionPerInstanceConfigPreservedStateInternalIpArgs'] internal_ips: Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+               Structure is documented below.
         :param Mapping[str, str] metadata: Preserved metadata defined for this instance. This is a list of key->value pairs.
         """
         if disks is not None:
@@ -20144,11 +20319,19 @@ class RegionPerInstanceConfigPreservedState(dict):
     @property
     @pulumi.getter(name="externalIps")
     def external_ips(self) -> Optional[Sequence['outputs.RegionPerInstanceConfigPreservedStateExternalIp']]:
+        """
+        Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
         return pulumi.get(self, "external_ips")
 
     @property
     @pulumi.getter(name="internalIps")
     def internal_ips(self) -> Optional[Sequence['outputs.RegionPerInstanceConfigPreservedStateInternalIp']]:
+        """
+        Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
         return pulumi.get(self, "internal_ips")
 
     @property
@@ -37990,6 +38173,7 @@ class GetInstanceBootDiskResult(dict):
 @pulumi.output_type
 class GetInstanceBootDiskInitializeParamResult(dict):
     def __init__(__self__, *,
+                 enable_confidential_compute: bool,
                  image: str,
                  labels: Mapping[str, Any],
                  resource_manager_tags: Mapping[str, Any],
@@ -38001,11 +38185,17 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         :param int size: The size of the image in gigabytes.
         :param str type: The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
         """
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter
@@ -38986,14 +39176,27 @@ class GetInstanceSchedulingNodeAffinityResult(dict):
 @pulumi.output_type
 class GetInstanceScratchDiskResult(dict):
     def __init__(__self__, *,
+                 device_name: str,
                  interface: str,
                  size: int):
         """
+        :param str device_name: Name with which the attached disk is accessible
+               under `/dev/disk/by-id/`
         :param str interface: The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
         :param int size: The size of the image in gigabytes.
         """
+        pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        Name with which the attached disk is accessible
+        under `/dev/disk/by-id/`
+        """
+        return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter
@@ -39170,6 +39373,10 @@ class GetInstanceTemplateDiskResult(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This
+               sets the number of I/O operations per second that the disk can handle.
+               Values must be between 10,000 and 120,000. For more details, see the
+               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         :param Sequence[str] resource_policies: (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -39298,6 +39505,12 @@ class GetInstanceTemplateDiskResult(dict):
     @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> int:
+        """
+        Indicates how many IOPS to provision for the disk. This
+        sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details, see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @property
@@ -40252,6 +40465,10 @@ class GetRegionInstanceTemplateDiskResult(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This
+               sets the number of I/O operations per second that the disk can handle.
+               Values must be between 10,000 and 120,000. For more details, see the
+               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         :param Sequence[str] resource_policies: (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -40380,6 +40597,12 @@ class GetRegionInstanceTemplateDiskResult(dict):
     @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> int:
+        """
+        Indicates how many IOPS to provision for the disk. This
+        sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details, see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @property

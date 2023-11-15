@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfig;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentStorageConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ public final class GetEnvironmentResult {
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private @Nullable String region;
+    private List<GetEnvironmentStorageConfig> storageConfigs;
 
     private GetEnvironmentResult() {}
     /**
@@ -64,6 +66,9 @@ public final class GetEnvironmentResult {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    public List<GetEnvironmentStorageConfig> storageConfigs() {
+        return this.storageConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -82,6 +87,7 @@ public final class GetEnvironmentResult {
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private @Nullable String region;
+        private List<GetEnvironmentStorageConfig> storageConfigs;
         public Builder() {}
         public Builder(GetEnvironmentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,6 +99,7 @@ public final class GetEnvironmentResult {
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
+    	      this.storageConfigs = defaults.storageConfigs;
         }
 
         @CustomType.Setter
@@ -138,6 +145,14 @@ public final class GetEnvironmentResult {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
+        public Builder storageConfigs(List<GetEnvironmentStorageConfig> storageConfigs) {
+            this.storageConfigs = Objects.requireNonNull(storageConfigs);
+            return this;
+        }
+        public Builder storageConfigs(GetEnvironmentStorageConfig... storageConfigs) {
+            return storageConfigs(List.of(storageConfigs));
+        }
         public GetEnvironmentResult build() {
             final var o = new GetEnvironmentResult();
             o.configs = configs;
@@ -148,6 +163,7 @@ public final class GetEnvironmentResult {
             o.project = project;
             o.pulumiLabels = pulumiLabels;
             o.region = region;
+            o.storageConfigs = storageConfigs;
             return o;
         }
     }

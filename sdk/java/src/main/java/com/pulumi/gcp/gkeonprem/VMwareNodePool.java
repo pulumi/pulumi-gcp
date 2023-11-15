@@ -21,6 +21,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Vmware Node Pool.
+ * 
  * ## Example Usage
  * ### Gkeonprem Vmware Node Pool Basic
  * ```java
@@ -40,7 +42,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePool;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -90,9 +91,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var nodepool_basic = new VMwareNodePool(&#34;nodepool-basic&#34;, VMwareNodePoolArgs.builder()        
  *             .location(&#34;us-west1&#34;)
@@ -102,9 +101,7 @@ import javax.annotation.Nullable;
  *                 .imageType(&#34;ubuntu_containerd&#34;)
  *                 .enableLoadBalancer(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -128,7 +125,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolNodePoolAutoscalingArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -178,9 +174,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var nodepool_full = new VMwareNodePool(&#34;nodepool-full&#34;, VMwareNodePoolArgs.builder()        
  *             .location(&#34;us-west1&#34;)
@@ -210,9 +204,7 @@ import javax.annotation.Nullable;
  *                 .minReplicas(1)
  *                 .maxReplicas(5)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -220,7 +212,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VmwareNodePool can be imported using any of these accepted formats
+ * VmwareNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}` * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}` * `{{location}}/{{vmware_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareNodePool using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}&#34;
+ * 
+ *  to = google_gkeonprem_vmware_node_pool.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareNodePool can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}

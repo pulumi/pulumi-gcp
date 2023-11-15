@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.spanner.InstanceArgs;
 import com.pulumi.gcp.spanner.inputs.InstanceState;
+import com.pulumi.gcp.spanner.outputs.InstanceAutoscalingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -128,7 +129,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance can be imported using any of these accepted formats
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/instances/{{name}}&#34;
+ * 
+ *  to = google_spanner_instance.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:spanner/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
@@ -145,6 +154,28 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:spanner/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, num_nodes and processing_units are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="autoscalingConfig", refs={InstanceAutoscalingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceAutoscalingConfig> autoscalingConfig;
+
+    /**
+     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, num_nodes and processing_units are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceAutoscalingConfig>> autoscalingConfig() {
+        return Codegen.optional(this.autoscalingConfig);
+    }
     /**
      * The name of the instance&#39;s configuration (similar but not
      * quite the same as a region) which defines the geographic placement and

@@ -127,6 +127,23 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * )
+     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * 
+     */
+    @Import(name="enableConfidentialStorage")
+    private @Nullable Output<Boolean> enableConfidentialStorage;
+
+    /**
+     * @return )
+     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * 
+     */
+    public Optional<Output<Boolean>> enableConfidentialStorage() {
+        return Optional.ofNullable(this.enableConfidentialStorage);
+    }
+
+    /**
      * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
@@ -521,62 +538,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Note that validations happen all server side. All attributes are optional.
-     * Structure is documented below.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * Parameters that can be configured on Linux nodes. Structure is documented below.
      * 
      */
     @Import(name="linuxNodeConfig")
     private @Nullable Output<ClusterNodePoolNodeConfigLinuxNodeConfigArgs> linuxNodeConfig;
 
     /**
-     * @return Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-     * Note that validations happen all server side. All attributes are optional.
-     * Structure is documented below.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return Parameters that can be configured on Linux nodes. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolNodeConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
@@ -973,6 +942,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.effectiveTaints = $.effectiveTaints;
+        this.enableConfidentialStorage = $.enableConfidentialStorage;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.fastSocket = $.fastSocket;
@@ -1145,6 +1115,29 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
         public Builder effectiveTaints(ClusterNodePoolNodeConfigEffectiveTaintArgs... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
+        }
+
+        /**
+         * @param enableConfidentialStorage )
+         * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialStorage(@Nullable Output<Boolean> enableConfidentialStorage) {
+            $.enableConfidentialStorage = enableConfidentialStorage;
+            return this;
+        }
+
+        /**
+         * @param enableConfidentialStorage )
+         * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialStorage(Boolean enableConfidentialStorage) {
+            return enableConfidentialStorage(Output.of(enableConfidentialStorage));
         }
 
         /**
@@ -1609,31 +1602,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param linuxNodeConfig Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-         * Note that validations happen all server side. All attributes are optional.
-         * Structure is documented below.
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param linuxNodeConfig Parameters that can be configured on Linux nodes. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1644,31 +1613,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param linuxNodeConfig Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-         * Note that validations happen all server side. All attributes are optional.
-         * Structure is documented below.
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param linuxNodeConfig Parameters that can be configured on Linux nodes. Structure is documented below.
          * 
          * @return builder
          * 

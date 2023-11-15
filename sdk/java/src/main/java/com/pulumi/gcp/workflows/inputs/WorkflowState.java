@@ -267,6 +267,23 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * 
+     */
+    @Import(name="userEnvVars")
+    private @Nullable Output<Map<String,String>> userEnvVars;
+
+    /**
+     * @return User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> userEnvVars() {
+        return Optional.ofNullable(this.userEnvVars);
+    }
+
     private WorkflowState() {}
 
     private WorkflowState(WorkflowState $) {
@@ -285,6 +302,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         this.sourceContents = $.sourceContents;
         this.state = $.state;
         this.updateTime = $.updateTime;
+        this.userEnvVars = $.userEnvVars;
     }
 
     public static Builder builder() {
@@ -644,6 +662,29 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+         * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userEnvVars(@Nullable Output<Map<String,String>> userEnvVars) {
+            $.userEnvVars = userEnvVars;
+            return this;
+        }
+
+        /**
+         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
+         * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userEnvVars(Map<String,String> userEnvVars) {
+            return userEnvVars(Output.of(userEnvVars));
         }
 
         public WorkflowState build() {

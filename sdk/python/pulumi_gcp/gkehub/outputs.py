@@ -11,6 +11,12 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'FeatureFleetDefaultMemberConfig',
+    'FeatureFleetDefaultMemberConfigConfigmanagement',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSync',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci',
+    'FeatureFleetDefaultMemberConfigMesh',
     'FeatureIamBindingCondition',
     'FeatureIamMemberCondition',
     'FeatureMembershipConfigmanagement',
@@ -31,6 +37,7 @@ __all__ = [
     'FeatureSpecMulticlusteringress',
     'FeatureState',
     'FeatureStateState',
+    'FleetState',
     'MembershipAuthority',
     'MembershipBindingState',
     'MembershipEndpoint',
@@ -46,6 +53,399 @@ __all__ = [
     'ScopeRbacRoleBindingState',
     'ScopeState',
 ]
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfig(dict):
+    def __init__(__self__, *,
+                 configmanagement: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagement'] = None,
+                 mesh: Optional['outputs.FeatureFleetDefaultMemberConfigMesh'] = None):
+        """
+        :param 'FeatureFleetDefaultMemberConfigConfigmanagementArgs' configmanagement: Config Management spec
+               Structure is documented below.
+        :param 'FeatureFleetDefaultMemberConfigMeshArgs' mesh: Service Mesh spec
+               Structure is documented below.
+        """
+        if configmanagement is not None:
+            pulumi.set(__self__, "configmanagement", configmanagement)
+        if mesh is not None:
+            pulumi.set(__self__, "mesh", mesh)
+
+    @property
+    @pulumi.getter
+    def configmanagement(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagement']:
+        """
+        Config Management spec
+        Structure is documented below.
+        """
+        return pulumi.get(self, "configmanagement")
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigMesh']:
+        """
+        Service Mesh spec
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mesh")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigConfigmanagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configSync":
+            suggest = "config_sync"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigConfigmanagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_sync: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync'] = None):
+        """
+        :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs' config_sync: ConfigSync configuration for the cluster
+               Structure is documented below.
+        """
+        if config_sync is not None:
+            pulumi.set(__self__, "config_sync", config_sync)
+
+    @property
+    @pulumi.getter(name="configSync")
+    def config_sync(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync']:
+        """
+        ConfigSync configuration for the cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config_sync")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceFormat":
+            suggest = "source_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigConfigmanagementConfigSync. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagementConfigSync.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagementConfigSync.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 git: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit'] = None,
+                 oci: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci'] = None,
+                 source_format: Optional[str] = None):
+        """
+        :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs' git: Git repo configuration for the cluster
+               Structure is documented below.
+        :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs' oci: OCI repo configuration for the cluster
+               Structure is documented below.
+        :param str source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+        """
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if oci is not None:
+            pulumi.set(__self__, "oci", oci)
+        if source_format is not None:
+            pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit']:
+        """
+        Git repo configuration for the cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter
+    def oci(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci']:
+        """
+        OCI repo configuration for the cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oci")
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> Optional[str]:
+        """
+        Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+        """
+        return pulumi.get(self, "source_format")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretType":
+            suggest = "secret_type"
+        elif key == "gcpServiceAccountEmail":
+            suggest = "gcp_service_account_email"
+        elif key == "httpsProxy":
+            suggest = "https_proxy"
+        elif key == "policyDir":
+            suggest = "policy_dir"
+        elif key == "syncBranch":
+            suggest = "sync_branch"
+        elif key == "syncRepo":
+            suggest = "sync_repo"
+        elif key == "syncRev":
+            suggest = "sync_rev"
+        elif key == "syncWaitSecs":
+            suggest = "sync_wait_secs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_type: str,
+                 gcp_service_account_email: Optional[str] = None,
+                 https_proxy: Optional[str] = None,
+                 policy_dir: Optional[str] = None,
+                 sync_branch: Optional[str] = None,
+                 sync_repo: Optional[str] = None,
+                 sync_rev: Optional[str] = None,
+                 sync_wait_secs: Optional[str] = None):
+        """
+        :param str secret_type: Type of secret configured for access to the Git repo
+        :param str gcp_service_account_email: The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        :param str https_proxy: URL for the HTTPS Proxy to be used when communicating with the Git repo
+        :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync
+        :param str sync_branch: The branch of the repository to sync from. Default: master
+        :param str sync_repo: The URL of the Git repository to use as the source of truth
+        :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15
+        """
+        pulumi.set(__self__, "secret_type", secret_type)
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        if https_proxy is not None:
+            pulumi.set(__self__, "https_proxy", https_proxy)
+        if policy_dir is not None:
+            pulumi.set(__self__, "policy_dir", policy_dir)
+        if sync_branch is not None:
+            pulumi.set(__self__, "sync_branch", sync_branch)
+        if sync_repo is not None:
+            pulumi.set(__self__, "sync_repo", sync_repo)
+        if sync_rev is not None:
+            pulumi.set(__self__, "sync_rev", sync_rev)
+        if sync_wait_secs is not None:
+            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> str:
+        """
+        Type of secret configured for access to the Git repo
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[str]:
+        """
+        The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> Optional[str]:
+        """
+        URL for the HTTPS Proxy to be used when communicating with the Git repo
+        """
+        return pulumi.get(self, "https_proxy")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> Optional[str]:
+        """
+        The path within the Git repository that represents the top level of the repo to sync
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="syncBranch")
+    def sync_branch(self) -> Optional[str]:
+        """
+        The branch of the repository to sync from. Default: master
+        """
+        return pulumi.get(self, "sync_branch")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> Optional[str]:
+        """
+        The URL of the Git repository to use as the source of truth
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncRev")
+    def sync_rev(self) -> Optional[str]:
+        """
+        Git revision (tag or hash) to check out. Default HEAD
+        """
+        return pulumi.get(self, "sync_rev")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> Optional[str]:
+        """
+        Period in seconds between consecutive syncs. Default: 15
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretType":
+            suggest = "secret_type"
+        elif key == "gcpServiceAccountEmail":
+            suggest = "gcp_service_account_email"
+        elif key == "policyDir":
+            suggest = "policy_dir"
+        elif key == "syncRepo":
+            suggest = "sync_repo"
+        elif key == "syncWaitSecs":
+            suggest = "sync_wait_secs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_type: str,
+                 gcp_service_account_email: Optional[str] = None,
+                 policy_dir: Optional[str] = None,
+                 sync_repo: Optional[str] = None,
+                 sync_wait_secs: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str secret_type: Type of secret configured for access to the Git repo
+        :param str gcp_service_account_email: The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image
+        :param str sync_repo: The OCI image repository URL for the package to sync from
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15
+        :param str version: Version of ACM installed
+        """
+        pulumi.set(__self__, "secret_type", secret_type)
+        if gcp_service_account_email is not None:
+            pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        if policy_dir is not None:
+            pulumi.set(__self__, "policy_dir", policy_dir)
+        if sync_repo is not None:
+            pulumi.set(__self__, "sync_repo", sync_repo)
+        if sync_wait_secs is not None:
+            pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> str:
+        """
+        Type of secret configured for access to the Git repo
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> Optional[str]:
+        """
+        The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> Optional[str]:
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> Optional[str]:
+        """
+        The OCI image repository URL for the package to sync from
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> Optional[str]:
+        """
+        Period in seconds between consecutive syncs. Default: 15
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of ACM installed
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigMesh(dict):
+    def __init__(__self__, *,
+                 management: str):
+        """
+        :param str management: Whether to automatically manage Service Mesh
+               Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        """
+        pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter
+    def management(self) -> str:
+        """
+        Whether to automatically manage Service Mesh
+        Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        """
+        return pulumi.get(self, "management")
+
 
 @pulumi.output_type
 class FeatureIamBindingCondition(dict):
@@ -213,7 +613,9 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "preventDrift":
+        if key == "metricsGcpServiceAccountEmail":
+            suggest = "metrics_gcp_service_account_email"
+        elif key == "preventDrift":
             suggest = "prevent_drift"
         elif key == "sourceFormat":
             suggest = "source_format"
@@ -231,6 +633,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
 
     def __init__(__self__, *,
                  git: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit'] = None,
+                 metrics_gcp_service_account_email: Optional[str] = None,
                  oci: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci'] = None,
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
@@ -244,6 +647,8 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         """
         if git is not None:
             pulumi.set(__self__, "git", git)
+        if metrics_gcp_service_account_email is not None:
+            pulumi.set(__self__, "metrics_gcp_service_account_email", metrics_gcp_service_account_email)
         if oci is not None:
             pulumi.set(__self__, "oci", oci)
         if prevent_drift is not None:
@@ -258,6 +663,11 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter(name="metricsGcpServiceAccountEmail")
+    def metrics_gcp_service_account_email(self) -> Optional[str]:
+        return pulumi.get(self, "metrics_gcp_service_account_email")
 
     @property
     @pulumi.getter
@@ -1109,6 +1519,27 @@ class FeatureStateState(dict):
         The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class FleetState(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None):
+        """
+        :param str code: (Output)
+               Describes the state of a Fleet resource.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        Describes the state of a Fleet resource.
+        """
+        return pulumi.get(self, "code")
 
 
 @pulumi.output_type

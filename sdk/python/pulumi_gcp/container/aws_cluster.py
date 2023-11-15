@@ -602,6 +602,9 @@ class AwsCluster(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
+                admin_groups=[gcp.container.AwsClusterAuthorizationAdminGroupArgs(
+                    group="group@domain.com",
+                )],
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
                 )],
@@ -811,7 +814,15 @@ class AwsCluster(pulumi.CustomResource):
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/awsClusters/{{name}}"
+
+         to = google_container_aws_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:container/awsCluster:AwsCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
@@ -868,6 +879,9 @@ class AwsCluster(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
+                admin_groups=[gcp.container.AwsClusterAuthorizationAdminGroupArgs(
+                    group="group@domain.com",
+                )],
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
                     username="my@service-account.com",
                 )],
@@ -1077,7 +1091,15 @@ class AwsCluster(pulumi.CustomResource):
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/awsClusters/{{name}}"
+
+         to = google_container_aws_cluster.default }
+
+        ```sh
+         $ pulumi import gcp:container/awsCluster:AwsCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}

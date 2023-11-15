@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+        /// </summary>
+        [Input("terminalStorageClass")]
+        public Input<string>? TerminalStorageClass { get; set; }
+
         public BucketAutoclassGetArgs()
         {
         }

@@ -272,28 +272,18 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+        ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
-        This member resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+         id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
+
+         to = google_healthcare_hl7_v2_store_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
-         IAM binding imports use space-delimited identifiers; the resource in question and the role.
-
-        This binding resource can be imported using the `hl7_v2_store_id` and role, e.g.
-
         ```sh
-         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer"
-        ```
-
-         IAM policy imports use the identifier of the resource in question.
-
-        This policy resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
-
-        ```sh
-         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
+         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -373,28 +363,18 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+        ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
-        This member resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+         id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
+
+         to = google_healthcare_hl7_v2_store_iam_policy.default }
 
         ```sh
-         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
         ```
 
-         IAM binding imports use space-delimited identifiers; the resource in question and the role.
-
-        This binding resource can be imported using the `hl7_v2_store_id` and role, e.g.
-
         ```sh
-         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer"
-        ```
-
-         IAM policy imports use the identifier of the resource in question.
-
-        This policy resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
-
-        ```sh
-         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
+         $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
         ```
 
         :param str resource_name: The name of the resource.

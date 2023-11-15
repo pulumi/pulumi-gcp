@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     [OutputType]
     public sealed class GetGroupsGroupResult
     {
+        public readonly ImmutableArray<Outputs.GetGroupsGroupAdditionalGroupKeyResult> AdditionalGroupKeys;
         public readonly string CreateTime;
         /// <summary>
         /// An extended description to help users determine the purpose of a Group.
@@ -45,6 +46,8 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
 
         [OutputConstructor]
         private GetGroupsGroupResult(
+            ImmutableArray<Outputs.GetGroupsGroupAdditionalGroupKeyResult> additionalGroupKeys,
+
             string createTime,
 
             string description,
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
 
             string updateTime)
         {
+            AdditionalGroupKeys = additionalGroupKeys;
             CreateTime = createTime;
             Description = description;
             DisplayName = displayName;

@@ -104,10 +104,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Projects can be imported using the `project_id`, e.g.
+ * Projects can be imported using the `project_id`, e.g. * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Projects using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{project_id}}&#34;
+ * 
+ *  to = google_project.default }
  * 
  * ```sh
- *  $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
+ *  $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Projects can be imported using one of the formats above. For example
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
  * ```
  * 
  */

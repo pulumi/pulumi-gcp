@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -55,7 +54,17 @@ import (
 //
 // ## Import
 //
-// # Source can be imported using any of these accepted formats
+// Source can be imported using any of these accepted formats* `organizations/{{organization}}/sources/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Source using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{organization}}/sources/{{name}}"
+//
+//	to = google_scc_source.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Source can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -202,12 +211,6 @@ func (i *SourceIamMember) ToSourceIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberOutput)
 }
 
-func (i *SourceIamMember) ToOutput(ctx context.Context) pulumix.Output[*SourceIamMember] {
-	return pulumix.Output[*SourceIamMember]{
-		OutputState: i.ToSourceIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SourceIamMemberArrayInput is an input type that accepts SourceIamMemberArray and SourceIamMemberArrayOutput values.
 // You can construct a concrete instance of `SourceIamMemberArrayInput` via:
 //
@@ -231,12 +234,6 @@ func (i SourceIamMemberArray) ToSourceIamMemberArrayOutput() SourceIamMemberArra
 
 func (i SourceIamMemberArray) ToSourceIamMemberArrayOutputWithContext(ctx context.Context) SourceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberArrayOutput)
-}
-
-func (i SourceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*SourceIamMember] {
-	return pulumix.Output[[]*SourceIamMember]{
-		OutputState: i.ToSourceIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SourceIamMemberMapInput is an input type that accepts SourceIamMemberMap and SourceIamMemberMapOutput values.
@@ -264,12 +261,6 @@ func (i SourceIamMemberMap) ToSourceIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberMapOutput)
 }
 
-func (i SourceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceIamMember] {
-	return pulumix.Output[map[string]*SourceIamMember]{
-		OutputState: i.ToSourceIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (SourceIamMemberOutput) ElementType() reflect.Type {
@@ -282,12 +273,6 @@ func (o SourceIamMemberOutput) ToSourceIamMemberOutput() SourceIamMemberOutput {
 
 func (o SourceIamMemberOutput) ToSourceIamMemberOutputWithContext(ctx context.Context) SourceIamMemberOutput {
 	return o
-}
-
-func (o SourceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceIamMember] {
-	return pulumix.Output[*SourceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceIamMemberOutput) Condition() SourceIamMemberConditionPtrOutput {
@@ -332,12 +317,6 @@ func (o SourceIamMemberArrayOutput) ToSourceIamMemberArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o SourceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SourceIamMember] {
-	return pulumix.Output[[]*SourceIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SourceIamMemberArrayOutput) Index(i pulumi.IntInput) SourceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SourceIamMember {
 		return vs[0].([]*SourceIamMember)[vs[1].(int)]
@@ -356,12 +335,6 @@ func (o SourceIamMemberMapOutput) ToSourceIamMemberMapOutput() SourceIamMemberMa
 
 func (o SourceIamMemberMapOutput) ToSourceIamMemberMapOutputWithContext(ctx context.Context) SourceIamMemberMapOutput {
 	return o
-}
-
-func (o SourceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceIamMember] {
-	return pulumix.Output[map[string]*SourceIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceIamMemberMapOutput) MapIndex(k pulumi.StringInput) SourceIamMemberOutput {

@@ -15,6 +15,7 @@ import com.pulumi.gcp.container.outputs.GetClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.GetClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.GetClusterDnsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterEnableK8sBetaApi;
+import com.pulumi.gcp.container.outputs.GetClusterFleet;
 import com.pulumi.gcp.container.outputs.GetClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicy;
@@ -78,6 +79,7 @@ public final class GetClusterResult {
     private Boolean enableShieldedNodes;
     private Boolean enableTpu;
     private String endpoint;
+    private List<GetClusterFleet> fleets;
     private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -211,6 +213,9 @@ public final class GetClusterResult {
     }
     public String endpoint() {
         return this.endpoint;
+    }
+    public List<GetClusterFleet> fleets() {
+        return this.fleets;
     }
     public List<GetClusterGatewayApiConfig> gatewayApiConfigs() {
         return this.gatewayApiConfigs;
@@ -394,6 +399,7 @@ public final class GetClusterResult {
         private Boolean enableShieldedNodes;
         private Boolean enableTpu;
         private String endpoint;
+        private List<GetClusterFleet> fleets;
         private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
         private String id;
         private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
@@ -471,6 +477,7 @@ public final class GetClusterResult {
     	      this.enableShieldedNodes = defaults.enableShieldedNodes;
     	      this.enableTpu = defaults.enableTpu;
     	      this.endpoint = defaults.endpoint;
+    	      this.fleets = defaults.fleets;
     	      this.gatewayApiConfigs = defaults.gatewayApiConfigs;
     	      this.id = defaults.id;
     	      this.identityServiceConfigs = defaults.identityServiceConfigs;
@@ -687,6 +694,14 @@ public final class GetClusterResult {
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
+        }
+        @CustomType.Setter
+        public Builder fleets(List<GetClusterFleet> fleets) {
+            this.fleets = Objects.requireNonNull(fleets);
+            return this;
+        }
+        public Builder fleets(GetClusterFleet... fleets) {
+            return fleets(List.of(fleets));
         }
         @CustomType.Setter
         public Builder gatewayApiConfigs(List<GetClusterGatewayApiConfig> gatewayApiConfigs) {
@@ -1030,6 +1045,7 @@ public final class GetClusterResult {
             o.enableShieldedNodes = enableShieldedNodes;
             o.enableTpu = enableTpu;
             o.endpoint = endpoint;
+            o.fleets = fleets;
             o.gatewayApiConfigs = gatewayApiConfigs;
             o.id = id;
             o.identityServiceConfigs = identityServiceConfigs;

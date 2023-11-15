@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetInstanceResult',
@@ -21,7 +22,10 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, config=None, display_name=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
+    def __init__(__self__, autoscaling_configs=None, config=None, display_name=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
+        if autoscaling_configs and not isinstance(autoscaling_configs, list):
+            raise TypeError("Expected argument 'autoscaling_configs' to be a list")
+        pulumi.set(__self__, "autoscaling_configs", autoscaling_configs)
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -58,6 +62,11 @@ class GetInstanceResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="autoscalingConfigs")
+    def autoscaling_configs(self) -> Sequence['outputs.GetInstanceAutoscalingConfigResult']:
+        return pulumi.get(self, "autoscaling_configs")
 
     @property
     @pulumi.getter
@@ -129,6 +138,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            autoscaling_configs=self.autoscaling_configs,
             config=self.config,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
@@ -176,6 +186,7 @@ def get_instance(config: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:spanner/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        autoscaling_configs=pulumi.get(__ret__, 'autoscaling_configs'),
         config=pulumi.get(__ret__, 'config'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),

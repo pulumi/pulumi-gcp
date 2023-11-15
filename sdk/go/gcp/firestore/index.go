@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cloud Firestore indexes enable simple and complex queries against documents in a database.
@@ -27,12 +26,11 @@ import (
 //
 // > **Warning:** This resource creates a Firestore Index on a project that already has
 // a Firestore database. If you haven't already created it, you may
-// create a `firestore.Database` resource with `type` set to
-// `"FIRESTORE_NATIVE"` and `locationId` set to your chosen location.
-// If you wish to use App Engine, you may instead create a
-// `appengine.Application` resource with `databaseType` set to
-// `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
-// the App Engine location specified.
+// create a `firestore.Database` resource and `locationId` set
+// to your chosen location. If you wish to use App Engine, you may
+// instead create a `appengine.Application` resource with
+// `databaseType` set to `"CLOUD_FIRESTORE"`. Your Firestore location
+// will be the same as the App Engine location specified.
 //
 // ## Example Usage
 // ### Firestore Index Basic
@@ -71,10 +69,58 @@ import (
 //	}
 //
 // ```
+// ### Firestore Index Datastore Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewIndex(ctx, "my-datastore-mode-index", &firestore.IndexArgs{
+//				ApiScope:   pulumi.String("DATASTORE_MODE_API"),
+//				Collection: pulumi.String("chatrooms"),
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("name"),
+//						Order:     pulumi.String("ASCENDING"),
+//					},
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("description"),
+//						Order:     pulumi.String("DESCENDING"),
+//					},
+//				},
+//				Project:    pulumi.String("my-project-name"),
+//				QueryScope: pulumi.String("COLLECTION_RECURSIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// Index can be imported using any of these accepted formats:
+// Index can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_firestore_index.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:firestore/index:Index When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -84,6 +130,10 @@ import (
 type Index struct {
 	pulumi.CustomResourceState
 
+	// The API scope at which a query is run.
+	// Default value is `ANY_API`.
+	// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+	ApiScope pulumi.StringPtrOutput `pulumi:"apiScope"`
 	// The collection being indexed.
 	Collection pulumi.StringOutput `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
@@ -104,7 +154,7 @@ type Index struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
 }
 
@@ -144,6 +194,10 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
+	// The API scope at which a query is run.
+	// Default value is `ANY_API`.
+	// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+	ApiScope *string `pulumi:"apiScope"`
 	// The collection being indexed.
 	Collection *string `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
@@ -164,11 +218,15 @@ type indexState struct {
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
 type IndexState struct {
+	// The API scope at which a query is run.
+	// Default value is `ANY_API`.
+	// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+	ApiScope pulumi.StringPtrInput
 	// The collection being indexed.
 	Collection pulumi.StringPtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
@@ -189,7 +247,7 @@ type IndexState struct {
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrInput
 }
 
@@ -198,6 +256,10 @@ func (IndexState) ElementType() reflect.Type {
 }
 
 type indexArgs struct {
+	// The API scope at which a query is run.
+	// Default value is `ANY_API`.
+	// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+	ApiScope *string `pulumi:"apiScope"`
 	// The collection being indexed.
 	Collection string `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
@@ -215,12 +277,16 @@ type indexArgs struct {
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
 // The set of arguments for constructing a Index resource.
 type IndexArgs struct {
+	// The API scope at which a query is run.
+	// Default value is `ANY_API`.
+	// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+	ApiScope pulumi.StringPtrInput
 	// The collection being indexed.
 	Collection pulumi.StringInput
 	// The Firestore database id. Defaults to `"(default)"`.
@@ -238,7 +304,7 @@ type IndexArgs struct {
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrInput
 }
 
@@ -263,12 +329,6 @@ func (i *Index) ToIndexOutput() IndexOutput {
 
 func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndexOutput)
-}
-
-func (i *Index) ToOutput(ctx context.Context) pulumix.Output[*Index] {
-	return pulumix.Output[*Index]{
-		OutputState: i.ToIndexOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IndexArrayInput is an input type that accepts IndexArray and IndexArrayOutput values.
@@ -296,12 +356,6 @@ func (i IndexArray) ToIndexArrayOutputWithContext(ctx context.Context) IndexArra
 	return pulumi.ToOutputWithContext(ctx, i).(IndexArrayOutput)
 }
 
-func (i IndexArray) ToOutput(ctx context.Context) pulumix.Output[[]*Index] {
-	return pulumix.Output[[]*Index]{
-		OutputState: i.ToIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IndexMapInput is an input type that accepts IndexMap and IndexMapOutput values.
 // You can construct a concrete instance of `IndexMapInput` via:
 //
@@ -327,12 +381,6 @@ func (i IndexMap) ToIndexMapOutputWithContext(ctx context.Context) IndexMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(IndexMapOutput)
 }
 
-func (i IndexMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Index] {
-	return pulumix.Output[map[string]*Index]{
-		OutputState: i.ToIndexMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IndexOutput struct{ *pulumi.OutputState }
 
 func (IndexOutput) ElementType() reflect.Type {
@@ -347,10 +395,11 @@ func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
 }
 
-func (o IndexOutput) ToOutput(ctx context.Context) pulumix.Output[*Index] {
-	return pulumix.Output[*Index]{
-		OutputState: o.OutputState,
-	}
+// The API scope at which a query is run.
+// Default value is `ANY_API`.
+// Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+func (o IndexOutput) ApiScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.ApiScope }).(pulumi.StringPtrOutput)
 }
 
 // The collection being indexed.
@@ -388,7 +437,7 @@ func (o IndexOutput) Project() pulumi.StringOutput {
 
 // The scope at which a query is run.
 // Default value is `COLLECTION`.
-// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 func (o IndexOutput) QueryScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.QueryScope }).(pulumi.StringPtrOutput)
 }
@@ -405,12 +454,6 @@ func (o IndexArrayOutput) ToIndexArrayOutput() IndexArrayOutput {
 
 func (o IndexArrayOutput) ToIndexArrayOutputWithContext(ctx context.Context) IndexArrayOutput {
 	return o
-}
-
-func (o IndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Index] {
-	return pulumix.Output[[]*Index]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexArrayOutput) Index(i pulumi.IntInput) IndexOutput {
@@ -431,12 +474,6 @@ func (o IndexMapOutput) ToIndexMapOutput() IndexMapOutput {
 
 func (o IndexMapOutput) ToIndexMapOutputWithContext(ctx context.Context) IndexMapOutput {
 	return o
-}
-
-func (o IndexMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Index] {
-	return pulumix.Output[map[string]*Index]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IndexMapOutput) MapIndex(k pulumi.StringInput) IndexOutput {

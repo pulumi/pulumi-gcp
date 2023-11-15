@@ -48,6 +48,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `subnetwork` for custom subnetted networks.
         /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
         public readonly string? NetworkAttachment;
         /// <summary>
         /// The private IP address to assign to the instance. If

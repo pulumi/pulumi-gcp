@@ -14,44 +14,36 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     public sealed class VMwareClusterVcenter
     {
         /// <summary>
-        /// The load balancer's IP address.
+        /// (Output)
+        /// The vCenter IP address.
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// (Output)
         /// Contains the vCenter CA certificate public key for SSL verification.
         /// </summary>
         public readonly string? CaCertData;
         /// <summary>
-        /// (Output)
         /// The name of the vCenter cluster for the user cluster.
         /// </summary>
         public readonly string? Cluster;
         /// <summary>
-        /// (Output)
         /// The name of the vCenter datacenter for the user cluster.
         /// </summary>
         public readonly string? Datacenter;
         /// <summary>
-        /// (Output)
-        /// The Vsphere datastore used by the Control Plane Node.
+        /// The name of the vCenter datastore for the user cluster.
         /// </summary>
         public readonly string? Datastore;
         /// <summary>
-        /// (Output)
         /// The name of the vCenter folder for the user cluster.
         /// </summary>
         public readonly string? Folder;
         /// <summary>
-        /// (Output)
         /// The name of the vCenter resource pool for the user cluster.
         /// </summary>
         public readonly string? ResourcePool;
         /// <summary>
-        /// (Output)
-        /// The Vsphere storage policy used by the control plane Node.
-        /// 
-        /// - - -
+        /// The name of the vCenter storage policy for the user cluster.
         /// </summary>
         public readonly string? StoragePolicyName;
 

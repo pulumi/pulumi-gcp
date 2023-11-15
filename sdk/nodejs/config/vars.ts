@@ -569,6 +569,14 @@ Object.defineProperty(exports, "documentAiWarehouseCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const edgecontainerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "edgecontainerCustomEndpoint", {
+    get() {
+        return __config.get("edgecontainerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const edgenetworkCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "edgenetworkCustomEndpoint", {
     get() {
@@ -781,6 +789,14 @@ export declare const impersonateServiceAccountDelegates: string[] | undefined;
 Object.defineProperty(exports, "impersonateServiceAccountDelegates", {
     get() {
         return __config.getObject<string[]>("impersonateServiceAccountDelegates");
+    },
+    enumerable: true,
+});
+
+export declare const integrationConnectorsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "integrationConnectorsCustomEndpoint", {
+    get() {
+        return __config.get("integrationConnectorsCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1149,6 +1165,14 @@ export declare const tpuV2CustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tpuV2CustomEndpoint", {
     get() {
         return __config.get("tpuV2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const universeDomain: string | undefined;
+Object.defineProperty(exports, "universeDomain", {
+    get() {
+        return __config.get("universeDomain");
     },
     enumerable: true,
 });

@@ -53,14 +53,22 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Import
     /// 
-    /// Folders can be imported using the folder's id, e.g. Both syntaxes are valid
+    /// Folders can be imported using the folder's id, e.g. * `folders/{{folder_id}}` * `{{folder_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Folders using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "folders/{{folder_id}}"
+    /// 
+    ///  to = google_folder.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/folder:Folder department1 1234567
+    ///  $ pulumi import gcp:organizations/folder:Folder When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Folders can be imported using one of the formats above. For example
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/folder:Folder department1 folders/1234567
+    ///  $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/folder:Folder")]

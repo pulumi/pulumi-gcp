@@ -437,10 +437,87 @@ class NetworkAttachment(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Network Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            region="us-central1",
+            network=default_network.id,
+            ip_cidr_range="10.0.0.0/16",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        rejected_producer_project = gcp.organizations.Project("rejectedProducerProject",
+            project_id="prj-rejected",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        accepted_producer_project = gcp.organizations.Project("acceptedProducerProject",
+            project_id="prj-accepted",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network_attachment = gcp.compute.NetworkAttachment("defaultNetworkAttachment",
+            region="us-central1",
+            description="basic network attachment description",
+            connection_preference="ACCEPT_MANUAL",
+            subnetworks=[default_subnetwork.self_link],
+            producer_accept_lists=[accepted_producer_project.project_id],
+            producer_reject_lists=[rejected_producer_project.project_id],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Attachment Instance Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            region="us-central1",
+            network=default_network.id,
+            ip_cidr_range="10.0.0.0/16",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network_attachment = gcp.compute.NetworkAttachment("defaultNetworkAttachment",
+            region="us-central1",
+            description="my basic network attachment",
+            subnetworks=[default_subnetwork.id],
+            connection_preference="ACCEPT_AUTOMATIC",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_instance = gcp.compute.Instance("defaultInstance",
+            zone="us-central1-a",
+            machine_type="e2-micro",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[
+                gcp.compute.InstanceNetworkInterfaceArgs(
+                    network="default",
+                ),
+                gcp.compute.InstanceNetworkInterfaceArgs(
+                    network_attachment=default_network_attachment.self_link,
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
-        NetworkAttachment can be imported using any of these accepted formats
+        NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkAttachment using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}"
+
+         to = google_compute_network_attachment.default }
+
+        ```sh
+         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkAttachment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}
@@ -482,10 +559,87 @@ class NetworkAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Network Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            region="us-central1",
+            network=default_network.id,
+            ip_cidr_range="10.0.0.0/16",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        rejected_producer_project = gcp.organizations.Project("rejectedProducerProject",
+            project_id="prj-rejected",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        accepted_producer_project = gcp.organizations.Project("acceptedProducerProject",
+            project_id="prj-accepted",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network_attachment = gcp.compute.NetworkAttachment("defaultNetworkAttachment",
+            region="us-central1",
+            description="basic network attachment description",
+            connection_preference="ACCEPT_MANUAL",
+            subnetworks=[default_subnetwork.self_link],
+            producer_accept_lists=[accepted_producer_project.project_id],
+            producer_reject_lists=[rejected_producer_project.project_id],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Attachment Instance Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            region="us-central1",
+            network=default_network.id,
+            ip_cidr_range="10.0.0.0/16",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network_attachment = gcp.compute.NetworkAttachment("defaultNetworkAttachment",
+            region="us-central1",
+            description="my basic network attachment",
+            subnetworks=[default_subnetwork.id],
+            connection_preference="ACCEPT_AUTOMATIC",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_instance = gcp.compute.Instance("defaultInstance",
+            zone="us-central1-a",
+            machine_type="e2-micro",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-11",
+                ),
+            ),
+            network_interfaces=[
+                gcp.compute.InstanceNetworkInterfaceArgs(
+                    network="default",
+                ),
+                gcp.compute.InstanceNetworkInterfaceArgs(
+                    network_attachment=default_network_attachment.self_link,
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
-        NetworkAttachment can be imported using any of these accepted formats
+        NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkAttachment using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}"
+
+         to = google_compute_network_attachment.default }
+
+        ```sh
+         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkAttachment can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}

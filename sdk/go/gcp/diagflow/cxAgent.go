@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agents are best described as Natural Language Understanding (NLU) modules that transform user requests into actionable data. You can include agents in your app, product, or service to determine user intent and respond to the user in a natural way.
@@ -21,6 +20,10 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `git_integration_settings.github_settings.access_token`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ### Dialogflowcx Agent Full
 //
@@ -29,30 +32,83 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewCxAgent(ctx, "fullAgent", &diagflow.CxAgentArgs{
-//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
-//				DefaultLanguageCode:      pulumi.String("en"),
-//				Description:              pulumi.String("Example description."),
-//				DisplayName:              pulumi.String("dialogflowcx-agent"),
-//				EnableSpellCorrection:    pulumi.Bool(true),
-//				EnableStackdriverLogging: pulumi.Bool(true),
-//				Location:                 pulumi.String("global"),
-//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
-//					EnableSpeechAdaptation: pulumi.Bool(true),
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"en": map[string]interface{}{
+//					"voice": map[string]interface{}{
+//						"name": "en-US-Neural2-A",
+//					},
 //				},
+//				"fr": map[string]interface{}{
+//					"voice": map[string]interface{}{
+//						"name": "fr-CA-Neural2-A",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = diagflow.NewCxAgent(ctx, "fullAgent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
 //				SupportedLanguageCodes: pulumi.StringArray{
 //					pulumi.String("fr"),
 //					pulumi.String("de"),
 //					pulumi.String("es"),
 //				},
-//				TimeZone: pulumi.String("America/New_York"),
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//				AdvancedSettings: &diagflow.CxAgentAdvancedSettingsArgs{
+//					AudioExportGcsDestination: &diagflow.CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{
+//						Uri: bucket.Url.ApplyT(func(url string) (string, error) {
+//							return fmt.Sprintf("%v/prefix-", url), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					DtmfSettings: &diagflow.CxAgentAdvancedSettingsDtmfSettingsArgs{
+//						Enabled:     pulumi.Bool(true),
+//						MaxDigits:   pulumi.Int(1),
+//						FinishDigit: pulumi.String("#"),
+//					},
+//				},
+//				GitIntegrationSettings: &diagflow.CxAgentGitIntegrationSettingsArgs{
+//					GithubSettings: &diagflow.CxAgentGitIntegrationSettingsGithubSettingsArgs{
+//						DisplayName:    pulumi.String("Github Repo"),
+//						RepositoryUri:  pulumi.String("https://api.github.com/repos/githubtraining/hellogitworld"),
+//						TrackingBranch: pulumi.String("main"),
+//						AccessToken:    pulumi.String("secret-token"),
+//						Branches: pulumi.StringArray{
+//							pulumi.String("main"),
+//						},
+//					},
+//				},
+//				TextToSpeechSettings: &diagflow.CxAgentTextToSpeechSettingsArgs{
+//					SynthesizeSpeechConfigs: pulumi.String(json0),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +121,17 @@ import (
 //
 // ## Import
 //
-// # Agent can be imported using any of these accepted formats
+// Agent can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/agents/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/agents/{{name}}"
+//
+//	to = google_dialogflow_cx_agent.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxAgent:CxAgent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -87,6 +153,10 @@ import (
 type CxAgent struct {
 	pulumi.CustomResourceState
 
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxAgentAdvancedSettingsOutput `pulumi:"advancedSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
 	AvatarUri pulumi.StringPtrOutput `pulumi:"avatarUri"`
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -100,6 +170,9 @@ type CxAgent struct {
 	EnableSpellCorrection pulumi.BoolPtrOutput `pulumi:"enableSpellCorrection"`
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
+	// Git integration settings for this agent.
+	// Structure is documented below.
+	GitIntegrationSettings CxAgentGitIntegrationSettingsPtrOutput `pulumi:"gitIntegrationSettings"`
 	// The name of the location this agent is located in.
 	// > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
 	// This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
@@ -119,6 +192,9 @@ type CxAgent struct {
 	StartFlow pulumi.StringOutput `pulumi:"startFlow"`
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes pulumi.StringArrayOutput `pulumi:"supportedLanguageCodes"`
+	// Settings related to speech synthesizing.
+	// Structure is documented below.
+	TextToSpeechSettings CxAgentTextToSpeechSettingsPtrOutput `pulumi:"textToSpeechSettings"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
 	//
@@ -168,6 +244,10 @@ func GetCxAgent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxAgent resources.
 type cxAgentState struct {
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxAgentAdvancedSettings `pulumi:"advancedSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
 	AvatarUri *string `pulumi:"avatarUri"`
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -181,6 +261,9 @@ type cxAgentState struct {
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+	// Git integration settings for this agent.
+	// Structure is documented below.
+	GitIntegrationSettings *CxAgentGitIntegrationSettings `pulumi:"gitIntegrationSettings"`
 	// The name of the location this agent is located in.
 	// > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
 	// This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
@@ -200,6 +283,9 @@ type cxAgentState struct {
 	StartFlow *string `pulumi:"startFlow"`
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
+	// Settings related to speech synthesizing.
+	// Structure is documented below.
+	TextToSpeechSettings *CxAgentTextToSpeechSettings `pulumi:"textToSpeechSettings"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
 	//
@@ -208,6 +294,10 @@ type cxAgentState struct {
 }
 
 type CxAgentState struct {
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxAgentAdvancedSettingsPtrInput
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
 	AvatarUri pulumi.StringPtrInput
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -221,6 +311,9 @@ type CxAgentState struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrInput
+	// Git integration settings for this agent.
+	// Structure is documented below.
+	GitIntegrationSettings CxAgentGitIntegrationSettingsPtrInput
 	// The name of the location this agent is located in.
 	// > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
 	// This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
@@ -240,6 +333,9 @@ type CxAgentState struct {
 	StartFlow pulumi.StringPtrInput
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes pulumi.StringArrayInput
+	// Settings related to speech synthesizing.
+	// Structure is documented below.
+	TextToSpeechSettings CxAgentTextToSpeechSettingsPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
 	//
@@ -252,6 +348,10 @@ func (CxAgentState) ElementType() reflect.Type {
 }
 
 type cxAgentArgs struct {
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxAgentAdvancedSettings `pulumi:"advancedSettings"`
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
 	AvatarUri *string `pulumi:"avatarUri"`
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -265,6 +365,9 @@ type cxAgentArgs struct {
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+	// Git integration settings for this agent.
+	// Structure is documented below.
+	GitIntegrationSettings *CxAgentGitIntegrationSettings `pulumi:"gitIntegrationSettings"`
 	// The name of the location this agent is located in.
 	// > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
 	// This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
@@ -280,6 +383,9 @@ type cxAgentArgs struct {
 	SpeechToTextSettings *CxAgentSpeechToTextSettings `pulumi:"speechToTextSettings"`
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
+	// Settings related to speech synthesizing.
+	// Structure is documented below.
+	TextToSpeechSettings *CxAgentTextToSpeechSettings `pulumi:"textToSpeechSettings"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
 	//
@@ -289,6 +395,10 @@ type cxAgentArgs struct {
 
 // The set of arguments for constructing a CxAgent resource.
 type CxAgentArgs struct {
+	// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxAgentAdvancedSettingsPtrInput
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
 	AvatarUri pulumi.StringPtrInput
 	// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -302,6 +412,9 @@ type CxAgentArgs struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrInput
+	// Git integration settings for this agent.
+	// Structure is documented below.
+	GitIntegrationSettings CxAgentGitIntegrationSettingsPtrInput
 	// The name of the location this agent is located in.
 	// > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
 	// This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
@@ -317,6 +430,9 @@ type CxAgentArgs struct {
 	SpeechToTextSettings CxAgentSpeechToTextSettingsPtrInput
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes pulumi.StringArrayInput
+	// Settings related to speech synthesizing.
+	// Structure is documented below.
+	TextToSpeechSettings CxAgentTextToSpeechSettingsPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
 	//
@@ -347,12 +463,6 @@ func (i *CxAgent) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentOutput)
 }
 
-func (i *CxAgent) ToOutput(ctx context.Context) pulumix.Output[*CxAgent] {
-	return pulumix.Output[*CxAgent]{
-		OutputState: i.ToCxAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxAgentArrayInput is an input type that accepts CxAgentArray and CxAgentArrayOutput values.
 // You can construct a concrete instance of `CxAgentArrayInput` via:
 //
@@ -376,12 +486,6 @@ func (i CxAgentArray) ToCxAgentArrayOutput() CxAgentArrayOutput {
 
 func (i CxAgentArray) ToCxAgentArrayOutputWithContext(ctx context.Context) CxAgentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentArrayOutput)
-}
-
-func (i CxAgentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxAgent] {
-	return pulumix.Output[[]*CxAgent]{
-		OutputState: i.ToCxAgentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxAgentMapInput is an input type that accepts CxAgentMap and CxAgentMapOutput values.
@@ -409,12 +513,6 @@ func (i CxAgentMap) ToCxAgentMapOutputWithContext(ctx context.Context) CxAgentMa
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentMapOutput)
 }
 
-func (i CxAgentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxAgent] {
-	return pulumix.Output[map[string]*CxAgent]{
-		OutputState: i.ToCxAgentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxAgentOutput struct{ *pulumi.OutputState }
 
 func (CxAgentOutput) ElementType() reflect.Type {
@@ -429,10 +527,11 @@ func (o CxAgentOutput) ToCxAgentOutputWithContext(ctx context.Context) CxAgentOu
 	return o
 }
 
-func (o CxAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*CxAgent] {
-	return pulumix.Output[*CxAgent]{
-		OutputState: o.OutputState,
-	}
+// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxAgentOutput) AdvancedSettings() CxAgentAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxAgent) CxAgentAdvancedSettingsOutput { return v.AdvancedSettings }).(CxAgentAdvancedSettingsOutput)
 }
 
 // The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -464,6 +563,12 @@ func (o CxAgentOutput) EnableSpellCorrection() pulumi.BoolPtrOutput {
 // Determines whether this agent should log conversation queries.
 func (o CxAgentOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.BoolPtrOutput { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
+}
+
+// Git integration settings for this agent.
+// Structure is documented below.
+func (o CxAgentOutput) GitIntegrationSettings() CxAgentGitIntegrationSettingsPtrOutput {
+	return o.ApplyT(func(v *CxAgent) CxAgentGitIntegrationSettingsPtrOutput { return v.GitIntegrationSettings }).(CxAgentGitIntegrationSettingsPtrOutput)
 }
 
 // The name of the location this agent is located in.
@@ -506,6 +611,12 @@ func (o CxAgentOutput) SupportedLanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.StringArrayOutput { return v.SupportedLanguageCodes }).(pulumi.StringArrayOutput)
 }
 
+// Settings related to speech synthesizing.
+// Structure is documented below.
+func (o CxAgentOutput) TextToSpeechSettings() CxAgentTextToSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v *CxAgent) CxAgentTextToSpeechSettingsPtrOutput { return v.TextToSpeechSettings }).(CxAgentTextToSpeechSettingsPtrOutput)
+}
+
 // The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 // Europe/Paris.
 //
@@ -528,12 +639,6 @@ func (o CxAgentArrayOutput) ToCxAgentArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CxAgentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxAgent] {
-	return pulumix.Output[[]*CxAgent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxAgentArrayOutput) Index(i pulumi.IntInput) CxAgentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxAgent {
 		return vs[0].([]*CxAgent)[vs[1].(int)]
@@ -552,12 +657,6 @@ func (o CxAgentMapOutput) ToCxAgentMapOutput() CxAgentMapOutput {
 
 func (o CxAgentMapOutput) ToCxAgentMapOutputWithContext(ctx context.Context) CxAgentMapOutput {
 	return o
-}
-
-func (o CxAgentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxAgent] {
-	return pulumix.Output[map[string]*CxAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxAgentMapOutput) MapIndex(k pulumi.StringInput) CxAgentOutput {

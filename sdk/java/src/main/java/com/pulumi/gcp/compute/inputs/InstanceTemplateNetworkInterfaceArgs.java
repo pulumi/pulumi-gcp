@@ -140,9 +140,17 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
     @Import(name="networkAttachment")
     private @Nullable Output<String> networkAttachment;
 
+    /**
+     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
     public Optional<Output<String>> networkAttachment() {
         return Optional.ofNullable(this.networkAttachment);
     }
@@ -478,11 +486,23 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
             return network(Output.of(network));
         }
 
+        /**
+         * @param networkAttachment ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
             $.networkAttachment = networkAttachment;
             return this;
         }
 
+        /**
+         * @param networkAttachment ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkAttachment(String networkAttachment) {
             return networkAttachment(Output.of(networkAttachment));
         }

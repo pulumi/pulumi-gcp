@@ -18,6 +18,8 @@ class CxIntentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 is_default_negative_intent: Optional[pulumi.Input[bool]] = None,
+                 is_default_welcome_intent: Optional[pulumi.Input[bool]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -32,8 +34,17 @@ class CxIntentArgs:
                
                - - -
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+        :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+               The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        :param pulumi.Input[bool] is_default_welcome_intent: Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+               The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+               To manage the fallback intent, set `is_default_negative_intent = true`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
                Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -56,6 +67,10 @@ class CxIntentArgs:
         pulumi.set(__self__, "display_name", display_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if is_default_negative_intent is not None:
+            pulumi.set(__self__, "is_default_negative_intent", is_default_negative_intent)
+        if is_default_welcome_intent is not None:
+            pulumi.set(__self__, "is_default_welcome_intent", is_default_welcome_intent)
         if is_fallback is not None:
             pulumi.set(__self__, "is_fallback", is_fallback)
         if labels is not None:
@@ -99,11 +114,42 @@ class CxIntentArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="isDefaultNegativeIntent")
+    def is_default_negative_intent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+        The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        """
+        return pulumi.get(self, "is_default_negative_intent")
+
+    @is_default_negative_intent.setter
+    def is_default_negative_intent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default_negative_intent", value)
+
+    @property
+    @pulumi.getter(name="isDefaultWelcomeIntent")
+    def is_default_welcome_intent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+        The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+        """
+        return pulumi.get(self, "is_default_welcome_intent")
+
+    @is_default_welcome_intent.setter
+    def is_default_welcome_intent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default_welcome_intent", value)
+
+    @property
     @pulumi.getter(name="isFallback")
     def is_fallback(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+        To manage the fallback intent, set `is_default_negative_intent = true`
         """
         return pulumi.get(self, "is_fallback")
 
@@ -202,6 +248,8 @@ class _CxIntentState:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 is_default_negative_intent: Optional[pulumi.Input[bool]] = None,
+                 is_default_welcome_intent: Optional[pulumi.Input[bool]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -219,8 +267,17 @@ class _CxIntentState:
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+               The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        :param pulumi.Input[bool] is_default_welcome_intent: Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+               The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+               To manage the fallback intent, set `is_default_negative_intent = true`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
                Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -250,6 +307,10 @@ class _CxIntentState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if is_default_negative_intent is not None:
+            pulumi.set(__self__, "is_default_negative_intent", is_default_negative_intent)
+        if is_default_welcome_intent is not None:
+            pulumi.set(__self__, "is_default_welcome_intent", is_default_welcome_intent)
         if is_fallback is not None:
             pulumi.set(__self__, "is_fallback", is_fallback)
         if labels is not None:
@@ -309,11 +370,42 @@ class _CxIntentState:
         pulumi.set(self, "effective_labels", value)
 
     @property
+    @pulumi.getter(name="isDefaultNegativeIntent")
+    def is_default_negative_intent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+        The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        """
+        return pulumi.get(self, "is_default_negative_intent")
+
+    @is_default_negative_intent.setter
+    def is_default_negative_intent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default_negative_intent", value)
+
+    @property
+    @pulumi.getter(name="isDefaultWelcomeIntent")
+    def is_default_welcome_intent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+        The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+        """
+        return pulumi.get(self, "is_default_welcome_intent")
+
+    @is_default_welcome_intent.setter
+    def is_default_welcome_intent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default_welcome_intent", value)
+
+    @property
     @pulumi.getter(name="isFallback")
     def is_fallback(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+        To manage the fallback intent, set `is_default_negative_intent = true`
         """
         return pulumi.get(self, "is_fallback")
 
@@ -439,6 +531,8 @@ class CxIntent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 is_default_negative_intent: Optional[pulumi.Input[bool]] = None,
+                 is_default_welcome_intent: Optional[pulumi.Input[bool]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -511,7 +605,15 @@ class CxIntent(pulumi.CustomResource):
 
         ## Import
 
-        Intent can be imported using any of these accepted formats
+        Intent can be imported using any of these accepted formats* `{{parent}}/intents/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Intent using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/intents/{{name}}"
+
+         to = google_dialogflow_cx_intent.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxIntent:CxIntent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Intent can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
@@ -528,8 +630,17 @@ class CxIntent(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+               The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        :param pulumi.Input[bool] is_default_welcome_intent: Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+               The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+               To manage the fallback intent, set `is_default_negative_intent = true`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
                Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -619,7 +730,15 @@ class CxIntent(pulumi.CustomResource):
 
         ## Import
 
-        Intent can be imported using any of these accepted formats
+        Intent can be imported using any of these accepted formats* `{{parent}}/intents/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Intent using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/intents/{{name}}"
+
+         to = google_dialogflow_cx_intent.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxIntent:CxIntent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Intent can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
@@ -646,6 +765,8 @@ class CxIntent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 is_default_negative_intent: Optional[pulumi.Input[bool]] = None,
+                 is_default_welcome_intent: Optional[pulumi.Input[bool]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -666,6 +787,8 @@ class CxIntent(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["is_default_negative_intent"] = is_default_negative_intent
+            __props__.__dict__["is_default_welcome_intent"] = is_default_welcome_intent
             __props__.__dict__["is_fallback"] = is_fallback
             __props__.__dict__["labels"] = labels
             __props__.__dict__["language_code"] = language_code
@@ -691,6 +814,8 @@ class CxIntent(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            is_default_negative_intent: Optional[pulumi.Input[bool]] = None,
+            is_default_welcome_intent: Optional[pulumi.Input[bool]] = None,
             is_fallback: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
@@ -713,8 +838,17 @@ class CxIntent(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+               The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        :param pulumi.Input[bool] is_default_welcome_intent: Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+               The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+               
+               > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+               To manage the fallback intent, set `is_default_negative_intent = true`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
                Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -745,6 +879,8 @@ class CxIntent(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["is_default_negative_intent"] = is_default_negative_intent
+        __props__.__dict__["is_default_welcome_intent"] = is_default_welcome_intent
         __props__.__dict__["is_fallback"] = is_fallback
         __props__.__dict__["labels"] = labels
         __props__.__dict__["language_code"] = language_code
@@ -784,11 +920,34 @@ class CxIntent(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="isDefaultNegativeIntent")
+    def is_default_negative_intent(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+        The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        """
+        return pulumi.get(self, "is_default_negative_intent")
+
+    @property
+    @pulumi.getter(name="isDefaultWelcomeIntent")
+    def is_default_welcome_intent(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+        The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+
+        > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+        """
+        return pulumi.get(self, "is_default_welcome_intent")
+
+    @property
     @pulumi.getter(name="isFallback")
     def is_fallback(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+        To manage the fallback intent, set `is_default_negative_intent = true`
         """
         return pulumi.get(self, "is_fallback")
 

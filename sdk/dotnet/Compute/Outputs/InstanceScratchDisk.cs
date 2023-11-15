@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceScratchDisk
     {
         /// <summary>
+        /// Name with which the attached disk will be accessible
+        /// under `/dev/disk/by-id/google-*`
+        /// </summary>
+        public readonly string? DeviceName;
+        /// <summary>
         /// The disk interface to use for attaching this disk; either SCSI or NVME.
         /// </summary>
         public readonly string Interface;
@@ -25,10 +30,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InstanceScratchDisk(
+            string? deviceName,
+
             string @interface,
 
             int? size)
         {
+            DeviceName = deviceName;
             Interface = @interface;
             Size = size;
         }

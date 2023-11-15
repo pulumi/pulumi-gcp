@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Rules to match an HTTP request and dispatch that request to a service.
@@ -99,7 +98,17 @@ import (
 //
 // ## Import
 //
-// ApplicationUrlDispatchRules can be imported using any of these accepted formats:
+// ApplicationUrlDispatchRules can be imported using any of these accepted formats* `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ApplicationUrlDispatchRules using one of the formats above. For exampletf import {
+//
+//	id = "{{project}}"
+//
+//	to = google_app_engine_application_url_dispatch_rules.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ApplicationUrlDispatchRules can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -213,12 +222,6 @@ func (i *ApplicationUrlDispatchRules) ToApplicationUrlDispatchRulesOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesOutput)
 }
 
-func (i *ApplicationUrlDispatchRules) ToOutput(ctx context.Context) pulumix.Output[*ApplicationUrlDispatchRules] {
-	return pulumix.Output[*ApplicationUrlDispatchRules]{
-		OutputState: i.ToApplicationUrlDispatchRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationUrlDispatchRulesArrayInput is an input type that accepts ApplicationUrlDispatchRulesArray and ApplicationUrlDispatchRulesArrayOutput values.
 // You can construct a concrete instance of `ApplicationUrlDispatchRulesArrayInput` via:
 //
@@ -242,12 +245,6 @@ func (i ApplicationUrlDispatchRulesArray) ToApplicationUrlDispatchRulesArrayOutp
 
 func (i ApplicationUrlDispatchRulesArray) ToApplicationUrlDispatchRulesArrayOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesArrayOutput)
-}
-
-func (i ApplicationUrlDispatchRulesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationUrlDispatchRules] {
-	return pulumix.Output[[]*ApplicationUrlDispatchRules]{
-		OutputState: i.ToApplicationUrlDispatchRulesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationUrlDispatchRulesMapInput is an input type that accepts ApplicationUrlDispatchRulesMap and ApplicationUrlDispatchRulesMapOutput values.
@@ -275,12 +272,6 @@ func (i ApplicationUrlDispatchRulesMap) ToApplicationUrlDispatchRulesMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesMapOutput)
 }
 
-func (i ApplicationUrlDispatchRulesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationUrlDispatchRules] {
-	return pulumix.Output[map[string]*ApplicationUrlDispatchRules]{
-		OutputState: i.ToApplicationUrlDispatchRulesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationUrlDispatchRulesOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRulesOutput) ElementType() reflect.Type {
@@ -293,12 +284,6 @@ func (o ApplicationUrlDispatchRulesOutput) ToApplicationUrlDispatchRulesOutput()
 
 func (o ApplicationUrlDispatchRulesOutput) ToApplicationUrlDispatchRulesOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesOutput {
 	return o
-}
-
-func (o ApplicationUrlDispatchRulesOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationUrlDispatchRules] {
-	return pulumix.Output[*ApplicationUrlDispatchRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Rules to match an HTTP request and dispatch that request to a service.
@@ -329,12 +314,6 @@ func (o ApplicationUrlDispatchRulesArrayOutput) ToApplicationUrlDispatchRulesArr
 	return o
 }
 
-func (o ApplicationUrlDispatchRulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationUrlDispatchRules] {
-	return pulumix.Output[[]*ApplicationUrlDispatchRules]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationUrlDispatchRulesArrayOutput) Index(i pulumi.IntInput) ApplicationUrlDispatchRulesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationUrlDispatchRules {
 		return vs[0].([]*ApplicationUrlDispatchRules)[vs[1].(int)]
@@ -353,12 +332,6 @@ func (o ApplicationUrlDispatchRulesMapOutput) ToApplicationUrlDispatchRulesMapOu
 
 func (o ApplicationUrlDispatchRulesMapOutput) ToApplicationUrlDispatchRulesMapOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesMapOutput {
 	return o
-}
-
-func (o ApplicationUrlDispatchRulesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationUrlDispatchRules] {
-	return pulumix.Output[map[string]*ApplicationUrlDispatchRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationUrlDispatchRulesMapOutput) MapIndex(k pulumi.StringInput) ApplicationUrlDispatchRulesOutput {

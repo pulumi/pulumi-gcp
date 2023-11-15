@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Tasks Queue. Each of these resources serves a different use case:
@@ -369,12 +368,6 @@ func (i *QueueIamBinding) ToQueueIamBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingOutput)
 }
 
-func (i *QueueIamBinding) ToOutput(ctx context.Context) pulumix.Output[*QueueIamBinding] {
-	return pulumix.Output[*QueueIamBinding]{
-		OutputState: i.ToQueueIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueueIamBindingArrayInput is an input type that accepts QueueIamBindingArray and QueueIamBindingArrayOutput values.
 // You can construct a concrete instance of `QueueIamBindingArrayInput` via:
 //
@@ -398,12 +391,6 @@ func (i QueueIamBindingArray) ToQueueIamBindingArrayOutput() QueueIamBindingArra
 
 func (i QueueIamBindingArray) ToQueueIamBindingArrayOutputWithContext(ctx context.Context) QueueIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingArrayOutput)
-}
-
-func (i QueueIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*QueueIamBinding] {
-	return pulumix.Output[[]*QueueIamBinding]{
-		OutputState: i.ToQueueIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QueueIamBindingMapInput is an input type that accepts QueueIamBindingMap and QueueIamBindingMapOutput values.
@@ -431,12 +418,6 @@ func (i QueueIamBindingMap) ToQueueIamBindingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingMapOutput)
 }
 
-func (i QueueIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QueueIamBinding] {
-	return pulumix.Output[map[string]*QueueIamBinding]{
-		OutputState: i.ToQueueIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueueIamBindingOutput struct{ *pulumi.OutputState }
 
 func (QueueIamBindingOutput) ElementType() reflect.Type {
@@ -449,12 +430,6 @@ func (o QueueIamBindingOutput) ToQueueIamBindingOutput() QueueIamBindingOutput {
 
 func (o QueueIamBindingOutput) ToQueueIamBindingOutputWithContext(ctx context.Context) QueueIamBindingOutput {
 	return o
-}
-
-func (o QueueIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueIamBinding] {
-	return pulumix.Output[*QueueIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueIamBindingOutput) Condition() QueueIamBindingConditionPtrOutput {
@@ -519,12 +494,6 @@ func (o QueueIamBindingArrayOutput) ToQueueIamBindingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o QueueIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QueueIamBinding] {
-	return pulumix.Output[[]*QueueIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QueueIamBindingArrayOutput) Index(i pulumi.IntInput) QueueIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QueueIamBinding {
 		return vs[0].([]*QueueIamBinding)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o QueueIamBindingMapOutput) ToQueueIamBindingMapOutput() QueueIamBindingMa
 
 func (o QueueIamBindingMapOutput) ToQueueIamBindingMapOutputWithContext(ctx context.Context) QueueIamBindingMapOutput {
 	return o
-}
-
-func (o QueueIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QueueIamBinding] {
-	return pulumix.Output[map[string]*QueueIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueueIamBindingMapOutput) MapIndex(k pulumi.StringInput) QueueIamBindingOutput {

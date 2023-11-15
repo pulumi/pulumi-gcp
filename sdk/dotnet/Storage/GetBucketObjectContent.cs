@@ -173,6 +173,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableDictionary<string, string> Metadata;
         public readonly string Name;
         public readonly string OutputName;
+        public readonly ImmutableArray<Outputs.GetBucketObjectContentRetentionResult> Retentions;
         public readonly string SelfLink;
         public readonly string Source;
         public readonly string StorageClass;
@@ -216,6 +217,8 @@ namespace Pulumi.Gcp.Storage
 
             string outputName,
 
+            ImmutableArray<Outputs.GetBucketObjectContentRetentionResult> retentions,
+
             string selfLink,
 
             string source,
@@ -242,6 +245,7 @@ namespace Pulumi.Gcp.Storage
             Metadata = metadata;
             Name = name;
             OutputName = outputName;
+            Retentions = retentions;
             SelfLink = selfLink;
             Source = source;
             StorageClass = storageClass;

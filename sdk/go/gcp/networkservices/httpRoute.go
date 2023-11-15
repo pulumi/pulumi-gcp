@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -364,7 +363,17 @@ import (
 //
 // ## Import
 //
-// # HttpRoute can be imported using any of these accepted formats
+// HttpRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/httpRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HttpRoute using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/global/httpRoutes/{{name}}"
+//
+//	to = google_network_services_http_route.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networkservices/httpRoute:HttpRoute When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HttpRoute can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -616,12 +625,6 @@ func (i *HttpRoute) ToHttpRouteOutputWithContext(ctx context.Context) HttpRouteO
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteOutput)
 }
 
-func (i *HttpRoute) ToOutput(ctx context.Context) pulumix.Output[*HttpRoute] {
-	return pulumix.Output[*HttpRoute]{
-		OutputState: i.ToHttpRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpRouteArrayInput is an input type that accepts HttpRouteArray and HttpRouteArrayOutput values.
 // You can construct a concrete instance of `HttpRouteArrayInput` via:
 //
@@ -645,12 +648,6 @@ func (i HttpRouteArray) ToHttpRouteArrayOutput() HttpRouteArrayOutput {
 
 func (i HttpRouteArray) ToHttpRouteArrayOutputWithContext(ctx context.Context) HttpRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteArrayOutput)
-}
-
-func (i HttpRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*HttpRoute] {
-	return pulumix.Output[[]*HttpRoute]{
-		OutputState: i.ToHttpRouteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HttpRouteMapInput is an input type that accepts HttpRouteMap and HttpRouteMapOutput values.
@@ -678,12 +675,6 @@ func (i HttpRouteMap) ToHttpRouteMapOutputWithContext(ctx context.Context) HttpR
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteMapOutput)
 }
 
-func (i HttpRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpRoute] {
-	return pulumix.Output[map[string]*HttpRoute]{
-		OutputState: i.ToHttpRouteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HttpRouteOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteOutput) ElementType() reflect.Type {
@@ -696,12 +687,6 @@ func (o HttpRouteOutput) ToHttpRouteOutput() HttpRouteOutput {
 
 func (o HttpRouteOutput) ToHttpRouteOutputWithContext(ctx context.Context) HttpRouteOutput {
 	return o
-}
-
-func (o HttpRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRoute] {
-	return pulumix.Output[*HttpRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the HttpRoute was created in UTC.
@@ -791,12 +776,6 @@ func (o HttpRouteArrayOutput) ToHttpRouteArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o HttpRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HttpRoute] {
-	return pulumix.Output[[]*HttpRoute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpRouteArrayOutput) Index(i pulumi.IntInput) HttpRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpRoute {
 		return vs[0].([]*HttpRoute)[vs[1].(int)]
@@ -815,12 +794,6 @@ func (o HttpRouteMapOutput) ToHttpRouteMapOutput() HttpRouteMapOutput {
 
 func (o HttpRouteMapOutput) ToHttpRouteMapOutputWithContext(ctx context.Context) HttpRouteMapOutput {
 	return o
-}
-
-func (o HttpRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpRoute] {
-	return pulumix.Output[map[string]*HttpRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpRouteMapOutput) MapIndex(k pulumi.StringInput) HttpRouteOutput {

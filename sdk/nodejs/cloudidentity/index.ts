@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetGroupLookupArgs, GetGroupLookupResult, GetGroupLookupOutputArgs } from "./getGroupLookup";
+export const getGroupLookup: typeof import("./getGroupLookup").getGroupLookup = null as any;
+export const getGroupLookupOutput: typeof import("./getGroupLookup").getGroupLookupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupLookup","getGroupLookupOutput"], () => require("./getGroupLookup"));
+
 export { GetGroupMembershipsArgs, GetGroupMembershipsResult, GetGroupMembershipsOutputArgs } from "./getGroupMemberships";
 export const getGroupMemberships: typeof import("./getGroupMemberships").getGroupMemberships = null as any;
 export const getGroupMembershipsOutput: typeof import("./getGroupMemberships").getGroupMembershipsOutput = null as any;

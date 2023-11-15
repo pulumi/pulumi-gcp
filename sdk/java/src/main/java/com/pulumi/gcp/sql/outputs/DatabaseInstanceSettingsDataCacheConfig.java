@@ -12,16 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseInstanceSettingsDataCacheConfig {
     /**
-     * @return Whether data cache is enabled for the instance. Defaults to `false`
-     * Can only be used with MYSQL.
+     * @return Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
      * 
      */
     private @Nullable Boolean dataCacheEnabled;
 
     private DatabaseInstanceSettingsDataCacheConfig() {}
     /**
-     * @return Whether data cache is enabled for the instance. Defaults to `false`
-     * Can only be used with MYSQL.
+     * @return Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
      * 
      */
     public Optional<Boolean> dataCacheEnabled() {

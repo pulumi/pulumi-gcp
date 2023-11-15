@@ -54,6 +54,13 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
+        /// )
+        /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+        /// </summary>
+        [Input("enableConfidentialStorage")]
+        public Input<bool>? EnableConfidentialStorage { get; set; }
+
+        /// <summary>
         /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
         /// ```csharp
@@ -190,19 +197,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
-        /// Note that validations happen all server side. All attributes are optional.
-        /// Structure is documented below.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// Parameters that can be configured on Linux nodes. Structure is documented below.
         /// </summary>
         [Input("linuxNodeConfig")]
         public Input<Inputs.ClusterNodeConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }

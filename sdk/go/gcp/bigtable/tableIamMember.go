@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on bigtable tables. Each of these resources serves a different use case:
@@ -128,29 +127,23 @@ import (
 //
 // ## Import
 //
-// Table IAM resources can be imported using the project, table name, role and/or member.
+// ### Importing IAM policies IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example* `"projects/{project}/tables/{table}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+//
+//	id = "projects/{project}/tables/{table}"
+//
+//	to = google_bigtable_table_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table}"
+//	$ pulumi import gcp:bigtable/tableIamMember:TableIamMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table} roles/editor"
+//	$ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/tables/{table}
 //
 // ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table} roles/editor user:jane@example.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TableIamMember struct {
 	pulumi.CustomResourceState
 
@@ -373,12 +366,6 @@ func (i *TableIamMember) ToTableIamMemberOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberOutput)
 }
 
-func (i *TableIamMember) ToOutput(ctx context.Context) pulumix.Output[*TableIamMember] {
-	return pulumix.Output[*TableIamMember]{
-		OutputState: i.ToTableIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableIamMemberArrayInput is an input type that accepts TableIamMemberArray and TableIamMemberArrayOutput values.
 // You can construct a concrete instance of `TableIamMemberArrayInput` via:
 //
@@ -402,12 +389,6 @@ func (i TableIamMemberArray) ToTableIamMemberArrayOutput() TableIamMemberArrayOu
 
 func (i TableIamMemberArray) ToTableIamMemberArrayOutputWithContext(ctx context.Context) TableIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberArrayOutput)
-}
-
-func (i TableIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*TableIamMember] {
-	return pulumix.Output[[]*TableIamMember]{
-		OutputState: i.ToTableIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TableIamMemberMapInput is an input type that accepts TableIamMemberMap and TableIamMemberMapOutput values.
@@ -435,12 +416,6 @@ func (i TableIamMemberMap) ToTableIamMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamMemberMapOutput)
 }
 
-func (i TableIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableIamMember] {
-	return pulumix.Output[map[string]*TableIamMember]{
-		OutputState: i.ToTableIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TableIamMemberOutput) ElementType() reflect.Type {
@@ -453,12 +428,6 @@ func (o TableIamMemberOutput) ToTableIamMemberOutput() TableIamMemberOutput {
 
 func (o TableIamMemberOutput) ToTableIamMemberOutputWithContext(ctx context.Context) TableIamMemberOutput {
 	return o
-}
-
-func (o TableIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TableIamMember] {
-	return pulumix.Output[*TableIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamMemberOutput) Condition() TableIamMemberConditionPtrOutput {
@@ -524,12 +493,6 @@ func (o TableIamMemberArrayOutput) ToTableIamMemberArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o TableIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TableIamMember] {
-	return pulumix.Output[[]*TableIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableIamMemberArrayOutput) Index(i pulumi.IntInput) TableIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TableIamMember {
 		return vs[0].([]*TableIamMember)[vs[1].(int)]
@@ -548,12 +511,6 @@ func (o TableIamMemberMapOutput) ToTableIamMemberMapOutput() TableIamMemberMapOu
 
 func (o TableIamMemberMapOutput) ToTableIamMemberMapOutputWithContext(ctx context.Context) TableIamMemberMapOutput {
 	return o
-}
-
-func (o TableIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableIamMember] {
-	return pulumix.Output[map[string]*TableIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamMemberMapOutput) MapIndex(k pulumi.StringInput) TableIamMemberOutput {

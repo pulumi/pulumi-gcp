@@ -38,8 +38,12 @@ import * as utilities from "../utilities";
  *     displayName: "http-uptime-check",
  *     httpCheck: {
  *         body: "Zm9vJTI1M0RiYXI=",
- *         contentType: "URL_ENCODED",
+ *         contentType: "USER_PROVIDED",
+ *         customContentType: "application/json",
  *         path: "some-path",
+ *         pingConfig: {
+ *             pingsCount: 1,
+ *         },
  *         port: 8010,
  *         requestMethod: "POST",
  *     },
@@ -51,6 +55,9 @@ import * as utilities from "../utilities";
  *         type: "uptime_url",
  *     },
  *     timeout: "60s",
+ *     userLabels: {
+ *         "example-key": "example-value",
+ *     },
  * });
  * ```
  * ### Uptime Check Config Status Code
@@ -145,6 +152,9 @@ import * as utilities from "../utilities";
  *     timeout: "60s",
  *     tcpCheck: {
  *         port: 888,
+ *         pingConfig: {
+ *             pingsCount: 2,
+ *         },
  *     },
  *     resourceGroup: {
  *         resourceType: "INSTANCE",
@@ -198,7 +208,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * UptimeCheckConfig can be imported using any of these accepted formats:
+ * UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
+ *
+ *  id = "{{name}}"
+ *
+ *  to = google_monitoring_uptime_check_config.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -299,6 +317,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * The id of the uptime check
      */
     public /*out*/ readonly uptimeCheckId!: pulumi.Output<string>;
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
+    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -327,6 +349,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["tcpCheck"] = state ? state.tcpCheck : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["uptimeCheckId"] = state ? state.uptimeCheckId : undefined;
+            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as UptimeCheckConfigArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -347,6 +370,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["syntheticMonitor"] = args ? args.syntheticMonitor : undefined;
             resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uptimeCheckId"] = undefined /*out*/;
         }
@@ -426,6 +450,10 @@ export interface UptimeCheckConfigState {
      * The id of the uptime check
      */
     uptimeCheckId?: pulumi.Input<string>;
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -491,4 +519,8 @@ export interface UptimeCheckConfigArgs {
      * - - -
      */
     timeout: pulumi.Input<string>;
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

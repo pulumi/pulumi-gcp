@@ -66,7 +66,15 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// ## Import
     /// 
-    /// Client can be imported using any of these accepted formats
+    /// Client can be imported using any of these accepted formats* `{{brand}}/identityAwareProxyClients/{{client_id}}` * `{{brand}}/{{client_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Client using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{brand}}/identityAwareProxyClients/{{client_id}}"
+    /// 
+    ///  to = google_iap_client.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iap/client:Client When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Client can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}

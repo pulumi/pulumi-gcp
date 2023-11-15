@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i AccessLevelBasicArgs) ToAccessLevelBasicOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicOutput)
 }
 
-func (i AccessLevelBasicArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasic] {
-	return pulumix.Output[AccessLevelBasic]{
-		OutputState: i.ToAccessLevelBasicOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelBasicArgs) ToAccessLevelBasicPtrOutput() AccessLevelBasicPtrOutput {
 	return i.ToAccessLevelBasicPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *accessLevelBasicPtrType) ToAccessLevelBasicPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicPtrOutput)
 }
 
-func (i *accessLevelBasicPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelBasic] {
-	return pulumix.Output[*AccessLevelBasic]{
-		OutputState: i.ToAccessLevelBasicPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelBasicOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicOutput) ElementType() reflect.Type {
@@ -140,12 +127,6 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelBasic) *AccessLevelBasic {
 		return &v
 	}).(AccessLevelBasicPtrOutput)
-}
-
-func (o AccessLevelBasicOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasic] {
-	return pulumix.Output[AccessLevelBasic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How the conditions list should be combined to determine if a request
@@ -177,12 +158,6 @@ func (o AccessLevelBasicPtrOutput) ToAccessLevelBasicPtrOutput() AccessLevelBasi
 
 func (o AccessLevelBasicPtrOutput) ToAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelBasicPtrOutput {
 	return o
-}
-
-func (o AccessLevelBasicPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelBasic] {
-	return pulumix.Output[*AccessLevelBasic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
@@ -261,6 +236,9 @@ type AccessLevelBasicCondition struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources []AccessLevelBasicConditionVpcNetworkSource `pulumi:"vpcNetworkSources"`
 }
 
 // AccessLevelBasicConditionInput is an input type that accepts AccessLevelBasicConditionArgs and AccessLevelBasicConditionOutput values.
@@ -313,6 +291,9 @@ type AccessLevelBasicConditionArgs struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources AccessLevelBasicConditionVpcNetworkSourceArrayInput `pulumi:"vpcNetworkSources"`
 }
 
 func (AccessLevelBasicConditionArgs) ElementType() reflect.Type {
@@ -325,12 +306,6 @@ func (i AccessLevelBasicConditionArgs) ToAccessLevelBasicConditionOutput() Acces
 
 func (i AccessLevelBasicConditionArgs) ToAccessLevelBasicConditionOutputWithContext(ctx context.Context) AccessLevelBasicConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionOutput)
-}
-
-func (i AccessLevelBasicConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasicCondition] {
-	return pulumix.Output[AccessLevelBasicCondition]{
-		OutputState: i.ToAccessLevelBasicConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessLevelBasicConditionArrayInput is an input type that accepts AccessLevelBasicConditionArray and AccessLevelBasicConditionArrayOutput values.
@@ -358,12 +333,6 @@ func (i AccessLevelBasicConditionArray) ToAccessLevelBasicConditionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionArrayOutput)
 }
 
-func (i AccessLevelBasicConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelBasicCondition] {
-	return pulumix.Output[[]AccessLevelBasicCondition]{
-		OutputState: i.ToAccessLevelBasicConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelBasicConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionOutput) ElementType() reflect.Type {
@@ -376,12 +345,6 @@ func (o AccessLevelBasicConditionOutput) ToAccessLevelBasicConditionOutput() Acc
 
 func (o AccessLevelBasicConditionOutput) ToAccessLevelBasicConditionOutputWithContext(ctx context.Context) AccessLevelBasicConditionOutput {
 	return o
-}
-
-func (o AccessLevelBasicConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasicCondition] {
-	return pulumix.Output[AccessLevelBasicCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Device specific restrictions, all restrictions must hold for
@@ -440,6 +403,14 @@ func (o AccessLevelBasicConditionOutput) RequiredAccessLevels() pulumi.StringArr
 	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
 }
 
+// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+// Structure is documented below.
+func (o AccessLevelBasicConditionOutput) VpcNetworkSources() AccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return o.ApplyT(func(v AccessLevelBasicCondition) []AccessLevelBasicConditionVpcNetworkSource {
+		return v.VpcNetworkSources
+	}).(AccessLevelBasicConditionVpcNetworkSourceArrayOutput)
+}
+
 type AccessLevelBasicConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionArrayOutput) ElementType() reflect.Type {
@@ -452,12 +423,6 @@ func (o AccessLevelBasicConditionArrayOutput) ToAccessLevelBasicConditionArrayOu
 
 func (o AccessLevelBasicConditionArrayOutput) ToAccessLevelBasicConditionArrayOutputWithContext(ctx context.Context) AccessLevelBasicConditionArrayOutput {
 	return o
-}
-
-func (o AccessLevelBasicConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelBasicCondition] {
-	return pulumix.Output[[]AccessLevelBasicCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelBasicConditionOutput {
@@ -533,12 +498,6 @@ func (i AccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelBasicConditionDe
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionDevicePolicyOutput)
 }
 
-func (i AccessLevelBasicConditionDevicePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[AccessLevelBasicConditionDevicePolicy]{
-		OutputState: i.ToAccessLevelBasicConditionDevicePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelBasicConditionDevicePolicyPtrOutput {
 	return i.ToAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(context.Background())
 }
@@ -580,12 +539,6 @@ func (i *accessLevelBasicConditionDevicePolicyPtrType) ToAccessLevelBasicConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
 
-func (i *accessLevelBasicConditionDevicePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[*AccessLevelBasicConditionDevicePolicy]{
-		OutputState: i.ToAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelBasicConditionDevicePolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionDevicePolicyOutput) ElementType() reflect.Type {
@@ -608,12 +561,6 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicCondition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelBasicConditionDevicePolicy) *AccessLevelBasicConditionDevicePolicy {
 		return &v
 	}).(AccessLevelBasicConditionDevicePolicyPtrOutput)
-}
-
-func (o AccessLevelBasicConditionDevicePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[AccessLevelBasicConditionDevicePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of allowed device management levels.
@@ -667,12 +614,6 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelBasicCondit
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelBasicConditionDevicePolicyPtrOutput {
 	return o
-}
-
-func (o AccessLevelBasicConditionDevicePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[*AccessLevelBasicConditionDevicePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelBasicConditionDevicePolicyOutput {
@@ -799,12 +740,6 @@ func (i AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAccessLevelBasi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionDevicePolicyOsConstraintOutput)
 }
 
-func (i AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[AccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: i.ToAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArray and AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput` via:
 //
@@ -830,12 +765,6 @@ func (i AccessLevelBasicConditionDevicePolicyOsConstraintArray) ToAccessLevelBas
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
-func (i AccessLevelBasicConditionDevicePolicyOsConstraintArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[[]AccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: i.ToAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelBasicConditionDevicePolicyOsConstraintOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ElementType() reflect.Type {
@@ -848,12 +777,6 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelBa
 
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(ctx context.Context) AccessLevelBasicConditionDevicePolicyOsConstraintOutput {
 	return o
-}
-
-func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[AccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The minimum allowed OS version. If not set, any version
@@ -888,16 +811,268 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ToAccessLe
 	return o
 }
 
-func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[[]AccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pulumi.IntInput) AccessLevelBasicConditionDevicePolicyOsConstraintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelBasicConditionDevicePolicyOsConstraint {
 		return vs[0].([]AccessLevelBasicConditionDevicePolicyOsConstraint)[vs[1].(int)]
 	}).(AccessLevelBasicConditionDevicePolicyOsConstraintOutput)
+}
+
+type AccessLevelBasicConditionVpcNetworkSource struct {
+	// Sub networks within a VPC network.
+	// Structure is documented below.
+	VpcSubnetwork *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork `pulumi:"vpcSubnetwork"`
+}
+
+// AccessLevelBasicConditionVpcNetworkSourceInput is an input type that accepts AccessLevelBasicConditionVpcNetworkSourceArgs and AccessLevelBasicConditionVpcNetworkSourceOutput values.
+// You can construct a concrete instance of `AccessLevelBasicConditionVpcNetworkSourceInput` via:
+//
+//	AccessLevelBasicConditionVpcNetworkSourceArgs{...}
+type AccessLevelBasicConditionVpcNetworkSourceInput interface {
+	pulumi.Input
+
+	ToAccessLevelBasicConditionVpcNetworkSourceOutput() AccessLevelBasicConditionVpcNetworkSourceOutput
+	ToAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(context.Context) AccessLevelBasicConditionVpcNetworkSourceOutput
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceArgs struct {
+	// Sub networks within a VPC network.
+	// Structure is documented below.
+	VpcSubnetwork AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput `pulumi:"vpcSubnetwork"`
+}
+
+func (AccessLevelBasicConditionVpcNetworkSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceArgs) ToAccessLevelBasicConditionVpcNetworkSourceOutput() AccessLevelBasicConditionVpcNetworkSourceOutput {
+	return i.ToAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(context.Background())
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceArgs) ToAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionVpcNetworkSourceOutput)
+}
+
+// AccessLevelBasicConditionVpcNetworkSourceArrayInput is an input type that accepts AccessLevelBasicConditionVpcNetworkSourceArray and AccessLevelBasicConditionVpcNetworkSourceArrayOutput values.
+// You can construct a concrete instance of `AccessLevelBasicConditionVpcNetworkSourceArrayInput` via:
+//
+//	AccessLevelBasicConditionVpcNetworkSourceArray{ AccessLevelBasicConditionVpcNetworkSourceArgs{...} }
+type AccessLevelBasicConditionVpcNetworkSourceArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelBasicConditionVpcNetworkSourceArrayOutput() AccessLevelBasicConditionVpcNetworkSourceArrayOutput
+	ToAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(context.Context) AccessLevelBasicConditionVpcNetworkSourceArrayOutput
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceArray []AccessLevelBasicConditionVpcNetworkSourceInput
+
+func (AccessLevelBasicConditionVpcNetworkSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceArray) ToAccessLevelBasicConditionVpcNetworkSourceArrayOutput() AccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return i.ToAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceArray) ToAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionVpcNetworkSourceArrayOutput)
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelBasicConditionVpcNetworkSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceOutput) ToAccessLevelBasicConditionVpcNetworkSourceOutput() AccessLevelBasicConditionVpcNetworkSourceOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceOutput) ToAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceOutput {
+	return o
+}
+
+// Sub networks within a VPC network.
+// Structure is documented below.
+func (o AccessLevelBasicConditionVpcNetworkSourceOutput) VpcSubnetwork() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ApplyT(func(v AccessLevelBasicConditionVpcNetworkSource) *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+		return v.VpcSubnetwork
+	}).(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelBasicConditionVpcNetworkSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceArrayOutput) ToAccessLevelBasicConditionVpcNetworkSourceArrayOutput() AccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceArrayOutput) ToAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceArrayOutput) Index(i pulumi.IntInput) AccessLevelBasicConditionVpcNetworkSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelBasicConditionVpcNetworkSource {
+		return vs[0].([]AccessLevelBasicConditionVpcNetworkSource)[vs[1].(int)]
+	}).(AccessLevelBasicConditionVpcNetworkSourceOutput)
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork struct {
+	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+	Network string `pulumi:"network"`
+	// CIDR block IP subnetwork specification. Must be IPv4.
+	VpcIpSubnetworks []string `pulumi:"vpcIpSubnetworks"`
+}
+
+// AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput is an input type that accepts AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs and AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput values.
+// You can construct a concrete instance of `AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput` via:
+//
+//	AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{...}
+type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput interface {
+	pulumi.Input
+
+	ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput
+	ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs struct {
+	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+	Network pulumi.StringInput `pulumi:"network"`
+	// CIDR block IP subnetwork specification. Must be IPv4.
+	VpcIpSubnetworks pulumi.StringArrayInput `pulumi:"vpcIpSubnetworks"`
+}
+
+func (AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return i.ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(context.Background())
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput)
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return i.ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput).ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx)
+}
+
+// AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput is an input type that accepts AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs, AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtr and AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput values.
+// You can construct a concrete instance of `AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput` via:
+//
+//	        AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput
+	ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput
+}
+
+type accessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs
+
+func AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtr(v *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput {
+	return (*accessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType)(v)
+}
+
+func (*accessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (i *accessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return i.ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+		return &v
+	}).(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// CIDR block IP subnetwork specification. Must be IPv4.
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) []string { return v.VpcIpSubnetworks }).(pulumi.StringArrayOutput)
+}
+
+type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ToAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o
+}
+
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Elem() AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o.ApplyT(func(v *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork
+		return ret
+	}).(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput)
+}
+
+// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR block IP subnetwork specification. Must be IPv4.
+func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcIpSubnetworks
+	}).(pulumi.StringArrayOutput)
 }
 
 type AccessLevelConditionDevicePolicy struct {
@@ -967,12 +1142,6 @@ func (i AccessLevelConditionDevicePolicyArgs) ToAccessLevelConditionDevicePolicy
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionDevicePolicyOutput)
 }
 
-func (i AccessLevelConditionDevicePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelConditionDevicePolicy] {
-	return pulumix.Output[AccessLevelConditionDevicePolicy]{
-		OutputState: i.ToAccessLevelConditionDevicePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelConditionDevicePolicyArgs) ToAccessLevelConditionDevicePolicyPtrOutput() AccessLevelConditionDevicePolicyPtrOutput {
 	return i.ToAccessLevelConditionDevicePolicyPtrOutputWithContext(context.Background())
 }
@@ -1014,12 +1183,6 @@ func (i *accessLevelConditionDevicePolicyPtrType) ToAccessLevelConditionDevicePo
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionDevicePolicyPtrOutput)
 }
 
-func (i *accessLevelConditionDevicePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelConditionDevicePolicy] {
-	return pulumix.Output[*AccessLevelConditionDevicePolicy]{
-		OutputState: i.ToAccessLevelConditionDevicePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelConditionDevicePolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelConditionDevicePolicyOutput) ElementType() reflect.Type {
@@ -1042,12 +1205,6 @@ func (o AccessLevelConditionDevicePolicyOutput) ToAccessLevelConditionDevicePoli
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelConditionDevicePolicy) *AccessLevelConditionDevicePolicy {
 		return &v
 	}).(AccessLevelConditionDevicePolicyPtrOutput)
-}
-
-func (o AccessLevelConditionDevicePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelConditionDevicePolicy] {
-	return pulumix.Output[AccessLevelConditionDevicePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of allowed device management levels.
@@ -1101,12 +1258,6 @@ func (o AccessLevelConditionDevicePolicyPtrOutput) ToAccessLevelConditionDeviceP
 
 func (o AccessLevelConditionDevicePolicyPtrOutput) ToAccessLevelConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelConditionDevicePolicyPtrOutput {
 	return o
-}
-
-func (o AccessLevelConditionDevicePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelConditionDevicePolicy] {
-	return pulumix.Output[*AccessLevelConditionDevicePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelConditionDevicePolicyPtrOutput) Elem() AccessLevelConditionDevicePolicyOutput {
@@ -1229,12 +1380,6 @@ func (i AccessLevelConditionDevicePolicyOsConstraintArgs) ToAccessLevelCondition
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionDevicePolicyOsConstraintOutput)
 }
 
-func (i AccessLevelConditionDevicePolicyOsConstraintArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[AccessLevelConditionDevicePolicyOsConstraint]{
-		OutputState: i.ToAccessLevelConditionDevicePolicyOsConstraintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelConditionDevicePolicyOsConstraintArray and AccessLevelConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelConditionDevicePolicyOsConstraintArrayInput` via:
 //
@@ -1260,12 +1405,6 @@ func (i AccessLevelConditionDevicePolicyOsConstraintArray) ToAccessLevelConditio
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionDevicePolicyOsConstraintArrayOutput)
 }
 
-func (i AccessLevelConditionDevicePolicyOsConstraintArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[[]AccessLevelConditionDevicePolicyOsConstraint]{
-		OutputState: i.ToAccessLevelConditionDevicePolicyOsConstraintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelConditionDevicePolicyOsConstraintOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelConditionDevicePolicyOsConstraintOutput) ElementType() reflect.Type {
@@ -1278,12 +1417,6 @@ func (o AccessLevelConditionDevicePolicyOsConstraintOutput) ToAccessLevelConditi
 
 func (o AccessLevelConditionDevicePolicyOsConstraintOutput) ToAccessLevelConditionDevicePolicyOsConstraintOutputWithContext(ctx context.Context) AccessLevelConditionDevicePolicyOsConstraintOutput {
 	return o
-}
-
-func (o AccessLevelConditionDevicePolicyOsConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[AccessLevelConditionDevicePolicyOsConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The minimum allowed OS version. If not set, any version
@@ -1313,16 +1446,268 @@ func (o AccessLevelConditionDevicePolicyOsConstraintArrayOutput) ToAccessLevelCo
 	return o
 }
 
-func (o AccessLevelConditionDevicePolicyOsConstraintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[[]AccessLevelConditionDevicePolicyOsConstraint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessLevelConditionDevicePolicyOsConstraintArrayOutput) Index(i pulumi.IntInput) AccessLevelConditionDevicePolicyOsConstraintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelConditionDevicePolicyOsConstraint {
 		return vs[0].([]AccessLevelConditionDevicePolicyOsConstraint)[vs[1].(int)]
 	}).(AccessLevelConditionDevicePolicyOsConstraintOutput)
+}
+
+type AccessLevelConditionVpcNetworkSource struct {
+	// Sub networks within a VPC network.
+	// Structure is documented below.
+	VpcSubnetwork *AccessLevelConditionVpcNetworkSourceVpcSubnetwork `pulumi:"vpcSubnetwork"`
+}
+
+// AccessLevelConditionVpcNetworkSourceInput is an input type that accepts AccessLevelConditionVpcNetworkSourceArgs and AccessLevelConditionVpcNetworkSourceOutput values.
+// You can construct a concrete instance of `AccessLevelConditionVpcNetworkSourceInput` via:
+//
+//	AccessLevelConditionVpcNetworkSourceArgs{...}
+type AccessLevelConditionVpcNetworkSourceInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionVpcNetworkSourceOutput() AccessLevelConditionVpcNetworkSourceOutput
+	ToAccessLevelConditionVpcNetworkSourceOutputWithContext(context.Context) AccessLevelConditionVpcNetworkSourceOutput
+}
+
+type AccessLevelConditionVpcNetworkSourceArgs struct {
+	// Sub networks within a VPC network.
+	// Structure is documented below.
+	VpcSubnetwork AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrInput `pulumi:"vpcSubnetwork"`
+}
+
+func (AccessLevelConditionVpcNetworkSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (i AccessLevelConditionVpcNetworkSourceArgs) ToAccessLevelConditionVpcNetworkSourceOutput() AccessLevelConditionVpcNetworkSourceOutput {
+	return i.ToAccessLevelConditionVpcNetworkSourceOutputWithContext(context.Background())
+}
+
+func (i AccessLevelConditionVpcNetworkSourceArgs) ToAccessLevelConditionVpcNetworkSourceOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionVpcNetworkSourceOutput)
+}
+
+// AccessLevelConditionVpcNetworkSourceArrayInput is an input type that accepts AccessLevelConditionVpcNetworkSourceArray and AccessLevelConditionVpcNetworkSourceArrayOutput values.
+// You can construct a concrete instance of `AccessLevelConditionVpcNetworkSourceArrayInput` via:
+//
+//	AccessLevelConditionVpcNetworkSourceArray{ AccessLevelConditionVpcNetworkSourceArgs{...} }
+type AccessLevelConditionVpcNetworkSourceArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionVpcNetworkSourceArrayOutput() AccessLevelConditionVpcNetworkSourceArrayOutput
+	ToAccessLevelConditionVpcNetworkSourceArrayOutputWithContext(context.Context) AccessLevelConditionVpcNetworkSourceArrayOutput
+}
+
+type AccessLevelConditionVpcNetworkSourceArray []AccessLevelConditionVpcNetworkSourceInput
+
+func (AccessLevelConditionVpcNetworkSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (i AccessLevelConditionVpcNetworkSourceArray) ToAccessLevelConditionVpcNetworkSourceArrayOutput() AccessLevelConditionVpcNetworkSourceArrayOutput {
+	return i.ToAccessLevelConditionVpcNetworkSourceArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelConditionVpcNetworkSourceArray) ToAccessLevelConditionVpcNetworkSourceArrayOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionVpcNetworkSourceArrayOutput)
+}
+
+type AccessLevelConditionVpcNetworkSourceOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelConditionVpcNetworkSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (o AccessLevelConditionVpcNetworkSourceOutput) ToAccessLevelConditionVpcNetworkSourceOutput() AccessLevelConditionVpcNetworkSourceOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceOutput) ToAccessLevelConditionVpcNetworkSourceOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceOutput {
+	return o
+}
+
+// Sub networks within a VPC network.
+// Structure is documented below.
+func (o AccessLevelConditionVpcNetworkSourceOutput) VpcSubnetwork() AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ApplyT(func(v AccessLevelConditionVpcNetworkSource) *AccessLevelConditionVpcNetworkSourceVpcSubnetwork {
+		return v.VpcSubnetwork
+	}).(AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+type AccessLevelConditionVpcNetworkSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelConditionVpcNetworkSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (o AccessLevelConditionVpcNetworkSourceArrayOutput) ToAccessLevelConditionVpcNetworkSourceArrayOutput() AccessLevelConditionVpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceArrayOutput) ToAccessLevelConditionVpcNetworkSourceArrayOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceArrayOutput) Index(i pulumi.IntInput) AccessLevelConditionVpcNetworkSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelConditionVpcNetworkSource {
+		return vs[0].([]AccessLevelConditionVpcNetworkSource)[vs[1].(int)]
+	}).(AccessLevelConditionVpcNetworkSourceOutput)
+}
+
+type AccessLevelConditionVpcNetworkSourceVpcSubnetwork struct {
+	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+	Network string `pulumi:"network"`
+	// CIDR block IP subnetwork specification. Must be IPv4.
+	VpcIpSubnetworks []string `pulumi:"vpcIpSubnetworks"`
+}
+
+// AccessLevelConditionVpcNetworkSourceVpcSubnetworkInput is an input type that accepts AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs and AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput values.
+// You can construct a concrete instance of `AccessLevelConditionVpcNetworkSourceVpcSubnetworkInput` via:
+//
+//	AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs{...}
+type AccessLevelConditionVpcNetworkSourceVpcSubnetworkInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput
+	ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput
+}
+
+type AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs struct {
+	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+	Network pulumi.StringInput `pulumi:"network"`
+	// CIDR block IP subnetwork specification. Must be IPv4.
+	VpcIpSubnetworks pulumi.StringArrayInput `pulumi:"vpcIpSubnetworks"`
+}
+
+func (AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (i AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return i.ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(context.Background())
+}
+
+func (i AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput)
+}
+
+func (i AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return i.ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput).ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx)
+}
+
+// AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrInput is an input type that accepts AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs, AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtr and AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput values.
+// You can construct a concrete instance of `AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrInput` via:
+//
+//	        AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput
+	ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput
+}
+
+type accessLevelConditionVpcNetworkSourceVpcSubnetworkPtrType AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs
+
+func AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtr(v *AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs) AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrInput {
+	return (*accessLevelConditionVpcNetworkSourceVpcSubnetworkPtrType)(v)
+}
+
+func (*accessLevelConditionVpcNetworkSourceVpcSubnetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (i *accessLevelConditionVpcNetworkSourceVpcSubnetworkPtrType) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return i.ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelConditionVpcNetworkSourceVpcSubnetworkPtrType) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+type AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelConditionVpcNetworkSourceVpcSubnetwork) *AccessLevelConditionVpcNetworkSourceVpcSubnetwork {
+		return &v
+	}).(AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelConditionVpcNetworkSourceVpcSubnetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// CIDR block IP subnetwork specification. Must be IPv4.
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelConditionVpcNetworkSourceVpcSubnetwork) []string { return v.VpcIpSubnetworks }).(pulumi.StringArrayOutput)
+}
+
+type AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ToAccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o
+}
+
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Elem() AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o.ApplyT(func(v *AccessLevelConditionVpcNetworkSourceVpcSubnetwork) AccessLevelConditionVpcNetworkSourceVpcSubnetwork {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelConditionVpcNetworkSourceVpcSubnetwork
+		return ret
+	}).(AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput)
+}
+
+// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelConditionVpcNetworkSourceVpcSubnetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR block IP subnetwork specification. Must be IPv4.
+func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessLevelConditionVpcNetworkSourceVpcSubnetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcIpSubnetworks
+	}).(pulumi.StringArrayOutput)
 }
 
 type AccessLevelCustom struct {
@@ -1362,12 +1747,6 @@ func (i AccessLevelCustomArgs) ToAccessLevelCustomOutput() AccessLevelCustomOutp
 
 func (i AccessLevelCustomArgs) ToAccessLevelCustomOutputWithContext(ctx context.Context) AccessLevelCustomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomOutput)
-}
-
-func (i AccessLevelCustomArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelCustom] {
-	return pulumix.Output[AccessLevelCustom]{
-		OutputState: i.ToAccessLevelCustomOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AccessLevelCustomArgs) ToAccessLevelCustomPtrOutput() AccessLevelCustomPtrOutput {
@@ -1411,12 +1790,6 @@ func (i *accessLevelCustomPtrType) ToAccessLevelCustomPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomPtrOutput)
 }
 
-func (i *accessLevelCustomPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCustom] {
-	return pulumix.Output[*AccessLevelCustom]{
-		OutputState: i.ToAccessLevelCustomPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelCustomOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelCustomOutput) ElementType() reflect.Type {
@@ -1441,12 +1814,6 @@ func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutputWithContext(ctx con
 	}).(AccessLevelCustomPtrOutput)
 }
 
-func (o AccessLevelCustomOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelCustom] {
-	return pulumix.Output[AccessLevelCustom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
 // custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
@@ -1467,12 +1834,6 @@ func (o AccessLevelCustomPtrOutput) ToAccessLevelCustomPtrOutput() AccessLevelCu
 
 func (o AccessLevelCustomPtrOutput) ToAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelCustomPtrOutput {
 	return o
-}
-
-func (o AccessLevelCustomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCustom] {
-	return pulumix.Output[*AccessLevelCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelCustomPtrOutput) Elem() AccessLevelCustomOutput {
@@ -1543,12 +1904,6 @@ func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomExprOutput)
 }
 
-func (i AccessLevelCustomExprArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelCustomExpr] {
-	return pulumix.Output[AccessLevelCustomExpr]{
-		OutputState: i.ToAccessLevelCustomExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprPtrOutput() AccessLevelCustomExprPtrOutput {
 	return i.ToAccessLevelCustomExprPtrOutputWithContext(context.Background())
 }
@@ -1590,12 +1945,6 @@ func (i *accessLevelCustomExprPtrType) ToAccessLevelCustomExprPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomExprPtrOutput)
 }
 
-func (i *accessLevelCustomExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCustomExpr] {
-	return pulumix.Output[*AccessLevelCustomExpr]{
-		OutputState: i.ToAccessLevelCustomExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelCustomExprOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelCustomExprOutput) ElementType() reflect.Type {
@@ -1618,12 +1967,6 @@ func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelCustomExpr) *AccessLevelCustomExpr {
 		return &v
 	}).(AccessLevelCustomExprPtrOutput)
-}
-
-func (o AccessLevelCustomExprOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelCustomExpr] {
-	return pulumix.Output[AccessLevelCustomExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression
@@ -1658,12 +2001,6 @@ func (o AccessLevelCustomExprPtrOutput) ToAccessLevelCustomExprPtrOutput() Acces
 
 func (o AccessLevelCustomExprPtrOutput) ToAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelCustomExprPtrOutput {
 	return o
-}
-
-func (o AccessLevelCustomExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCustomExpr] {
-	return pulumix.Output[*AccessLevelCustomExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelCustomExprPtrOutput) Elem() AccessLevelCustomExprOutput {
@@ -1775,12 +2112,6 @@ func (i AccessLevelsAccessLevelArgs) ToAccessLevelsAccessLevelOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelOutput)
 }
 
-func (i AccessLevelsAccessLevelArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevel] {
-	return pulumix.Output[AccessLevelsAccessLevel]{
-		OutputState: i.ToAccessLevelsAccessLevelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelsAccessLevelArrayInput is an input type that accepts AccessLevelsAccessLevelArray and AccessLevelsAccessLevelArrayOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelArrayInput` via:
 //
@@ -1806,12 +2137,6 @@ func (i AccessLevelsAccessLevelArray) ToAccessLevelsAccessLevelArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelArrayOutput)
 }
 
-func (i AccessLevelsAccessLevelArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelsAccessLevel] {
-	return pulumix.Output[[]AccessLevelsAccessLevel]{
-		OutputState: i.ToAccessLevelsAccessLevelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelOutput) ElementType() reflect.Type {
@@ -1824,12 +2149,6 @@ func (o AccessLevelsAccessLevelOutput) ToAccessLevelsAccessLevelOutput() AccessL
 
 func (o AccessLevelsAccessLevelOutput) ToAccessLevelsAccessLevelOutputWithContext(ctx context.Context) AccessLevelsAccessLevelOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevel] {
-	return pulumix.Output[AccessLevelsAccessLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A set of predefined conditions for the access level and a combining function.
@@ -1874,12 +2193,6 @@ func (o AccessLevelsAccessLevelArrayOutput) ToAccessLevelsAccessLevelArrayOutput
 
 func (o AccessLevelsAccessLevelArrayOutput) ToAccessLevelsAccessLevelArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelArrayOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelsAccessLevel] {
-	return pulumix.Output[[]AccessLevelsAccessLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsAccessLevelArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelOutput {
@@ -1939,12 +2252,6 @@ func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicOutput)
 }
 
-func (i AccessLevelsAccessLevelBasicArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasic] {
-	return pulumix.Output[AccessLevelsAccessLevelBasic]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelsAccessLevelBasicArgs) ToAccessLevelsAccessLevelBasicPtrOutput() AccessLevelsAccessLevelBasicPtrOutput {
 	return i.ToAccessLevelsAccessLevelBasicPtrOutputWithContext(context.Background())
 }
@@ -1986,12 +2293,6 @@ func (i *accessLevelsAccessLevelBasicPtrType) ToAccessLevelsAccessLevelBasicPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicPtrOutput)
 }
 
-func (i *accessLevelsAccessLevelBasicPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelBasic] {
-	return pulumix.Output[*AccessLevelsAccessLevelBasic]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelBasicOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelBasicOutput) ElementType() reflect.Type {
@@ -2014,12 +2315,6 @@ func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelBasic) *AccessLevelsAccessLevelBasic {
 		return &v
 	}).(AccessLevelsAccessLevelBasicPtrOutput)
-}
-
-func (o AccessLevelsAccessLevelBasicOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasic] {
-	return pulumix.Output[AccessLevelsAccessLevelBasic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How the conditions list should be combined to determine if a request
@@ -2051,12 +2346,6 @@ func (o AccessLevelsAccessLevelBasicPtrOutput) ToAccessLevelsAccessLevelBasicPtr
 
 func (o AccessLevelsAccessLevelBasicPtrOutput) ToAccessLevelsAccessLevelBasicPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicPtrOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelBasicPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelBasic] {
-	return pulumix.Output[*AccessLevelsAccessLevelBasic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsAccessLevelBasicPtrOutput) Elem() AccessLevelsAccessLevelBasicOutput {
@@ -2135,6 +2424,9 @@ type AccessLevelsAccessLevelBasicCondition struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources []AccessLevelsAccessLevelBasicConditionVpcNetworkSource `pulumi:"vpcNetworkSources"`
 }
 
 // AccessLevelsAccessLevelBasicConditionInput is an input type that accepts AccessLevelsAccessLevelBasicConditionArgs and AccessLevelsAccessLevelBasicConditionOutput values.
@@ -2187,6 +2479,9 @@ type AccessLevelsAccessLevelBasicConditionArgs struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayInput `pulumi:"vpcNetworkSources"`
 }
 
 func (AccessLevelsAccessLevelBasicConditionArgs) ElementType() reflect.Type {
@@ -2199,12 +2494,6 @@ func (i AccessLevelsAccessLevelBasicConditionArgs) ToAccessLevelsAccessLevelBasi
 
 func (i AccessLevelsAccessLevelBasicConditionArgs) ToAccessLevelsAccessLevelBasicConditionOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionOutput)
-}
-
-func (i AccessLevelsAccessLevelBasicConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasicCondition] {
-	return pulumix.Output[AccessLevelsAccessLevelBasicCondition]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessLevelsAccessLevelBasicConditionArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionArray and AccessLevelsAccessLevelBasicConditionArrayOutput values.
@@ -2232,12 +2521,6 @@ func (i AccessLevelsAccessLevelBasicConditionArray) ToAccessLevelsAccessLevelBas
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionArrayOutput)
 }
 
-func (i AccessLevelsAccessLevelBasicConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelsAccessLevelBasicCondition] {
-	return pulumix.Output[[]AccessLevelsAccessLevelBasicCondition]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelBasicConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelBasicConditionOutput) ElementType() reflect.Type {
@@ -2250,12 +2533,6 @@ func (o AccessLevelsAccessLevelBasicConditionOutput) ToAccessLevelsAccessLevelBa
 
 func (o AccessLevelsAccessLevelBasicConditionOutput) ToAccessLevelsAccessLevelBasicConditionOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelBasicConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasicCondition] {
-	return pulumix.Output[AccessLevelsAccessLevelBasicCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Device specific restrictions, all restrictions must hold for
@@ -2316,6 +2593,14 @@ func (o AccessLevelsAccessLevelBasicConditionOutput) RequiredAccessLevels() pulu
 	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
 }
 
+// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicConditionOutput) VpcNetworkSources() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicCondition) []AccessLevelsAccessLevelBasicConditionVpcNetworkSource {
+		return v.VpcNetworkSources
+	}).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput)
+}
+
 type AccessLevelsAccessLevelBasicConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelBasicConditionArrayOutput) ElementType() reflect.Type {
@@ -2328,12 +2613,6 @@ func (o AccessLevelsAccessLevelBasicConditionArrayOutput) ToAccessLevelsAccessLe
 
 func (o AccessLevelsAccessLevelBasicConditionArrayOutput) ToAccessLevelsAccessLevelBasicConditionArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionArrayOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelBasicConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelsAccessLevelBasicCondition] {
-	return pulumix.Output[[]AccessLevelsAccessLevelBasicCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsAccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelBasicConditionOutput {
@@ -2409,12 +2688,6 @@ func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAcc
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOutput)
 }
 
-func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicy]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelsAccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput() AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
 	return i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(context.Background())
 }
@@ -2456,12 +2729,6 @@ func (i *accessLevelsAccessLevelBasicConditionDevicePolicyPtrType) ToAccessLevel
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput)
 }
 
-func (i *accessLevelsAccessLevelBasicConditionDevicePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[*AccessLevelsAccessLevelBasicConditionDevicePolicy]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelBasicConditionDevicePolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ElementType() reflect.Type {
@@ -2484,12 +2751,6 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelBasicConditionDevicePolicy) *AccessLevelsAccessLevelBasicConditionDevicePolicy {
 		return &v
 	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput)
-}
-
-func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of allowed device management levels.
@@ -2545,12 +2806,6 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLeve
 
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelBasicConditionDevicePolicy] {
-	return pulumix.Output[*AccessLevelsAccessLevelBasicConditionDevicePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelsAccessLevelBasicConditionDevicePolicyOutput {
@@ -2673,12 +2928,6 @@ func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAcc
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput)
 }
 
-func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray and AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput` via:
 //
@@ -2704,12 +2953,6 @@ func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray) ToAc
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
-func (i AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[[]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: i.ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ElementType() reflect.Type {
@@ -2722,12 +2965,6 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToA
 
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The minimum allowed OS version. If not set, any version
@@ -2757,16 +2994,270 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput
 	return o
 }
 
-func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint] {
-	return pulumix.Output[[]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint {
 		return vs[0].([]AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint)[vs[1].(int)]
 	}).(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSource struct {
+	// Sub networks within a VPC network.
+	// Structure is documented below.
+	VpcSubnetwork *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork `pulumi:"vpcSubnetwork"`
+}
+
+// AccessLevelsAccessLevelBasicConditionVpcNetworkSourceInput is an input type that accepts AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs and AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionVpcNetworkSourceInput` via:
+//
+//	AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs{...}
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs struct {
+	// Sub networks within a VPC network.
+	// Structure is documented below.
+	VpcSubnetwork AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput `pulumi:"vpcSubnetwork"`
+}
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput)
+}
+
+// AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayInput is an input type that accepts AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray and AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayInput` via:
+//
+//	AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray{ AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs{...} }
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray []AccessLevelsAccessLevelBasicConditionVpcNetworkSourceInput
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput {
+	return o
+}
+
+// Sub networks within a VPC network.
+// Structure is documented below.
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput) VpcSubnetwork() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionVpcNetworkSource) *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+		return v.VpcSubnetwork
+	}).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelsAccessLevelBasicConditionVpcNetworkSource)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput) Index(i pulumi.IntInput) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelsAccessLevelBasicConditionVpcNetworkSource {
+		return vs[0].([]AccessLevelsAccessLevelBasicConditionVpcNetworkSource)[vs[1].(int)]
+	}).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork struct {
+	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+	Network string `pulumi:"network"`
+	// CIDR block IP subnetwork specification. Must be IPv4.
+	VpcIpSubnetworks []string `pulumi:"vpcIpSubnetworks"`
+}
+
+// AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput is an input type that accepts AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs and AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput` via:
+//
+//	AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{...}
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs struct {
+	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+	Network pulumi.StringInput `pulumi:"network"`
+	// CIDR block IP subnetwork specification. Must be IPv4.
+	VpcIpSubnetworks pulumi.StringArrayInput `pulumi:"vpcIpSubnetworks"`
+}
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput)
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput).ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx)
+}
+
+// AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput is an input type that accepts AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs, AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtr and AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput values.
+// You can construct a concrete instance of `AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput` via:
+//
+//	        AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput
+	ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput
+}
+
+type accessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs
+
+func AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtr(v *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput {
+	return (*accessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType)(v)
+}
+
+func (*accessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (i *accessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return i.ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrType) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+		return &v
+	}).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput)
+}
+
+// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// CIDR block IP subnetwork specification. Must be IPv4.
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) []string {
+		return v.VpcIpSubnetworks
+	}).(pulumi.StringArrayOutput)
+}
+
+type AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork)(nil)).Elem()
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) ToAccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput {
+	return o
+}
+
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Elem() AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
+		if v != nil {
+			return *v
+		}
+		var ret AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork
+		return ret
+	}).(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput)
+}
+
+// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR block IP subnetwork specification. Must be IPv4.
+func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcIpSubnetworks
+	}).(pulumi.StringArrayOutput)
 }
 
 type AccessLevelsAccessLevelCustom struct {
@@ -2806,12 +3297,6 @@ func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomOutput
 
 func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomOutput)
-}
-
-func (i AccessLevelsAccessLevelCustomArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelCustom] {
-	return pulumix.Output[AccessLevelsAccessLevelCustom]{
-		OutputState: i.ToAccessLevelsAccessLevelCustomOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AccessLevelsAccessLevelCustomArgs) ToAccessLevelsAccessLevelCustomPtrOutput() AccessLevelsAccessLevelCustomPtrOutput {
@@ -2855,12 +3340,6 @@ func (i *accessLevelsAccessLevelCustomPtrType) ToAccessLevelsAccessLevelCustomPt
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomPtrOutput)
 }
 
-func (i *accessLevelsAccessLevelCustomPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelCustom] {
-	return pulumix.Output[*AccessLevelsAccessLevelCustom]{
-		OutputState: i.ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelCustomOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelCustomOutput) ElementType() reflect.Type {
@@ -2885,12 +3364,6 @@ func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomPtrO
 	}).(AccessLevelsAccessLevelCustomPtrOutput)
 }
 
-func (o AccessLevelsAccessLevelCustomOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelCustom] {
-	return pulumix.Output[AccessLevelsAccessLevelCustom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
 // custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
@@ -2911,12 +3384,6 @@ func (o AccessLevelsAccessLevelCustomPtrOutput) ToAccessLevelsAccessLevelCustomP
 
 func (o AccessLevelsAccessLevelCustomPtrOutput) ToAccessLevelsAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomPtrOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelCustomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelCustom] {
-	return pulumix.Output[*AccessLevelsAccessLevelCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsAccessLevelCustomPtrOutput) Elem() AccessLevelsAccessLevelCustomOutput {
@@ -2987,12 +3454,6 @@ func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomEx
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomExprOutput)
 }
 
-func (i AccessLevelsAccessLevelCustomExprArgs) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelCustomExpr] {
-	return pulumix.Output[AccessLevelsAccessLevelCustomExpr]{
-		OutputState: i.ToAccessLevelsAccessLevelCustomExprOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessLevelsAccessLevelCustomExprArgs) ToAccessLevelsAccessLevelCustomExprPtrOutput() AccessLevelsAccessLevelCustomExprPtrOutput {
 	return i.ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(context.Background())
 }
@@ -3034,12 +3495,6 @@ func (i *accessLevelsAccessLevelCustomExprPtrType) ToAccessLevelsAccessLevelCust
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsAccessLevelCustomExprPtrOutput)
 }
 
-func (i *accessLevelsAccessLevelCustomExprPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelCustomExpr] {
-	return pulumix.Output[*AccessLevelsAccessLevelCustomExpr]{
-		OutputState: i.ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelsAccessLevelCustomExprOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelsAccessLevelCustomExprOutput) ElementType() reflect.Type {
@@ -3062,12 +3517,6 @@ func (o AccessLevelsAccessLevelCustomExprOutput) ToAccessLevelsAccessLevelCustom
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessLevelsAccessLevelCustomExpr) *AccessLevelsAccessLevelCustomExpr {
 		return &v
 	}).(AccessLevelsAccessLevelCustomExprPtrOutput)
-}
-
-func (o AccessLevelsAccessLevelCustomExprOutput) ToOutput(ctx context.Context) pulumix.Output[AccessLevelsAccessLevelCustomExpr] {
-	return pulumix.Output[AccessLevelsAccessLevelCustomExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression
@@ -3102,12 +3551,6 @@ func (o AccessLevelsAccessLevelCustomExprPtrOutput) ToAccessLevelsAccessLevelCus
 
 func (o AccessLevelsAccessLevelCustomExprPtrOutput) ToAccessLevelsAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelsAccessLevelCustomExprPtrOutput {
 	return o
-}
-
-func (o AccessLevelsAccessLevelCustomExprPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelsAccessLevelCustomExpr] {
-	return pulumix.Output[*AccessLevelsAccessLevelCustomExpr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelsAccessLevelCustomExprPtrOutput) Elem() AccessLevelsAccessLevelCustomExprOutput {
@@ -3195,12 +3638,6 @@ func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionOu
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingConditionOutput)
 }
 
-func (i AccessPolicyIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AccessPolicyIamBindingCondition] {
-	return pulumix.Output[AccessPolicyIamBindingCondition]{
-		OutputState: i.ToAccessPolicyIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessPolicyIamBindingConditionArgs) ToAccessPolicyIamBindingConditionPtrOutput() AccessPolicyIamBindingConditionPtrOutput {
 	return i.ToAccessPolicyIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -3242,12 +3679,6 @@ func (i *accessPolicyIamBindingConditionPtrType) ToAccessPolicyIamBindingConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamBindingConditionPtrOutput)
 }
 
-func (i *accessPolicyIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamBindingCondition] {
-	return pulumix.Output[*AccessPolicyIamBindingCondition]{
-		OutputState: i.ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyIamBindingConditionOutput) ElementType() reflect.Type {
@@ -3270,12 +3701,6 @@ func (o AccessPolicyIamBindingConditionOutput) ToAccessPolicyIamBindingCondition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIamBindingCondition) *AccessPolicyIamBindingCondition {
 		return &v
 	}).(AccessPolicyIamBindingConditionPtrOutput)
-}
-
-func (o AccessPolicyIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AccessPolicyIamBindingCondition] {
-	return pulumix.Output[AccessPolicyIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -3302,12 +3727,6 @@ func (o AccessPolicyIamBindingConditionPtrOutput) ToAccessPolicyIamBindingCondit
 
 func (o AccessPolicyIamBindingConditionPtrOutput) ToAccessPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o AccessPolicyIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamBindingCondition] {
-	return pulumix.Output[*AccessPolicyIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamBindingConditionPtrOutput) Elem() AccessPolicyIamBindingConditionOutput {
@@ -3382,12 +3801,6 @@ func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamMemberConditionOutput)
 }
 
-func (i AccessPolicyIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AccessPolicyIamMemberCondition] {
-	return pulumix.Output[AccessPolicyIamMemberCondition]{
-		OutputState: i.ToAccessPolicyIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AccessPolicyIamMemberConditionArgs) ToAccessPolicyIamMemberConditionPtrOutput() AccessPolicyIamMemberConditionPtrOutput {
 	return i.ToAccessPolicyIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -3429,12 +3842,6 @@ func (i *accessPolicyIamMemberConditionPtrType) ToAccessPolicyIamMemberCondition
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIamMemberConditionPtrOutput)
 }
 
-func (i *accessPolicyIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamMemberCondition] {
-	return pulumix.Output[*AccessPolicyIamMemberCondition]{
-		OutputState: i.ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyIamMemberConditionOutput) ElementType() reflect.Type {
@@ -3457,12 +3864,6 @@ func (o AccessPolicyIamMemberConditionOutput) ToAccessPolicyIamMemberConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIamMemberCondition) *AccessPolicyIamMemberCondition {
 		return &v
 	}).(AccessPolicyIamMemberConditionPtrOutput)
-}
-
-func (o AccessPolicyIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AccessPolicyIamMemberCondition] {
-	return pulumix.Output[AccessPolicyIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -3489,12 +3890,6 @@ func (o AccessPolicyIamMemberConditionPtrOutput) ToAccessPolicyIamMemberConditio
 
 func (o AccessPolicyIamMemberConditionPtrOutput) ToAccessPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) AccessPolicyIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o AccessPolicyIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyIamMemberCondition] {
-	return pulumix.Output[*AccessPolicyIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessPolicyIamMemberConditionPtrOutput) Elem() AccessPolicyIamMemberConditionOutput {
@@ -3544,6 +3939,12 @@ type ServicePerimeterEgressPolicyEgressFrom struct {
 	// be allowed access.
 	// Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction *string `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimeterEgressPolicyEgressFromSource `pulumi:"sources"`
 }
 
 // ServicePerimeterEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterEgressPolicyEgressFromArgs and ServicePerimeterEgressPolicyEgressFromOutput values.
@@ -3567,6 +3968,12 @@ type ServicePerimeterEgressPolicyEgressFromArgs struct {
 	// be allowed access.
 	// Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction pulumi.StringPtrInput `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimeterEgressPolicyEgressFromSourceArrayInput `pulumi:"sources"`
 }
 
 func (ServicePerimeterEgressPolicyEgressFromArgs) ElementType() reflect.Type {
@@ -3579,12 +3986,6 @@ func (i ServicePerimeterEgressPolicyEgressFromArgs) ToServicePerimeterEgressPoli
 
 func (i ServicePerimeterEgressPolicyEgressFromArgs) ToServicePerimeterEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromOutput)
-}
-
-func (i ServicePerimeterEgressPolicyEgressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressFromOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServicePerimeterEgressPolicyEgressFromArgs) ToServicePerimeterEgressPolicyEgressFromPtrOutput() ServicePerimeterEgressPolicyEgressFromPtrOutput {
@@ -3628,12 +4029,6 @@ func (i *servicePerimeterEgressPolicyEgressFromPtrType) ToServicePerimeterEgress
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromPtrOutput)
 }
 
-func (i *servicePerimeterEgressPolicyEgressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimeterEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterEgressPolicyEgressFromOutput) ElementType() reflect.Type {
@@ -3658,12 +4053,6 @@ func (o ServicePerimeterEgressPolicyEgressFromOutput) ToServicePerimeterEgressPo
 	}).(ServicePerimeterEgressPolicyEgressFromPtrOutput)
 }
 
-func (o ServicePerimeterEgressPolicyEgressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of identities that are allowed access through this `EgressPolicy`.
 // Should be in the format of email address. The email address should
 // represent individual user or service account only.
@@ -3679,6 +4068,20 @@ func (o ServicePerimeterEgressPolicyEgressFromOutput) IdentityType() pulumi.Stri
 	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimeterEgressPolicyEgressFromOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFrom) *string { return v.SourceRestriction }).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterEgressPolicyEgressFromOutput) Sources() ServicePerimeterEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFrom) []ServicePerimeterEgressPolicyEgressFromSource {
+		return v.Sources
+	}).(ServicePerimeterEgressPolicyEgressFromSourceArrayOutput)
+}
+
 type ServicePerimeterEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
@@ -3691,12 +4094,6 @@ func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) ToServicePerimeterEgres
 
 func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) ToServicePerimeterEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimeterEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterEgressPolicyEgressFromOutput {
@@ -3732,6 +4129,125 @@ func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.S
 		}
 		return v.IdentityType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Sources() ServicePerimeterEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressFrom) []ServicePerimeterEgressPolicyEgressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimeterEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimeterEgressPolicyEgressFromSource struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel *string `pulumi:"accessLevel"`
+}
+
+// ServicePerimeterEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterEgressPolicyEgressFromSourceArgs and ServicePerimeterEgressPolicyEgressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimeterEgressPolicyEgressFromSourceInput` via:
+//
+//	ServicePerimeterEgressPolicyEgressFromSourceArgs{...}
+type ServicePerimeterEgressPolicyEgressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimeterEgressPolicyEgressFromSourceOutput() ServicePerimeterEgressPolicyEgressFromSourceOutput
+	ToServicePerimeterEgressPolicyEgressFromSourceOutputWithContext(context.Context) ServicePerimeterEgressPolicyEgressFromSourceOutput
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourceArgs struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+}
+
+func (ServicePerimeterEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourceArgs) ToServicePerimeterEgressPolicyEgressFromSourceOutput() ServicePerimeterEgressPolicyEgressFromSourceOutput {
+	return i.ToServicePerimeterEgressPolicyEgressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourceArgs) ToServicePerimeterEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromSourceOutput)
+}
+
+// ServicePerimeterEgressPolicyEgressFromSourceArrayInput is an input type that accepts ServicePerimeterEgressPolicyEgressFromSourceArray and ServicePerimeterEgressPolicyEgressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterEgressPolicyEgressFromSourceArrayInput` via:
+//
+//	ServicePerimeterEgressPolicyEgressFromSourceArray{ ServicePerimeterEgressPolicyEgressFromSourceArgs{...} }
+type ServicePerimeterEgressPolicyEgressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterEgressPolicyEgressFromSourceArrayOutput
+	ToServicePerimeterEgressPolicyEgressFromSourceArrayOutputWithContext(context.Context) ServicePerimeterEgressPolicyEgressFromSourceArrayOutput
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourceArray []ServicePerimeterEgressPolicyEgressFromSourceInput
+
+func (ServicePerimeterEgressPolicyEgressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourceArray) ToServicePerimeterEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterEgressPolicyEgressFromSourceArrayOutput {
+	return i.ToServicePerimeterEgressPolicyEgressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourceArray) ToServicePerimeterEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterEgressPolicyEgressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) ToServicePerimeterEgressPolicyEgressFromSourceOutput() ServicePerimeterEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) ToServicePerimeterEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterEgressPolicyEgressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourceArrayOutput) ToServicePerimeterEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourceArrayOutput) ToServicePerimeterEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterEgressPolicyEgressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterEgressPolicyEgressFromSource {
+		return vs[0].([]ServicePerimeterEgressPolicyEgressFromSource)[vs[1].(int)]
+	}).(ServicePerimeterEgressPolicyEgressFromSourceOutput)
 }
 
 type ServicePerimeterEgressPolicyEgressTo struct {
@@ -3791,12 +4307,6 @@ func (i ServicePerimeterEgressPolicyEgressToArgs) ToServicePerimeterEgressPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressToOutput)
 }
 
-func (i ServicePerimeterEgressPolicyEgressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterEgressPolicyEgressToArgs) ToServicePerimeterEgressPolicyEgressToPtrOutput() ServicePerimeterEgressPolicyEgressToPtrOutput {
 	return i.ToServicePerimeterEgressPolicyEgressToPtrOutputWithContext(context.Background())
 }
@@ -3838,12 +4348,6 @@ func (i *servicePerimeterEgressPolicyEgressToPtrType) ToServicePerimeterEgressPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressToPtrOutput)
 }
 
-func (i *servicePerimeterEgressPolicyEgressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimeterEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterEgressPolicyEgressToOutput) ElementType() reflect.Type {
@@ -3866,12 +4370,6 @@ func (o ServicePerimeterEgressPolicyEgressToOutput) ToServicePerimeterEgressPoli
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterEgressPolicyEgressTo) *ServicePerimeterEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimeterEgressPolicyEgressToPtrOutput)
-}
-
-func (o ServicePerimeterEgressPolicyEgressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of external resources that are allowed to be accessed. A request
@@ -3911,12 +4409,6 @@ func (o ServicePerimeterEgressPolicyEgressToPtrOutput) ToServicePerimeterEgressP
 
 func (o ServicePerimeterEgressPolicyEgressToPtrOutput) ToServicePerimeterEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterEgressPolicyEgressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimeterEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterEgressPolicyEgressToOutput {
@@ -4016,12 +4508,6 @@ func (i ServicePerimeterEgressPolicyEgressToOperationArgs) ToServicePerimeterEgr
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressToOperationOutput)
 }
 
-func (i ServicePerimeterEgressPolicyEgressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterEgressPolicyEgressToOperationArray and ServicePerimeterEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterEgressPolicyEgressToOperationArrayInput` via:
 //
@@ -4047,12 +4533,6 @@ func (i ServicePerimeterEgressPolicyEgressToOperationArray) ToServicePerimeterEg
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressToOperationArrayOutput)
 }
 
-func (i ServicePerimeterEgressPolicyEgressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
@@ -4065,12 +4545,6 @@ func (o ServicePerimeterEgressPolicyEgressToOperationOutput) ToServicePerimeterE
 
 func (o ServicePerimeterEgressPolicyEgressToOperationOutput) ToServicePerimeterEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimeterEgressPolicyEgressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -4103,12 +4577,6 @@ func (o ServicePerimeterEgressPolicyEgressToOperationArrayOutput) ToServicePerim
 
 func (o ServicePerimeterEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterEgressPolicyEgressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterEgressPolicyEgressToOperationOutput {
@@ -4160,12 +4628,6 @@ func (i ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs) ToServi
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
@@ -4191,12 +4653,6 @@ func (i ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArray) ToServ
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -4209,12 +4665,6 @@ func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput) ToSer
 
 func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -4242,12 +4692,6 @@ func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput) 
 
 func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterEgressPolicyEgressToOperationMethodSelectorOutput {
@@ -4309,12 +4753,6 @@ func (i ServicePerimeterIngressPolicyIngressFromArgs) ToServicePerimeterIngressP
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressFromOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterIngressPolicyIngressFromArgs) ToServicePerimeterIngressPolicyIngressFromPtrOutput() ServicePerimeterIngressPolicyIngressFromPtrOutput {
 	return i.ToServicePerimeterIngressPolicyIngressFromPtrOutputWithContext(context.Background())
 }
@@ -4356,12 +4794,6 @@ func (i *servicePerimeterIngressPolicyIngressFromPtrType) ToServicePerimeterIngr
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromPtrOutput)
 }
 
-func (i *servicePerimeterIngressPolicyIngressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimeterIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyIngressFromOutput) ElementType() reflect.Type {
@@ -4384,12 +4816,6 @@ func (o ServicePerimeterIngressPolicyIngressFromOutput) ToServicePerimeterIngres
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterIngressPolicyIngressFrom) *ServicePerimeterIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimeterIngressPolicyIngressFromPtrOutput)
-}
-
-func (o ServicePerimeterIngressPolicyIngressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of identities that are allowed access through this ingress policy.
@@ -4427,12 +4853,6 @@ func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) ToServicePerimeterIng
 
 func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) ToServicePerimeterIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimeterIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterIngressPolicyIngressFromOutput {
@@ -4542,12 +4962,6 @@ func (i ServicePerimeterIngressPolicyIngressFromSourceArgs) ToServicePerimeterIn
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromSourceOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressFromSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressFromSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterIngressPolicyIngressFromSourceArray and ServicePerimeterIngressPolicyIngressFromSourceArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterIngressPolicyIngressFromSourceArrayInput` via:
 //
@@ -4573,12 +4987,6 @@ func (i ServicePerimeterIngressPolicyIngressFromSourceArray) ToServicePerimeterI
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromSourceArrayOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressFromSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimeterIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressFromSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
@@ -4591,12 +4999,6 @@ func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) ToServicePerimeter
 
 func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) ToServicePerimeterIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourceOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An `AccessLevel` resource name that allow resources within the
@@ -4633,12 +5035,6 @@ func (o ServicePerimeterIngressPolicyIngressFromSourceArrayOutput) ToServicePeri
 
 func (o ServicePerimeterIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourceArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressFromSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimeterIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterIngressPolicyIngressFromSourceOutput {
@@ -4702,12 +5098,6 @@ func (i ServicePerimeterIngressPolicyIngressToArgs) ToServicePerimeterIngressPol
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressToOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterIngressPolicyIngressToArgs) ToServicePerimeterIngressPolicyIngressToPtrOutput() ServicePerimeterIngressPolicyIngressToPtrOutput {
 	return i.ToServicePerimeterIngressPolicyIngressToPtrOutputWithContext(context.Background())
 }
@@ -4749,12 +5139,6 @@ func (i *servicePerimeterIngressPolicyIngressToPtrType) ToServicePerimeterIngres
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressToPtrOutput)
 }
 
-func (i *servicePerimeterIngressPolicyIngressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimeterIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyIngressToOutput) ElementType() reflect.Type {
@@ -4777,12 +5161,6 @@ func (o ServicePerimeterIngressPolicyIngressToOutput) ToServicePerimeterIngressP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterIngressPolicyIngressTo) *ServicePerimeterIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimeterIngressPolicyIngressToPtrOutput)
-}
-
-func (o ServicePerimeterIngressPolicyIngressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
@@ -4818,12 +5196,6 @@ func (o ServicePerimeterIngressPolicyIngressToPtrOutput) ToServicePerimeterIngre
 
 func (o ServicePerimeterIngressPolicyIngressToPtrOutput) ToServicePerimeterIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimeterIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterIngressPolicyIngressToOutput {
@@ -4914,12 +5286,6 @@ func (i ServicePerimeterIngressPolicyIngressToOperationArgs) ToServicePerimeterI
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressToOperationOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterIngressPolicyIngressToOperationArray and ServicePerimeterIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterIngressPolicyIngressToOperationArrayInput` via:
 //
@@ -4945,12 +5311,6 @@ func (i ServicePerimeterIngressPolicyIngressToOperationArray) ToServicePerimeter
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressToOperationArrayOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
@@ -4963,12 +5323,6 @@ func (o ServicePerimeterIngressPolicyIngressToOperationOutput) ToServicePerimete
 
 func (o ServicePerimeterIngressPolicyIngressToOperationOutput) ToServicePerimeterIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong to
@@ -5001,12 +5355,6 @@ func (o ServicePerimeterIngressPolicyIngressToOperationArrayOutput) ToServicePer
 
 func (o ServicePerimeterIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterIngressPolicyIngressToOperationOutput {
@@ -5058,12 +5406,6 @@ func (i ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs) ToSer
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
@@ -5089,12 +5431,6 @@ func (i ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArray) ToSe
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -5107,12 +5443,6 @@ func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput) ToS
 
 func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for method should be a valid method name for the corresponding
@@ -5140,12 +5470,6 @@ func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput
 
 func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterIngressPolicyIngressToOperationMethodSelectorOutput {
@@ -5255,12 +5579,6 @@ func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecOutput)
 }
 
-func (i ServicePerimeterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpec] {
-	return pulumix.Output[ServicePerimeterSpec]{
-		OutputState: i.ToServicePerimeterSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecPtrOutput() ServicePerimeterSpecPtrOutput {
 	return i.ToServicePerimeterSpecPtrOutputWithContext(context.Background())
 }
@@ -5302,12 +5620,6 @@ func (i *servicePerimeterSpecPtrType) ToServicePerimeterSpecPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecPtrOutput)
 }
 
-func (i *servicePerimeterSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpec] {
-	return pulumix.Output[*ServicePerimeterSpec]{
-		OutputState: i.ToServicePerimeterSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecOutput) ElementType() reflect.Type {
@@ -5330,12 +5642,6 @@ func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpec) *ServicePerimeterSpec {
 		return &v
 	}).(ServicePerimeterSpecPtrOutput)
-}
-
-func (o ServicePerimeterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpec] {
-	return pulumix.Output[ServicePerimeterSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -5406,12 +5712,6 @@ func (o ServicePerimeterSpecPtrOutput) ToServicePerimeterSpecPtrOutput() Service
 
 func (o ServicePerimeterSpecPtrOutput) ToServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpec] {
-	return pulumix.Output[*ServicePerimeterSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecPtrOutput) Elem() ServicePerimeterSpecOutput {
@@ -5551,12 +5851,6 @@ func (i ServicePerimeterSpecEgressPolicyArgs) ToServicePerimeterSpecEgressPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicy]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterSpecEgressPolicyArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyArray and ServicePerimeterSpecEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyArrayInput` via:
 //
@@ -5582,12 +5876,6 @@ func (i ServicePerimeterSpecEgressPolicyArray) ToServicePerimeterSpecEgressPolic
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyArrayOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[[]ServicePerimeterSpecEgressPolicy]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecEgressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyOutput) ElementType() reflect.Type {
@@ -5600,12 +5888,6 @@ func (o ServicePerimeterSpecEgressPolicyOutput) ToServicePerimeterSpecEgressPoli
 
 func (o ServicePerimeterSpecEgressPolicyOutput) ToServicePerimeterSpecEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.
@@ -5637,12 +5919,6 @@ func (o ServicePerimeterSpecEgressPolicyArrayOutput) ToServicePerimeterSpecEgres
 	return o
 }
 
-func (o ServicePerimeterSpecEgressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[[]ServicePerimeterSpecEgressPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimeterSpecEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecEgressPolicy {
 		return vs[0].([]ServicePerimeterSpecEgressPolicy)[vs[1].(int)]
@@ -5659,6 +5935,12 @@ type ServicePerimeterSpecEgressPolicyEgressFrom struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction *string `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimeterSpecEgressPolicyEgressFromSource `pulumi:"sources"`
 }
 
 // ServicePerimeterSpecEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromArgs and ServicePerimeterSpecEgressPolicyEgressFromOutput values.
@@ -5682,6 +5964,12 @@ type ServicePerimeterSpecEgressPolicyEgressFromArgs struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction pulumi.StringPtrInput `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput `pulumi:"sources"`
 }
 
 func (ServicePerimeterSpecEgressPolicyEgressFromArgs) ElementType() reflect.Type {
@@ -5694,12 +5982,6 @@ func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEg
 
 func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromOutput)
-}
-
-func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
@@ -5743,12 +6025,6 @@ func (i *servicePerimeterSpecEgressPolicyEgressFromPtrType) ToServicePerimeterSp
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-func (i *servicePerimeterSpecEgressPolicyEgressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyEgressFromOutput) ElementType() reflect.Type {
@@ -5773,12 +6049,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpec
 	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of identities that are allowed access through this `EgressPolicy`.
 // Should be in the format of email address. The email address should
 // represent individual user or service account only.
@@ -5794,6 +6064,20 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.SourceRestriction }).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) Sources() ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) []ServicePerimeterSpecEgressPolicyEgressFromSource {
+		return v.Sources
+	}).(ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput)
+}
+
 type ServicePerimeterSpecEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
@@ -5806,12 +6090,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimeterS
 
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressFromOutput {
@@ -5847,6 +6125,125 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulu
 		}
 		return v.IdentityType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Sources() ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) []ServicePerimeterSpecEgressPolicyEgressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSource struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel *string `pulumi:"accessLevel"`
+}
+
+// ServicePerimeterSpecEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromSourceArgs and ServicePerimeterSpecEgressPolicyEgressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromSourceInput` via:
+//
+//	ServicePerimeterSpecEgressPolicyEgressFromSourceArgs{...}
+type ServicePerimeterSpecEgressPolicyEgressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressFromSourceOutput() ServicePerimeterSpecEgressPolicyEgressFromSourceOutput
+	ToServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourceOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+}
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ToServicePerimeterSpecEgressPolicyEgressFromSourceOutput() ServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ToServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
+}
+
+// ServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromSourceArray and ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput` via:
+//
+//	ServicePerimeterSpecEgressPolicyEgressFromSourceArray{ ServicePerimeterSpecEgressPolicyEgressFromSourceArgs{...} }
+type ServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput
+	ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourceArray []ServicePerimeterSpecEgressPolicyEgressFromSourceInput
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourceArray) ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourceArray) ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourceOutput() ServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecEgressPolicyEgressFromSource {
+		return vs[0].([]ServicePerimeterSpecEgressPolicyEgressFromSource)[vs[1].(int)]
+	}).(ServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
 }
 
 type ServicePerimeterSpecEgressPolicyEgressTo struct {
@@ -5906,12 +6303,6 @@ func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgre
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return i.ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
 }
@@ -5953,12 +6344,6 @@ func (i *servicePerimeterSpecEgressPolicyEgressToPtrType) ToServicePerimeterSpec
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
 
-func (i *servicePerimeterSpecEgressPolicyEgressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyEgressToOutput) ElementType() reflect.Type {
@@ -5981,12 +6366,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEg
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimeterSpecEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of external resources that are allowed to be accessed. A request
@@ -6026,12 +6405,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimeterSpe
 
 func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressToOutput {
@@ -6131,12 +6504,6 @@ func (i ServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToServicePerimete
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationArray and ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput` via:
 //
@@ -6162,12 +6529,6 @@ func (i ServicePerimeterSpecEgressPolicyEgressToOperationArray) ToServicePerimet
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyEgressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
@@ -6180,12 +6541,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerime
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -6218,12 +6573,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServiceP
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
@@ -6275,12 +6624,6 @@ func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
@@ -6306,12 +6649,6 @@ func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) To
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -6324,12 +6661,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) T
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -6357,12 +6688,6 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutp
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
@@ -6416,12 +6741,6 @@ func (i ServicePerimeterSpecIngressPolicyArgs) ToServicePerimeterSpecIngressPoli
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicy]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterSpecIngressPolicyArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyArray and ServicePerimeterSpecIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyArrayInput` via:
 //
@@ -6447,12 +6766,6 @@ func (i ServicePerimeterSpecIngressPolicyArray) ToServicePerimeterSpecIngressPol
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyArrayOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicy]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecIngressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyOutput) ElementType() reflect.Type {
@@ -6465,12 +6778,6 @@ func (o ServicePerimeterSpecIngressPolicyOutput) ToServicePerimeterSpecIngressPo
 
 func (o ServicePerimeterSpecIngressPolicyOutput) ToServicePerimeterSpecIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -6503,12 +6810,6 @@ func (o ServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimeterSpecIngr
 
 func (o ServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyOutput {
@@ -6570,12 +6871,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpec
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
 	return i.ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
 }
@@ -6617,12 +6912,6 @@ func (i *servicePerimeterSpecIngressPolicyIngressFromPtrType) ToServicePerimeter
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-func (i *servicePerimeterSpecIngressPolicyIngressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyIngressFromOutput) ElementType() reflect.Type {
@@ -6645,12 +6934,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimeterSpecIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of identities that are allowed access through this ingress policy.
@@ -6688,12 +6971,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimete
 
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressFromOutput {
@@ -6743,14 +7020,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() Service
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -6773,14 +7043,7 @@ type ServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -6801,12 +7064,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimet
 
 func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
-}
-
-func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourceArray and ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput values.
@@ -6834,12 +7091,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToServicePerime
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
@@ -6854,20 +7105,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToServicePerim
 	return o
 }
 
-func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
-}
-
-// An `AccessLevel` resource name that allow resources within the
-// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-// resources within the perimeter can only be accessed via Google Cloud calls
-// with request origins within the perimeter.
-// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-// If * is specified, then all IngressSources will be allowed.
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -6894,12 +7132,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToService
 
 func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
@@ -6963,12 +7195,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIn
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
 	return i.ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
 }
@@ -7010,12 +7236,6 @@ func (i *servicePerimeterSpecIngressPolicyIngressToPtrType) ToServicePerimeterSp
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
 }
 
-func (i *servicePerimeterSpecIngressPolicyIngressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyIngressToOutput) ElementType() reflect.Type {
@@ -7038,12 +7258,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpec
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimeterSpecIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
@@ -7079,12 +7293,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimeterS
 
 func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressToOutput {
@@ -7175,12 +7383,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToServicePerime
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationArray and ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput` via:
 //
@@ -7206,12 +7408,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressToOperationArray) ToServicePerim
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
@@ -7224,12 +7420,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePeri
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -7262,12 +7452,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServic
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
@@ -7319,12 +7503,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
@@ -7350,12 +7528,6 @@ func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -7368,12 +7540,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -7401,12 +7567,6 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOu
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
@@ -7456,12 +7616,6 @@ func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpc
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
-func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: i.ToServicePerimeterSpecVpcAccessibleServicesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return i.ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
 }
@@ -7503,12 +7657,6 @@ func (i *servicePerimeterSpecVpcAccessibleServicesPtrType) ToServicePerimeterSpe
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
 
-func (i *servicePerimeterSpecVpcAccessibleServicesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: i.ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterSpecVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecVpcAccessibleServicesOutput) ElementType() reflect.Type {
@@ -7531,12 +7679,6 @@ func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecV
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecVpcAccessibleServices) *ServicePerimeterSpecVpcAccessibleServices {
 		return &v
 	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
-}
-
-func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of APIs usable within the Service Perimeter.
@@ -7563,12 +7705,6 @@ func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimeterSp
 
 func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerimeterSpecVpcAccessibleServicesOutput {
@@ -7704,12 +7840,6 @@ func (i ServicePerimeterStatusArgs) ToServicePerimeterStatusOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusOutput)
 }
 
-func (i ServicePerimeterStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatus] {
-	return pulumix.Output[ServicePerimeterStatus]{
-		OutputState: i.ToServicePerimeterStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterStatusArgs) ToServicePerimeterStatusPtrOutput() ServicePerimeterStatusPtrOutput {
 	return i.ToServicePerimeterStatusPtrOutputWithContext(context.Background())
 }
@@ -7751,12 +7881,6 @@ func (i *servicePerimeterStatusPtrType) ToServicePerimeterStatusPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusPtrOutput)
 }
 
-func (i *servicePerimeterStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatus] {
-	return pulumix.Output[*ServicePerimeterStatus]{
-		OutputState: i.ToServicePerimeterStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusOutput) ElementType() reflect.Type {
@@ -7779,12 +7903,6 @@ func (o ServicePerimeterStatusOutput) ToServicePerimeterStatusPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatus) *ServicePerimeterStatus {
 		return &v
 	}).(ServicePerimeterStatusPtrOutput)
-}
-
-func (o ServicePerimeterStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatus] {
-	return pulumix.Output[ServicePerimeterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -7855,12 +7973,6 @@ func (o ServicePerimeterStatusPtrOutput) ToServicePerimeterStatusPtrOutput() Ser
 
 func (o ServicePerimeterStatusPtrOutput) ToServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatus] {
-	return pulumix.Output[*ServicePerimeterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusPtrOutput) Elem() ServicePerimeterStatusOutput {
@@ -8000,12 +8112,6 @@ func (i ServicePerimeterStatusEgressPolicyArgs) ToServicePerimeterStatusEgressPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicy]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterStatusEgressPolicyArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyArray and ServicePerimeterStatusEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyArrayInput` via:
 //
@@ -8031,12 +8137,6 @@ func (i ServicePerimeterStatusEgressPolicyArray) ToServicePerimeterStatusEgressP
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyArrayOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[[]ServicePerimeterStatusEgressPolicy]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusEgressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyOutput) ElementType() reflect.Type {
@@ -8049,12 +8149,6 @@ func (o ServicePerimeterStatusEgressPolicyOutput) ToServicePerimeterStatusEgress
 
 func (o ServicePerimeterStatusEgressPolicyOutput) ToServicePerimeterStatusEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.
@@ -8088,12 +8182,6 @@ func (o ServicePerimeterStatusEgressPolicyArrayOutput) ToServicePerimeterStatusE
 	return o
 }
 
-func (o ServicePerimeterStatusEgressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[[]ServicePerimeterStatusEgressPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimeterStatusEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusEgressPolicy {
 		return vs[0].([]ServicePerimeterStatusEgressPolicy)[vs[1].(int)]
@@ -8110,6 +8198,12 @@ type ServicePerimeterStatusEgressPolicyEgressFrom struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction *string `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimeterStatusEgressPolicyEgressFromSource `pulumi:"sources"`
 }
 
 // ServicePerimeterStatusEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromArgs and ServicePerimeterStatusEgressPolicyEgressFromOutput values.
@@ -8133,6 +8227,12 @@ type ServicePerimeterStatusEgressPolicyEgressFromArgs struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction pulumi.StringPtrInput `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput `pulumi:"sources"`
 }
 
 func (ServicePerimeterStatusEgressPolicyEgressFromArgs) ElementType() reflect.Type {
@@ -8145,12 +8245,6 @@ func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStat
 
 func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromOutput)
-}
-
-func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
@@ -8194,12 +8288,6 @@ func (i *servicePerimeterStatusEgressPolicyEgressFromPtrType) ToServicePerimeter
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-func (i *servicePerimeterStatusEgressPolicyEgressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyEgressFromOutput) ElementType() reflect.Type {
@@ -8224,12 +8312,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterSt
 	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of identities that are allowed access through this `EgressPolicy`.
 // Should be in the format of email address. The email address should
 // represent individual user or service account only.
@@ -8245,6 +8327,20 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulum
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.SourceRestriction }).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) Sources() ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) []ServicePerimeterStatusEgressPolicyEgressFromSource {
+		return v.Sources
+	}).(ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput)
+}
+
 type ServicePerimeterStatusEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
@@ -8257,12 +8353,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimete
 
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressFromOutput {
@@ -8298,6 +8388,125 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pu
 		}
 		return v.IdentityType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Sources() ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) []ServicePerimeterStatusEgressPolicyEgressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSource struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel *string `pulumi:"accessLevel"`
+}
+
+// ServicePerimeterStatusEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromSourceArgs and ServicePerimeterStatusEgressPolicyEgressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromSourceInput` via:
+//
+//	ServicePerimeterStatusEgressPolicyEgressFromSourceArgs{...}
+type ServicePerimeterStatusEgressPolicyEgressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressFromSourceOutput() ServicePerimeterStatusEgressPolicyEgressFromSourceOutput
+	ToServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourceOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+}
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ToServicePerimeterStatusEgressPolicyEgressFromSourceOutput() ServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ToServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromSourceOutput)
+}
+
+// ServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromSourceArray and ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput` via:
+//
+//	ServicePerimeterStatusEgressPolicyEgressFromSourceArray{ ServicePerimeterStatusEgressPolicyEgressFromSourceArgs{...} }
+type ServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput
+	ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourceArray []ServicePerimeterStatusEgressPolicyEgressFromSourceInput
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourceArray) ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourceArray) ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourceOutput() ServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput() ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusEgressPolicyEgressFromSource {
+		return vs[0].([]ServicePerimeterStatusEgressPolicyEgressFromSource)[vs[1].(int)]
+	}).(ServicePerimeterStatusEgressPolicyEgressFromSourceOutput)
 }
 
 type ServicePerimeterStatusEgressPolicyEgressTo struct {
@@ -8357,12 +8566,6 @@ func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatus
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
 	return i.ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
 }
@@ -8404,12 +8607,6 @@ func (i *servicePerimeterStatusEgressPolicyEgressToPtrType) ToServicePerimeterSt
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
 
-func (i *servicePerimeterStatusEgressPolicyEgressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyEgressToOutput) ElementType() reflect.Type {
@@ -8432,12 +8629,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimeterStatusEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of external resources that are allowed to be accessed. A request
@@ -8477,12 +8668,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimeterS
 
 func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressToOutput {
@@ -8582,12 +8767,6 @@ func (i ServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToServicePerime
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationArray and ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput` via:
 //
@@ -8613,12 +8792,6 @@ func (i ServicePerimeterStatusEgressPolicyEgressToOperationArray) ToServicePerim
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyEgressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
@@ -8631,12 +8804,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePeri
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -8669,12 +8836,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServic
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
@@ -8726,12 +8887,6 @@ func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
@@ -8757,12 +8912,6 @@ func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -8775,12 +8924,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -8808,12 +8951,6 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOu
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
@@ -8867,12 +9004,6 @@ func (i ServicePerimeterStatusIngressPolicyArgs) ToServicePerimeterStatusIngress
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicy]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterStatusIngressPolicyArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyArray and ServicePerimeterStatusIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyArrayInput` via:
 //
@@ -8898,12 +9029,6 @@ func (i ServicePerimeterStatusIngressPolicyArray) ToServicePerimeterStatusIngres
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyArrayOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicy]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusIngressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyOutput) ElementType() reflect.Type {
@@ -8916,12 +9041,6 @@ func (o ServicePerimeterStatusIngressPolicyOutput) ToServicePerimeterStatusIngre
 
 func (o ServicePerimeterStatusIngressPolicyOutput) ToServicePerimeterStatusIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -8954,12 +9073,6 @@ func (o ServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimeterStatus
 
 func (o ServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyOutput {
@@ -9021,12 +9134,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterSt
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
 	return i.ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
 }
@@ -9068,12 +9175,6 @@ func (i *servicePerimeterStatusIngressPolicyIngressFromPtrType) ToServicePerimet
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-func (i *servicePerimeterStatusIngressPolicyIngressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyIngressFromOutput) ElementType() reflect.Type {
@@ -9096,12 +9197,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeter
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimeterStatusIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of identities that are allowed access through this ingress policy.
@@ -9139,12 +9234,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerime
 
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressFromOutput {
@@ -9194,14 +9283,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() Servi
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -9224,14 +9306,7 @@ type ServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -9252,12 +9327,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerim
 
 func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
-}
-
-func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourceArray and ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput values.
@@ -9285,12 +9354,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToServicePeri
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
@@ -9305,20 +9368,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToServicePer
 	return o
 }
 
-func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
-}
-
-// An `AccessLevel` resource name that allow resources within the
-// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-// resources within the perimeter can only be accessed via Google Cloud calls
-// with request origins within the perimeter.
-// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-// If * is specified, then all IngressSources will be allowed.
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -9345,12 +9395,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServi
 
 func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
@@ -9414,12 +9458,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStat
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
 	return i.ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
 }
@@ -9461,12 +9499,6 @@ func (i *servicePerimeterStatusIngressPolicyIngressToPtrType) ToServicePerimeter
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
 }
 
-func (i *servicePerimeterStatusIngressPolicyIngressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyIngressToOutput) ElementType() reflect.Type {
@@ -9489,12 +9521,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterSt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimeterStatusIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
@@ -9530,12 +9556,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimete
 
 func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressToOutput {
@@ -9626,12 +9646,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToServicePeri
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationArray and ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput` via:
 //
@@ -9657,12 +9671,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressToOperationArray) ToServicePer
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
@@ -9675,12 +9683,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePe
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -9713,12 +9715,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServ
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
@@ -9770,12 +9766,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
@@ -9801,12 +9791,6 @@ func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -9819,12 +9803,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutpu
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -9854,12 +9832,6 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
@@ -9909,12 +9881,6 @@ func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatu
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 
-func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: i.ToServicePerimeterStatusVpcAccessibleServicesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return i.ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
 }
@@ -9956,12 +9922,6 @@ func (i *servicePerimeterStatusVpcAccessibleServicesPtrType) ToServicePerimeterS
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
 
-func (i *servicePerimeterStatusVpcAccessibleServicesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: i.ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimeterStatusVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusVpcAccessibleServicesOutput) ElementType() reflect.Type {
@@ -9984,12 +9944,6 @@ func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterSta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusVpcAccessibleServices) *ServicePerimeterStatusVpcAccessibleServices {
 		return &v
 	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
-}
-
-func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of APIs usable within the Service Perimeter.
@@ -10016,12 +9970,6 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimeter
 
 func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return o
-}
-
-func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePerimeterStatusVpcAccessibleServicesOutput {
@@ -10191,12 +10139,6 @@ func (i ServicePerimetersServicePerimeterArgs) ToServicePerimetersServicePerimet
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterOutput)
 }
 
-func (i ServicePerimetersServicePerimeterArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeter] {
-	return pulumix.Output[ServicePerimetersServicePerimeter]{
-		OutputState: i.ToServicePerimetersServicePerimeterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterArrayInput is an input type that accepts ServicePerimetersServicePerimeterArray and ServicePerimetersServicePerimeterArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterArrayInput` via:
 //
@@ -10222,12 +10164,6 @@ func (i ServicePerimetersServicePerimeterArray) ToServicePerimetersServicePerime
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeter] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeter]{
-		OutputState: i.ToServicePerimetersServicePerimeterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterOutput) ElementType() reflect.Type {
@@ -10240,12 +10176,6 @@ func (o ServicePerimetersServicePerimeterOutput) ToServicePerimetersServicePerim
 
 func (o ServicePerimetersServicePerimeterOutput) ToServicePerimetersServicePerimeterOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeter] {
-	return pulumix.Output[ServicePerimetersServicePerimeter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -10340,12 +10270,6 @@ func (o ServicePerimetersServicePerimeterArrayOutput) ToServicePerimetersService
 
 func (o ServicePerimetersServicePerimeterArrayOutput) ToServicePerimetersServicePerimeterArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeter] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterOutput {
@@ -10455,12 +10379,6 @@ func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePer
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpec] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpec]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterSpecArgs) ToServicePerimetersServicePerimeterSpecPtrOutput() ServicePerimetersServicePerimeterSpecPtrOutput {
 	return i.ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(context.Background())
 }
@@ -10502,12 +10420,6 @@ func (i *servicePerimetersServicePerimeterSpecPtrType) ToServicePerimetersServic
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpec] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpec]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecOutput) ElementType() reflect.Type {
@@ -10530,12 +10442,6 @@ func (o ServicePerimetersServicePerimeterSpecOutput) ToServicePerimetersServiceP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpec) *ServicePerimetersServicePerimeterSpec {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterSpecOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpec] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -10610,12 +10516,6 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) ToServicePerimetersServi
 
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) ToServicePerimetersServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpec] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) Elem() ServicePerimetersServicePerimeterSpecOutput {
@@ -10755,12 +10655,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ToServicePerimete
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyArray and ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput` via:
 //
@@ -10786,12 +10680,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyArray) ToServicePerimet
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecEgressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ElementType() reflect.Type {
@@ -10804,12 +10692,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ToServicePerime
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.
@@ -10843,12 +10725,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) ToServiceP
 	return o
 }
 
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecEgressPolicy {
 		return vs[0].([]ServicePerimetersServicePerimeterSpecEgressPolicy)[vs[1].(int)]
@@ -10865,6 +10741,12 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction *string `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource `pulumi:"sources"`
 }
 
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput values.
@@ -10888,6 +10770,12 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction pulumi.StringPtrInput `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput `pulumi:"sources"`
 }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ElementType() reflect.Type {
@@ -10900,12 +10788,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServi
 
 func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
-}
-
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
@@ -10949,12 +10831,6 @@ func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ElementType() reflect.Type {
@@ -10979,12 +10855,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToSer
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of identities that are allowed access through this `EgressPolicy`.
 // Should be in the format of email address. The email address should
 // represent individual user or service account only.
@@ -11000,6 +10870,22 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Ident
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string {
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Sources() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource {
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput)
+}
+
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
@@ -11012,12 +10898,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) To
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
@@ -11053,6 +10933,127 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Id
 		}
 		return v.IdentityType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Sources() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel *string `pulumi:"accessLevel"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs{...} }
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray []ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource) *string {
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
@@ -11112,12 +11113,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToService
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
 }
@@ -11159,12 +11154,6 @@ func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType) ToSer
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ElementType() reflect.Type {
@@ -11187,12 +11176,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of external resources that are allowed to be accessed. A request
@@ -11232,12 +11215,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToSe
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
@@ -11337,12 +11314,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput` via:
 //
@@ -11368,12 +11339,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray)
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
@@ -11386,12 +11351,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -11426,12 +11385,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayO
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
@@ -11483,12 +11436,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
@@ -11514,12 +11461,6 @@ func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -11532,12 +11473,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -11569,12 +11504,6 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethod
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
@@ -11628,12 +11557,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ToServicePerimet
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyArray and ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput` via:
 //
@@ -11659,12 +11582,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyArray) ToServicePerime
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecIngressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ElementType() reflect.Type {
@@ -11677,12 +11594,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ToServicePerim
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -11715,12 +11626,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) ToService
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
@@ -11782,12 +11687,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToSer
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
 	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
 }
@@ -11829,12 +11728,6 @@ func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ElementType() reflect.Type {
@@ -11857,12 +11750,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of identities that are allowed access through this ingress policy.
@@ -11900,12 +11787,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
@@ -11955,14 +11836,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -11985,14 +11859,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput in
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -12013,12 +11880,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs)
 
 func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
-}
-
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput values.
@@ -12046,12 +11907,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
@@ -12066,20 +11921,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutpu
 	return o
 }
 
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
-}
-
-// An `AccessLevel` resource name that allow resources within the
-// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-// resources within the perimeter can only be accessed via Google Cloud calls
-// with request origins within the perimeter.
-// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-// If * is specified, then all IngressSources will be allowed.
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *string {
 		return v.AccessLevel
@@ -12108,12 +11950,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
@@ -12177,12 +12013,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServi
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
 	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
 }
@@ -12224,12 +12054,6 @@ func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ElementType() reflect.Type {
@@ -12252,12 +12076,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToSer
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
@@ -12293,12 +12111,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) To
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
@@ -12389,12 +12201,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput` via:
 //
@@ -12420,12 +12226,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArra
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
@@ -12438,12 +12238,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutp
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -12478,12 +12272,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArra
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
@@ -12535,12 +12323,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
@@ -12566,12 +12348,6 @@ func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -12584,12 +12360,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -12621,12 +12391,6 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
@@ -12676,12 +12440,6 @@ func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServic
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
-func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
 }
@@ -12723,12 +12481,6 @@ func (i *servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType) ToSe
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ElementType() reflect.Type {
@@ -12751,12 +12503,6 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServ
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
 		return &v
 	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimetersServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of APIs usable within the Service Perimeter.
@@ -12783,12 +12529,6 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToS
 
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterSpecVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterSpecVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput {
@@ -12924,12 +12664,6 @@ func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServiceP
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatus] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatus]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterStatusArgs) ToServicePerimetersServicePerimeterStatusPtrOutput() ServicePerimetersServicePerimeterStatusPtrOutput {
 	return i.ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(context.Background())
 }
@@ -12971,12 +12705,6 @@ func (i *servicePerimetersServicePerimeterStatusPtrType) ToServicePerimetersServ
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatus] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatus]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusOutput) ElementType() reflect.Type {
@@ -12999,12 +12727,6 @@ func (o ServicePerimetersServicePerimeterStatusOutput) ToServicePerimetersServic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatus) *ServicePerimetersServicePerimeterStatus {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatus] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of AccessLevel resource names that allow resources within
@@ -13079,12 +12801,6 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) ToServicePerimetersSer
 
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) ToServicePerimetersServicePerimeterStatusPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatus] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) Elem() ServicePerimetersServicePerimeterStatusOutput {
@@ -13224,12 +12940,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ToServicePerime
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyArray and ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput` via:
 //
@@ -13255,12 +12965,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyArray) ToServicePerim
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusEgressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ElementType() reflect.Type {
@@ -13273,12 +12977,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ToServicePeri
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.
@@ -13312,12 +13010,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) ToServic
 	return o
 }
 
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusEgressPolicy {
 		return vs[0].([]ServicePerimetersServicePerimeterStatusEgressPolicy)[vs[1].(int)]
@@ -13334,6 +13026,12 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction *string `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource `pulumi:"sources"`
 }
 
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput values.
@@ -13357,6 +13055,12 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs struct {
 	// be allowed access.
 	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+	// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+	SourceRestriction pulumi.StringPtrInput `pulumi:"sourceRestriction"`
+	// Sources that this EgressPolicy authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput `pulumi:"sources"`
 }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ElementType() reflect.Type {
@@ -13369,12 +13073,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToSer
 
 func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
-}
-
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
@@ -13418,12 +13116,6 @@ func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ElementType() reflect.Type {
@@ -13448,12 +13140,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToS
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of identities that are allowed access through this `EgressPolicy`.
 // Should be in the format of email address. The email address should
 // represent individual user or service account only.
@@ -13469,6 +13155,22 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Ide
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string {
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Sources() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput)
+}
+
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
@@ -13481,12 +13183,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
@@ -13522,6 +13218,127 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 		}
 		return v.IdentityType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) SourceRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceRestriction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sources that this EgressPolicy authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Sources() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel *string `pulumi:"accessLevel"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs{...} }
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray []ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return o
+}
+
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource) *string {
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
@@ -13581,12 +13398,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServi
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
 	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
 }
@@ -13628,12 +13439,6 @@ func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ElementType() reflect.Type {
@@ -13656,12 +13461,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToSer
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of external resources that are allowed to be accessed. A request
@@ -13703,12 +13502,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) To
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
@@ -13808,12 +13601,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput` via:
 //
@@ -13839,12 +13626,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArra
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
@@ -13857,12 +13638,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutp
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -13897,12 +13672,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArra
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
@@ -13954,12 +13723,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
 //
@@ -13985,12 +13748,6 @@ func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -14003,12 +13760,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -14040,12 +13791,6 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMeth
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
@@ -14099,12 +13844,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ToServicePerim
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyArray and ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput` via:
 //
@@ -14130,12 +13869,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyArray) ToServicePeri
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicy]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusIngressPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ElementType() reflect.Type {
@@ -14148,12 +13881,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ToServicePer
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the conditions on the source of a request causing this `IngressPolicy`
@@ -14186,12 +13913,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) ToServi
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicy] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
@@ -14253,12 +13974,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToS
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
 	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
 }
@@ -14300,12 +14015,6 @@ func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ElementType() reflect.Type {
@@ -14328,12 +14037,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of identities that are allowed access through this ingress policy.
@@ -14371,12 +14074,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
@@ -14426,14 +14123,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -14456,14 +14146,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput 
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
-	// An `AccessLevel` resource name that allow resources within the
-	// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-	// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-	// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-	// resources within the perimeter can only be accessed via Google Cloud calls
-	// with request origins within the perimeter.
-	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-	// If * is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
@@ -14484,12 +14167,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArg
 
 func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
-}
-
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput values.
@@ -14517,12 +14194,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArr
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
@@ -14537,20 +14208,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOut
 	return o
 }
 
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
-}
-
-// An `AccessLevel` resource name that allow resources within the
-// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
-// must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
-// `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
-// resources within the perimeter can only be accessed via Google Cloud calls
-// with request origins within the perimeter.
-// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
-// If * is specified, then all IngressSources will be allowed.
+// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *string {
 		return v.AccessLevel
@@ -14581,12 +14239,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArr
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
@@ -14650,12 +14302,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToSer
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
 	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
 }
@@ -14697,12 +14343,6 @@ func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ElementType() reflect.Type {
@@ -14725,12 +14365,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
@@ -14766,12 +14400,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
@@ -14862,12 +14490,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationAr
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput` via:
 //
@@ -14893,12 +14515,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationAr
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
@@ -14911,12 +14527,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOu
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API methods or permissions to allow. Method or permission must belong
@@ -14951,12 +14561,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationAr
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
@@ -15008,12 +14612,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
 //
@@ -15039,12 +14637,6 @@ func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
@@ -15057,12 +14649,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value for `method` should be a valid method name for the corresponding
@@ -15094,12 +14680,6 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector] {
-	return pulumix.Output[[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
@@ -15149,12 +14729,6 @@ func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServ
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 
-func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
 }
@@ -15196,12 +14770,6 @@ func (i *servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
 
-func (i *servicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ElementType() reflect.Type {
@@ -15224,12 +14792,6 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToSe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
 		return &v
 	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
-}
-
-func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePerimetersServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[ServicePerimetersServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of APIs usable within the Service Perimeter.
@@ -15258,12 +14820,6 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) T
 
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return o
-}
-
-func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimetersServicePerimeterStatusVpcAccessibleServices] {
-	return pulumix.Output[*ServicePerimetersServicePerimeterStatusVpcAccessibleServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput {
@@ -15307,10 +14863,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionDevicePolicyPtrInput)(nil)).Elem(), AccessLevelBasicConditionDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionDevicePolicyOsConstraintInput)(nil)).Elem(), AccessLevelBasicConditionDevicePolicyOsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput)(nil)).Elem(), AccessLevelBasicConditionDevicePolicyOsConstraintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSourceInput)(nil)).Elem(), AccessLevelBasicConditionVpcNetworkSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSourceArrayInput)(nil)).Elem(), AccessLevelBasicConditionVpcNetworkSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput)(nil)).Elem(), AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput)(nil)).Elem(), AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionDevicePolicyInput)(nil)).Elem(), AccessLevelConditionDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionDevicePolicyPtrInput)(nil)).Elem(), AccessLevelConditionDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionDevicePolicyOsConstraintInput)(nil)).Elem(), AccessLevelConditionDevicePolicyOsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionDevicePolicyOsConstraintArrayInput)(nil)).Elem(), AccessLevelConditionDevicePolicyOsConstraintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionVpcNetworkSourceInput)(nil)).Elem(), AccessLevelConditionVpcNetworkSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionVpcNetworkSourceArrayInput)(nil)).Elem(), AccessLevelConditionVpcNetworkSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionVpcNetworkSourceVpcSubnetworkInput)(nil)).Elem(), AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrInput)(nil)).Elem(), AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelCustomInput)(nil)).Elem(), AccessLevelCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelCustomPtrInput)(nil)).Elem(), AccessLevelCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelCustomExprInput)(nil)).Elem(), AccessLevelCustomExprArgs{})
@@ -15325,6 +14889,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicyPtrInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSourceInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrInput)(nil)).Elem(), AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelCustomInput)(nil)).Elem(), AccessLevelsAccessLevelCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelCustomPtrInput)(nil)).Elem(), AccessLevelsAccessLevelCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelsAccessLevelCustomExprInput)(nil)).Elem(), AccessLevelsAccessLevelCustomExprArgs{})
@@ -15335,6 +14903,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionPtrInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressToOperationArgs{})
@@ -15357,6 +14927,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyArrayInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressToOperationArgs{})
@@ -15383,6 +14955,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyArrayInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressToOperationArgs{})
@@ -15411,6 +14985,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{})
@@ -15437,6 +15013,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{})
@@ -15465,10 +15043,18 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelBasicConditionVpcNetworkSourceOutput{})
+	pulumi.RegisterOutputType(AccessLevelBasicConditionVpcNetworkSourceArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput{})
+	pulumi.RegisterOutputType(AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelConditionDevicePolicyOutput{})
 	pulumi.RegisterOutputType(AccessLevelConditionDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelConditionDevicePolicyOsConstraintOutput{})
 	pulumi.RegisterOutputType(AccessLevelConditionDevicePolicyOsConstraintArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionVpcNetworkSourceOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionVpcNetworkSourceArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionVpcNetworkSourceVpcSubnetworkOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelCustomOutput{})
 	pulumi.RegisterOutputType(AccessLevelCustomPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelCustomExprOutput{})
@@ -15483,6 +15069,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput{})
+	pulumi.RegisterOutputType(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomExprOutput{})
@@ -15493,6 +15083,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressToOperationOutput{})
@@ -15515,6 +15107,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOperationOutput{})
@@ -15541,6 +15135,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOperationOutput{})
@@ -15569,6 +15165,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput{})
@@ -15595,6 +15193,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput{})

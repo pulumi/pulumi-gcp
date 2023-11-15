@@ -169,7 +169,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Address can be imported using any of these accepted formats
+    /// Address can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/addresses/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Address using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/regions/{{region}}/addresses/{{name}}"
+    /// 
+    ///  to = google_compute_address.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/address:Address When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Address can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
@@ -220,8 +228,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
@@ -243,7 +250,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Ipv6EndpointType { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -302,7 +310,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -579,8 +588,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _effectiveLabels;
 
         /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        /// clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         public InputMap<string> EffectiveLabels
         {
@@ -609,7 +617,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6EndpointType { get; set; }
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
@@ -677,7 +686,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {

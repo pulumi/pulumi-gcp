@@ -28,12 +28,24 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",
+ *     indexConfigs: {
+ *         filePath: "jsonPayload.request.status",
+ *         type: "INDEX_TYPE_STRING",
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * This resource can be imported using the following format:
+ * This resource can be imported using the following format* `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
+ *
+ *  id = "folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}"
+ *
+ *  to = google_logging_folder_bucket_config.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -86,6 +98,10 @@ export class FolderBucketConfig extends pulumi.CustomResource {
      */
     public readonly folder!: pulumi.Output<string>;
     /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    public readonly indexConfigs!: pulumi.Output<outputs.logging.FolderBucketConfigIndexConfig[] | undefined>;
+    /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
@@ -119,6 +135,7 @@ export class FolderBucketConfig extends pulumi.CustomResource {
             resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["indexConfigs"] = state ? state.indexConfigs : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -138,6 +155,7 @@ export class FolderBucketConfig extends pulumi.CustomResource {
             resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["indexConfigs"] = args ? args.indexConfigs : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["lifecycleState"] = undefined /*out*/;
@@ -170,6 +188,10 @@ export interface FolderBucketConfigState {
      * The parent resource that contains the logging bucket.
      */
     folder?: pulumi.Input<string>;
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.FolderBucketConfigIndexConfig>[]>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
@@ -210,6 +232,10 @@ export interface FolderBucketConfigArgs {
      * The parent resource that contains the logging bucket.
      */
     folder: pulumi.Input<string>;
+    /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     */
+    indexConfigs?: pulumi.Input<pulumi.Input<inputs.logging.FolderBucketConfigIndexConfig>[]>;
     /**
      * The location of the bucket.
      */

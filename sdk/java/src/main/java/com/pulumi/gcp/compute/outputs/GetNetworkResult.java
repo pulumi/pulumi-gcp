@@ -27,6 +27,11 @@ public final class GetNetworkResult {
      * 
      */
     private String id;
+    /**
+     * @return The ula internal ipv6 range assigned to this network.
+     * 
+     */
+    private String internalIpv6Range;
     private String name;
     private @Nullable String project;
     /**
@@ -62,6 +67,13 @@ public final class GetNetworkResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ula internal ipv6 range assigned to this network.
+     * 
+     */
+    public String internalIpv6Range() {
+        return this.internalIpv6Range;
+    }
     public String name() {
         return this.name;
     }
@@ -95,6 +107,7 @@ public final class GetNetworkResult {
         private String description;
         private String gatewayIpv4;
         private String id;
+        private String internalIpv6Range;
         private String name;
         private @Nullable String project;
         private String selfLink;
@@ -105,6 +118,7 @@ public final class GetNetworkResult {
     	      this.description = defaults.description;
     	      this.gatewayIpv4 = defaults.gatewayIpv4;
     	      this.id = defaults.id;
+    	      this.internalIpv6Range = defaults.internalIpv6Range;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
@@ -124,6 +138,11 @@ public final class GetNetworkResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder internalIpv6Range(String internalIpv6Range) {
+            this.internalIpv6Range = Objects.requireNonNull(internalIpv6Range);
             return this;
         }
         @CustomType.Setter
@@ -154,6 +173,7 @@ public final class GetNetworkResult {
             o.description = description;
             o.gatewayIpv4 = gatewayIpv4;
             o.id = id;
+            o.internalIpv6Range = internalIpv6Range;
             o.name = name;
             o.project = project;
             o.selfLink = selfLink;

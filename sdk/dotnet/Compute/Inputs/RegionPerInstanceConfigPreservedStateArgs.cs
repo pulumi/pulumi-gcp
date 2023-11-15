@@ -27,6 +27,11 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("externalIps")]
         private InputList<Inputs.RegionPerInstanceConfigPreservedStateExternalIpArgs>? _externalIps;
+
+        /// <summary>
+        /// Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.RegionPerInstanceConfigPreservedStateExternalIpArgs> ExternalIps
         {
             get => _externalIps ?? (_externalIps = new InputList<Inputs.RegionPerInstanceConfigPreservedStateExternalIpArgs>());
@@ -35,6 +40,11 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("internalIps")]
         private InputList<Inputs.RegionPerInstanceConfigPreservedStateInternalIpArgs>? _internalIps;
+
+        /// <summary>
+        /// Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.RegionPerInstanceConfigPreservedStateInternalIpArgs> InternalIps
         {
             get => _internalIps ?? (_internalIps = new InputList<Inputs.RegionPerInstanceConfigPreservedStateInternalIpArgs>());

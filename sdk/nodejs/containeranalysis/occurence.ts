@@ -20,7 +20,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Occurrence can be imported using any of these accepted formats
+ * Occurrence can be imported using any of these accepted formats* `projects/{{project}}/occurrences/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Occurrence using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/occurrences/{{name}}"
+ *
+ *  to = google_container_analysis_occurrence.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:containeranalysis/occurence:Occurence When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Occurrence can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}

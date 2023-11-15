@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -119,7 +118,17 @@ import (
 //
 // ## Import
 //
-// # Federation can be imported using any of these accepted formats
+// Federation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}` * `{{project}}/{{location}}/{{federation_id}}` * `{{location}}/{{federation_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Federation using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/federations/{{federation_id}}"
+//
+//	to = google_dataproc_metastore_federation.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Federation can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -361,12 +370,6 @@ func (i *MetastoreFederation) ToMetastoreFederationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationOutput)
 }
 
-func (i *MetastoreFederation) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederation] {
-	return pulumix.Output[*MetastoreFederation]{
-		OutputState: i.ToMetastoreFederationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreFederationArrayInput is an input type that accepts MetastoreFederationArray and MetastoreFederationArrayOutput values.
 // You can construct a concrete instance of `MetastoreFederationArrayInput` via:
 //
@@ -390,12 +393,6 @@ func (i MetastoreFederationArray) ToMetastoreFederationArrayOutput() MetastoreFe
 
 func (i MetastoreFederationArray) ToMetastoreFederationArrayOutputWithContext(ctx context.Context) MetastoreFederationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationArrayOutput)
-}
-
-func (i MetastoreFederationArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederation] {
-	return pulumix.Output[[]*MetastoreFederation]{
-		OutputState: i.ToMetastoreFederationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreFederationMapInput is an input type that accepts MetastoreFederationMap and MetastoreFederationMapOutput values.
@@ -423,12 +420,6 @@ func (i MetastoreFederationMap) ToMetastoreFederationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreFederationMapOutput)
 }
 
-func (i MetastoreFederationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederation] {
-	return pulumix.Output[map[string]*MetastoreFederation]{
-		OutputState: i.ToMetastoreFederationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreFederationOutput struct{ *pulumi.OutputState }
 
 func (MetastoreFederationOutput) ElementType() reflect.Type {
@@ -441,12 +432,6 @@ func (o MetastoreFederationOutput) ToMetastoreFederationOutput() MetastoreFedera
 
 func (o MetastoreFederationOutput) ToMetastoreFederationOutputWithContext(ctx context.Context) MetastoreFederationOutput {
 	return o
-}
-
-func (o MetastoreFederationOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreFederation] {
-	return pulumix.Output[*MetastoreFederation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
@@ -537,12 +522,6 @@ func (o MetastoreFederationArrayOutput) ToMetastoreFederationArrayOutputWithCont
 	return o
 }
 
-func (o MetastoreFederationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreFederation] {
-	return pulumix.Output[[]*MetastoreFederation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreFederationArrayOutput) Index(i pulumi.IntInput) MetastoreFederationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreFederation {
 		return vs[0].([]*MetastoreFederation)[vs[1].(int)]
@@ -561,12 +540,6 @@ func (o MetastoreFederationMapOutput) ToMetastoreFederationMapOutput() Metastore
 
 func (o MetastoreFederationMapOutput) ToMetastoreFederationMapOutputWithContext(ctx context.Context) MetastoreFederationMapOutput {
 	return o
-}
-
-func (o MetastoreFederationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreFederation] {
-	return pulumix.Output[map[string]*MetastoreFederation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreFederationMapOutput) MapIndex(k pulumi.StringInput) MetastoreFederationOutput {

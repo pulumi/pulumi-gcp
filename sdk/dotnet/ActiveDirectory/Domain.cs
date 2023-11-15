@@ -44,7 +44,15 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// ## Import
     /// 
-    /// Domain can be imported using any of these accepted formats:
+    /// Domain can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Domain using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_active_directory_domain.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:activedirectory/domain:Domain When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Domain can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:activedirectory/domain:Domain default {{name}}

@@ -31,6 +31,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google VMware User Cluster.
+ * 
  * ## Example Usage
  * ### Gkeonprem Vmware Cluster Basic
  * ```java
@@ -41,13 +43,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkeonprem.VMwareCluster;
  * import com.pulumi.gcp.gkeonprem.VMwareClusterArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,47 +63,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_basic = new VMwareCluster(&#34;cluster-basic&#34;, VMwareClusterArgs.builder()        
- *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .description(&#34;test cluster&#34;)
- *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
  *             .annotations()
- *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
- *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
- *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
- *                 .dhcpIpConfig(VMwareClusterNetworkConfigDhcpIpConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
  *             .controlPlaneNode(VMwareClusterControlPlaneNodeArgs.builder()
  *                 .cpus(4)
  *                 .memory(8192)
  *                 .replicas(1)
  *                 .build())
+ *             .description(&#34;test cluster&#34;)
  *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
+ *                 .metalLbConfig(VMwareClusterLoadBalancerMetalLbConfigArgs.builder()
+ *                     .addressPools(                    
+ *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
+ *                             .addresses(&#34;10.251.135.19&#34;)
+ *                             .avoidBuggyIps(true)
+ *                             .manualAssign(&#34;true&#34;)
+ *                             .pool(&#34;ingress-ip&#34;)
+ *                             .build(),
+ *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
+ *                             .addresses(&#34;10.251.135.19&#34;)
+ *                             .avoidBuggyIps(true)
+ *                             .manualAssign(&#34;true&#34;)
+ *                             .pool(&#34;lb-test-ip&#34;)
+ *                             .build())
+ *                     .build())
  *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
  *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
  *                     .ingressVip(&#34;10.251.135.19&#34;)
  *                     .build())
- *                 .metalLbConfig(VMwareClusterLoadBalancerMetalLbConfigArgs.builder()
- *                     .addressPools(                    
- *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                             .pool(&#34;ingress-ip&#34;)
- *                             .manualAssign(&#34;true&#34;)
- *                             .addresses(&#34;10.251.135.19&#34;)
- *                             .avoidBuggyIps(true)
- *                             .build(),
- *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
- *                             .pool(&#34;lb-test-ip&#34;)
- *                             .manualAssign(&#34;true&#34;)
- *                             .addresses(&#34;10.251.135.19&#34;)
- *                             .avoidBuggyIps(true)
- *                             .build())
- *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-west1&#34;)
+ *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
+ *                 .dhcpIpConfig(VMwareClusterNetworkConfigDhcpIpConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
+ *                 .build())
+ *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -116,21 +115,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkeonprem.VMwareCluster;
  * import com.pulumi.gcp.gkeonprem.VMwareClusterArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerF5ConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerF5ConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStorageArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -145,71 +143,69 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_f5lb = new VMwareCluster(&#34;cluster-f5lb&#34;, VMwareClusterArgs.builder()        
- *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .description(&#34;test cluster&#34;)
- *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
  *             .annotations()
- *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
- *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
- *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
- *                 .dhcpIpConfig(VMwareClusterNetworkConfigDhcpIpConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .controlPlaneV2Config(VMwareClusterNetworkConfigControlPlaneV2ConfigArgs.builder()
- *                     .controlPlaneIpBlock(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs.builder()
- *                         .ips(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs.builder()
- *                             .hostname(&#34;test-hostname&#34;)
- *                             .ip(&#34;10.0.0.1&#34;)
- *                             .build())
- *                         .netmask(&#34;10.0.0.1/32&#34;)
- *                         .gateway(&#34;test-gateway&#34;)
- *                         .build())
- *                     .build())
+ *             .antiAffinityGroups(VMwareClusterAntiAffinityGroupsArgs.builder()
+ *                 .aagConfigDisabled(true)
  *                 .build())
- *             .controlPlaneNode(VMwareClusterControlPlaneNodeArgs.builder()
- *                 .cpus(4)
- *                 .memory(8192)
- *                 .replicas(1)
- *                 .autoResizeConfig(VMwareClusterControlPlaneNodeAutoResizeConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
- *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
- *                     .ingressVip(&#34;10.251.135.19&#34;)
- *                     .build())
- *                 .f5Config(VMwareClusterLoadBalancerF5ConfigArgs.builder()
- *                     .address(&#34;10.0.0.1&#34;)
- *                     .partition(&#34;test-partition&#34;)
- *                     .snatPool(&#34;test-snap-pool&#34;)
- *                     .build())
- *                 .build())
- *             .dataplaneV2(VMwareClusterDataplaneV2Args.builder()
- *                 .dataplaneV2Enabled(true)
- *                 .windowsDataplaneV2Enabled(true)
- *                 .advancedNetworking(true)
- *                 .build())
- *             .vmTrackingEnabled(true)
- *             .enableControlPlaneV2(true)
  *             .authorization(VMwareClusterAuthorizationArgs.builder()
  *                 .adminUsers(VMwareClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;testuser@gmail.com&#34;)
  *                     .build())
  *                 .build())
- *             .antiAffinityGroups(VMwareClusterAntiAffinityGroupsArgs.builder()
- *                 .aagConfigDisabled(true)
- *                 .build())
  *             .autoRepairConfig(VMwareClusterAutoRepairConfigArgs.builder()
  *                 .enabled(true)
  *                 .build())
+ *             .controlPlaneNode(VMwareClusterControlPlaneNodeArgs.builder()
+ *                 .autoResizeConfig(VMwareClusterControlPlaneNodeAutoResizeConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .cpus(4)
+ *                 .memory(8192)
+ *                 .replicas(1)
+ *                 .build())
+ *             .dataplaneV2(VMwareClusterDataplaneV2Args.builder()
+ *                 .advancedNetworking(true)
+ *                 .dataplaneV2Enabled(true)
+ *                 .windowsDataplaneV2Enabled(true)
+ *                 .build())
+ *             .description(&#34;test cluster&#34;)
+ *             .enableControlPlaneV2(true)
+ *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
+ *                 .f5Config(VMwareClusterLoadBalancerF5ConfigArgs.builder()
+ *                     .address(&#34;10.0.0.1&#34;)
+ *                     .partition(&#34;test-partition&#34;)
+ *                     .snatPool(&#34;test-snap-pool&#34;)
+ *                     .build())
+ *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
+ *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
+ *                     .ingressVip(&#34;10.251.135.19&#34;)
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;us-west1&#34;)
+ *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
+ *                 .controlPlaneV2Config(VMwareClusterNetworkConfigControlPlaneV2ConfigArgs.builder()
+ *                     .controlPlaneIpBlock(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs.builder()
+ *                         .gateway(&#34;test-gateway&#34;)
+ *                         .ips(VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs.builder()
+ *                             .hostname(&#34;test-hostname&#34;)
+ *                             .ip(&#34;10.0.0.1&#34;)
+ *                             .build())
+ *                         .netmask(&#34;10.0.0.1/32&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .dhcpIpConfig(VMwareClusterNetworkConfigDhcpIpConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
+ *                 .build())
+ *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
  *             .storage(VMwareClusterStorageArgs.builder()
  *                 .vsphereCsiDisabled(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .vmTrackingEnabled(true)
+ *             .build());
  * 
  *     }
  * }
@@ -223,20 +219,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkeonprem.VMwareCluster;
  * import com.pulumi.gcp.gkeonprem.VMwareClusterArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerManualLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigHostConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerManualLbConfigArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
- * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterVcenterArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -251,87 +247,94 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cluster_manuallb = new VMwareCluster(&#34;cluster-manuallb&#34;, VMwareClusterArgs.builder()        
- *             .location(&#34;us-west1&#34;)
  *             .adminClusterMembership(&#34;projects/870316890899/locations/global/memberships/gkeonprem-terraform-test&#34;)
- *             .description(&#34;test cluster&#34;)
- *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
  *             .annotations()
- *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
- *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
- *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
- *                 .hostConfig(VMwareClusterNetworkConfigHostConfigArgs.builder()
- *                     .dnsServers(&#34;10.254.41.1&#34;)
- *                     .ntpServers(&#34;216.239.35.8&#34;)
- *                     .dnsSearchDomains(&#34;test-domain&#34;)
- *                     .build())
- *                 .staticIpConfig(VMwareClusterNetworkConfigStaticIpConfigArgs.builder()
- *                     .ipBlocks(VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs.builder()
- *                         .netmask(&#34;255.255.252.0&#34;)
- *                         .gateway(&#34;10.251.31.254&#34;)
- *                         .ips(                        
- *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
- *                                 .ip(&#34;10.251.30.153&#34;)
- *                                 .hostname(&#34;test-hostname1&#34;)
- *                                 .build(),
- *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
- *                                 .ip(&#34;10.251.31.206&#34;)
- *                                 .hostname(&#34;test-hostname2&#34;)
- *                                 .build(),
- *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
- *                                 .ip(&#34;10.251.31.193&#34;)
- *                                 .hostname(&#34;test-hostname3&#34;)
- *                                 .build(),
- *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
- *                                 .ip(&#34;10.251.30.230&#34;)
- *                                 .hostname(&#34;test-hostname4&#34;)
- *                                 .build())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .controlPlaneNode(VMwareClusterControlPlaneNodeArgs.builder()
- *                 .cpus(4)
- *                 .memory(8192)
- *                 .replicas(1)
- *                 .autoResizeConfig(VMwareClusterControlPlaneNodeAutoResizeConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
- *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
- *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
- *                     .ingressVip(&#34;10.251.135.19&#34;)
- *                     .build())
- *                 .manualLbConfig(VMwareClusterLoadBalancerManualLbConfigArgs.builder()
- *                     .ingressHttpNodePort(30005)
- *                     .ingressHttpsNodePort(30006)
- *                     .controlPlaneNodePort(30007)
- *                     .konnectivityServerNodePort(30008)
- *                     .build())
- *                 .build())
- *             .dataplaneV2(VMwareClusterDataplaneV2Args.builder()
- *                 .dataplaneV2Enabled(true)
- *                 .windowsDataplaneV2Enabled(true)
- *                 .advancedNetworking(true)
- *                 .build())
- *             .vmTrackingEnabled(true)
- *             .enableControlPlaneV2(true)
- *             .upgradePolicy(VMwareClusterUpgradePolicyArgs.builder()
- *                 .controlPlaneOnly(true)
+ *             .antiAffinityGroups(VMwareClusterAntiAffinityGroupsArgs.builder()
+ *                 .aagConfigDisabled(true)
  *                 .build())
  *             .authorization(VMwareClusterAuthorizationArgs.builder()
  *                 .adminUsers(VMwareClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;testuser@gmail.com&#34;)
  *                     .build())
  *                 .build())
- *             .antiAffinityGroups(VMwareClusterAntiAffinityGroupsArgs.builder()
- *                 .aagConfigDisabled(true)
- *                 .build())
  *             .autoRepairConfig(VMwareClusterAutoRepairConfigArgs.builder()
  *                 .enabled(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .controlPlaneNode(VMwareClusterControlPlaneNodeArgs.builder()
+ *                 .autoResizeConfig(VMwareClusterControlPlaneNodeAutoResizeConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .cpus(4)
+ *                 .memory(8192)
+ *                 .replicas(1)
+ *                 .build())
+ *             .dataplaneV2(VMwareClusterDataplaneV2Args.builder()
+ *                 .advancedNetworking(true)
+ *                 .dataplaneV2Enabled(true)
+ *                 .windowsDataplaneV2Enabled(true)
+ *                 .build())
+ *             .description(&#34;test cluster&#34;)
+ *             .enableControlPlaneV2(true)
+ *             .loadBalancer(VMwareClusterLoadBalancerArgs.builder()
+ *                 .manualLbConfig(VMwareClusterLoadBalancerManualLbConfigArgs.builder()
+ *                     .controlPlaneNodePort(30007)
+ *                     .ingressHttpNodePort(30005)
+ *                     .ingressHttpsNodePort(30006)
+ *                     .konnectivityServerNodePort(30008)
+ *                     .build())
+ *                 .vipConfig(VMwareClusterLoadBalancerVipConfigArgs.builder()
+ *                     .controlPlaneVip(&#34;10.251.133.5&#34;)
+ *                     .ingressVip(&#34;10.251.135.19&#34;)
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;us-west1&#34;)
+ *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
+ *                 .hostConfig(VMwareClusterNetworkConfigHostConfigArgs.builder()
+ *                     .dnsSearchDomains(&#34;test-domain&#34;)
+ *                     .dnsServers(&#34;10.254.41.1&#34;)
+ *                     .ntpServers(&#34;216.239.35.8&#34;)
+ *                     .build())
+ *                 .podAddressCidrBlocks(&#34;192.168.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks(&#34;10.96.0.0/12&#34;)
+ *                 .staticIpConfig(VMwareClusterNetworkConfigStaticIpConfigArgs.builder()
+ *                     .ipBlocks(VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs.builder()
+ *                         .gateway(&#34;10.251.31.254&#34;)
+ *                         .ips(                        
+ *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
+ *                                 .hostname(&#34;test-hostname1&#34;)
+ *                                 .ip(&#34;10.251.30.153&#34;)
+ *                                 .build(),
+ *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
+ *                                 .hostname(&#34;test-hostname2&#34;)
+ *                                 .ip(&#34;10.251.31.206&#34;)
+ *                                 .build(),
+ *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
+ *                                 .hostname(&#34;test-hostname3&#34;)
+ *                                 .ip(&#34;10.251.31.193&#34;)
+ *                                 .build(),
+ *                             VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs.builder()
+ *                                 .hostname(&#34;test-hostname4&#34;)
+ *                                 .ip(&#34;10.251.30.230&#34;)
+ *                                 .build())
+ *                         .netmask(&#34;255.255.252.0&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .onPremVersion(&#34;1.13.1-gke.35&#34;)
+ *             .upgradePolicy(VMwareClusterUpgradePolicyArgs.builder()
+ *                 .controlPlaneOnly(true)
+ *                 .build())
+ *             .vcenters(VMwareClusterVcenterArgs.builder()
+ *                 .caCertData(&#34;test-ca-cert-data&#34;)
+ *                 .cluster(&#34;test-cluster&#34;)
+ *                 .datacenter(&#34;test-datacenter&#34;)
+ *                 .datastore(&#34;test-datastore&#34;)
+ *                 .folder(&#34;test-folder&#34;)
+ *                 .resourcePool(&#34;test-resource-pool&#34;)
+ *                 .storagePolicyName(&#34;test-storage-policy-name&#34;)
+ *                 .build())
+ *             .vmTrackingEnabled(true)
+ *             .build());
  * 
  *     }
  * }
@@ -339,7 +342,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VmwareCluster can be imported using any of these accepted formats
+ * VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareCluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}&#34;
+ * 
+ *  to = google_gkeonprem_vmware_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareCluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
@@ -869,7 +880,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vcenters", refs={List.class,VMwareClusterVcenter.class}, tree="[0,1]")
-    private Output<List<VMwareClusterVcenter>> vcenters;
+    private Output</* @Nullable */ List<VMwareClusterVcenter>> vcenters;
 
     /**
      * @return VmwareVCenterConfig specifies vCenter config for the user cluster.
@@ -877,8 +888,8 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<List<VMwareClusterVcenter>> vcenters() {
-        return this.vcenters;
+    public Output<Optional<List<VMwareClusterVcenter>>> vcenters() {
+        return Codegen.optional(this.vcenters);
     }
     /**
      * Enable VM tracking.

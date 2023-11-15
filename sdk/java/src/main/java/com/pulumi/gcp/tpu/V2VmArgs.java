@@ -5,7 +5,15 @@ package com.pulumi.gcp.tpu;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
+import com.pulumi.gcp.tpu.inputs.V2VmDataDiskArgs;
+import com.pulumi.gcp.tpu.inputs.V2VmNetworkConfigArgs;
+import com.pulumi.gcp.tpu.inputs.V2VmSchedulingConfigArgs;
+import com.pulumi.gcp.tpu.inputs.V2VmServiceAccountArgs;
+import com.pulumi.gcp.tpu.inputs.V2VmShieldedInstanceConfigArgs;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,18 +24,81 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
     public static final V2VmArgs Empty = new V2VmArgs();
 
     /**
-     * TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
+     * The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="acceleratorConfig")
+    private @Nullable Output<V2VmAcceleratorConfigArgs> acceleratorConfig;
+
+    /**
+     * @return The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+     * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<V2VmAcceleratorConfigArgs>> acceleratorConfig() {
+        return Optional.ofNullable(this.acceleratorConfig);
+    }
+
+    /**
+     * TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
      * 
      */
     @Import(name="acceleratorType")
     private @Nullable Output<String> acceleratorType;
 
     /**
-     * @return TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
+     * @return TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+     * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
      * 
      */
     public Optional<Output<String>> acceleratorType() {
         return Optional.ofNullable(this.acceleratorType);
+    }
+
+    /**
+     * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user&#39;s provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     * 
+     */
+    @Import(name="cidrBlock")
+    private @Nullable Output<String> cidrBlock;
+
+    /**
+     * @return The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+     * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+     * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+     * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+     * with any subnetworks in the user&#39;s provided network, or the provided network is peered with
+     * another network that is using that CIDR block.
+     * 
+     */
+    public Optional<Output<String>> cidrBlock() {
+        return Optional.ofNullable(this.cidrBlock);
+    }
+
+    /**
+     * The additional data disks for the Node.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dataDisks")
+    private @Nullable Output<List<V2VmDataDiskArgs>> dataDisks;
+
+    /**
+     * @return The additional data disks for the Node.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<V2VmDataDiskArgs>>> dataDisks() {
+        return Optional.ofNullable(this.dataDisks);
     }
 
     /**
@@ -46,6 +117,40 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Resource labels to represent user-provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<Map<String,String>> metadata;
+
+    /**
+     * @return Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * The immutable name of the TPU.
      * 
      */
@@ -58,6 +163,23 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<V2VmNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return Network configurations for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<V2VmNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
     }
 
     /**
@@ -97,6 +219,74 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The scheduling options for this node.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="schedulingConfig")
+    private @Nullable Output<V2VmSchedulingConfigArgs> schedulingConfig;
+
+    /**
+     * @return The scheduling options for this node.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<V2VmSchedulingConfigArgs>> schedulingConfig() {
+        return Optional.ofNullable(this.schedulingConfig);
+    }
+
+    /**
+     * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<V2VmServiceAccountArgs> serviceAccount;
+
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+     * specified, the default compute service account will be used.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<V2VmServiceAccountArgs>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
+     * Shielded Instance options.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<V2VmShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    /**
+     * @return Shielded Instance options.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<V2VmShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
+    /**
+     * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      * 
      */
@@ -114,11 +304,21 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
     private V2VmArgs() {}
 
     private V2VmArgs(V2VmArgs $) {
+        this.acceleratorConfig = $.acceleratorConfig;
         this.acceleratorType = $.acceleratorType;
+        this.cidrBlock = $.cidrBlock;
+        this.dataDisks = $.dataDisks;
         this.description = $.description;
+        this.labels = $.labels;
+        this.metadata = $.metadata;
         this.name = $.name;
+        this.networkConfig = $.networkConfig;
         this.project = $.project;
         this.runtimeVersion = $.runtimeVersion;
+        this.schedulingConfig = $.schedulingConfig;
+        this.serviceAccount = $.serviceAccount;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
+        this.tags = $.tags;
         this.zone = $.zone;
     }
 
@@ -141,7 +341,33 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acceleratorType TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
+         * @param acceleratorConfig The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+         * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorConfig(@Nullable Output<V2VmAcceleratorConfigArgs> acceleratorConfig) {
+            $.acceleratorConfig = acceleratorConfig;
+            return this;
+        }
+
+        /**
+         * @param acceleratorConfig The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+         * as `accelerator_type`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorConfig(V2VmAcceleratorConfigArgs acceleratorConfig) {
+            return acceleratorConfig(Output.of(acceleratorConfig));
+        }
+
+        /**
+         * @param acceleratorType TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+         * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
          * 
          * @return builder
          * 
@@ -152,13 +378,79 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acceleratorType TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
+         * @param acceleratorType TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+         * `accelerator_config`. If neither is specified, `accelerator_type` defaults to &#39;v2-8&#39;.
          * 
          * @return builder
          * 
          */
         public Builder acceleratorType(String acceleratorType) {
             return acceleratorType(Output.of(acceleratorType));
+        }
+
+        /**
+         * @param cidrBlock The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+         * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+         * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+         * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+         * with any subnetworks in the user&#39;s provided network, or the provided network is peered with
+         * another network that is using that CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrBlock(@Nullable Output<String> cidrBlock) {
+            $.cidrBlock = cidrBlock;
+            return this;
+        }
+
+        /**
+         * @param cidrBlock The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
+         * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
+         * block would be wasteful (a node can only consume one IP address). Errors will occur if the
+         * CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
+         * with any subnetworks in the user&#39;s provided network, or the provided network is peered with
+         * another network that is using that CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrBlock(String cidrBlock) {
+            return cidrBlock(Output.of(cidrBlock));
+        }
+
+        /**
+         * @param dataDisks The additional data disks for the Node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(@Nullable Output<List<V2VmDataDiskArgs>> dataDisks) {
+            $.dataDisks = dataDisks;
+            return this;
+        }
+
+        /**
+         * @param dataDisks The additional data disks for the Node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(List<V2VmDataDiskArgs> dataDisks) {
+            return dataDisks(Output.of(dataDisks));
+        }
+
+        /**
+         * @param dataDisks The additional data disks for the Node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(V2VmDataDiskArgs... dataDisks) {
+            return dataDisks(List.of(dataDisks));
         }
 
         /**
@@ -183,6 +475,52 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param labels Resource labels to represent user-provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Resource labels to represent user-provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
+         * @param metadata Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(Map<String,String> metadata) {
+            return metadata(Output.of(metadata));
+        }
+
+        /**
          * @param name The immutable name of the TPU.
          * 
          * @return builder
@@ -201,6 +539,29 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkConfig Network configurations for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(@Nullable Output<V2VmNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig Network configurations for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(V2VmNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
         }
 
         /**
@@ -249,6 +610,108 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder runtimeVersion(String runtimeVersion) {
             return runtimeVersion(Output.of(runtimeVersion));
+        }
+
+        /**
+         * @param schedulingConfig The scheduling options for this node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingConfig(@Nullable Output<V2VmSchedulingConfigArgs> schedulingConfig) {
+            $.schedulingConfig = schedulingConfig;
+            return this;
+        }
+
+        /**
+         * @param schedulingConfig The scheduling options for this node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingConfig(V2VmSchedulingConfigArgs schedulingConfig) {
+            return schedulingConfig(Output.of(schedulingConfig));
+        }
+
+        /**
+         * @param serviceAccount The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+         * specified, the default compute service account will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<V2VmServiceAccountArgs> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
+         * specified, the default compute service account will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(V2VmServiceAccountArgs serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param shieldedInstanceConfig Shielded Instance options.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(@Nullable Output<V2VmShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceConfig Shielded Instance options.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(V2VmShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
+        }
+
+        /**
+         * @param tags Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

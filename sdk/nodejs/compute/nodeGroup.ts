@@ -38,6 +38,28 @@ import * as utilities from "../utilities";
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
+ * ### Node Group Maintenance Interval
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     region: "us-central1",
+ *     nodeType: "c2-node-60-240",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     zone: "us-central1-a",
+ *     description: "example google_compute_node_group for Terraform Google Provider",
+ *     initialSize: 1,
+ *     nodeTemplate: soletenant_tmpl.id,
+ *     maintenanceInterval: "RECURRENT",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Node Group Autoscaling Policy
  *
  * ```typescript
@@ -95,7 +117,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NodeGroup can be imported using any of these accepted formats
+ * NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
+ *
+ *  to = google_compute_node_group.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -161,6 +191,14 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly initialSize!: pulumi.Output<number | undefined>;
     /**
+     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+     */
+    public readonly maintenanceInterval!: pulumi.Output<string>;
+    /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
     public readonly maintenancePolicy!: pulumi.Output<string | undefined>;
@@ -220,6 +258,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["initialSize"] = state ? state.initialSize : undefined;
+            resourceInputs["maintenanceInterval"] = state ? state.maintenanceInterval : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -237,6 +276,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["initialSize"] = args ? args.initialSize : undefined;
+            resourceInputs["maintenanceInterval"] = args ? args.maintenanceInterval : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -276,6 +316,14 @@ export interface NodeGroupState {
      * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
     initialSize?: pulumi.Input<number>;
+    /**
+     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+     */
+    maintenanceInterval?: pulumi.Input<string>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
@@ -339,6 +387,14 @@ export interface NodeGroupArgs {
      * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
     initialSize?: pulumi.Input<number>;
+    /**
+     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
+     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
+     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
+     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
+     * migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+     */
+    maintenanceInterval?: pulumi.Input<string>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */

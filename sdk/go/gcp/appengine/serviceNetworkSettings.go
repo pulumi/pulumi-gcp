@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A NetworkSettings resource is a container for ingress settings for a version or service.
@@ -91,7 +90,17 @@ import (
 //
 // ## Import
 //
-// # ServiceNetworkSettings can be imported using any of these accepted formats
+// ServiceNetworkSettings can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}` * `{{project}}/{{service}}` * `{{service}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceNetworkSettings using one of the formats above. For exampletf import {
+//
+//	id = "apps/{{project}}/services/{{service}}"
+//
+//	to = google_app_engine_service_network_settings.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceNetworkSettings can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -230,12 +239,6 @@ func (i *ServiceNetworkSettings) ToServiceNetworkSettingsOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsOutput)
 }
 
-func (i *ServiceNetworkSettings) ToOutput(ctx context.Context) pulumix.Output[*ServiceNetworkSettings] {
-	return pulumix.Output[*ServiceNetworkSettings]{
-		OutputState: i.ToServiceNetworkSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceNetworkSettingsArrayInput is an input type that accepts ServiceNetworkSettingsArray and ServiceNetworkSettingsArrayOutput values.
 // You can construct a concrete instance of `ServiceNetworkSettingsArrayInput` via:
 //
@@ -259,12 +262,6 @@ func (i ServiceNetworkSettingsArray) ToServiceNetworkSettingsArrayOutput() Servi
 
 func (i ServiceNetworkSettingsArray) ToServiceNetworkSettingsArrayOutputWithContext(ctx context.Context) ServiceNetworkSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsArrayOutput)
-}
-
-func (i ServiceNetworkSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceNetworkSettings] {
-	return pulumix.Output[[]*ServiceNetworkSettings]{
-		OutputState: i.ToServiceNetworkSettingsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceNetworkSettingsMapInput is an input type that accepts ServiceNetworkSettingsMap and ServiceNetworkSettingsMapOutput values.
@@ -292,12 +289,6 @@ func (i ServiceNetworkSettingsMap) ToServiceNetworkSettingsMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkSettingsMapOutput)
 }
 
-func (i ServiceNetworkSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceNetworkSettings] {
-	return pulumix.Output[map[string]*ServiceNetworkSettings]{
-		OutputState: i.ToServiceNetworkSettingsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceNetworkSettingsOutput struct{ *pulumi.OutputState }
 
 func (ServiceNetworkSettingsOutput) ElementType() reflect.Type {
@@ -310,12 +301,6 @@ func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsOutput() ServiceNe
 
 func (o ServiceNetworkSettingsOutput) ToServiceNetworkSettingsOutputWithContext(ctx context.Context) ServiceNetworkSettingsOutput {
 	return o
-}
-
-func (o ServiceNetworkSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceNetworkSettings] {
-	return pulumix.Output[*ServiceNetworkSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Ingress settings for this service. Will apply to all versions.
@@ -349,12 +334,6 @@ func (o ServiceNetworkSettingsArrayOutput) ToServiceNetworkSettingsArrayOutputWi
 	return o
 }
 
-func (o ServiceNetworkSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceNetworkSettings] {
-	return pulumix.Output[[]*ServiceNetworkSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceNetworkSettingsArrayOutput) Index(i pulumi.IntInput) ServiceNetworkSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceNetworkSettings {
 		return vs[0].([]*ServiceNetworkSettings)[vs[1].(int)]
@@ -373,12 +352,6 @@ func (o ServiceNetworkSettingsMapOutput) ToServiceNetworkSettingsMapOutput() Ser
 
 func (o ServiceNetworkSettingsMapOutput) ToServiceNetworkSettingsMapOutputWithContext(ctx context.Context) ServiceNetworkSettingsMapOutput {
 	return o
-}
-
-func (o ServiceNetworkSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceNetworkSettings] {
-	return pulumix.Output[map[string]*ServiceNetworkSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceNetworkSettingsMapOutput) MapIndex(k pulumi.StringInput) ServiceNetworkSettingsOutput {

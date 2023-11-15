@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'WorkstationClusterCondition',
+    'WorkstationClusterDomainConfig',
     'WorkstationClusterPrivateClusterConfig',
     'WorkstationConfigCondition',
     'WorkstationConfigContainer',
@@ -76,6 +77,24 @@ class WorkstationClusterCondition(dict):
         Human readable message indicating details about the current status.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class WorkstationClusterDomainConfig(dict):
+    def __init__(__self__, *,
+                 domain: str):
+        """
+        :param str domain: Domain used by Workstations for HTTP ingress.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Domain used by Workstations for HTTP ingress.
+        """
+        return pulumi.get(self, "domain")
 
 
 @pulumi.output_type

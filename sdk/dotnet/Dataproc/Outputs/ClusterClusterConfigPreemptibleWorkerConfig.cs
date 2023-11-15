@@ -17,6 +17,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Disk Config
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig? DiskConfig;
+        /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
         /// Specifies the number of preemptible nodes to create.
@@ -36,6 +40,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         private ClusterClusterConfigPreemptibleWorkerConfig(
             Outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig? diskConfig,
 
+            Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy? instanceFlexibilityPolicy,
+
             ImmutableArray<string> instanceNames,
 
             int? numInstances,
@@ -43,6 +49,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             string? preemptibility)
         {
             DiskConfig = diskConfig;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceNames = instanceNames;
             NumInstances = numInstances;
             Preemptibility = preemptibility;

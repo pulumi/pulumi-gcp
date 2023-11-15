@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A ForwardingRule resource. A ForwardingRule resource specifies which pool
@@ -112,7 +111,17 @@ import (
 //
 // ## Import
 //
-// # ForwardingRule can be imported using any of these accepted formats
+// ForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ForwardingRule using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}"
+//
+//	to = google_compute_forwarding_rule.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/forwardingRule:ForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ForwardingRule can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -140,18 +149,20 @@ import (
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, and internal and external protocol forwarding.
-	//   This option should be set to TRUE when the Forwarding Rule
-	//   IPProtocol is set to L3_DEFAULT.
-	//   Set this field to true to allow packets addressed to any port or packets
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `allPorts` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
 	//   lacking destination port information (for example, UDP fragments after the
 	//   first fragment) to be forwarded to the backends configured with this
-	//   forwarding rule.
-	//   The `ports`, `portRange`, and
-	//   `allPorts` fields are mutually exclusive.
+	//   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+	//   true.
 	AllPorts pulumi.BoolPtrOutput `pulumi:"allPorts"`
 	// This field is used along with the `backendService` field for
 	// internal load balancing or with the `target` field for internal
@@ -285,41 +296,45 @@ type ForwardingRule struct {
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrOutput `pulumi:"noAutomateDnsZone"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	//   network load balancers, internal proxy load balancers, external proxy load
-	//   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	//   Some products have restrictions on what ports can be used. See
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
 	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 	//   for details.
-	//
-	// Only packets addressed to ports in the specified range will be forwarded to
-	// the backends configured with this forwarding rule.
-	// The `ports` and `portRange` fields are mutually exclusive.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot have
-	// overlapping `portRange`s.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot have overlapping `portRange`s.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringOutput `pulumi:"portRange"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-	//
-	// You can specify a list of up to five ports by number, separated by commas.
-	// The ports can be contiguous or discontiguous. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot share any values
-	// defined in `ports`.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot share any values defined in `ports`.
-	// The `ports` and `portRange` fields are mutually exclusive.
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `ports` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair if they share at least one port
+	//   number.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -331,6 +346,8 @@ type ForwardingRule struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc pulumi.BoolPtrOutput `pulumi:"recreateClosedPsc"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -412,18 +429,20 @@ func GetForwardingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ForwardingRule resources.
 type forwardingRuleState struct {
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, and internal and external protocol forwarding.
-	//   This option should be set to TRUE when the Forwarding Rule
-	//   IPProtocol is set to L3_DEFAULT.
-	//   Set this field to true to allow packets addressed to any port or packets
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `allPorts` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
 	//   lacking destination port information (for example, UDP fragments after the
 	//   first fragment) to be forwarded to the backends configured with this
-	//   forwarding rule.
-	//   The `ports`, `portRange`, and
-	//   `allPorts` fields are mutually exclusive.
+	//   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+	//   true.
 	AllPorts *bool `pulumi:"allPorts"`
 	// This field is used along with the `backendService` field for
 	// internal load balancing or with the `target` field for internal
@@ -557,41 +576,45 @@ type forwardingRuleState struct {
 	NetworkTier *string `pulumi:"networkTier"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	//   network load balancers, internal proxy load balancers, external proxy load
-	//   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	//   Some products have restrictions on what ports can be used. See
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
 	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 	//   for details.
-	//
-	// Only packets addressed to ports in the specified range will be forwarded to
-	// the backends configured with this forwarding rule.
-	// The `ports` and `portRange` fields are mutually exclusive.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot have
-	// overlapping `portRange`s.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot have overlapping `portRange`s.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-	//
-	// You can specify a list of up to five ports by number, separated by commas.
-	// The ports can be contiguous or discontiguous. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot share any values
-	// defined in `ports`.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot share any values defined in `ports`.
-	// The `ports` and `portRange` fields are mutually exclusive.
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `ports` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair if they share at least one port
+	//   number.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -603,6 +626,8 @@ type forwardingRuleState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc *bool `pulumi:"recreateClosedPsc"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
@@ -650,18 +675,20 @@ type forwardingRuleState struct {
 }
 
 type ForwardingRuleState struct {
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, and internal and external protocol forwarding.
-	//   This option should be set to TRUE when the Forwarding Rule
-	//   IPProtocol is set to L3_DEFAULT.
-	//   Set this field to true to allow packets addressed to any port or packets
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `allPorts` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
 	//   lacking destination port information (for example, UDP fragments after the
 	//   first fragment) to be forwarded to the backends configured with this
-	//   forwarding rule.
-	//   The `ports`, `portRange`, and
-	//   `allPorts` fields are mutually exclusive.
+	//   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+	//   true.
 	AllPorts pulumi.BoolPtrInput
 	// This field is used along with the `backendService` field for
 	// internal load balancing or with the `target` field for internal
@@ -795,41 +822,45 @@ type ForwardingRuleState struct {
 	NetworkTier pulumi.StringPtrInput
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrInput
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	//   network load balancers, internal proxy load balancers, external proxy load
-	//   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	//   Some products have restrictions on what ports can be used. See
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
 	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 	//   for details.
-	//
-	// Only packets addressed to ports in the specified range will be forwarded to
-	// the backends configured with this forwarding rule.
-	// The `ports` and `portRange` fields are mutually exclusive.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot have
-	// overlapping `portRange`s.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot have overlapping `portRange`s.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-	//
-	// You can specify a list of up to five ports by number, separated by commas.
-	// The ports can be contiguous or discontiguous. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot share any values
-	// defined in `ports`.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot share any values defined in `ports`.
-	// The `ports` and `portRange` fields are mutually exclusive.
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `ports` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair if they share at least one port
+	//   number.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -841,6 +872,8 @@ type ForwardingRuleState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc pulumi.BoolPtrInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringPtrInput
@@ -892,18 +925,20 @@ func (ForwardingRuleState) ElementType() reflect.Type {
 }
 
 type forwardingRuleArgs struct {
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, and internal and external protocol forwarding.
-	//   This option should be set to TRUE when the Forwarding Rule
-	//   IPProtocol is set to L3_DEFAULT.
-	//   Set this field to true to allow packets addressed to any port or packets
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `allPorts` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
 	//   lacking destination port information (for example, UDP fragments after the
 	//   first fragment) to be forwarded to the backends configured with this
-	//   forwarding rule.
-	//   The `ports`, `portRange`, and
-	//   `allPorts` fields are mutually exclusive.
+	//   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+	//   true.
 	AllPorts *bool `pulumi:"allPorts"`
 	// This field is used along with the `backendService` field for
 	// internal load balancing or with the `target` field for internal
@@ -1028,45 +1063,51 @@ type forwardingRuleArgs struct {
 	NetworkTier *string `pulumi:"networkTier"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	//   network load balancers, internal proxy load balancers, external proxy load
-	//   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	//   Some products have restrictions on what ports can be used. See
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
 	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 	//   for details.
-	//
-	// Only packets addressed to ports in the specified range will be forwarded to
-	// the backends configured with this forwarding rule.
-	// The `ports` and `portRange` fields are mutually exclusive.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot have
-	// overlapping `portRange`s.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot have overlapping `portRange`s.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-	//
-	// You can specify a list of up to five ports by number, separated by commas.
-	// The ports can be contiguous or discontiguous. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot share any values
-	// defined in `ports`.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot share any values defined in `ports`.
-	// The `ports` and `portRange` fields are mutually exclusive.
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `ports` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair if they share at least one port
+	//   number.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc *bool `pulumi:"recreateClosedPsc"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region *string `pulumi:"region"`
@@ -1110,18 +1151,20 @@ type forwardingRuleArgs struct {
 
 // The set of arguments for constructing a ForwardingRule resource.
 type ForwardingRuleArgs struct {
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, and internal and external protocol forwarding.
-	//   This option should be set to TRUE when the Forwarding Rule
-	//   IPProtocol is set to L3_DEFAULT.
-	//   Set this field to true to allow packets addressed to any port or packets
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `allPorts` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
 	//   lacking destination port information (for example, UDP fragments after the
 	//   first fragment) to be forwarded to the backends configured with this
-	//   forwarding rule.
-	//   The `ports`, `portRange`, and
-	//   `allPorts` fields are mutually exclusive.
+	//   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+	//   true.
 	AllPorts pulumi.BoolPtrInput
 	// This field is used along with the `backendService` field for
 	// internal load balancing or with the `target` field for internal
@@ -1246,45 +1289,51 @@ type ForwardingRuleArgs struct {
 	NetworkTier pulumi.StringPtrInput
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrInput
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By backend service-based network load balancers, target pool-based
-	//   network load balancers, internal proxy load balancers, external proxy load
-	//   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-	//   Some products have restrictions on what ports can be used. See
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `portRange` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
 	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 	//   for details.
-	//
-	// Only packets addressed to ports in the specified range will be forwarded to
-	// the backends configured with this forwarding rule.
-	// The `ports` and `portRange` fields are mutually exclusive.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot have
-	// overlapping `portRange`s.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot have overlapping `portRange`s.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+	//   `portRange`s.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+	//   cannot have overlapping `portRange`s.
+	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
-	// This field can only be used:
-	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
-	// * By internal TCP/UDP load balancers, backend service-based network load
-	//   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-	//
-	// You can specify a list of up to five ports by number, separated by commas.
-	// The ports can be contiguous or discontiguous. Only packets addressed to
-	// these ports will be forwarded to the backends configured with this
-	// forwarding rule.
-	// For external forwarding rules, two or more forwarding rules cannot use the
-	// same `[IPAddress, IPProtocol]` pair, and cannot share any values
-	// defined in `ports`.
-	// For internal forwarding rules within the same VPC network, two or more
-	// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-	// pair, and cannot share any values defined in `ports`.
-	// The `ports` and `portRange` fields are mutually exclusive.
+	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	// The `ports` field has the following limitations:
+	// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//   For external forwarding rules, two or more forwarding rules cannot use the
+	//   same `[IPAddress, IPProtocol]` pair if they share at least one port
+	//   number.
+	//   For internal forwarding rules within the same VPC network, two or more
+	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+	//   they share at least one port number.
+	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc pulumi.BoolPtrInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
 	Region pulumi.StringPtrInput
@@ -1349,12 +1398,6 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleOutput)
 }
 
-func (i *ForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRule] {
-	return pulumix.Output[*ForwardingRule]{
-		OutputState: i.ToForwardingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ForwardingRuleArrayInput is an input type that accepts ForwardingRuleArray and ForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleArrayInput` via:
 //
@@ -1378,12 +1421,6 @@ func (i ForwardingRuleArray) ToForwardingRuleArrayOutput() ForwardingRuleArrayOu
 
 func (i ForwardingRuleArray) ToForwardingRuleArrayOutputWithContext(ctx context.Context) ForwardingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleArrayOutput)
-}
-
-func (i ForwardingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ForwardingRule] {
-	return pulumix.Output[[]*ForwardingRule]{
-		OutputState: i.ToForwardingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ForwardingRuleMapInput is an input type that accepts ForwardingRuleMap and ForwardingRuleMapOutput values.
@@ -1411,12 +1448,6 @@ func (i ForwardingRuleMap) ToForwardingRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleMapOutput)
 }
 
-func (i ForwardingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ForwardingRule] {
-	return pulumix.Output[map[string]*ForwardingRule]{
-		OutputState: i.ToForwardingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleOutput) ElementType() reflect.Type {
@@ -1431,24 +1462,20 @@ func (o ForwardingRuleOutput) ToForwardingRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRule] {
-	return pulumix.Output[*ForwardingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
-// This field can only be used:
-//   - If `IPProtocol` is one of TCP, UDP, or SCTP.
-//   - By internal TCP/UDP load balancers, backend service-based network load
-//     balancers, and internal and external protocol forwarding.
-//     This option should be set to TRUE when the Forwarding Rule
-//     IPProtocol is set to L3_DEFAULT.
-//     Set this field to true to allow packets addressed to any port or packets
+// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+// The `allPorts` field has the following limitations:
+//   - It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+//     L3_DEFAULT.
+//   - It's applicable only to the following products: internal passthrough
+//     Network Load Balancers, backend service-based external passthrough Network
+//     Load Balancers, and internal and external protocol forwarding.
+//   - Set this field to true to allow packets addressed to any port or packets
 //     lacking destination port information (for example, UDP fragments after the
 //     first fragment) to be forwarded to the backends configured with this
-//     forwarding rule.
-//     The `ports`, `portRange`, and
-//     `allPorts` fields are mutually exclusive.
+//     forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+//     true.
 func (o ForwardingRuleOutput) AllPorts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.BoolPtrOutput { return v.AllPorts }).(pulumi.BoolPtrOutput)
 }
@@ -1639,44 +1666,48 @@ func (o ForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.BoolPtrOutput { return v.NoAutomateDnsZone }).(pulumi.BoolPtrOutput)
 }
 
-// This field can only be used:
-//   - If `IPProtocol` is one of TCP, UDP, or SCTP.
-//   - By backend service-based network load balancers, target pool-based
-//     network load balancers, internal proxy load balancers, external proxy load
-//     balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-//     Some products have restrictions on what ports can be used. See
+// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+// The `portRange` field has the following limitations:
+//   - It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: external passthrough
+//     Network Load Balancers, internal and external proxy Network Load
+//     Balancers, internal and external Application Load Balancers, external
+//     protocol forwarding, and Classic VPN.
+//   - Some products have restrictions on what ports can be used. See
 //     [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
 //     for details.
-//
-// Only packets addressed to ports in the specified range will be forwarded to
-// the backends configured with this forwarding rule.
-// The `ports` and `portRange` fields are mutually exclusive.
-// For external forwarding rules, two or more forwarding rules cannot use the
-// same `[IPAddress, IPProtocol]` pair, and cannot have
-// overlapping `portRange`s.
-// For internal forwarding rules within the same VPC network, two or more
-// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-// pair, and cannot have overlapping `portRange`s.
+//     For external forwarding rules, two or more forwarding rules cannot use the
+//     same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+//     `portRange`s.
+//     For internal forwarding rules within the same VPC network, two or more
+//     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+//     cannot have overlapping `portRange`s.
+//     @pattern: \d+(?:-\d+)?
 func (o ForwardingRuleOutput) PortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PortRange }).(pulumi.StringOutput)
 }
 
-// This field can only be used:
-//   - If `IPProtocol` is one of TCP, UDP, or SCTP.
-//   - By internal TCP/UDP load balancers, backend service-based network load
-//     balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-//
-// You can specify a list of up to five ports by number, separated by commas.
-// The ports can be contiguous or discontiguous. Only packets addressed to
-// these ports will be forwarded to the backends configured with this
-// forwarding rule.
-// For external forwarding rules, two or more forwarding rules cannot use the
-// same `[IPAddress, IPProtocol]` pair, and cannot share any values
-// defined in `ports`.
-// For internal forwarding rules within the same VPC network, two or more
-// forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-// pair, and cannot share any values defined in `ports`.
-// The `ports` and `portRange` fields are mutually exclusive.
+// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+// The `ports` field has the following limitations:
+//   - It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: internal passthrough
+//     Network Load Balancers, backend service-based external passthrough Network
+//     Load Balancers, and internal protocol forwarding.
+//   - You can specify a list of up to five ports by number, separated by
+//     commas. The ports can be contiguous or discontiguous.
+//     For external forwarding rules, two or more forwarding rules cannot use the
+//     same `[IPAddress, IPProtocol]` pair if they share at least one port
+//     number.
+//     For internal forwarding rules within the same VPC network, two or more
+//     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+//     they share at least one port number.
+//     @pattern: \d+(?:-\d+)?
 func (o ForwardingRuleOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
 }
@@ -1701,6 +1732,11 @@ func (o ForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o ForwardingRuleOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+func (o ForwardingRuleOutput) RecreateClosedPsc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.BoolPtrOutput { return v.RecreateClosedPsc }).(pulumi.BoolPtrOutput)
 }
 
 // A reference to the region where the regional forwarding rule resides.
@@ -1787,12 +1823,6 @@ func (o ForwardingRuleArrayOutput) ToForwardingRuleArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ForwardingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ForwardingRule] {
-	return pulumix.Output[[]*ForwardingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ForwardingRuleArrayOutput) Index(i pulumi.IntInput) ForwardingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ForwardingRule {
 		return vs[0].([]*ForwardingRule)[vs[1].(int)]
@@ -1811,12 +1841,6 @@ func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutput() ForwardingRuleMapOu
 
 func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutputWithContext(ctx context.Context) ForwardingRuleMapOutput {
 	return o
-}
-
-func (o ForwardingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ForwardingRule] {
-	return pulumix.Output[map[string]*ForwardingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) ForwardingRuleOutput {

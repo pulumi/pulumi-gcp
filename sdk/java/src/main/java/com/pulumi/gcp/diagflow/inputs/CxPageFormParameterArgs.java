@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxPageFormParameterAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageFormParameterFillBehaviorArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class CxPageFormParameterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxPageFormParameterArgs Empty = new CxPageFormParameterArgs();
+
+    /**
+     * Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedSettings")
+    private @Nullable Output<CxPageFormParameterAdvancedSettingsArgs> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxPageFormParameterAdvancedSettingsArgs>> advancedSettings() {
+        return Optional.ofNullable(this.advancedSettings);
+    }
 
     /**
      * The default value of an optional parameter. If the parameter is required, the default value will be ignored.
@@ -133,6 +153,7 @@ public final class CxPageFormParameterArgs extends com.pulumi.resources.Resource
     private CxPageFormParameterArgs() {}
 
     private CxPageFormParameterArgs(CxPageFormParameterArgs $) {
+        this.advancedSettings = $.advancedSettings;
         this.defaultValue = $.defaultValue;
         this.displayName = $.displayName;
         this.entityType = $.entityType;
@@ -158,6 +179,31 @@ public final class CxPageFormParameterArgs extends com.pulumi.resources.Resource
 
         public Builder(CxPageFormParameterArgs defaults) {
             $ = new CxPageFormParameterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(@Nullable Output<CxPageFormParameterAdvancedSettingsArgs> advancedSettings) {
+            $.advancedSettings = advancedSettings;
+            return this;
+        }
+
+        /**
+         * @param advancedSettings Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+         * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSettings(CxPageFormParameterAdvancedSettingsArgs advancedSettings) {
+            return advancedSettings(Output.of(advancedSettings));
         }
 
         /**

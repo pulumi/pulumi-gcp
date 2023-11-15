@@ -19,23 +19,6 @@ namespace Pulumi.Gcp.Redis
     ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
     /// ## Example Usage
-    /// ### Redis Instance Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var cache = new Gcp.Redis.Instance("cache", new()
-    ///     {
-    ///         MemorySizeGb = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Redis Instance Full
     /// 
     /// ```csharp
@@ -83,31 +66,6 @@ namespace Pulumi.Gcp.Redis
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Redis Instance Full With Persistence Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var cache_persis = new Gcp.Redis.Instance("cache-persis", new()
-    ///     {
-    ///         AlternativeLocationId = "us-central1-f",
-    ///         LocationId = "us-central1-a",
-    ///         MemorySizeGb = 1,
-    ///         PersistenceConfig = new Gcp.Redis.Inputs.InstancePersistenceConfigArgs
-    ///         {
-    ///             PersistenceMode = "RDB",
-    ///             RdbSnapshotPeriod = "TWELVE_HOURS",
-    ///         },
-    ///         Tier = "STANDARD_HA",
     ///     });
     /// 
     /// });
@@ -254,7 +212,15 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// ## Import
     /// 
-    /// Instance can be imported using any of these accepted formats
+    /// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
+    /// 
+    ///  to = google_redis_instance.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:redis/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

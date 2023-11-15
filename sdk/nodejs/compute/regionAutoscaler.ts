@@ -80,7 +80,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RegionAutoscaler can be imported using any of these accepted formats
+ * RegionAutoscaler can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionAutoscaler using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/regions/{{region}}/autoscalers/{{name}}"
+ *
+ *  to = google_compute_region_autoscaler.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionAutoscaler can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}

@@ -64,6 +64,8 @@ import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworksPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
@@ -133,6 +135,7 @@ import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
+import com.pulumi.gcp.compute.outputs.GetNetworksResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskIamPolicyResult;
@@ -6000,6 +6003,228 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkPeering:getNetworkPeering", TypeShape.of(GetNetworkPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworksResult> getNetworks() {
+        return getNetworks(GetNetworksArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworksResult> getNetworksPlain() {
+        return getNetworksPlain(GetNetworksPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
+        return getNetworks(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
+        return getNetworksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all networks in a specified Google Cloud project.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project(&#34;my-cloud-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides available node types for Compute Engine sole-tenant nodes in a zone

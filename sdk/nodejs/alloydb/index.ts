@@ -30,6 +30,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -41,6 +46,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "gcp:alloydb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "gcp:alloydb/user:User":
+                return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -49,3 +56,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "alloydb/backup", _module)
 pulumi.runtime.registerResourceModule("gcp", "alloydb/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "alloydb/instance", _module)
+pulumi.runtime.registerResourceModule("gcp", "alloydb/user", _module)

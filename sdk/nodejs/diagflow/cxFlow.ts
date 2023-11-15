@@ -16,6 +16,75 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
+ * ### Dialogflowcx Flow Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "fr",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const basicFlow = new gcp.diagflow.CxFlow("basicFlow", {
+ *     parent: agent.id,
+ *     displayName: "MyFlow",
+ *     description: "Test Flow",
+ *     nluSettings: {
+ *         classificationThreshold: 0.3,
+ *         modelType: "MODEL_TYPE_STANDARD",
+ *     },
+ *     eventHandlers: [
+ *         {
+ *             event: "custom-event",
+ *             triggerFulfillment: {
+ *                 returnPartialResponses: false,
+ *                 messages: [{
+ *                     text: {
+ *                         texts: ["I didn't get that. Can you say it again?"],
+ *                     },
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             event: "sys.no-match-default",
+ *             triggerFulfillment: {
+ *                 returnPartialResponses: false,
+ *                 messages: [{
+ *                     text: {
+ *                         texts: ["Sorry, could you say that again?"],
+ *                     },
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             event: "sys.no-input-default",
+ *             triggerFulfillment: {
+ *                 returnPartialResponses: false,
+ *                 messages: [{
+ *                     text: {
+ *                         texts: ["One more time?"],
+ *                     },
+ *                 }],
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
  * ### Dialogflowcx Flow Full
  *
  * ```typescript
@@ -39,6 +108,10 @@ import * as utilities from "../utilities";
  *     speechToTextSettings: {
  *         enableSpeechAdaptation: true,
  *     },
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
  * });
  * const basicFlow = new gcp.diagflow.CxFlow("basicFlow", {
  *     parent: agent.id,
@@ -284,12 +357,30 @@ import * as utilities from "../utilities";
  *         },
  *         targetFlow: agent.startFlow,
  *     }],
+ *     advancedSettings: {
+ *         audioExportGcsDestination: {
+ *             uri: pulumi.interpolate`${bucket.url}/prefix-`,
+ *         },
+ *         dtmfSettings: {
+ *             enabled: true,
+ *             maxDigits: 1,
+ *             finishDigit: "#",
+ *         },
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * Flow can be imported using any of these accepted formats
+ * Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
+ *
+ *  id = "{{parent}}/flows/{{name}}"
+ *
+ *  to = google_dialogflow_cx_flow.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
@@ -328,6 +419,12 @@ export class CxFlow extends pulumi.CustomResource {
     }
 
     /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxFlowAdvancedSettings | undefined>;
+    /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -346,6 +443,13 @@ export class CxFlow extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly eventHandlers!: pulumi.Output<outputs.diagflow.CxFlowEventHandler[]>;
+    /**
+     * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     */
+    public readonly isDefaultStartFlow!: pulumi.Output<boolean | undefined>;
     /**
      * The language of the following fields in flow:
      * Flow.event_handlers.trigger_fulfillment.messages
@@ -402,9 +506,11 @@ export class CxFlow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxFlowState | undefined;
+            resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["eventHandlers"] = state ? state.eventHandlers : undefined;
+            resourceInputs["isDefaultStartFlow"] = state ? state.isDefaultStartFlow : undefined;
             resourceInputs["languageCode"] = state ? state.languageCode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nluSettings"] = state ? state.nluSettings : undefined;
@@ -416,9 +522,11 @@ export class CxFlow extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
+            resourceInputs["isDefaultStartFlow"] = args ? args.isDefaultStartFlow : undefined;
             resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["nluSettings"] = args ? args.nluSettings : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
@@ -435,6 +543,12 @@ export class CxFlow extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CxFlow resources.
  */
 export interface CxFlowState {
+    /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettings>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -454,6 +568,13 @@ export interface CxFlowState {
      * Structure is documented below.
      */
     eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandler>[]>;
+    /**
+     * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     */
+    isDefaultStartFlow?: pulumi.Input<boolean>;
     /**
      * The language of the following fields in flow:
      * Flow.event_handlers.trigger_fulfillment.messages
@@ -503,6 +624,12 @@ export interface CxFlowState {
  */
 export interface CxFlowArgs {
     /**
+     * Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+     * Structure is documented below.
+     */
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettings>;
+    /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
     description?: pulumi.Input<string>;
@@ -521,6 +648,13 @@ export interface CxFlowArgs {
      * Structure is documented below.
      */
     eventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandler>[]>;
+    /**
+     * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
+     * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
+     */
+    isDefaultStartFlow?: pulumi.Input<boolean>;
     /**
      * The language of the following fields in flow:
      * Flow.event_handlers.trigger_fulfillment.messages

@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'WorkstationClusterConditionArgs',
+    'WorkstationClusterDomainConfigArgs',
     'WorkstationClusterPrivateClusterConfigArgs',
     'WorkstationConfigConditionArgs',
     'WorkstationConfigContainerArgs',
@@ -87,6 +88,28 @@ class WorkstationClusterConditionArgs:
     @message.setter
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class WorkstationClusterDomainConfigArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: Domain used by Workstations for HTTP ingress.
+        """
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        Domain used by Workstations for HTTP ingress.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
 
 
 @pulumi.input_type

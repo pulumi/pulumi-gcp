@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentCustomerEncryption;
+import com.pulumi.gcp.storage.outputs.GetBucketObjectContentRetention;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -41,6 +42,7 @@ public final class GetBucketObjectContentResult {
     private Map<String,String> metadata;
     private String name;
     private String outputName;
+    private List<GetBucketObjectContentRetention> retentions;
     private String selfLink;
     private String source;
     private String storageClass;
@@ -109,6 +111,9 @@ public final class GetBucketObjectContentResult {
     public String outputName() {
         return this.outputName;
     }
+    public List<GetBucketObjectContentRetention> retentions() {
+        return this.retentions;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -149,6 +154,7 @@ public final class GetBucketObjectContentResult {
         private Map<String,String> metadata;
         private String name;
         private String outputName;
+        private List<GetBucketObjectContentRetention> retentions;
         private String selfLink;
         private String source;
         private String storageClass;
@@ -174,6 +180,7 @@ public final class GetBucketObjectContentResult {
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.outputName = defaults.outputName;
+    	      this.retentions = defaults.retentions;
     	      this.selfLink = defaults.selfLink;
     	      this.source = defaults.source;
     	      this.storageClass = defaults.storageClass;
@@ -274,6 +281,14 @@ public final class GetBucketObjectContentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder retentions(List<GetBucketObjectContentRetention> retentions) {
+            this.retentions = Objects.requireNonNull(retentions);
+            return this;
+        }
+        public Builder retentions(GetBucketObjectContentRetention... retentions) {
+            return retentions(List.of(retentions));
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
@@ -313,6 +328,7 @@ public final class GetBucketObjectContentResult {
             o.metadata = metadata;
             o.name = name;
             o.outputName = outputName;
+            o.retentions = retentions;
             o.selfLink = selfLink;
             o.source = source;
             o.storageClass = storageClass;

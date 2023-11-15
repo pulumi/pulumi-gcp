@@ -101,7 +101,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SourceRepresentationInstance can be imported using any of these accepted formats
+ * SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SourceRepresentationInstance using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/instances/{{name}}&#34;
+ * 
+ *  to = google_sql_source_representation_instance.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SourceRepresentationInstance can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
@@ -191,7 +199,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.dumpFilePath);
     }
     /**
-     * The externally accessible IPv4 address for the source database server.
+     * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
      * 
      * ***
      * 
@@ -200,7 +208,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
     private Output<String> host;
 
     /**
-     * @return The externally accessible IPv4 address for the source database server.
+     * @return The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
      * 
      * ***
      * 

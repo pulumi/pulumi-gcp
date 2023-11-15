@@ -162,14 +162,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
+ * Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g. * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Functions using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{project}}/{{region}}/{{name}}&#34;
+ * 
+ *  to = google_cloudfunctions_function.default }
  * 
  * ```sh
- *  $ pulumi import gcp:cloudfunctions/function:Function default function-test
+ *  $ pulumi import gcp:cloudfunctions/function:Function When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Functions can be imported using one of the formats above. For example
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/function-test
+ *  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
  * ```
  * 
  */

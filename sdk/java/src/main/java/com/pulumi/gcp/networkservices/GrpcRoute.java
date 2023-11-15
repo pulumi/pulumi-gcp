@@ -207,7 +207,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GrpcRoute can be imported using any of these accepted formats
+ * GrpcRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/grpcRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GrpcRoute using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/global/grpcRoutes/{{name}}&#34;
+ * 
+ *  to = google_network_services_grpc_route.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GrpcRoute can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}

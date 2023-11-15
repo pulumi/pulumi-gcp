@@ -21,6 +21,7 @@ class MembershipArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Membership resource.
@@ -42,6 +43,8 @@ class MembershipArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -57,6 +60,8 @@ class MembershipArgs:
             pulumi.set(__self__, "endpoint", endpoint)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -138,6 +143,19 @@ class MembershipArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the membership.
+        The default value is `global`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -158,6 +176,7 @@ class _MembershipState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -179,6 +198,8 @@ class _MembershipState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
                
                
@@ -202,6 +223,8 @@ class _MembershipState:
             pulumi.set(__self__, "endpoint", endpoint)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if membership_id is not None:
             pulumi.set(__self__, "membership_id", membership_id)
         if name is not None:
@@ -285,6 +308,19 @@ class _MembershipState:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the membership.
+        The default value is `global`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
     @pulumi.getter(name="membershipId")
     def membership_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -347,6 +383,7 @@ class Membership(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -360,6 +397,25 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Membership Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            deletion_protection=False,
+            initial_node_count=1,
+            location="us-central1-a")
+        membership = gcp.gkehub.Membership("membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            location="us-west1",
+            membership_id="basic")
+        ```
         ### Gkehub Membership Basic
 
         ```python
@@ -408,18 +464,26 @@ class Membership(pulumi.CustomResource):
 
         ## Import
 
-        Membership can be imported using any of these accepted formats
+        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
+
+         to = google_gke_hub_membership.default }
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+         $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -438,6 +502,8 @@ class Membership(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
                
                
@@ -461,6 +527,25 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+        ### Gkehub Membership Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            deletion_protection=False,
+            initial_node_count=1,
+            location="us-central1-a")
+        membership = gcp.gkehub.Membership("membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            location="us-west1",
+            membership_id="basic")
+        ```
         ### Gkehub Membership Basic
 
         ```python
@@ -509,18 +594,26 @@ class Membership(pulumi.CustomResource):
 
         ## Import
 
-        Membership can be imported using any of these accepted formats
+        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
+
+         to = google_gke_hub_membership.default }
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+         $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -542,6 +635,7 @@ class Membership(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -557,6 +651,7 @@ class Membership(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["location"] = location
             if membership_id is None and not opts.urn:
                 raise TypeError("Missing required property 'membership_id'")
             __props__.__dict__["membership_id"] = membership_id
@@ -581,6 +676,7 @@ class Membership(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             membership_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -607,6 +703,8 @@ class Membership(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: Location of the membership.
+               The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
                
                
@@ -626,6 +724,7 @@ class Membership(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["location"] = location
         __props__.__dict__["membership_id"] = membership_id
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -684,6 +783,15 @@ class Membership(pulumi.CustomResource):
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Location of the membership.
+        The default value is `global`.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="membershipId")

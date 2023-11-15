@@ -172,6 +172,11 @@ export class AccessLevelCondition extends pulumi.CustomResource {
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
     public readonly requiredAccessLevels!: pulumi.Output<string[] | undefined>;
+    /**
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+     * Structure is documented below.
+     */
+    public readonly vpcNetworkSources!: pulumi.Output<outputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource[] | undefined>;
 
     /**
      * Create a AccessLevelCondition resource with the given unique name, arguments, and options.
@@ -193,6 +198,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
             resourceInputs["negate"] = state ? state.negate : undefined;
             resourceInputs["regions"] = state ? state.regions : undefined;
             resourceInputs["requiredAccessLevels"] = state ? state.requiredAccessLevels : undefined;
+            resourceInputs["vpcNetworkSources"] = state ? state.vpcNetworkSources : undefined;
         } else {
             const args = argsOrState as AccessLevelConditionArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
@@ -205,6 +211,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
             resourceInputs["negate"] = args ? args.negate : undefined;
             resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["requiredAccessLevels"] = args ? args.requiredAccessLevels : undefined;
+            resourceInputs["vpcNetworkSources"] = args ? args.vpcNetworkSources : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessLevelCondition.__pulumiType, name, resourceInputs, opts);
@@ -272,6 +279,11 @@ export interface AccessLevelConditionState {
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
     requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+     * Structure is documented below.
+     */
+    vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource>[]>;
 }
 
 /**
@@ -335,4 +347,9 @@ export interface AccessLevelConditionArgs {
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
     requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+     * Structure is documented below.
+     */
+    vpcNetworkSources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource>[]>;
 }

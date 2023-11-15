@@ -5,6 +5,7 @@ package com.pulumi.gcp.spanner.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,6 +18,29 @@ import javax.annotation.Nullable;
 public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
+
+    /**
+     * The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, num_nodes and processing_units are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoscalingConfig")
+    private @Nullable Output<InstanceAutoscalingConfigArgs> autoscalingConfig;
+
+    /**
+     * @return The autoscaling configuration. Autoscaling is enabled if this field is set.
+     * When autoscaling is enabled, num_nodes and processing_units are treated as,
+     * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+     * the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceAutoscalingConfigArgs>> autoscalingConfig() {
+        return Optional.ofNullable(this.autoscalingConfig);
+    }
 
     /**
      * The name of the instance&#39;s configuration (similar but not
@@ -228,6 +252,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.autoscalingConfig = $.autoscalingConfig;
         this.config = $.config;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
@@ -257,6 +282,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceState defaults) {
             $ = new InstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
+         * When autoscaling is enabled, num_nodes and processing_units are treated as,
+         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+         * the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingConfig(@Nullable Output<InstanceAutoscalingConfigArgs> autoscalingConfig) {
+            $.autoscalingConfig = autoscalingConfig;
+            return this;
+        }
+
+        /**
+         * @param autoscalingConfig The autoscaling configuration. Autoscaling is enabled if this field is set.
+         * When autoscaling is enabled, num_nodes and processing_units are treated as,
+         * OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+         * the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingConfig(InstanceAutoscalingConfigArgs autoscalingConfig) {
+            return autoscalingConfig(Output.of(autoscalingConfig));
         }
 
         /**

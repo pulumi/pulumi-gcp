@@ -86,7 +86,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DomainMapping can be imported using any of these accepted formats
+ * DomainMapping can be imported using any of these accepted formats* `locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}` * `{{location}}/{{project}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DomainMapping using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}&#34;
+ * 
+ *  to = google_cloud_run_domain_mapping.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DomainMapping can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}

@@ -5001,7 +5001,8 @@ class VMwareClusterLoadBalancerF5Config(dict):
                  partition: Optional[str] = None,
                  snat_pool: Optional[str] = None):
         """
-        :param str address: The load balancer's IP address.
+        :param str address: (Output)
+               The vCenter IP address.
         :param str partition: he preexisting partition to be used by the load balancer. T
                his partition is usually created for the admin cluster for example:
                'my-f5-admin-partition'.
@@ -5018,7 +5019,8 @@ class VMwareClusterLoadBalancerF5Config(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The load balancer's IP address.
+        (Output)
+        The vCenter IP address.
         """
         return pulumi.get(self, "address")
 
@@ -6164,23 +6166,15 @@ class VMwareClusterVcenter(dict):
                  resource_pool: Optional[str] = None,
                  storage_policy_name: Optional[str] = None):
         """
-        :param str address: The load balancer's IP address.
-        :param str ca_cert_data: (Output)
-               Contains the vCenter CA certificate public key for SSL verification.
-        :param str cluster: (Output)
-               The name of the vCenter cluster for the user cluster.
-        :param str datacenter: (Output)
-               The name of the vCenter datacenter for the user cluster.
-        :param str datastore: (Output)
-               The Vsphere datastore used by the Control Plane Node.
-        :param str folder: (Output)
-               The name of the vCenter folder for the user cluster.
-        :param str resource_pool: (Output)
-               The name of the vCenter resource pool for the user cluster.
-        :param str storage_policy_name: (Output)
-               The Vsphere storage policy used by the control plane Node.
-               
-               - - -
+        :param str address: (Output)
+               The vCenter IP address.
+        :param str ca_cert_data: Contains the vCenter CA certificate public key for SSL verification.
+        :param str cluster: The name of the vCenter cluster for the user cluster.
+        :param str datacenter: The name of the vCenter datacenter for the user cluster.
+        :param str datastore: The name of the vCenter datastore for the user cluster.
+        :param str folder: The name of the vCenter folder for the user cluster.
+        :param str resource_pool: The name of the vCenter resource pool for the user cluster.
+        :param str storage_policy_name: The name of the vCenter storage policy for the user cluster.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -6203,7 +6197,8 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        The load balancer's IP address.
+        (Output)
+        The vCenter IP address.
         """
         return pulumi.get(self, "address")
 
@@ -6211,7 +6206,6 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter(name="caCertData")
     def ca_cert_data(self) -> Optional[str]:
         """
-        (Output)
         Contains the vCenter CA certificate public key for SSL verification.
         """
         return pulumi.get(self, "ca_cert_data")
@@ -6220,7 +6214,6 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter
     def cluster(self) -> Optional[str]:
         """
-        (Output)
         The name of the vCenter cluster for the user cluster.
         """
         return pulumi.get(self, "cluster")
@@ -6229,7 +6222,6 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter
     def datacenter(self) -> Optional[str]:
         """
-        (Output)
         The name of the vCenter datacenter for the user cluster.
         """
         return pulumi.get(self, "datacenter")
@@ -6238,8 +6230,7 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter
     def datastore(self) -> Optional[str]:
         """
-        (Output)
-        The Vsphere datastore used by the Control Plane Node.
+        The name of the vCenter datastore for the user cluster.
         """
         return pulumi.get(self, "datastore")
 
@@ -6247,7 +6238,6 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter
     def folder(self) -> Optional[str]:
         """
-        (Output)
         The name of the vCenter folder for the user cluster.
         """
         return pulumi.get(self, "folder")
@@ -6256,7 +6246,6 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter(name="resourcePool")
     def resource_pool(self) -> Optional[str]:
         """
-        (Output)
         The name of the vCenter resource pool for the user cluster.
         """
         return pulumi.get(self, "resource_pool")
@@ -6265,10 +6254,7 @@ class VMwareClusterVcenter(dict):
     @pulumi.getter(name="storagePolicyName")
     def storage_policy_name(self) -> Optional[str]:
         """
-        (Output)
-        The Vsphere storage policy used by the control plane Node.
-
-        - - -
+        The name of the vCenter storage policy for the user cluster.
         """
         return pulumi.get(self, "storage_policy_name")
 

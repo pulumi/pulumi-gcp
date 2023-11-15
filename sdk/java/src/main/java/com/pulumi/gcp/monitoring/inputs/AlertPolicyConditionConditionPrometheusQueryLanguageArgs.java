@@ -146,9 +146,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * in order to refer to the original Prometheus configuration file.
      * The rule group name and the alert name are necessary to update the
      * relevant AlertPolicies in case the definition of the rule group changes
-     * in the future.
-     * This field is optional. If this field is not empty, then it must be a
-     * valid Prometheus label name.
+     * in the future. This field is optional.
      * 
      */
     @Import(name="ruleGroup")
@@ -161,9 +159,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * in order to refer to the original Prometheus configuration file.
      * The rule group name and the alert name are necessary to update the
      * relevant AlertPolicies in case the definition of the rule group changes
-     * in the future.
-     * This field is optional. If this field is not empty, then it must be a
-     * valid Prometheus label name.
+     * in the future. This field is optional.
      * 
      */
     public Optional<Output<String>> ruleGroup() {
@@ -359,9 +355,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * in order to refer to the original Prometheus configuration file.
          * The rule group name and the alert name are necessary to update the
          * relevant AlertPolicies in case the definition of the rule group changes
-         * in the future.
-         * This field is optional. If this field is not empty, then it must be a
-         * valid Prometheus label name.
+         * in the future. This field is optional.
          * 
          * @return builder
          * 
@@ -378,9 +372,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * in order to refer to the original Prometheus configuration file.
          * The rule group name and the alert name are necessary to update the
          * relevant AlertPolicies in case the definition of the rule group changes
-         * in the future.
-         * This field is optional. If this field is not empty, then it must be a
-         * valid Prometheus label name.
+         * in the future. This field is optional.
          * 
          * @return builder
          * 

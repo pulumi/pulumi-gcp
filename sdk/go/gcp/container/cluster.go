@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Google Kubernetes Engine (GKE) cluster. For more information see
@@ -117,23 +116,33 @@ import (
 //
 // ## Import
 //
-// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
+//
+//	to = google_container_cluster.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+//	$ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+//	$ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+//	$ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
 //
 // ```
 //
@@ -228,6 +237,10 @@ type Cluster struct {
 	EnableTpu pulumi.BoolOutput `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Fleet configuration for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	Fleet ClusterFleetPtrOutput `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigOutput `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
@@ -402,8 +415,6 @@ type Cluster struct {
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	SecurityPostureConfig ClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -549,6 +560,10 @@ type clusterState struct {
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint *string `pulumi:"endpoint"`
+	// Fleet configuration for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	Fleet *ClusterFleet `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
@@ -723,8 +738,6 @@ type clusterState struct {
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -841,6 +854,10 @@ type ClusterState struct {
 	EnableTpu pulumi.BoolPtrInput
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringPtrInput
+	// Fleet configuration for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	Fleet ClusterFleetPtrInput
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
 	// . Structure is documented below.
@@ -1015,8 +1032,6 @@ type ClusterState struct {
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// The server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
@@ -1135,6 +1150,10 @@ type clusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu *bool `pulumi:"enableTpu"`
+	// Fleet configuration for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	Fleet *ClusterFleet `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
@@ -1302,8 +1321,6 @@ type clusterArgs struct {
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// Structure is documented below.
 	ServiceExternalIpsConfig *ClusterServiceExternalIpsConfig `pulumi:"serviceExternalIpsConfig"`
@@ -1408,6 +1425,10 @@ type ClusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrInput
+	// Fleet configuration for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	Fleet ClusterFleetPtrInput
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
 	// . Structure is documented below.
@@ -1575,8 +1596,6 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// Structure is documented below.
 	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigPtrInput
@@ -1617,12 +1636,6 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
 }
 
-func (i *Cluster) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
-	return pulumix.Output[*Cluster]{
-		OutputState: i.ToClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
@@ -1646,12 +1659,6 @@ func (i ClusterArray) ToClusterArrayOutput() ClusterArrayOutput {
 
 func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) ClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterArrayOutput)
-}
-
-func (i ClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*Cluster] {
-	return pulumix.Output[[]*Cluster]{
-		OutputState: i.ToClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
@@ -1679,12 +1686,6 @@ func (i ClusterMap) ToClusterMapOutputWithContext(ctx context.Context) ClusterMa
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMapOutput)
 }
 
-func (i ClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cluster] {
-	return pulumix.Output[map[string]*Cluster]{
-		OutputState: i.ToClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterOutput struct{ *pulumi.OutputState }
 
 func (ClusterOutput) ElementType() reflect.Type {
@@ -1697,12 +1698,6 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
-}
-
-func (o ClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
-	return pulumix.Output[*Cluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration for addons supported by GKE.
@@ -1871,6 +1866,13 @@ func (o ClusterOutput) EnableTpu() pulumi.BoolOutput {
 // The IP address of this cluster's Kubernetes master.
 func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Fleet configuration for the cluster. Structure is documented below.
+//
+// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+func (o ClusterOutput) Fleet() ClusterFleetPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterFleetPtrOutput { return v.Fleet }).(ClusterFleetPtrOutput)
 }
 
 // Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
@@ -2158,8 +2160,6 @@ func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportCon
 }
 
 // Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-//
-// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 func (o ClusterOutput) SecurityPostureConfig() ClusterSecurityPostureConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSecurityPostureConfigOutput { return v.SecurityPostureConfig }).(ClusterSecurityPostureConfigOutput)
 }
@@ -2227,12 +2227,6 @@ func (o ClusterArrayOutput) ToClusterArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Cluster] {
-	return pulumix.Output[[]*Cluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterArrayOutput) Index(i pulumi.IntInput) ClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cluster {
 		return vs[0].([]*Cluster)[vs[1].(int)]
@@ -2251,12 +2245,6 @@ func (o ClusterMapOutput) ToClusterMapOutput() ClusterMapOutput {
 
 func (o ClusterMapOutput) ToClusterMapOutputWithContext(ctx context.Context) ClusterMapOutput {
 	return o
-}
-
-func (o ClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Cluster] {
-	return pulumix.Output[map[string]*Cluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterMapOutput) MapIndex(k pulumi.StringInput) ClusterOutput {

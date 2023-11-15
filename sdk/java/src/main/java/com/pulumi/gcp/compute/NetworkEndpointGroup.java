@@ -130,7 +130,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkEndpointGroup can be imported using any of these accepted formats
+ * NetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkEndpointGroup using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}&#34;
+ * 
+ *  to = google_compute_network_endpoint_group.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkEndpointGroup can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
@@ -237,9 +245,9 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
-     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
@@ -253,9 +261,9 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
-     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     public Output<Optional<String>> networkEndpointType() {

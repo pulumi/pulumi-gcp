@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Response Policy Rule is a selector that applies its behavior to queries that match the selector.
@@ -88,7 +87,17 @@ import (
 //
 // ## Import
 //
-// # ResponsePolicyRule can be imported using any of these accepted formats
+// ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResponsePolicyRule using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}"
+//
+//	to = google_dns_response_policy_rule.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResponsePolicyRule can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -280,12 +289,6 @@ func (i *ResponsePolicyRule) ToResponsePolicyRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleOutput)
 }
 
-func (i *ResponsePolicyRule) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRule] {
-	return pulumix.Output[*ResponsePolicyRule]{
-		OutputState: i.ToResponsePolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResponsePolicyRuleArrayInput is an input type that accepts ResponsePolicyRuleArray and ResponsePolicyRuleArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyRuleArrayInput` via:
 //
@@ -309,12 +312,6 @@ func (i ResponsePolicyRuleArray) ToResponsePolicyRuleArrayOutput() ResponsePolic
 
 func (i ResponsePolicyRuleArray) ToResponsePolicyRuleArrayOutputWithContext(ctx context.Context) ResponsePolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleArrayOutput)
-}
-
-func (i ResponsePolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResponsePolicyRule] {
-	return pulumix.Output[[]*ResponsePolicyRule]{
-		OutputState: i.ToResponsePolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ResponsePolicyRuleMapInput is an input type that accepts ResponsePolicyRuleMap and ResponsePolicyRuleMapOutput values.
@@ -342,12 +339,6 @@ func (i ResponsePolicyRuleMap) ToResponsePolicyRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleMapOutput)
 }
 
-func (i ResponsePolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResponsePolicyRule] {
-	return pulumix.Output[map[string]*ResponsePolicyRule]{
-		OutputState: i.ToResponsePolicyRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResponsePolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyRuleOutput) ElementType() reflect.Type {
@@ -360,12 +351,6 @@ func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutput() ResponsePolicyRul
 
 func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutputWithContext(ctx context.Context) ResponsePolicyRuleOutput {
 	return o
-}
-
-func (o ResponsePolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRule] {
-	return pulumix.Output[*ResponsePolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
@@ -418,12 +403,6 @@ func (o ResponsePolicyRuleArrayOutput) ToResponsePolicyRuleArrayOutputWithContex
 	return o
 }
 
-func (o ResponsePolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResponsePolicyRule] {
-	return pulumix.Output[[]*ResponsePolicyRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResponsePolicyRuleArrayOutput) Index(i pulumi.IntInput) ResponsePolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResponsePolicyRule {
 		return vs[0].([]*ResponsePolicyRule)[vs[1].(int)]
@@ -442,12 +421,6 @@ func (o ResponsePolicyRuleMapOutput) ToResponsePolicyRuleMapOutput() ResponsePol
 
 func (o ResponsePolicyRuleMapOutput) ToResponsePolicyRuleMapOutputWithContext(ctx context.Context) ResponsePolicyRuleMapOutput {
 	return o
-}
-
-func (o ResponsePolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResponsePolicyRule] {
-	return pulumix.Output[map[string]*ResponsePolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResponsePolicyRuleMapOutput) MapIndex(k pulumi.StringInput) ResponsePolicyRuleOutput {

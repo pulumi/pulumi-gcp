@@ -133,7 +133,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CertificateIssuanceConfig can be imported using any of these accepted formats
+ * CertificateIssuanceConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CertificateIssuanceConfig using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}&#34;
+ * 
+ *  to = google_certificate_manager_certificate_issuance_config.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CertificateIssuanceConfig can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}

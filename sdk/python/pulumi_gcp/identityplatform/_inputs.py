@@ -20,6 +20,9 @@ __all__ = [
     'ConfigSignInEmailArgs',
     'ConfigSignInHashConfigArgs',
     'ConfigSignInPhoneNumberArgs',
+    'ConfigSmsRegionConfigArgs',
+    'ConfigSmsRegionConfigAllowByDefaultArgs',
+    'ConfigSmsRegionConfigAllowlistOnlyArgs',
     'InboundSamlConfigIdpConfigArgs',
     'InboundSamlConfigIdpConfigIdpCertificateArgs',
     'InboundSamlConfigSpConfigArgs',
@@ -565,6 +568,95 @@ class ConfigSignInPhoneNumberArgs:
     @test_phone_numbers.setter
     def test_phone_numbers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "test_phone_numbers", value)
+
+
+@pulumi.input_type
+class ConfigSmsRegionConfigArgs:
+    def __init__(__self__, *,
+                 allow_by_default: Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs']] = None,
+                 allowlist_only: Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs']] = None):
+        """
+        :param pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs'] allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+               Structure is documented below.
+        :param pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs'] allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
+               Structure is documented below.
+        """
+        if allow_by_default is not None:
+            pulumi.set(__self__, "allow_by_default", allow_by_default)
+        if allowlist_only is not None:
+            pulumi.set(__self__, "allowlist_only", allowlist_only)
+
+    @property
+    @pulumi.getter(name="allowByDefault")
+    def allow_by_default(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs']]:
+        """
+        A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allow_by_default")
+
+    @allow_by_default.setter
+    def allow_by_default(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigAllowByDefaultArgs']]):
+        pulumi.set(self, "allow_by_default", value)
+
+    @property
+    @pulumi.getter(name="allowlistOnly")
+    def allowlist_only(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs']]:
+        """
+        A policy of only allowing regions by explicitly adding them to an allowlist.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowlist_only")
+
+    @allowlist_only.setter
+    def allowlist_only(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigAllowlistOnlyArgs']]):
+        pulumi.set(self, "allowlist_only", value)
+
+
+@pulumi.input_type
+class ConfigSmsRegionConfigAllowByDefaultArgs:
+    def __init__(__self__, *,
+                 disallowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disallowed_regions: Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        if disallowed_regions is not None:
+            pulumi.set(__self__, "disallowed_regions", disallowed_regions)
+
+    @property
+    @pulumi.getter(name="disallowedRegions")
+    def disallowed_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "disallowed_regions")
+
+    @disallowed_regions.setter
+    def disallowed_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disallowed_regions", value)
+
+
+@pulumi.input_type
+class ConfigSmsRegionConfigAllowlistOnlyArgs:
+    def __init__(__self__, *,
+                 allowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_regions: Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        if allowed_regions is not None:
+            pulumi.set(__self__, "allowed_regions", allowed_regions)
+
+    @property
+    @pulumi.getter(name="allowedRegions")
+    def allowed_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "allowed_regions")
+
+    @allowed_regions.setter
+    def allowed_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_regions", value)
 
 
 @pulumi.input_type

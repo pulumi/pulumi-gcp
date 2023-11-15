@@ -257,7 +257,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Job can be imported using any of these accepted formats
+ * Job can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/jobs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Job using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/jobs/{{name}}"
+ *
+ *  to = google_cloud_run_v2_job.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrunv2/job:Job When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Job can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
@@ -393,7 +401,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The location of the cloud run job
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the Job.
      */
@@ -481,6 +489,9 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
@@ -709,7 +720,7 @@ export interface JobArgs {
     /**
      * The location of the cloud run job
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Name of the Job.
      */

@@ -19,12 +19,11 @@ import * as utilities from "../utilities";
  *
  * > **Warning:** This resource creates a Firestore Index on a project that already has
  * a Firestore database. If you haven't already created it, you may
- * create a `gcp.firestore.Database` resource with `type` set to
- * `"FIRESTORE_NATIVE"` and `locationId` set to your chosen location.
- * If you wish to use App Engine, you may instead create a
- * `gcp.appengine.Application` resource with `databaseType` set to
- * `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
- * the App Engine location specified.
+ * create a `gcp.firestore.Database` resource and `locationId` set
+ * to your chosen location. If you wish to use App Engine, you may
+ * instead create a `gcp.appengine.Application` resource with
+ * `databaseType` set to `"CLOUD_FIRESTORE"`. Your Firestore location
+ * will be the same as the App Engine location specified.
  *
  * ## Example Usage
  * ### Firestore Index Basic
@@ -48,10 +47,41 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * ### Firestore Index Datastore Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_datastore_mode_index = new gcp.firestore.Index("my-datastore-mode-index", {
+ *     apiScope: "DATASTORE_MODE_API",
+ *     collection: "chatrooms",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ *     project: "my-project-name",
+ *     queryScope: "COLLECTION_RECURSIVE",
+ * });
+ * ```
  *
  * ## Import
  *
- * Index can be imported using any of these accepted formats:
+ * Index can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Index using one of the formats above. For exampletf import {
+ *
+ *  id = "{{name}}"
+ *
+ *  to = google_firestore_index.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:firestore/index:Index When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Index can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:firestore/index:Index default {{name}}
@@ -86,6 +116,12 @@ export class Index extends pulumi.CustomResource {
     }
 
     /**
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     */
+    public readonly apiScope!: pulumi.Output<string | undefined>;
+    /**
      * The collection being indexed.
      */
     public readonly collection!: pulumi.Output<string>;
@@ -116,7 +152,7 @@ export class Index extends pulumi.CustomResource {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     public readonly queryScope!: pulumi.Output<string | undefined>;
 
@@ -133,6 +169,7 @@ export class Index extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndexState | undefined;
+            resourceInputs["apiScope"] = state ? state.apiScope : undefined;
             resourceInputs["collection"] = state ? state.collection : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["fields"] = state ? state.fields : undefined;
@@ -147,6 +184,7 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.fields === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
+            resourceInputs["apiScope"] = args ? args.apiScope : undefined;
             resourceInputs["collection"] = args ? args.collection : undefined;
             resourceInputs["database"] = args ? args.database : undefined;
             resourceInputs["fields"] = args ? args.fields : undefined;
@@ -163,6 +201,12 @@ export class Index extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Index resources.
  */
 export interface IndexState {
+    /**
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     */
+    apiScope?: pulumi.Input<string>;
     /**
      * The collection being indexed.
      */
@@ -194,7 +238,7 @@ export interface IndexState {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
 }
@@ -203,6 +247,12 @@ export interface IndexState {
  * The set of arguments for constructing a Index resource.
  */
 export interface IndexArgs {
+    /**
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
+     */
+    apiScope?: pulumi.Input<string>;
     /**
      * The collection being indexed.
      */
@@ -229,7 +279,7 @@ export interface IndexArgs {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
 }

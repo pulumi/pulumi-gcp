@@ -41,7 +41,15 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// ## Import
     /// 
-    /// Processor can be imported using any of these accepted formats
+    /// Processor can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/processors/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Processor using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/processors/{{name}}"
+    /// 
+    ///  to = google_document_ai_processor.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Processor can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default projects/{{project}}/locations/{{location}}/processors/{{name}}

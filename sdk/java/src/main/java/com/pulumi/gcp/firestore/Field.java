@@ -43,7 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firestore.Field;
  * import com.pulumi.gcp.firestore.FieldArgs;
  * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
- * import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,7 +71,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .build())
  *             .project(&#34;my-project-name&#34;)
- *             .ttlConfig()
  *             .build());
  * 
  *     }
@@ -160,7 +158,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Field can be imported using any of these accepted formats:
+ * Field can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Field using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_firestore_field.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:firestore/field:Field When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Field can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:firestore/field:Field default {{name}}
@@ -270,7 +276,7 @@ public class Field extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * If set, this field is configured for TTL deletion.
+     * The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */
@@ -278,7 +284,7 @@ public class Field extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FieldTtlConfig> ttlConfig;
 
     /**
-     * @return If set, this field is configured for TTL deletion.
+     * @return The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */

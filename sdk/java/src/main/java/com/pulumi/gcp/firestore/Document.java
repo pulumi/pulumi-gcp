@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * `gcp.appengine.Application` resource with `database_type` set to
  * `&#34;CLOUD_FIRESTORE&#34;`. Your Firestore location will be the same as
  * the App Engine location specified.
+ * Note: The surface does not support configurable database id. Only `(default)`
+ * is allowed for the database parameter.
  * 
  * ## Example Usage
  * ### Firestore Document Basic
@@ -115,7 +117,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Document can be imported using any of these accepted formats:
+ * Document can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Document using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_firestore_document.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:firestore/document:Document When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Document can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:firestore/document:Document default {{name}}

@@ -38,6 +38,7 @@ public final class GetClusterNodeConfig {
     private Integer diskSizeGb;
     private String diskType;
     private List<GetClusterNodeConfigEffectiveTaint> effectiveTaints;
+    private Boolean enableConfidentialStorage;
     private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
     private List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
     private List<GetClusterNodeConfigFastSocket> fastSockets;
@@ -87,6 +88,9 @@ public final class GetClusterNodeConfig {
     }
     public List<GetClusterNodeConfigEffectiveTaint> effectiveTaints() {
         return this.effectiveTaints;
+    }
+    public Boolean enableConfidentialStorage() {
+        return this.enableConfidentialStorage;
     }
     public List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs() {
         return this.ephemeralStorageConfigs;
@@ -194,6 +198,7 @@ public final class GetClusterNodeConfig {
         private Integer diskSizeGb;
         private String diskType;
         private List<GetClusterNodeConfigEffectiveTaint> effectiveTaints;
+        private Boolean enableConfidentialStorage;
         private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
         private List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
         private List<GetClusterNodeConfigFastSocket> fastSockets;
@@ -233,6 +238,7 @@ public final class GetClusterNodeConfig {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
+    	      this.enableConfidentialStorage = defaults.enableConfidentialStorage;
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
     	      this.ephemeralStorageLocalSsdConfigs = defaults.ephemeralStorageLocalSsdConfigs;
     	      this.fastSockets = defaults.fastSockets;
@@ -303,6 +309,11 @@ public final class GetClusterNodeConfig {
         }
         public Builder effectiveTaints(GetClusterNodeConfigEffectiveTaint... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
+        }
+        @CustomType.Setter
+        public Builder enableConfidentialStorage(Boolean enableConfidentialStorage) {
+            this.enableConfidentialStorage = Objects.requireNonNull(enableConfidentialStorage);
+            return this;
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfigs(List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs) {
@@ -516,6 +527,7 @@ public final class GetClusterNodeConfig {
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.effectiveTaints = effectiveTaints;
+            o.enableConfidentialStorage = enableConfidentialStorage;
             o.ephemeralStorageConfigs = ephemeralStorageConfigs;
             o.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             o.fastSockets = fastSockets;

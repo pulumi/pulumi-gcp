@@ -5,15 +5,20 @@ package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetBucketAutoclass {
     private Boolean enabled;
+    private String terminalStorageClass;
 
     private GetBucketAutoclass() {}
     public Boolean enabled() {
         return this.enabled;
+    }
+    public String terminalStorageClass() {
+        return this.terminalStorageClass;
     }
 
     public static Builder builder() {
@@ -26,10 +31,12 @@ public final class GetBucketAutoclass {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private String terminalStorageClass;
         public Builder() {}
         public Builder(GetBucketAutoclass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.terminalStorageClass = defaults.terminalStorageClass;
         }
 
         @CustomType.Setter
@@ -37,9 +44,15 @@ public final class GetBucketAutoclass {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
+        public Builder terminalStorageClass(String terminalStorageClass) {
+            this.terminalStorageClass = Objects.requireNonNull(terminalStorageClass);
+            return this;
+        }
         public GetBucketAutoclass build() {
             final var o = new GetBucketAutoclass();
             o.enabled = enabled;
+            o.terminalStorageClass = terminalStorageClass;
             return o;
         }
     }

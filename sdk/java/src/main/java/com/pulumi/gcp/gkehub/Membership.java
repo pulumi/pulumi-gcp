@@ -28,6 +28,51 @@ import javax.annotation.Nullable;
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
+ * ### Gkehub Membership Regional
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .deletionProtection(false)
+ *             .initialNodeCount(1)
+ *             .location(&#34;us-central1-a&#34;)
+ *             .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;us-west1&#34;)
+ *             .membershipId(&#34;basic&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Gkehub Membership Basic
  * ```java
  * package generated_program;
@@ -128,18 +173,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Membership can be imported using any of these accepted formats
+ * Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}&#34;
+ * 
+ *  to = google_gke_hub_membership.default }
  * 
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+ *  $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+ *  $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+ *  $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
  * ```
  * 
  */
@@ -238,6 +291,22 @@ public class Membership extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Location of the membership.
+     * The default value is `global`.
+     * 
+     */
+    @Export(name="location", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> location;
+
+    /**
+     * @return Location of the membership.
+     * The default value is `global`.
+     * 
+     */
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * The client-provided identifier of the membership.

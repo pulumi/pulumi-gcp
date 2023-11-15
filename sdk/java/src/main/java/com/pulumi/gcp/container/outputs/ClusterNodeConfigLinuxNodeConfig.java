@@ -7,26 +7,88 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeConfigLinuxNodeConfig {
     /**
-     * @return The Linux kernel parameters to be applied to the nodes
-     * and all pods running on the nodes. Specified as a map from the key, such as
-     * `net.core.wmem_max`, to a string value.
+     * @return Possible cgroup modes that can be used.
+     * Accepted values are:
      * 
      */
-    private Map<String,String> sysctls;
-
-    private ClusterNodeConfigLinuxNodeConfig() {}
+    private @Nullable String cgroupMode;
     /**
      * @return The Linux kernel parameters to be applied to the nodes
      * and all pods running on the nodes. Specified as a map from the key, such as
-     * `net.core.wmem_max`, to a string value.
+     * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+     * Note that validations happen all server side. All attributes are optional.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    private @Nullable Map<String,String> sysctls;
+
+    private ClusterNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return Possible cgroup modes that can be used.
+     * Accepted values are:
+     * 
+     */
+    public Optional<String> cgroupMode() {
+        return Optional.ofNullable(this.cgroupMode);
+    }
+    /**
+     * @return The Linux kernel parameters to be applied to the nodes
+     * and all pods running on the nodes. Specified as a map from the key, such as
+     * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+     * Note that validations happen all server side. All attributes are optional.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Map<String,String> sysctls() {
-        return this.sysctls;
+        return this.sysctls == null ? Map.of() : this.sysctls;
     }
 
     public static Builder builder() {
@@ -38,20 +100,28 @@ public final class ClusterNodeConfigLinuxNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> sysctls;
+        private @Nullable String cgroupMode;
+        private @Nullable Map<String,String> sysctls;
         public Builder() {}
         public Builder(ClusterNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cgroupMode = defaults.cgroupMode;
     	      this.sysctls = defaults.sysctls;
         }
 
         @CustomType.Setter
-        public Builder sysctls(Map<String,String> sysctls) {
-            this.sysctls = Objects.requireNonNull(sysctls);
+        public Builder cgroupMode(@Nullable String cgroupMode) {
+            this.cgroupMode = cgroupMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sysctls(@Nullable Map<String,String> sysctls) {
+            this.sysctls = sysctls;
             return this;
         }
         public ClusterNodeConfigLinuxNodeConfig build() {
             final var o = new ClusterNodeConfigLinuxNodeConfig();
+            o.cgroupMode = cgroupMode;
             o.sysctls = sysctls;
             return o;
         }

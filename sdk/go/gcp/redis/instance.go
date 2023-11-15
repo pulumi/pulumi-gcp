@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Google Cloud Redis instance.
@@ -22,31 +21,6 @@ import (
 //   - [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
 // ## Example Usage
-// ### Redis Instance Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
-//				MemorySizeGb: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Redis Instance Full
 //
 // ```go
@@ -94,38 +68,6 @@ import (
 //						},
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Redis Instance Full With Persistence Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := redis.NewInstance(ctx, "cache-persis", &redis.InstanceArgs{
-//				AlternativeLocationId: pulumi.String("us-central1-f"),
-//				LocationId:            pulumi.String("us-central1-a"),
-//				MemorySizeGb:          pulumi.Int(1),
-//				PersistenceConfig: &redis.InstancePersistenceConfigArgs{
-//					PersistenceMode:   pulumi.String("RDB"),
-//					RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
-//				},
-//				Tier: pulumi.String("STANDARD_HA"),
 //			})
 //			if err != nil {
 //				return err
@@ -299,7 +241,17 @@ import (
 //
 // ## Import
 //
-// # Instance can be imported using any of these accepted formats
+// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
+//
+//	to = google_redis_instance.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:redis/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -999,12 +951,6 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
 }
 
-func (i *Instance) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: i.ToInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
@@ -1028,12 +974,6 @@ func (i InstanceArray) ToInstanceArrayOutput() InstanceArrayOutput {
 
 func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) InstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceArrayOutput)
-}
-
-func (i InstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: i.ToInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
@@ -1061,12 +1001,6 @@ func (i InstanceMap) ToInstanceMapOutputWithContext(ctx context.Context) Instanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMapOutput)
 }
 
-func (i InstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: i.ToInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceOutput struct{ *pulumi.OutputState }
 
 func (InstanceOutput) ElementType() reflect.Type {
@@ -1079,12 +1013,6 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
-}
-
-func (o InstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*Instance] {
-	return pulumix.Output[*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only applicable to STANDARD_HA tier which protects the instance
@@ -1342,12 +1270,6 @@ func (o InstanceArrayOutput) ToInstanceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Instance] {
-	return pulumix.Output[[]*Instance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceArrayOutput) Index(i pulumi.IntInput) InstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Instance {
 		return vs[0].([]*Instance)[vs[1].(int)]
@@ -1366,12 +1288,6 @@ func (o InstanceMapOutput) ToInstanceMapOutput() InstanceMapOutput {
 
 func (o InstanceMapOutput) ToInstanceMapOutputWithContext(ctx context.Context) InstanceMapOutput {
 	return o
-}
-
-func (o InstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Instance] {
-	return pulumix.Output[map[string]*Instance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMapOutput) MapIndex(k pulumi.StringInput) InstanceOutput {

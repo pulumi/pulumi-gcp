@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Bucket ACLs can be managed authoritatively using the
@@ -73,7 +72,17 @@ import (
 //
 // ## Import
 //
-// BucketAccessControl can be imported using any of these accepted formats:
+// BucketAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{entity}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BucketAccessControl using one of the formats above. For exampletf import {
+//
+//	id = "{{bucket}}/{{entity}}"
+//
+//	to = google_storage_bucket_access_control.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BucketAccessControl can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -287,12 +296,6 @@ func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlOutput)
 }
 
-func (i *BucketAccessControl) ToOutput(ctx context.Context) pulumix.Output[*BucketAccessControl] {
-	return pulumix.Output[*BucketAccessControl]{
-		OutputState: i.ToBucketAccessControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BucketAccessControlArrayInput is an input type that accepts BucketAccessControlArray and BucketAccessControlArrayOutput values.
 // You can construct a concrete instance of `BucketAccessControlArrayInput` via:
 //
@@ -316,12 +319,6 @@ func (i BucketAccessControlArray) ToBucketAccessControlArrayOutput() BucketAcces
 
 func (i BucketAccessControlArray) ToBucketAccessControlArrayOutputWithContext(ctx context.Context) BucketAccessControlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlArrayOutput)
-}
-
-func (i BucketAccessControlArray) ToOutput(ctx context.Context) pulumix.Output[[]*BucketAccessControl] {
-	return pulumix.Output[[]*BucketAccessControl]{
-		OutputState: i.ToBucketAccessControlArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BucketAccessControlMapInput is an input type that accepts BucketAccessControlMap and BucketAccessControlMapOutput values.
@@ -349,12 +346,6 @@ func (i BucketAccessControlMap) ToBucketAccessControlMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlMapOutput)
 }
 
-func (i BucketAccessControlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketAccessControl] {
-	return pulumix.Output[map[string]*BucketAccessControl]{
-		OutputState: i.ToBucketAccessControlMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BucketAccessControlOutput struct{ *pulumi.OutputState }
 
 func (BucketAccessControlOutput) ElementType() reflect.Type {
@@ -367,12 +358,6 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutput() BucketAccessCon
 
 func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx context.Context) BucketAccessControlOutput {
 	return o
-}
-
-func (o BucketAccessControlOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketAccessControl] {
-	return pulumix.Output[*BucketAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the bucket.
@@ -431,12 +416,6 @@ func (o BucketAccessControlArrayOutput) ToBucketAccessControlArrayOutputWithCont
 	return o
 }
 
-func (o BucketAccessControlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BucketAccessControl] {
-	return pulumix.Output[[]*BucketAccessControl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BucketAccessControlArrayOutput) Index(i pulumi.IntInput) BucketAccessControlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketAccessControl {
 		return vs[0].([]*BucketAccessControl)[vs[1].(int)]
@@ -455,12 +434,6 @@ func (o BucketAccessControlMapOutput) ToBucketAccessControlMapOutput() BucketAcc
 
 func (o BucketAccessControlMapOutput) ToBucketAccessControlMapOutputWithContext(ctx context.Context) BucketAccessControlMapOutput {
 	return o
-}
-
-func (o BucketAccessControlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketAccessControl] {
-	return pulumix.Output[map[string]*BucketAccessControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketAccessControlMapOutput) MapIndex(k pulumi.StringInput) BucketAccessControlOutput {

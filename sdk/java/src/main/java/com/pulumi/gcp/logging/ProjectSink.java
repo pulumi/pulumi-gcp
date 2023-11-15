@@ -21,10 +21,18 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Project-level logging sinks can be imported using their URI, e.g.
+ * Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging sinks using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project_id}}/sinks/{{name}}&#34;
+ * 
+ *  to = google_logging_project_sink.default }
  * 
  * ```sh
- *  $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+ *  $ pulumi import gcp:logging/projectSink:ProjectSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging sinks can be imported using one of the formats above. For example
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
  * ```
  * 
  */
@@ -43,6 +51,26 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
      */
     public Output<ProjectSinkBigqueryOptions> bigqueryOptions() {
         return this.bigqueryOptions;
+    }
+    /**
+     * A user managed service account that will be used to write
+     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * routing logs to a destination outside this sink&#39;s project. If not specified, a Logging service account
+     * will automatically be generated.
+     * 
+     */
+    @Export(name="customWriterIdentity", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customWriterIdentity;
+
+    /**
+     * @return A user managed service account that will be used to write
+     * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
+     * routing logs to a destination outside this sink&#39;s project. If not specified, a Logging service account
+     * will automatically be generated.
+     * 
+     */
+    public Output<Optional<String>> customWriterIdentity() {
+        return Codegen.optional(this.customWriterIdentity);
     }
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
@@ -167,8 +195,7 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigquery_options`, you must set `unique_writer_identity` to true.
      * 
@@ -177,8 +204,7 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> uniqueWriterIdentity;
 
     /**
-     * @return Whether or not to create a unique identity associated with this sink. If `false`
-     * (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
+     * @return Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
      * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
      * `bigquery_options`, you must set `unique_writer_identity` to true.
      * 

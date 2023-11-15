@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Feature represents the settings and status of any Hub Feature.
@@ -237,7 +236,17 @@ import (
 //
 // ## Import
 //
-// # Feature can be imported using any of these accepted formats
+// Feature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Feature using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/features/{{name}}"
+//
+//	to = google_gke_hub_feature.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkehub/feature:Feature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Feature can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -265,6 +274,9 @@ type Feature struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Optional. Fleet Default Membership Configuration.
+	// Structure is documented below.
+	FleetDefaultMemberConfig FeatureFleetDefaultMemberConfigPtrOutput `pulumi:"fleetDefaultMemberConfig"`
 	// GCP labels for this Feature.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -340,6 +352,9 @@ type featureState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Optional. Fleet Default Membership Configuration.
+	// Structure is documented below.
+	FleetDefaultMemberConfig *FeatureFleetDefaultMemberConfig `pulumi:"fleetDefaultMemberConfig"`
 	// GCP labels for this Feature.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -378,6 +393,9 @@ type FeatureState struct {
 	DeleteTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Optional. Fleet Default Membership Configuration.
+	// Structure is documented below.
+	FleetDefaultMemberConfig FeatureFleetDefaultMemberConfigPtrInput
 	// GCP labels for this Feature.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -414,6 +432,9 @@ func (FeatureState) ElementType() reflect.Type {
 }
 
 type featureArgs struct {
+	// Optional. Fleet Default Membership Configuration.
+	// Structure is documented below.
+	FleetDefaultMemberConfig *FeatureFleetDefaultMemberConfig `pulumi:"fleetDefaultMemberConfig"`
 	// GCP labels for this Feature.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -434,6 +455,9 @@ type featureArgs struct {
 
 // The set of arguments for constructing a Feature resource.
 type FeatureArgs struct {
+	// Optional. Fleet Default Membership Configuration.
+	// Structure is documented below.
+	FleetDefaultMemberConfig FeatureFleetDefaultMemberConfigPtrInput
 	// GCP labels for this Feature.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -475,12 +499,6 @@ func (i *Feature) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureOutput)
 }
 
-func (i *Feature) ToOutput(ctx context.Context) pulumix.Output[*Feature] {
-	return pulumix.Output[*Feature]{
-		OutputState: i.ToFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FeatureArrayInput is an input type that accepts FeatureArray and FeatureArrayOutput values.
 // You can construct a concrete instance of `FeatureArrayInput` via:
 //
@@ -504,12 +522,6 @@ func (i FeatureArray) ToFeatureArrayOutput() FeatureArrayOutput {
 
 func (i FeatureArray) ToFeatureArrayOutputWithContext(ctx context.Context) FeatureArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureArrayOutput)
-}
-
-func (i FeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]*Feature] {
-	return pulumix.Output[[]*Feature]{
-		OutputState: i.ToFeatureArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FeatureMapInput is an input type that accepts FeatureMap and FeatureMapOutput values.
@@ -537,12 +549,6 @@ func (i FeatureMap) ToFeatureMapOutputWithContext(ctx context.Context) FeatureMa
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMapOutput)
 }
 
-func (i FeatureMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Feature] {
-	return pulumix.Output[map[string]*Feature]{
-		OutputState: i.ToFeatureMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeatureOutput struct{ *pulumi.OutputState }
 
 func (FeatureOutput) ElementType() reflect.Type {
@@ -555,12 +561,6 @@ func (o FeatureOutput) ToFeatureOutput() FeatureOutput {
 
 func (o FeatureOutput) ToFeatureOutputWithContext(ctx context.Context) FeatureOutput {
 	return o
-}
-
-func (o FeatureOutput) ToOutput(ctx context.Context) pulumix.Output[*Feature] {
-	return pulumix.Output[*Feature]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. When the Feature resource was created.
@@ -576,6 +576,12 @@ func (o FeatureOutput) DeleteTime() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o FeatureOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Fleet Default Membership Configuration.
+// Structure is documented below.
+func (o FeatureOutput) FleetDefaultMemberConfig() FeatureFleetDefaultMemberConfigPtrOutput {
+	return o.ApplyT(func(v *Feature) FeatureFleetDefaultMemberConfigPtrOutput { return v.FleetDefaultMemberConfig }).(FeatureFleetDefaultMemberConfigPtrOutput)
 }
 
 // GCP labels for this Feature.
@@ -648,12 +654,6 @@ func (o FeatureArrayOutput) ToFeatureArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o FeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Feature] {
-	return pulumix.Output[[]*Feature]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FeatureArrayOutput) Index(i pulumi.IntInput) FeatureOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Feature {
 		return vs[0].([]*Feature)[vs[1].(int)]
@@ -672,12 +672,6 @@ func (o FeatureMapOutput) ToFeatureMapOutput() FeatureMapOutput {
 
 func (o FeatureMapOutput) ToFeatureMapOutputWithContext(ctx context.Context) FeatureMapOutput {
 	return o
-}
-
-func (o FeatureMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Feature] {
-	return pulumix.Output[map[string]*Feature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FeatureMapOutput) MapIndex(k pulumi.StringInput) FeatureOutput {

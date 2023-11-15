@@ -10,14 +10,23 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
 //
 // ## Import
 //
-// # TlsRoute can be imported using any of these accepted formats
+// TlsRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tlsRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TlsRoute using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/global/tlsRoutes/{{name}}"
+//
+//	to = google_network_services_tls_route.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:networkservices/tlsRoute:TlsRoute When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TlsRoute can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -216,12 +225,6 @@ func (i *TlsRoute) ToTlsRouteOutputWithContext(ctx context.Context) TlsRouteOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteOutput)
 }
 
-func (i *TlsRoute) ToOutput(ctx context.Context) pulumix.Output[*TlsRoute] {
-	return pulumix.Output[*TlsRoute]{
-		OutputState: i.ToTlsRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TlsRouteArrayInput is an input type that accepts TlsRouteArray and TlsRouteArrayOutput values.
 // You can construct a concrete instance of `TlsRouteArrayInput` via:
 //
@@ -245,12 +248,6 @@ func (i TlsRouteArray) ToTlsRouteArrayOutput() TlsRouteArrayOutput {
 
 func (i TlsRouteArray) ToTlsRouteArrayOutputWithContext(ctx context.Context) TlsRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteArrayOutput)
-}
-
-func (i TlsRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*TlsRoute] {
-	return pulumix.Output[[]*TlsRoute]{
-		OutputState: i.ToTlsRouteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TlsRouteMapInput is an input type that accepts TlsRouteMap and TlsRouteMapOutput values.
@@ -278,12 +275,6 @@ func (i TlsRouteMap) ToTlsRouteMapOutputWithContext(ctx context.Context) TlsRout
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteMapOutput)
 }
 
-func (i TlsRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TlsRoute] {
-	return pulumix.Output[map[string]*TlsRoute]{
-		OutputState: i.ToTlsRouteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TlsRouteOutput struct{ *pulumi.OutputState }
 
 func (TlsRouteOutput) ElementType() reflect.Type {
@@ -296,12 +287,6 @@ func (o TlsRouteOutput) ToTlsRouteOutput() TlsRouteOutput {
 
 func (o TlsRouteOutput) ToTlsRouteOutputWithContext(ctx context.Context) TlsRouteOutput {
 	return o
-}
-
-func (o TlsRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsRoute] {
-	return pulumix.Output[*TlsRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the TlsRoute was created in UTC.
@@ -368,12 +353,6 @@ func (o TlsRouteArrayOutput) ToTlsRouteArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TlsRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TlsRoute] {
-	return pulumix.Output[[]*TlsRoute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TlsRouteArrayOutput) Index(i pulumi.IntInput) TlsRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TlsRoute {
 		return vs[0].([]*TlsRoute)[vs[1].(int)]
@@ -392,12 +371,6 @@ func (o TlsRouteMapOutput) ToTlsRouteMapOutput() TlsRouteMapOutput {
 
 func (o TlsRouteMapOutput) ToTlsRouteMapOutputWithContext(ctx context.Context) TlsRouteMapOutput {
 	return o
-}
-
-func (o TlsRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TlsRoute] {
-	return pulumix.Output[map[string]*TlsRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsRouteMapOutput) MapIndex(k pulumi.StringInput) TlsRouteOutput {

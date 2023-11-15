@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configurations options for authenticating with a the standard set of Identity Toolkit-trusted IDPs.
@@ -51,7 +50,17 @@ import (
 //
 // ## Import
 //
-// # DefaultSupportedIdpConfig can be imported using any of these accepted formats
+// DefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{idp_id}}` * `{{idp_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DefaultSupportedIdpConfig using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}"
+//
+//	to = google_identity_platform_default_supported_idp_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DefaultSupportedIdpConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -274,12 +283,6 @@ func (i *DefaultSupportedIdpConfig) ToDefaultSupportedIdpConfigOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigOutput)
 }
 
-func (i *DefaultSupportedIdpConfig) ToOutput(ctx context.Context) pulumix.Output[*DefaultSupportedIdpConfig] {
-	return pulumix.Output[*DefaultSupportedIdpConfig]{
-		OutputState: i.ToDefaultSupportedIdpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DefaultSupportedIdpConfigArrayInput is an input type that accepts DefaultSupportedIdpConfigArray and DefaultSupportedIdpConfigArrayOutput values.
 // You can construct a concrete instance of `DefaultSupportedIdpConfigArrayInput` via:
 //
@@ -303,12 +306,6 @@ func (i DefaultSupportedIdpConfigArray) ToDefaultSupportedIdpConfigArrayOutput()
 
 func (i DefaultSupportedIdpConfigArray) ToDefaultSupportedIdpConfigArrayOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigArrayOutput)
-}
-
-func (i DefaultSupportedIdpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultSupportedIdpConfig] {
-	return pulumix.Output[[]*DefaultSupportedIdpConfig]{
-		OutputState: i.ToDefaultSupportedIdpConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DefaultSupportedIdpConfigMapInput is an input type that accepts DefaultSupportedIdpConfigMap and DefaultSupportedIdpConfigMapOutput values.
@@ -336,12 +333,6 @@ func (i DefaultSupportedIdpConfigMap) ToDefaultSupportedIdpConfigMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSupportedIdpConfigMapOutput)
 }
 
-func (i DefaultSupportedIdpConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultSupportedIdpConfig] {
-	return pulumix.Output[map[string]*DefaultSupportedIdpConfig]{
-		OutputState: i.ToDefaultSupportedIdpConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DefaultSupportedIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (DefaultSupportedIdpConfigOutput) ElementType() reflect.Type {
@@ -354,12 +345,6 @@ func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigOutput() Def
 
 func (o DefaultSupportedIdpConfigOutput) ToDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigOutput {
 	return o
-}
-
-func (o DefaultSupportedIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultSupportedIdpConfig] {
-	return pulumix.Output[*DefaultSupportedIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // OAuth client ID
@@ -419,12 +404,6 @@ func (o DefaultSupportedIdpConfigArrayOutput) ToDefaultSupportedIdpConfigArrayOu
 	return o
 }
 
-func (o DefaultSupportedIdpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultSupportedIdpConfig] {
-	return pulumix.Output[[]*DefaultSupportedIdpConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DefaultSupportedIdpConfigArrayOutput) Index(i pulumi.IntInput) DefaultSupportedIdpConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultSupportedIdpConfig {
 		return vs[0].([]*DefaultSupportedIdpConfig)[vs[1].(int)]
@@ -443,12 +422,6 @@ func (o DefaultSupportedIdpConfigMapOutput) ToDefaultSupportedIdpConfigMapOutput
 
 func (o DefaultSupportedIdpConfigMapOutput) ToDefaultSupportedIdpConfigMapOutputWithContext(ctx context.Context) DefaultSupportedIdpConfigMapOutput {
 	return o
-}
-
-func (o DefaultSupportedIdpConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultSupportedIdpConfig] {
-	return pulumix.Output[map[string]*DefaultSupportedIdpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultSupportedIdpConfigMapOutput) MapIndex(k pulumi.StringInput) DefaultSupportedIdpConfigOutput {

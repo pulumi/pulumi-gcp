@@ -10,11 +10,44 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'BackupScheduleDailyRecurrenceArgs',
+    'BackupScheduleWeeklyRecurrenceArgs',
     'FieldIndexConfigArgs',
     'FieldIndexConfigIndexArgs',
     'FieldTtlConfigArgs',
     'IndexFieldArgs',
 ]
+
+@pulumi.input_type
+class BackupScheduleDailyRecurrenceArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class BackupScheduleWeeklyRecurrenceArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] day: The day of week to run.
+               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[str]]:
+        """
+        The day of week to run.
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "day", value)
+
 
 @pulumi.input_type
 class FieldIndexConfigArgs:
@@ -118,7 +151,7 @@ class FieldTtlConfigArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] state: (Output)
-               The state of the TTL configuration.
+               The state of TTL (time-to-live) configuration for documents that have this Field set.
         """
         if state is not None:
             pulumi.set(__self__, "state", state)
@@ -128,7 +161,7 @@ class FieldTtlConfigArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        The state of the TTL configuration.
+        The state of TTL (time-to-live) configuration for documents that have this Field set.
         """
         return pulumi.get(self, "state")
 

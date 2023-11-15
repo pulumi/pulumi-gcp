@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -290,51 +289,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g* `"folder/{{folder_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
 //
-// This member resource can be imported using the `folder`, role, and member e.g.
+//	id = "folder/{{folder_id}} foo.googleapis.com"
+//
+//	to = google_folder_iam_audit_config.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
-//
-// This binding resource can be imported using the `folder` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder roles/viewer"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `folder`.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder folder
-//
-// ```
-//
-//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder foo.googleapis.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-//
-// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
-//
-// ```sh
-//
-//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:folder/iAMPolicy:IAMPolicy default "folder/{{folder_id}} foo.googleapis.com"
 //
 // ```
 type IAMPolicy struct {
@@ -478,12 +447,6 @@ func (i *IAMPolicy) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyOutput)
 }
 
-func (i *IAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*IAMPolicy] {
-	return pulumix.Output[*IAMPolicy]{
-		OutputState: i.ToIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMPolicyArrayInput is an input type that accepts IAMPolicyArray and IAMPolicyArrayOutput values.
 // You can construct a concrete instance of `IAMPolicyArrayInput` via:
 //
@@ -507,12 +470,6 @@ func (i IAMPolicyArray) ToIAMPolicyArrayOutput() IAMPolicyArrayOutput {
 
 func (i IAMPolicyArray) ToIAMPolicyArrayOutputWithContext(ctx context.Context) IAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyArrayOutput)
-}
-
-func (i IAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMPolicy] {
-	return pulumix.Output[[]*IAMPolicy]{
-		OutputState: i.ToIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMPolicyMapInput is an input type that accepts IAMPolicyMap and IAMPolicyMapOutput values.
@@ -540,12 +497,6 @@ func (i IAMPolicyMap) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPo
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyMapOutput)
 }
 
-func (i IAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMPolicy] {
-	return pulumix.Output[map[string]*IAMPolicy]{
-		OutputState: i.ToIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (IAMPolicyOutput) ElementType() reflect.Type {
@@ -558,12 +509,6 @@ func (o IAMPolicyOutput) ToIAMPolicyOutput() IAMPolicyOutput {
 
 func (o IAMPolicyOutput) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput {
 	return o
-}
-
-func (o IAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMPolicy] {
-	return pulumix.Output[*IAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the folder's IAM policy.
@@ -602,12 +547,6 @@ func (o IAMPolicyArrayOutput) ToIAMPolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMPolicy] {
-	return pulumix.Output[[]*IAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMPolicyArrayOutput) Index(i pulumi.IntInput) IAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMPolicy {
 		return vs[0].([]*IAMPolicy)[vs[1].(int)]
@@ -626,12 +565,6 @@ func (o IAMPolicyMapOutput) ToIAMPolicyMapOutput() IAMPolicyMapOutput {
 
 func (o IAMPolicyMapOutput) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPolicyMapOutput {
 	return o
-}
-
-func (o IAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMPolicy] {
-	return pulumix.Output[map[string]*IAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMPolicyMapOutput) MapIndex(k pulumi.StringInput) IAMPolicyOutput {

@@ -6,9 +6,11 @@ package com.pulumi.gcp.logging;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
+import com.pulumi.gcp.logging.inputs.ProjectBucketConfigIndexConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -79,6 +81,21 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    @Import(name="indexConfigs")
+    private @Nullable Output<List<ProjectBucketConfigIndexConfigArgs>> indexConfigs;
+
+    /**
+     * @return A list of indexed fields and related configuration data. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ProjectBucketConfigIndexConfigArgs>>> indexConfigs() {
+        return Optional.ofNullable(this.indexConfigs);
+    }
+
+    /**
      * The location of the bucket.
      * 
      */
@@ -145,6 +162,7 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
         this.cmekSettings = $.cmekSettings;
         this.description = $.description;
         this.enableAnalytics = $.enableAnalytics;
+        this.indexConfigs = $.indexConfigs;
         this.location = $.location;
         this.locked = $.locked;
         this.project = $.project;
@@ -251,6 +269,37 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder enableAnalytics(Boolean enableAnalytics) {
             return enableAnalytics(Output.of(enableAnalytics));
+        }
+
+        /**
+         * @param indexConfigs A list of indexed fields and related configuration data. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexConfigs(@Nullable Output<List<ProjectBucketConfigIndexConfigArgs>> indexConfigs) {
+            $.indexConfigs = indexConfigs;
+            return this;
+        }
+
+        /**
+         * @param indexConfigs A list of indexed fields and related configuration data. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexConfigs(List<ProjectBucketConfigIndexConfigArgs> indexConfigs) {
+            return indexConfigs(Output.of(indexConfigs));
+        }
+
+        /**
+         * @param indexConfigs A list of indexed fields and related configuration data. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexConfigs(ProjectBucketConfigIndexConfigArgs... indexConfigs) {
+            return indexConfigs(List.of(indexConfigs));
         }
 
         /**

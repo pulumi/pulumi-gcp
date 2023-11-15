@@ -70,10 +70,82 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// });
     /// ```
+    /// ### Dataform Repository Ssh
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gitRepository = new Gcp.SourceRepo.Repository("gitRepository", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
+    ///     {
+    ///         SecretId = "secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secretVersion", new()
+    ///     {
+    ///         Secret = secret.Id,
+    ///         SecretData = "secret-data",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var dataformRespository = new Gcp.Dataform.Repository("dataformRespository", new()
+    ///     {
+    ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
+    ///         {
+    ///             Url = gitRepository.Url,
+    ///             DefaultBranch = "main",
+    ///             SshAuthenticationConfig = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs
+    ///             {
+    ///                 UserPrivateKeySecretVersion = secretVersion.Id,
+    ///                 HostPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
+    ///             },
+    ///         },
+    ///         WorkspaceCompilationOverrides = new Gcp.Dataform.Inputs.RepositoryWorkspaceCompilationOverridesArgs
+    ///         {
+    ///             DefaultDatabase = "database",
+    ///             SchemaSuffix = "_suffix",
+    ///             TablePrefix = "prefix_",
+    ///         },
+    ///         ServiceAccount = "1234567890-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Repository can be imported using any of these accepted formats
+    /// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{region}}/repositories/{{name}}"
+    /// 
+    ///  to = google_dataform_repository.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataform/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
@@ -124,7 +196,13 @@ namespace Pulumi.Gcp.Dataform
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        /// The service account to run workflow invocations under.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string?> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         /// Structure is documented below.
         /// </summary>
         [Output("workspaceCompilationOverrides")]
@@ -206,7 +284,13 @@ namespace Pulumi.Gcp.Dataform
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        /// The service account to run workflow invocations under.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         /// Structure is documented below.
         /// </summary>
         [Input("workspaceCompilationOverrides")]
@@ -250,7 +334,13 @@ namespace Pulumi.Gcp.Dataform
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        /// The service account to run workflow invocations under.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
         /// Structure is documented below.
         /// </summary>
         [Input("workspaceCompilationOverrides")]

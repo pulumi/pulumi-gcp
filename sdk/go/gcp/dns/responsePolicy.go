@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Response Policy is a collection of selectors that apply to queries
@@ -122,7 +121,17 @@ import (
 //
 // ## Import
 //
-// # ResponsePolicy can be imported using any of these accepted formats
+// ResponsePolicy can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy_name}}` * `{{project}}/{{response_policy_name}}` * `{{response_policy_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResponsePolicy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/responsePolicies/{{response_policy_name}}"
+//
+//	to = google_dns_response_policy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:dns/responsePolicy:ResponsePolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResponsePolicy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -293,12 +302,6 @@ func (i *ResponsePolicy) ToResponsePolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyOutput)
 }
 
-func (i *ResponsePolicy) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicy] {
-	return pulumix.Output[*ResponsePolicy]{
-		OutputState: i.ToResponsePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResponsePolicyArrayInput is an input type that accepts ResponsePolicyArray and ResponsePolicyArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyArrayInput` via:
 //
@@ -322,12 +325,6 @@ func (i ResponsePolicyArray) ToResponsePolicyArrayOutput() ResponsePolicyArrayOu
 
 func (i ResponsePolicyArray) ToResponsePolicyArrayOutputWithContext(ctx context.Context) ResponsePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyArrayOutput)
-}
-
-func (i ResponsePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResponsePolicy] {
-	return pulumix.Output[[]*ResponsePolicy]{
-		OutputState: i.ToResponsePolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ResponsePolicyMapInput is an input type that accepts ResponsePolicyMap and ResponsePolicyMapOutput values.
@@ -355,12 +352,6 @@ func (i ResponsePolicyMap) ToResponsePolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyMapOutput)
 }
 
-func (i ResponsePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResponsePolicy] {
-	return pulumix.Output[map[string]*ResponsePolicy]{
-		OutputState: i.ToResponsePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResponsePolicyOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyOutput) ElementType() reflect.Type {
@@ -373,12 +364,6 @@ func (o ResponsePolicyOutput) ToResponsePolicyOutput() ResponsePolicyOutput {
 
 func (o ResponsePolicyOutput) ToResponsePolicyOutputWithContext(ctx context.Context) ResponsePolicyOutput {
 	return o
-}
-
-func (o ResponsePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicy] {
-	return pulumix.Output[*ResponsePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the response policy, such as `My new response policy`.
@@ -425,12 +410,6 @@ func (o ResponsePolicyArrayOutput) ToResponsePolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ResponsePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResponsePolicy] {
-	return pulumix.Output[[]*ResponsePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResponsePolicyArrayOutput) Index(i pulumi.IntInput) ResponsePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResponsePolicy {
 		return vs[0].([]*ResponsePolicy)[vs[1].(int)]
@@ -449,12 +428,6 @@ func (o ResponsePolicyMapOutput) ToResponsePolicyMapOutput() ResponsePolicyMapOu
 
 func (o ResponsePolicyMapOutput) ToResponsePolicyMapOutputWithContext(ctx context.Context) ResponsePolicyMapOutput {
 	return o
-}
-
-func (o ResponsePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResponsePolicy] {
-	return pulumix.Output[map[string]*ResponsePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResponsePolicyMapOutput) MapIndex(k pulumi.StringInput) ResponsePolicyOutput {

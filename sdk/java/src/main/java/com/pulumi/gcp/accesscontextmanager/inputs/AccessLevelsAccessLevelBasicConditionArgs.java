@@ -6,6 +6,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs;
+import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -160,6 +161,23 @@ public final class AccessLevelsAccessLevelBasicConditionArgs extends com.pulumi.
         return Optional.ofNullable(this.requiredAccessLevels);
     }
 
+    /**
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vpcNetworkSources")
+    private @Nullable Output<List<AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs>> vpcNetworkSources;
+
+    /**
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs>>> vpcNetworkSources() {
+        return Optional.ofNullable(this.vpcNetworkSources);
+    }
+
     private AccessLevelsAccessLevelBasicConditionArgs() {}
 
     private AccessLevelsAccessLevelBasicConditionArgs(AccessLevelsAccessLevelBasicConditionArgs $) {
@@ -169,6 +187,7 @@ public final class AccessLevelsAccessLevelBasicConditionArgs extends com.pulumi.
         this.negate = $.negate;
         this.regions = $.regions;
         this.requiredAccessLevels = $.requiredAccessLevels;
+        this.vpcNetworkSources = $.vpcNetworkSources;
     }
 
     public static Builder builder() {
@@ -426,6 +445,40 @@ public final class AccessLevelsAccessLevelBasicConditionArgs extends com.pulumi.
          */
         public Builder requiredAccessLevels(String... requiredAccessLevels) {
             return requiredAccessLevels(List.of(requiredAccessLevels));
+        }
+
+        /**
+         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNetworkSources(@Nullable Output<List<AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs>> vpcNetworkSources) {
+            $.vpcNetworkSources = vpcNetworkSources;
+            return this;
+        }
+
+        /**
+         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNetworkSources(List<AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs> vpcNetworkSources) {
+            return vpcNetworkSources(Output.of(vpcNetworkSources));
+        }
+
+        /**
+         * @param vpcNetworkSources The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNetworkSources(AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs... vpcNetworkSources) {
+            return vpcNetworkSources(List.of(vpcNetworkSources));
         }
 
         public AccessLevelsAccessLevelBasicConditionArgs build() {

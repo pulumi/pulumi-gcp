@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // You can use the built-in test feature to uncover bugs and prevent regressions. A test execution verifies that agent responses have not changed for end-user inputs defined in the test case.
@@ -226,7 +225,17 @@ import (
 //
 // ## Import
 //
-// TestCase can be imported using any of these accepted formats:
+// TestCase can be imported using any of these accepted formats* `{{parent}}/testCases/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TestCase using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/testCases/{{name}}"
+//
+//	to = google_dialogflow_cx_test_case.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxTestCase:CxTestCase When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TestCase can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -424,12 +433,6 @@ func (i *CxTestCase) ToCxTestCaseOutputWithContext(ctx context.Context) CxTestCa
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseOutput)
 }
 
-func (i *CxTestCase) ToOutput(ctx context.Context) pulumix.Output[*CxTestCase] {
-	return pulumix.Output[*CxTestCase]{
-		OutputState: i.ToCxTestCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseArrayInput is an input type that accepts CxTestCaseArray and CxTestCaseArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseArrayInput` via:
 //
@@ -453,12 +456,6 @@ func (i CxTestCaseArray) ToCxTestCaseArrayOutput() CxTestCaseArrayOutput {
 
 func (i CxTestCaseArray) ToCxTestCaseArrayOutputWithContext(ctx context.Context) CxTestCaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseArrayOutput)
-}
-
-func (i CxTestCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxTestCase] {
-	return pulumix.Output[[]*CxTestCase]{
-		OutputState: i.ToCxTestCaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxTestCaseMapInput is an input type that accepts CxTestCaseMap and CxTestCaseMapOutput values.
@@ -486,12 +483,6 @@ func (i CxTestCaseMap) ToCxTestCaseMapOutputWithContext(ctx context.Context) CxT
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseMapOutput)
 }
 
-func (i CxTestCaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxTestCase] {
-	return pulumix.Output[map[string]*CxTestCase]{
-		OutputState: i.ToCxTestCaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseOutput) ElementType() reflect.Type {
@@ -504,12 +495,6 @@ func (o CxTestCaseOutput) ToCxTestCaseOutput() CxTestCaseOutput {
 
 func (o CxTestCaseOutput) ToCxTestCaseOutputWithContext(ctx context.Context) CxTestCaseOutput {
 	return o
-}
-
-func (o CxTestCaseOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCase] {
-	return pulumix.Output[*CxTestCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the test was created. A timestamp in RFC3339 text format.
@@ -579,12 +564,6 @@ func (o CxTestCaseArrayOutput) ToCxTestCaseArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o CxTestCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxTestCase] {
-	return pulumix.Output[[]*CxTestCase]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxTestCaseArrayOutput) Index(i pulumi.IntInput) CxTestCaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxTestCase {
 		return vs[0].([]*CxTestCase)[vs[1].(int)]
@@ -603,12 +582,6 @@ func (o CxTestCaseMapOutput) ToCxTestCaseMapOutput() CxTestCaseMapOutput {
 
 func (o CxTestCaseMapOutput) ToCxTestCaseMapOutputWithContext(ctx context.Context) CxTestCaseMapOutput {
 	return o
-}
-
-func (o CxTestCaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxTestCase] {
-	return pulumix.Output[map[string]*CxTestCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseMapOutput) MapIndex(k pulumi.StringInput) CxTestCaseOutput {

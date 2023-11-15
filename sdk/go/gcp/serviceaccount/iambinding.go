@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource, such as allowing the members to run operations as or modify the service account. To configure permissions for a service account on other GCP resources, use the googleProjectIam set of resources.
@@ -243,27 +242,7 @@ import (
 //
 // ## Import
 //
-// Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
-//
-// ```sh
-//
-//	$ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
-//
-// ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
-//
-// ```
-//
-// ```sh
-//
-//	$ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
-//
-// ```
-//
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
+// ### Importing with conditionsHere are examples of importing IAM memberships and bindings that include conditions
 //
 // ```sh
 //
@@ -466,12 +445,6 @@ func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindi
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingOutput)
 }
 
-func (i *IAMBinding) ToOutput(ctx context.Context) pulumix.Output[*IAMBinding] {
-	return pulumix.Output[*IAMBinding]{
-		OutputState: i.ToIAMBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
 // You can construct a concrete instance of `IAMBindingArrayInput` via:
 //
@@ -495,12 +468,6 @@ func (i IAMBindingArray) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
 
 func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingArrayOutput)
-}
-
-func (i IAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*IAMBinding] {
-	return pulumix.Output[[]*IAMBinding]{
-		OutputState: i.ToIAMBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
@@ -528,12 +495,6 @@ func (i IAMBindingMap) ToIAMBindingMapOutputWithContext(ctx context.Context) IAM
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingMapOutput)
 }
 
-func (i IAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMBinding] {
-	return pulumix.Output[map[string]*IAMBinding]{
-		OutputState: i.ToIAMBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAMBindingOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingOutput) ElementType() reflect.Type {
@@ -546,12 +507,6 @@ func (o IAMBindingOutput) ToIAMBindingOutput() IAMBindingOutput {
 
 func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
 	return o
-}
-
-func (o IAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMBinding] {
-	return pulumix.Output[*IAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -604,12 +559,6 @@ func (o IAMBindingArrayOutput) ToIAMBindingArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o IAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IAMBinding] {
-	return pulumix.Output[[]*IAMBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IAMBindingArrayOutput) Index(i pulumi.IntInput) IAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMBinding {
 		return vs[0].([]*IAMBinding)[vs[1].(int)]
@@ -628,12 +577,6 @@ func (o IAMBindingMapOutput) ToIAMBindingMapOutput() IAMBindingMapOutput {
 
 func (o IAMBindingMapOutput) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
 	return o
-}
-
-func (o IAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IAMBinding] {
-	return pulumix.Output[map[string]*IAMBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IAMBindingMapOutput) MapIndex(k pulumi.StringInput) IAMBindingOutput {

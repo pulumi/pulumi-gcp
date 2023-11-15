@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsClusterAuthorization
     {
         /// <summary>
+        /// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AwsClusterAuthorizationAdminGroup> AdminGroups;
+        /// <summary>
         /// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         /// </summary>
         public readonly ImmutableArray<Outputs.AwsClusterAuthorizationAdminUser> AdminUsers;
 
         [OutputConstructor]
-        private AwsClusterAuthorization(ImmutableArray<Outputs.AwsClusterAuthorizationAdminUser> adminUsers)
+        private AwsClusterAuthorization(
+            ImmutableArray<Outputs.AwsClusterAuthorizationAdminGroup> adminGroups,
+
+            ImmutableArray<Outputs.AwsClusterAuthorizationAdminUser> adminUsers)
         {
+            AdminGroups = adminGroups;
             AdminUsers = adminUsers;
         }
     }

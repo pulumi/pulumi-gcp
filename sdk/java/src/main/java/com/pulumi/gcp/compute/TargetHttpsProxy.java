@@ -308,10 +308,89 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Target Https Proxy Certificate Manager Certificate
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpsProxy;
+ * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *             .scope(&#34;ALL_REGIONS&#34;)
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .build());
+ * 
+ *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .description(&#34;a description&#34;)
+ *             .defaultService(defaultBackendService.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(defaultBackendService.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths(&#34;/*&#34;)
+ *                     .service(defaultBackendService.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *             .urlMap(defaultURLMap.id())
+ *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -&gt; String.format(&#34;//certificatemanager.googleapis.com/%s&#34;, id)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * TargetHttpsProxy can be imported using any of these accepted formats
+ * TargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpsProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpsProxy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/targetHttpsProxies/{{name}}&#34;
+ * 
+ *  to = google_compute_target_https_proxy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpsProxy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
@@ -328,6 +407,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/targetHttpsProxy:TargetHttpsProxy")
 public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
+    /**
+     * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * 
+     */
+    @Export(name="certificateManagerCertificates", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> certificateManagerCertificates;
+
+    /**
+     * @return URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * 
+     */
+    public Output<Optional<List<String>>> certificateManagerCertificates() {
+        return Codegen.optional(this.certificateManagerCertificates);
+    }
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
@@ -539,16 +638,18 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serverTlsPolicy);
     }
     /**
-     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      * 
      */
     @Export(name="sslCertificates", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sslCertificates;
 
     /**
-     * @return A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-     * connections between users and the load balancer. At least one resource must be specified.
+     * @return URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+     * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+     * sslCertificates and certificateManagerCertificates can not be defined together.
      * 
      */
     public Output<Optional<List<String>>> sslCertificates() {

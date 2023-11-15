@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Standard App Version resource to create a new version of standard GAE Application.
@@ -159,7 +158,17 @@ import (
 //
 // ## Import
 //
-// # StandardAppVersion can be imported using any of these accepted formats
+// StandardAppVersion can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}/versions/{{version_id}}` * `{{project}}/{{service}}/{{version_id}}` * `{{service}}/{{version_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import StandardAppVersion using one of the formats above. For exampletf import {
+//
+//	id = "apps/{{project}}/services/{{service}}/versions/{{version_id}}"
+//
+//	to = google_app_engine_standard_app_version.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), StandardAppVersion can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -560,12 +569,6 @@ func (i *StandardAppVersion) ToStandardAppVersionOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionOutput)
 }
 
-func (i *StandardAppVersion) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersion] {
-	return pulumix.Output[*StandardAppVersion]{
-		OutputState: i.ToStandardAppVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StandardAppVersionArrayInput is an input type that accepts StandardAppVersionArray and StandardAppVersionArrayOutput values.
 // You can construct a concrete instance of `StandardAppVersionArrayInput` via:
 //
@@ -589,12 +592,6 @@ func (i StandardAppVersionArray) ToStandardAppVersionArrayOutput() StandardAppVe
 
 func (i StandardAppVersionArray) ToStandardAppVersionArrayOutputWithContext(ctx context.Context) StandardAppVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionArrayOutput)
-}
-
-func (i StandardAppVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*StandardAppVersion] {
-	return pulumix.Output[[]*StandardAppVersion]{
-		OutputState: i.ToStandardAppVersionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StandardAppVersionMapInput is an input type that accepts StandardAppVersionMap and StandardAppVersionMapOutput values.
@@ -622,12 +619,6 @@ func (i StandardAppVersionMap) ToStandardAppVersionMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionMapOutput)
 }
 
-func (i StandardAppVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StandardAppVersion] {
-	return pulumix.Output[map[string]*StandardAppVersion]{
-		OutputState: i.ToStandardAppVersionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StandardAppVersionOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionOutput) ElementType() reflect.Type {
@@ -640,12 +631,6 @@ func (o StandardAppVersionOutput) ToStandardAppVersionOutput() StandardAppVersio
 
 func (o StandardAppVersionOutput) ToStandardAppVersionOutputWithContext(ctx context.Context) StandardAppVersionOutput {
 	return o
-}
-
-func (o StandardAppVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*StandardAppVersion] {
-	return pulumix.Output[*StandardAppVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allows App Engine second generation runtimes to access the legacy bundled services.
@@ -788,12 +773,6 @@ func (o StandardAppVersionArrayOutput) ToStandardAppVersionArrayOutputWithContex
 	return o
 }
 
-func (o StandardAppVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StandardAppVersion] {
-	return pulumix.Output[[]*StandardAppVersion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StandardAppVersionArrayOutput) Index(i pulumi.IntInput) StandardAppVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StandardAppVersion {
 		return vs[0].([]*StandardAppVersion)[vs[1].(int)]
@@ -812,12 +791,6 @@ func (o StandardAppVersionMapOutput) ToStandardAppVersionMapOutput() StandardApp
 
 func (o StandardAppVersionMapOutput) ToStandardAppVersionMapOutputWithContext(ctx context.Context) StandardAppVersionMapOutput {
 	return o
-}
-
-func (o StandardAppVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StandardAppVersion] {
-	return pulumix.Output[map[string]*StandardAppVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardAppVersionMapOutput) MapIndex(k pulumi.StringInput) StandardAppVersionOutput {

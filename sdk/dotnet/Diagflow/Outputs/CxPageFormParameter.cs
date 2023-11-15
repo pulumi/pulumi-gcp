@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxPageFormParameter
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CxPageFormParameterAdvancedSettings? AdvancedSettings;
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         public readonly string? DefaultValue;
@@ -48,6 +54,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
         [OutputConstructor]
         private CxPageFormParameter(
+            Outputs.CxPageFormParameterAdvancedSettings? advancedSettings,
+
             string? defaultValue,
 
             string? displayName,
@@ -62,6 +70,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
             bool? required)
         {
+            AdvancedSettings = advancedSettings;
             DefaultValue = defaultValue;
             DisplayName = displayName;
             EntityType = entityType;

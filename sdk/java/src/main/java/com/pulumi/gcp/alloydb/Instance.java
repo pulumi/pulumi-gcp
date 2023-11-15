@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.alloydb.InstanceArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceState;
+import com.pulumi.gcp.alloydb.outputs.InstanceClientConnectionConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceMachineConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceQueryInsightsConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceReadPoolConfig;
@@ -21,14 +22,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A managed alloydb cluster instance.
- * 
- * To get more information about Instance, see:
- * 
- * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances/create)
- * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
- * 
  * ## Example Usage
  * ### Alloydb Instance Basic
  * ```java
@@ -104,10 +97,117 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Alloydb Secondary Instance Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;);
+ * 
+ *         var primaryCluster = new Cluster(&#34;primaryCluster&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-primary-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .prefixLength(16)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(default_.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var primaryInstance = new Instance(&#34;primaryInstance&#34;, InstanceArgs.builder()        
+ *             .cluster(primaryCluster.name())
+ *             .instanceId(&#34;alloydb-primary-instance&#34;)
+ *             .instanceType(&#34;PRIMARY&#34;)
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var secondaryCluster = new Cluster(&#34;secondaryCluster&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-secondary-cluster&#34;)
+ *             .location(&#34;us-east1&#34;)
+ *             .network(default_.id())
+ *             .clusterType(&#34;SECONDARY&#34;)
+ *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
+ *                 .enabled(false)
+ *                 .build())
+ *             .secondaryConfig(ClusterSecondaryConfigArgs.builder()
+ *                 .primaryClusterName(primaryCluster.name())
+ *                 .build())
+ *             .deletionPolicy(&#34;FORCE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primaryInstance)
+ *                 .build());
+ * 
+ *         var secondaryInstance = new Instance(&#34;secondaryInstance&#34;, InstanceArgs.builder()        
+ *             .cluster(secondaryCluster.name())
+ *             .instanceId(&#34;alloydb-secondary-instance&#34;)
+ *             .instanceType(secondaryCluster.clusterType())
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * Instance can be imported using any of these accepted formats
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}` * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}` * `{{location}}/{{cluster}}/{{instance_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}&#34;
+ * 
+ *  to = google_alloydb_instance.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:alloydb/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
@@ -167,6 +267,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> availabilityType() {
         return this.availabilityType;
+    }
+    /**
+     * Client connection specific configurations.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="clientConnectionConfig", refs={InstanceClientConnectionConfig.class}, tree="[0]")
+    private Output<InstanceClientConnectionConfig> clientConnectionConfig;
+
+    /**
+     * @return Client connection specific configurations.
+     * Structure is documented below.
+     * 
+     */
+    public Output<InstanceClientConnectionConfig> clientConnectionConfig() {
+        return this.clientConnectionConfig;
     }
     /**
      * Identifies the alloydb cluster. Must be in the format
@@ -289,16 +405,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-     * Possible values are: `PRIMARY`, `READ_POOL`.
+     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+     * &#39;depends_on&#39; meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+     * secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+     * google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+     * type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+     * instead. Use deletion_policy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete
+     * the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+     * importing the deleted secondary instance by calling terraform import. Possible values: [&#34;PRIMARY&#34;, &#34;READ_POOL&#34;,
+     * &#34;SECONDARY&#34;]
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
-     * Possible values are: `PRIMARY`, `READ_POOL`.
+     * @return The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
+     * &#39;depends_on&#39; meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
+     * secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
+     * google_alloydb_cluster.&lt;secondary_cluster_name&gt;.cluster_type} instead of {instance_type = SECONDARY} If the instance
+     * type is SECONDARY, the terraform delete instance operation does not delete the secondary instance but abandons it
+     * instead. Use deletion_policy = &#34;FORCE&#34; in the associated secondary cluster and delete the cluster forcefully to delete
+     * the secondary cluster as well its associated secondary instance. Users can undo the delete secondary instance action by
+     * importing the deleted secondary instance by calling terraform import. Possible values: [&#34;PRIMARY&#34;, &#34;READ_POOL&#34;,
+     * &#34;SECONDARY&#34;]
      * 
      */
     public Output<String> instanceType() {

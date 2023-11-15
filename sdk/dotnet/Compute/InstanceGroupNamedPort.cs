@@ -77,7 +77,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// InstanceGroupNamedPort can be imported using any of these accepted formats
+    /// InstanceGroupNamedPort can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}` * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}` * `{{zone}}/{{group}}/{{port}}/{{name}}` * `{{group}}/{{port}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InstanceGroupNamedPort using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}"
+    /// 
+    ///  to = google_compute_instance_group_named_port.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InstanceGroupNamedPort can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}

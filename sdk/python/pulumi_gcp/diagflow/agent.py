@@ -595,7 +595,15 @@ class Agent(pulumi.CustomResource):
 
         ## Import
 
-        Agent can be imported using any of these accepted formats:
+        Agent can be imported using any of these accepted formats* `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
+
+         id = "{{project}}"
+
+         to = google_dialogflow_agent.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/agent:Agent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/agent:Agent default {{project}}
@@ -689,7 +697,15 @@ class Agent(pulumi.CustomResource):
 
         ## Import
 
-        Agent can be imported using any of these accepted formats:
+        Agent can be imported using any of these accepted formats* `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
+
+         id = "{{project}}"
+
+         to = google_dialogflow_agent.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/agent:Agent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/agent:Agent default {{project}}

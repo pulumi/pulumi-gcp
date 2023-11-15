@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a Google IAM Role.
@@ -103,12 +102,6 @@ func (o GetRuleResultOutput) ToGetRuleResultOutput() GetRuleResultOutput {
 
 func (o GetRuleResultOutput) ToGetRuleResultOutputWithContext(ctx context.Context) GetRuleResultOutput {
 	return o
-}
-
-func (o GetRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRuleResult] {
-	return pulumix.Output[GetRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

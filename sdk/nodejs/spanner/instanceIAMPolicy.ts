@@ -64,27 +64,19 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
+ * ### Importing IAM policies IAM policy imports use the identifier of the Spanner Instances resource . For example* `{{project}}/{{instance}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ *
+ *  id = {{project}}/{{instance}}
+ *
+ *  to = google_spanner_instance_iam_policy.default }
  *
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance "project-name/instance-name roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
  * ```
- *
- *  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance "project-name/instance-name roles/viewer"
+ *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}
  * ```
- *
- *  IAM policy imports use the identifier of the resource in question, e.g.
- *
- * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance project-name/instance-name
- * ```
- *
- *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
- *
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceIAMPolicy extends pulumi.CustomResource {
     /**

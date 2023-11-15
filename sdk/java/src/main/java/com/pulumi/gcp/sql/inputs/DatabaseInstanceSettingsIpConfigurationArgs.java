@@ -106,18 +106,39 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * Whether SSL connections over IP are enforced or not.
+     * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
      * 
      */
     @Import(name="requireSsl")
     private @Nullable Output<Boolean> requireSsl;
 
     /**
-     * @return Whether SSL connections over IP are enforced or not.
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
      * 
      */
     public Optional<Output<Boolean>> requireSsl() {
         return Optional.ofNullable(this.requireSsl);
+    }
+
+    /**
+     * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+     * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+     * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+     * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+     * 
+     */
+    @Import(name="sslMode")
+    private @Nullable Output<String> sslMode;
+
+    /**
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+     * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+     * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+     * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+     * 
+     */
+    public Optional<Output<String>> sslMode() {
+        return Optional.ofNullable(this.sslMode);
     }
 
     private DatabaseInstanceSettingsIpConfigurationArgs() {}
@@ -130,6 +151,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         this.privateNetwork = $.privateNetwork;
         this.pscConfigs = $.pscConfigs;
         this.requireSsl = $.requireSsl;
+        this.sslMode = $.sslMode;
     }
 
     public static Builder builder() {
@@ -273,7 +295,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param requireSsl Whether SSL connections over IP are enforced or not.
+         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
          * 
          * @return builder
          * 
@@ -284,13 +306,40 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param requireSsl Whether SSL connections over IP are enforced or not.
+         * @param requireSsl Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
          * 
          * @return builder
          * 
          */
         public Builder requireSsl(Boolean requireSsl) {
             return requireSsl(Output.of(requireSsl));
+        }
+
+        /**
+         * @param sslMode Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+         * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+         * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslMode(@Nullable Output<String> sslMode) {
+            $.sslMode = sslMode;
+            return this;
+        }
+
+        /**
+         * @param sslMode Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+         * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+         * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslMode(String sslMode) {
+            return sslMode(Output.of(sslMode));
         }
 
         public DatabaseInstanceSettingsIpConfigurationArgs build() {

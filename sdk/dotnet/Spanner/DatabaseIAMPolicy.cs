@@ -105,27 +105,19 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// ## Import
     /// 
-    /// For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
+    /// ### Importing IAM policies IAM policy imports use the identifier of the Spanner Database resource in question. For example* `{{project}}/{{instance}}/{{database}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// 
+    ///  id = {{project}}/{{instance}}/{{database}}
+    /// 
+    ///  to = google_spanner_database_iam_policy.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
     /// ```
-    /// 
-    ///  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer"
+    ///  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy default {{project}}/{{instance}}/{{database}}
     /// ```
-    /// 
-    ///  IAM policy imports use the identifier of the resource in question, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database project-name/instance-name/database-name
-    /// ```
-    /// 
-    ///  -&gt; **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy")]
     public partial class DatabaseIAMPolicy : global::Pulumi.CustomResource

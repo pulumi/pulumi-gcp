@@ -18,30 +18,33 @@ namespace Pulumi.Gcp.Diagflow
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `git_integration_settings.github_settings.access_token`.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ### Dialogflowcx Agent Full
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
     ///     var fullAgent = new Gcp.Diagflow.CxAgent("fullAgent", new()
     ///     {
-    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
-    ///         DefaultLanguageCode = "en",
-    ///         Description = "Example description.",
     ///         DisplayName = "dialogflowcx-agent",
-    ///         EnableSpellCorrection = true,
-    ///         EnableStackdriverLogging = true,
     ///         Location = "global",
-    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
-    ///         {
-    ///             EnableSpeechAdaptation = true,
-    ///         },
+    ///         DefaultLanguageCode = "en",
     ///         SupportedLanguageCodes = new[]
     ///         {
     ///             "fr",
@@ -49,6 +52,61 @@ namespace Pulumi.Gcp.Diagflow
     ///             "es",
     ///         },
     ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///         AdvancedSettings = new Gcp.Diagflow.Inputs.CxAgentAdvancedSettingsArgs
+    ///         {
+    ///             AudioExportGcsDestination = new Gcp.Diagflow.Inputs.CxAgentAdvancedSettingsAudioExportGcsDestinationArgs
+    ///             {
+    ///                 Uri = bucket.Url.Apply(url =&gt; $"{url}/prefix-"),
+    ///             },
+    ///             DtmfSettings = new Gcp.Diagflow.Inputs.CxAgentAdvancedSettingsDtmfSettingsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 MaxDigits = 1,
+    ///                 FinishDigit = "#",
+    ///             },
+    ///         },
+    ///         GitIntegrationSettings = new Gcp.Diagflow.Inputs.CxAgentGitIntegrationSettingsArgs
+    ///         {
+    ///             GithubSettings = new Gcp.Diagflow.Inputs.CxAgentGitIntegrationSettingsGithubSettingsArgs
+    ///             {
+    ///                 DisplayName = "Github Repo",
+    ///                 RepositoryUri = "https://api.github.com/repos/githubtraining/hellogitworld",
+    ///                 TrackingBranch = "main",
+    ///                 AccessToken = "secret-token",
+    ///                 Branches = new[]
+    ///                 {
+    ///                     "main",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TextToSpeechSettings = new Gcp.Diagflow.Inputs.CxAgentTextToSpeechSettingsArgs
+    ///         {
+    ///             SynthesizeSpeechConfigs = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["en"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["voice"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["name"] = "en-US-Neural2-A",
+    ///                     },
+    ///                 },
+    ///                 ["fr"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["voice"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["name"] = "fr-CA-Neural2-A",
+    ///                     },
+    ///                 },
+    ///             }),
+    ///         },
     ///     });
     /// 
     /// });
@@ -56,7 +114,15 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Import
     /// 
-    /// Agent can be imported using any of these accepted formats
+    /// Agent can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/agents/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/agents/{{name}}"
+    /// 
+    ///  to = google_dialogflow_cx_agent.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:diagflow/cxAgent:CxAgent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
@@ -73,6 +139,14 @@ namespace Pulumi.Gcp.Diagflow
     [GcpResourceType("gcp:diagflow/cxAgent:CxAgent")]
     public partial class CxAgent : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("advancedSettings")]
+        public Output<Outputs.CxAgentAdvancedSettings> AdvancedSettings { get; private set; } = null!;
+
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         /// </summary>
@@ -109,6 +183,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// Git integration settings for this agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gitIntegrationSettings")]
+        public Output<Outputs.CxAgentGitIntegrationSettings?> GitIntegrationSettings { get; private set; } = null!;
 
         /// <summary>
         /// The name of the location this agent is located in.
@@ -156,6 +237,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("supportedLanguageCodes")]
         public Output<ImmutableArray<string>> SupportedLanguageCodes { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings related to speech synthesizing.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("textToSpeechSettings")]
+        public Output<Outputs.CxAgentTextToSpeechSettings?> TextToSpeechSettings { get; private set; } = null!;
 
         /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
@@ -214,6 +302,14 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxAgentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxAgentAdvancedSettingsArgs>? AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         /// </summary>
         [Input("avatarUri")]
@@ -249,6 +345,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
+
+        /// <summary>
+        /// Git integration settings for this agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitIntegrationSettings")]
+        public Input<Inputs.CxAgentGitIntegrationSettingsArgs>? GitIntegrationSettings { get; set; }
 
         /// <summary>
         /// The name of the location this agent is located in.
@@ -292,6 +395,13 @@ namespace Pulumi.Gcp.Diagflow
         }
 
         /// <summary>
+        /// Settings related to speech synthesizing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("textToSpeechSettings")]
+        public Input<Inputs.CxAgentTextToSpeechSettingsArgs>? TextToSpeechSettings { get; set; }
+
+        /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         /// Europe/Paris.
         /// 
@@ -309,6 +419,14 @@ namespace Pulumi.Gcp.Diagflow
 
     public sealed class CxAgentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSettings")]
+        public Input<Inputs.CxAgentAdvancedSettingsGetArgs>? AdvancedSettings { get; set; }
+
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         /// </summary>
@@ -345,6 +463,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
+
+        /// <summary>
+        /// Git integration settings for this agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitIntegrationSettings")]
+        public Input<Inputs.CxAgentGitIntegrationSettingsGetArgs>? GitIntegrationSettings { get; set; }
 
         /// <summary>
         /// The name of the location this agent is located in.
@@ -398,6 +523,13 @@ namespace Pulumi.Gcp.Diagflow
             get => _supportedLanguageCodes ?? (_supportedLanguageCodes = new InputList<string>());
             set => _supportedLanguageCodes = value;
         }
+
+        /// <summary>
+        /// Settings related to speech synthesizing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("textToSpeechSettings")]
+        public Input<Inputs.CxAgentTextToSpeechSettingsGetArgs>? TextToSpeechSettings { get; set; }
 
         /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,

@@ -239,7 +239,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TlsRoute can be imported using any of these accepted formats
+ * TlsRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tlsRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TlsRoute using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/global/tlsRoutes/{{name}}&#34;
+ * 
+ *  to = google_network_services_tls_route.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:networkservices/tlsRoute:TlsRoute When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TlsRoute can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}

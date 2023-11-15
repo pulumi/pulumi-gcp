@@ -12,116 +12,100 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VMwareClusterVcenter {
     /**
-     * @return The load balancer&#39;s IP address.
+     * @return (Output)
+     * The vCenter IP address.
      * 
      */
     private @Nullable String address;
     /**
-     * @return (Output)
-     * Contains the vCenter CA certificate public key for SSL verification.
+     * @return Contains the vCenter CA certificate public key for SSL verification.
      * 
      */
     private @Nullable String caCertData;
     /**
-     * @return (Output)
-     * The name of the vCenter cluster for the user cluster.
+     * @return The name of the vCenter cluster for the user cluster.
      * 
      */
     private @Nullable String cluster;
     /**
-     * @return (Output)
-     * The name of the vCenter datacenter for the user cluster.
+     * @return The name of the vCenter datacenter for the user cluster.
      * 
      */
     private @Nullable String datacenter;
     /**
-     * @return (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * @return The name of the vCenter datastore for the user cluster.
      * 
      */
     private @Nullable String datastore;
     /**
-     * @return (Output)
-     * The name of the vCenter folder for the user cluster.
+     * @return The name of the vCenter folder for the user cluster.
      * 
      */
     private @Nullable String folder;
     /**
-     * @return (Output)
-     * The name of the vCenter resource pool for the user cluster.
+     * @return The name of the vCenter resource pool for the user cluster.
      * 
      */
     private @Nullable String resourcePool;
     /**
-     * @return (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * @return The name of the vCenter storage policy for the user cluster.
      * 
      */
     private @Nullable String storagePolicyName;
 
     private VMwareClusterVcenter() {}
     /**
-     * @return The load balancer&#39;s IP address.
+     * @return (Output)
+     * The vCenter IP address.
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return (Output)
-     * Contains the vCenter CA certificate public key for SSL verification.
+     * @return Contains the vCenter CA certificate public key for SSL verification.
      * 
      */
     public Optional<String> caCertData() {
         return Optional.ofNullable(this.caCertData);
     }
     /**
-     * @return (Output)
-     * The name of the vCenter cluster for the user cluster.
+     * @return The name of the vCenter cluster for the user cluster.
      * 
      */
     public Optional<String> cluster() {
         return Optional.ofNullable(this.cluster);
     }
     /**
-     * @return (Output)
-     * The name of the vCenter datacenter for the user cluster.
+     * @return The name of the vCenter datacenter for the user cluster.
      * 
      */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
     /**
-     * @return (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * @return The name of the vCenter datastore for the user cluster.
      * 
      */
     public Optional<String> datastore() {
         return Optional.ofNullable(this.datastore);
     }
     /**
-     * @return (Output)
-     * The name of the vCenter folder for the user cluster.
+     * @return The name of the vCenter folder for the user cluster.
      * 
      */
     public Optional<String> folder() {
         return Optional.ofNullable(this.folder);
     }
     /**
-     * @return (Output)
-     * The name of the vCenter resource pool for the user cluster.
+     * @return The name of the vCenter resource pool for the user cluster.
      * 
      */
     public Optional<String> resourcePool() {
         return Optional.ofNullable(this.resourcePool);
     }
     /**
-     * @return (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * @return The name of the vCenter storage policy for the user cluster.
      * 
      */
     public Optional<String> storagePolicyName() {

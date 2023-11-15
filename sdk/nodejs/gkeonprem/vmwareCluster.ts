@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Google VMware User Cluster.
+ *
  * ## Example Usage
  * ### Gkeonprem Vmware Cluster Basic
  *
@@ -15,47 +17,45 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_basic = new gcp.gkeonprem.VMwareCluster("cluster-basic", {
- *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
- *     description: "test cluster",
- *     onPremVersion: "1.13.1-gke.35",
  *     annotations: {},
- *     networkConfig: {
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         dhcpIpConfig: {
- *             enabled: true,
- *         },
- *     },
  *     controlPlaneNode: {
  *         cpus: 4,
  *         memory: 8192,
  *         replicas: 1,
  *     },
+ *     description: "test cluster",
  *     loadBalancer: {
+ *         metalLbConfig: {
+ *             addressPools: [
+ *                 {
+ *                     addresses: ["10.251.135.19"],
+ *                     avoidBuggyIps: true,
+ *                     manualAssign: true,
+ *                     pool: "ingress-ip",
+ *                 },
+ *                 {
+ *                     addresses: ["10.251.135.19"],
+ *                     avoidBuggyIps: true,
+ *                     manualAssign: true,
+ *                     pool: "lb-test-ip",
+ *                 },
+ *             ],
+ *         },
  *         vipConfig: {
  *             controlPlaneVip: "10.251.133.5",
  *             ingressVip: "10.251.135.19",
  *         },
- *         metalLbConfig: {
- *             addressPools: [
- *                 {
- *                     pool: "ingress-ip",
- *                     manualAssign: true,
- *                     addresses: ["10.251.135.19"],
- *                     avoidBuggyIps: true,
- *                 },
- *                 {
- *                     pool: "lb-test-ip",
- *                     manualAssign: true,
- *                     addresses: ["10.251.135.19"],
- *                     avoidBuggyIps: true,
- *                 },
- *             ],
- *         },
  *     },
- * }, {
- *     provider: google_beta,
+ *     location: "us-west1",
+ *     networkConfig: {
+ *         dhcpIpConfig: {
+ *             enabled: true,
+ *         },
+ *         podAddressCidrBlocks: ["192.168.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
+ *     },
+ *     onPremVersion: "1.13.1-gke.35",
  * });
  * ```
  * ### Gkeonprem Vmware Cluster F5lb
@@ -65,70 +65,68 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_f5lb = new gcp.gkeonprem.VMwareCluster("cluster-f5lb", {
- *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
- *     description: "test cluster",
- *     onPremVersion: "1.13.1-gke.35",
  *     annotations: {},
- *     networkConfig: {
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         dhcpIpConfig: {
- *             enabled: true,
- *         },
- *         controlPlaneV2Config: {
- *             controlPlaneIpBlock: {
- *                 ips: [{
- *                     hostname: "test-hostname",
- *                     ip: "10.0.0.1",
- *                 }],
- *                 netmask: "10.0.0.1/32",
- *                 gateway: "test-gateway",
- *             },
- *         },
+ *     antiAffinityGroups: {
+ *         aagConfigDisabled: true,
  *     },
- *     controlPlaneNode: {
- *         cpus: 4,
- *         memory: 8192,
- *         replicas: 1,
- *         autoResizeConfig: {
- *             enabled: true,
- *         },
- *     },
- *     loadBalancer: {
- *         vipConfig: {
- *             controlPlaneVip: "10.251.133.5",
- *             ingressVip: "10.251.135.19",
- *         },
- *         f5Config: {
- *             address: "10.0.0.1",
- *             partition: "test-partition",
- *             snatPool: "test-snap-pool",
- *         },
- *     },
- *     dataplaneV2: {
- *         dataplaneV2Enabled: true,
- *         windowsDataplaneV2Enabled: true,
- *         advancedNetworking: true,
- *     },
- *     vmTrackingEnabled: true,
- *     enableControlPlaneV2: true,
  *     authorization: {
  *         adminUsers: [{
  *             username: "testuser@gmail.com",
  *         }],
  *     },
- *     antiAffinityGroups: {
- *         aagConfigDisabled: true,
- *     },
  *     autoRepairConfig: {
  *         enabled: true,
  *     },
+ *     controlPlaneNode: {
+ *         autoResizeConfig: {
+ *             enabled: true,
+ *         },
+ *         cpus: 4,
+ *         memory: 8192,
+ *         replicas: 1,
+ *     },
+ *     dataplaneV2: {
+ *         advancedNetworking: true,
+ *         dataplaneV2Enabled: true,
+ *         windowsDataplaneV2Enabled: true,
+ *     },
+ *     description: "test cluster",
+ *     enableControlPlaneV2: true,
+ *     loadBalancer: {
+ *         f5Config: {
+ *             address: "10.0.0.1",
+ *             partition: "test-partition",
+ *             snatPool: "test-snap-pool",
+ *         },
+ *         vipConfig: {
+ *             controlPlaneVip: "10.251.133.5",
+ *             ingressVip: "10.251.135.19",
+ *         },
+ *     },
+ *     location: "us-west1",
+ *     networkConfig: {
+ *         controlPlaneV2Config: {
+ *             controlPlaneIpBlock: {
+ *                 gateway: "test-gateway",
+ *                 ips: [{
+ *                     hostname: "test-hostname",
+ *                     ip: "10.0.0.1",
+ *                 }],
+ *                 netmask: "10.0.0.1/32",
+ *             },
+ *         },
+ *         dhcpIpConfig: {
+ *             enabled: true,
+ *         },
+ *         podAddressCidrBlocks: ["192.168.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
+ *     },
+ *     onPremVersion: "1.13.1-gke.35",
  *     storage: {
  *         vsphereCsiDisabled: true,
  *     },
- * }, {
- *     provider: google_beta,
+ *     vmTrackingEnabled: true,
  * });
  * ```
  * ### Gkeonprem Vmware Cluster Manuallb
@@ -138,93 +136,108 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_manuallb = new gcp.gkeonprem.VMwareCluster("cluster-manuallb", {
- *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
- *     description: "test cluster",
- *     onPremVersion: "1.13.1-gke.35",
  *     annotations: {},
- *     networkConfig: {
- *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
- *         podAddressCidrBlocks: ["192.168.0.0/16"],
- *         hostConfig: {
- *             dnsServers: ["10.254.41.1"],
- *             ntpServers: ["216.239.35.8"],
- *             dnsSearchDomains: ["test-domain"],
- *         },
- *         staticIpConfig: {
- *             ipBlocks: [{
- *                 netmask: "255.255.252.0",
- *                 gateway: "10.251.31.254",
- *                 ips: [
- *                     {
- *                         ip: "10.251.30.153",
- *                         hostname: "test-hostname1",
- *                     },
- *                     {
- *                         ip: "10.251.31.206",
- *                         hostname: "test-hostname2",
- *                     },
- *                     {
- *                         ip: "10.251.31.193",
- *                         hostname: "test-hostname3",
- *                     },
- *                     {
- *                         ip: "10.251.30.230",
- *                         hostname: "test-hostname4",
- *                     },
- *                 ],
- *             }],
- *         },
- *     },
- *     controlPlaneNode: {
- *         cpus: 4,
- *         memory: 8192,
- *         replicas: 1,
- *         autoResizeConfig: {
- *             enabled: true,
- *         },
- *     },
- *     loadBalancer: {
- *         vipConfig: {
- *             controlPlaneVip: "10.251.133.5",
- *             ingressVip: "10.251.135.19",
- *         },
- *         manualLbConfig: {
- *             ingressHttpNodePort: 30005,
- *             ingressHttpsNodePort: 30006,
- *             controlPlaneNodePort: 30007,
- *             konnectivityServerNodePort: 30008,
- *         },
- *     },
- *     dataplaneV2: {
- *         dataplaneV2Enabled: true,
- *         windowsDataplaneV2Enabled: true,
- *         advancedNetworking: true,
- *     },
- *     vmTrackingEnabled: true,
- *     enableControlPlaneV2: true,
- *     upgradePolicy: {
- *         controlPlaneOnly: true,
+ *     antiAffinityGroups: {
+ *         aagConfigDisabled: true,
  *     },
  *     authorization: {
  *         adminUsers: [{
  *             username: "testuser@gmail.com",
  *         }],
  *     },
- *     antiAffinityGroups: {
- *         aagConfigDisabled: true,
- *     },
  *     autoRepairConfig: {
  *         enabled: true,
  *     },
- * }, {
- *     provider: google_beta,
+ *     controlPlaneNode: {
+ *         autoResizeConfig: {
+ *             enabled: true,
+ *         },
+ *         cpus: 4,
+ *         memory: 8192,
+ *         replicas: 1,
+ *     },
+ *     dataplaneV2: {
+ *         advancedNetworking: true,
+ *         dataplaneV2Enabled: true,
+ *         windowsDataplaneV2Enabled: true,
+ *     },
+ *     description: "test cluster",
+ *     enableControlPlaneV2: true,
+ *     loadBalancer: {
+ *         manualLbConfig: {
+ *             controlPlaneNodePort: 30007,
+ *             ingressHttpNodePort: 30005,
+ *             ingressHttpsNodePort: 30006,
+ *             konnectivityServerNodePort: 30008,
+ *         },
+ *         vipConfig: {
+ *             controlPlaneVip: "10.251.133.5",
+ *             ingressVip: "10.251.135.19",
+ *         },
+ *     },
+ *     location: "us-west1",
+ *     networkConfig: {
+ *         hostConfig: {
+ *             dnsSearchDomains: ["test-domain"],
+ *             dnsServers: ["10.254.41.1"],
+ *             ntpServers: ["216.239.35.8"],
+ *         },
+ *         podAddressCidrBlocks: ["192.168.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.96.0.0/12"],
+ *         staticIpConfig: {
+ *             ipBlocks: [{
+ *                 gateway: "10.251.31.254",
+ *                 ips: [
+ *                     {
+ *                         hostname: "test-hostname1",
+ *                         ip: "10.251.30.153",
+ *                     },
+ *                     {
+ *                         hostname: "test-hostname2",
+ *                         ip: "10.251.31.206",
+ *                     },
+ *                     {
+ *                         hostname: "test-hostname3",
+ *                         ip: "10.251.31.193",
+ *                     },
+ *                     {
+ *                         hostname: "test-hostname4",
+ *                         ip: "10.251.30.230",
+ *                     },
+ *                 ],
+ *                 netmask: "255.255.252.0",
+ *             }],
+ *         },
+ *     },
+ *     onPremVersion: "1.13.1-gke.35",
+ *     upgradePolicy: {
+ *         controlPlaneOnly: true,
+ *     },
+ *     vcenters: [{
+ *         caCertData: "test-ca-cert-data",
+ *         cluster: "test-cluster",
+ *         datacenter: "test-datacenter",
+ *         datastore: "test-datastore",
+ *         folder: "test-folder",
+ *         resourcePool: "test-resource-pool",
+ *         storagePolicyName: "test-storage-policy-name",
+ *     }],
+ *     vmTrackingEnabled: true,
  * });
  * ```
  *
  * ## Import
  *
- * VmwareCluster can be imported using any of these accepted formats
+ * VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareCluster using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}"
+ *
+ *  to = google_gkeonprem_vmware_cluster.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareCluster can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
@@ -434,7 +447,7 @@ export class VMwareCluster extends pulumi.CustomResource {
      * Inherited from the admin cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly vcenters!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter[]>;
+    public readonly vcenters!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter[] | undefined>;
     /**
      * Enable VM tracking.
      */
@@ -516,6 +529,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
+            resourceInputs["vcenters"] = args ? args.vcenters : undefined;
             resourceInputs["vmTrackingEnabled"] = args ? args.vmTrackingEnabled : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -530,7 +544,6 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["validationChecks"] = undefined /*out*/;
-            resourceInputs["vcenters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VMwareCluster.__pulumiType, name, resourceInputs, opts);
@@ -812,6 +825,12 @@ export interface VMwareClusterArgs {
      * Structure is documented below.
      */
     upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
+    /**
+     * VmwareVCenterConfig specifies vCenter config for the user cluster.
+     * Inherited from the admin cluster.
+     * Structure is documented below.
+     */
+    vcenters?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VMwareClusterVcenter>[]>;
     /**
      * Enable VM tracking.
      */

@@ -105,10 +105,18 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
+ * Storage Transfer Jobs can be imported using the Transfer Job's `project` and `name` (without the `transferJob/` prefix), e.g. * `{{project_id}}/{{name}}`, where `name` is a numeric value. In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Storage Transfer Jobs using one of the formats above. For exampletf import {
+ *
+ *  id = "{{project_id}}/{{name}}"
+ *
+ *  to = google_storage_transfer_job.default }
  *
  * ```sh
- *  $ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
+ *  $ pulumi import gcp:storage/transferJob:TransferJob When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Storage Transfer Jobs can be imported using one of the formats above. For example
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
  * ```
  */
 export class TransferJob extends pulumi.CustomResource {

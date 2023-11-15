@@ -133,10 +133,90 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Server Tls Policy Mtls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("defaultTrustConfig", new()
+    ///     {
+    ///         Description = "sample trust config description",
+    ///         Location = "global",
+    ///         TrustStores = new[]
+    ///         {
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
+    ///             {
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = File.ReadAllText("test-fixtures/ca_cert.pem"),
+    ///                     },
+    ///                 },
+    ///                 IntermediateCas = new[]
+    ///                 {
+    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
+    ///                     {
+    ///                         PemCertificate = File.ReadAllText("test-fixtures/ca_cert.pem"),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultServerTlsPolicy = new Gcp.NetworkSecurity.ServerTlsPolicy("defaultServerTlsPolicy", new()
+    ///     {
+    ///         Description = "my description",
+    ///         Location = "global",
+    ///         AllowOpen = false,
+    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
+    ///         {
+    ///             ClientValidationMode = "REJECT_INVALID",
+    ///             ClientValidationTrustConfig = Output.Tuple(project, defaultTrustConfig.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/trustConfigs/{name}";
+    ///             }),
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// ServerTlsPolicy can be imported using any of these accepted formats
+    /// ServerTlsPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServerTlsPolicy using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}"
+    /// 
+    ///  to = google_network_security_server_tls_policy.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServerTlsPolicy can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}

@@ -99,23 +99,19 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// ## Import
     /// 
-    /// Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
+    /// ### Importing IAM policies IAM policy imports use the identifier of the Pubsub Subscription resource. For example* `"projects/{{project_id}}/subscriptions/{{subscription}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// 
+    ///  id = "projects/{{project_id}}/subscriptions/{{subscription}}"
+    /// 
+    ///  to = google_pubsub_subscription_iam_policy.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}
     /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
-    /// ```
-    /// 
-    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding")]
     public partial class SubscriptionIAMBinding : global::Pulumi.CustomResource

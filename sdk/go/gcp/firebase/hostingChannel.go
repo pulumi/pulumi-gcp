@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -88,7 +87,17 @@ import (
 //
 // ## Import
 //
-// # Channel can be imported using any of these accepted formats
+// Channel can be imported using any of these accepted formats* `sites/{{site_id}}/channels/{{channel_id}}` * `{{site_id}}/{{channel_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Channel using one of the formats above. For exampletf import {
+//
+//	id = "sites/{{site_id}}/channels/{{channel_id}}"
+//
+//	to = google_firebase_hosting_channel.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:firebase/hostingChannel:HostingChannel When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Channel can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -315,12 +324,6 @@ func (i *HostingChannel) ToHostingChannelOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HostingChannelOutput)
 }
 
-func (i *HostingChannel) ToOutput(ctx context.Context) pulumix.Output[*HostingChannel] {
-	return pulumix.Output[*HostingChannel]{
-		OutputState: i.ToHostingChannelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostingChannelArrayInput is an input type that accepts HostingChannelArray and HostingChannelArrayOutput values.
 // You can construct a concrete instance of `HostingChannelArrayInput` via:
 //
@@ -344,12 +347,6 @@ func (i HostingChannelArray) ToHostingChannelArrayOutput() HostingChannelArrayOu
 
 func (i HostingChannelArray) ToHostingChannelArrayOutputWithContext(ctx context.Context) HostingChannelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostingChannelArrayOutput)
-}
-
-func (i HostingChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostingChannel] {
-	return pulumix.Output[[]*HostingChannel]{
-		OutputState: i.ToHostingChannelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostingChannelMapInput is an input type that accepts HostingChannelMap and HostingChannelMapOutput values.
@@ -377,12 +374,6 @@ func (i HostingChannelMap) ToHostingChannelMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HostingChannelMapOutput)
 }
 
-func (i HostingChannelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingChannel] {
-	return pulumix.Output[map[string]*HostingChannel]{
-		OutputState: i.ToHostingChannelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingChannelOutput struct{ *pulumi.OutputState }
 
 func (HostingChannelOutput) ElementType() reflect.Type {
@@ -395,12 +386,6 @@ func (o HostingChannelOutput) ToHostingChannelOutput() HostingChannelOutput {
 
 func (o HostingChannelOutput) ToHostingChannelOutputWithContext(ctx context.Context) HostingChannelOutput {
 	return o
-}
-
-func (o HostingChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingChannel] {
-	return pulumix.Output[*HostingChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Immutable. A unique ID within the site that identifies the channel.
@@ -473,12 +458,6 @@ func (o HostingChannelArrayOutput) ToHostingChannelArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o HostingChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostingChannel] {
-	return pulumix.Output[[]*HostingChannel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostingChannelArrayOutput) Index(i pulumi.IntInput) HostingChannelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostingChannel {
 		return vs[0].([]*HostingChannel)[vs[1].(int)]
@@ -497,12 +476,6 @@ func (o HostingChannelMapOutput) ToHostingChannelMapOutput() HostingChannelMapOu
 
 func (o HostingChannelMapOutput) ToHostingChannelMapOutputWithContext(ctx context.Context) HostingChannelMapOutput {
 	return o
-}
-
-func (o HostingChannelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingChannel] {
-	return pulumix.Output[map[string]*HostingChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingChannelMapOutput) MapIndex(k pulumi.StringInput) HostingChannelOutput {

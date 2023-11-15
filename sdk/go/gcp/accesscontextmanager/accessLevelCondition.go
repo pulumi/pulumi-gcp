@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -178,6 +177,9 @@ type AccessLevelCondition struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels pulumi.StringArrayOutput `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources AccessLevelConditionVpcNetworkSourceArrayOutput `pulumi:"vpcNetworkSources"`
 }
 
 // NewAccessLevelCondition registers a new resource with the given unique name, arguments, and options.
@@ -255,6 +257,9 @@ type accessLevelConditionState struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources []AccessLevelConditionVpcNetworkSource `pulumi:"vpcNetworkSources"`
 }
 
 type AccessLevelConditionState struct {
@@ -300,6 +305,9 @@ type AccessLevelConditionState struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels pulumi.StringArrayInput
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources AccessLevelConditionVpcNetworkSourceArrayInput
 }
 
 func (AccessLevelConditionState) ElementType() reflect.Type {
@@ -349,6 +357,9 @@ type accessLevelConditionArgs struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources []AccessLevelConditionVpcNetworkSource `pulumi:"vpcNetworkSources"`
 }
 
 // The set of arguments for constructing a AccessLevelCondition resource.
@@ -395,6 +406,9 @@ type AccessLevelConditionArgs struct {
 	// granted for the Condition to be true.
 	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 	RequiredAccessLevels pulumi.StringArrayInput
+	// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+	// Structure is documented below.
+	VpcNetworkSources AccessLevelConditionVpcNetworkSourceArrayInput
 }
 
 func (AccessLevelConditionArgs) ElementType() reflect.Type {
@@ -418,12 +432,6 @@ func (i *AccessLevelCondition) ToAccessLevelConditionOutput() AccessLevelConditi
 
 func (i *AccessLevelCondition) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionOutput)
-}
-
-func (i *AccessLevelCondition) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCondition] {
-	return pulumix.Output[*AccessLevelCondition]{
-		OutputState: i.ToAccessLevelConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessLevelConditionArrayInput is an input type that accepts AccessLevelConditionArray and AccessLevelConditionArrayOutput values.
@@ -451,12 +459,6 @@ func (i AccessLevelConditionArray) ToAccessLevelConditionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionArrayOutput)
 }
 
-func (i AccessLevelConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevelCondition] {
-	return pulumix.Output[[]*AccessLevelCondition]{
-		OutputState: i.ToAccessLevelConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelConditionMapInput is an input type that accepts AccessLevelConditionMap and AccessLevelConditionMapOutput values.
 // You can construct a concrete instance of `AccessLevelConditionMapInput` via:
 //
@@ -482,12 +484,6 @@ func (i AccessLevelConditionMap) ToAccessLevelConditionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionMapOutput)
 }
 
-func (i AccessLevelConditionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevelCondition] {
-	return pulumix.Output[map[string]*AccessLevelCondition]{
-		OutputState: i.ToAccessLevelConditionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelConditionOutput) ElementType() reflect.Type {
@@ -500,12 +496,6 @@ func (o AccessLevelConditionOutput) ToAccessLevelConditionOutput() AccessLevelCo
 
 func (o AccessLevelConditionOutput) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
 	return o
-}
-
-func (o AccessLevelConditionOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevelCondition] {
-	return pulumix.Output[*AccessLevelCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Access Level to add this condition to.
@@ -571,6 +561,14 @@ func (o AccessLevelConditionOutput) RequiredAccessLevels() pulumi.StringArrayOut
 	return o.ApplyT(func(v *AccessLevelCondition) pulumi.StringArrayOutput { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
 }
 
+// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
+// Structure is documented below.
+func (o AccessLevelConditionOutput) VpcNetworkSources() AccessLevelConditionVpcNetworkSourceArrayOutput {
+	return o.ApplyT(func(v *AccessLevelCondition) AccessLevelConditionVpcNetworkSourceArrayOutput {
+		return v.VpcNetworkSources
+	}).(AccessLevelConditionVpcNetworkSourceArrayOutput)
+}
+
 type AccessLevelConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelConditionArrayOutput) ElementType() reflect.Type {
@@ -583,12 +581,6 @@ func (o AccessLevelConditionArrayOutput) ToAccessLevelConditionArrayOutput() Acc
 
 func (o AccessLevelConditionArrayOutput) ToAccessLevelConditionArrayOutputWithContext(ctx context.Context) AccessLevelConditionArrayOutput {
 	return o
-}
-
-func (o AccessLevelConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevelCondition] {
-	return pulumix.Output[[]*AccessLevelCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelConditionOutput {
@@ -609,12 +601,6 @@ func (o AccessLevelConditionMapOutput) ToAccessLevelConditionMapOutput() AccessL
 
 func (o AccessLevelConditionMapOutput) ToAccessLevelConditionMapOutputWithContext(ctx context.Context) AccessLevelConditionMapOutput {
 	return o
-}
-
-func (o AccessLevelConditionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevelCondition] {
-	return pulumix.Output[map[string]*AccessLevelCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelConditionMapOutput) MapIndex(k pulumi.StringInput) AccessLevelConditionOutput {

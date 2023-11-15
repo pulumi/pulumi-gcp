@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a Google BeyondCorp App Connection.
@@ -124,12 +123,6 @@ func (o LookupAppConnectionResultOutput) ToLookupAppConnectionResultOutput() Loo
 
 func (o LookupAppConnectionResultOutput) ToLookupAppConnectionResultOutputWithContext(ctx context.Context) LookupAppConnectionResultOutput {
 	return o
-}
-
-func (o LookupAppConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppConnectionResult] {
-	return pulumix.Output[LookupAppConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAppConnectionResultOutput) ApplicationEndpoints() GetAppConnectionApplicationEndpointArrayOutput {

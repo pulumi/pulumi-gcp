@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_schema_iam_policy import *
 from .get_subscription import *
 from .get_subscription_iam_policy import *
 from .get_topic import *
@@ -13,6 +14,9 @@ from .lite_reservation import *
 from .lite_subscription import *
 from .lite_topic import *
 from .schema import *
+from .schema_iam_binding import *
+from .schema_iam_member import *
+from .schema_iam_policy import *
 from .subscription import *
 from .subscription_iam_binding import *
 from .subscription_iam_member import *

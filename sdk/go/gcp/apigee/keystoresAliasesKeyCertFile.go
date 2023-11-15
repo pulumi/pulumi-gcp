@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An alias from a key/certificate pair.
@@ -23,7 +22,17 @@ import (
 //
 // ## Import
 //
-// # KeystoresAliasesKeyCertFile can be imported using any of these accepted formats
+// KeystoresAliasesKeyCertFile can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}` * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeystoresAliasesKeyCertFile using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}"
+//
+//	to = google_apigee_keystores_aliases_key_cert_file.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeystoresAliasesKeyCertFile can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -237,12 +246,6 @@ func (i *KeystoresAliasesKeyCertFile) ToKeystoresAliasesKeyCertFileOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileOutput)
 }
 
-func (i *KeystoresAliasesKeyCertFile) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesKeyCertFile] {
-	return pulumix.Output[*KeystoresAliasesKeyCertFile]{
-		OutputState: i.ToKeystoresAliasesKeyCertFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeystoresAliasesKeyCertFileArrayInput is an input type that accepts KeystoresAliasesKeyCertFileArray and KeystoresAliasesKeyCertFileArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesKeyCertFileArrayInput` via:
 //
@@ -266,12 +269,6 @@ func (i KeystoresAliasesKeyCertFileArray) ToKeystoresAliasesKeyCertFileArrayOutp
 
 func (i KeystoresAliasesKeyCertFileArray) ToKeystoresAliasesKeyCertFileArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileArrayOutput)
-}
-
-func (i KeystoresAliasesKeyCertFileArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeystoresAliasesKeyCertFile] {
-	return pulumix.Output[[]*KeystoresAliasesKeyCertFile]{
-		OutputState: i.ToKeystoresAliasesKeyCertFileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeystoresAliasesKeyCertFileMapInput is an input type that accepts KeystoresAliasesKeyCertFileMap and KeystoresAliasesKeyCertFileMapOutput values.
@@ -299,12 +296,6 @@ func (i KeystoresAliasesKeyCertFileMap) ToKeystoresAliasesKeyCertFileMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileMapOutput)
 }
 
-func (i KeystoresAliasesKeyCertFileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeystoresAliasesKeyCertFile] {
-	return pulumix.Output[map[string]*KeystoresAliasesKeyCertFile]{
-		OutputState: i.ToKeystoresAliasesKeyCertFileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeystoresAliasesKeyCertFileOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesKeyCertFileOutput) ElementType() reflect.Type {
@@ -317,12 +308,6 @@ func (o KeystoresAliasesKeyCertFileOutput) ToKeystoresAliasesKeyCertFileOutput()
 
 func (o KeystoresAliasesKeyCertFileOutput) ToKeystoresAliasesKeyCertFileOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileOutput {
 	return o
-}
-
-func (o KeystoresAliasesKeyCertFileOutput) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesKeyCertFile] {
-	return pulumix.Output[*KeystoresAliasesKeyCertFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alias Name
@@ -387,12 +372,6 @@ func (o KeystoresAliasesKeyCertFileArrayOutput) ToKeystoresAliasesKeyCertFileArr
 	return o
 }
 
-func (o KeystoresAliasesKeyCertFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeystoresAliasesKeyCertFile] {
-	return pulumix.Output[[]*KeystoresAliasesKeyCertFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeystoresAliasesKeyCertFileArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesKeyCertFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeystoresAliasesKeyCertFile {
 		return vs[0].([]*KeystoresAliasesKeyCertFile)[vs[1].(int)]
@@ -411,12 +390,6 @@ func (o KeystoresAliasesKeyCertFileMapOutput) ToKeystoresAliasesKeyCertFileMapOu
 
 func (o KeystoresAliasesKeyCertFileMapOutput) ToKeystoresAliasesKeyCertFileMapOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileMapOutput {
 	return o
-}
-
-func (o KeystoresAliasesKeyCertFileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeystoresAliasesKeyCertFile] {
-	return pulumix.Output[map[string]*KeystoresAliasesKeyCertFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeystoresAliasesKeyCertFileMapOutput) MapIndex(k pulumi.StringInput) KeystoresAliasesKeyCertFileOutput {

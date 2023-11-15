@@ -16,6 +16,13 @@ public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.re
 
     public static final InstanceFromMachineImageScratchDiskArgs Empty = new InstanceFromMachineImageScratchDiskArgs();
 
+    @Import(name="deviceName")
+    private @Nullable Output<String> deviceName;
+
+    public Optional<Output<String>> deviceName() {
+        return Optional.ofNullable(this.deviceName);
+    }
+
     @Import(name="interface", required=true)
     private Output<String> interface_;
 
@@ -33,6 +40,7 @@ public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.re
     private InstanceFromMachineImageScratchDiskArgs() {}
 
     private InstanceFromMachineImageScratchDiskArgs(InstanceFromMachineImageScratchDiskArgs $) {
+        this.deviceName = $.deviceName;
         this.interface_ = $.interface_;
         this.size = $.size;
     }
@@ -53,6 +61,15 @@ public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.re
 
         public Builder(InstanceFromMachineImageScratchDiskArgs defaults) {
             $ = new InstanceFromMachineImageScratchDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder deviceName(@Nullable Output<String> deviceName) {
+            $.deviceName = deviceName;
+            return this;
+        }
+
+        public Builder deviceName(String deviceName) {
+            return deviceName(Output.of(deviceName));
         }
 
         public Builder interface_(Output<String> interface_) {

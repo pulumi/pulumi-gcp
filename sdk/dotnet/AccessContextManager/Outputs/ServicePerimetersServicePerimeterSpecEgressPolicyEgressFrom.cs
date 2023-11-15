@@ -26,15 +26,31 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         /// </summary>
         public readonly string? IdentityType;
+        /// <summary>
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
+        /// </summary>
+        public readonly string? SourceRestriction;
+        /// <summary>
+        /// Sources that this EgressPolicy authorizes access from.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource> Sources;
 
         [OutputConstructor]
         private ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(
             ImmutableArray<string> identities,
 
-            string? identityType)
+            string? identityType,
+
+            string? sourceRestriction,
+
+            ImmutableArray<Outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource> sources)
         {
             Identities = identities;
             IdentityType = identityType;
+            SourceRestriction = sourceRestriction;
+            Sources = sources;
         }
     }
 }

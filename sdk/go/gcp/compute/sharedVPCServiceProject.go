@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enables the Google Compute Engine
@@ -56,11 +55,21 @@ import (
 //
 // ## Import
 //
-// Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
+// Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g. * `{{host_project}/{{service_project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Google Compute Engine Shared VPC service project using one of the formats above. For exampletf import {
+//
+//	id = "{{host_project}/{{service_project}}"
+//
+//	to = google_compute_shared_vpc_service_project.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject service1 host-project-id/service-project-id-1
+//	$ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
 //
 // ```
 type SharedVPCServiceProject struct {
@@ -173,12 +182,6 @@ func (i *SharedVPCServiceProject) ToSharedVPCServiceProjectOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCServiceProjectOutput)
 }
 
-func (i *SharedVPCServiceProject) ToOutput(ctx context.Context) pulumix.Output[*SharedVPCServiceProject] {
-	return pulumix.Output[*SharedVPCServiceProject]{
-		OutputState: i.ToSharedVPCServiceProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedVPCServiceProjectArrayInput is an input type that accepts SharedVPCServiceProjectArray and SharedVPCServiceProjectArrayOutput values.
 // You can construct a concrete instance of `SharedVPCServiceProjectArrayInput` via:
 //
@@ -202,12 +205,6 @@ func (i SharedVPCServiceProjectArray) ToSharedVPCServiceProjectArrayOutput() Sha
 
 func (i SharedVPCServiceProjectArray) ToSharedVPCServiceProjectArrayOutputWithContext(ctx context.Context) SharedVPCServiceProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCServiceProjectArrayOutput)
-}
-
-func (i SharedVPCServiceProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*SharedVPCServiceProject] {
-	return pulumix.Output[[]*SharedVPCServiceProject]{
-		OutputState: i.ToSharedVPCServiceProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SharedVPCServiceProjectMapInput is an input type that accepts SharedVPCServiceProjectMap and SharedVPCServiceProjectMapOutput values.
@@ -235,12 +232,6 @@ func (i SharedVPCServiceProjectMap) ToSharedVPCServiceProjectMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCServiceProjectMapOutput)
 }
 
-func (i SharedVPCServiceProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedVPCServiceProject] {
-	return pulumix.Output[map[string]*SharedVPCServiceProject]{
-		OutputState: i.ToSharedVPCServiceProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedVPCServiceProjectOutput struct{ *pulumi.OutputState }
 
 func (SharedVPCServiceProjectOutput) ElementType() reflect.Type {
@@ -253,12 +244,6 @@ func (o SharedVPCServiceProjectOutput) ToSharedVPCServiceProjectOutput() SharedV
 
 func (o SharedVPCServiceProjectOutput) ToSharedVPCServiceProjectOutputWithContext(ctx context.Context) SharedVPCServiceProjectOutput {
 	return o
-}
-
-func (o SharedVPCServiceProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedVPCServiceProject] {
-	return pulumix.Output[*SharedVPCServiceProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
@@ -290,12 +275,6 @@ func (o SharedVPCServiceProjectArrayOutput) ToSharedVPCServiceProjectArrayOutput
 	return o
 }
 
-func (o SharedVPCServiceProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SharedVPCServiceProject] {
-	return pulumix.Output[[]*SharedVPCServiceProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedVPCServiceProjectArrayOutput) Index(i pulumi.IntInput) SharedVPCServiceProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SharedVPCServiceProject {
 		return vs[0].([]*SharedVPCServiceProject)[vs[1].(int)]
@@ -314,12 +293,6 @@ func (o SharedVPCServiceProjectMapOutput) ToSharedVPCServiceProjectMapOutput() S
 
 func (o SharedVPCServiceProjectMapOutput) ToSharedVPCServiceProjectMapOutputWithContext(ctx context.Context) SharedVPCServiceProjectMapOutput {
 	return o
-}
-
-func (o SharedVPCServiceProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedVPCServiceProject] {
-	return pulumix.Output[map[string]*SharedVPCServiceProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedVPCServiceProjectMapOutput) MapIndex(k pulumi.StringInput) SharedVPCServiceProjectOutput {

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetManagementServerArgs, GetManagementServerResult, GetManagementServerOutputArgs } from "./getManagementServer";
+export const getManagementServer: typeof import("./getManagementServer").getManagementServer = null as any;
+export const getManagementServerOutput: typeof import("./getManagementServer").getManagementServerOutput = null as any;
+utilities.lazyLoad(exports, ["getManagementServer","getManagementServerOutput"], () => require("./getManagementServer"));
+
 export { ManagementServerArgs, ManagementServerState } from "./managementServer";
 export type ManagementServer = import("./managementServer").ManagementServer;
 export const ManagementServer: typeof import("./managementServer").ManagementServer = null as any;

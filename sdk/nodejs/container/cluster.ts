@@ -69,18 +69,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
+ *
+ *  to = google_container_cluster.default }
  *
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+ *  $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+ *  $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+ *  $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
  * ```
  *
  *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
@@ -119,7 +127,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<outputs.container.ClusterAddonsConfig>;
     /**
-     * Enable NET_ADMIN for the cluster. Defaults to 
+     * Enable NET_ADMIN for the cluster. Defaults to
      * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
      * set to `true`).
      */
@@ -254,6 +262,12 @@ export class Cluster extends pulumi.CustomResource {
      * The IP address of this cluster's Kubernetes master.
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    /**
+     * Fleet configuration for the cluster. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly fleet!: pulumi.Output<outputs.container.ClusterFleet | undefined>;
     /**
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
@@ -501,8 +515,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly securityPostureConfig!: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
     /**
@@ -587,6 +599,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = state ? state.enableTpu : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["fleet"] = state ? state.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = state ? state.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
             resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
@@ -661,6 +674,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableMultiNetworking"] = args ? args.enableMultiNetworking : undefined;
             resourceInputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
+            resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
@@ -724,7 +738,7 @@ export interface ClusterState {
      */
     addonsConfig?: pulumi.Input<inputs.container.ClusterAddonsConfig>;
     /**
-     * Enable NET_ADMIN for the cluster. Defaults to 
+     * Enable NET_ADMIN for the cluster. Defaults to
      * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
      * set to `true`).
      */
@@ -859,6 +873,12 @@ export interface ClusterState {
      * The IP address of this cluster's Kubernetes master.
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * Fleet configuration for the cluster. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    fleet?: pulumi.Input<inputs.container.ClusterFleet>;
     /**
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
@@ -1106,8 +1126,6 @@ export interface ClusterState {
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     securityPostureConfig?: pulumi.Input<inputs.container.ClusterSecurityPostureConfig>;
     /**
@@ -1163,7 +1181,7 @@ export interface ClusterArgs {
      */
     addonsConfig?: pulumi.Input<inputs.container.ClusterAddonsConfig>;
     /**
-     * Enable NET_ADMIN for the cluster. Defaults to 
+     * Enable NET_ADMIN for the cluster. Defaults to
      * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
      * set to `true`).
      */
@@ -1294,6 +1312,12 @@ export interface ClusterArgs {
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * Fleet configuration for the cluster. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    fleet?: pulumi.Input<inputs.container.ClusterFleet>;
     /**
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
@@ -1530,8 +1554,6 @@ export interface ClusterArgs {
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     securityPostureConfig?: pulumi.Input<inputs.container.ClusterSecurityPostureConfig>;
     /**

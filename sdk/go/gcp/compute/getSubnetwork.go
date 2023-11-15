@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a subnetwork within GCE from its name and region.
@@ -74,6 +73,8 @@ type LookupSubnetworkResult struct {
 	GatewayAddress string `pulumi:"gatewayAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The internal IPv6 address range that is assigned to this subnetwork.
+	InternalIpv6Prefix string `pulumi:"internalIpv6Prefix"`
 	// The range of IP addresses belonging to this subnetwork
 	// secondary range.
 	IpCidrRange string  `pulumi:"ipCidrRange"`
@@ -141,12 +142,6 @@ func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutputWithContext(
 	return o
 }
 
-func (o LookupSubnetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubnetworkResult] {
-	return pulumix.Output[LookupSubnetworkResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Description of this subnetwork.
 func (o LookupSubnetworkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Description }).(pulumi.StringOutput)
@@ -160,6 +155,11 @@ func (o LookupSubnetworkResultOutput) GatewayAddress() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupSubnetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The internal IPv6 address range that is assigned to this subnetwork.
+func (o LookupSubnetworkResultOutput) InternalIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.InternalIpv6Prefix }).(pulumi.StringOutput)
 }
 
 // The range of IP addresses belonging to this subnetwork

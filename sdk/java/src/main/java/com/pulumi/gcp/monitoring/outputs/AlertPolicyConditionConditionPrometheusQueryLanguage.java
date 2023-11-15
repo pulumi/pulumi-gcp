@@ -68,9 +68,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * in order to refer to the original Prometheus configuration file.
      * The rule group name and the alert name are necessary to update the
      * relevant AlertPolicies in case the definition of the rule group changes
-     * in the future.
-     * This field is optional. If this field is not empty, then it must be a
-     * valid Prometheus label name.
+     * in the future. This field is optional.
      * 
      */
     private @Nullable String ruleGroup;
@@ -142,9 +140,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * in order to refer to the original Prometheus configuration file.
      * The rule group name and the alert name are necessary to update the
      * relevant AlertPolicies in case the definition of the rule group changes
-     * in the future.
-     * This field is optional. If this field is not empty, then it must be a
-     * valid Prometheus label name.
+     * in the future. This field is optional.
      * 
      */
     public Optional<String> ruleGroup() {

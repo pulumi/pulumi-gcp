@@ -170,6 +170,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string> OutputName { get; private set; } = null!;
 
         /// <summary>
+        /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        /// </summary>
+        [Output("retention")]
+        public Output<Outputs.BucketObjectRetention?> Retention { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) A url reference to this object.
         /// </summary>
         [Output("selfLink")]
@@ -355,6 +361,12 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        /// </summary>
+        [Input("retention")]
+        public Input<Inputs.BucketObjectRetentionArgs>? Retention { get; set; }
+
+        /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
         /// 
@@ -514,6 +526,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("outputName")]
         public Input<string>? OutputName { get; set; }
+
+        /// <summary>
+        /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        /// </summary>
+        [Input("retention")]
+        public Input<Inputs.BucketObjectRetentionGetArgs>? Retention { get; set; }
 
         /// <summary>
         /// (Computed) A url reference to this object.

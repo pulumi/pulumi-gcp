@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Network endpoint represents a IP address and port combination that is
@@ -108,7 +107,17 @@ import (
 //
 // ## Import
 //
-// # NetworkEndpoint can be imported using any of these accepted formats
+// NetworkEndpoint can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` * `{{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` * `{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` * `{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkEndpoint using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}"
+//
+//	to = google_compute_network_endpoint.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkEndpoint can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -318,12 +327,6 @@ func (i *NetworkEndpoint) ToNetworkEndpointOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointOutput)
 }
 
-func (i *NetworkEndpoint) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpoint] {
-	return pulumix.Output[*NetworkEndpoint]{
-		OutputState: i.ToNetworkEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkEndpointArrayInput is an input type that accepts NetworkEndpointArray and NetworkEndpointArrayOutput values.
 // You can construct a concrete instance of `NetworkEndpointArrayInput` via:
 //
@@ -347,12 +350,6 @@ func (i NetworkEndpointArray) ToNetworkEndpointArrayOutput() NetworkEndpointArra
 
 func (i NetworkEndpointArray) ToNetworkEndpointArrayOutputWithContext(ctx context.Context) NetworkEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointArrayOutput)
-}
-
-func (i NetworkEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEndpoint] {
-	return pulumix.Output[[]*NetworkEndpoint]{
-		OutputState: i.ToNetworkEndpointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkEndpointMapInput is an input type that accepts NetworkEndpointMap and NetworkEndpointMapOutput values.
@@ -380,12 +377,6 @@ func (i NetworkEndpointMap) ToNetworkEndpointMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointMapOutput)
 }
 
-func (i NetworkEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEndpoint] {
-	return pulumix.Output[map[string]*NetworkEndpoint]{
-		OutputState: i.ToNetworkEndpointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointOutput) ElementType() reflect.Type {
@@ -398,12 +389,6 @@ func (o NetworkEndpointOutput) ToNetworkEndpointOutput() NetworkEndpointOutput {
 
 func (o NetworkEndpointOutput) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
 	return o
-}
-
-func (o NetworkEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpoint] {
-	return pulumix.Output[*NetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name for a specific VM instance that the IP address belongs to.
@@ -459,12 +444,6 @@ func (o NetworkEndpointArrayOutput) ToNetworkEndpointArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o NetworkEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEndpoint] {
-	return pulumix.Output[[]*NetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkEndpointArrayOutput) Index(i pulumi.IntInput) NetworkEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkEndpoint {
 		return vs[0].([]*NetworkEndpoint)[vs[1].(int)]
@@ -483,12 +462,6 @@ func (o NetworkEndpointMapOutput) ToNetworkEndpointMapOutput() NetworkEndpointMa
 
 func (o NetworkEndpointMapOutput) ToNetworkEndpointMapOutputWithContext(ctx context.Context) NetworkEndpointMapOutput {
 	return o
-}
-
-func (o NetworkEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEndpoint] {
-	return pulumix.Output[map[string]*NetworkEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkEndpointMapOutput) MapIndex(k pulumi.StringInput) NetworkEndpointOutput {

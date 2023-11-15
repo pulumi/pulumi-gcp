@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Packet Mirroring mirrors traffic to and from particular VM instances.
@@ -27,7 +26,17 @@ import (
 //
 // ## Import
 //
-// # PacketMirroring can be imported using any of these accepted formats
+// PacketMirroring can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PacketMirroring using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}"
+//
+//	to = google_compute_packet_mirroring.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/packetMirroring:PacketMirroring When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PacketMirroring can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -290,12 +299,6 @@ func (i *PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringOutput)
 }
 
-func (i *PacketMirroring) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroring] {
-	return pulumix.Output[*PacketMirroring]{
-		OutputState: i.ToPacketMirroringOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PacketMirroringArrayInput is an input type that accepts PacketMirroringArray and PacketMirroringArrayOutput values.
 // You can construct a concrete instance of `PacketMirroringArrayInput` via:
 //
@@ -319,12 +322,6 @@ func (i PacketMirroringArray) ToPacketMirroringArrayOutput() PacketMirroringArra
 
 func (i PacketMirroringArray) ToPacketMirroringArrayOutputWithContext(ctx context.Context) PacketMirroringArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringArrayOutput)
-}
-
-func (i PacketMirroringArray) ToOutput(ctx context.Context) pulumix.Output[[]*PacketMirroring] {
-	return pulumix.Output[[]*PacketMirroring]{
-		OutputState: i.ToPacketMirroringArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PacketMirroringMapInput is an input type that accepts PacketMirroringMap and PacketMirroringMapOutput values.
@@ -352,12 +349,6 @@ func (i PacketMirroringMap) ToPacketMirroringMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMapOutput)
 }
 
-func (i PacketMirroringMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PacketMirroring] {
-	return pulumix.Output[map[string]*PacketMirroring]{
-		OutputState: i.ToPacketMirroringMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PacketMirroringOutput struct{ *pulumi.OutputState }
 
 func (PacketMirroringOutput) ElementType() reflect.Type {
@@ -370,12 +361,6 @@ func (o PacketMirroringOutput) ToPacketMirroringOutput() PacketMirroringOutput {
 
 func (o PacketMirroringOutput) ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput {
 	return o
-}
-
-func (o PacketMirroringOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketMirroring] {
-	return pulumix.Output[*PacketMirroring]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
@@ -450,12 +435,6 @@ func (o PacketMirroringArrayOutput) ToPacketMirroringArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o PacketMirroringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PacketMirroring] {
-	return pulumix.Output[[]*PacketMirroring]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PacketMirroringArrayOutput) Index(i pulumi.IntInput) PacketMirroringOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PacketMirroring {
 		return vs[0].([]*PacketMirroring)[vs[1].(int)]
@@ -474,12 +453,6 @@ func (o PacketMirroringMapOutput) ToPacketMirroringMapOutput() PacketMirroringMa
 
 func (o PacketMirroringMapOutput) ToPacketMirroringMapOutputWithContext(ctx context.Context) PacketMirroringMapOutput {
 	return o
-}
-
-func (o PacketMirroringMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PacketMirroring] {
-	return pulumix.Output[map[string]*PacketMirroring]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PacketMirroringMapOutput) MapIndex(k pulumi.StringInput) PacketMirroringOutput {

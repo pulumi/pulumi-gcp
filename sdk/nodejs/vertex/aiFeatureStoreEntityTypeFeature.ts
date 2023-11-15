@@ -93,7 +93,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
+ * FeaturestoreEntitytypeFeature can be imported using any of these accepted formats* `{{entitytype}}/features/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeaturestoreEntitytypeFeature using one of the formats above. For exampletf import {
+ *
+ *  id = "{{entitytype}}/features/{{name}}"
+ *
+ *  to = google_vertex_ai_featurestore_entitytype_feature.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}

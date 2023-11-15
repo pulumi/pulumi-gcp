@@ -524,7 +524,15 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        GatewaySecurityPolicyRule can be imported using any of these accepted formats
+        GatewaySecurityPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}` * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}` * `{{location}}/{{gateway_security_policy}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicyRule using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}"
+
+         to = google_network_security_gateway_security_policy_rule.default }
+
+        ```sh
+         $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicyRule can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}
@@ -615,7 +623,15 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        GatewaySecurityPolicyRule can be imported using any of these accepted formats
+        GatewaySecurityPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}` * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}` * `{{location}}/{{gateway_security_policy}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicyRule using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}"
+
+         to = google_network_security_gateway_security_policy_rule.default }
+
+        ```sh
+         $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicyRule can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}

@@ -64,11 +64,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Project services can be imported using the `project_id` and `service`, e.g.
+ * Project services can be imported using the `project_id` and `service`, e.g. * `{{project_id}}/{{service}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project services using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{project_id}}/{{service}}&#34;
+ * 
+ *  to = google_project_service.default }
  * 
  * ```sh
- *  $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
+ *  $ pulumi import gcp:projects/service:Service When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project services can be imported using one of the formats above. For example
  * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:projects/service:Service default {{project_id}}/{{service}}
+ * ```
+ * 
  *  Note that unlike other resources that fail if they already exist, `pulumi up` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `pulumi up` to add them to state.
  * 
  */

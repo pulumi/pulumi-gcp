@@ -162,10 +162,81 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Network Security Server Tls Policy Mtls
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificatemanager.TrustConfig;
+ * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
+ *             .description(&#34;sample trust config description&#34;)
+ *             .location(&#34;global&#34;)
+ *             .trustStores(TrustConfigTrustStoreArgs.builder()
+ *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
+ *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .build())
+ *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
+ *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
+ *             .description(&#34;my description&#34;)
+ *             .location(&#34;global&#34;)
+ *             .allowOpen(&#34;false&#34;)
+ *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
+ *                 .clientValidationMode(&#34;REJECT_INVALID&#34;)
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *                 .build())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * ServerTlsPolicy can be imported using any of these accepted formats
+ * ServerTlsPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServerTlsPolicy using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}&#34;
+ * 
+ *  to = google_network_security_server_tls_policy.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServerTlsPolicy can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}

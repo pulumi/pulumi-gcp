@@ -840,7 +840,15 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// ## Import
     /// 
-    /// Stream can be imported using any of these accepted formats
+    /// Stream can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}` * `{{project}}/{{location}}/{{stream_id}}` * `{{location}}/{{stream_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Stream using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/streams/{{stream_id}}"
+    /// 
+    ///  to = google_datastream_stream.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datastream/stream:Stream When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Stream can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}

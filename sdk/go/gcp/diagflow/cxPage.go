@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages.
@@ -697,6 +696,13 @@ import (
 //							},
 //							Required: pulumi.Bool(true),
 //							Redact:   pulumi.Bool(true),
+//							AdvancedSettings: &diagflow.CxPageFormParameterAdvancedSettingsArgs{
+//								DtmfSettings: &diagflow.CxPageFormParameterAdvancedSettingsDtmfSettingsArgs{
+//									Enabled:     pulumi.Bool(true),
+//									MaxDigits:   pulumi.Int(1),
+//									FinishDigit: pulumi.String("#"),
+//								},
+//							},
 //						},
 //					},
 //				},
@@ -770,6 +776,13 @@ import (
 //						TargetPage: myPage2.ID(),
 //					},
 //				},
+//				AdvancedSettings: &diagflow.CxPageAdvancedSettingsArgs{
+//					DtmfSettings: &diagflow.CxPageAdvancedSettingsDtmfSettingsArgs{
+//						Enabled:     pulumi.Bool(true),
+//						MaxDigits:   pulumi.Int(1),
+//						FinishDigit: pulumi.String("#"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -782,7 +795,17 @@ import (
 //
 // ## Import
 //
-// # Page can be imported using any of these accepted formats
+// Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/pages/{{name}}"
+//
+//	to = google_dialogflow_cx_page.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -798,6 +821,10 @@ import (
 type CxPage struct {
 	pulumi.CustomResourceState
 
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxPageAdvancedSettingsPtrOutput `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the agent.
 	//
 	// ***
@@ -880,6 +907,10 @@ func GetCxPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxPage resources.
 type cxPageState struct {
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxPageAdvancedSettings `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the agent.
 	//
 	// ***
@@ -930,6 +961,10 @@ type cxPageState struct {
 }
 
 type CxPageState struct {
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxPageAdvancedSettingsPtrInput
 	// The human-readable name of the page, unique within the agent.
 	//
 	// ***
@@ -984,6 +1019,10 @@ func (CxPageState) ElementType() reflect.Type {
 }
 
 type cxPageArgs struct {
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxPageAdvancedSettings `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the agent.
 	//
 	// ***
@@ -1032,6 +1071,10 @@ type cxPageArgs struct {
 
 // The set of arguments for constructing a CxPage resource.
 type CxPageArgs struct {
+	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxPageAdvancedSettingsPtrInput
 	// The human-readable name of the page, unique within the agent.
 	//
 	// ***
@@ -1101,12 +1144,6 @@ func (i *CxPage) ToCxPageOutputWithContext(ctx context.Context) CxPageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageOutput)
 }
 
-func (i *CxPage) ToOutput(ctx context.Context) pulumix.Output[*CxPage] {
-	return pulumix.Output[*CxPage]{
-		OutputState: i.ToCxPageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageArrayInput is an input type that accepts CxPageArray and CxPageArrayOutput values.
 // You can construct a concrete instance of `CxPageArrayInput` via:
 //
@@ -1130,12 +1167,6 @@ func (i CxPageArray) ToCxPageArrayOutput() CxPageArrayOutput {
 
 func (i CxPageArray) ToCxPageArrayOutputWithContext(ctx context.Context) CxPageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageArrayOutput)
-}
-
-func (i CxPageArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxPage] {
-	return pulumix.Output[[]*CxPage]{
-		OutputState: i.ToCxPageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxPageMapInput is an input type that accepts CxPageMap and CxPageMapOutput values.
@@ -1163,12 +1194,6 @@ func (i CxPageMap) ToCxPageMapOutputWithContext(ctx context.Context) CxPageMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageMapOutput)
 }
 
-func (i CxPageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxPage] {
-	return pulumix.Output[map[string]*CxPage]{
-		OutputState: i.ToCxPageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageOutput struct{ *pulumi.OutputState }
 
 func (CxPageOutput) ElementType() reflect.Type {
@@ -1183,10 +1208,11 @@ func (o CxPageOutput) ToCxPageOutputWithContext(ctx context.Context) CxPageOutpu
 	return o
 }
 
-func (o CxPageOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPage] {
-	return pulumix.Output[*CxPage]{
-		OutputState: o.OutputState,
-	}
+// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxPageOutput) AdvancedSettings() CxPageAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPage) CxPageAdvancedSettingsPtrOutput { return v.AdvancedSettings }).(CxPageAdvancedSettingsPtrOutput)
 }
 
 // The human-readable name of the page, unique within the agent.
@@ -1277,12 +1303,6 @@ func (o CxPageArrayOutput) ToCxPageArrayOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o CxPageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxPage] {
-	return pulumix.Output[[]*CxPage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageArrayOutput) Index(i pulumi.IntInput) CxPageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxPage {
 		return vs[0].([]*CxPage)[vs[1].(int)]
@@ -1301,12 +1321,6 @@ func (o CxPageMapOutput) ToCxPageMapOutput() CxPageMapOutput {
 
 func (o CxPageMapOutput) ToCxPageMapOutputWithContext(ctx context.Context) CxPageMapOutput {
 	return o
-}
-
-func (o CxPageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxPage] {
-	return pulumix.Output[map[string]*CxPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageMapOutput) MapIndex(k pulumi.StringInput) CxPageOutput {

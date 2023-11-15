@@ -9,7 +9,15 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Environment can be imported using any of these accepted formats
+ * Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{region}}/environments/{{name}}"
+ *
+ *  to = google_composer_environment.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
@@ -86,6 +94,10 @@ export class Environment extends pulumi.CustomResource {
      * The location or Compute Engine region for the environment.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * Configuration options for storage used by Composer environment.
+     */
+    public readonly storageConfig!: pulumi.Output<outputs.composer.EnvironmentStorageConfig>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -107,6 +119,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["storageConfig"] = state ? state.storageConfig : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
             resourceInputs["config"] = args ? args.config : undefined;
@@ -114,6 +127,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["storageConfig"] = args ? args.storageConfig : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -163,6 +177,10 @@ export interface EnvironmentState {
      * The location or Compute Engine region for the environment.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Configuration options for storage used by Composer environment.
+     */
+    storageConfig?: pulumi.Input<inputs.composer.EnvironmentStorageConfig>;
 }
 
 /**
@@ -195,4 +213,8 @@ export interface EnvironmentArgs {
      * The location or Compute Engine region for the environment.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Configuration options for storage used by Composer environment.
+     */
+    storageConfig?: pulumi.Input<inputs.composer.EnvironmentStorageConfig>;
 }

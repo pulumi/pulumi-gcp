@@ -12,6 +12,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -79,6 +80,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     * 
+     */
+    @Import(name="clusterType")
+    private @Nullable Output<String> clusterType;
+
+    /**
+     * @return The type of cluster. If not set, defaults to PRIMARY.
+     * Default value is `PRIMARY`.
+     * Possible values are: `PRIMARY`, `SECONDARY`.
+     * 
+     */
+    public Optional<Output<String>> clusterType() {
+        return Optional.ofNullable(this.clusterType);
+    }
+
+    /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
@@ -95,6 +115,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterContinuousBackupConfigArgs>> continuousBackupConfig() {
         return Optional.ofNullable(this.continuousBackupConfig);
+    }
+
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Policy to determine if the cluster should be deleted forcefully.
+     * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+     * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -298,13 +337,32 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.restoreContinuousBackupSource);
     }
 
+    /**
+     * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="secondaryConfig")
+    private @Nullable Output<ClusterSecondaryConfigArgs> secondaryConfig;
+
+    /**
+     * @return Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterSecondaryConfigArgs>> secondaryConfig() {
+        return Optional.ofNullable(this.secondaryConfig);
+    }
+
     private ClusterArgs() {}
 
     private ClusterArgs(ClusterArgs $) {
         this.annotations = $.annotations;
         this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.clusterId = $.clusterId;
+        this.clusterType = $.clusterType;
         this.continuousBackupConfig = $.continuousBackupConfig;
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.encryptionConfig = $.encryptionConfig;
         this.etag = $.etag;
@@ -316,6 +374,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.restoreBackupSource = $.restoreBackupSource;
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
+        this.secondaryConfig = $.secondaryConfig;
     }
 
     public static Builder builder() {
@@ -410,6 +469,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param clusterType The type of cluster. If not set, defaults to PRIMARY.
+         * Default value is `PRIMARY`.
+         * Possible values are: `PRIMARY`, `SECONDARY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterType(@Nullable Output<String> clusterType) {
+            $.clusterType = clusterType;
+            return this;
+        }
+
+        /**
+         * @param clusterType The type of cluster. If not set, defaults to PRIMARY.
+         * Default value is `PRIMARY`.
+         * Possible values are: `PRIMARY`, `SECONDARY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterType(String clusterType) {
+            return clusterType(Output.of(clusterType));
+        }
+
+        /**
          * @param continuousBackupConfig The continuous backup config for this cluster.
          * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
          * Structure is documented below.
@@ -432,6 +516,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder continuousBackupConfig(ClusterContinuousBackupConfigArgs continuousBackupConfig) {
             return continuousBackupConfig(Output.of(continuousBackupConfig));
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
+         * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+         * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
+         * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
+         * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -699,6 +808,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder restoreContinuousBackupSource(ClusterRestoreContinuousBackupSourceArgs restoreContinuousBackupSource) {
             return restoreContinuousBackupSource(Output.of(restoreContinuousBackupSource));
+        }
+
+        /**
+         * @param secondaryConfig Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryConfig(@Nullable Output<ClusterSecondaryConfigArgs> secondaryConfig) {
+            $.secondaryConfig = secondaryConfig;
+            return this;
+        }
+
+        /**
+         * @param secondaryConfig Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryConfig(ClusterSecondaryConfigArgs secondaryConfig) {
+            return secondaryConfig(Output.of(secondaryConfig));
         }
 
         public ClusterArgs build() {

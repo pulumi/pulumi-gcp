@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool EnableShieldedNodes;
         public readonly bool EnableTpu;
         public readonly string Endpoint;
+        public readonly ImmutableArray<Outputs.GetClusterFleetResult> Fleets;
         public readonly ImmutableArray<Outputs.GetClusterGatewayApiConfigResult> GatewayApiConfigs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -280,6 +281,8 @@ namespace Pulumi.Gcp.Container
             bool enableTpu,
 
             string endpoint,
+
+            ImmutableArray<Outputs.GetClusterFleetResult> fleets,
 
             ImmutableArray<Outputs.GetClusterGatewayApiConfigResult> gatewayApiConfigs,
 
@@ -402,6 +405,7 @@ namespace Pulumi.Gcp.Container
             EnableShieldedNodes = enableShieldedNodes;
             EnableTpu = enableTpu;
             Endpoint = endpoint;
+            Fleets = fleets;
             GatewayApiConfigs = gatewayApiConfigs;
             Id = id;
             IdentityServiceConfigs = identityServiceConfigs;

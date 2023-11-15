@@ -31,14 +31,14 @@ public final class ClusterSecurityPostureConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+     * Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
      * 
      */
     @Import(name="vulnerabilityMode")
     private @Nullable Output<String> vulnerabilityMode;
 
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
      * 
      */
     public Optional<Output<String>> vulnerabilityMode() {
@@ -92,7 +92,7 @@ public final class ClusterSecurityPostureConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param vulnerabilityMode Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+         * @param vulnerabilityMode Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClusterSecurityPostureConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param vulnerabilityMode Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+         * @param vulnerabilityMode Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
          * 
          * @return builder
          * 

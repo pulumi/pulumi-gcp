@@ -230,7 +230,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// RegionNetworkEndpointGroup can be imported using any of these accepted formats
+    /// RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkEndpointGroup using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}"
+    /// 
+    ///  to = google_compute_region_network_endpoint_group.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkEndpointGroup can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}

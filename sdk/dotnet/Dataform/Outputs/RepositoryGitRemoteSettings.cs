@@ -14,13 +14,18 @@ namespace Pulumi.Gcp.Dataform.Outputs
     public sealed class RepositoryGitRemoteSettings
     {
         /// <summary>
-        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+        /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
         /// </summary>
-        public readonly string AuthenticationTokenSecretVersion;
+        public readonly string? AuthenticationTokenSecretVersion;
         /// <summary>
         /// The Git remote's default branch name.
         /// </summary>
         public readonly string DefaultBranch;
+        /// <summary>
+        /// Authentication fields for remote uris using SSH protocol.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig? SshAuthenticationConfig;
         /// <summary>
         /// (Output)
         /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
@@ -33,9 +38,11 @@ namespace Pulumi.Gcp.Dataform.Outputs
 
         [OutputConstructor]
         private RepositoryGitRemoteSettings(
-            string authenticationTokenSecretVersion,
+            string? authenticationTokenSecretVersion,
 
             string defaultBranch,
+
+            Outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig? sshAuthenticationConfig,
 
             string? tokenStatus,
 
@@ -43,6 +50,7 @@ namespace Pulumi.Gcp.Dataform.Outputs
         {
             AuthenticationTokenSecretVersion = authenticationTokenSecretVersion;
             DefaultBranch = defaultBranch;
+            SshAuthenticationConfig = sshAuthenticationConfig;
             TokenStatus = tokenStatus;
             Url = url;
         }

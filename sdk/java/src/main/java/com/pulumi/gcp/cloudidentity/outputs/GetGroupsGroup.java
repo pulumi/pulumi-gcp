@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudidentity.outputs.GetGroupsGroupAdditionalGroupKey;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsGroupGroupKey;
 import java.lang.String;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsGroup {
+    private List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys;
     private String createTime;
     /**
      * @return An extended description to help users determine the purpose of a Group.
@@ -49,6 +51,9 @@ public final class GetGroupsGroup {
     private String updateTime;
 
     private GetGroupsGroup() {}
+    public List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys() {
+        return this.additionalGroupKeys;
+    }
     public String createTime() {
         return this.createTime;
     }
@@ -112,6 +117,7 @@ public final class GetGroupsGroup {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys;
         private String createTime;
         private String description;
         private String displayName;
@@ -124,6 +130,7 @@ public final class GetGroupsGroup {
         public Builder() {}
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalGroupKeys = defaults.additionalGroupKeys;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
@@ -135,6 +142,14 @@ public final class GetGroupsGroup {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder additionalGroupKeys(List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys) {
+            this.additionalGroupKeys = Objects.requireNonNull(additionalGroupKeys);
+            return this;
+        }
+        public Builder additionalGroupKeys(GetGroupsGroupAdditionalGroupKey... additionalGroupKeys) {
+            return additionalGroupKeys(List.of(additionalGroupKeys));
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
@@ -185,6 +200,7 @@ public final class GetGroupsGroup {
         }
         public GetGroupsGroup build() {
             final var o = new GetGroupsGroup();
+            o.additionalGroupKeys = additionalGroupKeys;
             o.createTime = createTime;
             o.description = description;
             o.displayName = displayName;

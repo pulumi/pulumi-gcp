@@ -32,6 +32,12 @@ public final class DatasetAccess {
      */
     private @Nullable String groupByEmail;
     /**
+     * @return Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+     * group, domain, or special group. For example: `allUsers`
+     * 
+     */
+    private @Nullable String iamMember;
+    /**
      * @return Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles
      * are supported. Predefined roles that have equivalent basic roles
@@ -97,6 +103,14 @@ public final class DatasetAccess {
         return Optional.ofNullable(this.groupByEmail);
     }
     /**
+     * @return Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+     * group, domain, or special group. For example: `allUsers`
+     * 
+     */
+    public Optional<String> iamMember() {
+        return Optional.ofNullable(this.iamMember);
+    }
+    /**
      * @return Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles
      * are supported. Predefined roles that have equivalent basic roles
@@ -159,6 +173,7 @@ public final class DatasetAccess {
         private @Nullable DatasetAccessDataset dataset;
         private @Nullable String domain;
         private @Nullable String groupByEmail;
+        private @Nullable String iamMember;
         private @Nullable String role;
         private @Nullable DatasetAccessRoutine routine;
         private @Nullable String specialGroup;
@@ -170,6 +185,7 @@ public final class DatasetAccess {
     	      this.dataset = defaults.dataset;
     	      this.domain = defaults.domain;
     	      this.groupByEmail = defaults.groupByEmail;
+    	      this.iamMember = defaults.iamMember;
     	      this.role = defaults.role;
     	      this.routine = defaults.routine;
     	      this.specialGroup = defaults.specialGroup;
@@ -190,6 +206,11 @@ public final class DatasetAccess {
         @CustomType.Setter
         public Builder groupByEmail(@Nullable String groupByEmail) {
             this.groupByEmail = groupByEmail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iamMember(@Nullable String iamMember) {
+            this.iamMember = iamMember;
             return this;
         }
         @CustomType.Setter
@@ -222,6 +243,7 @@ public final class DatasetAccess {
             o.dataset = dataset;
             o.domain = domain;
             o.groupByEmail = groupByEmail;
+            o.iamMember = iamMember;
             o.role = role;
             o.routine = routine;
             o.specialGroup = specialGroup;

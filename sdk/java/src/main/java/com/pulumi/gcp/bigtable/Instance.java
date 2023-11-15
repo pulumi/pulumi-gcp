@@ -121,7 +121,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Bigtable Instances can be imported using any of these accepted formats
+ * Bigtable Instances can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to Bigtable Instances using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/instances/{{name}}&#34;
+ * 
+ *  to = google_bigtable_instance.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigtable/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Bigtable Instances can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}

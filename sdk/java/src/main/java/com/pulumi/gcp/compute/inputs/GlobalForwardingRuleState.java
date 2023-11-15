@@ -392,44 +392,46 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     }
 
     /**
-     * This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By backend service-based network load balancers, target pool-based
-     * network load balancers, internal proxy load balancers, external proxy load
-     * balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-     * Some products have restrictions on what ports can be used. See
-     * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-     * for details.
-     * 
-     * * TargetHttpProxy: 80, 8080
-     * * TargetHttpsProxy: 443
-     * * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetVpnGateway: 500, 4500
+     * The `portRange` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: external passthrough
+     *   Network Load Balancers, internal and external proxy Network Load
+     *   Balancers, internal and external Application Load Balancers, external
+     *   protocol forwarding, and Classic VPN.
+     * * Some products have restrictions on what ports can be used. See
+     *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+     *   for details.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+     *   `portRange`s.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+     *   cannot have overlapping `portRange`s.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By backend service-based network load balancers, target pool-based
-     * network load balancers, internal proxy load balancers, external proxy load
-     * balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-     * Some products have restrictions on what ports can be used. See
-     * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-     * for details.
-     * 
-     * * TargetHttpProxy: 80, 8080
-     * * TargetHttpsProxy: 443
-     * * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-     * 1883, 5222
-     * * TargetVpnGateway: 500, 4500
+     * @return The `portRange` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: external passthrough
+     *   Network Load Balancers, internal and external proxy Network Load
+     *   Balancers, internal and external Application Load Balancers, external
+     *   protocol forwarding, and Classic VPN.
+     * * Some products have restrictions on what ports can be used. See
+     *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+     *   for details.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+     *   `portRange`s.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+     *   cannot have overlapping `portRange`s.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -1121,22 +1123,23 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portRange This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By backend service-based network load balancers, target pool-based
-         * network load balancers, internal proxy load balancers, external proxy load
-         * balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-         * Some products have restrictions on what ports can be used. See
-         * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-         * for details.
-         * 
-         * * TargetHttpProxy: 80, 8080
-         * * TargetHttpsProxy: 443
-         * * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-         * 1883, 5222
-         * * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-         * 1883, 5222
-         * * TargetVpnGateway: 500, 4500
+         * @param portRange The `portRange` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: external passthrough
+         *   Network Load Balancers, internal and external proxy Network Load
+         *   Balancers, internal and external Application Load Balancers, external
+         *   protocol forwarding, and Classic VPN.
+         * * Some products have restrictions on what ports can be used. See
+         *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+         *   for details.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+         *   `portRange`s.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+         *   cannot have overlapping `portRange`s.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1147,22 +1150,23 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portRange This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By backend service-based network load balancers, target pool-based
-         * network load balancers, internal proxy load balancers, external proxy load
-         * balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-         * Some products have restrictions on what ports can be used. See
-         * [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
-         * for details.
-         * 
-         * * TargetHttpProxy: 80, 8080
-         * * TargetHttpsProxy: 443
-         * * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-         * 1883, 5222
-         * * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-         * 1883, 5222
-         * * TargetVpnGateway: 500, 4500
+         * @param portRange The `portRange` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: external passthrough
+         *   Network Load Balancers, internal and external proxy Network Load
+         *   Balancers, internal and external Application Load Balancers, external
+         *   protocol forwarding, and Classic VPN.
+         * * Some products have restrictions on what ports can be used. See
+         *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+         *   for details.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+         *   `portRange`s.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+         *   cannot have overlapping `portRange`s.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 

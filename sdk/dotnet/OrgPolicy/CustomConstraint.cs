@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OrgPolicy
 {
     /// <summary>
+    /// Custom constraints are created by administrators to provide more granular and customizable control over the specific fields that are restricted by your organization policies.
+    /// 
+    /// To get more information about CustomConstraint, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+    ///     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+    /// 
     /// ## Example Usage
     /// ### Org Policy Custom Constraint Basic
     /// 
@@ -23,7 +32,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
-    ///         Parent = "organizations/123456789",
     ///         ActionType = "ALLOW",
     ///         Condition = "resource.management.autoUpgrade == false",
     ///         MethodTypes = new[]
@@ -31,13 +39,11 @@ namespace Pulumi.Gcp.OrgPolicy
     ///             "CREATE",
     ///             "UPDATE",
     ///         },
+    ///         Parent = "organizations/123456789",
     ///         ResourceTypes = new[]
     ///         {
     ///             "container.googleapis.com/NodePool",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -54,23 +60,20 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
-    ///         Parent = "organizations/123456789",
-    ///         DisplayName = "Disable GKE auto upgrade",
-    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
     ///         ActionType = "ALLOW",
     ///         Condition = "resource.management.autoUpgrade == false",
+    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+    ///         DisplayName = "Disable GKE auto upgrade",
     ///         MethodTypes = new[]
     ///         {
     ///             "CREATE",
     ///             "UPDATE",
     ///         },
+    ///         Parent = "organizations/123456789",
     ///         ResourceTypes = new[]
     ///         {
     ///             "container.googleapis.com/NodePool",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @bool = new Gcp.OrgPolicy.Policy("bool", new()
@@ -86,9 +89,6 @@ namespace Pulumi.Gcp.OrgPolicy
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -96,7 +96,15 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// ## Import
     /// 
-    /// CustomConstraint can be imported using any of these accepted formats:
+    /// CustomConstraint can be imported using any of these accepted formats* `{{parent}}/customConstraints/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CustomConstraint using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{parent}}/customConstraints/{{name}}"
+    /// 
+    ///  to = google_org_policy_custom_constraint.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CustomConstraint can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}

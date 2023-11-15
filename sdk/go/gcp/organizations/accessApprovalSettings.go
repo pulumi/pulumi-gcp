@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Access Approval enables you to require your explicit approval whenever Google support and engineering need to access your customer content.
@@ -141,7 +140,17 @@ import (
 //
 // ## Import
 //
-// # OrganizationSettings can be imported using any of these accepted formats
+// OrganizationSettings can be imported using any of these accepted formats* `organizations/{{organization_id}}/accessApprovalSettings` * `{{organization_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationSettings using one of the formats above. For exampletf import {
+//
+//	id = "organizations/{{organization_id}}/accessApprovalSettings"
+//
+//	to = google_organization_access_approval_settings.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationSettings can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -339,12 +348,6 @@ func (i *AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsOutput)
 }
 
-func (i *AccessApprovalSettings) ToOutput(ctx context.Context) pulumix.Output[*AccessApprovalSettings] {
-	return pulumix.Output[*AccessApprovalSettings]{
-		OutputState: i.ToAccessApprovalSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessApprovalSettingsArrayInput is an input type that accepts AccessApprovalSettingsArray and AccessApprovalSettingsArrayOutput values.
 // You can construct a concrete instance of `AccessApprovalSettingsArrayInput` via:
 //
@@ -368,12 +371,6 @@ func (i AccessApprovalSettingsArray) ToAccessApprovalSettingsArrayOutput() Acces
 
 func (i AccessApprovalSettingsArray) ToAccessApprovalSettingsArrayOutputWithContext(ctx context.Context) AccessApprovalSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsArrayOutput)
-}
-
-func (i AccessApprovalSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessApprovalSettings] {
-	return pulumix.Output[[]*AccessApprovalSettings]{
-		OutputState: i.ToAccessApprovalSettingsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessApprovalSettingsMapInput is an input type that accepts AccessApprovalSettingsMap and AccessApprovalSettingsMapOutput values.
@@ -401,12 +398,6 @@ func (i AccessApprovalSettingsMap) ToAccessApprovalSettingsMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsMapOutput)
 }
 
-func (i AccessApprovalSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessApprovalSettings] {
-	return pulumix.Output[map[string]*AccessApprovalSettings]{
-		OutputState: i.ToAccessApprovalSettingsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessApprovalSettingsOutput struct{ *pulumi.OutputState }
 
 func (AccessApprovalSettingsOutput) ElementType() reflect.Type {
@@ -419,12 +410,6 @@ func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutput() AccessApp
 
 func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput {
 	return o
-}
-
-func (o AccessApprovalSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessApprovalSettings] {
-	return pulumix.Output[*AccessApprovalSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The asymmetric crypto key version to use for signing approval requests.
@@ -492,12 +477,6 @@ func (o AccessApprovalSettingsArrayOutput) ToAccessApprovalSettingsArrayOutputWi
 	return o
 }
 
-func (o AccessApprovalSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessApprovalSettings] {
-	return pulumix.Output[[]*AccessApprovalSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessApprovalSettingsArrayOutput) Index(i pulumi.IntInput) AccessApprovalSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessApprovalSettings {
 		return vs[0].([]*AccessApprovalSettings)[vs[1].(int)]
@@ -516,12 +495,6 @@ func (o AccessApprovalSettingsMapOutput) ToAccessApprovalSettingsMapOutput() Acc
 
 func (o AccessApprovalSettingsMapOutput) ToAccessApprovalSettingsMapOutputWithContext(ctx context.Context) AccessApprovalSettingsMapOutput {
 	return o
-}
-
-func (o AccessApprovalSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessApprovalSettings] {
-	return pulumix.Output[map[string]*AccessApprovalSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessApprovalSettingsMapOutput) MapIndex(k pulumi.StringInput) AccessApprovalSettingsOutput {

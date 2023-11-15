@@ -4,12 +4,19 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.AwsClusterAuthorizationAdminGroup;
 import com.pulumi.gcp.container.outputs.AwsClusterAuthorizationAdminUser;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsClusterAuthorization {
+    /**
+     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    private @Nullable List<AwsClusterAuthorizationAdminGroup> adminGroups;
     /**
      * @return Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
@@ -17,6 +24,13 @@ public final class AwsClusterAuthorization {
     private List<AwsClusterAuthorizationAdminUser> adminUsers;
 
     private AwsClusterAuthorization() {}
+    /**
+     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    public List<AwsClusterAuthorizationAdminGroup> adminGroups() {
+        return this.adminGroups == null ? List.of() : this.adminGroups;
+    }
     /**
      * @return Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
@@ -34,13 +48,23 @@ public final class AwsClusterAuthorization {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AwsClusterAuthorizationAdminGroup> adminGroups;
         private List<AwsClusterAuthorizationAdminUser> adminUsers;
         public Builder() {}
         public Builder(AwsClusterAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.adminGroups = defaults.adminGroups;
     	      this.adminUsers = defaults.adminUsers;
         }
 
+        @CustomType.Setter
+        public Builder adminGroups(@Nullable List<AwsClusterAuthorizationAdminGroup> adminGroups) {
+            this.adminGroups = adminGroups;
+            return this;
+        }
+        public Builder adminGroups(AwsClusterAuthorizationAdminGroup... adminGroups) {
+            return adminGroups(List.of(adminGroups));
+        }
         @CustomType.Setter
         public Builder adminUsers(List<AwsClusterAuthorizationAdminUser> adminUsers) {
             this.adminUsers = Objects.requireNonNull(adminUsers);
@@ -51,6 +75,7 @@ public final class AwsClusterAuthorization {
         }
         public AwsClusterAuthorization build() {
             final var o = new AwsClusterAuthorization();
+            o.adminGroups = adminGroups;
             o.adminUsers = adminUsers;
             return o;
         }

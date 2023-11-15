@@ -28,6 +28,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? GroupByEmail;
         /// <summary>
+        /// Some other type of member that appears in the IAM Policy but isn't a user,
+        /// group, domain, or special group. For example: `allUsers`
+        /// </summary>
+        public readonly string? IamMember;
+        /// <summary>
         /// Describes the rights granted to the user specified by the other
         /// member of the access object. Basic, predefined, and custom roles
         /// are supported. Predefined roles that have equivalent basic roles
@@ -71,6 +76,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? groupByEmail,
 
+            string? iamMember,
+
             string? role,
 
             Outputs.DatasetAccessRoutine? routine,
@@ -84,6 +91,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Dataset = dataset;
             Domain = domain;
             GroupByEmail = groupByEmail;
+            IamMember = iamMember;
             Role = role;
             Routine = routine;
             SpecialGroup = specialGroup;

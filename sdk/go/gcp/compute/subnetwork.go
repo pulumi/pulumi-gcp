@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A VPC network is a virtual version of the traditional physical networks
@@ -261,10 +260,54 @@ import (
 //	}
 //
 // ```
+// ### Subnetwork Cidr Overlap
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "net-cidr-overlap", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-cidr-overlap", &compute.SubnetworkArgs{
+//				Region:                       pulumi.String("us-west2"),
+//				IpCidrRange:                  pulumi.String("192.168.1.0/24"),
+//				AllowSubnetCidrRoutesOverlap: pulumi.Bool(true),
+//				Network:                      net_cidr_overlap.ID(),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # Subnetwork can be imported using any of these accepted formats
+// Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
+//
+//	to = google_compute_subnetwork.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -292,6 +335,10 @@ import (
 type Subnetwork struct {
 	pulumi.CustomResourceState
 
+	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+	// BGP even if their destinations match existing subnet ranges.
+	AllowSubnetCidrRoutesOverlap pulumi.BoolOutput `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -417,6 +464,10 @@ func GetSubnetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnetwork resources.
 type subnetworkState struct {
+	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+	// BGP even if their destinations match existing subnet ranges.
+	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -507,6 +558,10 @@ type subnetworkState struct {
 }
 
 type SubnetworkState struct {
+	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+	// BGP even if their destinations match existing subnet ranges.
+	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
@@ -601,6 +656,10 @@ func (SubnetworkState) ElementType() reflect.Type {
 }
 
 type subnetworkArgs struct {
+	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+	// BGP even if their destinations match existing subnet ranges.
+	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -675,6 +734,10 @@ type subnetworkArgs struct {
 
 // The set of arguments for constructing a Subnetwork resource.
 type SubnetworkArgs struct {
+	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+	// BGP even if their destinations match existing subnet ranges.
+	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
 	// creation time.
@@ -770,12 +833,6 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
-func (i *Subnetwork) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
-	return pulumix.Output[*Subnetwork]{
-		OutputState: i.ToSubnetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetworkArrayInput is an input type that accepts SubnetworkArray and SubnetworkArrayOutput values.
 // You can construct a concrete instance of `SubnetworkArrayInput` via:
 //
@@ -799,12 +856,6 @@ func (i SubnetworkArray) ToSubnetworkArrayOutput() SubnetworkArrayOutput {
 
 func (i SubnetworkArray) ToSubnetworkArrayOutputWithContext(ctx context.Context) SubnetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkArrayOutput)
-}
-
-func (i SubnetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*Subnetwork] {
-	return pulumix.Output[[]*Subnetwork]{
-		OutputState: i.ToSubnetworkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubnetworkMapInput is an input type that accepts SubnetworkMap and SubnetworkMapOutput values.
@@ -832,12 +883,6 @@ func (i SubnetworkMap) ToSubnetworkMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkMapOutput)
 }
 
-func (i SubnetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnetwork] {
-	return pulumix.Output[map[string]*Subnetwork]{
-		OutputState: i.ToSubnetworkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
@@ -852,10 +897,11 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
-func (o SubnetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*Subnetwork] {
-	return pulumix.Output[*Subnetwork]{
-		OutputState: o.OutputState,
-	}
+// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+// BGP even if their destinations match existing subnet ranges.
+func (o SubnetworkOutput) AllowSubnetCidrRoutesOverlap() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.AllowSubnetCidrRoutesOverlap }).(pulumi.BoolOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -1022,12 +1068,6 @@ func (o SubnetworkArrayOutput) ToSubnetworkArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SubnetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Subnetwork] {
-	return pulumix.Output[[]*Subnetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubnetworkArrayOutput) Index(i pulumi.IntInput) SubnetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Subnetwork {
 		return vs[0].([]*Subnetwork)[vs[1].(int)]
@@ -1046,12 +1086,6 @@ func (o SubnetworkMapOutput) ToSubnetworkMapOutput() SubnetworkMapOutput {
 
 func (o SubnetworkMapOutput) ToSubnetworkMapOutputWithContext(ctx context.Context) SubnetworkMapOutput {
 	return o
-}
-
-func (o SubnetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subnetwork] {
-	return pulumix.Output[map[string]*Subnetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetworkMapOutput) MapIndex(k pulumi.StringInput) SubnetworkOutput {

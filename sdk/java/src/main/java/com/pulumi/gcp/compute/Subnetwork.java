@@ -301,10 +301,61 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Subnetwork Cidr Overlap
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net_cidr_overlap = new Network(&#34;net-cidr-overlap&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var subnetwork_cidr_overlap = new Subnetwork(&#34;subnetwork-cidr-overlap&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-west2&#34;)
+ *             .ipCidrRange(&#34;192.168.1.0/24&#34;)
+ *             .allowSubnetCidrRoutesOverlap(true)
+ *             .network(net_cidr_overlap.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * Subnetwork can be imported using any of these accepted formats
+ * Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/regions/{{region}}/subnetworks/{{name}}&#34;
+ * 
+ *  to = google_compute_subnetwork.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
@@ -325,6 +376,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/subnetwork:Subnetwork")
 public class Subnetwork extends com.pulumi.resources.CustomResource {
+    /**
+     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     * 
+     */
+    @Export(name="allowSubnetCidrRoutesOverlap", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowSubnetCidrRoutesOverlap;
+
+    /**
+     * @return Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+     * BGP even if their destinations match existing subnet ranges.
+     * 
+     */
+    public Output<Boolean> allowSubnetCidrRoutesOverlap() {
+        return this.allowSubnetCidrRoutesOverlap;
+    }
     /**
      * Creation timestamp in RFC3339 text format.
      * 

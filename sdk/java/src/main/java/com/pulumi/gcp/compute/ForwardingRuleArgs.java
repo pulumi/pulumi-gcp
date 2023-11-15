@@ -20,36 +20,40 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     public static final ForwardingRuleArgs Empty = new ForwardingRuleArgs();
 
     /**
-     * This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By internal TCP/UDP load balancers, backend service-based network load
-     *   balancers, and internal and external protocol forwarding.
-     *   This option should be set to TRUE when the Forwarding Rule
-     *   IPProtocol is set to L3_DEFAULT.
-     *   Set this field to true to allow packets addressed to any port or packets
+     * The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+     * Only packets addressed to ports in the specified range will be forwarded
+     * to the backends configured with this forwarding rule.
+     * The `allPorts` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+     *   L3_DEFAULT.
+     * * It&#39;s applicable only to the following products: internal passthrough
+     *   Network Load Balancers, backend service-based external passthrough Network
+     *   Load Balancers, and internal and external protocol forwarding.
+     * * Set this field to true to allow packets addressed to any port or packets
      *   lacking destination port information (for example, UDP fragments after the
      *   first fragment) to be forwarded to the backends configured with this
-     *   forwarding rule.
-     *   The `ports`, `port_range`, and
-     *   `allPorts` fields are mutually exclusive.
+     *   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+     *   true.
      * 
      */
     @Import(name="allPorts")
     private @Nullable Output<Boolean> allPorts;
 
     /**
-     * @return This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By internal TCP/UDP load balancers, backend service-based network load
-     *   balancers, and internal and external protocol forwarding.
-     *   This option should be set to TRUE when the Forwarding Rule
-     *   IPProtocol is set to L3_DEFAULT.
-     *   Set this field to true to allow packets addressed to any port or packets
+     * @return The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+     * Only packets addressed to ports in the specified range will be forwarded
+     * to the backends configured with this forwarding rule.
+     * The `allPorts` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+     *   L3_DEFAULT.
+     * * It&#39;s applicable only to the following products: internal passthrough
+     *   Network Load Balancers, backend service-based external passthrough Network
+     *   Load Balancers, and internal and external protocol forwarding.
+     * * Set this field to true to allow packets addressed to any port or packets
      *   lacking destination port information (for example, UDP fragments after the
      *   first fragment) to be forwarded to the backends configured with this
-     *   forwarding rule.
-     *   The `ports`, `port_range`, and
-     *   `allPorts` fields are mutually exclusive.
+     *   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+     *   true.
      * 
      */
     public Optional<Output<Boolean>> allPorts() {
@@ -457,48 +461,52 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By backend service-based network load balancers, target pool-based
-     *   network load balancers, internal proxy load balancers, external proxy load
-     *   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-     *   Some products have restrictions on what ports can be used. See
+     * The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+     * Only packets addressed to ports in the specified range will be forwarded
+     * to the backends configured with this forwarding rule.
+     * The `portRange` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: external passthrough
+     *   Network Load Balancers, internal and external proxy Network Load
+     *   Balancers, internal and external Application Load Balancers, external
+     *   protocol forwarding, and Classic VPN.
+     * * Some products have restrictions on what ports can be used. See
      *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
      *   for details.
-     * 
-     * Only packets addressed to ports in the specified range will be forwarded to
-     * the backends configured with this forwarding rule.
-     * The `ports` and `port_range` fields are mutually exclusive.
-     * For external forwarding rules, two or more forwarding rules cannot use the
-     * same `[IPAddress, IPProtocol]` pair, and cannot have
-     * overlapping `portRange`s.
-     * For internal forwarding rules within the same VPC network, two or more
-     * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-     * pair, and cannot have overlapping `portRange`s.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+     *   `portRange`s.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+     *   cannot have overlapping `portRange`s.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By backend service-based network load balancers, target pool-based
-     *   network load balancers, internal proxy load balancers, external proxy load
-     *   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-     *   Some products have restrictions on what ports can be used. See
+     * @return The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+     * Only packets addressed to ports in the specified range will be forwarded
+     * to the backends configured with this forwarding rule.
+     * The `portRange` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: external passthrough
+     *   Network Load Balancers, internal and external proxy Network Load
+     *   Balancers, internal and external Application Load Balancers, external
+     *   protocol forwarding, and Classic VPN.
+     * * Some products have restrictions on what ports can be used. See
      *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
      *   for details.
-     * 
-     * Only packets addressed to ports in the specified range will be forwarded to
-     * the backends configured with this forwarding rule.
-     * The `ports` and `port_range` fields are mutually exclusive.
-     * For external forwarding rules, two or more forwarding rules cannot use the
-     * same `[IPAddress, IPProtocol]` pair, and cannot have
-     * overlapping `portRange`s.
-     * For internal forwarding rules within the same VPC network, two or more
-     * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-     * pair, and cannot have overlapping `portRange`s.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+     *   `portRange`s.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+     *   cannot have overlapping `portRange`s.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -506,44 +514,48 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By internal TCP/UDP load balancers, backend service-based network load
-     *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-     * 
-     * You can specify a list of up to five ports by number, separated by commas.
-     * The ports can be contiguous or discontiguous. Only packets addressed to
-     * these ports will be forwarded to the backends configured with this
-     * forwarding rule.
-     * For external forwarding rules, two or more forwarding rules cannot use the
-     * same `[IPAddress, IPProtocol]` pair, and cannot share any values
-     * defined in `ports`.
-     * For internal forwarding rules within the same VPC network, two or more
-     * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-     * pair, and cannot share any values defined in `ports`.
-     * The `ports` and `port_range` fields are mutually exclusive.
+     * The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+     * Only packets addressed to ports in the specified range will be forwarded
+     * to the backends configured with this forwarding rule.
+     * The `ports` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: internal passthrough
+     *   Network Load Balancers, backend service-based external passthrough Network
+     *   Load Balancers, and internal protocol forwarding.
+     * * You can specify a list of up to five ports by number, separated by
+     *   commas. The ports can be contiguous or discontiguous.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair if they share at least one port
+     *   number.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+     *   they share at least one port number.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<String>> ports;
 
     /**
-     * @return This field can only be used:
-     * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-     * * By internal TCP/UDP load balancers, backend service-based network load
-     *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-     * 
-     * You can specify a list of up to five ports by number, separated by commas.
-     * The ports can be contiguous or discontiguous. Only packets addressed to
-     * these ports will be forwarded to the backends configured with this
-     * forwarding rule.
-     * For external forwarding rules, two or more forwarding rules cannot use the
-     * same `[IPAddress, IPProtocol]` pair, and cannot share any values
-     * defined in `ports`.
-     * For internal forwarding rules within the same VPC network, two or more
-     * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-     * pair, and cannot share any values defined in `ports`.
-     * The `ports` and `port_range` fields are mutually exclusive.
+     * @return The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+     * Only packets addressed to ports in the specified range will be forwarded
+     * to the backends configured with this forwarding rule.
+     * The `ports` field has the following limitations:
+     * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+     *   and
+     * * It&#39;s applicable only to the following products: internal passthrough
+     *   Network Load Balancers, backend service-based external passthrough Network
+     *   Load Balancers, and internal protocol forwarding.
+     * * You can specify a list of up to five ports by number, separated by
+     *   commas. The ports can be contiguous or discontiguous.
+     *   For external forwarding rules, two or more forwarding rules cannot use the
+     *   same `[IPAddress, IPProtocol]` pair if they share at least one port
+     *   number.
+     *   For internal forwarding rules within the same VPC network, two or more
+     *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+     *   they share at least one port number.
+     *   @pattern: \d+(?:-\d+)?
      * 
      */
     public Optional<Output<List<String>>> ports() {
@@ -565,6 +577,21 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
+    @Import(name="recreateClosedPsc")
+    private @Nullable Output<Boolean> recreateClosedPsc;
+
+    /**
+     * @return This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+     * 
+     */
+    public Optional<Output<Boolean>> recreateClosedPsc() {
+        return Optional.ofNullable(this.recreateClosedPsc);
     }
 
     /**
@@ -732,6 +759,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         this.portRange = $.portRange;
         this.ports = $.ports;
         this.project = $.project;
+        this.recreateClosedPsc = $.recreateClosedPsc;
         this.region = $.region;
         this.serviceDirectoryRegistrations = $.serviceDirectoryRegistrations;
         this.serviceLabel = $.serviceLabel;
@@ -759,18 +787,20 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allPorts This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, and internal and external protocol forwarding.
-         *   This option should be set to TRUE when the Forwarding Rule
-         *   IPProtocol is set to L3_DEFAULT.
-         *   Set this field to true to allow packets addressed to any port or packets
+         * @param allPorts The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `allPorts` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+         *   L3_DEFAULT.
+         * * It&#39;s applicable only to the following products: internal passthrough
+         *   Network Load Balancers, backend service-based external passthrough Network
+         *   Load Balancers, and internal and external protocol forwarding.
+         * * Set this field to true to allow packets addressed to any port or packets
          *   lacking destination port information (for example, UDP fragments after the
          *   first fragment) to be forwarded to the backends configured with this
-         *   forwarding rule.
-         *   The `ports`, `port_range`, and
-         *   `allPorts` fields are mutually exclusive.
+         *   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+         *   true.
          * 
          * @return builder
          * 
@@ -781,18 +811,20 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allPorts This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, and internal and external protocol forwarding.
-         *   This option should be set to TRUE when the Forwarding Rule
-         *   IPProtocol is set to L3_DEFAULT.
-         *   Set this field to true to allow packets addressed to any port or packets
+         * @param allPorts The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `allPorts` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, SCTP, or
+         *   L3_DEFAULT.
+         * * It&#39;s applicable only to the following products: internal passthrough
+         *   Network Load Balancers, backend service-based external passthrough Network
+         *   Load Balancers, and internal and external protocol forwarding.
+         * * Set this field to true to allow packets addressed to any port or packets
          *   lacking destination port information (for example, UDP fragments after the
          *   first fragment) to be forwarded to the backends configured with this
-         *   forwarding rule.
-         *   The `ports`, `port_range`, and
-         *   `allPorts` fields are mutually exclusive.
+         *   forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
+         *   true.
          * 
          * @return builder
          * 
@@ -1286,24 +1318,26 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param portRange This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By backend service-based network load balancers, target pool-based
-         *   network load balancers, internal proxy load balancers, external proxy load
-         *   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-         *   Some products have restrictions on what ports can be used. See
+         * @param portRange The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `portRange` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: external passthrough
+         *   Network Load Balancers, internal and external proxy Network Load
+         *   Balancers, internal and external Application Load Balancers, external
+         *   protocol forwarding, and Classic VPN.
+         * * Some products have restrictions on what ports can be used. See
          *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
          *   for details.
-         * 
-         * Only packets addressed to ports in the specified range will be forwarded to
-         * the backends configured with this forwarding rule.
-         * The `ports` and `port_range` fields are mutually exclusive.
-         * For external forwarding rules, two or more forwarding rules cannot use the
-         * same `[IPAddress, IPProtocol]` pair, and cannot have
-         * overlapping `portRange`s.
-         * For internal forwarding rules within the same VPC network, two or more
-         * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-         * pair, and cannot have overlapping `portRange`s.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+         *   `portRange`s.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+         *   cannot have overlapping `portRange`s.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1314,24 +1348,26 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param portRange This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By backend service-based network load balancers, target pool-based
-         *   network load balancers, internal proxy load balancers, external proxy load
-         *   balancers, Traffic Director, external protocol forwarding, and Classic VPN.
-         *   Some products have restrictions on what ports can be used. See
+         * @param portRange The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `portRange` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: external passthrough
+         *   Network Load Balancers, internal and external proxy Network Load
+         *   Balancers, internal and external Application Load Balancers, external
+         *   protocol forwarding, and Classic VPN.
+         * * Some products have restrictions on what ports can be used. See
          *   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
          *   for details.
-         * 
-         * Only packets addressed to ports in the specified range will be forwarded to
-         * the backends configured with this forwarding rule.
-         * The `ports` and `port_range` fields are mutually exclusive.
-         * For external forwarding rules, two or more forwarding rules cannot use the
-         * same `[IPAddress, IPProtocol]` pair, and cannot have
-         * overlapping `portRange`s.
-         * For internal forwarding rules within the same VPC network, two or more
-         * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-         * pair, and cannot have overlapping `portRange`s.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair, and cannot have overlapping
+         *   `portRange`s.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+         *   cannot have overlapping `portRange`s.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1341,22 +1377,24 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ports This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-         * 
-         * You can specify a list of up to five ports by number, separated by commas.
-         * The ports can be contiguous or discontiguous. Only packets addressed to
-         * these ports will be forwarded to the backends configured with this
-         * forwarding rule.
-         * For external forwarding rules, two or more forwarding rules cannot use the
-         * same `[IPAddress, IPProtocol]` pair, and cannot share any values
-         * defined in `ports`.
-         * For internal forwarding rules within the same VPC network, two or more
-         * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-         * pair, and cannot share any values defined in `ports`.
-         * The `ports` and `port_range` fields are mutually exclusive.
+         * @param ports The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `ports` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: internal passthrough
+         *   Network Load Balancers, backend service-based external passthrough Network
+         *   Load Balancers, and internal protocol forwarding.
+         * * You can specify a list of up to five ports by number, separated by
+         *   commas. The ports can be contiguous or discontiguous.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair if they share at least one port
+         *   number.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+         *   they share at least one port number.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1367,22 +1405,24 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ports This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-         * 
-         * You can specify a list of up to five ports by number, separated by commas.
-         * The ports can be contiguous or discontiguous. Only packets addressed to
-         * these ports will be forwarded to the backends configured with this
-         * forwarding rule.
-         * For external forwarding rules, two or more forwarding rules cannot use the
-         * same `[IPAddress, IPProtocol]` pair, and cannot share any values
-         * defined in `ports`.
-         * For internal forwarding rules within the same VPC network, two or more
-         * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-         * pair, and cannot share any values defined in `ports`.
-         * The `ports` and `port_range` fields are mutually exclusive.
+         * @param ports The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `ports` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: internal passthrough
+         *   Network Load Balancers, backend service-based external passthrough Network
+         *   Load Balancers, and internal protocol forwarding.
+         * * You can specify a list of up to five ports by number, separated by
+         *   commas. The ports can be contiguous or discontiguous.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair if they share at least one port
+         *   number.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+         *   they share at least one port number.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1392,22 +1432,24 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ports This field can only be used:
-         * * If `IPProtocol` is one of TCP, UDP, or SCTP.
-         * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-         * 
-         * You can specify a list of up to five ports by number, separated by commas.
-         * The ports can be contiguous or discontiguous. Only packets addressed to
-         * these ports will be forwarded to the backends configured with this
-         * forwarding rule.
-         * For external forwarding rules, two or more forwarding rules cannot use the
-         * same `[IPAddress, IPProtocol]` pair, and cannot share any values
-         * defined in `ports`.
-         * For internal forwarding rules within the same VPC network, two or more
-         * forwarding rules cannot use the same `[IPAddress, IPProtocol]`
-         * pair, and cannot share any values defined in `ports`.
-         * The `ports` and `port_range` fields are mutually exclusive.
+         * @param ports The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
+         * Only packets addressed to ports in the specified range will be forwarded
+         * to the backends configured with this forwarding rule.
+         * The `ports` field has the following limitations:
+         * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
+         *   and
+         * * It&#39;s applicable only to the following products: internal passthrough
+         *   Network Load Balancers, backend service-based external passthrough Network
+         *   Load Balancers, and internal protocol forwarding.
+         * * You can specify a list of up to five ports by number, separated by
+         *   commas. The ports can be contiguous or discontiguous.
+         *   For external forwarding rules, two or more forwarding rules cannot use the
+         *   same `[IPAddress, IPProtocol]` pair if they share at least one port
+         *   number.
+         *   For internal forwarding rules within the same VPC network, two or more
+         *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+         *   they share at least one port number.
+         *   @pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1437,6 +1479,27 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param recreateClosedPsc This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recreateClosedPsc(@Nullable Output<Boolean> recreateClosedPsc) {
+            $.recreateClosedPsc = recreateClosedPsc;
+            return this;
+        }
+
+        /**
+         * @param recreateClosedPsc This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recreateClosedPsc(Boolean recreateClosedPsc) {
+            return recreateClosedPsc(Output.of(recreateClosedPsc));
         }
 
         /**

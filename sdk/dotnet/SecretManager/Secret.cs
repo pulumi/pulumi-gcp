@@ -133,7 +133,15 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// ## Import
     /// 
-    /// Secret can be imported using any of these accepted formats
+    /// Secret can be imported using any of these accepted formats* `projects/{{project}}/secrets/{{secret_id}}` * `{{project}}/{{secret_id}}` * `{{secret_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Secret using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/secrets/{{secret_id}}"
+    /// 
+    ///  to = google_secret_manager_secret.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:secretmanager/secret:Secret When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Secret can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
@@ -190,6 +198,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Only one of `expire_time` or `ttl` can be provided.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -262,6 +271,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// The TTL for the Secret.
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of `ttl` or `expire_time` can be provided.
         /// </summary>
         [Output("ttl")]
         public Output<string?> Ttl { get; private set; } = null!;
@@ -356,6 +366,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Only one of `expire_time` or `ttl` can be provided.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -426,6 +437,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// The TTL for the Secret.
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of `ttl` or `expire_time` can be provided.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
@@ -518,6 +530,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Only one of `expire_time` or `ttl` can be provided.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -612,6 +625,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// The TTL for the Secret.
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of `ttl` or `expire_time` can be provided.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }

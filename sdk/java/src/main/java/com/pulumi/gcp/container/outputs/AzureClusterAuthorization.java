@@ -4,12 +4,19 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.AzureClusterAuthorizationAdminGroup;
 import com.pulumi.gcp.container.outputs.AzureClusterAuthorizationAdminUser;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AzureClusterAuthorization {
+    /**
+     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    private @Nullable List<AzureClusterAuthorizationAdminGroup> adminGroups;
     /**
      * @return Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
@@ -17,6 +24,13 @@ public final class AzureClusterAuthorization {
     private List<AzureClusterAuthorizationAdminUser> adminUsers;
 
     private AzureClusterAuthorization() {}
+    /**
+     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    public List<AzureClusterAuthorizationAdminGroup> adminGroups() {
+        return this.adminGroups == null ? List.of() : this.adminGroups;
+    }
     /**
      * @return Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
@@ -34,13 +48,23 @@ public final class AzureClusterAuthorization {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AzureClusterAuthorizationAdminGroup> adminGroups;
         private List<AzureClusterAuthorizationAdminUser> adminUsers;
         public Builder() {}
         public Builder(AzureClusterAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.adminGroups = defaults.adminGroups;
     	      this.adminUsers = defaults.adminUsers;
         }
 
+        @CustomType.Setter
+        public Builder adminGroups(@Nullable List<AzureClusterAuthorizationAdminGroup> adminGroups) {
+            this.adminGroups = adminGroups;
+            return this;
+        }
+        public Builder adminGroups(AzureClusterAuthorizationAdminGroup... adminGroups) {
+            return adminGroups(List.of(adminGroups));
+        }
         @CustomType.Setter
         public Builder adminUsers(List<AzureClusterAuthorizationAdminUser> adminUsers) {
             this.adminUsers = Objects.requireNonNull(adminUsers);
@@ -51,6 +75,7 @@ public final class AzureClusterAuthorization {
         }
         public AzureClusterAuthorization build() {
             final var o = new AzureClusterAuthorization();
+            o.adminGroups = adminGroups;
             o.adminUsers = adminUsers;
             return o;
         }

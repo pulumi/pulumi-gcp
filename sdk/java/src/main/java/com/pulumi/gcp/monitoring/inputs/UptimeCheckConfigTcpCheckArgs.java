@@ -5,13 +5,33 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckPingConfigArgs;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UptimeCheckConfigTcpCheckArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final UptimeCheckConfigTcpCheckArgs Empty = new UptimeCheckConfigTcpCheckArgs();
+
+    /**
+     * Contains information needed to add pings to a TCP check.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pingConfig")
+    private @Nullable Output<UptimeCheckConfigTcpCheckPingConfigArgs> pingConfig;
+
+    /**
+     * @return Contains information needed to add pings to a TCP check.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<UptimeCheckConfigTcpCheckPingConfigArgs>> pingConfig() {
+        return Optional.ofNullable(this.pingConfig);
+    }
 
     /**
      * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
@@ -31,6 +51,7 @@ public final class UptimeCheckConfigTcpCheckArgs extends com.pulumi.resources.Re
     private UptimeCheckConfigTcpCheckArgs() {}
 
     private UptimeCheckConfigTcpCheckArgs(UptimeCheckConfigTcpCheckArgs $) {
+        this.pingConfig = $.pingConfig;
         this.port = $.port;
     }
 
@@ -50,6 +71,29 @@ public final class UptimeCheckConfigTcpCheckArgs extends com.pulumi.resources.Re
 
         public Builder(UptimeCheckConfigTcpCheckArgs defaults) {
             $ = new UptimeCheckConfigTcpCheckArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param pingConfig Contains information needed to add pings to a TCP check.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pingConfig(@Nullable Output<UptimeCheckConfigTcpCheckPingConfigArgs> pingConfig) {
+            $.pingConfig = pingConfig;
+            return this;
+        }
+
+        /**
+         * @param pingConfig Contains information needed to add pings to a TCP check.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pingConfig(UptimeCheckConfigTcpCheckPingConfigArgs pingConfig) {
+            return pingConfig(Output.of(pingConfig));
         }
 
         /**

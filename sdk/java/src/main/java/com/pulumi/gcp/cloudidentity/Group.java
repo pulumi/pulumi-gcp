@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudidentity.GroupArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GroupState;
+import com.pulumi.gcp.cloudidentity.outputs.GroupAdditionalGroupKey;
 import com.pulumi.gcp.cloudidentity.outputs.GroupGroupKey;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -71,7 +73,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Group can be imported using any of these accepted formats:
+ * Group can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Group using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;{{name}}&#34;
+ * 
+ *  to = google_cloud_identity_group.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:cloudidentity/group:Group When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Group can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
@@ -80,6 +90,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:cloudidentity/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
+    /**
+     * Additional group keys associated with the Group
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="additionalGroupKeys", refs={List.class,GroupAdditionalGroupKey.class}, tree="[0,1]")
+    private Output<List<GroupAdditionalGroupKey>> additionalGroupKeys;
+
+    /**
+     * @return Additional group keys associated with the Group
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<GroupAdditionalGroupKey>> additionalGroupKeys() {
+        return this.additionalGroupKeys;
+    }
     /**
      * The time when the Group was created.
      * 

@@ -21,6 +21,7 @@ __all__ = [
     'BucketLifecycleRuleConditionArgs',
     'BucketLoggingArgs',
     'BucketObjectCustomerEncryptionArgs',
+    'BucketObjectRetentionArgs',
     'BucketRetentionPolicyArgs',
     'BucketVersioningArgs',
     'BucketWebsiteArgs',
@@ -57,11 +58,15 @@ __all__ = [
 @pulumi.input_type
 class BucketAutoclassArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[bool]):
+                 enabled: pulumi.Input[bool],
+                 terminal_storage_class: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        :param pulumi.Input[str] terminal_storage_class: The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if terminal_storage_class is not None:
+            pulumi.set(__self__, "terminal_storage_class", terminal_storage_class)
 
     @property
     @pulumi.getter
@@ -74,6 +79,18 @@ class BucketAutoclassArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="terminalStorageClass")
+    def terminal_storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+        """
+        return pulumi.get(self, "terminal_storage_class")
+
+    @terminal_storage_class.setter
+    def terminal_storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "terminal_storage_class", value)
 
 
 @pulumi.input_type
@@ -673,6 +690,47 @@ class BucketObjectCustomerEncryptionArgs:
     @encryption_algorithm.setter
     def encryption_algorithm(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption_algorithm", value)
+
+
+@pulumi.input_type
+class BucketObjectRetentionArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[str],
+                 retain_until_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] mode: The retention policy mode. Either `Locked` or `Unlocked`.
+        :param pulumi.Input[str] retain_until_time: The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
+               
+               <a name>
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retain_until_time", retain_until_time)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        The retention policy mode. Either `Locked` or `Unlocked`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="retainUntilTime")
+    def retain_until_time(self) -> pulumi.Input[str]:
+        """
+        The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
+
+        <a name>
+        """
+        return pulumi.get(self, "retain_until_time")
+
+    @retain_until_time.setter
+    def retain_until_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "retain_until_time", value)
 
 
 @pulumi.input_type

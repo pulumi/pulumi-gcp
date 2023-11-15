@@ -72,7 +72,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Intent can be imported using any of these accepted formats
+ * Intent can be imported using any of these accepted formats* `{{parent}}/intents/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Intent using one of the formats above. For exampletf import {
+ *
+ *  id = "{{parent}}/intents/{{name}}"
+ *
+ *  to = google_dialogflow_cx_intent.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxIntent:CxIntent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Intent can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
@@ -126,8 +134,23 @@ export class CxIntent extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+     * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     */
+    public readonly isDefaultNegativeIntent!: pulumi.Output<boolean | undefined>;
+    /**
+     * Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+     * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     */
+    public readonly isDefaultWelcomeIntent!: pulumi.Output<boolean | undefined>;
+    /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+     * To manage the fallback intent, set `isDefaultNegativeIntent = true`
      */
     public readonly isFallback!: pulumi.Output<boolean | undefined>;
     /**
@@ -193,6 +216,8 @@ export class CxIntent extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["isDefaultNegativeIntent"] = state ? state.isDefaultNegativeIntent : undefined;
+            resourceInputs["isDefaultWelcomeIntent"] = state ? state.isDefaultWelcomeIntent : undefined;
             resourceInputs["isFallback"] = state ? state.isFallback : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["languageCode"] = state ? state.languageCode : undefined;
@@ -209,6 +234,8 @@ export class CxIntent extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["isDefaultNegativeIntent"] = args ? args.isDefaultNegativeIntent : undefined;
+            resourceInputs["isDefaultWelcomeIntent"] = args ? args.isDefaultWelcomeIntent : undefined;
             resourceInputs["isFallback"] = args ? args.isFallback : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["languageCode"] = args ? args.languageCode : undefined;
@@ -247,8 +274,23 @@ export interface CxIntentState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+     * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     */
+    isDefaultNegativeIntent?: pulumi.Input<boolean>;
+    /**
+     * Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+     * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     */
+    isDefaultWelcomeIntent?: pulumi.Input<boolean>;
+    /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+     * To manage the fallback intent, set `isDefaultNegativeIntent = true`
      */
     isFallback?: pulumi.Input<boolean>;
     /**
@@ -315,8 +357,23 @@ export interface CxIntentArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+     * The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+     */
+    isDefaultNegativeIntent?: pulumi.Input<boolean>;
+    /**
+     * Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+     * The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+     *
+     * > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+     */
+    isDefaultWelcomeIntent?: pulumi.Input<boolean>;
+    /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+     * To manage the fallback intent, set `isDefaultNegativeIntent = true`
      */
     isFallback?: pulumi.Input<boolean>;
     /**

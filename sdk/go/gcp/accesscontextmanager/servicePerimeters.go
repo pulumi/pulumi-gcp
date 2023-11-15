@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -115,7 +114,17 @@ import (
 //
 // ## Import
 //
-// # ServicePerimeters can be imported using any of these accepted formats
+// ServicePerimeters can be imported using any of these accepted formats* `{{parent}}/servicePerimeters` * `{{parent}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeters using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/servicePerimeters"
+//
+//	to = google_access_context_manager_service_perimeters.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeters can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -245,12 +254,6 @@ func (i *ServicePerimeters) ToServicePerimetersOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersOutput)
 }
 
-func (i *ServicePerimeters) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeters] {
-	return pulumix.Output[*ServicePerimeters]{
-		OutputState: i.ToServicePerimetersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePerimetersArrayInput is an input type that accepts ServicePerimetersArray and ServicePerimetersArrayOutput values.
 // You can construct a concrete instance of `ServicePerimetersArrayInput` via:
 //
@@ -274,12 +277,6 @@ func (i ServicePerimetersArray) ToServicePerimetersArrayOutput() ServicePerimete
 
 func (i ServicePerimetersArray) ToServicePerimetersArrayOutputWithContext(ctx context.Context) ServicePerimetersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersArrayOutput)
-}
-
-func (i ServicePerimetersArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeters] {
-	return pulumix.Output[[]*ServicePerimeters]{
-		OutputState: i.ToServicePerimetersArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePerimetersMapInput is an input type that accepts ServicePerimetersMap and ServicePerimetersMapOutput values.
@@ -307,12 +304,6 @@ func (i ServicePerimetersMap) ToServicePerimetersMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersMapOutput)
 }
 
-func (i ServicePerimetersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeters] {
-	return pulumix.Output[map[string]*ServicePerimeters]{
-		OutputState: i.ToServicePerimetersMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePerimetersOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersOutput) ElementType() reflect.Type {
@@ -325,12 +316,6 @@ func (o ServicePerimetersOutput) ToServicePerimetersOutput() ServicePerimetersOu
 
 func (o ServicePerimetersOutput) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
 	return o
-}
-
-func (o ServicePerimetersOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeters] {
-	return pulumix.Output[*ServicePerimeters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AccessPolicy this ServicePerimeter lives in.
@@ -361,12 +346,6 @@ func (o ServicePerimetersArrayOutput) ToServicePerimetersArrayOutputWithContext(
 	return o
 }
 
-func (o ServicePerimetersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeters] {
-	return pulumix.Output[[]*ServicePerimeters]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePerimetersArrayOutput) Index(i pulumi.IntInput) ServicePerimetersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePerimeters {
 		return vs[0].([]*ServicePerimeters)[vs[1].(int)]
@@ -385,12 +364,6 @@ func (o ServicePerimetersMapOutput) ToServicePerimetersMapOutput() ServicePerime
 
 func (o ServicePerimetersMapOutput) ToServicePerimetersMapOutputWithContext(ctx context.Context) ServicePerimetersMapOutput {
 	return o
-}
-
-func (o ServicePerimetersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeters] {
-	return pulumix.Output[map[string]*ServicePerimeters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePerimetersMapOutput) MapIndex(k pulumi.StringInput) ServicePerimetersOutput {

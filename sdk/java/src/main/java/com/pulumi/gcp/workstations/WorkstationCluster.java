@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.workstations.WorkstationClusterArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationClusterState;
 import com.pulumi.gcp.workstations.outputs.WorkstationClusterCondition;
+import com.pulumi.gcp.workstations.outputs.WorkstationClusterDomainConfig;
 import com.pulumi.gcp.workstations.outputs.WorkstationClusterPrivateClusterConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -143,10 +144,85 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Workstation Cluster Custom Domain
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *             .workstationClusterId(&#34;workstation-cluster-custom-domain&#34;)
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location(&#34;us-central1&#34;)
+ *             .privateClusterConfig(WorkstationClusterPrivateClusterConfigArgs.builder()
+ *                 .enablePrivateEndpoint(true)
+ *                 .build())
+ *             .domainConfig(WorkstationClusterDomainConfigArgs.builder()
+ *                 .domain(&#34;workstations.example.com&#34;)
+ *                 .build())
+ *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * WorkstationCluster can be imported using any of these accepted formats
+ * WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}&#34;
+ * 
+ *  to = google_workstations_workstation_cluster.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
@@ -240,6 +316,22 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * Configuration options for a custom domain.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="domainConfig", refs={WorkstationClusterDomainConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkstationClusterDomainConfig> domainConfig;
+
+    /**
+     * @return Configuration options for a custom domain.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkstationClusterDomainConfig>> domainConfig() {
+        return Codegen.optional(this.domainConfig);
     }
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through

@@ -9,10 +9,875 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type CxAgentAdvancedSettings struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	//   Structure is documented below.
+	AudioExportGcsDestination *CxAgentAdvancedSettingsAudioExportGcsDestination `pulumi:"audioExportGcsDestination"`
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings *CxAgentAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+}
+
+// CxAgentAdvancedSettingsInput is an input type that accepts CxAgentAdvancedSettingsArgs and CxAgentAdvancedSettingsOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsInput` via:
+//
+//	CxAgentAdvancedSettingsArgs{...}
+type CxAgentAdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsOutput() CxAgentAdvancedSettingsOutput
+	ToCxAgentAdvancedSettingsOutputWithContext(context.Context) CxAgentAdvancedSettingsOutput
+}
+
+type CxAgentAdvancedSettingsArgs struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	//   Structure is documented below.
+	AudioExportGcsDestination CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput `pulumi:"audioExportGcsDestination"`
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings CxAgentAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+}
+
+func (CxAgentAdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettings)(nil)).Elem()
+}
+
+func (i CxAgentAdvancedSettingsArgs) ToCxAgentAdvancedSettingsOutput() CxAgentAdvancedSettingsOutput {
+	return i.ToCxAgentAdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsArgs) ToCxAgentAdvancedSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsOutput)
+}
+
+func (i CxAgentAdvancedSettingsArgs) ToCxAgentAdvancedSettingsPtrOutput() CxAgentAdvancedSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsArgs) ToCxAgentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsOutput).ToCxAgentAdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentAdvancedSettingsPtrInput is an input type that accepts CxAgentAdvancedSettingsArgs, CxAgentAdvancedSettingsPtr and CxAgentAdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsPtrInput` via:
+//
+//	        CxAgentAdvancedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentAdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsPtrOutput() CxAgentAdvancedSettingsPtrOutput
+	ToCxAgentAdvancedSettingsPtrOutputWithContext(context.Context) CxAgentAdvancedSettingsPtrOutput
+}
+
+type cxAgentAdvancedSettingsPtrType CxAgentAdvancedSettingsArgs
+
+func CxAgentAdvancedSettingsPtr(v *CxAgentAdvancedSettingsArgs) CxAgentAdvancedSettingsPtrInput {
+	return (*cxAgentAdvancedSettingsPtrType)(v)
+}
+
+func (*cxAgentAdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettings)(nil)).Elem()
+}
+
+func (i *cxAgentAdvancedSettingsPtrType) ToCxAgentAdvancedSettingsPtrOutput() CxAgentAdvancedSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentAdvancedSettingsPtrType) ToCxAgentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsPtrOutput)
+}
+
+type CxAgentAdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsOutput) ToCxAgentAdvancedSettingsOutput() CxAgentAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsOutput) ToCxAgentAdvancedSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsOutput) ToCxAgentAdvancedSettingsPtrOutput() CxAgentAdvancedSettingsPtrOutput {
+	return o.ToCxAgentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentAdvancedSettingsOutput) ToCxAgentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentAdvancedSettings) *CxAgentAdvancedSettings {
+		return &v
+	}).(CxAgentAdvancedSettingsPtrOutput)
+}
+
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsOutput) AudioExportGcsDestination() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettings) *CxAgentAdvancedSettingsAudioExportGcsDestination {
+		return v.AudioExportGcsDestination
+	}).(CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsOutput) DtmfSettings() CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettings) *CxAgentAdvancedSettingsDtmfSettings { return v.DtmfSettings }).(CxAgentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxAgentAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsPtrOutput) ToCxAgentAdvancedSettingsPtrOutput() CxAgentAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsPtrOutput) ToCxAgentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsPtrOutput) Elem() CxAgentAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettings) CxAgentAdvancedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentAdvancedSettings
+		return ret
+	}).(CxAgentAdvancedSettingsOutput)
+}
+
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsPtrOutput) AudioExportGcsDestination() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettings) *CxAgentAdvancedSettingsAudioExportGcsDestination {
+		if v == nil {
+			return nil
+		}
+		return v.AudioExportGcsDestination
+	}).(CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsPtrOutput) DtmfSettings() CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettings) *CxAgentAdvancedSettingsDtmfSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DtmfSettings
+	}).(CxAgentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxAgentAdvancedSettingsAudioExportGcsDestination struct {
+	// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// Format: gs://bucket/object-name-or-prefix
+	Uri *string `pulumi:"uri"`
+}
+
+// CxAgentAdvancedSettingsAudioExportGcsDestinationInput is an input type that accepts CxAgentAdvancedSettingsAudioExportGcsDestinationArgs and CxAgentAdvancedSettingsAudioExportGcsDestinationOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsAudioExportGcsDestinationInput` via:
+//
+//	CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{...}
+type CxAgentAdvancedSettingsAudioExportGcsDestinationInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationOutput
+	ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutputWithContext(context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationOutput
+}
+
+type CxAgentAdvancedSettingsAudioExportGcsDestinationArgs struct {
+	// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// Format: gs://bucket/object-name-or-prefix
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (CxAgentAdvancedSettingsAudioExportGcsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (i CxAgentAdvancedSettingsAudioExportGcsDestinationArgs) ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationOutput {
+	return i.ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsAudioExportGcsDestinationArgs) ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsAudioExportGcsDestinationOutput)
+}
+
+func (i CxAgentAdvancedSettingsAudioExportGcsDestinationArgs) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return i.ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsAudioExportGcsDestinationArgs) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsAudioExportGcsDestinationOutput).ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx)
+}
+
+// CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput is an input type that accepts CxAgentAdvancedSettingsAudioExportGcsDestinationArgs, CxAgentAdvancedSettingsAudioExportGcsDestinationPtr and CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput` via:
+//
+//	        CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput
+	ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput
+}
+
+type cxAgentAdvancedSettingsAudioExportGcsDestinationPtrType CxAgentAdvancedSettingsAudioExportGcsDestinationArgs
+
+func CxAgentAdvancedSettingsAudioExportGcsDestinationPtr(v *CxAgentAdvancedSettingsAudioExportGcsDestinationArgs) CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput {
+	return (*cxAgentAdvancedSettingsAudioExportGcsDestinationPtrType)(v)
+}
+
+func (*cxAgentAdvancedSettingsAudioExportGcsDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (i *cxAgentAdvancedSettingsAudioExportGcsDestinationPtrType) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return i.ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentAdvancedSettingsAudioExportGcsDestinationPtrType) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+type CxAgentAdvancedSettingsAudioExportGcsDestinationOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsAudioExportGcsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationOutput) ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationOutput) ToCxAgentAdvancedSettingsAudioExportGcsDestinationOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationOutput) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationOutput) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentAdvancedSettingsAudioExportGcsDestination) *CxAgentAdvancedSettingsAudioExportGcsDestination {
+		return &v
+	}).(CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// Format: gs://bucket/object-name-or-prefix
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsAudioExportGcsDestination) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput) ToCxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput) Elem() CxAgentAdvancedSettingsAudioExportGcsDestinationOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsAudioExportGcsDestination) CxAgentAdvancedSettingsAudioExportGcsDestination {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentAdvancedSettingsAudioExportGcsDestination
+		return ret
+	}).(CxAgentAdvancedSettingsAudioExportGcsDestinationOutput)
+}
+
+// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// Format: gs://bucket/object-name-or-prefix
+func (o CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsAudioExportGcsDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxAgentAdvancedSettingsDtmfSettings struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled *bool `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit *string `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits *int `pulumi:"maxDigits"`
+}
+
+// CxAgentAdvancedSettingsDtmfSettingsInput is an input type that accepts CxAgentAdvancedSettingsDtmfSettingsArgs and CxAgentAdvancedSettingsDtmfSettingsOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsDtmfSettingsInput` via:
+//
+//	CxAgentAdvancedSettingsDtmfSettingsArgs{...}
+type CxAgentAdvancedSettingsDtmfSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsDtmfSettingsOutput() CxAgentAdvancedSettingsDtmfSettingsOutput
+	ToCxAgentAdvancedSettingsDtmfSettingsOutputWithContext(context.Context) CxAgentAdvancedSettingsDtmfSettingsOutput
+}
+
+type CxAgentAdvancedSettingsDtmfSettingsArgs struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits pulumi.IntPtrInput `pulumi:"maxDigits"`
+}
+
+func (CxAgentAdvancedSettingsDtmfSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i CxAgentAdvancedSettingsDtmfSettingsArgs) ToCxAgentAdvancedSettingsDtmfSettingsOutput() CxAgentAdvancedSettingsDtmfSettingsOutput {
+	return i.ToCxAgentAdvancedSettingsDtmfSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsDtmfSettingsArgs) ToCxAgentAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsDtmfSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsDtmfSettingsOutput)
+}
+
+func (i CxAgentAdvancedSettingsDtmfSettingsArgs) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutput() CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsDtmfSettingsArgs) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsDtmfSettingsOutput).ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentAdvancedSettingsDtmfSettingsPtrInput is an input type that accepts CxAgentAdvancedSettingsDtmfSettingsArgs, CxAgentAdvancedSettingsDtmfSettingsPtr and CxAgentAdvancedSettingsDtmfSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsDtmfSettingsPtrInput` via:
+//
+//	        CxAgentAdvancedSettingsDtmfSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentAdvancedSettingsDtmfSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsDtmfSettingsPtrOutput() CxAgentAdvancedSettingsDtmfSettingsPtrOutput
+	ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Context) CxAgentAdvancedSettingsDtmfSettingsPtrOutput
+}
+
+type cxAgentAdvancedSettingsDtmfSettingsPtrType CxAgentAdvancedSettingsDtmfSettingsArgs
+
+func CxAgentAdvancedSettingsDtmfSettingsPtr(v *CxAgentAdvancedSettingsDtmfSettingsArgs) CxAgentAdvancedSettingsDtmfSettingsPtrInput {
+	return (*cxAgentAdvancedSettingsDtmfSettingsPtrType)(v)
+}
+
+func (*cxAgentAdvancedSettingsDtmfSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i *cxAgentAdvancedSettingsDtmfSettingsPtrType) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutput() CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentAdvancedSettingsDtmfSettingsPtrType) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxAgentAdvancedSettingsDtmfSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsDtmfSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) ToCxAgentAdvancedSettingsDtmfSettingsOutput() CxAgentAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) ToCxAgentAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutput() CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentAdvancedSettingsDtmfSettings) *CxAgentAdvancedSettingsDtmfSettings {
+		return &v
+	}).(CxAgentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsDtmfSettings) *string { return v.FinishDigit }).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxAgentAdvancedSettingsDtmfSettingsOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsDtmfSettings) *int { return v.MaxDigits }).(pulumi.IntPtrOutput)
+}
+
+type CxAgentAdvancedSettingsDtmfSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsDtmfSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutput() CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) ToCxAgentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxAgentAdvancedSettingsDtmfSettingsOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsDtmfSettings) CxAgentAdvancedSettingsDtmfSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentAdvancedSettingsDtmfSettings
+		return ret
+	}).(CxAgentAdvancedSettingsDtmfSettingsOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsDtmfSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsDtmfSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
+}
+
+type CxAgentGitIntegrationSettings struct {
+	// Settings of integration with GitHub.
+	// Structure is documented below.
+	GithubSettings *CxAgentGitIntegrationSettingsGithubSettings `pulumi:"githubSettings"`
+}
+
+// CxAgentGitIntegrationSettingsInput is an input type that accepts CxAgentGitIntegrationSettingsArgs and CxAgentGitIntegrationSettingsOutput values.
+// You can construct a concrete instance of `CxAgentGitIntegrationSettingsInput` via:
+//
+//	CxAgentGitIntegrationSettingsArgs{...}
+type CxAgentGitIntegrationSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentGitIntegrationSettingsOutput() CxAgentGitIntegrationSettingsOutput
+	ToCxAgentGitIntegrationSettingsOutputWithContext(context.Context) CxAgentGitIntegrationSettingsOutput
+}
+
+type CxAgentGitIntegrationSettingsArgs struct {
+	// Settings of integration with GitHub.
+	// Structure is documented below.
+	GithubSettings CxAgentGitIntegrationSettingsGithubSettingsPtrInput `pulumi:"githubSettings"`
+}
+
+func (CxAgentGitIntegrationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentGitIntegrationSettings)(nil)).Elem()
+}
+
+func (i CxAgentGitIntegrationSettingsArgs) ToCxAgentGitIntegrationSettingsOutput() CxAgentGitIntegrationSettingsOutput {
+	return i.ToCxAgentGitIntegrationSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentGitIntegrationSettingsArgs) ToCxAgentGitIntegrationSettingsOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGitIntegrationSettingsOutput)
+}
+
+func (i CxAgentGitIntegrationSettingsArgs) ToCxAgentGitIntegrationSettingsPtrOutput() CxAgentGitIntegrationSettingsPtrOutput {
+	return i.ToCxAgentGitIntegrationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentGitIntegrationSettingsArgs) ToCxAgentGitIntegrationSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGitIntegrationSettingsOutput).ToCxAgentGitIntegrationSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentGitIntegrationSettingsPtrInput is an input type that accepts CxAgentGitIntegrationSettingsArgs, CxAgentGitIntegrationSettingsPtr and CxAgentGitIntegrationSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentGitIntegrationSettingsPtrInput` via:
+//
+//	        CxAgentGitIntegrationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentGitIntegrationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentGitIntegrationSettingsPtrOutput() CxAgentGitIntegrationSettingsPtrOutput
+	ToCxAgentGitIntegrationSettingsPtrOutputWithContext(context.Context) CxAgentGitIntegrationSettingsPtrOutput
+}
+
+type cxAgentGitIntegrationSettingsPtrType CxAgentGitIntegrationSettingsArgs
+
+func CxAgentGitIntegrationSettingsPtr(v *CxAgentGitIntegrationSettingsArgs) CxAgentGitIntegrationSettingsPtrInput {
+	return (*cxAgentGitIntegrationSettingsPtrType)(v)
+}
+
+func (*cxAgentGitIntegrationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentGitIntegrationSettings)(nil)).Elem()
+}
+
+func (i *cxAgentGitIntegrationSettingsPtrType) ToCxAgentGitIntegrationSettingsPtrOutput() CxAgentGitIntegrationSettingsPtrOutput {
+	return i.ToCxAgentGitIntegrationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentGitIntegrationSettingsPtrType) ToCxAgentGitIntegrationSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGitIntegrationSettingsPtrOutput)
+}
+
+type CxAgentGitIntegrationSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentGitIntegrationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentGitIntegrationSettings)(nil)).Elem()
+}
+
+func (o CxAgentGitIntegrationSettingsOutput) ToCxAgentGitIntegrationSettingsOutput() CxAgentGitIntegrationSettingsOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsOutput) ToCxAgentGitIntegrationSettingsOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsOutput) ToCxAgentGitIntegrationSettingsPtrOutput() CxAgentGitIntegrationSettingsPtrOutput {
+	return o.ToCxAgentGitIntegrationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentGitIntegrationSettingsOutput) ToCxAgentGitIntegrationSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentGitIntegrationSettings) *CxAgentGitIntegrationSettings {
+		return &v
+	}).(CxAgentGitIntegrationSettingsPtrOutput)
+}
+
+// Settings of integration with GitHub.
+// Structure is documented below.
+func (o CxAgentGitIntegrationSettingsOutput) GithubSettings() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return o.ApplyT(func(v CxAgentGitIntegrationSettings) *CxAgentGitIntegrationSettingsGithubSettings {
+		return v.GithubSettings
+	}).(CxAgentGitIntegrationSettingsGithubSettingsPtrOutput)
+}
+
+type CxAgentGitIntegrationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentGitIntegrationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentGitIntegrationSettings)(nil)).Elem()
+}
+
+func (o CxAgentGitIntegrationSettingsPtrOutput) ToCxAgentGitIntegrationSettingsPtrOutput() CxAgentGitIntegrationSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsPtrOutput) ToCxAgentGitIntegrationSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsPtrOutput) Elem() CxAgentGitIntegrationSettingsOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettings) CxAgentGitIntegrationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentGitIntegrationSettings
+		return ret
+	}).(CxAgentGitIntegrationSettingsOutput)
+}
+
+// Settings of integration with GitHub.
+// Structure is documented below.
+func (o CxAgentGitIntegrationSettingsPtrOutput) GithubSettings() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettings) *CxAgentGitIntegrationSettingsGithubSettings {
+		if v == nil {
+			return nil
+		}
+		return v.GithubSettings
+	}).(CxAgentGitIntegrationSettingsGithubSettingsPtrOutput)
+}
+
+type CxAgentGitIntegrationSettingsGithubSettings struct {
+	// The access token used to authenticate the access to the GitHub repository.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	AccessToken *string `pulumi:"accessToken"`
+	// A list of branches configured to be used from Dialogflow.
+	Branches []string `pulumi:"branches"`
+	// The unique repository display name for the GitHub repository.
+	DisplayName *string `pulumi:"displayName"`
+	// The GitHub repository URI related to the agent.
+	RepositoryUri *string `pulumi:"repositoryUri"`
+	// The branch of the GitHub repository tracked for this agent.
+	TrackingBranch *string `pulumi:"trackingBranch"`
+}
+
+// CxAgentGitIntegrationSettingsGithubSettingsInput is an input type that accepts CxAgentGitIntegrationSettingsGithubSettingsArgs and CxAgentGitIntegrationSettingsGithubSettingsOutput values.
+// You can construct a concrete instance of `CxAgentGitIntegrationSettingsGithubSettingsInput` via:
+//
+//	CxAgentGitIntegrationSettingsGithubSettingsArgs{...}
+type CxAgentGitIntegrationSettingsGithubSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentGitIntegrationSettingsGithubSettingsOutput() CxAgentGitIntegrationSettingsGithubSettingsOutput
+	ToCxAgentGitIntegrationSettingsGithubSettingsOutputWithContext(context.Context) CxAgentGitIntegrationSettingsGithubSettingsOutput
+}
+
+type CxAgentGitIntegrationSettingsGithubSettingsArgs struct {
+	// The access token used to authenticate the access to the GitHub repository.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	AccessToken pulumi.StringPtrInput `pulumi:"accessToken"`
+	// A list of branches configured to be used from Dialogflow.
+	Branches pulumi.StringArrayInput `pulumi:"branches"`
+	// The unique repository display name for the GitHub repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The GitHub repository URI related to the agent.
+	RepositoryUri pulumi.StringPtrInput `pulumi:"repositoryUri"`
+	// The branch of the GitHub repository tracked for this agent.
+	TrackingBranch pulumi.StringPtrInput `pulumi:"trackingBranch"`
+}
+
+func (CxAgentGitIntegrationSettingsGithubSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettings)(nil)).Elem()
+}
+
+func (i CxAgentGitIntegrationSettingsGithubSettingsArgs) ToCxAgentGitIntegrationSettingsGithubSettingsOutput() CxAgentGitIntegrationSettingsGithubSettingsOutput {
+	return i.ToCxAgentGitIntegrationSettingsGithubSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentGitIntegrationSettingsGithubSettingsArgs) ToCxAgentGitIntegrationSettingsGithubSettingsOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsGithubSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGitIntegrationSettingsGithubSettingsOutput)
+}
+
+func (i CxAgentGitIntegrationSettingsGithubSettingsArgs) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutput() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return i.ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentGitIntegrationSettingsGithubSettingsArgs) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGitIntegrationSettingsGithubSettingsOutput).ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentGitIntegrationSettingsGithubSettingsPtrInput is an input type that accepts CxAgentGitIntegrationSettingsGithubSettingsArgs, CxAgentGitIntegrationSettingsGithubSettingsPtr and CxAgentGitIntegrationSettingsGithubSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentGitIntegrationSettingsGithubSettingsPtrInput` via:
+//
+//	        CxAgentGitIntegrationSettingsGithubSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentGitIntegrationSettingsGithubSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutput() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput
+	ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(context.Context) CxAgentGitIntegrationSettingsGithubSettingsPtrOutput
+}
+
+type cxAgentGitIntegrationSettingsGithubSettingsPtrType CxAgentGitIntegrationSettingsGithubSettingsArgs
+
+func CxAgentGitIntegrationSettingsGithubSettingsPtr(v *CxAgentGitIntegrationSettingsGithubSettingsArgs) CxAgentGitIntegrationSettingsGithubSettingsPtrInput {
+	return (*cxAgentGitIntegrationSettingsGithubSettingsPtrType)(v)
+}
+
+func (*cxAgentGitIntegrationSettingsGithubSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentGitIntegrationSettingsGithubSettings)(nil)).Elem()
+}
+
+func (i *cxAgentGitIntegrationSettingsGithubSettingsPtrType) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutput() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return i.ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentGitIntegrationSettingsGithubSettingsPtrType) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentGitIntegrationSettingsGithubSettingsPtrOutput)
+}
+
+type CxAgentGitIntegrationSettingsGithubSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentGitIntegrationSettingsGithubSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettings)(nil)).Elem()
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) ToCxAgentGitIntegrationSettingsGithubSettingsOutput() CxAgentGitIntegrationSettingsGithubSettingsOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) ToCxAgentGitIntegrationSettingsGithubSettingsOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsGithubSettingsOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutput() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return o.ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentGitIntegrationSettingsGithubSettings) *CxAgentGitIntegrationSettingsGithubSettings {
+		return &v
+	}).(CxAgentGitIntegrationSettingsGithubSettingsPtrOutput)
+}
+
+// The access token used to authenticate the access to the GitHub repository.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentGitIntegrationSettingsGithubSettings) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+}
+
+// A list of branches configured to be used from Dialogflow.
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) Branches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxAgentGitIntegrationSettingsGithubSettings) []string { return v.Branches }).(pulumi.StringArrayOutput)
+}
+
+// The unique repository display name for the GitHub repository.
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentGitIntegrationSettingsGithubSettings) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The GitHub repository URI related to the agent.
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) RepositoryUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentGitIntegrationSettingsGithubSettings) *string { return v.RepositoryUri }).(pulumi.StringPtrOutput)
+}
+
+// The branch of the GitHub repository tracked for this agent.
+func (o CxAgentGitIntegrationSettingsGithubSettingsOutput) TrackingBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentGitIntegrationSettingsGithubSettings) *string { return v.TrackingBranch }).(pulumi.StringPtrOutput)
+}
+
+type CxAgentGitIntegrationSettingsGithubSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentGitIntegrationSettingsGithubSettings)(nil)).Elem()
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutput() CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) ToCxAgentGitIntegrationSettingsGithubSettingsPtrOutputWithContext(ctx context.Context) CxAgentGitIntegrationSettingsGithubSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) Elem() CxAgentGitIntegrationSettingsGithubSettingsOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettingsGithubSettings) CxAgentGitIntegrationSettingsGithubSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentGitIntegrationSettingsGithubSettings
+		return ret
+	}).(CxAgentGitIntegrationSettingsGithubSettingsOutput)
+}
+
+// The access token used to authenticate the access to the GitHub repository.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettingsGithubSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of branches configured to be used from Dialogflow.
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) Branches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettingsGithubSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Branches
+	}).(pulumi.StringArrayOutput)
+}
+
+// The unique repository display name for the GitHub repository.
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettingsGithubSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GitHub repository URI related to the agent.
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) RepositoryUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettingsGithubSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The branch of the GitHub repository tracked for this agent.
+func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) TrackingBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentGitIntegrationSettingsGithubSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackingBranch
+	}).(pulumi.StringPtrOutput)
+}
 
 type CxAgentSpeechToTextSettings struct {
 	// Whether to use speech adaptation for speech recognition.
@@ -45,12 +910,6 @@ func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsOutput() C
 
 func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsOutput)
-}
-
-func (i CxAgentSpeechToTextSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxAgentSpeechToTextSettings] {
-	return pulumix.Output[CxAgentSpeechToTextSettings]{
-		OutputState: i.ToCxAgentSpeechToTextSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput {
@@ -94,12 +953,6 @@ func (i *cxAgentSpeechToTextSettingsPtrType) ToCxAgentSpeechToTextSettingsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsPtrOutput)
 }
 
-func (i *cxAgentSpeechToTextSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxAgentSpeechToTextSettings] {
-	return pulumix.Output[*CxAgentSpeechToTextSettings]{
-		OutputState: i.ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxAgentSpeechToTextSettingsOutput struct{ *pulumi.OutputState }
 
 func (CxAgentSpeechToTextSettingsOutput) ElementType() reflect.Type {
@@ -124,12 +977,6 @@ func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsPtrOutpu
 	}).(CxAgentSpeechToTextSettingsPtrOutput)
 }
 
-func (o CxAgentSpeechToTextSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxAgentSpeechToTextSettings] {
-	return pulumix.Output[CxAgentSpeechToTextSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to use speech adaptation for speech recognition.
 func (o CxAgentSpeechToTextSettingsOutput) EnableSpeechAdaptation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxAgentSpeechToTextSettings) *bool { return v.EnableSpeechAdaptation }).(pulumi.BoolPtrOutput)
@@ -147,12 +994,6 @@ func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOu
 
 func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
 	return o
-}
-
-func (o CxAgentSpeechToTextSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxAgentSpeechToTextSettings] {
-	return pulumix.Output[*CxAgentSpeechToTextSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxAgentSpeechToTextSettingsPtrOutput) Elem() CxAgentSpeechToTextSettingsOutput {
@@ -173,6 +1014,155 @@ func (o CxAgentSpeechToTextSettingsPtrOutput) EnableSpeechAdaptation() pulumi.Bo
 		}
 		return v.EnableSpeechAdaptation
 	}).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentTextToSpeechSettings struct {
+	// Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+	// These settings affect:
+	// * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+	// * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+	SynthesizeSpeechConfigs *string `pulumi:"synthesizeSpeechConfigs"`
+}
+
+// CxAgentTextToSpeechSettingsInput is an input type that accepts CxAgentTextToSpeechSettingsArgs and CxAgentTextToSpeechSettingsOutput values.
+// You can construct a concrete instance of `CxAgentTextToSpeechSettingsInput` via:
+//
+//	CxAgentTextToSpeechSettingsArgs{...}
+type CxAgentTextToSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentTextToSpeechSettingsOutput() CxAgentTextToSpeechSettingsOutput
+	ToCxAgentTextToSpeechSettingsOutputWithContext(context.Context) CxAgentTextToSpeechSettingsOutput
+}
+
+type CxAgentTextToSpeechSettingsArgs struct {
+	// Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+	// These settings affect:
+	// * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+	// * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+	SynthesizeSpeechConfigs pulumi.StringPtrInput `pulumi:"synthesizeSpeechConfigs"`
+}
+
+func (CxAgentTextToSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (i CxAgentTextToSpeechSettingsArgs) ToCxAgentTextToSpeechSettingsOutput() CxAgentTextToSpeechSettingsOutput {
+	return i.ToCxAgentTextToSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentTextToSpeechSettingsArgs) ToCxAgentTextToSpeechSettingsOutputWithContext(ctx context.Context) CxAgentTextToSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentTextToSpeechSettingsOutput)
+}
+
+func (i CxAgentTextToSpeechSettingsArgs) ToCxAgentTextToSpeechSettingsPtrOutput() CxAgentTextToSpeechSettingsPtrOutput {
+	return i.ToCxAgentTextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentTextToSpeechSettingsArgs) ToCxAgentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentTextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentTextToSpeechSettingsOutput).ToCxAgentTextToSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentTextToSpeechSettingsPtrInput is an input type that accepts CxAgentTextToSpeechSettingsArgs, CxAgentTextToSpeechSettingsPtr and CxAgentTextToSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentTextToSpeechSettingsPtrInput` via:
+//
+//	        CxAgentTextToSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentTextToSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentTextToSpeechSettingsPtrOutput() CxAgentTextToSpeechSettingsPtrOutput
+	ToCxAgentTextToSpeechSettingsPtrOutputWithContext(context.Context) CxAgentTextToSpeechSettingsPtrOutput
+}
+
+type cxAgentTextToSpeechSettingsPtrType CxAgentTextToSpeechSettingsArgs
+
+func CxAgentTextToSpeechSettingsPtr(v *CxAgentTextToSpeechSettingsArgs) CxAgentTextToSpeechSettingsPtrInput {
+	return (*cxAgentTextToSpeechSettingsPtrType)(v)
+}
+
+func (*cxAgentTextToSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (i *cxAgentTextToSpeechSettingsPtrType) ToCxAgentTextToSpeechSettingsPtrOutput() CxAgentTextToSpeechSettingsPtrOutput {
+	return i.ToCxAgentTextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentTextToSpeechSettingsPtrType) ToCxAgentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentTextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentTextToSpeechSettingsPtrOutput)
+}
+
+type CxAgentTextToSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentTextToSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (o CxAgentTextToSpeechSettingsOutput) ToCxAgentTextToSpeechSettingsOutput() CxAgentTextToSpeechSettingsOutput {
+	return o
+}
+
+func (o CxAgentTextToSpeechSettingsOutput) ToCxAgentTextToSpeechSettingsOutputWithContext(ctx context.Context) CxAgentTextToSpeechSettingsOutput {
+	return o
+}
+
+func (o CxAgentTextToSpeechSettingsOutput) ToCxAgentTextToSpeechSettingsPtrOutput() CxAgentTextToSpeechSettingsPtrOutput {
+	return o.ToCxAgentTextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentTextToSpeechSettingsOutput) ToCxAgentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentTextToSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentTextToSpeechSettings) *CxAgentTextToSpeechSettings {
+		return &v
+	}).(CxAgentTextToSpeechSettingsPtrOutput)
+}
+
+// Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+// These settings affect:
+// * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+// * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+func (o CxAgentTextToSpeechSettingsOutput) SynthesizeSpeechConfigs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentTextToSpeechSettings) *string { return v.SynthesizeSpeechConfigs }).(pulumi.StringPtrOutput)
+}
+
+type CxAgentTextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentTextToSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentTextToSpeechSettings)(nil)).Elem()
+}
+
+func (o CxAgentTextToSpeechSettingsPtrOutput) ToCxAgentTextToSpeechSettingsPtrOutput() CxAgentTextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentTextToSpeechSettingsPtrOutput) ToCxAgentTextToSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentTextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentTextToSpeechSettingsPtrOutput) Elem() CxAgentTextToSpeechSettingsOutput {
+	return o.ApplyT(func(v *CxAgentTextToSpeechSettings) CxAgentTextToSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentTextToSpeechSettings
+		return ret
+	}).(CxAgentTextToSpeechSettingsOutput)
+}
+
+// Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+// These settings affect:
+// * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+// * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+func (o CxAgentTextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentTextToSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxEntityTypeEntity struct {
@@ -222,12 +1212,6 @@ func (i CxEntityTypeEntityArgs) ToCxEntityTypeEntityOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeEntityOutput)
 }
 
-func (i CxEntityTypeEntityArgs) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeEntity] {
-	return pulumix.Output[CxEntityTypeEntity]{
-		OutputState: i.ToCxEntityTypeEntityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxEntityTypeEntityArrayInput is an input type that accepts CxEntityTypeEntityArray and CxEntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeEntityArrayInput` via:
 //
@@ -253,12 +1237,6 @@ func (i CxEntityTypeEntityArray) ToCxEntityTypeEntityArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeEntityArrayOutput)
 }
 
-func (i CxEntityTypeEntityArray) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeEntity] {
-	return pulumix.Output[[]CxEntityTypeEntity]{
-		OutputState: i.ToCxEntityTypeEntityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxEntityTypeEntityOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypeEntityOutput) ElementType() reflect.Type {
@@ -271,12 +1249,6 @@ func (o CxEntityTypeEntityOutput) ToCxEntityTypeEntityOutput() CxEntityTypeEntit
 
 func (o CxEntityTypeEntityOutput) ToCxEntityTypeEntityOutputWithContext(ctx context.Context) CxEntityTypeEntityOutput {
 	return o
-}
-
-func (o CxEntityTypeEntityOutput) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeEntity] {
-	return pulumix.Output[CxEntityTypeEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
@@ -306,12 +1278,6 @@ func (o CxEntityTypeEntityArrayOutput) ToCxEntityTypeEntityArrayOutput() CxEntit
 
 func (o CxEntityTypeEntityArrayOutput) ToCxEntityTypeEntityArrayOutputWithContext(ctx context.Context) CxEntityTypeEntityArrayOutput {
 	return o
-}
-
-func (o CxEntityTypeEntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeEntity] {
-	return pulumix.Output[[]CxEntityTypeEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxEntityTypeEntityArrayOutput) Index(i pulumi.IntInput) CxEntityTypeEntityOutput {
@@ -353,12 +1319,6 @@ func (i CxEntityTypeExcludedPhraseArgs) ToCxEntityTypeExcludedPhraseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeExcludedPhraseOutput)
 }
 
-func (i CxEntityTypeExcludedPhraseArgs) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeExcludedPhrase] {
-	return pulumix.Output[CxEntityTypeExcludedPhrase]{
-		OutputState: i.ToCxEntityTypeExcludedPhraseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxEntityTypeExcludedPhraseArrayInput is an input type that accepts CxEntityTypeExcludedPhraseArray and CxEntityTypeExcludedPhraseArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeExcludedPhraseArrayInput` via:
 //
@@ -384,12 +1344,6 @@ func (i CxEntityTypeExcludedPhraseArray) ToCxEntityTypeExcludedPhraseArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeExcludedPhraseArrayOutput)
 }
 
-func (i CxEntityTypeExcludedPhraseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeExcludedPhrase] {
-	return pulumix.Output[[]CxEntityTypeExcludedPhrase]{
-		OutputState: i.ToCxEntityTypeExcludedPhraseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxEntityTypeExcludedPhraseOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypeExcludedPhraseOutput) ElementType() reflect.Type {
@@ -402,12 +1356,6 @@ func (o CxEntityTypeExcludedPhraseOutput) ToCxEntityTypeExcludedPhraseOutput() C
 
 func (o CxEntityTypeExcludedPhraseOutput) ToCxEntityTypeExcludedPhraseOutputWithContext(ctx context.Context) CxEntityTypeExcludedPhraseOutput {
 	return o
-}
-
-func (o CxEntityTypeExcludedPhraseOutput) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeExcludedPhrase] {
-	return pulumix.Output[CxEntityTypeExcludedPhrase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The word or phrase to be excluded.
@@ -427,12 +1375,6 @@ func (o CxEntityTypeExcludedPhraseArrayOutput) ToCxEntityTypeExcludedPhraseArray
 
 func (o CxEntityTypeExcludedPhraseArrayOutput) ToCxEntityTypeExcludedPhraseArrayOutputWithContext(ctx context.Context) CxEntityTypeExcludedPhraseArrayOutput {
 	return o
-}
-
-func (o CxEntityTypeExcludedPhraseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeExcludedPhrase] {
-	return pulumix.Output[[]CxEntityTypeExcludedPhrase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxEntityTypeExcludedPhraseArrayOutput) Index(i pulumi.IntInput) CxEntityTypeExcludedPhraseOutput {
@@ -478,12 +1420,6 @@ func (i CxEnvironmentVersionConfigArgs) ToCxEnvironmentVersionConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentVersionConfigOutput)
 }
 
-func (i CxEnvironmentVersionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CxEnvironmentVersionConfig] {
-	return pulumix.Output[CxEnvironmentVersionConfig]{
-		OutputState: i.ToCxEnvironmentVersionConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxEnvironmentVersionConfigArrayInput is an input type that accepts CxEnvironmentVersionConfigArray and CxEnvironmentVersionConfigArrayOutput values.
 // You can construct a concrete instance of `CxEnvironmentVersionConfigArrayInput` via:
 //
@@ -509,12 +1445,6 @@ func (i CxEnvironmentVersionConfigArray) ToCxEnvironmentVersionConfigArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentVersionConfigArrayOutput)
 }
 
-func (i CxEnvironmentVersionConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]CxEnvironmentVersionConfig] {
-	return pulumix.Output[[]CxEnvironmentVersionConfig]{
-		OutputState: i.ToCxEnvironmentVersionConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxEnvironmentVersionConfigOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentVersionConfigOutput) ElementType() reflect.Type {
@@ -527,12 +1457,6 @@ func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutput() C
 
 func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigOutput {
 	return o
-}
-
-func (o CxEnvironmentVersionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CxEnvironmentVersionConfig] {
-	return pulumix.Output[CxEnvironmentVersionConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
@@ -556,16 +1480,516 @@ func (o CxEnvironmentVersionConfigArrayOutput) ToCxEnvironmentVersionConfigArray
 	return o
 }
 
-func (o CxEnvironmentVersionConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxEnvironmentVersionConfig] {
-	return pulumix.Output[[]CxEnvironmentVersionConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxEnvironmentVersionConfigArrayOutput) Index(i pulumi.IntInput) CxEnvironmentVersionConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxEnvironmentVersionConfig {
 		return vs[0].([]CxEnvironmentVersionConfig)[vs[1].(int)]
 	}).(CxEnvironmentVersionConfigOutput)
+}
+
+type CxFlowAdvancedSettings struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	//   Structure is documented below.
+	AudioExportGcsDestination *CxFlowAdvancedSettingsAudioExportGcsDestination `pulumi:"audioExportGcsDestination"`
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings *CxFlowAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+}
+
+// CxFlowAdvancedSettingsInput is an input type that accepts CxFlowAdvancedSettingsArgs and CxFlowAdvancedSettingsOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsInput` via:
+//
+//	CxFlowAdvancedSettingsArgs{...}
+type CxFlowAdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsOutput() CxFlowAdvancedSettingsOutput
+	ToCxFlowAdvancedSettingsOutputWithContext(context.Context) CxFlowAdvancedSettingsOutput
+}
+
+type CxFlowAdvancedSettingsArgs struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	//   Structure is documented below.
+	AudioExportGcsDestination CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput `pulumi:"audioExportGcsDestination"`
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings CxFlowAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+}
+
+func (CxFlowAdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettings)(nil)).Elem()
+}
+
+func (i CxFlowAdvancedSettingsArgs) ToCxFlowAdvancedSettingsOutput() CxFlowAdvancedSettingsOutput {
+	return i.ToCxFlowAdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsArgs) ToCxFlowAdvancedSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsOutput)
+}
+
+func (i CxFlowAdvancedSettingsArgs) ToCxFlowAdvancedSettingsPtrOutput() CxFlowAdvancedSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsArgs) ToCxFlowAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsOutput).ToCxFlowAdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowAdvancedSettingsPtrInput is an input type that accepts CxFlowAdvancedSettingsArgs, CxFlowAdvancedSettingsPtr and CxFlowAdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsPtrInput` via:
+//
+//	        CxFlowAdvancedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowAdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsPtrOutput() CxFlowAdvancedSettingsPtrOutput
+	ToCxFlowAdvancedSettingsPtrOutputWithContext(context.Context) CxFlowAdvancedSettingsPtrOutput
+}
+
+type cxFlowAdvancedSettingsPtrType CxFlowAdvancedSettingsArgs
+
+func CxFlowAdvancedSettingsPtr(v *CxFlowAdvancedSettingsArgs) CxFlowAdvancedSettingsPtrInput {
+	return (*cxFlowAdvancedSettingsPtrType)(v)
+}
+
+func (*cxFlowAdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettings)(nil)).Elem()
+}
+
+func (i *cxFlowAdvancedSettingsPtrType) ToCxFlowAdvancedSettingsPtrOutput() CxFlowAdvancedSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowAdvancedSettingsPtrType) ToCxFlowAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsPtrOutput)
+}
+
+type CxFlowAdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsOutput) ToCxFlowAdvancedSettingsOutput() CxFlowAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsOutput) ToCxFlowAdvancedSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsOutput) ToCxFlowAdvancedSettingsPtrOutput() CxFlowAdvancedSettingsPtrOutput {
+	return o.ToCxFlowAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowAdvancedSettingsOutput) ToCxFlowAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowAdvancedSettings) *CxFlowAdvancedSettings {
+		return &v
+	}).(CxFlowAdvancedSettingsPtrOutput)
+}
+
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsOutput) AudioExportGcsDestination() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettings) *CxFlowAdvancedSettingsAudioExportGcsDestination {
+		return v.AudioExportGcsDestination
+	}).(CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsOutput) DtmfSettings() CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettings) *CxFlowAdvancedSettingsDtmfSettings { return v.DtmfSettings }).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxFlowAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsPtrOutput) ToCxFlowAdvancedSettingsPtrOutput() CxFlowAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsPtrOutput) ToCxFlowAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsPtrOutput) Elem() CxFlowAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettings) CxFlowAdvancedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowAdvancedSettings
+		return ret
+	}).(CxFlowAdvancedSettingsOutput)
+}
+
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsPtrOutput) AudioExportGcsDestination() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettings) *CxFlowAdvancedSettingsAudioExportGcsDestination {
+		if v == nil {
+			return nil
+		}
+		return v.AudioExportGcsDestination
+	}).(CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsPtrOutput) DtmfSettings() CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettings) *CxFlowAdvancedSettingsDtmfSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DtmfSettings
+	}).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxFlowAdvancedSettingsAudioExportGcsDestination struct {
+	// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// Format: gs://bucket/object-name-or-prefix
+	Uri *string `pulumi:"uri"`
+}
+
+// CxFlowAdvancedSettingsAudioExportGcsDestinationInput is an input type that accepts CxFlowAdvancedSettingsAudioExportGcsDestinationArgs and CxFlowAdvancedSettingsAudioExportGcsDestinationOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsAudioExportGcsDestinationInput` via:
+//
+//	CxFlowAdvancedSettingsAudioExportGcsDestinationArgs{...}
+type CxFlowAdvancedSettingsAudioExportGcsDestinationInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationOutput
+	ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutputWithContext(context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationOutput
+}
+
+type CxFlowAdvancedSettingsAudioExportGcsDestinationArgs struct {
+	// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// Format: gs://bucket/object-name-or-prefix
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (CxFlowAdvancedSettingsAudioExportGcsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (i CxFlowAdvancedSettingsAudioExportGcsDestinationArgs) ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationOutput {
+	return i.ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsAudioExportGcsDestinationArgs) ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsAudioExportGcsDestinationOutput)
+}
+
+func (i CxFlowAdvancedSettingsAudioExportGcsDestinationArgs) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return i.ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsAudioExportGcsDestinationArgs) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsAudioExportGcsDestinationOutput).ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx)
+}
+
+// CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput is an input type that accepts CxFlowAdvancedSettingsAudioExportGcsDestinationArgs, CxFlowAdvancedSettingsAudioExportGcsDestinationPtr and CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput` via:
+//
+//	        CxFlowAdvancedSettingsAudioExportGcsDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput
+	ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput
+}
+
+type cxFlowAdvancedSettingsAudioExportGcsDestinationPtrType CxFlowAdvancedSettingsAudioExportGcsDestinationArgs
+
+func CxFlowAdvancedSettingsAudioExportGcsDestinationPtr(v *CxFlowAdvancedSettingsAudioExportGcsDestinationArgs) CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput {
+	return (*cxFlowAdvancedSettingsAudioExportGcsDestinationPtrType)(v)
+}
+
+func (*cxFlowAdvancedSettingsAudioExportGcsDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (i *cxFlowAdvancedSettingsAudioExportGcsDestinationPtrType) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return i.ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowAdvancedSettingsAudioExportGcsDestinationPtrType) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+type CxFlowAdvancedSettingsAudioExportGcsDestinationOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsAudioExportGcsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationOutput) ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationOutput) ToCxFlowAdvancedSettingsAudioExportGcsDestinationOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationOutput) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationOutput) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowAdvancedSettingsAudioExportGcsDestination) *CxFlowAdvancedSettingsAudioExportGcsDestination {
+		return &v
+	}).(CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput)
+}
+
+// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// Format: gs://bucket/object-name-or-prefix
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsAudioExportGcsDestination) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsAudioExportGcsDestination)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput() CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput) ToCxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput) Elem() CxFlowAdvancedSettingsAudioExportGcsDestinationOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsAudioExportGcsDestination) CxFlowAdvancedSettingsAudioExportGcsDestination {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowAdvancedSettingsAudioExportGcsDestination
+		return ret
+	}).(CxFlowAdvancedSettingsAudioExportGcsDestinationOutput)
+}
+
+// The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// Format: gs://bucket/object-name-or-prefix
+func (o CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsAudioExportGcsDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowAdvancedSettingsDtmfSettings struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled *bool `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit *string `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits *int `pulumi:"maxDigits"`
+}
+
+// CxFlowAdvancedSettingsDtmfSettingsInput is an input type that accepts CxFlowAdvancedSettingsDtmfSettingsArgs and CxFlowAdvancedSettingsDtmfSettingsOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsDtmfSettingsInput` via:
+//
+//	CxFlowAdvancedSettingsDtmfSettingsArgs{...}
+type CxFlowAdvancedSettingsDtmfSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsDtmfSettingsOutput() CxFlowAdvancedSettingsDtmfSettingsOutput
+	ToCxFlowAdvancedSettingsDtmfSettingsOutputWithContext(context.Context) CxFlowAdvancedSettingsDtmfSettingsOutput
+}
+
+type CxFlowAdvancedSettingsDtmfSettingsArgs struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits pulumi.IntPtrInput `pulumi:"maxDigits"`
+}
+
+func (CxFlowAdvancedSettingsDtmfSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i CxFlowAdvancedSettingsDtmfSettingsArgs) ToCxFlowAdvancedSettingsDtmfSettingsOutput() CxFlowAdvancedSettingsDtmfSettingsOutput {
+	return i.ToCxFlowAdvancedSettingsDtmfSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsDtmfSettingsArgs) ToCxFlowAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsDtmfSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsDtmfSettingsOutput)
+}
+
+func (i CxFlowAdvancedSettingsDtmfSettingsArgs) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutput() CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsDtmfSettingsArgs) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsDtmfSettingsOutput).ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowAdvancedSettingsDtmfSettingsPtrInput is an input type that accepts CxFlowAdvancedSettingsDtmfSettingsArgs, CxFlowAdvancedSettingsDtmfSettingsPtr and CxFlowAdvancedSettingsDtmfSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsDtmfSettingsPtrInput` via:
+//
+//	        CxFlowAdvancedSettingsDtmfSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowAdvancedSettingsDtmfSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsDtmfSettingsPtrOutput() CxFlowAdvancedSettingsDtmfSettingsPtrOutput
+	ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Context) CxFlowAdvancedSettingsDtmfSettingsPtrOutput
+}
+
+type cxFlowAdvancedSettingsDtmfSettingsPtrType CxFlowAdvancedSettingsDtmfSettingsArgs
+
+func CxFlowAdvancedSettingsDtmfSettingsPtr(v *CxFlowAdvancedSettingsDtmfSettingsArgs) CxFlowAdvancedSettingsDtmfSettingsPtrInput {
+	return (*cxFlowAdvancedSettingsDtmfSettingsPtrType)(v)
+}
+
+func (*cxFlowAdvancedSettingsDtmfSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i *cxFlowAdvancedSettingsDtmfSettingsPtrType) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutput() CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowAdvancedSettingsDtmfSettingsPtrType) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxFlowAdvancedSettingsDtmfSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsDtmfSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) ToCxFlowAdvancedSettingsDtmfSettingsOutput() CxFlowAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) ToCxFlowAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutput() CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowAdvancedSettingsDtmfSettings) *CxFlowAdvancedSettingsDtmfSettings {
+		return &v
+	}).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsDtmfSettings) *string { return v.FinishDigit }).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxFlowAdvancedSettingsDtmfSettingsOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsDtmfSettings) *int { return v.MaxDigits }).(pulumi.IntPtrOutput)
+}
+
+type CxFlowAdvancedSettingsDtmfSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsDtmfSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutput() CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) ToCxFlowAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxFlowAdvancedSettingsDtmfSettingsOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsDtmfSettings) CxFlowAdvancedSettingsDtmfSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowAdvancedSettingsDtmfSettings
+		return ret
+	}).(CxFlowAdvancedSettingsDtmfSettingsOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsDtmfSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsDtmfSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
 }
 
 type CxFlowEventHandler struct {
@@ -625,12 +2049,6 @@ func (i CxFlowEventHandlerArgs) ToCxFlowEventHandlerOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerOutput)
 }
 
-func (i CxFlowEventHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandler] {
-	return pulumix.Output[CxFlowEventHandler]{
-		OutputState: i.ToCxFlowEventHandlerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowEventHandlerArrayInput is an input type that accepts CxFlowEventHandlerArray and CxFlowEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerArrayInput` via:
 //
@@ -656,12 +2074,6 @@ func (i CxFlowEventHandlerArray) ToCxFlowEventHandlerArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerArrayOutput)
 }
 
-func (i CxFlowEventHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandler] {
-	return pulumix.Output[[]CxFlowEventHandler]{
-		OutputState: i.ToCxFlowEventHandlerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerOutput) ElementType() reflect.Type {
@@ -674,12 +2086,6 @@ func (o CxFlowEventHandlerOutput) ToCxFlowEventHandlerOutput() CxFlowEventHandle
 
 func (o CxFlowEventHandlerOutput) ToCxFlowEventHandlerOutputWithContext(ctx context.Context) CxFlowEventHandlerOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandler] {
-	return pulumix.Output[CxFlowEventHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the event to handle.
@@ -723,12 +2129,6 @@ func (o CxFlowEventHandlerArrayOutput) ToCxFlowEventHandlerArrayOutput() CxFlowE
 
 func (o CxFlowEventHandlerArrayOutput) ToCxFlowEventHandlerArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerArrayOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandler] {
-	return pulumix.Output[[]CxFlowEventHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerOutput {
@@ -796,12 +2196,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFul
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillment] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillment]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -843,12 +2237,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentPtrType) ToCxFlowEventHandlerTrigge
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillment] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillment]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -871,12 +2259,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerF
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillment) *CxFlowEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillment] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -930,12 +2312,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTrigg
 
 func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillment] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentOutput {
@@ -1046,12 +2422,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxFlowEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray and CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -1077,12 +2447,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxFlowEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -1095,12 +2459,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxFlowEvent
 
 func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -1121,12 +2479,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlow
 
 func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
@@ -1224,12 +2576,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToCxFlowEventHandlerTri
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageArray and CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
@@ -1255,12 +2601,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageArray) ToCxFlowEventHandlerTr
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -1273,12 +2613,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerT
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -1361,12 +2695,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxFlowEventHan
 	return o
 }
 
-func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
@@ -1404,12 +2732,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCx
 
 func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -1453,12 +2775,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -1483,12 +2799,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) To
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -1506,12 +2816,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
@@ -1567,12 +2871,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlo
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -1614,12 +2912,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -1644,12 +2936,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxF
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -1667,12 +2953,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) To
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -1738,12 +3018,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlow
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -1785,12 +3059,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -1813,12 +3081,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1851,12 +3113,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToC
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -1939,12 +3195,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -1986,12 +3236,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowEv
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -2014,12 +3258,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEven
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -2045,12 +3283,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowE
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
@@ -2117,12 +3349,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -2164,12 +3390,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -2194,12 +3414,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) 
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
@@ -2217,12 +3431,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutpu
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -2284,12 +3492,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandle
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -2331,12 +3533,6 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxFlowEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -2359,12 +3555,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHand
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageText) *CxFlowEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -2390,12 +3580,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventH
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
@@ -2466,12 +3650,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxFlowEven
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray and CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -2497,12 +3675,6 @@ func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxFlowEve
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -2515,12 +3687,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxFlowEv
 
 func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -2545,12 +3711,6 @@ func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxF
 
 func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
@@ -2614,12 +3774,6 @@ func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsOutput)
 }
 
-func (i CxFlowNluSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowNluSettings] {
-	return pulumix.Output[CxFlowNluSettings]{
-		OutputState: i.ToCxFlowNluSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput {
 	return i.ToCxFlowNluSettingsPtrOutputWithContext(context.Background())
 }
@@ -2661,12 +3815,6 @@ func (i *cxFlowNluSettingsPtrType) ToCxFlowNluSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsPtrOutput)
 }
 
-func (i *cxFlowNluSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowNluSettings] {
-	return pulumix.Output[*CxFlowNluSettings]{
-		OutputState: i.ToCxFlowNluSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowNluSettingsOutput struct{ *pulumi.OutputState }
 
 func (CxFlowNluSettingsOutput) ElementType() reflect.Type {
@@ -2689,12 +3837,6 @@ func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowNluSettings) *CxFlowNluSettings {
 		return &v
 	}).(CxFlowNluSettingsPtrOutput)
-}
-
-func (o CxFlowNluSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowNluSettings] {
-	return pulumix.Output[CxFlowNluSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
@@ -2731,12 +3873,6 @@ func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutput() CxFlowNluSett
 
 func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
 	return o
-}
-
-func (o CxFlowNluSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowNluSettings] {
-	return pulumix.Output[*CxFlowNluSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowNluSettingsPtrOutput) Elem() CxFlowNluSettingsOutput {
@@ -2851,12 +3987,6 @@ func (i CxFlowTransitionRouteArgs) ToCxFlowTransitionRouteOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteOutput)
 }
 
-func (i CxFlowTransitionRouteArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRoute] {
-	return pulumix.Output[CxFlowTransitionRoute]{
-		OutputState: i.ToCxFlowTransitionRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowTransitionRouteArrayInput is an input type that accepts CxFlowTransitionRouteArray and CxFlowTransitionRouteArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteArrayInput` via:
 //
@@ -2882,12 +4012,6 @@ func (i CxFlowTransitionRouteArray) ToCxFlowTransitionRouteArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteArrayOutput)
 }
 
-func (i CxFlowTransitionRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRoute] {
-	return pulumix.Output[[]CxFlowTransitionRoute]{
-		OutputState: i.ToCxFlowTransitionRouteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteOutput) ElementType() reflect.Type {
@@ -2900,12 +4024,6 @@ func (o CxFlowTransitionRouteOutput) ToCxFlowTransitionRouteOutput() CxFlowTrans
 
 func (o CxFlowTransitionRouteOutput) ToCxFlowTransitionRouteOutputWithContext(ctx context.Context) CxFlowTransitionRouteOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRoute] {
-	return pulumix.Output[CxFlowTransitionRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition to evaluate against form parameters or session parameters.
@@ -2956,12 +4074,6 @@ func (o CxFlowTransitionRouteArrayOutput) ToCxFlowTransitionRouteArrayOutput() C
 
 func (o CxFlowTransitionRouteArrayOutput) ToCxFlowTransitionRouteArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteArrayOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRoute] {
-	return pulumix.Output[[]CxFlowTransitionRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteOutput {
@@ -3029,12 +4141,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTrig
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillment]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -3076,12 +4182,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentPtrType) ToCxFlowTransitionRoute
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -3104,12 +4204,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillment) *CxFlowTransitionRouteTriggerFulfillment {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -3163,12 +4257,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRout
 
 func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentOutput {
@@ -3279,12 +4367,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxFlowTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray and CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -3310,12 +4392,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxFlowTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -3328,12 +4404,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxFlowTr
 
 func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -3354,12 +4424,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxF
 
 func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
@@ -3457,12 +4521,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToCxFlowTransitionRo
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageArray and CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput` via:
 //
@@ -3488,12 +4546,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageArray) ToCxFlowTransitionR
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -3506,12 +4558,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransition
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -3594,12 +4640,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ToCxFlowTrans
 	return o
 }
 
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRouteTriggerFulfillmentMessage {
 		return vs[0].([]CxFlowTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
@@ -3637,12 +4677,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) T
 
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -3686,12 +4720,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -3716,12 +4744,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -3739,12 +4761,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutp
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
@@ -3800,12 +4816,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -3847,12 +4857,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -3877,12 +4881,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) To
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -3900,12 +4898,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -3971,12 +4963,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxF
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -4018,12 +5004,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -4046,12 +5026,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4084,12 +5058,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -4172,12 +5140,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -4219,12 +5181,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlo
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -4247,12 +5203,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowT
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4280,12 +5230,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFl
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
@@ -4352,12 +5296,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -4399,12 +5337,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -4429,12 +5361,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutpu
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) string {
@@ -4454,12 +5380,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOu
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -4521,12 +5441,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransiti
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -4568,12 +5482,6 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ToCxFlowTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -4596,12 +5504,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageText) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -4627,12 +5529,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTra
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
@@ -4703,12 +5599,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxFlowT
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray and CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -4734,12 +5624,6 @@ func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxFlow
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -4752,12 +5636,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxFlo
 
 func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -4782,12 +5660,6 @@ func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) To
 
 func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
@@ -4845,12 +5717,6 @@ func (i CxIntentParameterArgs) ToCxIntentParameterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentParameterOutput)
 }
 
-func (i CxIntentParameterArgs) ToOutput(ctx context.Context) pulumix.Output[CxIntentParameter] {
-	return pulumix.Output[CxIntentParameter]{
-		OutputState: i.ToCxIntentParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxIntentParameterArrayInput is an input type that accepts CxIntentParameterArray and CxIntentParameterArrayOutput values.
 // You can construct a concrete instance of `CxIntentParameterArrayInput` via:
 //
@@ -4876,12 +5742,6 @@ func (i CxIntentParameterArray) ToCxIntentParameterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentParameterArrayOutput)
 }
 
-func (i CxIntentParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentParameter] {
-	return pulumix.Output[[]CxIntentParameter]{
-		OutputState: i.ToCxIntentParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxIntentParameterOutput struct{ *pulumi.OutputState }
 
 func (CxIntentParameterOutput) ElementType() reflect.Type {
@@ -4894,12 +5754,6 @@ func (o CxIntentParameterOutput) ToCxIntentParameterOutput() CxIntentParameterOu
 
 func (o CxIntentParameterOutput) ToCxIntentParameterOutputWithContext(ctx context.Context) CxIntentParameterOutput {
 	return o
-}
-
-func (o CxIntentParameterOutput) ToOutput(ctx context.Context) pulumix.Output[CxIntentParameter] {
-	return pulumix.Output[CxIntentParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The entity type of the parameter.
@@ -4936,12 +5790,6 @@ func (o CxIntentParameterArrayOutput) ToCxIntentParameterArrayOutput() CxIntentP
 
 func (o CxIntentParameterArrayOutput) ToCxIntentParameterArrayOutputWithContext(ctx context.Context) CxIntentParameterArrayOutput {
 	return o
-}
-
-func (o CxIntentParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentParameter] {
-	return pulumix.Output[[]CxIntentParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxIntentParameterArrayOutput) Index(i pulumi.IntInput) CxIntentParameterOutput {
@@ -5007,12 +5855,6 @@ func (i CxIntentTrainingPhraseArgs) ToCxIntentTrainingPhraseOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhraseOutput)
 }
 
-func (i CxIntentTrainingPhraseArgs) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrase] {
-	return pulumix.Output[CxIntentTrainingPhrase]{
-		OutputState: i.ToCxIntentTrainingPhraseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxIntentTrainingPhraseArrayInput is an input type that accepts CxIntentTrainingPhraseArray and CxIntentTrainingPhraseArrayOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhraseArrayInput` via:
 //
@@ -5038,12 +5880,6 @@ func (i CxIntentTrainingPhraseArray) ToCxIntentTrainingPhraseArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhraseArrayOutput)
 }
 
-func (i CxIntentTrainingPhraseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrase] {
-	return pulumix.Output[[]CxIntentTrainingPhrase]{
-		OutputState: i.ToCxIntentTrainingPhraseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxIntentTrainingPhraseOutput struct{ *pulumi.OutputState }
 
 func (CxIntentTrainingPhraseOutput) ElementType() reflect.Type {
@@ -5056,12 +5892,6 @@ func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutput() CxIntentT
 
 func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutputWithContext(ctx context.Context) CxIntentTrainingPhraseOutput {
 	return o
-}
-
-func (o CxIntentTrainingPhraseOutput) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrase] {
-	return pulumix.Output[CxIntentTrainingPhrase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -5099,12 +5929,6 @@ func (o CxIntentTrainingPhraseArrayOutput) ToCxIntentTrainingPhraseArrayOutput()
 
 func (o CxIntentTrainingPhraseArrayOutput) ToCxIntentTrainingPhraseArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhraseArrayOutput {
 	return o
-}
-
-func (o CxIntentTrainingPhraseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrase] {
-	return pulumix.Output[[]CxIntentTrainingPhrase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxIntentTrainingPhraseArrayOutput) Index(i pulumi.IntInput) CxIntentTrainingPhraseOutput {
@@ -5150,12 +5974,6 @@ func (i CxIntentTrainingPhrasePartArgs) ToCxIntentTrainingPhrasePartOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhrasePartOutput)
 }
 
-func (i CxIntentTrainingPhrasePartArgs) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrasePart] {
-	return pulumix.Output[CxIntentTrainingPhrasePart]{
-		OutputState: i.ToCxIntentTrainingPhrasePartOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxIntentTrainingPhrasePartArrayInput is an input type that accepts CxIntentTrainingPhrasePartArray and CxIntentTrainingPhrasePartArrayOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhrasePartArrayInput` via:
 //
@@ -5181,12 +5999,6 @@ func (i CxIntentTrainingPhrasePartArray) ToCxIntentTrainingPhrasePartArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhrasePartArrayOutput)
 }
 
-func (i CxIntentTrainingPhrasePartArray) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrasePart] {
-	return pulumix.Output[[]CxIntentTrainingPhrasePart]{
-		OutputState: i.ToCxIntentTrainingPhrasePartArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxIntentTrainingPhrasePartOutput struct{ *pulumi.OutputState }
 
 func (CxIntentTrainingPhrasePartOutput) ElementType() reflect.Type {
@@ -5199,12 +6011,6 @@ func (o CxIntentTrainingPhrasePartOutput) ToCxIntentTrainingPhrasePartOutput() C
 
 func (o CxIntentTrainingPhrasePartOutput) ToCxIntentTrainingPhrasePartOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartOutput {
 	return o
-}
-
-func (o CxIntentTrainingPhrasePartOutput) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrasePart] {
-	return pulumix.Output[CxIntentTrainingPhrasePart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
@@ -5231,16 +6037,342 @@ func (o CxIntentTrainingPhrasePartArrayOutput) ToCxIntentTrainingPhrasePartArray
 	return o
 }
 
-func (o CxIntentTrainingPhrasePartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrasePart] {
-	return pulumix.Output[[]CxIntentTrainingPhrasePart]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxIntentTrainingPhrasePartArrayOutput) Index(i pulumi.IntInput) CxIntentTrainingPhrasePartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxIntentTrainingPhrasePart {
 		return vs[0].([]CxIntentTrainingPhrasePart)[vs[1].(int)]
 	}).(CxIntentTrainingPhrasePartOutput)
+}
+
+type CxPageAdvancedSettings struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings *CxPageAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+}
+
+// CxPageAdvancedSettingsInput is an input type that accepts CxPageAdvancedSettingsArgs and CxPageAdvancedSettingsOutput values.
+// You can construct a concrete instance of `CxPageAdvancedSettingsInput` via:
+//
+//	CxPageAdvancedSettingsArgs{...}
+type CxPageAdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageAdvancedSettingsOutput() CxPageAdvancedSettingsOutput
+	ToCxPageAdvancedSettingsOutputWithContext(context.Context) CxPageAdvancedSettingsOutput
+}
+
+type CxPageAdvancedSettingsArgs struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings CxPageAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+}
+
+func (CxPageAdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageAdvancedSettings)(nil)).Elem()
+}
+
+func (i CxPageAdvancedSettingsArgs) ToCxPageAdvancedSettingsOutput() CxPageAdvancedSettingsOutput {
+	return i.ToCxPageAdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageAdvancedSettingsArgs) ToCxPageAdvancedSettingsOutputWithContext(ctx context.Context) CxPageAdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageAdvancedSettingsOutput)
+}
+
+func (i CxPageAdvancedSettingsArgs) ToCxPageAdvancedSettingsPtrOutput() CxPageAdvancedSettingsPtrOutput {
+	return i.ToCxPageAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageAdvancedSettingsArgs) ToCxPageAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageAdvancedSettingsOutput).ToCxPageAdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageAdvancedSettingsPtrInput is an input type that accepts CxPageAdvancedSettingsArgs, CxPageAdvancedSettingsPtr and CxPageAdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageAdvancedSettingsPtrInput` via:
+//
+//	        CxPageAdvancedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageAdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageAdvancedSettingsPtrOutput() CxPageAdvancedSettingsPtrOutput
+	ToCxPageAdvancedSettingsPtrOutputWithContext(context.Context) CxPageAdvancedSettingsPtrOutput
+}
+
+type cxPageAdvancedSettingsPtrType CxPageAdvancedSettingsArgs
+
+func CxPageAdvancedSettingsPtr(v *CxPageAdvancedSettingsArgs) CxPageAdvancedSettingsPtrInput {
+	return (*cxPageAdvancedSettingsPtrType)(v)
+}
+
+func (*cxPageAdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageAdvancedSettings)(nil)).Elem()
+}
+
+func (i *cxPageAdvancedSettingsPtrType) ToCxPageAdvancedSettingsPtrOutput() CxPageAdvancedSettingsPtrOutput {
+	return i.ToCxPageAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageAdvancedSettingsPtrType) ToCxPageAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageAdvancedSettingsPtrOutput)
+}
+
+type CxPageAdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageAdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxPageAdvancedSettingsOutput) ToCxPageAdvancedSettingsOutput() CxPageAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsOutput) ToCxPageAdvancedSettingsOutputWithContext(ctx context.Context) CxPageAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsOutput) ToCxPageAdvancedSettingsPtrOutput() CxPageAdvancedSettingsPtrOutput {
+	return o.ToCxPageAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageAdvancedSettingsOutput) ToCxPageAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageAdvancedSettings) *CxPageAdvancedSettings {
+		return &v
+	}).(CxPageAdvancedSettingsPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageAdvancedSettingsOutput) DtmfSettings() CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageAdvancedSettings) *CxPageAdvancedSettingsDtmfSettings { return v.DtmfSettings }).(CxPageAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageAdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxPageAdvancedSettingsPtrOutput) ToCxPageAdvancedSettingsPtrOutput() CxPageAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsPtrOutput) ToCxPageAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsPtrOutput) Elem() CxPageAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxPageAdvancedSettings) CxPageAdvancedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageAdvancedSettings
+		return ret
+	}).(CxPageAdvancedSettingsOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageAdvancedSettingsPtrOutput) DtmfSettings() CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPageAdvancedSettings) *CxPageAdvancedSettingsDtmfSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DtmfSettings
+	}).(CxPageAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageAdvancedSettingsDtmfSettings struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled *bool `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit *string `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits *int `pulumi:"maxDigits"`
+}
+
+// CxPageAdvancedSettingsDtmfSettingsInput is an input type that accepts CxPageAdvancedSettingsDtmfSettingsArgs and CxPageAdvancedSettingsDtmfSettingsOutput values.
+// You can construct a concrete instance of `CxPageAdvancedSettingsDtmfSettingsInput` via:
+//
+//	CxPageAdvancedSettingsDtmfSettingsArgs{...}
+type CxPageAdvancedSettingsDtmfSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageAdvancedSettingsDtmfSettingsOutput() CxPageAdvancedSettingsDtmfSettingsOutput
+	ToCxPageAdvancedSettingsDtmfSettingsOutputWithContext(context.Context) CxPageAdvancedSettingsDtmfSettingsOutput
+}
+
+type CxPageAdvancedSettingsDtmfSettingsArgs struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits pulumi.IntPtrInput `pulumi:"maxDigits"`
+}
+
+func (CxPageAdvancedSettingsDtmfSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i CxPageAdvancedSettingsDtmfSettingsArgs) ToCxPageAdvancedSettingsDtmfSettingsOutput() CxPageAdvancedSettingsDtmfSettingsOutput {
+	return i.ToCxPageAdvancedSettingsDtmfSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageAdvancedSettingsDtmfSettingsArgs) ToCxPageAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxPageAdvancedSettingsDtmfSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageAdvancedSettingsDtmfSettingsOutput)
+}
+
+func (i CxPageAdvancedSettingsDtmfSettingsArgs) ToCxPageAdvancedSettingsDtmfSettingsPtrOutput() CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageAdvancedSettingsDtmfSettingsArgs) ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageAdvancedSettingsDtmfSettingsOutput).ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageAdvancedSettingsDtmfSettingsPtrInput is an input type that accepts CxPageAdvancedSettingsDtmfSettingsArgs, CxPageAdvancedSettingsDtmfSettingsPtr and CxPageAdvancedSettingsDtmfSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageAdvancedSettingsDtmfSettingsPtrInput` via:
+//
+//	        CxPageAdvancedSettingsDtmfSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageAdvancedSettingsDtmfSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageAdvancedSettingsDtmfSettingsPtrOutput() CxPageAdvancedSettingsDtmfSettingsPtrOutput
+	ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Context) CxPageAdvancedSettingsDtmfSettingsPtrOutput
+}
+
+type cxPageAdvancedSettingsDtmfSettingsPtrType CxPageAdvancedSettingsDtmfSettingsArgs
+
+func CxPageAdvancedSettingsDtmfSettingsPtr(v *CxPageAdvancedSettingsDtmfSettingsArgs) CxPageAdvancedSettingsDtmfSettingsPtrInput {
+	return (*cxPageAdvancedSettingsDtmfSettingsPtrType)(v)
+}
+
+func (*cxPageAdvancedSettingsDtmfSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i *cxPageAdvancedSettingsDtmfSettingsPtrType) ToCxPageAdvancedSettingsDtmfSettingsPtrOutput() CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageAdvancedSettingsDtmfSettingsPtrType) ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageAdvancedSettingsDtmfSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageAdvancedSettingsDtmfSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) ToCxPageAdvancedSettingsDtmfSettingsOutput() CxPageAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) ToCxPageAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxPageAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) ToCxPageAdvancedSettingsDtmfSettingsPtrOutput() CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageAdvancedSettingsDtmfSettings) *CxPageAdvancedSettingsDtmfSettings {
+		return &v
+	}).(CxPageAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageAdvancedSettingsDtmfSettings) *string { return v.FinishDigit }).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxPageAdvancedSettingsDtmfSettingsOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxPageAdvancedSettingsDtmfSettings) *int { return v.MaxDigits }).(pulumi.IntPtrOutput)
+}
+
+type CxPageAdvancedSettingsDtmfSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageAdvancedSettingsDtmfSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) ToCxPageAdvancedSettingsDtmfSettingsPtrOutput() CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) ToCxPageAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxPageAdvancedSettingsDtmfSettingsOutput {
+	return o.ApplyT(func(v *CxPageAdvancedSettingsDtmfSettings) CxPageAdvancedSettingsDtmfSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageAdvancedSettingsDtmfSettings
+		return ret
+	}).(CxPageAdvancedSettingsDtmfSettingsOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageAdvancedSettingsDtmfSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxPageAdvancedSettingsDtmfSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
 }
 
 type CxPageEntryFulfillment struct {
@@ -5302,12 +6434,6 @@ func (i CxPageEntryFulfillmentArgs) ToCxPageEntryFulfillmentOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentOutput)
 }
 
-func (i CxPageEntryFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillment] {
-	return pulumix.Output[CxPageEntryFulfillment]{
-		OutputState: i.ToCxPageEntryFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEntryFulfillmentArgs) ToCxPageEntryFulfillmentPtrOutput() CxPageEntryFulfillmentPtrOutput {
 	return i.ToCxPageEntryFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -5349,12 +6475,6 @@ func (i *cxPageEntryFulfillmentPtrType) ToCxPageEntryFulfillmentPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillment] {
-	return pulumix.Output[*CxPageEntryFulfillment]{
-		OutputState: i.ToCxPageEntryFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentOutput) ElementType() reflect.Type {
@@ -5377,12 +6497,6 @@ func (o CxPageEntryFulfillmentOutput) ToCxPageEntryFulfillmentPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillment) *CxPageEntryFulfillment {
 		return &v
 	}).(CxPageEntryFulfillmentPtrOutput)
-}
-
-func (o CxPageEntryFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillment] {
-	return pulumix.Output[CxPageEntryFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -5432,12 +6546,6 @@ func (o CxPageEntryFulfillmentPtrOutput) ToCxPageEntryFulfillmentPtrOutput() CxP
 
 func (o CxPageEntryFulfillmentPtrOutput) ToCxPageEntryFulfillmentPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillment] {
-	return pulumix.Output[*CxPageEntryFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentPtrOutput) Elem() CxPageEntryFulfillmentOutput {
@@ -5548,12 +6656,6 @@ func (i CxPageEntryFulfillmentConditionalCaseArgs) ToCxPageEntryFulfillmentCondi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentConditionalCaseOutput)
 }
 
-func (i CxPageEntryFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageEntryFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEntryFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageEntryFulfillmentConditionalCaseArray and CxPageEntryFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentConditionalCaseArrayInput` via:
 //
@@ -5579,12 +6681,6 @@ func (i CxPageEntryFulfillmentConditionalCaseArray) ToCxPageEntryFulfillmentCond
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxPageEntryFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageEntryFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -5597,12 +6693,6 @@ func (o CxPageEntryFulfillmentConditionalCaseOutput) ToCxPageEntryFulfillmentCon
 
 func (o CxPageEntryFulfillmentConditionalCaseOutput) ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageEntryFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -5623,12 +6713,6 @@ func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToCxPageEntryFulfillme
 
 func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageEntryFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentConditionalCaseOutput {
@@ -5726,12 +6810,6 @@ func (i CxPageEntryFulfillmentMessageArgs) ToCxPageEntryFulfillmentMessageOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutput)
 }
 
-func (i CxPageEntryFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessage] {
-	return pulumix.Output[CxPageEntryFulfillmentMessage]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEntryFulfillmentMessageArrayInput is an input type that accepts CxPageEntryFulfillmentMessageArray and CxPageEntryFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentMessageArrayInput` via:
 //
@@ -5757,12 +6835,6 @@ func (i CxPageEntryFulfillmentMessageArray) ToCxPageEntryFulfillmentMessageArray
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageArrayOutput)
 }
 
-func (i CxPageEntryFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentMessage] {
-	return pulumix.Output[[]CxPageEntryFulfillmentMessage]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -5775,12 +6847,6 @@ func (o CxPageEntryFulfillmentMessageOutput) ToCxPageEntryFulfillmentMessageOutp
 
 func (o CxPageEntryFulfillmentMessageOutput) ToCxPageEntryFulfillmentMessageOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessage] {
-	return pulumix.Output[CxPageEntryFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -5859,12 +6925,6 @@ func (o CxPageEntryFulfillmentMessageArrayOutput) ToCxPageEntryFulfillmentMessag
 	return o
 }
 
-func (o CxPageEntryFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentMessage] {
-	return pulumix.Output[[]CxPageEntryFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageEntryFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEntryFulfillmentMessage {
 		return vs[0].([]CxPageEntryFulfillmentMessage)[vs[1].(int)]
@@ -5902,12 +6962,6 @@ func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfi
 
 func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
@@ -5951,12 +7005,6 @@ func (i *cxPageEntryFulfillmentMessageConversationSuccessPtrType) ToCxPageEntryF
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -5981,12 +7029,6 @@ func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToCxPageEntryFul
 	}).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -6004,12 +7046,6 @@ func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEntry
 
 func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageEntryFulfillmentMessageConversationSuccessOutput {
@@ -6065,12 +7101,6 @@ func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillm
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -6112,12 +7142,6 @@ func (i *cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageEntryFulf
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -6142,12 +7166,6 @@ func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEntryFulfil
 	}).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -6165,12 +7183,6 @@ func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEntryFul
 
 func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
@@ -6236,12 +7248,6 @@ func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillme
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -6283,12 +7289,6 @@ func (i *cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ToCxPageEntryFulfi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -6311,12 +7311,6 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToCxPageEntryFulfill
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageOutputAudioText) *CxPageEntryFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -6347,12 +7341,6 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEntryFulf
 
 func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageEntryFulfillmentMessageOutputAudioTextOutput {
@@ -6435,12 +7423,6 @@ func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMess
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageEntryFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -6482,12 +7464,6 @@ func (i *cxPageEntryFulfillmentMessagePlayAudioPtrType) ToCxPageEntryFulfillment
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -6510,12 +7486,6 @@ func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessagePlayAudio) *CxPageEntryFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -6541,12 +7511,6 @@ func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToCxPageEntryFulfillmen
 
 func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEntryFulfillmentMessagePlayAudioOutput {
@@ -6613,12 +7577,6 @@ func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFul
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -6660,12 +7618,6 @@ func (i *cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageEntr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -6690,12 +7642,6 @@ func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEntryF
 	}).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
@@ -6713,12 +7659,6 @@ func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEnt
 
 func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
@@ -6780,12 +7720,6 @@ func (i CxPageEntryFulfillmentMessageTextArgs) ToCxPageEntryFulfillmentMessageTe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTextOutput)
 }
 
-func (i CxPageEntryFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageText] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageText]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEntryFulfillmentMessageTextArgs) ToCxPageEntryFulfillmentMessageTextPtrOutput() CxPageEntryFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -6827,12 +7761,6 @@ func (i *cxPageEntryFulfillmentMessageTextPtrType) ToCxPageEntryFulfillmentMessa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxPageEntryFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageText] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageText]{
-		OutputState: i.ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -6855,12 +7783,6 @@ func (o CxPageEntryFulfillmentMessageTextOutput) ToCxPageEntryFulfillmentMessage
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageText) *CxPageEntryFulfillmentMessageText {
 		return &v
 	}).(CxPageEntryFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxPageEntryFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageText] {
-	return pulumix.Output[CxPageEntryFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -6886,12 +7808,6 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToCxPageEntryFulfillmentMess
 
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageText] {
-	return pulumix.Output[*CxPageEntryFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) Elem() CxPageEntryFulfillmentMessageTextOutput {
@@ -6962,12 +7878,6 @@ func (i CxPageEntryFulfillmentSetParameterActionArgs) ToCxPageEntryFulfillmentSe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentSetParameterActionOutput)
 }
 
-func (i CxPageEntryFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageEntryFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEntryFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageEntryFulfillmentSetParameterActionArray and CxPageEntryFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentSetParameterActionArrayInput` via:
 //
@@ -6993,12 +7903,6 @@ func (i CxPageEntryFulfillmentSetParameterActionArray) ToCxPageEntryFulfillmentS
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxPageEntryFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEntryFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -7011,12 +7915,6 @@ func (o CxPageEntryFulfillmentSetParameterActionOutput) ToCxPageEntryFulfillment
 
 func (o CxPageEntryFulfillmentSetParameterActionOutput) ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageEntryFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -7041,12 +7939,6 @@ func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToCxPageEntryFulfil
 
 func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentSetParameterActionOutput {
@@ -7112,12 +8004,6 @@ func (i CxPageEventHandlerArgs) ToCxPageEventHandlerOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerOutput)
 }
 
-func (i CxPageEventHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandler] {
-	return pulumix.Output[CxPageEventHandler]{
-		OutputState: i.ToCxPageEventHandlerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEventHandlerArrayInput is an input type that accepts CxPageEventHandlerArray and CxPageEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerArrayInput` via:
 //
@@ -7143,12 +8029,6 @@ func (i CxPageEventHandlerArray) ToCxPageEventHandlerArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerArrayOutput)
 }
 
-func (i CxPageEventHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandler] {
-	return pulumix.Output[[]CxPageEventHandler]{
-		OutputState: i.ToCxPageEventHandlerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerOutput) ElementType() reflect.Type {
@@ -7161,12 +8041,6 @@ func (o CxPageEventHandlerOutput) ToCxPageEventHandlerOutput() CxPageEventHandle
 
 func (o CxPageEventHandlerOutput) ToCxPageEventHandlerOutputWithContext(ctx context.Context) CxPageEventHandlerOutput {
 	return o
-}
-
-func (o CxPageEventHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandler] {
-	return pulumix.Output[CxPageEventHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the event to handle.
@@ -7210,12 +8084,6 @@ func (o CxPageEventHandlerArrayOutput) ToCxPageEventHandlerArrayOutput() CxPageE
 
 func (o CxPageEventHandlerArrayOutput) ToCxPageEventHandlerArrayOutputWithContext(ctx context.Context) CxPageEventHandlerArrayOutput {
 	return o
-}
-
-func (o CxPageEventHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandler] {
-	return pulumix.Output[[]CxPageEventHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerOutput {
@@ -7283,12 +8151,6 @@ func (i CxPageEventHandlerTriggerFulfillmentArgs) ToCxPageEventHandlerTriggerFul
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillment] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillment]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEventHandlerTriggerFulfillmentArgs) ToCxPageEventHandlerTriggerFulfillmentPtrOutput() CxPageEventHandlerTriggerFulfillmentPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -7330,12 +8192,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentPtrType) ToCxPageEventHandlerTrigge
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillment] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillment]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -7358,12 +8214,6 @@ func (o CxPageEventHandlerTriggerFulfillmentOutput) ToCxPageEventHandlerTriggerF
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillment) *CxPageEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentPtrOutput)
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillment] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -7417,12 +8267,6 @@ func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToCxPageEventHandlerTrigg
 
 func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillment] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentOutput {
@@ -7533,12 +8377,6 @@ func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxPageEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentConditionalCaseArray and CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -7564,12 +8402,6 @@ func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxPageEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -7582,12 +8414,6 @@ func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageEvent
 
 func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -7608,12 +8434,6 @@ func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPage
 
 func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
@@ -7711,12 +8531,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageArgs) ToCxPageEventHandlerTri
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageArray and CxPageEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
@@ -7742,12 +8556,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageArray) ToCxPageEventHandlerTr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageArrayOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -7760,12 +8568,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToCxPageEventHandlerT
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -7848,12 +8650,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxPageEventHan
 	return o
 }
 
-func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxPageEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
@@ -7891,12 +8687,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCx
 
 func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -7940,12 +8730,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -7970,12 +8754,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) To
 	}).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -7993,12 +8771,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
@@ -8054,12 +8826,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -8101,12 +8867,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -8131,12 +8891,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxP
 	}).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -8154,12 +8908,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) To
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -8225,12 +8973,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPage
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -8272,12 +9014,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -8300,12 +9036,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -8338,12 +9068,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToC
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -8426,12 +9150,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -8473,12 +9191,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageEv
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -8501,12 +9213,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEven
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -8532,12 +9238,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageE
 
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
@@ -8604,12 +9304,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -8651,12 +9345,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -8681,12 +9369,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) 
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
@@ -8704,12 +9386,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutpu
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -8771,12 +9447,6 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageEventHandle
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -8818,12 +9488,6 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxPageEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxPageEventHandlerTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -8846,12 +9510,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageEventHand
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageText) *CxPageEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -8877,12 +9535,6 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageEventH
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageTextOutput {
@@ -8953,12 +9605,6 @@ func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxPageEven
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentSetParameterActionArray and CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -8984,12 +9630,6 @@ func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxPageEve
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -9002,12 +9642,6 @@ func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageEv
 
 func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -9032,12 +9666,6 @@ func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxP
 
 func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
@@ -9081,12 +9709,6 @@ func (i CxPageFormArgs) ToCxPageFormOutputWithContext(ctx context.Context) CxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormOutput)
 }
 
-func (i CxPageFormArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageForm] {
-	return pulumix.Output[CxPageForm]{
-		OutputState: i.ToCxPageFormOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormArgs) ToCxPageFormPtrOutput() CxPageFormPtrOutput {
 	return i.ToCxPageFormPtrOutputWithContext(context.Background())
 }
@@ -9128,12 +9750,6 @@ func (i *cxPageFormPtrType) ToCxPageFormPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormPtrOutput)
 }
 
-func (i *cxPageFormPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageForm] {
-	return pulumix.Output[*CxPageForm]{
-		OutputState: i.ToCxPageFormPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormOutput) ElementType() reflect.Type {
@@ -9158,12 +9774,6 @@ func (o CxPageFormOutput) ToCxPageFormPtrOutputWithContext(ctx context.Context) 
 	}).(CxPageFormPtrOutput)
 }
 
-func (o CxPageFormOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageForm] {
-	return pulumix.Output[CxPageForm]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Parameters to collect from the user.
 // Structure is documented below.
 func (o CxPageFormOutput) Parameters() CxPageFormParameterArrayOutput {
@@ -9182,12 +9792,6 @@ func (o CxPageFormPtrOutput) ToCxPageFormPtrOutput() CxPageFormPtrOutput {
 
 func (o CxPageFormPtrOutput) ToCxPageFormPtrOutputWithContext(ctx context.Context) CxPageFormPtrOutput {
 	return o
-}
-
-func (o CxPageFormPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageForm] {
-	return pulumix.Output[*CxPageForm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormPtrOutput) Elem() CxPageFormOutput {
@@ -9212,6 +9816,10 @@ func (o CxPageFormPtrOutput) Parameters() CxPageFormParameterArrayOutput {
 }
 
 type CxPageFormParameter struct {
+	// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxPageFormParameterAdvancedSettings `pulumi:"advancedSettings"`
 	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
 	DefaultValue *string `pulumi:"defaultValue"`
 	// The human-readable name of the parameter, unique within the form.
@@ -9244,6 +9852,10 @@ type CxPageFormParameterInput interface {
 }
 
 type CxPageFormParameterArgs struct {
+	// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxPageFormParameterAdvancedSettingsPtrInput `pulumi:"advancedSettings"`
 	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
 	// The human-readable name of the parameter, unique within the form.
@@ -9276,12 +9888,6 @@ func (i CxPageFormParameterArgs) ToCxPageFormParameterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterOutput)
 }
 
-func (i CxPageFormParameterArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameter] {
-	return pulumix.Output[CxPageFormParameter]{
-		OutputState: i.ToCxPageFormParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterArrayInput is an input type that accepts CxPageFormParameterArray and CxPageFormParameterArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterArrayInput` via:
 //
@@ -9307,12 +9913,6 @@ func (i CxPageFormParameterArray) ToCxPageFormParameterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterArrayOutput)
 }
 
-func (i CxPageFormParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameter] {
-	return pulumix.Output[[]CxPageFormParameter]{
-		OutputState: i.ToCxPageFormParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterOutput) ElementType() reflect.Type {
@@ -9327,10 +9927,11 @@ func (o CxPageFormParameterOutput) ToCxPageFormParameterOutputWithContext(ctx co
 	return o
 }
 
-func (o CxPageFormParameterOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameter] {
-	return pulumix.Output[CxPageFormParameter]{
-		OutputState: o.OutputState,
-	}
+// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxPageFormParameterOutput) AdvancedSettings() CxPageFormParameterAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameter) *CxPageFormParameterAdvancedSettings { return v.AdvancedSettings }).(CxPageFormParameterAdvancedSettingsPtrOutput)
 }
 
 // The default value of an optional parameter. If the parameter is required, the default value will be ignored.
@@ -9386,16 +9987,344 @@ func (o CxPageFormParameterArrayOutput) ToCxPageFormParameterArrayOutputWithCont
 	return o
 }
 
-func (o CxPageFormParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameter] {
-	return pulumix.Output[[]CxPageFormParameter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageFormParameterArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameter {
 		return vs[0].([]CxPageFormParameter)[vs[1].(int)]
 	}).(CxPageFormParameterOutput)
+}
+
+type CxPageFormParameterAdvancedSettings struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings *CxPageFormParameterAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+}
+
+// CxPageFormParameterAdvancedSettingsInput is an input type that accepts CxPageFormParameterAdvancedSettingsArgs and CxPageFormParameterAdvancedSettingsOutput values.
+// You can construct a concrete instance of `CxPageFormParameterAdvancedSettingsInput` via:
+//
+//	CxPageFormParameterAdvancedSettingsArgs{...}
+type CxPageFormParameterAdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterAdvancedSettingsOutput() CxPageFormParameterAdvancedSettingsOutput
+	ToCxPageFormParameterAdvancedSettingsOutputWithContext(context.Context) CxPageFormParameterAdvancedSettingsOutput
+}
+
+type CxPageFormParameterAdvancedSettingsArgs struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings CxPageFormParameterAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+}
+
+func (CxPageFormParameterAdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterAdvancedSettings)(nil)).Elem()
+}
+
+func (i CxPageFormParameterAdvancedSettingsArgs) ToCxPageFormParameterAdvancedSettingsOutput() CxPageFormParameterAdvancedSettingsOutput {
+	return i.ToCxPageFormParameterAdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterAdvancedSettingsArgs) ToCxPageFormParameterAdvancedSettingsOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterAdvancedSettingsOutput)
+}
+
+func (i CxPageFormParameterAdvancedSettingsArgs) ToCxPageFormParameterAdvancedSettingsPtrOutput() CxPageFormParameterAdvancedSettingsPtrOutput {
+	return i.ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterAdvancedSettingsArgs) ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterAdvancedSettingsOutput).ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterAdvancedSettingsPtrInput is an input type that accepts CxPageFormParameterAdvancedSettingsArgs, CxPageFormParameterAdvancedSettingsPtr and CxPageFormParameterAdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterAdvancedSettingsPtrInput` via:
+//
+//	        CxPageFormParameterAdvancedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterAdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterAdvancedSettingsPtrOutput() CxPageFormParameterAdvancedSettingsPtrOutput
+	ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(context.Context) CxPageFormParameterAdvancedSettingsPtrOutput
+}
+
+type cxPageFormParameterAdvancedSettingsPtrType CxPageFormParameterAdvancedSettingsArgs
+
+func CxPageFormParameterAdvancedSettingsPtr(v *CxPageFormParameterAdvancedSettingsArgs) CxPageFormParameterAdvancedSettingsPtrInput {
+	return (*cxPageFormParameterAdvancedSettingsPtrType)(v)
+}
+
+func (*cxPageFormParameterAdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterAdvancedSettings)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterAdvancedSettingsPtrType) ToCxPageFormParameterAdvancedSettingsPtrOutput() CxPageFormParameterAdvancedSettingsPtrOutput {
+	return i.ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterAdvancedSettingsPtrType) ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterAdvancedSettingsPtrOutput)
+}
+
+type CxPageFormParameterAdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterAdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxPageFormParameterAdvancedSettingsOutput) ToCxPageFormParameterAdvancedSettingsOutput() CxPageFormParameterAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsOutput) ToCxPageFormParameterAdvancedSettingsOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsOutput) ToCxPageFormParameterAdvancedSettingsPtrOutput() CxPageFormParameterAdvancedSettingsPtrOutput {
+	return o.ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterAdvancedSettingsOutput) ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterAdvancedSettings) *CxPageFormParameterAdvancedSettings {
+		return &v
+	}).(CxPageFormParameterAdvancedSettingsPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageFormParameterAdvancedSettingsOutput) DtmfSettings() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterAdvancedSettings) *CxPageFormParameterAdvancedSettingsDtmfSettings {
+		return v.DtmfSettings
+	}).(CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageFormParameterAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterAdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxPageFormParameterAdvancedSettingsPtrOutput) ToCxPageFormParameterAdvancedSettingsPtrOutput() CxPageFormParameterAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsPtrOutput) ToCxPageFormParameterAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsPtrOutput) Elem() CxPageFormParameterAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettings) CxPageFormParameterAdvancedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterAdvancedSettings
+		return ret
+	}).(CxPageFormParameterAdvancedSettingsOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageFormParameterAdvancedSettingsPtrOutput) DtmfSettings() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettings) *CxPageFormParameterAdvancedSettingsDtmfSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DtmfSettings
+	}).(CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageFormParameterAdvancedSettingsDtmfSettings struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled *bool `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit *string `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits *int `pulumi:"maxDigits"`
+}
+
+// CxPageFormParameterAdvancedSettingsDtmfSettingsInput is an input type that accepts CxPageFormParameterAdvancedSettingsDtmfSettingsArgs and CxPageFormParameterAdvancedSettingsDtmfSettingsOutput values.
+// You can construct a concrete instance of `CxPageFormParameterAdvancedSettingsDtmfSettingsInput` via:
+//
+//	CxPageFormParameterAdvancedSettingsDtmfSettingsArgs{...}
+type CxPageFormParameterAdvancedSettingsDtmfSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsOutput
+	ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutputWithContext(context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsOutput
+}
+
+type CxPageFormParameterAdvancedSettingsDtmfSettingsArgs struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+	// Max length of DTMF digits.
+	MaxDigits pulumi.IntPtrInput `pulumi:"maxDigits"`
+}
+
+func (CxPageFormParameterAdvancedSettingsDtmfSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i CxPageFormParameterAdvancedSettingsDtmfSettingsArgs) ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsOutput {
+	return i.ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterAdvancedSettingsDtmfSettingsArgs) ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterAdvancedSettingsDtmfSettingsOutput)
+}
+
+func (i CxPageFormParameterAdvancedSettingsDtmfSettingsArgs) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterAdvancedSettingsDtmfSettingsArgs) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterAdvancedSettingsDtmfSettingsOutput).ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterAdvancedSettingsDtmfSettingsPtrInput is an input type that accepts CxPageFormParameterAdvancedSettingsDtmfSettingsArgs, CxPageFormParameterAdvancedSettingsDtmfSettingsPtr and CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterAdvancedSettingsDtmfSettingsPtrInput` via:
+//
+//	        CxPageFormParameterAdvancedSettingsDtmfSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterAdvancedSettingsDtmfSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput
+	ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput
+}
+
+type cxPageFormParameterAdvancedSettingsDtmfSettingsPtrType CxPageFormParameterAdvancedSettingsDtmfSettingsArgs
+
+func CxPageFormParameterAdvancedSettingsDtmfSettingsPtr(v *CxPageFormParameterAdvancedSettingsDtmfSettingsArgs) CxPageFormParameterAdvancedSettingsDtmfSettingsPtrInput {
+	return (*cxPageFormParameterAdvancedSettingsDtmfSettingsPtrType)(v)
+}
+
+func (*cxPageFormParameterAdvancedSettingsDtmfSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterAdvancedSettingsDtmfSettingsPtrType) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterAdvancedSettingsDtmfSettingsPtrType) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageFormParameterAdvancedSettingsDtmfSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) ToCxPageFormParameterAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterAdvancedSettingsDtmfSettings) *CxPageFormParameterAdvancedSettingsDtmfSettings {
+		return &v
+	}).(CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterAdvancedSettingsDtmfSettings) *string { return v.FinishDigit }).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterAdvancedSettingsDtmfSettings) *int { return v.MaxDigits }).(pulumi.IntPtrOutput)
+}
+
+type CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput() CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) ToCxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxPageFormParameterAdvancedSettingsDtmfSettingsOutput {
+	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettingsDtmfSettings) CxPageFormParameterAdvancedSettingsDtmfSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterAdvancedSettingsDtmfSettings
+		return ret
+	}).(CxPageFormParameterAdvancedSettingsDtmfSettingsOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettingsDtmfSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettingsDtmfSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
 }
 
 type CxPageFormParameterFillBehavior struct {
@@ -9459,12 +10388,6 @@ func (i CxPageFormParameterFillBehaviorArgs) ToCxPageFormParameterFillBehaviorOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehavior] {
-	return pulumix.Output[CxPageFormParameterFillBehavior]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorArgs) ToCxPageFormParameterFillBehaviorPtrOutput() CxPageFormParameterFillBehaviorPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorPtrOutputWithContext(context.Background())
 }
@@ -9506,12 +10429,6 @@ func (i *cxPageFormParameterFillBehaviorPtrType) ToCxPageFormParameterFillBehavi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehavior] {
-	return pulumix.Output[*CxPageFormParameterFillBehavior]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorOutput) ElementType() reflect.Type {
@@ -9534,12 +10451,6 @@ func (o CxPageFormParameterFillBehaviorOutput) ToCxPageFormParameterFillBehavior
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehavior) *CxPageFormParameterFillBehavior {
 		return &v
 	}).(CxPageFormParameterFillBehaviorPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehavior] {
-	return pulumix.Output[CxPageFormParameterFillBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
@@ -9580,12 +10491,6 @@ func (o CxPageFormParameterFillBehaviorPtrOutput) ToCxPageFormParameterFillBehav
 
 func (o CxPageFormParameterFillBehaviorPtrOutput) ToCxPageFormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehavior] {
-	return pulumix.Output[*CxPageFormParameterFillBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorPtrOutput) Elem() CxPageFormParameterFillBehaviorOutput {
@@ -9689,12 +10594,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToCxPageFor
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -9736,12 +10635,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrType) ToCxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ElementType() reflect.Type {
@@ -9764,12 +10657,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToCxPageF
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillment) *CxPageFormParameterFillBehaviorInitialPromptFulfillment {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -9823,12 +10710,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToCxPa
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput {
@@ -9939,12 +10820,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseAr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput` via:
 //
@@ -9970,12 +10845,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseAr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -9988,12 +10857,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOu
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -10014,12 +10877,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseAr
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
@@ -10117,12 +10974,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput` via:
 //
@@ -10148,12 +10999,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -10166,12 +11011,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) To
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -10254,12 +11093,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutpu
 	return o
 }
 
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
 		return vs[0].([]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage)[vs[1].(int)]
@@ -10297,12 +11130,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversati
 
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
@@ -10346,12 +11173,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversat
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -10376,12 +11197,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversati
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess) *string {
@@ -10401,12 +11216,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversati
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
@@ -10462,12 +11271,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentH
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -10509,12 +11312,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgent
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -10539,12 +11336,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentH
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff) *string {
@@ -10564,12 +11355,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentH
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
@@ -10635,12 +11420,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -10682,12 +11461,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAud
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -10710,12 +11483,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -10752,12 +11519,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
@@ -10840,12 +11601,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioA
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -10887,12 +11642,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -10915,12 +11664,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -10950,12 +11693,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioP
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
@@ -11022,12 +11759,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyT
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -11069,12 +11800,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephony
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -11099,12 +11824,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyT
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall) string {
@@ -11124,12 +11843,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyT
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
@@ -11191,12 +11904,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -11238,12 +11945,6 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -11266,12 +11967,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -11299,12 +11994,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOut
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput {
@@ -11375,12 +12064,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput` via:
 //
@@ -11406,12 +12089,6 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -11424,12 +12101,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -11458,12 +12129,6 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
@@ -11529,12 +12194,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ToCxPageFormPar
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerArray and CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput` via:
 //
@@ -11560,12 +12219,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ToCxPageFormPa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ElementType() reflect.Type {
@@ -11578,12 +12231,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToCxPageFormP
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the event to handle.
@@ -11629,12 +12276,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToCxPage
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
@@ -11702,12 +12343,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArg
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -11749,12 +12384,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPt
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -11777,12 +12406,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -11840,12 +12463,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtr
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
@@ -11956,12 +12573,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -11987,12 +12598,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -12005,12 +12610,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -12033,12 +12632,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
@@ -12136,12 +12729,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
@@ -12167,12 +12754,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -12185,12 +12766,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -12277,12 +12852,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o
 }
 
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
@@ -12320,12 +12889,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -12369,12 +12932,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -12399,12 +12956,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess) *string {
@@ -12424,12 +12975,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
@@ -12485,12 +13030,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -12532,12 +13071,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -12562,12 +13095,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string {
@@ -12587,12 +13114,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -12658,12 +13179,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -12705,12 +13220,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -12733,12 +13242,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -12775,12 +13278,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -12863,12 +13360,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -12910,12 +13401,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -12938,12 +13423,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -12973,12 +13452,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
@@ -13045,12 +13518,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -13092,12 +13559,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -13122,12 +13583,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string {
@@ -13147,12 +13602,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -13214,12 +13663,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -13261,12 +13704,6 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -13289,12 +13726,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -13324,12 +13755,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
@@ -13400,12 +13825,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -13431,12 +13850,6 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -13449,12 +13862,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -13483,12 +13890,6 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
@@ -13562,12 +13963,6 @@ func (i CxPageTransitionRouteArgs) ToCxPageTransitionRouteOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteOutput)
 }
 
-func (i CxPageTransitionRouteArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRoute] {
-	return pulumix.Output[CxPageTransitionRoute]{
-		OutputState: i.ToCxPageTransitionRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageTransitionRouteArrayInput is an input type that accepts CxPageTransitionRouteArray and CxPageTransitionRouteArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteArrayInput` via:
 //
@@ -13593,12 +13988,6 @@ func (i CxPageTransitionRouteArray) ToCxPageTransitionRouteArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteArrayOutput)
 }
 
-func (i CxPageTransitionRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRoute] {
-	return pulumix.Output[[]CxPageTransitionRoute]{
-		OutputState: i.ToCxPageTransitionRouteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteOutput) ElementType() reflect.Type {
@@ -13611,12 +14000,6 @@ func (o CxPageTransitionRouteOutput) ToCxPageTransitionRouteOutput() CxPageTrans
 
 func (o CxPageTransitionRouteOutput) ToCxPageTransitionRouteOutputWithContext(ctx context.Context) CxPageTransitionRouteOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRoute] {
-	return pulumix.Output[CxPageTransitionRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The condition to evaluate against form parameters or session parameters.
@@ -13667,12 +14050,6 @@ func (o CxPageTransitionRouteArrayOutput) ToCxPageTransitionRouteArrayOutput() C
 
 func (o CxPageTransitionRouteArrayOutput) ToCxPageTransitionRouteArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteArrayOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRoute] {
-	return pulumix.Output[[]CxPageTransitionRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteOutput {
@@ -13740,12 +14117,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToCxPageTransitionRouteTrig
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillment]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToCxPageTransitionRouteTriggerFulfillmentPtrOutput() CxPageTransitionRouteTriggerFulfillmentPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -13787,12 +14158,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentPtrType) ToCxPageTransitionRoute
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillment]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -13815,12 +14180,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToCxPageTransitionRouteTr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillment) *CxPageTransitionRouteTriggerFulfillment {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditional cases for this fulfillment.
@@ -13874,12 +14233,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToCxPageTransitionRout
 
 func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillment] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentOutput {
@@ -13990,12 +14343,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxPageTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray and CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -14021,12 +14368,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxPageTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -14039,12 +14380,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxPageTr
 
 func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -14065,12 +14400,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxP
 
 func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
-	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
@@ -14168,12 +14497,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageArgs) ToCxPageTransitionRo
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageArray and CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageArrayInput` via:
 //
@@ -14199,12 +14522,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageArray) ToCxPageTransitionR
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -14217,12 +14534,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToCxPageTransition
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -14305,12 +14616,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) ToCxPageTrans
 	return o
 }
 
-func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage] {
-	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageTransitionRouteTriggerFulfillmentMessage {
 		return vs[0].([]CxPageTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
@@ -14348,12 +14653,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) T
 
 func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
-}
-
-func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -14397,12 +14696,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -14427,12 +14720,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
-func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -14450,12 +14737,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutp
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
@@ -14511,12 +14792,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -14558,12 +14833,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -14588,12 +14857,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) To
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
-func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -14611,12 +14874,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -14682,12 +14939,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxP
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -14729,12 +14980,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -14757,12 +15002,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -14795,12 +15034,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -14883,12 +15116,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -14930,12 +15157,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -14958,12 +15179,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageT
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -14991,12 +15206,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPa
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
@@ -15063,12 +15272,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -15110,12 +15313,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -15140,12 +15337,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutpu
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
-func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) string {
@@ -15165,12 +15356,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOu
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -15232,12 +15417,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxPageTransiti
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -15279,12 +15458,6 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageTextPtrType) ToCxPageTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
 
-func (i *cxPageTransitionRouteTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -15307,12 +15480,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxPageTransi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageText) *CxPageTransitionRouteTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -15338,12 +15505,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxPageTra
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText] {
-	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageTextOutput {
@@ -15414,12 +15575,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxPageT
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray and CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -15445,12 +15600,6 @@ func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxPage
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
-func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -15463,12 +15612,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxPag
 
 func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the parameter.
@@ -15493,12 +15636,6 @@ func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) To
 
 func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
-}
-
-func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
-	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
@@ -15560,12 +15697,6 @@ func (i CxSecuritySettingsAudioExportSettingsArgs) ToCxSecuritySettingsAudioExpo
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsAudioExportSettingsOutput)
 }
 
-func (i CxSecuritySettingsAudioExportSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsAudioExportSettings] {
-	return pulumix.Output[CxSecuritySettingsAudioExportSettings]{
-		OutputState: i.ToCxSecuritySettingsAudioExportSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxSecuritySettingsAudioExportSettingsArgs) ToCxSecuritySettingsAudioExportSettingsPtrOutput() CxSecuritySettingsAudioExportSettingsPtrOutput {
 	return i.ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
 }
@@ -15607,12 +15738,6 @@ func (i *cxSecuritySettingsAudioExportSettingsPtrType) ToCxSecuritySettingsAudio
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsAudioExportSettingsPtrOutput)
 }
 
-func (i *cxSecuritySettingsAudioExportSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsAudioExportSettings] {
-	return pulumix.Output[*CxSecuritySettingsAudioExportSettings]{
-		OutputState: i.ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxSecuritySettingsAudioExportSettingsOutput struct{ *pulumi.OutputState }
 
 func (CxSecuritySettingsAudioExportSettingsOutput) ElementType() reflect.Type {
@@ -15635,12 +15760,6 @@ func (o CxSecuritySettingsAudioExportSettingsOutput) ToCxSecuritySettingsAudioEx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxSecuritySettingsAudioExportSettings) *CxSecuritySettingsAudioExportSettings {
 		return &v
 	}).(CxSecuritySettingsAudioExportSettingsPtrOutput)
-}
-
-func (o CxSecuritySettingsAudioExportSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsAudioExportSettings] {
-	return pulumix.Output[CxSecuritySettingsAudioExportSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Filename pattern for exported audio.
@@ -15679,12 +15798,6 @@ func (o CxSecuritySettingsAudioExportSettingsPtrOutput) ToCxSecuritySettingsAudi
 
 func (o CxSecuritySettingsAudioExportSettingsPtrOutput) ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsPtrOutput {
 	return o
-}
-
-func (o CxSecuritySettingsAudioExportSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsAudioExportSettings] {
-	return pulumix.Output[*CxSecuritySettingsAudioExportSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxSecuritySettingsAudioExportSettingsPtrOutput) Elem() CxSecuritySettingsAudioExportSettingsOutput {
@@ -15774,12 +15887,6 @@ func (i CxSecuritySettingsInsightsExportSettingsArgs) ToCxSecuritySettingsInsigh
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsInsightsExportSettingsOutput)
 }
 
-func (i CxSecuritySettingsInsightsExportSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsInsightsExportSettings] {
-	return pulumix.Output[CxSecuritySettingsInsightsExportSettings]{
-		OutputState: i.ToCxSecuritySettingsInsightsExportSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxSecuritySettingsInsightsExportSettingsArgs) ToCxSecuritySettingsInsightsExportSettingsPtrOutput() CxSecuritySettingsInsightsExportSettingsPtrOutput {
 	return i.ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
 }
@@ -15821,12 +15928,6 @@ func (i *cxSecuritySettingsInsightsExportSettingsPtrType) ToCxSecuritySettingsIn
 	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsInsightsExportSettingsPtrOutput)
 }
 
-func (i *cxSecuritySettingsInsightsExportSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsInsightsExportSettings] {
-	return pulumix.Output[*CxSecuritySettingsInsightsExportSettings]{
-		OutputState: i.ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxSecuritySettingsInsightsExportSettingsOutput struct{ *pulumi.OutputState }
 
 func (CxSecuritySettingsInsightsExportSettingsOutput) ElementType() reflect.Type {
@@ -15851,12 +15952,6 @@ func (o CxSecuritySettingsInsightsExportSettingsOutput) ToCxSecuritySettingsInsi
 	}).(CxSecuritySettingsInsightsExportSettingsPtrOutput)
 }
 
-func (o CxSecuritySettingsInsightsExportSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsInsightsExportSettings] {
-	return pulumix.Output[CxSecuritySettingsInsightsExportSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
 func (o CxSecuritySettingsInsightsExportSettingsOutput) EnableInsightsExport() pulumi.BoolOutput {
 	return o.ApplyT(func(v CxSecuritySettingsInsightsExportSettings) bool { return v.EnableInsightsExport }).(pulumi.BoolOutput)
@@ -15874,12 +15969,6 @@ func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) ToCxSecuritySettingsI
 
 func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsPtrOutput {
 	return o
-}
-
-func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsInsightsExportSettings] {
-	return pulumix.Output[*CxSecuritySettingsInsightsExportSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) Elem() CxSecuritySettingsInsightsExportSettingsOutput {
@@ -15961,12 +16050,6 @@ func (i CxTestCaseLastTestResultArgs) ToCxTestCaseLastTestResultOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultOutput)
 }
 
-func (i CxTestCaseLastTestResultArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResult] {
-	return pulumix.Output[CxTestCaseLastTestResult]{
-		OutputState: i.ToCxTestCaseLastTestResultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseLastTestResultArrayInput is an input type that accepts CxTestCaseLastTestResultArray and CxTestCaseLastTestResultArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseLastTestResultArrayInput` via:
 //
@@ -15992,12 +16075,6 @@ func (i CxTestCaseLastTestResultArray) ToCxTestCaseLastTestResultArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultArrayOutput)
 }
 
-func (i CxTestCaseLastTestResultArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResult] {
-	return pulumix.Output[[]CxTestCaseLastTestResult]{
-		OutputState: i.ToCxTestCaseLastTestResultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultOutput) ElementType() reflect.Type {
@@ -16010,12 +16087,6 @@ func (o CxTestCaseLastTestResultOutput) ToCxTestCaseLastTestResultOutput() CxTes
 
 func (o CxTestCaseLastTestResultOutput) ToCxTestCaseLastTestResultOutputWithContext(ctx context.Context) CxTestCaseLastTestResultOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResult] {
-	return pulumix.Output[CxTestCaseLastTestResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The conversation turns uttered during the test case replay in chronological order.
@@ -16062,12 +16133,6 @@ func (o CxTestCaseLastTestResultArrayOutput) ToCxTestCaseLastTestResultArrayOutp
 
 func (o CxTestCaseLastTestResultArrayOutput) ToCxTestCaseLastTestResultArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultArrayOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResult] {
-	return pulumix.Output[[]CxTestCaseLastTestResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultOutput {
@@ -16117,12 +16182,6 @@ func (i CxTestCaseLastTestResultConversationTurnArgs) ToCxTestCaseLastTestResult
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurn] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurn]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseLastTestResultConversationTurnArrayInput is an input type that accepts CxTestCaseLastTestResultConversationTurnArray and CxTestCaseLastTestResultConversationTurnArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnArrayInput` via:
 //
@@ -16148,12 +16207,6 @@ func (i CxTestCaseLastTestResultConversationTurnArray) ToCxTestCaseLastTestResul
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnArrayOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurn] {
-	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurn]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnOutput) ElementType() reflect.Type {
@@ -16166,12 +16219,6 @@ func (o CxTestCaseLastTestResultConversationTurnOutput) ToCxTestCaseLastTestResu
 
 func (o CxTestCaseLastTestResultConversationTurnOutput) ToCxTestCaseLastTestResultConversationTurnOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurn] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user input.
@@ -16202,12 +16249,6 @@ func (o CxTestCaseLastTestResultConversationTurnArrayOutput) ToCxTestCaseLastTes
 
 func (o CxTestCaseLastTestResultConversationTurnArrayOutput) ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnArrayOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurn] {
-	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultConversationTurnOutput {
@@ -16263,12 +16304,6 @@ func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToCxTestCaseLastT
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(context.Background())
 }
@@ -16310,12 +16345,6 @@ func (i *cxTestCaseLastTestResultConversationTurnUserInputPtrType) ToCxTestCaseL
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnUserInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnUserInputOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnUserInputOutput) ElementType() reflect.Type {
@@ -16338,12 +16367,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToCxTestCaseLas
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInput) *CxTestCaseLastTestResultConversationTurnUserInput {
 		return &v
 	}).(CxTestCaseLastTestResultConversationTurnUserInputPtrOutput)
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether sentiment analysis is enabled.
@@ -16381,12 +16404,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ToCxTestCase
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputOutput {
@@ -16493,12 +16510,6 @@ func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToCxTest
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
 }
@@ -16540,12 +16551,6 @@ func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ElementType() reflect.Type {
@@ -16568,12 +16573,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToCxTe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputType {
 		return &v
 	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput)
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DTMF event to be handled.
@@ -16618,12 +16617,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ToC
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput {
@@ -16717,12 +16710,6 @@ func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToCxTest
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
 }
@@ -16764,12 +16751,6 @@ func (i *cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ElementType() reflect.Type {
@@ -16794,12 +16775,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToCxTe
 	}).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput)
 }
 
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dtmf digits.
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) Digits() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) *string { return v.Digits }).(pulumi.StringPtrOutput)
@@ -16822,12 +16797,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ToC
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput {
@@ -16893,12 +16862,6 @@ func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToCxTes
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
 }
@@ -16940,12 +16903,6 @@ func (i *cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ElementType() reflect.Type {
@@ -16970,12 +16927,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToCxT
 	}).(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput)
 }
 
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the event.
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) Event() pulumi.StringOutput {
 	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputEvent) string { return v.Event }).(pulumi.StringOutput)
@@ -16993,12 +16944,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) To
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput {
@@ -17054,12 +16999,6 @@ func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToCxTest
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
 }
@@ -17101,12 +17040,6 @@ func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ElementType() reflect.Type {
@@ -17131,12 +17064,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToCxTe
 	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput)
 }
 
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The natural language text to be processed. Text length must not exceed 256 characters.
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputText) string { return v.Text }).(pulumi.StringOutput)
@@ -17154,12 +17081,6 @@ func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ToC
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput {
@@ -17245,12 +17166,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToCxTest
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
 }
@@ -17292,12 +17207,6 @@ func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ElementType() reflect.Type {
@@ -17320,12 +17229,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToCxTe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
 		return &v
 	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput)
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
@@ -17385,12 +17288,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ToC
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput {
@@ -17509,12 +17406,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArg
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
 }
@@ -17556,12 +17447,6 @@ func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePt
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ElementType() reflect.Type {
@@ -17584,12 +17469,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
 		return &v
 	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -17618,12 +17497,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtr
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput {
@@ -17707,12 +17580,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput` via:
 //
@@ -17738,12 +17605,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArra
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
-	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ElementType() reflect.Type {
@@ -17756,12 +17617,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutp
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A human readable description of the diff, showing the actual output vs expected output.
@@ -17794,12 +17649,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArra
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
-	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
@@ -17849,12 +17698,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(context.Background())
 }
@@ -17896,12 +17739,6 @@ func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ElementType() reflect.Type {
@@ -17924,12 +17761,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
 		return &v
 	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput)
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -17959,12 +17790,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutpu
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput {
@@ -18040,12 +17865,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseAr
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput` via:
 //
@@ -18071,12 +17890,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseAr
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ElementType() reflect.Type {
@@ -18089,12 +17902,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOu
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of text responses.
@@ -18116,12 +17923,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseAr
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
@@ -18171,12 +17972,6 @@ func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredInten
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput)
 }
 
-func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
 	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
 }
@@ -18218,12 +18013,6 @@ func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredInte
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
 }
 
-func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ElementType() reflect.Type {
@@ -18246,12 +18035,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredInten
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
 		return &v
 	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -18282,12 +18065,6 @@ func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredInten
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
 	return o
-}
-
-func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput {
@@ -18363,12 +18140,6 @@ func (i CxTestCaseTestCaseConversationTurnArgs) ToCxTestCaseTestCaseConversation
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurn] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurn]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseTestCaseConversationTurnArrayInput is an input type that accepts CxTestCaseTestCaseConversationTurnArray and CxTestCaseTestCaseConversationTurnArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnArrayInput` via:
 //
@@ -18394,12 +18165,6 @@ func (i CxTestCaseTestCaseConversationTurnArray) ToCxTestCaseTestCaseConversatio
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnArrayOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurn] {
-	return pulumix.Output[[]CxTestCaseTestCaseConversationTurn]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnOutput) ElementType() reflect.Type {
@@ -18412,12 +18177,6 @@ func (o CxTestCaseTestCaseConversationTurnOutput) ToCxTestCaseTestCaseConversati
 
 func (o CxTestCaseTestCaseConversationTurnOutput) ToCxTestCaseTestCaseConversationTurnOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurn] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user input.
@@ -18448,12 +18207,6 @@ func (o CxTestCaseTestCaseConversationTurnArrayOutput) ToCxTestCaseTestCaseConve
 
 func (o CxTestCaseTestCaseConversationTurnArrayOutput) ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnArrayOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurn] {
-	return pulumix.Output[[]CxTestCaseTestCaseConversationTurn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnArrayOutput) Index(i pulumi.IntInput) CxTestCaseTestCaseConversationTurnOutput {
@@ -18509,12 +18262,6 @@ func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToCxTestCaseTestCaseCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(context.Background())
 }
@@ -18556,12 +18303,6 @@ func (i *cxTestCaseTestCaseConversationTurnUserInputPtrType) ToCxTestCaseTestCas
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputPtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnUserInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnUserInputOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnUserInputOutput) ElementType() reflect.Type {
@@ -18584,12 +18325,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToCxTestCaseTestCaseC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInput) *CxTestCaseTestCaseConversationTurnUserInput {
 		return &v
 	}).(CxTestCaseTestCaseConversationTurnUserInputPtrOutput)
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether sentiment analysis is enabled.
@@ -18627,12 +18362,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ToCxTestCaseTestCa
 
 func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputOutput {
@@ -18739,12 +18468,6 @@ func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToCxTestCaseTe
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
 }
@@ -18786,12 +18509,6 @@ func (i *cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType) ToCxTestCa
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ElementType() reflect.Type {
@@ -18814,12 +18531,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToCxTestCase
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputType {
 		return &v
 	}).(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput)
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DTMF event to be handled.
@@ -18864,12 +18575,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ToCxTestC
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput {
@@ -18963,12 +18668,6 @@ func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToCxTestCaseTe
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
 }
@@ -19010,12 +18709,6 @@ func (i *cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType) ToCxTestCa
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ElementType() reflect.Type {
@@ -19040,12 +18733,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToCxTestCase
 	}).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput)
 }
 
-func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dtmf digits.
 func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) Digits() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputDtmf) *string { return v.Digits }).(pulumi.StringPtrOutput)
@@ -19068,12 +18755,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ToCxTestC
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput {
@@ -19139,12 +18820,6 @@ func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToCxTestCaseT
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputEventOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
 }
@@ -19186,12 +18861,6 @@ func (i *cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType) ToCxTestC
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnUserInputInputEventOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ElementType() reflect.Type {
@@ -19216,12 +18885,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToCxTestCas
 	}).(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput)
 }
 
-func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the event.
 func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) Event() pulumi.StringOutput {
 	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputEvent) string { return v.Event }).(pulumi.StringOutput)
@@ -19239,12 +18902,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ToCxTest
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputEventOutput {
@@ -19300,12 +18957,6 @@ func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToCxTestCaseTe
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTextOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
 }
@@ -19347,12 +18998,6 @@ func (i *cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType) ToCxTestCa
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnUserInputInputTextOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ElementType() reflect.Type {
@@ -19377,12 +19022,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToCxTestCase
 	}).(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput)
 }
 
-func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The natural language text to be processed. Text length must not exceed 256 characters.
 func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputText) string { return v.Text }).(pulumi.StringOutput)
@@ -19400,12 +19039,6 @@ func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ToCxTestC
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputTextOutput {
@@ -19479,12 +19112,6 @@ func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToCxTestCaseTe
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
 }
@@ -19526,12 +19153,6 @@ func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType) ToCxTestCa
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ElementType() reflect.Type {
@@ -19554,12 +19175,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToCxTestCase
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
 		return &v
 	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput)
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
@@ -19603,12 +19218,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ToCxTestC
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) Elem() CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput {
@@ -19705,12 +19314,6 @@ func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
 }
@@ -19752,12 +19355,6 @@ func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ElementType() reflect.Type {
@@ -19780,12 +19377,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
 		return &v
 	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -19812,12 +19403,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) Elem() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput {
@@ -19885,12 +19470,6 @@ func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray and CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput values.
 // You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput` via:
 //
@@ -19916,12 +19495,6 @@ func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray) T
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ElementType() reflect.Type {
@@ -19934,12 +19507,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) 
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of text responses.
@@ -19959,12 +19526,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOut
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
-	return pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) Index(i pulumi.IntInput) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
@@ -20014,12 +19575,6 @@ func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput)
 }
 
-func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
 	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
 }
@@ -20061,12 +19616,6 @@ func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
 }
 
-func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ElementType() reflect.Type {
@@ -20089,12 +19638,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
 		return &v
 	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -20123,12 +19666,6 @@ func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOu
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
-	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) Elem() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput {
@@ -20212,12 +19749,6 @@ func (i CxTestCaseTestConfigArgs) ToCxTestCaseTestConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestConfigOutput)
 }
 
-func (i CxTestCaseTestConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestConfig] {
-	return pulumix.Output[CxTestCaseTestConfig]{
-		OutputState: i.ToCxTestCaseTestConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxTestCaseTestConfigArgs) ToCxTestCaseTestConfigPtrOutput() CxTestCaseTestConfigPtrOutput {
 	return i.ToCxTestCaseTestConfigPtrOutputWithContext(context.Background())
 }
@@ -20259,12 +19790,6 @@ func (i *cxTestCaseTestConfigPtrType) ToCxTestCaseTestConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestConfigPtrOutput)
 }
 
-func (i *cxTestCaseTestConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestConfig] {
-	return pulumix.Output[*CxTestCaseTestConfig]{
-		OutputState: i.ToCxTestCaseTestConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxTestCaseTestConfigOutput struct{ *pulumi.OutputState }
 
 func (CxTestCaseTestConfigOutput) ElementType() reflect.Type {
@@ -20287,12 +19812,6 @@ func (o CxTestCaseTestConfigOutput) ToCxTestCaseTestConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestConfig) *CxTestCaseTestConfig {
 		return &v
 	}).(CxTestCaseTestConfigPtrOutput)
-}
-
-func (o CxTestCaseTestConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestConfig] {
-	return pulumix.Output[CxTestCaseTestConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flow name to start the test case with.
@@ -20326,12 +19845,6 @@ func (o CxTestCaseTestConfigPtrOutput) ToCxTestCaseTestConfigPtrOutput() CxTestC
 
 func (o CxTestCaseTestConfigPtrOutput) ToCxTestCaseTestConfigPtrOutputWithContext(ctx context.Context) CxTestCaseTestConfigPtrOutput {
 	return o
-}
-
-func (o CxTestCaseTestConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestConfig] {
-	return pulumix.Output[*CxTestCaseTestConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxTestCaseTestConfigPtrOutput) Elem() CxTestCaseTestConfigOutput {
@@ -20385,12 +19898,12 @@ type CxVersionNluSetting struct {
 	// Indicates NLU model training mode.
 	// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 	// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-	//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+	//   Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 	ModelTrainingMode *string `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
 	// * MODEL_TYPE_STANDARD: Use standard NLU model.
 	// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-	//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+	//   Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 	ModelType *string `pulumi:"modelType"`
 }
 
@@ -20412,12 +19925,12 @@ type CxVersionNluSettingArgs struct {
 	// Indicates NLU model training mode.
 	// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 	// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-	//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+	//   Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 	ModelTrainingMode pulumi.StringPtrInput `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
 	// * MODEL_TYPE_STANDARD: Use standard NLU model.
 	// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-	//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+	//   Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 	ModelType pulumi.StringPtrInput `pulumi:"modelType"`
 }
 
@@ -20431,12 +19944,6 @@ func (i CxVersionNluSettingArgs) ToCxVersionNluSettingOutput() CxVersionNluSetti
 
 func (i CxVersionNluSettingArgs) ToCxVersionNluSettingOutputWithContext(ctx context.Context) CxVersionNluSettingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionNluSettingOutput)
-}
-
-func (i CxVersionNluSettingArgs) ToOutput(ctx context.Context) pulumix.Output[CxVersionNluSetting] {
-	return pulumix.Output[CxVersionNluSetting]{
-		OutputState: i.ToCxVersionNluSettingOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxVersionNluSettingArrayInput is an input type that accepts CxVersionNluSettingArray and CxVersionNluSettingArrayOutput values.
@@ -20464,12 +19971,6 @@ func (i CxVersionNluSettingArray) ToCxVersionNluSettingArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionNluSettingArrayOutput)
 }
 
-func (i CxVersionNluSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]CxVersionNluSetting] {
-	return pulumix.Output[[]CxVersionNluSetting]{
-		OutputState: i.ToCxVersionNluSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxVersionNluSettingOutput struct{ *pulumi.OutputState }
 
 func (CxVersionNluSettingOutput) ElementType() reflect.Type {
@@ -20484,12 +19985,6 @@ func (o CxVersionNluSettingOutput) ToCxVersionNluSettingOutputWithContext(ctx co
 	return o
 }
 
-func (o CxVersionNluSettingOutput) ToOutput(ctx context.Context) pulumix.Output[CxVersionNluSetting] {
-	return pulumix.Output[CxVersionNluSetting]{
-		OutputState: o.OutputState,
-	}
-}
-
 // To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
 // The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
 func (o CxVersionNluSettingOutput) ClassificationThreshold() pulumi.Float64PtrOutput {
@@ -20499,7 +19994,7 @@ func (o CxVersionNluSettingOutput) ClassificationThreshold() pulumi.Float64PtrOu
 // Indicates NLU model training mode.
 //   - MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 //   - MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-//     Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+//     Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 func (o CxVersionNluSettingOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxVersionNluSetting) *string { return v.ModelTrainingMode }).(pulumi.StringPtrOutput)
 }
@@ -20507,7 +20002,7 @@ func (o CxVersionNluSettingOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 // Indicates the type of NLU model.
 //   - MODEL_TYPE_STANDARD: Use standard NLU model.
 //   - MODEL_TYPE_ADVANCED: Use advanced NLU model.
-//     Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+//     Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 func (o CxVersionNluSettingOutput) ModelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxVersionNluSetting) *string { return v.ModelType }).(pulumi.StringPtrOutput)
 }
@@ -20524,12 +20019,6 @@ func (o CxVersionNluSettingArrayOutput) ToCxVersionNluSettingArrayOutput() CxVer
 
 func (o CxVersionNluSettingArrayOutput) ToCxVersionNluSettingArrayOutputWithContext(ctx context.Context) CxVersionNluSettingArrayOutput {
 	return o
-}
-
-func (o CxVersionNluSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxVersionNluSetting] {
-	return pulumix.Output[[]CxVersionNluSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxVersionNluSettingArrayOutput) Index(i pulumi.IntInput) CxVersionNluSettingOutput {
@@ -20579,12 +20068,6 @@ func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServiceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOutput)
 }
 
-func (i CxWebhookGenericWebServiceArgs) ToOutput(ctx context.Context) pulumix.Output[CxWebhookGenericWebService] {
-	return pulumix.Output[CxWebhookGenericWebService]{
-		OutputState: i.ToCxWebhookGenericWebServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput {
 	return i.ToCxWebhookGenericWebServicePtrOutputWithContext(context.Background())
 }
@@ -20626,12 +20109,6 @@ func (i *cxWebhookGenericWebServicePtrType) ToCxWebhookGenericWebServicePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServicePtrOutput)
 }
 
-func (i *cxWebhookGenericWebServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookGenericWebService] {
-	return pulumix.Output[*CxWebhookGenericWebService]{
-		OutputState: i.ToCxWebhookGenericWebServicePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxWebhookGenericWebServiceOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookGenericWebServiceOutput) ElementType() reflect.Type {
@@ -20654,12 +20131,6 @@ func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServicePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookGenericWebService) *CxWebhookGenericWebService {
 		return &v
 	}).(CxWebhookGenericWebServicePtrOutput)
-}
-
-func (o CxWebhookGenericWebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[CxWebhookGenericWebService] {
-	return pulumix.Output[CxWebhookGenericWebService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
@@ -20689,12 +20160,6 @@ func (o CxWebhookGenericWebServicePtrOutput) ToCxWebhookGenericWebServicePtrOutp
 
 func (o CxWebhookGenericWebServicePtrOutput) ToCxWebhookGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServicePtrOutput {
 	return o
-}
-
-func (o CxWebhookGenericWebServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookGenericWebService] {
-	return pulumix.Output[*CxWebhookGenericWebService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxWebhookGenericWebServicePtrOutput) Elem() CxWebhookGenericWebServiceOutput {
@@ -20776,12 +20241,6 @@ func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryOutput)
 }
 
-func (i CxWebhookServiceDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectory] {
-	return pulumix.Output[CxWebhookServiceDirectory]{
-		OutputState: i.ToCxWebhookServiceDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput {
 	return i.ToCxWebhookServiceDirectoryPtrOutputWithContext(context.Background())
 }
@@ -20823,12 +20282,6 @@ func (i *cxWebhookServiceDirectoryPtrType) ToCxWebhookServiceDirectoryPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryPtrOutput)
 }
 
-func (i *cxWebhookServiceDirectoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectory] {
-	return pulumix.Output[*CxWebhookServiceDirectory]{
-		OutputState: i.ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxWebhookServiceDirectoryOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookServiceDirectoryOutput) ElementType() reflect.Type {
@@ -20851,12 +20304,6 @@ func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectory) *CxWebhookServiceDirectory {
 		return &v
 	}).(CxWebhookServiceDirectoryPtrOutput)
-}
-
-func (o CxWebhookServiceDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectory] {
-	return pulumix.Output[CxWebhookServiceDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of Service Directory service.
@@ -20884,12 +20331,6 @@ func (o CxWebhookServiceDirectoryPtrOutput) ToCxWebhookServiceDirectoryPtrOutput
 
 func (o CxWebhookServiceDirectoryPtrOutput) ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryPtrOutput {
 	return o
-}
-
-func (o CxWebhookServiceDirectoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectory] {
-	return pulumix.Output[*CxWebhookServiceDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxWebhookServiceDirectoryPtrOutput) Elem() CxWebhookServiceDirectoryOutput {
@@ -20964,12 +20405,6 @@ func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirect
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOutput)
 }
 
-func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectoryGenericWebService] {
-	return pulumix.Output[CxWebhookServiceDirectoryGenericWebService]{
-		OutputState: i.ToCxWebhookServiceDirectoryGenericWebServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
 	return i.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(context.Background())
 }
@@ -21011,12 +20446,6 @@ func (i *cxWebhookServiceDirectoryGenericWebServicePtrType) ToCxWebhookServiceDi
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
 }
 
-func (i *cxWebhookServiceDirectoryGenericWebServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectoryGenericWebService] {
-	return pulumix.Output[*CxWebhookServiceDirectoryGenericWebService]{
-		OutputState: i.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxWebhookServiceDirectoryGenericWebServiceOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookServiceDirectoryGenericWebServiceOutput) ElementType() reflect.Type {
@@ -21039,12 +20468,6 @@ func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDire
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectoryGenericWebService) *CxWebhookServiceDirectoryGenericWebService {
 		return &v
 	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
-}
-
-func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectoryGenericWebService] {
-	return pulumix.Output[CxWebhookServiceDirectoryGenericWebService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
@@ -21074,12 +20497,6 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToCxWebhookServiceD
 
 func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput {
 	return o
-}
-
-func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectoryGenericWebService] {
-	return pulumix.Output[*CxWebhookServiceDirectoryGenericWebService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Elem() CxWebhookServiceDirectoryGenericWebServiceOutput {
@@ -21175,12 +20592,6 @@ func (i EntityTypeEntityArgs) ToEntityTypeEntityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeEntityOutput)
 }
 
-func (i EntityTypeEntityArgs) ToOutput(ctx context.Context) pulumix.Output[EntityTypeEntity] {
-	return pulumix.Output[EntityTypeEntity]{
-		OutputState: i.ToEntityTypeEntityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EntityTypeEntityArrayInput is an input type that accepts EntityTypeEntityArray and EntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `EntityTypeEntityArrayInput` via:
 //
@@ -21206,12 +20617,6 @@ func (i EntityTypeEntityArray) ToEntityTypeEntityArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeEntityArrayOutput)
 }
 
-func (i EntityTypeEntityArray) ToOutput(ctx context.Context) pulumix.Output[[]EntityTypeEntity] {
-	return pulumix.Output[[]EntityTypeEntity]{
-		OutputState: i.ToEntityTypeEntityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntityTypeEntityOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeEntityOutput) ElementType() reflect.Type {
@@ -21224,12 +20629,6 @@ func (o EntityTypeEntityOutput) ToEntityTypeEntityOutput() EntityTypeEntityOutpu
 
 func (o EntityTypeEntityOutput) ToEntityTypeEntityOutputWithContext(ctx context.Context) EntityTypeEntityOutput {
 	return o
-}
-
-func (o EntityTypeEntityOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypeEntity] {
-	return pulumix.Output[EntityTypeEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
@@ -21262,12 +20661,6 @@ func (o EntityTypeEntityArrayOutput) ToEntityTypeEntityArrayOutput() EntityTypeE
 
 func (o EntityTypeEntityArrayOutput) ToEntityTypeEntityArrayOutputWithContext(ctx context.Context) EntityTypeEntityArrayOutput {
 	return o
-}
-
-func (o EntityTypeEntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityTypeEntity] {
-	return pulumix.Output[[]EntityTypeEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityTypeEntityArrayOutput) Index(i pulumi.IntInput) EntityTypeEntityOutput {
@@ -21313,12 +20706,6 @@ func (i FulfillmentFeatureArgs) ToFulfillmentFeatureOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentFeatureOutput)
 }
 
-func (i FulfillmentFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[FulfillmentFeature] {
-	return pulumix.Output[FulfillmentFeature]{
-		OutputState: i.ToFulfillmentFeatureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FulfillmentFeatureArrayInput is an input type that accepts FulfillmentFeatureArray and FulfillmentFeatureArrayOutput values.
 // You can construct a concrete instance of `FulfillmentFeatureArrayInput` via:
 //
@@ -21344,12 +20731,6 @@ func (i FulfillmentFeatureArray) ToFulfillmentFeatureArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentFeatureArrayOutput)
 }
 
-func (i FulfillmentFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]FulfillmentFeature] {
-	return pulumix.Output[[]FulfillmentFeature]{
-		OutputState: i.ToFulfillmentFeatureArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FulfillmentFeatureOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentFeatureOutput) ElementType() reflect.Type {
@@ -21362,12 +20743,6 @@ func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutput() FulfillmentFeatur
 
 func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutputWithContext(ctx context.Context) FulfillmentFeatureOutput {
 	return o
-}
-
-func (o FulfillmentFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[FulfillmentFeature] {
-	return pulumix.Output[FulfillmentFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the feature that enabled for fulfillment.
@@ -21389,12 +20764,6 @@ func (o FulfillmentFeatureArrayOutput) ToFulfillmentFeatureArrayOutput() Fulfill
 
 func (o FulfillmentFeatureArrayOutput) ToFulfillmentFeatureArrayOutputWithContext(ctx context.Context) FulfillmentFeatureArrayOutput {
 	return o
-}
-
-func (o FulfillmentFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FulfillmentFeature] {
-	return pulumix.Output[[]FulfillmentFeature]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FulfillmentFeatureArrayOutput) Index(i pulumi.IntInput) FulfillmentFeatureOutput {
@@ -21448,12 +20817,6 @@ func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServiceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServiceOutput)
 }
 
-func (i FulfillmentGenericWebServiceArgs) ToOutput(ctx context.Context) pulumix.Output[FulfillmentGenericWebService] {
-	return pulumix.Output[FulfillmentGenericWebService]{
-		OutputState: i.ToFulfillmentGenericWebServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput {
 	return i.ToFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
 }
@@ -21495,12 +20858,6 @@ func (i *fulfillmentGenericWebServicePtrType) ToFulfillmentGenericWebServicePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServicePtrOutput)
 }
 
-func (i *fulfillmentGenericWebServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*FulfillmentGenericWebService] {
-	return pulumix.Output[*FulfillmentGenericWebService]{
-		OutputState: i.ToFulfillmentGenericWebServicePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FulfillmentGenericWebServiceOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentGenericWebServiceOutput) ElementType() reflect.Type {
@@ -21523,12 +20880,6 @@ func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServicePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FulfillmentGenericWebService) *FulfillmentGenericWebService {
 		return &v
 	}).(FulfillmentGenericWebServicePtrOutput)
-}
-
-func (o FulfillmentGenericWebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[FulfillmentGenericWebService] {
-	return pulumix.Output[FulfillmentGenericWebService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The password for HTTP Basic authentication.
@@ -21563,12 +20914,6 @@ func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtr
 
 func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
 	return o
-}
-
-func (o FulfillmentGenericWebServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FulfillmentGenericWebService] {
-	return pulumix.Output[*FulfillmentGenericWebService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FulfillmentGenericWebServicePtrOutput) Elem() FulfillmentGenericWebServiceOutput {
@@ -21662,12 +21007,6 @@ func (i IntentFollowupIntentInfoArgs) ToIntentFollowupIntentInfoOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowupIntentInfoOutput)
 }
 
-func (i IntentFollowupIntentInfoArgs) ToOutput(ctx context.Context) pulumix.Output[IntentFollowupIntentInfo] {
-	return pulumix.Output[IntentFollowupIntentInfo]{
-		OutputState: i.ToIntentFollowupIntentInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntentFollowupIntentInfoArrayInput is an input type that accepts IntentFollowupIntentInfoArray and IntentFollowupIntentInfoArrayOutput values.
 // You can construct a concrete instance of `IntentFollowupIntentInfoArrayInput` via:
 //
@@ -21693,12 +21032,6 @@ func (i IntentFollowupIntentInfoArray) ToIntentFollowupIntentInfoArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowupIntentInfoArrayOutput)
 }
 
-func (i IntentFollowupIntentInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]IntentFollowupIntentInfo] {
-	return pulumix.Output[[]IntentFollowupIntentInfo]{
-		OutputState: i.ToIntentFollowupIntentInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntentFollowupIntentInfoOutput struct{ *pulumi.OutputState }
 
 func (IntentFollowupIntentInfoOutput) ElementType() reflect.Type {
@@ -21711,12 +21044,6 @@ func (o IntentFollowupIntentInfoOutput) ToIntentFollowupIntentInfoOutput() Inten
 
 func (o IntentFollowupIntentInfoOutput) ToIntentFollowupIntentInfoOutputWithContext(ctx context.Context) IntentFollowupIntentInfoOutput {
 	return o
-}
-
-func (o IntentFollowupIntentInfoOutput) ToOutput(ctx context.Context) pulumix.Output[IntentFollowupIntentInfo] {
-	return pulumix.Output[IntentFollowupIntentInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier of the followup intent.
@@ -21745,12 +21072,6 @@ func (o IntentFollowupIntentInfoArrayOutput) ToIntentFollowupIntentInfoArrayOutp
 	return o
 }
 
-func (o IntentFollowupIntentInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntentFollowupIntentInfo] {
-	return pulumix.Output[[]IntentFollowupIntentInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFollowupIntentInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentFollowupIntentInfo {
 		return vs[0].([]IntentFollowupIntentInfo)[vs[1].(int)]
@@ -21758,14 +21079,32 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsAudioExportGcsDestinationInput)(nil)).Elem(), CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsPtrInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsGithubSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettingsPtrInput)(nil)).Elem(), CxAgentGitIntegrationSettingsGithubSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentSpeechToTextSettingsInput)(nil)).Elem(), CxAgentSpeechToTextSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentSpeechToTextSettingsPtrInput)(nil)).Elem(), CxAgentSpeechToTextSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentTextToSpeechSettingsInput)(nil)).Elem(), CxAgentTextToSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentTextToSpeechSettingsPtrInput)(nil)).Elem(), CxAgentTextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeEntityInput)(nil)).Elem(), CxEntityTypeEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeEntityArrayInput)(nil)).Elem(), CxEntityTypeEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeExcludedPhraseInput)(nil)).Elem(), CxEntityTypeExcludedPhraseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEntityTypeExcludedPhraseArrayInput)(nil)).Elem(), CxEntityTypeExcludedPhraseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEnvironmentVersionConfigInput)(nil)).Elem(), CxEnvironmentVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxEnvironmentVersionConfigArrayInput)(nil)).Elem(), CxEnvironmentVersionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsInput)(nil)).Elem(), CxFlowAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsAudioExportGcsDestinationInput)(nil)).Elem(), CxFlowAdvancedSettingsAudioExportGcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsAudioExportGcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxFlowAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsDtmfSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerInput)(nil)).Elem(), CxFlowEventHandlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerArrayInput)(nil)).Elem(), CxFlowEventHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentArgs{})
@@ -21818,6 +21157,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhraseArrayInput)(nil)).Elem(), CxIntentTrainingPhraseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhrasePartInput)(nil)).Elem(), CxIntentTrainingPhrasePartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhrasePartArrayInput)(nil)).Elem(), CxIntentTrainingPhrasePartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageAdvancedSettingsInput)(nil)).Elem(), CxPageAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageAdvancedSettingsPtrInput)(nil)).Elem(), CxPageAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxPageAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxPageAdvancedSettingsDtmfSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentInput)(nil)).Elem(), CxPageEntryFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentPtrInput)(nil)).Elem(), CxPageEntryFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageEntryFulfillmentConditionalCaseArgs{})
@@ -21864,6 +21207,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormPtrInput)(nil)).Elem(), CxPageFormArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterInput)(nil)).Elem(), CxPageFormParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterArrayInput)(nil)).Elem(), CxPageFormParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterAdvancedSettingsInput)(nil)).Elem(), CxPageFormParameterAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterAdvancedSettingsPtrInput)(nil)).Elem(), CxPageFormParameterAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxPageFormParameterAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxPageFormParameterAdvancedSettingsDtmfSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInput)(nil)).Elem(), CxPageFormParameterFillBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{})
@@ -21998,14 +21345,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServicePtrInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoInput)(nil)).Elem(), IntentFollowupIntentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoArrayInput)(nil)).Elem(), IntentFollowupIntentInfoArray{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsAudioExportGcsDestinationOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsDtmfSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsDtmfSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsGithubSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsGithubSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentTextToSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentTextToSpeechSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeExcludedPhraseOutput{})
 	pulumi.RegisterOutputType(CxEntityTypeExcludedPhraseArrayOutput{})
 	pulumi.RegisterOutputType(CxEnvironmentVersionConfigOutput{})
 	pulumi.RegisterOutputType(CxEnvironmentVersionConfigArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsAudioExportGcsDestinationOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsDtmfSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsDtmfSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentOutput{})
@@ -22058,6 +21423,10 @@ func init() {
 	pulumi.RegisterOutputType(CxIntentTrainingPhraseArrayOutput{})
 	pulumi.RegisterOutputType(CxIntentTrainingPhrasePartOutput{})
 	pulumi.RegisterOutputType(CxIntentTrainingPhrasePartArrayOutput{})
+	pulumi.RegisterOutputType(CxPageAdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageAdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageAdvancedSettingsDtmfSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageAdvancedSettingsDtmfSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentPtrOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentConditionalCaseOutput{})
@@ -22104,6 +21473,10 @@ func init() {
 	pulumi.RegisterOutputType(CxPageFormPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterArrayOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterAdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterAdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterAdvancedSettingsDtmfSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput{})

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Membership contains information about a member cluster.
@@ -22,6 +21,50 @@ import (
 //   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 //
 // ## Example Usage
+// ### Gkehub Membership Regional
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				InitialNodeCount:   pulumi.Int(1),
+//				Location:           pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//				Location:     pulumi.String("us-west1"),
+//				MembershipId: pulumi.String("basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Gkehub Membership Basic
 //
 // ```go
@@ -120,23 +163,33 @@ import (
 //
 // ## Import
 //
-// # Membership can be imported using any of these accepted formats
+// Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
+//
+//	to = google_gke_hub_membership.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/global/memberships/{{membership_id}}
+//	$ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{membership_id}}
+//	$ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:gkehub/membership:Membership default {{membership_id}}
+//	$ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
 //
 // ```
 type Membership struct {
@@ -164,6 +217,9 @@ type Membership struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Location of the membership.
+	// The default value is `global`.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The client-provided identifier of the membership.
 	//
 	// ***
@@ -238,6 +294,9 @@ type membershipState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Location of the membership.
+	// The default value is `global`.
+	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
 	//
 	// ***
@@ -275,6 +334,9 @@ type MembershipState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Location of the membership.
+	// The default value is `global`.
+	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
 	//
 	// ***
@@ -314,6 +376,9 @@ type membershipArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Location of the membership.
+	// The default value is `global`.
+	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
 	//
 	// ***
@@ -345,6 +410,9 @@ type MembershipArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Location of the membership.
+	// The default value is `global`.
+	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
 	//
 	// ***
@@ -377,12 +445,6 @@ func (i *Membership) ToMembershipOutputWithContext(ctx context.Context) Membersh
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipOutput)
 }
 
-func (i *Membership) ToOutput(ctx context.Context) pulumix.Output[*Membership] {
-	return pulumix.Output[*Membership]{
-		OutputState: i.ToMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembershipArrayInput is an input type that accepts MembershipArray and MembershipArrayOutput values.
 // You can construct a concrete instance of `MembershipArrayInput` via:
 //
@@ -406,12 +468,6 @@ func (i MembershipArray) ToMembershipArrayOutput() MembershipArrayOutput {
 
 func (i MembershipArray) ToMembershipArrayOutputWithContext(ctx context.Context) MembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipArrayOutput)
-}
-
-func (i MembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*Membership] {
-	return pulumix.Output[[]*Membership]{
-		OutputState: i.ToMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MembershipMapInput is an input type that accepts MembershipMap and MembershipMapOutput values.
@@ -439,12 +495,6 @@ func (i MembershipMap) ToMembershipMapOutputWithContext(ctx context.Context) Mem
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipMapOutput)
 }
 
-func (i MembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Membership] {
-	return pulumix.Output[map[string]*Membership]{
-		OutputState: i.ToMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembershipOutput struct{ *pulumi.OutputState }
 
 func (MembershipOutput) ElementType() reflect.Type {
@@ -457,12 +507,6 @@ func (o MembershipOutput) ToMembershipOutput() MembershipOutput {
 
 func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) MembershipOutput {
 	return o
-}
-
-func (o MembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*Membership] {
-	return pulumix.Output[*Membership]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authority encodes how Google will recognize identities from this Membership.
@@ -500,6 +544,12 @@ func (o MembershipOutput) Endpoint() MembershipEndpointPtrOutput {
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o MembershipOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Location of the membership.
+// The default value is `global`.
+func (o MembershipOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The client-provided identifier of the membership.
@@ -540,12 +590,6 @@ func (o MembershipArrayOutput) ToMembershipArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Membership] {
-	return pulumix.Output[[]*Membership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembershipArrayOutput) Index(i pulumi.IntInput) MembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Membership {
 		return vs[0].([]*Membership)[vs[1].(int)]
@@ -564,12 +608,6 @@ func (o MembershipMapOutput) ToMembershipMapOutput() MembershipMapOutput {
 
 func (o MembershipMapOutput) ToMembershipMapOutputWithContext(ctx context.Context) MembershipMapOutput {
 	return o
-}
-
-func (o MembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Membership] {
-	return pulumix.Output[map[string]*Membership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembershipMapOutput) MapIndex(k pulumi.StringInput) MembershipOutput {

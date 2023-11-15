@@ -360,7 +360,15 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * JobTrigger can be imported using any of these accepted formats
+ * JobTrigger can be imported using any of these accepted formats* `{{parent}}/jobTriggers/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import JobTrigger using one of the formats above. For exampletf import {
+ *
+ *  id = "{{parent}}/jobTriggers/{{name}}"
+ *
+ *  to = google_data_loss_prevention_job_trigger.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), JobTrigger can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}

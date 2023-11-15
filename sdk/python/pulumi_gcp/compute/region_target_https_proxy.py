@@ -388,7 +388,15 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         ## Import
 
-        RegionTargetHttpsProxy can be imported using any of these accepted formats
+        RegionTargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionTargetHttpsProxy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}"
+
+         to = google_compute_region_target_https_proxy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionTargetHttpsProxy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}
@@ -452,7 +460,15 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         ## Import
 
-        RegionTargetHttpsProxy can be imported using any of these accepted formats
+        RegionTargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionTargetHttpsProxy using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}"
+
+         to = google_compute_region_target_https_proxy.default }
+
+        ```sh
+         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionTargetHttpsProxy can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}

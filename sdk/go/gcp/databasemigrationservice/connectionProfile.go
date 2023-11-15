@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A connection profile definition.
@@ -22,7 +21,7 @@ import (
 //   - [Database Migration](https://cloud.google.com/database-migration/docs/)
 //
 // > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
 // Read more about sensitive data in state.
 //
 // ## Example Usage
@@ -219,10 +218,58 @@ import (
 //	}
 //
 // ```
+// ### Database Migration Service Connection Profile Oracle
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databasemigrationservice.NewConnectionProfile(ctx, "oracleprofile", &databasemigrationservice.ConnectionProfileArgs{
+//				ConnectionProfileId: pulumi.String("my-profileid"),
+//				DisplayName:         pulumi.String("my-profileid_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Location: pulumi.String("us-central1"),
+//				Oracle: &databasemigrationservice.ConnectionProfileOracleArgs{
+//					DatabaseService:             pulumi.String("dbprovider"),
+//					Host:                        pulumi.String("host"),
+//					Password:                    pulumi.String("password"),
+//					Port:                        pulumi.Int(1521),
+//					StaticServiceIpConnectivity: nil,
+//					Username:                    pulumi.String("username"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # ConnectionProfile can be imported using any of these accepted formats
+// ConnectionProfile can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}` * `{{project}}/{{location}}/{{connection_profile_id}}` * `{{location}}/{{connection_profile_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectionProfile using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}"
+//
+//	to = google_database_migration_service_connection_profile.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectionProfile can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -277,6 +324,9 @@ type ConnectionProfile struct {
 	Mysql ConnectionProfileMysqlPtrOutput `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specifies connection parameters required specifically for Oracle databases.
+	// Structure is documented below.
+	Oracle ConnectionProfileOraclePtrOutput `pulumi:"oracle"`
 	// Specifies connection parameters required specifically for PostgreSQL databases.
 	// Structure is documented below.
 	Postgresql ConnectionProfilePostgresqlPtrOutput `pulumi:"postgresql"`
@@ -361,6 +411,9 @@ type connectionProfileState struct {
 	Mysql *ConnectionProfileMysql `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name *string `pulumi:"name"`
+	// Specifies connection parameters required specifically for Oracle databases.
+	// Structure is documented below.
+	Oracle *ConnectionProfileOracle `pulumi:"oracle"`
 	// Specifies connection parameters required specifically for PostgreSQL databases.
 	// Structure is documented below.
 	Postgresql *ConnectionProfilePostgresql `pulumi:"postgresql"`
@@ -408,6 +461,9 @@ type ConnectionProfileState struct {
 	Mysql ConnectionProfileMysqlPtrInput
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringPtrInput
+	// Specifies connection parameters required specifically for Oracle databases.
+	// Structure is documented below.
+	Oracle ConnectionProfileOraclePtrInput
 	// Specifies connection parameters required specifically for PostgreSQL databases.
 	// Structure is documented below.
 	Postgresql ConnectionProfilePostgresqlPtrInput
@@ -448,6 +504,9 @@ type connectionProfileArgs struct {
 	// Specifies connection parameters required specifically for MySQL databases.
 	// Structure is documented below.
 	Mysql *ConnectionProfileMysql `pulumi:"mysql"`
+	// Specifies connection parameters required specifically for Oracle databases.
+	// Structure is documented below.
+	Oracle *ConnectionProfileOracle `pulumi:"oracle"`
 	// Specifies connection parameters required specifically for PostgreSQL databases.
 	// Structure is documented below.
 	Postgresql *ConnectionProfilePostgresql `pulumi:"postgresql"`
@@ -480,6 +539,9 @@ type ConnectionProfileArgs struct {
 	// Specifies connection parameters required specifically for MySQL databases.
 	// Structure is documented below.
 	Mysql ConnectionProfileMysqlPtrInput
+	// Specifies connection parameters required specifically for Oracle databases.
+	// Structure is documented below.
+	Oracle ConnectionProfileOraclePtrInput
 	// Specifies connection parameters required specifically for PostgreSQL databases.
 	// Structure is documented below.
 	Postgresql ConnectionProfilePostgresqlPtrInput
@@ -511,12 +573,6 @@ func (i *ConnectionProfile) ToConnectionProfileOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOutput)
 }
 
-func (i *ConnectionProfile) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfile] {
-	return pulumix.Output[*ConnectionProfile]{
-		OutputState: i.ToConnectionProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionProfileArrayInput is an input type that accepts ConnectionProfileArray and ConnectionProfileArrayOutput values.
 // You can construct a concrete instance of `ConnectionProfileArrayInput` via:
 //
@@ -540,12 +596,6 @@ func (i ConnectionProfileArray) ToConnectionProfileArrayOutput() ConnectionProfi
 
 func (i ConnectionProfileArray) ToConnectionProfileArrayOutputWithContext(ctx context.Context) ConnectionProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileArrayOutput)
-}
-
-func (i ConnectionProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionProfile] {
-	return pulumix.Output[[]*ConnectionProfile]{
-		OutputState: i.ToConnectionProfileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectionProfileMapInput is an input type that accepts ConnectionProfileMap and ConnectionProfileMapOutput values.
@@ -573,12 +623,6 @@ func (i ConnectionProfileMap) ToConnectionProfileMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMapOutput)
 }
 
-func (i ConnectionProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionProfile] {
-	return pulumix.Output[map[string]*ConnectionProfile]{
-		OutputState: i.ToConnectionProfileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileOutput) ElementType() reflect.Type {
@@ -591,12 +635,6 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOu
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx context.Context) ConnectionProfileOutput {
 	return o
-}
-
-func (o ConnectionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfile] {
-	return pulumix.Output[*ConnectionProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
@@ -668,6 +706,12 @@ func (o ConnectionProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies connection parameters required specifically for Oracle databases.
+// Structure is documented below.
+func (o ConnectionProfileOutput) Oracle() ConnectionProfileOraclePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileOraclePtrOutput { return v.Oracle }).(ConnectionProfileOraclePtrOutput)
+}
+
 // Specifies connection parameters required specifically for PostgreSQL databases.
 // Structure is documented below.
 func (o ConnectionProfileOutput) Postgresql() ConnectionProfilePostgresqlPtrOutput {
@@ -705,12 +749,6 @@ func (o ConnectionProfileArrayOutput) ToConnectionProfileArrayOutputWithContext(
 	return o
 }
 
-func (o ConnectionProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionProfile] {
-	return pulumix.Output[[]*ConnectionProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionProfileArrayOutput) Index(i pulumi.IntInput) ConnectionProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionProfile {
 		return vs[0].([]*ConnectionProfile)[vs[1].(int)]
@@ -729,12 +767,6 @@ func (o ConnectionProfileMapOutput) ToConnectionProfileMapOutput() ConnectionPro
 
 func (o ConnectionProfileMapOutput) ToConnectionProfileMapOutputWithContext(ctx context.Context) ConnectionProfileMapOutput {
 	return o
-}
-
-func (o ConnectionProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionProfile] {
-	return pulumix.Output[map[string]*ConnectionProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMapOutput) MapIndex(k pulumi.StringInput) ConnectionProfileOutput {

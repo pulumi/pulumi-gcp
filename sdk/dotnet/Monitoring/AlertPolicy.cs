@@ -155,10 +155,55 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// ### Monitoring Alert Policy Promql Condition
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new()
+    ///     {
+    ///         AlertStrategy = new Gcp.Monitoring.Inputs.AlertPolicyAlertStrategyArgs
+    ///         {
+    ///             AutoClose = "1800s",
+    ///         },
+    ///         Combiner = "OR",
+    ///         Conditions = new[]
+    ///         {
+    ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+    ///             {
+    ///                 ConditionPrometheusQueryLanguage = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionPrometheusQueryLanguageArgs
+    ///                 {
+    ///                     AlertRule = "AlwaysOn",
+    ///                     Duration = "60s",
+    ///                     EvaluationInterval = "60s",
+    ///                     Query = "compute_googleapis_com:instance_cpu_usage_time &gt; 0",
+    ///                     RuleGroup = "a test",
+    ///                 },
+    ///                 DisplayName = "test condition",
+    ///             },
+    ///         },
+    ///         DisplayName = "My Alert Policy",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// AlertPolicy can be imported using any of these accepted formats:
+    /// AlertPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AlertPolicy using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{name}}"
+    /// 
+    ///  to = google_monitoring_alert_policy.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AlertPolicy can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

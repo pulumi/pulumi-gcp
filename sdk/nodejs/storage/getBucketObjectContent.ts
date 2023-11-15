@@ -85,6 +85,7 @@ export interface GetBucketObjectContentResult {
     readonly metadata: {[key: string]: string};
     readonly name: string;
     readonly outputName: string;
+    readonly retentions: outputs.storage.GetBucketObjectContentRetention[];
     readonly selfLink: string;
     readonly source: string;
     readonly storageClass: string;

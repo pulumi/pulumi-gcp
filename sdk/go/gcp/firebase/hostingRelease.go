@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -157,7 +156,17 @@ import (
 //
 // ## Import
 //
-// # Release can be imported using any of these accepted formats
+// Release can be imported using any of these accepted formats* `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}` * `sites/{{site_id}}/releases/{{release_id}}` * `{{site_id}}/{{channel_id}}/{{release_id}}` * `{{site_id}}/{{release_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Release using one of the formats above. For exampletf import {
+//
+//	id = "sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}"
+//
+//	to = google_firebase_hosting_release.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:firebase/hostingRelease:HostingRelease When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Release can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -382,12 +391,6 @@ func (i *HostingRelease) ToHostingReleaseOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HostingReleaseOutput)
 }
 
-func (i *HostingRelease) ToOutput(ctx context.Context) pulumix.Output[*HostingRelease] {
-	return pulumix.Output[*HostingRelease]{
-		OutputState: i.ToHostingReleaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostingReleaseArrayInput is an input type that accepts HostingReleaseArray and HostingReleaseArrayOutput values.
 // You can construct a concrete instance of `HostingReleaseArrayInput` via:
 //
@@ -411,12 +414,6 @@ func (i HostingReleaseArray) ToHostingReleaseArrayOutput() HostingReleaseArrayOu
 
 func (i HostingReleaseArray) ToHostingReleaseArrayOutputWithContext(ctx context.Context) HostingReleaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostingReleaseArrayOutput)
-}
-
-func (i HostingReleaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostingRelease] {
-	return pulumix.Output[[]*HostingRelease]{
-		OutputState: i.ToHostingReleaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostingReleaseMapInput is an input type that accepts HostingReleaseMap and HostingReleaseMapOutput values.
@@ -444,12 +441,6 @@ func (i HostingReleaseMap) ToHostingReleaseMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HostingReleaseMapOutput)
 }
 
-func (i HostingReleaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingRelease] {
-	return pulumix.Output[map[string]*HostingRelease]{
-		OutputState: i.ToHostingReleaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostingReleaseOutput struct{ *pulumi.OutputState }
 
 func (HostingReleaseOutput) ElementType() reflect.Type {
@@ -462,12 +453,6 @@ func (o HostingReleaseOutput) ToHostingReleaseOutput() HostingReleaseOutput {
 
 func (o HostingReleaseOutput) ToHostingReleaseOutputWithContext(ctx context.Context) HostingReleaseOutput {
 	return o
-}
-
-func (o HostingReleaseOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingRelease] {
-	return pulumix.Output[*HostingRelease]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the channel to which the release belongs. If not provided, the release will
@@ -532,12 +517,6 @@ func (o HostingReleaseArrayOutput) ToHostingReleaseArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o HostingReleaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostingRelease] {
-	return pulumix.Output[[]*HostingRelease]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostingReleaseArrayOutput) Index(i pulumi.IntInput) HostingReleaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostingRelease {
 		return vs[0].([]*HostingRelease)[vs[1].(int)]
@@ -556,12 +535,6 @@ func (o HostingReleaseMapOutput) ToHostingReleaseMapOutput() HostingReleaseMapOu
 
 func (o HostingReleaseMapOutput) ToHostingReleaseMapOutputWithContext(ctx context.Context) HostingReleaseMapOutput {
 	return o
-}
-
-func (o HostingReleaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingRelease] {
-	return pulumix.Output[map[string]*HostingRelease]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingReleaseMapOutput) MapIndex(k pulumi.StringInput) HostingReleaseOutput {

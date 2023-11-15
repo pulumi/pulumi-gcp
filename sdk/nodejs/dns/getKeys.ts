@@ -7,9 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+ * Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+ *
+ * For more information see the
  * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
  * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+ *
+ * > A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+ * to contain any DNSKEYs. Queries to managed zones without this setting
+ * enabled will result in a 404 error as the collection of DNSKEYs does
+ * not exist in the DNS API.
  *
  * ## Example Usage
  *
@@ -73,9 +80,16 @@ export interface GetKeysResult {
     readonly zoneSigningKeys: outputs.dns.GetKeysZoneSigningKey[];
 }
 /**
- * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+ * Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+ *
+ * For more information see the
  * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
  * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+ *
+ * > A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+ * to contain any DNSKEYs. Queries to managed zones without this setting
+ * enabled will result in a 404 error as the collection of DNSKEYs does
+ * not exist in the DNS API.
  *
  * ## Example Usage
  *

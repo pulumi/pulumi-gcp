@@ -131,10 +131,18 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// ## Import
     /// 
-    /// Dataflow jobs can be imported using the job `id` e.g.
+    /// Dataflow jobs can be imported using the job `id` e.g. * `{{id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import dataflow jobs using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "{{id}}"
+    /// 
+    ///  to = google_dataflow_job.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataflow/job:Job example 2022-07-31_06_25_42-11926927532632678660
+    ///  $ pulumi import gcp:dataflow/job:Job When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), dataflow jobs can be imported using one of the formats above. For example
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataflow/job:Job default {{id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataflow/job:Job")]

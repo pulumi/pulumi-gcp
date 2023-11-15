@@ -44,6 +44,7 @@ public final class NodePoolNodeConfig {
     private @Nullable Integer diskSizeGb;
     private @Nullable String diskType;
     private @Nullable List<NodePoolNodeConfigEffectiveTaint> effectiveTaints;
+    private @Nullable Boolean enableConfidentialStorage;
     private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
     private @Nullable NodePoolNodeConfigFastSocket fastSocket;
@@ -97,6 +98,9 @@ public final class NodePoolNodeConfig {
     }
     public List<NodePoolNodeConfigEffectiveTaint> effectiveTaints() {
         return this.effectiveTaints == null ? List.of() : this.effectiveTaints;
+    }
+    public Optional<Boolean> enableConfidentialStorage() {
+        return Optional.ofNullable(this.enableConfidentialStorage);
     }
     public Optional<NodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfig() {
         return Optional.ofNullable(this.ephemeralStorageConfig);
@@ -204,6 +208,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable List<NodePoolNodeConfigEffectiveTaint> effectiveTaints;
+        private @Nullable Boolean enableConfidentialStorage;
         private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable NodePoolNodeConfigFastSocket fastSocket;
@@ -243,6 +248,7 @@ public final class NodePoolNodeConfig {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.effectiveTaints = defaults.effectiveTaints;
+    	      this.enableConfidentialStorage = defaults.enableConfidentialStorage;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.fastSocket = defaults.fastSocket;
@@ -307,6 +313,11 @@ public final class NodePoolNodeConfig {
         }
         public Builder effectiveTaints(NodePoolNodeConfigEffectiveTaint... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
+        }
+        @CustomType.Setter
+        public Builder enableConfidentialStorage(@Nullable Boolean enableConfidentialStorage) {
+            this.enableConfidentialStorage = enableConfidentialStorage;
+            return this;
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
@@ -478,6 +489,7 @@ public final class NodePoolNodeConfig {
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.effectiveTaints = effectiveTaints;
+            o.enableConfidentialStorage = enableConfidentialStorage;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
             o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             o.fastSocket = fastSocket;

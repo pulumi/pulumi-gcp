@@ -159,7 +159,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// HaVpnGateway can be imported using any of these accepted formats
+    /// HaVpnGateway can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HaVpnGateway using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}"
+    /// 
+    ///  to = google_compute_ha_vpn_gateway.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HaVpnGateway can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}

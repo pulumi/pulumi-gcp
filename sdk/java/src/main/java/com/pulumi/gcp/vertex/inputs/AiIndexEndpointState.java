@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -152,6 +153,23 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateServiceConnectConfig")
+    private @Nullable Output<AiIndexEndpointPrivateServiceConnectConfigArgs> privateServiceConnectConfig;
+
+    /**
+     * @return Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiIndexEndpointPrivateServiceConnectConfigArgs>> privateServiceConnectConfig() {
+        return Optional.ofNullable(this.privateServiceConnectConfig);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -256,6 +274,7 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
         this.labels = $.labels;
         this.name = $.name;
         this.network = $.network;
+        this.privateServiceConnectConfig = $.privateServiceConnectConfig;
         this.project = $.project;
         this.publicEndpointDomainName = $.publicEndpointDomainName;
         this.publicEndpointEnabled = $.publicEndpointEnabled;
@@ -462,6 +481,29 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param privateServiceConnectConfig Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(@Nullable Output<AiIndexEndpointPrivateServiceConnectConfigArgs> privateServiceConnectConfig) {
+            $.privateServiceConnectConfig = privateServiceConnectConfig;
+            return this;
+        }
+
+        /**
+         * @param privateServiceConnectConfig Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(AiIndexEndpointPrivateServiceConnectConfigArgs privateServiceConnectConfig) {
+            return privateServiceConnectConfig(Output.of(privateServiceConnectConfig));
         }
 
         /**

@@ -113,7 +113,15 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// ## Import
     /// 
-    /// WorkerPool can be imported using any of these accepted formats
+    /// WorkerPool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workerPools/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkerPool using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/locations/{{location}}/workerPools/{{name}}"
+    /// 
+    ///  to = google_cloudbuild_worker_pool.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudbuild/workerPool:WorkerPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkerPool can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}

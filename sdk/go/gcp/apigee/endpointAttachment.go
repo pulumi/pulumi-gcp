@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Apigee Endpoint Attachment.
@@ -93,7 +92,17 @@ import (
 //
 // ## Import
 //
-// # EndpointAttachment can be imported using any of these accepted formats
+// EndpointAttachment can be imported using any of these accepted formats* `{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}` * `{{org_id}}/{{endpoint_attachment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EndpointAttachment using one of the formats above. For exampletf import {
+//
+//	id = "{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}"
+//
+//	to = google_apigee_endpoint_attachment.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EndpointAttachment can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -268,12 +277,6 @@ func (i *EndpointAttachment) ToEndpointAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAttachmentOutput)
 }
 
-func (i *EndpointAttachment) ToOutput(ctx context.Context) pulumix.Output[*EndpointAttachment] {
-	return pulumix.Output[*EndpointAttachment]{
-		OutputState: i.ToEndpointAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointAttachmentArrayInput is an input type that accepts EndpointAttachmentArray and EndpointAttachmentArrayOutput values.
 // You can construct a concrete instance of `EndpointAttachmentArrayInput` via:
 //
@@ -297,12 +300,6 @@ func (i EndpointAttachmentArray) ToEndpointAttachmentArrayOutput() EndpointAttac
 
 func (i EndpointAttachmentArray) ToEndpointAttachmentArrayOutputWithContext(ctx context.Context) EndpointAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAttachmentArrayOutput)
-}
-
-func (i EndpointAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointAttachment] {
-	return pulumix.Output[[]*EndpointAttachment]{
-		OutputState: i.ToEndpointAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EndpointAttachmentMapInput is an input type that accepts EndpointAttachmentMap and EndpointAttachmentMapOutput values.
@@ -330,12 +327,6 @@ func (i EndpointAttachmentMap) ToEndpointAttachmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAttachmentMapOutput)
 }
 
-func (i EndpointAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointAttachment] {
-	return pulumix.Output[map[string]*EndpointAttachment]{
-		OutputState: i.ToEndpointAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EndpointAttachmentOutput) ElementType() reflect.Type {
@@ -348,12 +339,6 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutput() EndpointAttachmen
 
 func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx context.Context) EndpointAttachmentOutput {
 	return o
-}
-
-func (o EndpointAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointAttachment] {
-	return pulumix.Output[*EndpointAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // State of the endpoint attachment connection to the service attachment.
@@ -409,12 +394,6 @@ func (o EndpointAttachmentArrayOutput) ToEndpointAttachmentArrayOutputWithContex
 	return o
 }
 
-func (o EndpointAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointAttachment] {
-	return pulumix.Output[[]*EndpointAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointAttachmentArrayOutput) Index(i pulumi.IntInput) EndpointAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointAttachment {
 		return vs[0].([]*EndpointAttachment)[vs[1].(int)]
@@ -433,12 +412,6 @@ func (o EndpointAttachmentMapOutput) ToEndpointAttachmentMapOutput() EndpointAtt
 
 func (o EndpointAttachmentMapOutput) ToEndpointAttachmentMapOutputWithContext(ctx context.Context) EndpointAttachmentMapOutput {
 	return o
-}
-
-func (o EndpointAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointAttachment] {
-	return pulumix.Output[map[string]*EndpointAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointAttachmentMapOutput) MapIndex(k pulumi.StringInput) EndpointAttachmentOutput {

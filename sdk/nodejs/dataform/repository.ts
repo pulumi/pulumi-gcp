@@ -46,10 +46,60 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Dataform Repository Ssh
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gitRepository = new gcp.sourcerepo.Repository("gitRepository", {}, {
+ *     provider: google_beta,
+ * });
+ * const secret = new gcp.secretmanager.Secret("secret", {
+ *     secretId: "secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secretVersion = new gcp.secretmanager.SecretVersion("secretVersion", {
+ *     secret: secret.id,
+ *     secretData: "secret-data",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const dataformRespository = new gcp.dataform.Repository("dataformRespository", {
+ *     gitRemoteSettings: {
+ *         url: gitRepository.url,
+ *         defaultBranch: "main",
+ *         sshAuthenticationConfig: {
+ *             userPrivateKeySecretVersion: secretVersion.id,
+ *             hostPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
+ *         },
+ *     },
+ *     workspaceCompilationOverrides: {
+ *         defaultDatabase: "database",
+ *         schemaSuffix: "_suffix",
+ *         tablePrefix: "prefix_",
+ *     },
+ *     serviceAccount: "1234567890-compute@developer.gserviceaccount.com",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
- * Repository can be imported using any of these accepted formats
+ * Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
+ *
+ *  id = "projects/{{project}}/locations/{{region}}/repositories/{{name}}"
+ *
+ *  to = google_dataform_repository.default }
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataform/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
@@ -117,7 +167,11 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * The service account to run workflow invocations under.
+     */
+    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    /**
+     * If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      */
     public readonly workspaceCompilationOverrides!: pulumi.Output<outputs.dataform.RepositoryWorkspaceCompilationOverrides | undefined>;
@@ -139,6 +193,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["workspaceCompilationOverrides"] = state ? state.workspaceCompilationOverrides : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
@@ -146,6 +201,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["workspaceCompilationOverrides"] = args ? args.workspaceCompilationOverrides : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -179,7 +235,11 @@ export interface RepositoryState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * The service account to run workflow invocations under.
+     */
+    serviceAccount?: pulumi.Input<string>;
+    /**
+     * If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      */
     workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides>;
@@ -211,7 +271,11 @@ export interface RepositoryArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * The service account to run workflow invocations under.
+     */
+    serviceAccount?: pulumi.Input<string>;
+    /**
+     * If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      */
     workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides>;

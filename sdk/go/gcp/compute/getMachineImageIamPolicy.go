@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupMachineImageIamPolicy(ctx *pulumi.Context, args *LookupMachineImageIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMachineImageIamPolicyResult, error) {
@@ -83,12 +82,6 @@ func (o LookupMachineImageIamPolicyResultOutput) ToLookupMachineImageIamPolicyRe
 
 func (o LookupMachineImageIamPolicyResultOutput) ToLookupMachineImageIamPolicyResultOutputWithContext(ctx context.Context) LookupMachineImageIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupMachineImageIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachineImageIamPolicyResult] {
-	return pulumix.Output[LookupMachineImageIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

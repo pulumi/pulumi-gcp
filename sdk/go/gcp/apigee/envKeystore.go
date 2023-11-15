@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An `Environment KeyStore` in Apigee.
@@ -23,7 +22,17 @@ import (
 //
 // ## Import
 //
-// # EnvKeystore can be imported using any of these accepted formats
+// EnvKeystore can be imported using any of these accepted formats* `{{env_id}}/keystores/{{name}}` * `{{env_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EnvKeystore using one of the formats above. For exampletf import {
+//
+//	id = "{{env_id}}/keystores/{{name}}"
+//
+//	to = google_apigee_env_keystore.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/envKeystore:EnvKeystore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EnvKeystore can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -154,12 +163,6 @@ func (i *EnvKeystore) ToEnvKeystoreOutputWithContext(ctx context.Context) EnvKey
 	return pulumi.ToOutputWithContext(ctx, i).(EnvKeystoreOutput)
 }
 
-func (i *EnvKeystore) ToOutput(ctx context.Context) pulumix.Output[*EnvKeystore] {
-	return pulumix.Output[*EnvKeystore]{
-		OutputState: i.ToEnvKeystoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvKeystoreArrayInput is an input type that accepts EnvKeystoreArray and EnvKeystoreArrayOutput values.
 // You can construct a concrete instance of `EnvKeystoreArrayInput` via:
 //
@@ -183,12 +186,6 @@ func (i EnvKeystoreArray) ToEnvKeystoreArrayOutput() EnvKeystoreArrayOutput {
 
 func (i EnvKeystoreArray) ToEnvKeystoreArrayOutputWithContext(ctx context.Context) EnvKeystoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvKeystoreArrayOutput)
-}
-
-func (i EnvKeystoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvKeystore] {
-	return pulumix.Output[[]*EnvKeystore]{
-		OutputState: i.ToEnvKeystoreArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnvKeystoreMapInput is an input type that accepts EnvKeystoreMap and EnvKeystoreMapOutput values.
@@ -216,12 +213,6 @@ func (i EnvKeystoreMap) ToEnvKeystoreMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EnvKeystoreMapOutput)
 }
 
-func (i EnvKeystoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvKeystore] {
-	return pulumix.Output[map[string]*EnvKeystore]{
-		OutputState: i.ToEnvKeystoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnvKeystoreOutput struct{ *pulumi.OutputState }
 
 func (EnvKeystoreOutput) ElementType() reflect.Type {
@@ -234,12 +225,6 @@ func (o EnvKeystoreOutput) ToEnvKeystoreOutput() EnvKeystoreOutput {
 
 func (o EnvKeystoreOutput) ToEnvKeystoreOutputWithContext(ctx context.Context) EnvKeystoreOutput {
 	return o
-}
-
-func (o EnvKeystoreOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvKeystore] {
-	return pulumix.Output[*EnvKeystore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Aliases in this keystore.
@@ -274,12 +259,6 @@ func (o EnvKeystoreArrayOutput) ToEnvKeystoreArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o EnvKeystoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvKeystore] {
-	return pulumix.Output[[]*EnvKeystore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnvKeystoreArrayOutput) Index(i pulumi.IntInput) EnvKeystoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvKeystore {
 		return vs[0].([]*EnvKeystore)[vs[1].(int)]
@@ -298,12 +277,6 @@ func (o EnvKeystoreMapOutput) ToEnvKeystoreMapOutput() EnvKeystoreMapOutput {
 
 func (o EnvKeystoreMapOutput) ToEnvKeystoreMapOutputWithContext(ctx context.Context) EnvKeystoreMapOutput {
 	return o
-}
-
-func (o EnvKeystoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvKeystore] {
-	return pulumix.Output[map[string]*EnvKeystore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvKeystoreMapOutput) MapIndex(k pulumi.StringInput) EnvKeystoreOutput {

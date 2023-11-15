@@ -27,7 +27,8 @@ class UptimeCheckConfigArgs:
                  resource_group: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
-                 tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None):
+                 tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a UptimeCheckConfig resource.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
@@ -53,6 +54,7 @@ class UptimeCheckConfigArgs:
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigTcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "timeout", timeout)
@@ -76,6 +78,8 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "synthetic_monitor", synthetic_monitor)
         if tcp_check is not None:
             pulumi.set(__self__, "tcp_check", tcp_check)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="displayName")
@@ -232,6 +236,18 @@ class UptimeCheckConfigArgs:
     def tcp_check(self, value: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']]):
         pulumi.set(self, "tcp_check", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 @pulumi.input_type
 class _UptimeCheckConfigState:
@@ -249,7 +265,8 @@ class _UptimeCheckConfigState:
                  synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
                  tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 uptime_check_id: Optional[pulumi.Input[str]] = None):
+                 uptime_check_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering UptimeCheckConfig resources.
         :param pulumi.Input[str] checker_type: The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
@@ -277,6 +294,7 @@ class _UptimeCheckConfigState:
                
                - - -
         :param pulumi.Input[str] uptime_check_id: The id of the uptime check
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         if checker_type is not None:
             pulumi.set(__self__, "checker_type", checker_type)
@@ -306,6 +324,8 @@ class _UptimeCheckConfigState:
             pulumi.set(__self__, "timeout", timeout)
         if uptime_check_id is not None:
             pulumi.set(__self__, "uptime_check_id", uptime_check_id)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="checkerType")
@@ -486,6 +506,18 @@ class _UptimeCheckConfigState:
     def uptime_check_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uptime_check_id", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 class UptimeCheckConfig(pulumi.CustomResource):
     @overload
@@ -504,6 +536,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  synthetic_monitor: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigSyntheticMonitorArgs']]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         This message configures which resources and services to monitor for availability.
@@ -537,8 +570,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
             display_name="http-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
                 body="Zm9vJTI1M0RiYXI=",
-                content_type="URL_ENCODED",
+                content_type="USER_PROVIDED",
+                custom_content_type="application/json",
                 path="some-path",
+                ping_config=gcp.monitoring.UptimeCheckConfigHttpCheckPingConfigArgs(
+                    pings_count=1,
+                ),
                 port=8010,
                 request_method="POST",
             ),
@@ -549,7 +586,10 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 },
                 type="uptime_url",
             ),
-            timeout="60s")
+            timeout="60s",
+            user_labels={
+                "example-key": "example-value",
+            })
         ```
         ### Uptime Check Config Status Code
 
@@ -640,6 +680,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             timeout="60s",
             tcp_check=gcp.monitoring.UptimeCheckConfigTcpCheckArgs(
                 port=888,
+                ping_config=gcp.monitoring.UptimeCheckConfigTcpCheckPingConfigArgs(
+                    pings_count=2,
+                ),
             ),
             resource_group=gcp.monitoring.UptimeCheckConfigResourceGroupArgs(
                 resource_type="INSTANCE",
@@ -688,7 +731,15 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         ## Import
 
-        UptimeCheckConfig can be imported using any of these accepted formats:
+        UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_monitoring_uptime_check_config.default }
+
+        ```sh
+         $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -719,6 +770,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         ...
     @overload
@@ -758,8 +810,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
             display_name="http-uptime-check",
             http_check=gcp.monitoring.UptimeCheckConfigHttpCheckArgs(
                 body="Zm9vJTI1M0RiYXI=",
-                content_type="URL_ENCODED",
+                content_type="USER_PROVIDED",
+                custom_content_type="application/json",
                 path="some-path",
+                ping_config=gcp.monitoring.UptimeCheckConfigHttpCheckPingConfigArgs(
+                    pings_count=1,
+                ),
                 port=8010,
                 request_method="POST",
             ),
@@ -770,7 +826,10 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 },
                 type="uptime_url",
             ),
-            timeout="60s")
+            timeout="60s",
+            user_labels={
+                "example-key": "example-value",
+            })
         ```
         ### Uptime Check Config Status Code
 
@@ -861,6 +920,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             timeout="60s",
             tcp_check=gcp.monitoring.UptimeCheckConfigTcpCheckArgs(
                 port=888,
+                ping_config=gcp.monitoring.UptimeCheckConfigTcpCheckPingConfigArgs(
+                    pings_count=2,
+                ),
             ),
             resource_group=gcp.monitoring.UptimeCheckConfigResourceGroupArgs(
                 resource_type="INSTANCE",
@@ -909,7 +971,15 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         ## Import
 
-        UptimeCheckConfig can be imported using any of these accepted formats:
+        UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
+
+         id = "{{name}}"
+
+         to = google_monitoring_uptime_check_config.default }
+
+        ```sh
+         $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -942,6 +1012,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  synthetic_monitor: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigSyntheticMonitorArgs']]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -967,6 +1038,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")
             __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["name"] = None
             __props__.__dict__["uptime_check_id"] = None
         super(UptimeCheckConfig, __self__).__init__(
@@ -992,7 +1064,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             synthetic_monitor: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigSyntheticMonitorArgs']]] = None,
             tcp_check: Optional[pulumi.Input[pulumi.InputType['UptimeCheckConfigTcpCheckArgs']]] = None,
             timeout: Optional[pulumi.Input[str]] = None,
-            uptime_check_id: Optional[pulumi.Input[str]] = None) -> 'UptimeCheckConfig':
+            uptime_check_id: Optional[pulumi.Input[str]] = None,
+            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'UptimeCheckConfig':
         """
         Get an existing UptimeCheckConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1025,6 +1098,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] uptime_check_id: The id of the uptime check
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1044,6 +1118,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__.__dict__["tcp_check"] = tcp_check
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["uptime_check_id"] = uptime_check_id
+        __props__.__dict__["user_labels"] = user_labels
         return UptimeCheckConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1168,4 +1243,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
         The id of the uptime check
         """
         return pulumi.get(self, "uptime_check_id")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
 

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointState;
+import com.pulumi.gcp.vertex.outputs.AiIndexEndpointPrivateServiceConnectConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -85,6 +86,47 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Vertex Ai Index Endpoint With Psc
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.vertex.AiIndexEndpoint;
+ * import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
+ *             .displayName(&#34;sample-endpoint&#34;)
+ *             .description(&#34;A sample vertex endpoint&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .privateServiceConnectConfig(AiIndexEndpointPrivateServiceConnectConfigArgs.builder()
+ *                 .enablePrivateServiceConnect(true)
+ *                 .projectAllowlists(project.applyValue(getProjectResult -&gt; getProjectResult.number()))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Vertex Ai Index Endpoint With Public Endpoint
  * ```java
  * package generated_program;
@@ -121,7 +163,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IndexEndpoint can be imported using any of these accepted formats
+ * IndexEndpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import IndexEndpoint using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}&#34;
+ * 
+ *  to = google_vertex_ai_index_endpoint.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), IndexEndpoint can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
@@ -267,6 +317,22 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
+    }
+    /**
+     * Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="privateServiceConnectConfig", refs={AiIndexEndpointPrivateServiceConnectConfig.class}, tree="[0]")
+    private Output<AiIndexEndpointPrivateServiceConnectConfig> privateServiceConnectConfig;
+
+    /**
+     * @return Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     * 
+     */
+    public Output<AiIndexEndpointPrivateServiceConnectConfig> privateServiceConnectConfig() {
+        return this.privateServiceConnectConfig;
     }
     /**
      * The ID of the project in which the resource belongs.

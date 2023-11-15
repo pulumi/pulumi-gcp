@@ -362,10 +362,18 @@ class NetworkPeering(pulumi.CustomResource):
 
         ## Import
 
-        VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
+        VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering * `{{project_id}}/{{network_id}}/{{peering_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VPC network peerings using one of the formats above. For exampletf import {
+
+         id = "{{project_id}}/{{network_id}}/{{peering_id}}"
+
+         to = google_compute_network_peering.default }
 
         ```sh
-         $ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
+         $ pulumi import gcp:compute/networkPeering:NetworkPeering When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VPC network peerings can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -415,10 +423,18 @@ class NetworkPeering(pulumi.CustomResource):
 
         ## Import
 
-        VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
+        VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering * `{{project_id}}/{{network_id}}/{{peering_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VPC network peerings using one of the formats above. For exampletf import {
+
+         id = "{{project_id}}/{{network_id}}/{{peering_id}}"
+
+         to = google_compute_network_peering.default }
 
         ```sh
-         $ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
+         $ pulumi import gcp:compute/networkPeering:NetworkPeering When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VPC network peerings can be imported using one of the formats above. For example
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}
         ```
 
         :param str resource_name: The name of the resource.

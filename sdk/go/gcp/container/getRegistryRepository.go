@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
@@ -106,12 +105,6 @@ func (o GetRegistryRepositoryResultOutput) ToGetRegistryRepositoryResultOutput()
 
 func (o GetRegistryRepositoryResultOutput) ToGetRegistryRepositoryResultOutputWithContext(ctx context.Context) GetRegistryRepositoryResultOutput {
 	return o
-}
-
-func (o GetRegistryRepositoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryRepositoryResult] {
-	return pulumix.Output[GetRegistryRepositoryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

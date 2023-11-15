@@ -34,6 +34,9 @@ __all__ = [
     'ClusterClusterConfigMetastoreConfigArgs',
     'ClusterClusterConfigPreemptibleWorkerConfigArgs',
     'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigSecurityConfigArgs',
     'ClusterClusterConfigSecurityConfigKerberosConfigArgs',
     'ClusterClusterConfigSoftwareConfigArgs',
@@ -1780,11 +1783,13 @@ class ClusterClusterConfigMetastoreConfigArgs:
 class ClusterClusterConfigPreemptibleWorkerConfigArgs:
     def __init__(__self__, *,
                  disk_config: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs']] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
                  preemptibility: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs'] disk_config: Disk Config
+        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
         :param pulumi.Input[int] num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         :param pulumi.Input[str] preemptibility: Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
@@ -1795,6 +1800,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
         """
         if disk_config is not None:
             pulumi.set(__self__, "disk_config", disk_config)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if num_instances is not None:
@@ -1813,6 +1820,18 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
     @disk_config.setter
     def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']]):
         pulumi.set(self, "disk_config", value)
+
+    @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs']]:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
 
     @property
     @pulumi.getter(name="instanceNames")
@@ -1918,6 +1937,119 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs:
     @num_local_ssds.setter
     def num_local_ssds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_local_ssds", value)
+
+
+@pulumi.input_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
+    def __init__(__self__, *,
+                 instance_selection_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]] = None,
+                 instance_selection_results: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
+        """
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]:
+        """
+        List of instance selection options that the group will use when creating new VMs.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @instance_selection_lists.setter
+    def instance_selection_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]):
+        pulumi.set(self, "instance_selection_lists", value)
+
+    @property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]:
+        return pulumi.get(self, "instance_selection_results")
+
+    @instance_selection_results.setter
+    def instance_selection_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]):
+        pulumi.set(self, "instance_selection_results", value)
+
+
+@pulumi.input_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
+    def __init__(__self__, *,
+                 machine_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rank: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
+        :param pulumi.Input[int] rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+               
+               - - -
+        """
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Full machine-type names, e.g. `"n1-standard-16"`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @property
+    @pulumi.getter
+    def rank(self) -> Optional[pulumi.Input[int]]:
+        """
+        Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+
+        - - -
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rank", value)
+
+
+@pulumi.input_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs:
+    def __init__(__self__, *,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 vm_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] machine_type: The name of a Compute Engine machine type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of a Compute Engine machine type.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "vm_count")
+
+    @vm_count.setter
+    def vm_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vm_count", value)
 
 
 @pulumi.input_type
@@ -2323,6 +2455,7 @@ class ClusterClusterConfigWorkerConfigArgs:
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
+                 min_num_instances: Optional[pulumi.Input[int]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
@@ -2336,6 +2469,7 @@ class ClusterClusterConfigWorkerConfigArgs:
                for the master. If not specified, GCP will default to a predetermined computed value
                for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
                for details about which CPU families are available (and defaulted) for each zone.
+        :param pulumi.Input[int] min_num_instances: The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
         :param pulumi.Input[int] num_instances: Specifies the number of worker nodes to create.
                If not specified, GCP will default to a predetermined computed value (currently 2).
                There is currently a beta feature which allows you to run a
@@ -2356,6 +2490,8 @@ class ClusterClusterConfigWorkerConfigArgs:
             pulumi.set(__self__, "machine_type", machine_type)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+        if min_num_instances is not None:
+            pulumi.set(__self__, "min_num_instances", min_num_instances)
         if num_instances is not None:
             pulumi.set(__self__, "num_instances", num_instances)
 
@@ -2433,6 +2569,18 @@ class ClusterClusterConfigWorkerConfigArgs:
     @min_cpu_platform.setter
     def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_cpu_platform", value)
+
+    @property
+    @pulumi.getter(name="minNumInstances")
+    def min_num_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+        """
+        return pulumi.get(self, "min_num_instances")
+
+    @min_num_instances.setter
+    def min_num_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_num_instances", value)
 
     @property
     @pulumi.getter(name="numInstances")

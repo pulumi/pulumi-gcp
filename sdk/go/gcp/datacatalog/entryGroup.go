@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
@@ -77,7 +76,17 @@ import (
 //
 // ## Import
 //
-// EntryGroup can be imported using any of these accepted formats:
+// EntryGroup can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EntryGroup using one of the formats above. For exampletf import {
+//
+//	id = "{{name}}"
+//
+//	to = google_data_catalog_entry_group.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:datacatalog/entryGroup:EntryGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EntryGroup can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -237,12 +246,6 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupOutput)
 }
 
-func (i *EntryGroup) ToOutput(ctx context.Context) pulumix.Output[*EntryGroup] {
-	return pulumix.Output[*EntryGroup]{
-		OutputState: i.ToEntryGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EntryGroupArrayInput is an input type that accepts EntryGroupArray and EntryGroupArrayOutput values.
 // You can construct a concrete instance of `EntryGroupArrayInput` via:
 //
@@ -266,12 +269,6 @@ func (i EntryGroupArray) ToEntryGroupArrayOutput() EntryGroupArrayOutput {
 
 func (i EntryGroupArray) ToEntryGroupArrayOutputWithContext(ctx context.Context) EntryGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupArrayOutput)
-}
-
-func (i EntryGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroup] {
-	return pulumix.Output[[]*EntryGroup]{
-		OutputState: i.ToEntryGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EntryGroupMapInput is an input type that accepts EntryGroupMap and EntryGroupMapOutput values.
@@ -299,12 +296,6 @@ func (i EntryGroupMap) ToEntryGroupMapOutputWithContext(ctx context.Context) Ent
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupMapOutput)
 }
 
-func (i EntryGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroup] {
-	return pulumix.Output[map[string]*EntryGroup]{
-		OutputState: i.ToEntryGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntryGroupOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupOutput) ElementType() reflect.Type {
@@ -317,12 +308,6 @@ func (o EntryGroupOutput) ToEntryGroupOutput() EntryGroupOutput {
 
 func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput {
 	return o
-}
-
-func (o EntryGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroup] {
-	return pulumix.Output[*EntryGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
@@ -373,12 +358,6 @@ func (o EntryGroupArrayOutput) ToEntryGroupArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EntryGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroup] {
-	return pulumix.Output[[]*EntryGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntryGroupArrayOutput) Index(i pulumi.IntInput) EntryGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EntryGroup {
 		return vs[0].([]*EntryGroup)[vs[1].(int)]
@@ -397,12 +376,6 @@ func (o EntryGroupMapOutput) ToEntryGroupMapOutput() EntryGroupMapOutput {
 
 func (o EntryGroupMapOutput) ToEntryGroupMapOutputWithContext(ctx context.Context) EntryGroupMapOutput {
 	return o
-}
-
-func (o EntryGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroup] {
-	return pulumix.Output[map[string]*EntryGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntryGroupMapOutput) MapIndex(k pulumi.StringInput) EntryGroupOutput {

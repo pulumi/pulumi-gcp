@@ -9,10 +9,268 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type BackupScheduleDailyRecurrence struct {
+}
+
+// BackupScheduleDailyRecurrenceInput is an input type that accepts BackupScheduleDailyRecurrenceArgs and BackupScheduleDailyRecurrenceOutput values.
+// You can construct a concrete instance of `BackupScheduleDailyRecurrenceInput` via:
+//
+//	BackupScheduleDailyRecurrenceArgs{...}
+type BackupScheduleDailyRecurrenceInput interface {
+	pulumi.Input
+
+	ToBackupScheduleDailyRecurrenceOutput() BackupScheduleDailyRecurrenceOutput
+	ToBackupScheduleDailyRecurrenceOutputWithContext(context.Context) BackupScheduleDailyRecurrenceOutput
+}
+
+type BackupScheduleDailyRecurrenceArgs struct {
+}
+
+func (BackupScheduleDailyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleDailyRecurrence)(nil)).Elem()
+}
+
+func (i BackupScheduleDailyRecurrenceArgs) ToBackupScheduleDailyRecurrenceOutput() BackupScheduleDailyRecurrenceOutput {
+	return i.ToBackupScheduleDailyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleDailyRecurrenceArgs) ToBackupScheduleDailyRecurrenceOutputWithContext(ctx context.Context) BackupScheduleDailyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleDailyRecurrenceOutput)
+}
+
+func (i BackupScheduleDailyRecurrenceArgs) ToBackupScheduleDailyRecurrencePtrOutput() BackupScheduleDailyRecurrencePtrOutput {
+	return i.ToBackupScheduleDailyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleDailyRecurrenceArgs) ToBackupScheduleDailyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleDailyRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleDailyRecurrenceOutput).ToBackupScheduleDailyRecurrencePtrOutputWithContext(ctx)
+}
+
+// BackupScheduleDailyRecurrencePtrInput is an input type that accepts BackupScheduleDailyRecurrenceArgs, BackupScheduleDailyRecurrencePtr and BackupScheduleDailyRecurrencePtrOutput values.
+// You can construct a concrete instance of `BackupScheduleDailyRecurrencePtrInput` via:
+//
+//	        BackupScheduleDailyRecurrenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleDailyRecurrencePtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleDailyRecurrencePtrOutput() BackupScheduleDailyRecurrencePtrOutput
+	ToBackupScheduleDailyRecurrencePtrOutputWithContext(context.Context) BackupScheduleDailyRecurrencePtrOutput
+}
+
+type backupScheduleDailyRecurrencePtrType BackupScheduleDailyRecurrenceArgs
+
+func BackupScheduleDailyRecurrencePtr(v *BackupScheduleDailyRecurrenceArgs) BackupScheduleDailyRecurrencePtrInput {
+	return (*backupScheduleDailyRecurrencePtrType)(v)
+}
+
+func (*backupScheduleDailyRecurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleDailyRecurrence)(nil)).Elem()
+}
+
+func (i *backupScheduleDailyRecurrencePtrType) ToBackupScheduleDailyRecurrencePtrOutput() BackupScheduleDailyRecurrencePtrOutput {
+	return i.ToBackupScheduleDailyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleDailyRecurrencePtrType) ToBackupScheduleDailyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleDailyRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleDailyRecurrencePtrOutput)
+}
+
+type BackupScheduleDailyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleDailyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleDailyRecurrence)(nil)).Elem()
+}
+
+func (o BackupScheduleDailyRecurrenceOutput) ToBackupScheduleDailyRecurrenceOutput() BackupScheduleDailyRecurrenceOutput {
+	return o
+}
+
+func (o BackupScheduleDailyRecurrenceOutput) ToBackupScheduleDailyRecurrenceOutputWithContext(ctx context.Context) BackupScheduleDailyRecurrenceOutput {
+	return o
+}
+
+func (o BackupScheduleDailyRecurrenceOutput) ToBackupScheduleDailyRecurrencePtrOutput() BackupScheduleDailyRecurrencePtrOutput {
+	return o.ToBackupScheduleDailyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleDailyRecurrenceOutput) ToBackupScheduleDailyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleDailyRecurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleDailyRecurrence) *BackupScheduleDailyRecurrence {
+		return &v
+	}).(BackupScheduleDailyRecurrencePtrOutput)
+}
+
+type BackupScheduleDailyRecurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleDailyRecurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleDailyRecurrence)(nil)).Elem()
+}
+
+func (o BackupScheduleDailyRecurrencePtrOutput) ToBackupScheduleDailyRecurrencePtrOutput() BackupScheduleDailyRecurrencePtrOutput {
+	return o
+}
+
+func (o BackupScheduleDailyRecurrencePtrOutput) ToBackupScheduleDailyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleDailyRecurrencePtrOutput {
+	return o
+}
+
+func (o BackupScheduleDailyRecurrencePtrOutput) Elem() BackupScheduleDailyRecurrenceOutput {
+	return o.ApplyT(func(v *BackupScheduleDailyRecurrence) BackupScheduleDailyRecurrence {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleDailyRecurrence
+		return ret
+	}).(BackupScheduleDailyRecurrenceOutput)
+}
+
+type BackupScheduleWeeklyRecurrence struct {
+	// The day of week to run.
+	// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	Day *string `pulumi:"day"`
+}
+
+// BackupScheduleWeeklyRecurrenceInput is an input type that accepts BackupScheduleWeeklyRecurrenceArgs and BackupScheduleWeeklyRecurrenceOutput values.
+// You can construct a concrete instance of `BackupScheduleWeeklyRecurrenceInput` via:
+//
+//	BackupScheduleWeeklyRecurrenceArgs{...}
+type BackupScheduleWeeklyRecurrenceInput interface {
+	pulumi.Input
+
+	ToBackupScheduleWeeklyRecurrenceOutput() BackupScheduleWeeklyRecurrenceOutput
+	ToBackupScheduleWeeklyRecurrenceOutputWithContext(context.Context) BackupScheduleWeeklyRecurrenceOutput
+}
+
+type BackupScheduleWeeklyRecurrenceArgs struct {
+	// The day of week to run.
+	// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	Day pulumi.StringPtrInput `pulumi:"day"`
+}
+
+func (BackupScheduleWeeklyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleWeeklyRecurrence)(nil)).Elem()
+}
+
+func (i BackupScheduleWeeklyRecurrenceArgs) ToBackupScheduleWeeklyRecurrenceOutput() BackupScheduleWeeklyRecurrenceOutput {
+	return i.ToBackupScheduleWeeklyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleWeeklyRecurrenceArgs) ToBackupScheduleWeeklyRecurrenceOutputWithContext(ctx context.Context) BackupScheduleWeeklyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleWeeklyRecurrenceOutput)
+}
+
+func (i BackupScheduleWeeklyRecurrenceArgs) ToBackupScheduleWeeklyRecurrencePtrOutput() BackupScheduleWeeklyRecurrencePtrOutput {
+	return i.ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleWeeklyRecurrenceArgs) ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleWeeklyRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleWeeklyRecurrenceOutput).ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(ctx)
+}
+
+// BackupScheduleWeeklyRecurrencePtrInput is an input type that accepts BackupScheduleWeeklyRecurrenceArgs, BackupScheduleWeeklyRecurrencePtr and BackupScheduleWeeklyRecurrencePtrOutput values.
+// You can construct a concrete instance of `BackupScheduleWeeklyRecurrencePtrInput` via:
+//
+//	        BackupScheduleWeeklyRecurrenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleWeeklyRecurrencePtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleWeeklyRecurrencePtrOutput() BackupScheduleWeeklyRecurrencePtrOutput
+	ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(context.Context) BackupScheduleWeeklyRecurrencePtrOutput
+}
+
+type backupScheduleWeeklyRecurrencePtrType BackupScheduleWeeklyRecurrenceArgs
+
+func BackupScheduleWeeklyRecurrencePtr(v *BackupScheduleWeeklyRecurrenceArgs) BackupScheduleWeeklyRecurrencePtrInput {
+	return (*backupScheduleWeeklyRecurrencePtrType)(v)
+}
+
+func (*backupScheduleWeeklyRecurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleWeeklyRecurrence)(nil)).Elem()
+}
+
+func (i *backupScheduleWeeklyRecurrencePtrType) ToBackupScheduleWeeklyRecurrencePtrOutput() BackupScheduleWeeklyRecurrencePtrOutput {
+	return i.ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleWeeklyRecurrencePtrType) ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleWeeklyRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleWeeklyRecurrencePtrOutput)
+}
+
+type BackupScheduleWeeklyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleWeeklyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleWeeklyRecurrence)(nil)).Elem()
+}
+
+func (o BackupScheduleWeeklyRecurrenceOutput) ToBackupScheduleWeeklyRecurrenceOutput() BackupScheduleWeeklyRecurrenceOutput {
+	return o
+}
+
+func (o BackupScheduleWeeklyRecurrenceOutput) ToBackupScheduleWeeklyRecurrenceOutputWithContext(ctx context.Context) BackupScheduleWeeklyRecurrenceOutput {
+	return o
+}
+
+func (o BackupScheduleWeeklyRecurrenceOutput) ToBackupScheduleWeeklyRecurrencePtrOutput() BackupScheduleWeeklyRecurrencePtrOutput {
+	return o.ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleWeeklyRecurrenceOutput) ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleWeeklyRecurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleWeeklyRecurrence) *BackupScheduleWeeklyRecurrence {
+		return &v
+	}).(BackupScheduleWeeklyRecurrencePtrOutput)
+}
+
+// The day of week to run.
+// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o BackupScheduleWeeklyRecurrenceOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupScheduleWeeklyRecurrence) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+type BackupScheduleWeeklyRecurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleWeeklyRecurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleWeeklyRecurrence)(nil)).Elem()
+}
+
+func (o BackupScheduleWeeklyRecurrencePtrOutput) ToBackupScheduleWeeklyRecurrencePtrOutput() BackupScheduleWeeklyRecurrencePtrOutput {
+	return o
+}
+
+func (o BackupScheduleWeeklyRecurrencePtrOutput) ToBackupScheduleWeeklyRecurrencePtrOutputWithContext(ctx context.Context) BackupScheduleWeeklyRecurrencePtrOutput {
+	return o
+}
+
+func (o BackupScheduleWeeklyRecurrencePtrOutput) Elem() BackupScheduleWeeklyRecurrenceOutput {
+	return o.ApplyT(func(v *BackupScheduleWeeklyRecurrence) BackupScheduleWeeklyRecurrence {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleWeeklyRecurrence
+		return ret
+	}).(BackupScheduleWeeklyRecurrenceOutput)
+}
+
+// The day of week to run.
+// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o BackupScheduleWeeklyRecurrencePtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupScheduleWeeklyRecurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.StringPtrOutput)
+}
 
 type FieldIndexConfig struct {
 	// The indexes to configure on the field. Order or array contains must be specified.
@@ -47,12 +305,6 @@ func (i FieldIndexConfigArgs) ToFieldIndexConfigOutput() FieldIndexConfigOutput 
 
 func (i FieldIndexConfigArgs) ToFieldIndexConfigOutputWithContext(ctx context.Context) FieldIndexConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigOutput)
-}
-
-func (i FieldIndexConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfig] {
-	return pulumix.Output[FieldIndexConfig]{
-		OutputState: i.ToFieldIndexConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FieldIndexConfigArgs) ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput {
@@ -96,12 +348,6 @@ func (i *fieldIndexConfigPtrType) ToFieldIndexConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigPtrOutput)
 }
 
-func (i *fieldIndexConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FieldIndexConfig] {
-	return pulumix.Output[*FieldIndexConfig]{
-		OutputState: i.ToFieldIndexConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldIndexConfigOutput struct{ *pulumi.OutputState }
 
 func (FieldIndexConfigOutput) ElementType() reflect.Type {
@@ -126,12 +372,6 @@ func (o FieldIndexConfigOutput) ToFieldIndexConfigPtrOutputWithContext(ctx conte
 	}).(FieldIndexConfigPtrOutput)
 }
 
-func (o FieldIndexConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfig] {
-	return pulumix.Output[FieldIndexConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The indexes to configure on the field. Order or array contains must be specified.
 // Structure is documented below.
 func (o FieldIndexConfigOutput) Indexes() FieldIndexConfigIndexArrayOutput {
@@ -150,12 +390,6 @@ func (o FieldIndexConfigPtrOutput) ToFieldIndexConfigPtrOutput() FieldIndexConfi
 
 func (o FieldIndexConfigPtrOutput) ToFieldIndexConfigPtrOutputWithContext(ctx context.Context) FieldIndexConfigPtrOutput {
 	return o
-}
-
-func (o FieldIndexConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldIndexConfig] {
-	return pulumix.Output[*FieldIndexConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldIndexConfigPtrOutput) Elem() FieldIndexConfigOutput {
@@ -236,12 +470,6 @@ func (i FieldIndexConfigIndexArgs) ToFieldIndexConfigIndexOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigIndexOutput)
 }
 
-func (i FieldIndexConfigIndexArgs) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfigIndex] {
-	return pulumix.Output[FieldIndexConfigIndex]{
-		OutputState: i.ToFieldIndexConfigIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FieldIndexConfigIndexArrayInput is an input type that accepts FieldIndexConfigIndexArray and FieldIndexConfigIndexArrayOutput values.
 // You can construct a concrete instance of `FieldIndexConfigIndexArrayInput` via:
 //
@@ -267,12 +495,6 @@ func (i FieldIndexConfigIndexArray) ToFieldIndexConfigIndexArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigIndexArrayOutput)
 }
 
-func (i FieldIndexConfigIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]FieldIndexConfigIndex] {
-	return pulumix.Output[[]FieldIndexConfigIndex]{
-		OutputState: i.ToFieldIndexConfigIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldIndexConfigIndexOutput struct{ *pulumi.OutputState }
 
 func (FieldIndexConfigIndexOutput) ElementType() reflect.Type {
@@ -285,12 +507,6 @@ func (o FieldIndexConfigIndexOutput) ToFieldIndexConfigIndexOutput() FieldIndexC
 
 func (o FieldIndexConfigIndexOutput) ToFieldIndexConfigIndexOutputWithContext(ctx context.Context) FieldIndexConfigIndexOutput {
 	return o
-}
-
-func (o FieldIndexConfigIndexOutput) ToOutput(ctx context.Context) pulumix.Output[FieldIndexConfigIndex] {
-	return pulumix.Output[FieldIndexConfigIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
@@ -330,12 +546,6 @@ func (o FieldIndexConfigIndexArrayOutput) ToFieldIndexConfigIndexArrayOutputWith
 	return o
 }
 
-func (o FieldIndexConfigIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FieldIndexConfigIndex] {
-	return pulumix.Output[[]FieldIndexConfigIndex]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldIndexConfigIndexArrayOutput) Index(i pulumi.IntInput) FieldIndexConfigIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldIndexConfigIndex {
 		return vs[0].([]FieldIndexConfigIndex)[vs[1].(int)]
@@ -344,7 +554,7 @@ func (o FieldIndexConfigIndexArrayOutput) Index(i pulumi.IntInput) FieldIndexCon
 
 type FieldTtlConfig struct {
 	// (Output)
-	// The state of the TTL configuration.
+	// The state of TTL (time-to-live) configuration for documents that have this Field set.
 	State *string `pulumi:"state"`
 }
 
@@ -361,7 +571,7 @@ type FieldTtlConfigInput interface {
 
 type FieldTtlConfigArgs struct {
 	// (Output)
-	// The state of the TTL configuration.
+	// The state of TTL (time-to-live) configuration for documents that have this Field set.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -375,12 +585,6 @@ func (i FieldTtlConfigArgs) ToFieldTtlConfigOutput() FieldTtlConfigOutput {
 
 func (i FieldTtlConfigArgs) ToFieldTtlConfigOutputWithContext(ctx context.Context) FieldTtlConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigOutput)
-}
-
-func (i FieldTtlConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FieldTtlConfig] {
-	return pulumix.Output[FieldTtlConfig]{
-		OutputState: i.ToFieldTtlConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i FieldTtlConfigArgs) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput {
@@ -424,12 +628,6 @@ func (i *fieldTtlConfigPtrType) ToFieldTtlConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigPtrOutput)
 }
 
-func (i *fieldTtlConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FieldTtlConfig] {
-	return pulumix.Output[*FieldTtlConfig]{
-		OutputState: i.ToFieldTtlConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldTtlConfigOutput struct{ *pulumi.OutputState }
 
 func (FieldTtlConfigOutput) ElementType() reflect.Type {
@@ -454,14 +652,8 @@ func (o FieldTtlConfigOutput) ToFieldTtlConfigPtrOutputWithContext(ctx context.C
 	}).(FieldTtlConfigPtrOutput)
 }
 
-func (o FieldTtlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FieldTtlConfig] {
-	return pulumix.Output[FieldTtlConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // (Output)
-// The state of the TTL configuration.
+// The state of TTL (time-to-live) configuration for documents that have this Field set.
 func (o FieldTtlConfigOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FieldTtlConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -480,12 +672,6 @@ func (o FieldTtlConfigPtrOutput) ToFieldTtlConfigPtrOutputWithContext(ctx contex
 	return o
 }
 
-func (o FieldTtlConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldTtlConfig] {
-	return pulumix.Output[*FieldTtlConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldTtlConfigPtrOutput) Elem() FieldTtlConfigOutput {
 	return o.ApplyT(func(v *FieldTtlConfig) FieldTtlConfig {
 		if v != nil {
@@ -497,7 +683,7 @@ func (o FieldTtlConfigPtrOutput) Elem() FieldTtlConfigOutput {
 }
 
 // (Output)
-// The state of the TTL configuration.
+// The state of TTL (time-to-live) configuration for documents that have this Field set.
 func (o FieldTtlConfigPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FieldTtlConfig) *string {
 		if v == nil {
@@ -560,12 +746,6 @@ func (i IndexFieldArgs) ToIndexFieldOutputWithContext(ctx context.Context) Index
 	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldOutput)
 }
 
-func (i IndexFieldArgs) ToOutput(ctx context.Context) pulumix.Output[IndexField] {
-	return pulumix.Output[IndexField]{
-		OutputState: i.ToIndexFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IndexFieldArrayInput is an input type that accepts IndexFieldArray and IndexFieldArrayOutput values.
 // You can construct a concrete instance of `IndexFieldArrayInput` via:
 //
@@ -591,12 +771,6 @@ func (i IndexFieldArray) ToIndexFieldArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldArrayOutput)
 }
 
-func (i IndexFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]IndexField] {
-	return pulumix.Output[[]IndexField]{
-		OutputState: i.ToIndexFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IndexFieldOutput struct{ *pulumi.OutputState }
 
 func (IndexFieldOutput) ElementType() reflect.Type {
@@ -609,12 +783,6 @@ func (o IndexFieldOutput) ToIndexFieldOutput() IndexFieldOutput {
 
 func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) IndexFieldOutput {
 	return o
-}
-
-func (o IndexFieldOutput) ToOutput(ctx context.Context) pulumix.Output[IndexField] {
-	return pulumix.Output[IndexField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
@@ -652,12 +820,6 @@ func (o IndexFieldArrayOutput) ToIndexFieldArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o IndexFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IndexField] {
-	return pulumix.Output[[]IndexField]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndexField {
 		return vs[0].([]IndexField)[vs[1].(int)]
@@ -665,6 +827,10 @@ func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrenceInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrencePtrInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleWeeklyRecurrenceInput)(nil)).Elem(), BackupScheduleWeeklyRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleWeeklyRecurrencePtrInput)(nil)).Elem(), BackupScheduleWeeklyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigInput)(nil)).Elem(), FieldIndexConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigPtrInput)(nil)).Elem(), FieldIndexConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigIndexInput)(nil)).Elem(), FieldIndexConfigIndexArgs{})
@@ -673,6 +839,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldTtlConfigPtrInput)(nil)).Elem(), FieldTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldInput)(nil)).Elem(), IndexFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldArrayInput)(nil)).Elem(), IndexFieldArray{})
+	pulumi.RegisterOutputType(BackupScheduleDailyRecurrenceOutput{})
+	pulumi.RegisterOutputType(BackupScheduleDailyRecurrencePtrOutput{})
+	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrenceOutput{})
+	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigPtrOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigIndexOutput{})

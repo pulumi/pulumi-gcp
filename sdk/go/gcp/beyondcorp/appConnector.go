@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A BeyondCorp AppConnector resource represents an application facing component deployed proximal to
@@ -108,7 +107,17 @@ import (
 //
 // ## Import
 //
-// # AppConnector can be imported using any of these accepted formats
+// AppConnector can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/appConnectors/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AppConnector using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{region}}/appConnectors/{{name}}"
+//
+//	to = google_beyondcorp_app_connector.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:beyondcorp/appConnector:AppConnector When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AppConnector can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -321,12 +330,6 @@ func (i *AppConnector) ToAppConnectorOutputWithContext(ctx context.Context) AppC
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorOutput)
 }
 
-func (i *AppConnector) ToOutput(ctx context.Context) pulumix.Output[*AppConnector] {
-	return pulumix.Output[*AppConnector]{
-		OutputState: i.ToAppConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppConnectorArrayInput is an input type that accepts AppConnectorArray and AppConnectorArrayOutput values.
 // You can construct a concrete instance of `AppConnectorArrayInput` via:
 //
@@ -350,12 +353,6 @@ func (i AppConnectorArray) ToAppConnectorArrayOutput() AppConnectorArrayOutput {
 
 func (i AppConnectorArray) ToAppConnectorArrayOutputWithContext(ctx context.Context) AppConnectorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorArrayOutput)
-}
-
-func (i AppConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppConnector] {
-	return pulumix.Output[[]*AppConnector]{
-		OutputState: i.ToAppConnectorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppConnectorMapInput is an input type that accepts AppConnectorMap and AppConnectorMapOutput values.
@@ -383,12 +380,6 @@ func (i AppConnectorMap) ToAppConnectorMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorMapOutput)
 }
 
-func (i AppConnectorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppConnector] {
-	return pulumix.Output[map[string]*AppConnector]{
-		OutputState: i.ToAppConnectorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppConnectorOutput struct{ *pulumi.OutputState }
 
 func (AppConnectorOutput) ElementType() reflect.Type {
@@ -401,12 +392,6 @@ func (o AppConnectorOutput) ToAppConnectorOutput() AppConnectorOutput {
 
 func (o AppConnectorOutput) ToAppConnectorOutputWithContext(ctx context.Context) AppConnectorOutput {
 	return o
-}
-
-func (o AppConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnector] {
-	return pulumix.Output[*AppConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An arbitrary user-provided name for the AppConnector.
@@ -474,12 +459,6 @@ func (o AppConnectorArrayOutput) ToAppConnectorArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AppConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppConnector] {
-	return pulumix.Output[[]*AppConnector]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppConnectorArrayOutput) Index(i pulumi.IntInput) AppConnectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppConnector {
 		return vs[0].([]*AppConnector)[vs[1].(int)]
@@ -498,12 +477,6 @@ func (o AppConnectorMapOutput) ToAppConnectorMapOutput() AppConnectorMapOutput {
 
 func (o AppConnectorMapOutput) ToAppConnectorMapOutputWithContext(ctx context.Context) AppConnectorMapOutput {
 	return o
-}
-
-func (o AppConnectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppConnector] {
-	return pulumix.Output[map[string]*AppConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppConnectorMapOutput) MapIndex(k pulumi.StringInput) AppConnectorOutput {

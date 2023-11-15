@@ -21,7 +21,7 @@ class LocationTagBindingArgs:
         The set of arguments for constructing a LocationTagBinding resource.
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
-        :param pulumi.Input[str] location: Location of the resource.
+        :param pulumi.Input[str] location: Location of the target resource.
                
                - - -
         """
@@ -58,7 +58,7 @@ class LocationTagBindingArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Location of the resource.
+        Location of the target resource.
 
         - - -
         """
@@ -78,7 +78,7 @@ class _LocationTagBindingState:
                  tag_value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LocationTagBinding resources.
-        :param pulumi.Input[str] location: Location of the resource.
+        :param pulumi.Input[str] location: Location of the target resource.
                
                - - -
         :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
@@ -98,7 +98,7 @@ class _LocationTagBindingState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Location of the resource.
+        Location of the target resource.
 
         - - -
         """
@@ -155,17 +155,18 @@ class LocationTagBinding(pulumi.CustomResource):
                  tag_value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
+        A LocationTagBinding represents a connection between a TagValue and a non-global target such as a Cloud Run Service or Compute Instance. Once a LocationTagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
 
-        To get more information about TagBinding, see:
+        To get more information about LocationTagBinding, see:
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Cloud Run Service
 
-        To bind a tag to a Cloud Run instance:
+        To bind a tag to a Cloud Run service:
 
         ```python
         import pulumi
@@ -187,8 +188,7 @@ class LocationTagBinding(pulumi.CustomResource):
             parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
         ```
-
-        To bind a (firewall) tag to compute instance:
+        ### Compute Instance
 
         ```python
         import pulumi
@@ -213,7 +213,15 @@ class LocationTagBinding(pulumi.CustomResource):
 
         ## Import
 
-        TagBinding can be imported using any of these accepted formats:
+        LocationTagBinding can be imported using any of these accepted formats* `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagBinding using one of the formats above. For exampletf import {
+
+         id = "{{location}}/{{name}}"
+
+         to = google_tags_location_tag_binding.default }
+
+        ```sh
+         $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagBinding can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}
@@ -221,7 +229,7 @@ class LocationTagBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: Location of the resource.
+        :param pulumi.Input[str] location: Location of the target resource.
                
                - - -
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
@@ -234,17 +242,18 @@ class LocationTagBinding(pulumi.CustomResource):
                  args: LocationTagBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A TagBinding represents a connection between a TagValue and a Regional cloud resource (currently project, folder, or organization). Once a TagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
+        A LocationTagBinding represents a connection between a TagValue and a non-global target such as a Cloud Run Service or Compute Instance. Once a LocationTagBinding is created, the TagValue is applied to all the descendants of the cloud resource.
 
-        To get more information about TagBinding, see:
+        To get more information about LocationTagBinding, see:
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+        ### Cloud Run Service
 
-        To bind a tag to a Cloud Run instance:
+        To bind a tag to a Cloud Run service:
 
         ```python
         import pulumi
@@ -266,8 +275,7 @@ class LocationTagBinding(pulumi.CustomResource):
             parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
         ```
-
-        To bind a (firewall) tag to compute instance:
+        ### Compute Instance
 
         ```python
         import pulumi
@@ -292,7 +300,15 @@ class LocationTagBinding(pulumi.CustomResource):
 
         ## Import
 
-        TagBinding can be imported using any of these accepted formats:
+        LocationTagBinding can be imported using any of these accepted formats* `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagBinding using one of the formats above. For exampletf import {
+
+         id = "{{location}}/{{name}}"
+
+         to = google_tags_location_tag_binding.default }
+
+        ```sh
+         $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagBinding can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}
@@ -354,7 +370,7 @@ class LocationTagBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: Location of the resource.
+        :param pulumi.Input[str] location: Location of the target resource.
                
                - - -
         :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
@@ -375,7 +391,7 @@ class LocationTagBinding(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[str]]:
         """
-        Location of the resource.
+        Location of the target resource.
 
         - - -
         """

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
@@ -222,7 +221,17 @@ import (
 //
 // ## Import
 //
-// # Hl7V2Store can be imported using any of these accepted formats
+// Hl7V2Store can be imported using any of these accepted formats* `{{dataset}}/hl7V2Stores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Hl7V2Store using one of the formats above. For exampletf import {
+//
+//	id = "{{dataset}}/hl7V2Stores/{{name}}"
+//
+//	to = google_healthcare_hl7_v2_store.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:healthcare/hl7Store:Hl7Store When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Hl7V2Store can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -518,12 +527,6 @@ func (i *Hl7Store) ToHl7StoreOutputWithContext(ctx context.Context) Hl7StoreOutp
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreOutput)
 }
 
-func (i *Hl7Store) ToOutput(ctx context.Context) pulumix.Output[*Hl7Store] {
-	return pulumix.Output[*Hl7Store]{
-		OutputState: i.ToHl7StoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hl7StoreArrayInput is an input type that accepts Hl7StoreArray and Hl7StoreArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreArrayInput` via:
 //
@@ -547,12 +550,6 @@ func (i Hl7StoreArray) ToHl7StoreArrayOutput() Hl7StoreArrayOutput {
 
 func (i Hl7StoreArray) ToHl7StoreArrayOutputWithContext(ctx context.Context) Hl7StoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreArrayOutput)
-}
-
-func (i Hl7StoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7Store] {
-	return pulumix.Output[[]*Hl7Store]{
-		OutputState: i.ToHl7StoreArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Hl7StoreMapInput is an input type that accepts Hl7StoreMap and Hl7StoreMapOutput values.
@@ -580,12 +577,6 @@ func (i Hl7StoreMap) ToHl7StoreMapOutputWithContext(ctx context.Context) Hl7Stor
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreMapOutput)
 }
 
-func (i Hl7StoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7Store] {
-	return pulumix.Output[map[string]*Hl7Store]{
-		OutputState: i.ToHl7StoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Hl7StoreOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreOutput) ElementType() reflect.Type {
@@ -598,12 +589,6 @@ func (o Hl7StoreOutput) ToHl7StoreOutput() Hl7StoreOutput {
 
 func (o Hl7StoreOutput) ToHl7StoreOutputWithContext(ctx context.Context) Hl7StoreOutput {
 	return o
-}
-
-func (o Hl7StoreOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7Store] {
-	return pulumix.Output[*Hl7Store]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifies the dataset addressed by this request. Must be in the format
@@ -690,12 +675,6 @@ func (o Hl7StoreArrayOutput) ToHl7StoreArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o Hl7StoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7Store] {
-	return pulumix.Output[[]*Hl7Store]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Hl7StoreArrayOutput) Index(i pulumi.IntInput) Hl7StoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7Store {
 		return vs[0].([]*Hl7Store)[vs[1].(int)]
@@ -714,12 +693,6 @@ func (o Hl7StoreMapOutput) ToHl7StoreMapOutput() Hl7StoreMapOutput {
 
 func (o Hl7StoreMapOutput) ToHl7StoreMapOutputWithContext(ctx context.Context) Hl7StoreMapOutput {
 	return o
-}
-
-func (o Hl7StoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7Store] {
-	return pulumix.Output[map[string]*Hl7Store]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Hl7StoreMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreOutput {

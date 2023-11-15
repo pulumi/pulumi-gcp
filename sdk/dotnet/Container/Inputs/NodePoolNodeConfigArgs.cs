@@ -38,6 +38,9 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _effectiveTaints = value;
         }
 
+        [Input("enableConfidentialStorage")]
+        public Input<bool>? EnableConfidentialStorage { get; set; }
+
         [Input("ephemeralStorageConfig")]
         public Input<Inputs.NodePoolNodeConfigEphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 

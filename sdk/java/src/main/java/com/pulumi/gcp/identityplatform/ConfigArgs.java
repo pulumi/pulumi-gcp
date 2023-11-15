@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigSignInArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -118,6 +119,23 @@ public final class ConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.signIn);
     }
 
+    /**
+     * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="smsRegionConfig")
+    private @Nullable Output<ConfigSmsRegionConfigArgs> smsRegionConfig;
+
+    /**
+     * @return Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigSmsRegionConfigArgs>> smsRegionConfig() {
+        return Optional.ofNullable(this.smsRegionConfig);
+    }
+
     private ConfigArgs() {}
 
     private ConfigArgs(ConfigArgs $) {
@@ -127,6 +145,7 @@ public final class ConfigArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.quota = $.quota;
         this.signIn = $.signIn;
+        this.smsRegionConfig = $.smsRegionConfig;
     }
 
     public static Builder builder() {
@@ -289,6 +308,29 @@ public final class ConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder signIn(ConfigSignInArgs signIn) {
             return signIn(Output.of(signIn));
+        }
+
+        /**
+         * @param smsRegionConfig Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsRegionConfig(@Nullable Output<ConfigSmsRegionConfigArgs> smsRegionConfig) {
+            $.smsRegionConfig = smsRegionConfig;
+            return this;
+        }
+
+        /**
+         * @param smsRegionConfig Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder smsRegionConfig(ConfigSmsRegionConfigArgs smsRegionConfig) {
+            return smsRegionConfig(Output.of(smsRegionConfig));
         }
 
         public ConfigArgs build() {

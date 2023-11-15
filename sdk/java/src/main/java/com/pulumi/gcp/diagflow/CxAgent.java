@@ -10,7 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.CxAgentArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentState;
+import com.pulumi.gcp.diagflow.outputs.CxAgentAdvancedSettings;
+import com.pulumi.gcp.diagflow.outputs.CxAgentGitIntegrationSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentSpeechToTextSettings;
+import com.pulumi.gcp.diagflow.outputs.CxAgentTextToSpeechSettings;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -26,6 +29,10 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `git_integration_settings.github_settings.access_token`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Dialogflowcx Agent Full
  * ```java
@@ -34,9 +41,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.diagflow.CxAgent;
  * import com.pulumi.gcp.diagflow.CxAgentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsAudioExportGcsDestinationArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsDtmfSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsGithubSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,22 +66,61 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
  *         var fullAgent = new CxAgent(&#34;fullAgent&#34;, CxAgentArgs.builder()        
- *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
- *             .defaultLanguageCode(&#34;en&#34;)
- *             .description(&#34;Example description.&#34;)
  *             .displayName(&#34;dialogflowcx-agent&#34;)
- *             .enableSpellCorrection(true)
- *             .enableStackdriverLogging(true)
  *             .location(&#34;global&#34;)
- *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
- *                 .enableSpeechAdaptation(true)
- *                 .build())
+ *             .defaultLanguageCode(&#34;en&#34;)
  *             .supportedLanguageCodes(            
  *                 &#34;fr&#34;,
  *                 &#34;de&#34;,
  *                 &#34;es&#34;)
  *             .timeZone(&#34;America/New_York&#34;)
+ *             .description(&#34;Example description.&#34;)
+ *             .avatarUri(&#34;https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png&#34;)
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .advancedSettings(CxAgentAdvancedSettingsArgs.builder()
+ *                 .audioExportGcsDestination(CxAgentAdvancedSettingsAudioExportGcsDestinationArgs.builder()
+ *                     .uri(bucket.url().applyValue(url -&gt; String.format(&#34;%s/prefix-&#34;, url)))
+ *                     .build())
+ *                 .dtmfSettings(CxAgentAdvancedSettingsDtmfSettingsArgs.builder()
+ *                     .enabled(true)
+ *                     .maxDigits(1)
+ *                     .finishDigit(&#34;#&#34;)
+ *                     .build())
+ *                 .build())
+ *             .gitIntegrationSettings(CxAgentGitIntegrationSettingsArgs.builder()
+ *                 .githubSettings(CxAgentGitIntegrationSettingsGithubSettingsArgs.builder()
+ *                     .displayName(&#34;Github Repo&#34;)
+ *                     .repositoryUri(&#34;https://api.github.com/repos/githubtraining/hellogitworld&#34;)
+ *                     .trackingBranch(&#34;main&#34;)
+ *                     .accessToken(&#34;secret-token&#34;)
+ *                     .branches(&#34;main&#34;)
+ *                     .build())
+ *                 .build())
+ *             .textToSpeechSettings(CxAgentTextToSpeechSettingsArgs.builder()
+ *                 .synthesizeSpeechConfigs(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty(&#34;en&#34;, jsonObject(
+ *                             jsonProperty(&#34;voice&#34;, jsonObject(
+ *                                 jsonProperty(&#34;name&#34;, &#34;en-US-Neural2-A&#34;)
+ *                             ))
+ *                         )),
+ *                         jsonProperty(&#34;fr&#34;, jsonObject(
+ *                             jsonProperty(&#34;voice&#34;, jsonObject(
+ *                                 jsonProperty(&#34;name&#34;, &#34;fr-CA-Neural2-A&#34;)
+ *                             ))
+ *                         ))
+ *                     )))
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -74,7 +129,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Agent can be imported using any of these accepted formats
+ * Agent can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/agents/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/locations/{{location}}/agents/{{name}}&#34;
+ * 
+ *  to = google_dialogflow_cx_agent.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:diagflow/cxAgent:CxAgent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}
@@ -91,6 +154,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/cxAgent:CxAgent")
 public class CxAgent extends com.pulumi.resources.CustomResource {
+    /**
+     * Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedSettings", refs={CxAgentAdvancedSettings.class}, tree="[0]")
+    private Output<CxAgentAdvancedSettings> advancedSettings;
+
+    /**
+     * @return Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+     * Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
+     * Structure is documented below.
+     * 
+     */
+    public Output<CxAgentAdvancedSettings> advancedSettings() {
+        return this.advancedSettings;
+    }
     /**
      * The URI of the agent&#39;s avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      * 
@@ -176,6 +257,22 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableStackdriverLogging() {
         return Codegen.optional(this.enableStackdriverLogging);
+    }
+    /**
+     * Git integration settings for this agent.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gitIntegrationSettings", refs={CxAgentGitIntegrationSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxAgentGitIntegrationSettings> gitIntegrationSettings;
+
+    /**
+     * @return Git integration settings for this agent.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxAgentGitIntegrationSettings>> gitIntegrationSettings() {
+        return Codegen.optional(this.gitIntegrationSettings);
     }
     /**
      * The name of the location this agent is located in.
@@ -284,6 +381,22 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> supportedLanguageCodes() {
         return Codegen.optional(this.supportedLanguageCodes);
+    }
+    /**
+     * Settings related to speech synthesizing.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="textToSpeechSettings", refs={CxAgentTextToSpeechSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxAgentTextToSpeechSettings> textToSpeechSettings;
+
+    /**
+     * @return Settings related to speech synthesizing.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxAgentTextToSpeechSettings>> textToSpeechSettings() {
+        return Codegen.optional(this.textToSpeechSettings);
     }
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,

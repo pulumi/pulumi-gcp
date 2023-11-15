@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,11 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      * 
      */
     private @Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig;
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+     * 
+     */
+    private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
     private @Nullable List<String> instanceNames;
     /**
      * @return Specifies the number of preemptible nodes to create.
@@ -43,6 +49,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      */
     public Optional<ClusterClusterConfigPreemptibleWorkerConfigDiskConfig> diskConfig() {
         return Optional.ofNullable(this.diskConfig);
+    }
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+     * 
+     */
+    public Optional<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
     public List<String> instanceNames() {
         return this.instanceNames == null ? List.of() : this.instanceNames;
@@ -77,6 +90,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig;
+        private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
         private @Nullable List<String> instanceNames;
         private @Nullable Integer numInstances;
         private @Nullable String preemptibility;
@@ -84,6 +98,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
         public Builder(ClusterClusterConfigPreemptibleWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskConfig = defaults.diskConfig;
+    	      this.instanceFlexibilityPolicy = defaults.instanceFlexibilityPolicy;
     	      this.instanceNames = defaults.instanceNames;
     	      this.numInstances = defaults.numInstances;
     	      this.preemptibility = defaults.preemptibility;
@@ -92,6 +107,11 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
         @CustomType.Setter
         public Builder diskConfig(@Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig) {
             this.diskConfig = diskConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceFlexibilityPolicy(@Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy) {
+            this.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +135,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
         public ClusterClusterConfigPreemptibleWorkerConfig build() {
             final var o = new ClusterClusterConfigPreemptibleWorkerConfig();
             o.diskConfig = diskConfig;
+            o.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             o.instanceNames = instanceNames;
             o.numInstances = numInstances;
             o.preemptibility = preemptibility;

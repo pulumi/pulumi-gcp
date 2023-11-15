@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
@@ -237,33 +236,21 @@ import (
 //
 // ## Import
 //
-// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+// ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
-// This member resource can be imported using the `crypto_key_id`, role, and member identity e.g.
+//	id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
+//
+//	to = google_kms_crypto_key_iam_policy.default }
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
 //
 // ```
 //
-//	IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
-//
-// These bindings can be imported using the `crypto_key_id` and role, e.g.
-//
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
-//
-// ```
-//
-//	IAM policy imports use the identifier of the resource in question.
-//
-// This policy resource can be imported using the `crypto_key_id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
+//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
 //
 // ```
 type CryptoKeyIAMPolicy struct {
@@ -437,12 +424,6 @@ func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyOutput)
 }
 
-func (i *CryptoKeyIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMPolicy] {
-	return pulumix.Output[*CryptoKeyIAMPolicy]{
-		OutputState: i.ToCryptoKeyIAMPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CryptoKeyIAMPolicyArrayInput is an input type that accepts CryptoKeyIAMPolicyArray and CryptoKeyIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `CryptoKeyIAMPolicyArrayInput` via:
 //
@@ -466,12 +447,6 @@ func (i CryptoKeyIAMPolicyArray) ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMP
 
 func (i CryptoKeyIAMPolicyArray) ToCryptoKeyIAMPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyArrayOutput)
-}
-
-func (i CryptoKeyIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKeyIAMPolicy] {
-	return pulumix.Output[[]*CryptoKeyIAMPolicy]{
-		OutputState: i.ToCryptoKeyIAMPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CryptoKeyIAMPolicyMapInput is an input type that accepts CryptoKeyIAMPolicyMap and CryptoKeyIAMPolicyMapOutput values.
@@ -499,12 +474,6 @@ func (i CryptoKeyIAMPolicyMap) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyMapOutput)
 }
 
-func (i CryptoKeyIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKeyIAMPolicy] {
-	return pulumix.Output[map[string]*CryptoKeyIAMPolicy]{
-		OutputState: i.ToCryptoKeyIAMPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CryptoKeyIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMPolicyOutput) ElementType() reflect.Type {
@@ -517,12 +486,6 @@ func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolic
 
 func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput {
 	return o
-}
-
-func (o CryptoKeyIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMPolicy] {
-	return pulumix.Output[*CryptoKeyIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The crypto key ID, in the form
@@ -567,12 +530,6 @@ func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutputWithContex
 	return o
 }
 
-func (o CryptoKeyIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKeyIAMPolicy] {
-	return pulumix.Output[[]*CryptoKeyIAMPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CryptoKeyIAMPolicyArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIAMPolicy {
 		return vs[0].([]*CryptoKeyIAMPolicy)[vs[1].(int)]
@@ -591,12 +548,6 @@ func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIA
 
 func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyMapOutput {
 	return o
-}
-
-func (o CryptoKeyIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKeyIAMPolicy] {
-	return pulumix.Output[map[string]*CryptoKeyIAMPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CryptoKeyIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMPolicyOutput {

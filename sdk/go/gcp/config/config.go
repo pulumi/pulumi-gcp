@@ -221,6 +221,9 @@ func GetDocumentAiCustomEndpoint(ctx *pulumi.Context) string {
 func GetDocumentAiWarehouseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:documentAiWarehouseCustomEndpoint")
 }
+func GetEdgecontainerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:edgecontainerCustomEndpoint")
+}
 func GetEdgenetworkCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:edgenetworkCustomEndpoint")
 }
@@ -301,6 +304,9 @@ func GetImpersonateServiceAccount(ctx *pulumi.Context) string {
 }
 func GetImpersonateServiceAccountDelegates(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:impersonateServiceAccountDelegates")
+}
+func GetIntegrationConnectorsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:integrationConnectorsCustomEndpoint")
 }
 func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:kmsCustomEndpoint")
@@ -455,6 +461,9 @@ func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetTpuV2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuV2CustomEndpoint")
+}
+func GetUniverseDomain(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:universeDomain")
 }
 func GetUserProjectOverride(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:userProjectOverride")

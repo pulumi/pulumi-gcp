@@ -262,7 +262,15 @@ class TransferAgentPool(pulumi.CustomResource):
 
         ## Import
 
-        AgentPool can be imported using any of these accepted formats
+        AgentPool can be imported using any of these accepted formats* `projects/{{project}}/agentPools/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AgentPool using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/agentPools/{{name}}"
+
+         to = google_storage_transfer_agent_pool.default }
+
+        ```sh
+         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AgentPool can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
@@ -332,7 +340,15 @@ class TransferAgentPool(pulumi.CustomResource):
 
         ## Import
 
-        AgentPool can be imported using any of these accepted formats
+        AgentPool can be imported using any of these accepted formats* `projects/{{project}}/agentPools/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AgentPool using one of the formats above. For exampletf import {
+
+         id = "projects/{{project}}/agentPools/{{name}}"
+
+         to = google_storage_transfer_agent_pool.default }
+
+        ```sh
+         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AgentPool can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}

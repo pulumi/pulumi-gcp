@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureIamPolicy{}
 	case "gcp:gkehub/featureMembership:FeatureMembership":
 		r = &FeatureMembership{}
+	case "gcp:gkehub/fleet:Fleet":
+		r = &Fleet{}
 	case "gcp:gkehub/membership:Membership":
 		r = &Membership{}
 	case "gcp:gkehub/membershipBinding:MembershipBinding":
@@ -91,6 +93,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkehub/featureMembership",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/fleet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

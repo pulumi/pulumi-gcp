@@ -4,9 +4,11 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
+    private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
     private @Nullable String config;
     private @Nullable String displayName;
     private Map<String,String> effectiveLabels;
@@ -32,6 +35,9 @@ public final class GetInstanceResult {
     private String state;
 
     private GetInstanceResult() {}
+    public List<GetInstanceAutoscalingConfig> autoscalingConfigs() {
+        return this.autoscalingConfigs;
+    }
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
@@ -82,6 +88,7 @@ public final class GetInstanceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
         private @Nullable String config;
         private @Nullable String displayName;
         private Map<String,String> effectiveLabels;
@@ -97,6 +104,7 @@ public final class GetInstanceResult {
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingConfigs = defaults.autoscalingConfigs;
     	      this.config = defaults.config;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -111,6 +119,14 @@ public final class GetInstanceResult {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingConfigs(List<GetInstanceAutoscalingConfig> autoscalingConfigs) {
+            this.autoscalingConfigs = Objects.requireNonNull(autoscalingConfigs);
+            return this;
+        }
+        public Builder autoscalingConfigs(GetInstanceAutoscalingConfig... autoscalingConfigs) {
+            return autoscalingConfigs(List.of(autoscalingConfigs));
+        }
         @CustomType.Setter
         public Builder config(@Nullable String config) {
             this.config = config;
@@ -173,6 +189,7 @@ public final class GetInstanceResult {
         }
         public GetInstanceResult build() {
             final var o = new GetInstanceResult();
+            o.autoscalingConfigs = autoscalingConfigs;
             o.config = config;
             o.displayName = displayName;
             o.effectiveLabels = effectiveLabels;

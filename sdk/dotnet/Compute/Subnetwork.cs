@@ -219,10 +219,49 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Subnetwork Cidr Overlap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net_cidr_overlap = new Gcp.Compute.Network("net-cidr-overlap", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var subnetwork_cidr_overlap = new Gcp.Compute.Subnetwork("subnetwork-cidr-overlap", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         IpCidrRange = "192.168.1.0/24",
+    ///         AllowSubnetCidrRoutesOverlap = true,
+    ///         Network = net_cidr_overlap.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Subnetwork can be imported using any of these accepted formats
+    /// Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
+    /// 
+    ///  id = "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
+    /// 
+    ///  to = google_compute_subnetwork.default }
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
+    /// ```
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
@@ -243,6 +282,14 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/subnetwork:Subnetwork")]
     public partial class Subnetwork : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+        /// BGP even if their destinations match existing subnet ranges.
+        /// </summary>
+        [Output("allowSubnetCidrRoutesOverlap")]
+        public Output<bool> AllowSubnetCidrRoutesOverlap { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -460,6 +507,14 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+        /// BGP even if their destinations match existing subnet ranges.
+        /// </summary>
+        [Input("allowSubnetCidrRoutesOverlap")]
+        public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when
         /// you create the resource. This field can be set only at resource
         /// creation time.
@@ -600,6 +655,14 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SubnetworkState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
+        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
+        /// BGP even if their destinations match existing subnet ranges.
+        /// </summary>
+        [Input("allowSubnetCidrRoutesOverlap")]
+        public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>

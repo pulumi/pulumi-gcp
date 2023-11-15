@@ -5,14 +5,32 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminGroupArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AwsClusterAuthorizationArgs Empty = new AwsClusterAuthorizationArgs();
+
+    /**
+     * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    @Import(name="adminGroups")
+    private @Nullable Output<List<AwsClusterAuthorizationAdminGroupArgs>> adminGroups;
+
+    /**
+     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * 
+     */
+    public Optional<Output<List<AwsClusterAuthorizationAdminGroupArgs>>> adminGroups() {
+        return Optional.ofNullable(this.adminGroups);
+    }
 
     /**
      * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
@@ -32,6 +50,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
     private AwsClusterAuthorizationArgs() {}
 
     private AwsClusterAuthorizationArgs(AwsClusterAuthorizationArgs $) {
+        this.adminGroups = $.adminGroups;
         this.adminUsers = $.adminUsers;
     }
 
@@ -51,6 +70,37 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
 
         public Builder(AwsClusterAuthorizationArgs defaults) {
             $ = new AwsClusterAuthorizationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminGroups(@Nullable Output<List<AwsClusterAuthorizationAdminGroupArgs>> adminGroups) {
+            $.adminGroups = adminGroups;
+            return this;
+        }
+
+        /**
+         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminGroups(List<AwsClusterAuthorizationAdminGroupArgs> adminGroups) {
+            return adminGroups(Output.of(adminGroups));
+        }
+
+        /**
+         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminGroups(AwsClusterAuthorizationAdminGroupArgs... adminGroups) {
+            return adminGroups(List.of(adminGroups));
         }
 
         /**

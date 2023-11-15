@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an inventory report configuration.
@@ -106,7 +105,17 @@ import (
 //
 // ## Import
 //
-// # ReportConfig can be imported using any of these accepted formats
+// ReportConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ReportConfig using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}"
+//
+//	to = google_storage_insights_report_config.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ReportConfig can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -296,12 +305,6 @@ func (i *InsightsReportConfig) ToInsightsReportConfigOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigOutput)
 }
 
-func (i *InsightsReportConfig) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfig] {
-	return pulumix.Output[*InsightsReportConfig]{
-		OutputState: i.ToInsightsReportConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InsightsReportConfigArrayInput is an input type that accepts InsightsReportConfigArray and InsightsReportConfigArrayOutput values.
 // You can construct a concrete instance of `InsightsReportConfigArrayInput` via:
 //
@@ -325,12 +328,6 @@ func (i InsightsReportConfigArray) ToInsightsReportConfigArrayOutput() InsightsR
 
 func (i InsightsReportConfigArray) ToInsightsReportConfigArrayOutputWithContext(ctx context.Context) InsightsReportConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigArrayOutput)
-}
-
-func (i InsightsReportConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*InsightsReportConfig] {
-	return pulumix.Output[[]*InsightsReportConfig]{
-		OutputState: i.ToInsightsReportConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InsightsReportConfigMapInput is an input type that accepts InsightsReportConfigMap and InsightsReportConfigMapOutput values.
@@ -358,12 +355,6 @@ func (i InsightsReportConfigMap) ToInsightsReportConfigMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigMapOutput)
 }
 
-func (i InsightsReportConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InsightsReportConfig] {
-	return pulumix.Output[map[string]*InsightsReportConfig]{
-		OutputState: i.ToInsightsReportConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InsightsReportConfigOutput struct{ *pulumi.OutputState }
 
 func (InsightsReportConfigOutput) ElementType() reflect.Type {
@@ -376,12 +367,6 @@ func (o InsightsReportConfigOutput) ToInsightsReportConfigOutput() InsightsRepor
 
 func (o InsightsReportConfigOutput) ToInsightsReportConfigOutputWithContext(ctx context.Context) InsightsReportConfigOutput {
 	return o
-}
-
-func (o InsightsReportConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfig] {
-	return pulumix.Output[*InsightsReportConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Options for configuring the format of the inventory report CSV file.
@@ -440,12 +425,6 @@ func (o InsightsReportConfigArrayOutput) ToInsightsReportConfigArrayOutputWithCo
 	return o
 }
 
-func (o InsightsReportConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InsightsReportConfig] {
-	return pulumix.Output[[]*InsightsReportConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InsightsReportConfigArrayOutput) Index(i pulumi.IntInput) InsightsReportConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InsightsReportConfig {
 		return vs[0].([]*InsightsReportConfig)[vs[1].(int)]
@@ -464,12 +443,6 @@ func (o InsightsReportConfigMapOutput) ToInsightsReportConfigMapOutput() Insight
 
 func (o InsightsReportConfigMapOutput) ToInsightsReportConfigMapOutputWithContext(ctx context.Context) InsightsReportConfigMapOutput {
 	return o
-}
-
-func (o InsightsReportConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InsightsReportConfig] {
-	return pulumix.Output[map[string]*InsightsReportConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InsightsReportConfigMapOutput) MapIndex(k pulumi.StringInput) InsightsReportConfigOutput {

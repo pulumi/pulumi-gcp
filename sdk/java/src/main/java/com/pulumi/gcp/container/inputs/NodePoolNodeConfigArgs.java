@@ -88,6 +88,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.effectiveTaints);
     }
 
+    @Import(name="enableConfidentialStorage")
+    private @Nullable Output<Boolean> enableConfidentialStorage;
+
+    public Optional<Output<Boolean>> enableConfidentialStorage() {
+        return Optional.ofNullable(this.enableConfidentialStorage);
+    }
+
     @Import(name="ephemeralStorageConfig")
     private @Nullable Output<NodePoolNodeConfigEphemeralStorageConfigArgs> ephemeralStorageConfig;
 
@@ -307,6 +314,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.effectiveTaints = $.effectiveTaints;
+        this.enableConfidentialStorage = $.enableConfidentialStorage;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.fastSocket = $.fastSocket;
@@ -425,6 +433,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder effectiveTaints(NodePoolNodeConfigEffectiveTaintArgs... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
+        }
+
+        public Builder enableConfidentialStorage(@Nullable Output<Boolean> enableConfidentialStorage) {
+            $.enableConfidentialStorage = enableConfidentialStorage;
+            return this;
+        }
+
+        public Builder enableConfidentialStorage(Boolean enableConfidentialStorage) {
+            return enableConfidentialStorage(Output.of(enableConfidentialStorage));
         }
 
         public Builder ephemeralStorageConfig(@Nullable Output<NodePoolNodeConfigEphemeralStorageConfigArgs> ephemeralStorageConfig) {

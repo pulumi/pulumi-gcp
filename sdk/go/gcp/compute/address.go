@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an Address resource.
@@ -213,7 +212,17 @@ import (
 //
 // ## Import
 //
-// # Address can be imported using any of these accepted formats
+// Address can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/addresses/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Address using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/regions/{{region}}/addresses/{{name}}"
+//
+//	to = google_compute_address.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/address:Address When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Address can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -254,8 +263,7 @@ type Address struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
@@ -265,7 +273,8 @@ type Address struct {
 	// the external IPv6 address reservation.
 	// Possible values are: `VM`, `NETLB`.
 	Ipv6EndpointType pulumi.StringPtrOutput `pulumi:"ipv6EndpointType"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -295,7 +304,8 @@ type Address struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -374,8 +384,7 @@ type addressState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
@@ -385,7 +394,8 @@ type addressState struct {
 	// the external IPv6 address reservation.
 	// Possible values are: `VM`, `NETLB`.
 	Ipv6EndpointType *string `pulumi:"ipv6EndpointType"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -415,7 +425,8 @@ type addressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -460,8 +471,7 @@ type AddressState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
@@ -471,7 +481,8 @@ type AddressState struct {
 	// the external IPv6 address reservation.
 	// Possible values are: `VM`, `NETLB`.
 	Ipv6EndpointType pulumi.StringPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -501,7 +512,8 @@ type AddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The purpose of this resource, which can be one of the following values.
 	// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -706,12 +718,6 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
-func (i *Address) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: i.ToAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AddressArrayInput is an input type that accepts AddressArray and AddressArrayOutput values.
 // You can construct a concrete instance of `AddressArrayInput` via:
 //
@@ -735,12 +741,6 @@ func (i AddressArray) ToAddressArrayOutput() AddressArrayOutput {
 
 func (i AddressArray) ToAddressArrayOutputWithContext(ctx context.Context) AddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressArrayOutput)
-}
-
-func (i AddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*Address] {
-	return pulumix.Output[[]*Address]{
-		OutputState: i.ToAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AddressMapInput is an input type that accepts AddressMap and AddressMapOutput values.
@@ -768,12 +768,6 @@ func (i AddressMap) ToAddressMapOutputWithContext(ctx context.Context) AddressMa
 	return pulumi.ToOutputWithContext(ctx, i).(AddressMapOutput)
 }
 
-func (i AddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Address] {
-	return pulumix.Output[map[string]*Address]{
-		OutputState: i.ToAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AddressOutput struct{ *pulumi.OutputState }
 
 func (AddressOutput) ElementType() reflect.Type {
@@ -786,12 +780,6 @@ func (o AddressOutput) ToAddressOutput() AddressOutput {
 
 func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
 	return o
-}
-
-func (o AddressOutput) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The static external IP address represented by this resource.
@@ -819,8 +807,7 @@ func (o AddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AddressOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -839,7 +826,8 @@ func (o AddressOutput) Ipv6EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.Ipv6EndpointType }).(pulumi.StringPtrOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o AddressOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
@@ -890,7 +878,8 @@ func (o AddressOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The combination of labels configured directly on the resource and default labels configured on the provider.
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
 func (o AddressOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
@@ -951,12 +940,6 @@ func (o AddressArrayOutput) ToAddressArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o AddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Address] {
-	return pulumix.Output[[]*Address]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AddressArrayOutput) Index(i pulumi.IntInput) AddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Address {
 		return vs[0].([]*Address)[vs[1].(int)]
@@ -975,12 +958,6 @@ func (o AddressMapOutput) ToAddressMapOutput() AddressMapOutput {
 
 func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) AddressMapOutput {
 	return o
-}
-
-func (o AddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Address] {
-	return pulumix.Output[map[string]*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddressMapOutput) MapIndex(k pulumi.StringInput) AddressOutput {

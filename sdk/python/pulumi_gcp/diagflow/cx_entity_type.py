@@ -466,7 +466,15 @@ class CxEntityType(pulumi.CustomResource):
 
         ## Import
 
-        EntityType can be imported using any of these accepted formats
+        EntityType can be imported using any of these accepted formats* `{{parent}}/entityTypes/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EntityType using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/entityTypes/{{name}}"
+
+         to = google_dialogflow_cx_entity_type.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxEntityType:CxEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EntityType can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}
@@ -568,7 +576,15 @@ class CxEntityType(pulumi.CustomResource):
 
         ## Import
 
-        EntityType can be imported using any of these accepted formats
+        EntityType can be imported using any of these accepted formats* `{{parent}}/entityTypes/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EntityType using one of the formats above. For exampletf import {
+
+         id = "{{parent}}/entityTypes/{{name}}"
+
+         to = google_dialogflow_cx_entity_type.default }
+
+        ```sh
+         $ pulumi import gcp:diagflow/cxEntityType:CxEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EntityType can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}

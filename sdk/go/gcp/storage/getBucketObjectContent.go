@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
@@ -83,17 +82,18 @@ type GetBucketObjectContentResult struct {
 	DetectMd5hash       string                                     `pulumi:"detectMd5hash"`
 	EventBasedHold      bool                                       `pulumi:"eventBasedHold"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string            `pulumi:"id"`
-	KmsKeyName    string            `pulumi:"kmsKeyName"`
-	Md5hash       string            `pulumi:"md5hash"`
-	MediaLink     string            `pulumi:"mediaLink"`
-	Metadata      map[string]string `pulumi:"metadata"`
-	Name          string            `pulumi:"name"`
-	OutputName    string            `pulumi:"outputName"`
-	SelfLink      string            `pulumi:"selfLink"`
-	Source        string            `pulumi:"source"`
-	StorageClass  string            `pulumi:"storageClass"`
-	TemporaryHold bool              `pulumi:"temporaryHold"`
+	Id            string                            `pulumi:"id"`
+	KmsKeyName    string                            `pulumi:"kmsKeyName"`
+	Md5hash       string                            `pulumi:"md5hash"`
+	MediaLink     string                            `pulumi:"mediaLink"`
+	Metadata      map[string]string                 `pulumi:"metadata"`
+	Name          string                            `pulumi:"name"`
+	OutputName    string                            `pulumi:"outputName"`
+	Retentions    []GetBucketObjectContentRetention `pulumi:"retentions"`
+	SelfLink      string                            `pulumi:"selfLink"`
+	Source        string                            `pulumi:"source"`
+	StorageClass  string                            `pulumi:"storageClass"`
+	TemporaryHold bool                              `pulumi:"temporaryHold"`
 }
 
 func GetBucketObjectContentOutput(ctx *pulumi.Context, args GetBucketObjectContentOutputArgs, opts ...pulumi.InvokeOption) GetBucketObjectContentResultOutput {
@@ -136,12 +136,6 @@ func (o GetBucketObjectContentResultOutput) ToGetBucketObjectContentResultOutput
 
 func (o GetBucketObjectContentResultOutput) ToGetBucketObjectContentResultOutputWithContext(ctx context.Context) GetBucketObjectContentResultOutput {
 	return o
-}
-
-func (o GetBucketObjectContentResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBucketObjectContentResult] {
-	return pulumix.Output[GetBucketObjectContentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBucketObjectContentResultOutput) Bucket() pulumi.StringOutput {
@@ -218,6 +212,10 @@ func (o GetBucketObjectContentResultOutput) Name() pulumi.StringOutput {
 
 func (o GetBucketObjectContentResultOutput) OutputName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.OutputName }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) Retentions() GetBucketObjectContentRetentionArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) []GetBucketObjectContentRetention { return v.Retentions }).(GetBucketObjectContentRetentionArrayOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) SelfLink() pulumi.StringOutput {

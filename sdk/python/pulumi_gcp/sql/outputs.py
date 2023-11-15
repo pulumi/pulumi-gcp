@@ -1159,8 +1159,7 @@ class DatabaseInstanceSettingsDataCacheConfig(dict):
     def __init__(__self__, *,
                  data_cache_enabled: Optional[bool] = None):
         """
-        :param bool data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`
-               Can only be used with MYSQL.
+        :param bool data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
         """
         if data_cache_enabled is not None:
             pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
@@ -1169,8 +1168,7 @@ class DatabaseInstanceSettingsDataCacheConfig(dict):
     @pulumi.getter(name="dataCacheEnabled")
     def data_cache_enabled(self) -> Optional[bool]:
         """
-        Whether data cache is enabled for the instance. Defaults to `false`
-        Can only be used with MYSQL.
+        Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
         """
         return pulumi.get(self, "data_cache_enabled")
 
@@ -1378,6 +1376,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             suggest = "psc_configs"
         elif key == "requireSsl":
             suggest = "require_ssl"
+        elif key == "sslMode":
+            suggest = "ssl_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -1397,7 +1397,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                  ipv4_enabled: Optional[bool] = None,
                  private_network: Optional[str] = None,
                  psc_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']] = None,
-                 require_ssl: Optional[bool] = None):
+                 require_ssl: Optional[bool] = None,
+                 ssl_mode: Optional[str] = None):
         """
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param bool enable_private_path_for_google_cloud_services: Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -1409,7 +1410,11 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                Specifying a network enables private IP.
                At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
-        :param bool require_ssl: Whether SSL connections over IP are enforced or not.
+        :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+               * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+               * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+               * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
         """
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -1425,6 +1430,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             pulumi.set(__self__, "psc_configs", psc_configs)
         if require_ssl is not None:
             pulumi.set(__self__, "require_ssl", require_ssl)
+        if ssl_mode is not None:
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -1478,9 +1485,20 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> Optional[bool]:
         """
-        Whether SSL connections over IP are enforced or not.
+        Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
         """
         return pulumi.get(self, "require_ssl")
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> Optional[str]:
+        """
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
+        * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
+        * For MySQL instances, use the same value pairs as the PostgreSQL instances.
+        * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
+        """
+        return pulumi.get(self, "ssl_mode")
 
 
 @pulumi.output_type
@@ -2766,7 +2784,8 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  ipv4_enabled: bool,
                  private_network: str,
                  psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
-                 require_ssl: bool):
+                 require_ssl: bool,
+                 ssl_mode: str):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
@@ -2774,6 +2793,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "require_ssl", require_ssl)
+        pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -2809,6 +2829,11 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
         return pulumi.get(self, "require_ssl")
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> str:
+        return pulumi.get(self, "ssl_mode")
 
 
 @pulumi.output_type
@@ -3804,7 +3829,8 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
                  ipv4_enabled: bool,
                  private_network: str,
                  psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
-                 require_ssl: bool):
+                 require_ssl: bool,
+                 ssl_mode: str):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
@@ -3812,6 +3838,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "require_ssl", require_ssl)
+        pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @property
     @pulumi.getter(name="allocatedIpRange")
@@ -3847,6 +3874,11 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
         return pulumi.get(self, "require_ssl")
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> str:
+        return pulumi.get(self, "ssl_mode")
 
 
 @pulumi.output_type

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a TargetHttpsProxy resource, which is used by one or more
@@ -23,10 +22,110 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
+// ### Target Https Proxy Certificate Manager Certificate
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
+//				Scope: pulumi.String("ALL_REGIONS"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+//				Description:    pulumi.String("a description"),
+//				DefaultService: defaultBackendService.ID(),
+//				HostRules: compute.URLMapHostRuleArray{
+//					&compute.URLMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.URLMapPathMatcherArray{
+//					&compute.URLMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: defaultBackendService.ID(),
+//						PathRules: compute.URLMapPathMatcherPathRuleArray{
+//							&compute.URLMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/*"),
+//								},
+//								Service: defaultBackendService.ID(),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewTargetHttpsProxy(ctx, "defaultTargetHttpsProxy", &compute.TargetHttpsProxyArgs{
+//				UrlMap: defaultURLMap.ID(),
+//				CertificateManagerCertificates: pulumi.StringArray{
+//					defaultCertificate.ID().ApplyT(func(id string) (string, error) {
+//						return fmt.Sprintf("//certificatemanager.googleapis.com/%v", id), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # TargetHttpsProxy can be imported using any of these accepted formats
+// TargetHttpsProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetHttpsProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetHttpsProxy using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/global/targetHttpsProxies/{{name}}"
+//
+//	to = google_compute_target_https_proxy.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetHttpsProxy can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -48,6 +147,11 @@ import (
 type TargetHttpsProxy struct {
 	pulumi.CustomResourceState
 
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates pulumi.StringArrayOutput `pulumi:"certificateManagerCertificates"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -98,8 +202,9 @@ type TargetHttpsProxy struct {
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
-	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-	// connections between users and the load balancer. At least one resource must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates can not be defined together.
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -145,6 +250,11 @@ func GetTargetHttpsProxy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetHttpsProxy resources.
 type targetHttpsProxyState struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -195,8 +305,9 @@ type targetHttpsProxyState struct {
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
-	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-	// connections between users and the load balancer. At least one resource must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates can not be defined together.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -210,6 +321,11 @@ type targetHttpsProxyState struct {
 }
 
 type TargetHttpsProxyState struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates pulumi.StringArrayInput
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -260,8 +376,9 @@ type TargetHttpsProxyState struct {
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
 	ServerTlsPolicy pulumi.StringPtrInput
-	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-	// connections between users and the load balancer. At least one resource must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates can not be defined together.
 	SslCertificates pulumi.StringArrayInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -279,6 +396,11 @@ func (TargetHttpsProxyState) ElementType() reflect.Type {
 }
 
 type targetHttpsProxyArgs struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -323,8 +445,9 @@ type targetHttpsProxyArgs struct {
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
-	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-	// connections between users and the load balancer. At least one resource must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates can not be defined together.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -339,6 +462,11 @@ type targetHttpsProxyArgs struct {
 
 // The set of arguments for constructing a TargetHttpsProxy resource.
 type TargetHttpsProxyArgs struct {
+	// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates fields can not be defined together.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+	CertificateManagerCertificates pulumi.StringArrayInput
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
 	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -383,8 +511,9 @@ type TargetHttpsProxyArgs struct {
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
 	ServerTlsPolicy pulumi.StringPtrInput
-	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-	// connections between users and the load balancer. At least one resource must be specified.
+	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+	// sslCertificates and certificateManagerCertificates can not be defined together.
 	SslCertificates pulumi.StringArrayInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -420,12 +549,6 @@ func (i *TargetHttpsProxy) ToTargetHttpsProxyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyOutput)
 }
 
-func (i *TargetHttpsProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxy] {
-	return pulumix.Output[*TargetHttpsProxy]{
-		OutputState: i.ToTargetHttpsProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetHttpsProxyArrayInput is an input type that accepts TargetHttpsProxyArray and TargetHttpsProxyArrayOutput values.
 // You can construct a concrete instance of `TargetHttpsProxyArrayInput` via:
 //
@@ -449,12 +572,6 @@ func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutput() TargetHttpsProxyA
 
 func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutputWithContext(ctx context.Context) TargetHttpsProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyArrayOutput)
-}
-
-func (i TargetHttpsProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetHttpsProxy] {
-	return pulumix.Output[[]*TargetHttpsProxy]{
-		OutputState: i.ToTargetHttpsProxyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TargetHttpsProxyMapInput is an input type that accepts TargetHttpsProxyMap and TargetHttpsProxyMapOutput values.
@@ -482,12 +599,6 @@ func (i TargetHttpsProxyMap) ToTargetHttpsProxyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyMapOutput)
 }
 
-func (i TargetHttpsProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetHttpsProxy] {
-	return pulumix.Output[map[string]*TargetHttpsProxy]{
-		OutputState: i.ToTargetHttpsProxyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetHttpsProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetHttpsProxyOutput) ElementType() reflect.Type {
@@ -502,10 +613,12 @@ func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutputWithContext(ctx context.
 	return o
 }
 
-func (o TargetHttpsProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxy] {
-	return pulumix.Output[*TargetHttpsProxy]{
-		OutputState: o.OutputState,
-	}
+// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
+// Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+// sslCertificates and certificateManagerCertificates fields can not be defined together.
+// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
+func (o TargetHttpsProxyOutput) CertificateManagerCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringArrayOutput { return v.CertificateManagerCertificates }).(pulumi.StringArrayOutput)
 }
 
 // A reference to the CertificateMap resource uri that identifies a certificate map
@@ -591,8 +704,9 @@ func (o TargetHttpsProxyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
 }
 
-// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
-// connections between users and the load balancer. At least one resource must be specified.
+// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
+// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
+// sslCertificates and certificateManagerCertificates can not be defined together.
 func (o TargetHttpsProxyOutput) SslCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringArrayOutput { return v.SslCertificates }).(pulumi.StringArrayOutput)
 }
@@ -626,12 +740,6 @@ func (o TargetHttpsProxyArrayOutput) ToTargetHttpsProxyArrayOutputWithContext(ct
 	return o
 }
 
-func (o TargetHttpsProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetHttpsProxy] {
-	return pulumix.Output[[]*TargetHttpsProxy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetHttpsProxyArrayOutput) Index(i pulumi.IntInput) TargetHttpsProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetHttpsProxy {
 		return vs[0].([]*TargetHttpsProxy)[vs[1].(int)]
@@ -650,12 +758,6 @@ func (o TargetHttpsProxyMapOutput) ToTargetHttpsProxyMapOutput() TargetHttpsProx
 
 func (o TargetHttpsProxyMapOutput) ToTargetHttpsProxyMapOutputWithContext(ctx context.Context) TargetHttpsProxyMapOutput {
 	return o
-}
-
-func (o TargetHttpsProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetHttpsProxy] {
-	return pulumix.Output[map[string]*TargetHttpsProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetHttpsProxyMapOutput) MapIndex(k pulumi.StringInput) TargetHttpsProxyOutput {

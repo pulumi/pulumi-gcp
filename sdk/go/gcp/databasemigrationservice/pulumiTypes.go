@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ConnectionProfileAlloydbArgs) ToConnectionProfileAlloydbOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbOutput)
 }
 
-func (i ConnectionProfileAlloydbArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydb] {
-	return pulumix.Output[ConnectionProfileAlloydb]{
-		OutputState: i.ToConnectionProfileAlloydbOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbArgs) ToConnectionProfileAlloydbPtrOutput() ConnectionProfileAlloydbPtrOutput {
 	return i.ToConnectionProfileAlloydbPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *connectionProfileAlloydbPtrType) ToConnectionProfileAlloydbPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbPtrOutput)
 }
 
-func (i *connectionProfileAlloydbPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydb] {
-	return pulumix.Output[*ConnectionProfileAlloydb]{
-		OutputState: i.ToConnectionProfileAlloydbPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ConnectionProfileAlloydbOutput) ToConnectionProfileAlloydbPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydb) *ConnectionProfileAlloydb {
 		return &v
 	}).(ConnectionProfileAlloydbPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydb] {
-	return pulumix.Output[ConnectionProfileAlloydb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. The AlloyDB cluster ID that this connection profile is associated with.
@@ -159,12 +140,6 @@ func (o ConnectionProfileAlloydbPtrOutput) ToConnectionProfileAlloydbPtrOutput()
 
 func (o ConnectionProfileAlloydbPtrOutput) ToConnectionProfileAlloydbPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydb] {
-	return pulumix.Output[*ConnectionProfileAlloydb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbPtrOutput) Elem() ConnectionProfileAlloydbOutput {
@@ -249,12 +224,6 @@ func (i ConnectionProfileAlloydbSettingsArgs) ToConnectionProfileAlloydbSettings
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsArgs) ToConnectionProfileAlloydbSettingsPtrOutput() ConnectionProfileAlloydbSettingsPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsPtrOutputWithContext(context.Background())
 }
@@ -296,12 +265,6 @@ func (i *connectionProfileAlloydbSettingsPtrType) ToConnectionProfileAlloydbSett
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsOutput) ElementType() reflect.Type {
@@ -324,12 +287,6 @@ func (o ConnectionProfileAlloydbSettingsOutput) ToConnectionProfileAlloydbSettin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydbSettings) *ConnectionProfileAlloydbSettings {
 		return &v
 	}).(ConnectionProfileAlloydbSettingsPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Input only. Initial user to setup during cluster creation.
@@ -371,12 +328,6 @@ func (o ConnectionProfileAlloydbSettingsPtrOutput) ToConnectionProfileAlloydbSet
 
 func (o ConnectionProfileAlloydbSettingsPtrOutput) ToConnectionProfileAlloydbSettingsPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsPtrOutput) Elem() ConnectionProfileAlloydbSettingsOutput {
@@ -477,12 +428,6 @@ func (i ConnectionProfileAlloydbSettingsInitialUserArgs) ToConnectionProfileAllo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsInitialUserOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsInitialUserArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsInitialUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsInitialUserArgs) ToConnectionProfileAlloydbSettingsInitialUserPtrOutput() ConnectionProfileAlloydbSettingsInitialUserPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsInitialUserPtrOutputWithContext(context.Background())
 }
@@ -524,12 +469,6 @@ func (i *connectionProfileAlloydbSettingsInitialUserPtrType) ToConnectionProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsInitialUserPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsInitialUserPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsInitialUserPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsInitialUserOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsInitialUserOutput) ElementType() reflect.Type {
@@ -552,12 +491,6 @@ func (o ConnectionProfileAlloydbSettingsInitialUserOutput) ToConnectionProfileAl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydbSettingsInitialUser) *ConnectionProfileAlloydbSettingsInitialUser {
 		return &v
 	}).(ConnectionProfileAlloydbSettingsInitialUserPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbSettingsInitialUserOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The initial password for the user.
@@ -589,12 +522,6 @@ func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) ToConnectionProfil
 
 func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) ToConnectionProfileAlloydbSettingsInitialUserPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsInitialUserPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsInitialUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsInitialUserPtrOutput) Elem() ConnectionProfileAlloydbSettingsInitialUserOutput {
@@ -692,12 +619,6 @@ func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs) ToConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutputWithContext(context.Background())
 }
@@ -739,12 +660,6 @@ func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrType) ToConne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput) ElementType() reflect.Type {
@@ -767,12 +682,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput) ToConnect
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileAlloydbSettingsPrimaryInstanceSettings) *ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
 		return &v
 	}).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput)
-}
-
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
@@ -818,12 +727,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) ToConn
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsPtrOutput) Elem() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsOutput {
@@ -921,12 +824,6 @@ func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput)
 }
 
-func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput {
 	return i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutputWithContext(context.Background())
 }
@@ -968,12 +865,6 @@ func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtr
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput)
 }
 
-func (i *connectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: i.ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput) ElementType() reflect.Type {
@@ -998,12 +889,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutp
 	}).(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput)
 }
 
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of CPU's in the VM instance.
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig) int { return v.CpuCount }).(pulumi.IntOutput)
@@ -1021,12 +906,6 @@ func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrO
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput) ToConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig] {
-	return pulumix.Output[*ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigPtrOutput) Elem() ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigOutput {
@@ -1102,12 +981,6 @@ func (i ConnectionProfileCloudsqlArgs) ToConnectionProfileCloudsqlOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlOutput)
 }
 
-func (i ConnectionProfileCloudsqlArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsql] {
-	return pulumix.Output[ConnectionProfileCloudsql]{
-		OutputState: i.ToConnectionProfileCloudsqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileCloudsqlArgs) ToConnectionProfileCloudsqlPtrOutput() ConnectionProfileCloudsqlPtrOutput {
 	return i.ToConnectionProfileCloudsqlPtrOutputWithContext(context.Background())
 }
@@ -1149,12 +1022,6 @@ func (i *connectionProfileCloudsqlPtrType) ToConnectionProfileCloudsqlPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlPtrOutput)
 }
 
-func (i *connectionProfileCloudsqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsql] {
-	return pulumix.Output[*ConnectionProfileCloudsql]{
-		OutputState: i.ToConnectionProfileCloudsqlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlOutput) ElementType() reflect.Type {
@@ -1177,12 +1044,6 @@ func (o ConnectionProfileCloudsqlOutput) ToConnectionProfileCloudsqlPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileCloudsql) *ConnectionProfileCloudsql {
 		return &v
 	}).(ConnectionProfileCloudsqlPtrOutput)
-}
-
-func (o ConnectionProfileCloudsqlOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsql] {
-	return pulumix.Output[ConnectionProfileCloudsql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1221,12 +1082,6 @@ func (o ConnectionProfileCloudsqlPtrOutput) ToConnectionProfileCloudsqlPtrOutput
 
 func (o ConnectionProfileCloudsqlPtrOutput) ToConnectionProfileCloudsqlPtrOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsql] {
-	return pulumix.Output[*ConnectionProfileCloudsql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlPtrOutput) Elem() ConnectionProfileCloudsqlOutput {
@@ -1398,12 +1253,6 @@ func (i ConnectionProfileCloudsqlSettingsArgs) ToConnectionProfileCloudsqlSettin
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettings]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileCloudsqlSettingsArgs) ToConnectionProfileCloudsqlSettingsPtrOutput() ConnectionProfileCloudsqlSettingsPtrOutput {
 	return i.ToConnectionProfileCloudsqlSettingsPtrOutputWithContext(context.Background())
 }
@@ -1445,12 +1294,6 @@ func (i *connectionProfileCloudsqlSettingsPtrType) ToConnectionProfileCloudsqlSe
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsPtrOutput)
 }
 
-func (i *connectionProfileCloudsqlSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettings]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlSettingsOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlSettingsOutput) ElementType() reflect.Type {
@@ -1473,12 +1316,6 @@ func (o ConnectionProfileCloudsqlSettingsOutput) ToConnectionProfileCloudsqlSett
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileCloudsqlSettings) *ConnectionProfileCloudsqlSettings {
 		return &v
 	}).(ConnectionProfileCloudsqlSettingsPtrOutput)
-}
-
-func (o ConnectionProfileCloudsqlSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
@@ -1589,12 +1426,6 @@ func (o ConnectionProfileCloudsqlSettingsPtrOutput) ToConnectionProfileCloudsqlS
 
 func (o ConnectionProfileCloudsqlSettingsPtrOutput) ToConnectionProfileCloudsqlSettingsPtrOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettings] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlSettingsPtrOutput) Elem() ConnectionProfileCloudsqlSettingsOutput {
@@ -1835,12 +1666,6 @@ func (i ConnectionProfileCloudsqlSettingsIpConfigArgs) ToConnectionProfileClouds
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileCloudsqlSettingsIpConfigArgs) ToConnectionProfileCloudsqlSettingsIpConfigPtrOutput() ConnectionProfileCloudsqlSettingsIpConfigPtrOutput {
 	return i.ToConnectionProfileCloudsqlSettingsIpConfigPtrOutputWithContext(context.Background())
 }
@@ -1882,12 +1707,6 @@ func (i *connectionProfileCloudsqlSettingsIpConfigPtrType) ToConnectionProfileCl
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigPtrOutput)
 }
 
-func (i *connectionProfileCloudsqlSettingsIpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlSettingsIpConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlSettingsIpConfigOutput) ElementType() reflect.Type {
@@ -1910,12 +1729,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigOutput) ToConnectionProfileClou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileCloudsqlSettingsIpConfig) *ConnectionProfileCloudsqlSettingsIpConfig {
 		return &v
 	}).(ConnectionProfileCloudsqlSettingsIpConfigPtrOutput)
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP.
@@ -1954,12 +1767,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) ToConnectionProfileC
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) ToConnectionProfileCloudsqlSettingsIpConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsIpConfigPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig] {
-	return pulumix.Output[*ConnectionProfileCloudsqlSettingsIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigPtrOutput) Elem() ConnectionProfileCloudsqlSettingsIpConfigOutput {
@@ -2059,12 +1866,6 @@ func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs) ToConnec
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayInput is an input type that accepts ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArray and ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput values.
 // You can construct a concrete instance of `ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayInput` via:
 //
@@ -2090,12 +1891,6 @@ func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArray) ToConne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput)
 }
 
-func (i ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: i.ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ElementType() reflect.Type {
@@ -2108,12 +1903,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ToConn
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when this access control entry expires in RFC 3339 format.
@@ -2148,12 +1937,6 @@ func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) T
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) ToConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutputWithContext(ctx context.Context) ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput {
 	return o
-}
-
-func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork] {
-	return pulumix.Output[[]ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkOutput {
@@ -2209,12 +1992,6 @@ func (i ConnectionProfileErrorArgs) ToConnectionProfileErrorOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileErrorOutput)
 }
 
-func (i ConnectionProfileErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileError] {
-	return pulumix.Output[ConnectionProfileError]{
-		OutputState: i.ToConnectionProfileErrorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionProfileErrorArrayInput is an input type that accepts ConnectionProfileErrorArray and ConnectionProfileErrorArrayOutput values.
 // You can construct a concrete instance of `ConnectionProfileErrorArrayInput` via:
 //
@@ -2240,12 +2017,6 @@ func (i ConnectionProfileErrorArray) ToConnectionProfileErrorArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileErrorArrayOutput)
 }
 
-func (i ConnectionProfileErrorArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileError] {
-	return pulumix.Output[[]ConnectionProfileError]{
-		OutputState: i.ToConnectionProfileErrorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileErrorOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileErrorOutput) ElementType() reflect.Type {
@@ -2258,12 +2029,6 @@ func (o ConnectionProfileErrorOutput) ToConnectionProfileErrorOutput() Connectio
 
 func (o ConnectionProfileErrorOutput) ToConnectionProfileErrorOutputWithContext(ctx context.Context) ConnectionProfileErrorOutput {
 	return o
-}
-
-func (o ConnectionProfileErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileError] {
-	return pulumix.Output[ConnectionProfileError]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -2296,12 +2061,6 @@ func (o ConnectionProfileErrorArrayOutput) ToConnectionProfileErrorArrayOutput()
 
 func (o ConnectionProfileErrorArrayOutput) ToConnectionProfileErrorArrayOutputWithContext(ctx context.Context) ConnectionProfileErrorArrayOutput {
 	return o
-}
-
-func (o ConnectionProfileErrorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionProfileError] {
-	return pulumix.Output[[]ConnectionProfileError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileErrorArrayOutput) Index(i pulumi.IntInput) ConnectionProfileErrorOutput {
@@ -2375,12 +2134,6 @@ func (i ConnectionProfileMysqlArgs) ToConnectionProfileMysqlOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlOutput)
 }
 
-func (i ConnectionProfileMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysql] {
-	return pulumix.Output[ConnectionProfileMysql]{
-		OutputState: i.ToConnectionProfileMysqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileMysqlArgs) ToConnectionProfileMysqlPtrOutput() ConnectionProfileMysqlPtrOutput {
 	return i.ToConnectionProfileMysqlPtrOutputWithContext(context.Background())
 }
@@ -2422,12 +2175,6 @@ func (i *connectionProfileMysqlPtrType) ToConnectionProfileMysqlPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlPtrOutput)
 }
 
-func (i *connectionProfileMysqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysql] {
-	return pulumix.Output[*ConnectionProfileMysql]{
-		OutputState: i.ToConnectionProfileMysqlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileMysqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileMysqlOutput) ElementType() reflect.Type {
@@ -2450,12 +2197,6 @@ func (o ConnectionProfileMysqlOutput) ToConnectionProfileMysqlPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMysql) *ConnectionProfileMysql {
 		return &v
 	}).(ConnectionProfileMysqlPtrOutput)
-}
-
-func (o ConnectionProfileMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysql] {
-	return pulumix.Output[ConnectionProfileMysql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2509,12 +2250,6 @@ func (o ConnectionProfileMysqlPtrOutput) ToConnectionProfileMysqlPtrOutput() Con
 
 func (o ConnectionProfileMysqlPtrOutput) ToConnectionProfileMysqlPtrOutputWithContext(ctx context.Context) ConnectionProfileMysqlPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileMysqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysql] {
-	return pulumix.Output[*ConnectionProfileMysql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMysqlPtrOutput) Elem() ConnectionProfileMysqlOutput {
@@ -2660,12 +2395,6 @@ func (i ConnectionProfileMysqlSslArgs) ToConnectionProfileMysqlSslOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlSslOutput)
 }
 
-func (i ConnectionProfileMysqlSslArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlSsl] {
-	return pulumix.Output[ConnectionProfileMysqlSsl]{
-		OutputState: i.ToConnectionProfileMysqlSslOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfileMysqlSslArgs) ToConnectionProfileMysqlSslPtrOutput() ConnectionProfileMysqlSslPtrOutput {
 	return i.ToConnectionProfileMysqlSslPtrOutputWithContext(context.Background())
 }
@@ -2707,12 +2436,6 @@ func (i *connectionProfileMysqlSslPtrType) ToConnectionProfileMysqlSslPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMysqlSslPtrOutput)
 }
 
-func (i *connectionProfileMysqlSslPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlSsl] {
-	return pulumix.Output[*ConnectionProfileMysqlSsl]{
-		OutputState: i.ToConnectionProfileMysqlSslPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfileMysqlSslOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileMysqlSslOutput) ElementType() reflect.Type {
@@ -2735,12 +2458,6 @@ func (o ConnectionProfileMysqlSslOutput) ToConnectionProfileMysqlSslPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileMysqlSsl) *ConnectionProfileMysqlSsl {
 		return &v
 	}).(ConnectionProfileMysqlSslPtrOutput)
-}
-
-func (o ConnectionProfileMysqlSslOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfileMysqlSsl] {
-	return pulumix.Output[ConnectionProfileMysqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -2782,12 +2499,6 @@ func (o ConnectionProfileMysqlSslPtrOutput) ToConnectionProfileMysqlSslPtrOutput
 
 func (o ConnectionProfileMysqlSslPtrOutput) ToConnectionProfileMysqlSslPtrOutputWithContext(ctx context.Context) ConnectionProfileMysqlSslPtrOutput {
 	return o
-}
-
-func (o ConnectionProfileMysqlSslPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfileMysqlSsl] {
-	return pulumix.Output[*ConnectionProfileMysqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfileMysqlSslPtrOutput) Elem() ConnectionProfileMysqlSslOutput {
@@ -2845,6 +2556,1046 @@ func (o ConnectionProfileMysqlSslPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOracle struct {
+	// Required. Database service for the Oracle connection.
+	DatabaseService string `pulumi:"databaseService"`
+	// SSL configuration for the destination to connect to the source database.
+	// Structure is documented below.
+	ForwardSshConnectivity *ConnectionProfileOracleForwardSshConnectivity `pulumi:"forwardSshConnectivity"`
+	// Required. The IP or hostname of the source Oracle database.
+	Host string `pulumi:"host"`
+	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+	// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password string `pulumi:"password"`
+	// (Output)
+	// Output only. Indicates If this connection profile password is stored.
+	PasswordSet *bool `pulumi:"passwordSet"`
+	// Required. The network port of the source Oracle database.
+	Port int `pulumi:"port"`
+	// Configuration for using a private network to communicate with the source database
+	// Structure is documented below.
+	PrivateConnectivity *ConnectionProfileOraclePrivateConnectivity `pulumi:"privateConnectivity"`
+	// SSL configuration for the destination to connect to the source database.
+	// Structure is documented below.
+	Ssl *ConnectionProfileOracleSsl `pulumi:"ssl"`
+	// This object has no nested fields.
+	// Static IP address connectivity configured on service project.
+	StaticServiceIpConnectivity *ConnectionProfileOracleStaticServiceIpConnectivity `pulumi:"staticServiceIpConnectivity"`
+	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username string `pulumi:"username"`
+}
+
+// ConnectionProfileOracleInput is an input type that accepts ConnectionProfileOracleArgs and ConnectionProfileOracleOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleInput` via:
+//
+//	ConnectionProfileOracleArgs{...}
+type ConnectionProfileOracleInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleOutput() ConnectionProfileOracleOutput
+	ToConnectionProfileOracleOutputWithContext(context.Context) ConnectionProfileOracleOutput
+}
+
+type ConnectionProfileOracleArgs struct {
+	// Required. Database service for the Oracle connection.
+	DatabaseService pulumi.StringInput `pulumi:"databaseService"`
+	// SSL configuration for the destination to connect to the source database.
+	// Structure is documented below.
+	ForwardSshConnectivity ConnectionProfileOracleForwardSshConnectivityPtrInput `pulumi:"forwardSshConnectivity"`
+	// Required. The IP or hostname of the source Oracle database.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+	// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password pulumi.StringInput `pulumi:"password"`
+	// (Output)
+	// Output only. Indicates If this connection profile password is stored.
+	PasswordSet pulumi.BoolPtrInput `pulumi:"passwordSet"`
+	// Required. The network port of the source Oracle database.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Configuration for using a private network to communicate with the source database
+	// Structure is documented below.
+	PrivateConnectivity ConnectionProfileOraclePrivateConnectivityPtrInput `pulumi:"privateConnectivity"`
+	// SSL configuration for the destination to connect to the source database.
+	// Structure is documented below.
+	Ssl ConnectionProfileOracleSslPtrInput `pulumi:"ssl"`
+	// This object has no nested fields.
+	// Static IP address connectivity configured on service project.
+	StaticServiceIpConnectivity ConnectionProfileOracleStaticServiceIpConnectivityPtrInput `pulumi:"staticServiceIpConnectivity"`
+	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ConnectionProfileOracleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracle)(nil)).Elem()
+}
+
+func (i ConnectionProfileOracleArgs) ToConnectionProfileOracleOutput() ConnectionProfileOracleOutput {
+	return i.ToConnectionProfileOracleOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleArgs) ToConnectionProfileOracleOutputWithContext(ctx context.Context) ConnectionProfileOracleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleOutput)
+}
+
+func (i ConnectionProfileOracleArgs) ToConnectionProfileOraclePtrOutput() ConnectionProfileOraclePtrOutput {
+	return i.ToConnectionProfileOraclePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleArgs) ToConnectionProfileOraclePtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleOutput).ToConnectionProfileOraclePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileOraclePtrInput is an input type that accepts ConnectionProfileOracleArgs, ConnectionProfileOraclePtr and ConnectionProfileOraclePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileOraclePtrInput` via:
+//
+//	        ConnectionProfileOracleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileOraclePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOraclePtrOutput() ConnectionProfileOraclePtrOutput
+	ToConnectionProfileOraclePtrOutputWithContext(context.Context) ConnectionProfileOraclePtrOutput
+}
+
+type connectionProfileOraclePtrType ConnectionProfileOracleArgs
+
+func ConnectionProfileOraclePtr(v *ConnectionProfileOracleArgs) ConnectionProfileOraclePtrInput {
+	return (*connectionProfileOraclePtrType)(v)
+}
+
+func (*connectionProfileOraclePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracle)(nil)).Elem()
+}
+
+func (i *connectionProfileOraclePtrType) ToConnectionProfileOraclePtrOutput() ConnectionProfileOraclePtrOutput {
+	return i.ToConnectionProfileOraclePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileOraclePtrType) ToConnectionProfileOraclePtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOraclePtrOutput)
+}
+
+type ConnectionProfileOracleOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracle)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleOutput) ToConnectionProfileOracleOutput() ConnectionProfileOracleOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleOutput) ToConnectionProfileOracleOutputWithContext(ctx context.Context) ConnectionProfileOracleOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleOutput) ToConnectionProfileOraclePtrOutput() ConnectionProfileOraclePtrOutput {
+	return o.ToConnectionProfileOraclePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileOracleOutput) ToConnectionProfileOraclePtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOracle) *ConnectionProfileOracle {
+		return &v
+	}).(ConnectionProfileOraclePtrOutput)
+}
+
+// Required. Database service for the Oracle connection.
+func (o ConnectionProfileOracleOutput) DatabaseService() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) string { return v.DatabaseService }).(pulumi.StringOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+// Structure is documented below.
+func (o ConnectionProfileOracleOutput) ForwardSshConnectivity() ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) *ConnectionProfileOracleForwardSshConnectivity {
+		return v.ForwardSshConnectivity
+	}).(ConnectionProfileOracleForwardSshConnectivityPtrOutput)
+}
+
+// Required. The IP or hostname of the source Oracle database.
+func (o ConnectionProfileOracleOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. Indicates If this connection profile password is stored.
+func (o ConnectionProfileOracleOutput) PasswordSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) *bool { return v.PasswordSet }).(pulumi.BoolPtrOutput)
+}
+
+// Required. The network port of the source Oracle database.
+func (o ConnectionProfileOracleOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Configuration for using a private network to communicate with the source database
+// Structure is documented below.
+func (o ConnectionProfileOracleOutput) PrivateConnectivity() ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) *ConnectionProfileOraclePrivateConnectivity {
+		return v.PrivateConnectivity
+	}).(ConnectionProfileOraclePrivateConnectivityPtrOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+// Structure is documented below.
+func (o ConnectionProfileOracleOutput) Ssl() ConnectionProfileOracleSslPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) *ConnectionProfileOracleSsl { return v.Ssl }).(ConnectionProfileOracleSslPtrOutput)
+}
+
+// This object has no nested fields.
+// Static IP address connectivity configured on service project.
+func (o ConnectionProfileOracleOutput) StaticServiceIpConnectivity() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) *ConnectionProfileOracleStaticServiceIpConnectivity {
+		return v.StaticServiceIpConnectivity
+	}).(ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput)
+}
+
+// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o ConnectionProfileOracleOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracle) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ConnectionProfileOraclePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOraclePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracle)(nil)).Elem()
+}
+
+func (o ConnectionProfileOraclePtrOutput) ToConnectionProfileOraclePtrOutput() ConnectionProfileOraclePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOraclePtrOutput) ToConnectionProfileOraclePtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOraclePtrOutput) Elem() ConnectionProfileOracleOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) ConnectionProfileOracle {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileOracle
+		return ret
+	}).(ConnectionProfileOracleOutput)
+}
+
+// Required. Database service for the Oracle connection.
+func (o ConnectionProfileOraclePtrOutput) DatabaseService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseService
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+// Structure is documented below.
+func (o ConnectionProfileOraclePtrOutput) ForwardSshConnectivity() ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *ConnectionProfileOracleForwardSshConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardSshConnectivity
+	}).(ConnectionProfileOracleForwardSshConnectivityPtrOutput)
+}
+
+// Required. The IP or hostname of the source Oracle database.
+func (o ConnectionProfileOraclePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOraclePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Indicates If this connection profile password is stored.
+func (o ConnectionProfileOraclePtrOutput) PasswordSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. The network port of the source Oracle database.
+func (o ConnectionProfileOraclePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration for using a private network to communicate with the source database
+// Structure is documented below.
+func (o ConnectionProfileOraclePtrOutput) PrivateConnectivity() ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *ConnectionProfileOraclePrivateConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateConnectivity
+	}).(ConnectionProfileOraclePrivateConnectivityPtrOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+// Structure is documented below.
+func (o ConnectionProfileOraclePtrOutput) Ssl() ConnectionProfileOracleSslPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *ConnectionProfileOracleSsl {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(ConnectionProfileOracleSslPtrOutput)
+}
+
+// This object has no nested fields.
+// Static IP address connectivity configured on service project.
+func (o ConnectionProfileOraclePtrOutput) StaticServiceIpConnectivity() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *ConnectionProfileOracleStaticServiceIpConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.StaticServiceIpConnectivity
+	}).(ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput)
+}
+
+// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o ConnectionProfileOraclePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracle) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOracleForwardSshConnectivity struct {
+	// Required. Hostname for the SSH tunnel.
+	Hostname string `pulumi:"hostname"`
+	// Input only. SSH password. Only one of `password` and `privateKey` can be configured.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password *string `pulumi:"password"`
+	// Port for the SSH tunnel, default value is 22.
+	Port int `pulumi:"port"`
+	// Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Required. Username for the SSH tunnel.
+	Username string `pulumi:"username"`
+}
+
+// ConnectionProfileOracleForwardSshConnectivityInput is an input type that accepts ConnectionProfileOracleForwardSshConnectivityArgs and ConnectionProfileOracleForwardSshConnectivityOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleForwardSshConnectivityInput` via:
+//
+//	ConnectionProfileOracleForwardSshConnectivityArgs{...}
+type ConnectionProfileOracleForwardSshConnectivityInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleForwardSshConnectivityOutput() ConnectionProfileOracleForwardSshConnectivityOutput
+	ToConnectionProfileOracleForwardSshConnectivityOutputWithContext(context.Context) ConnectionProfileOracleForwardSshConnectivityOutput
+}
+
+type ConnectionProfileOracleForwardSshConnectivityArgs struct {
+	// Required. Hostname for the SSH tunnel.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Input only. SSH password. Only one of `password` and `privateKey` can be configured.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port for the SSH tunnel, default value is 22.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Required. Username for the SSH tunnel.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ConnectionProfileOracleForwardSshConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracleForwardSshConnectivity)(nil)).Elem()
+}
+
+func (i ConnectionProfileOracleForwardSshConnectivityArgs) ToConnectionProfileOracleForwardSshConnectivityOutput() ConnectionProfileOracleForwardSshConnectivityOutput {
+	return i.ToConnectionProfileOracleForwardSshConnectivityOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleForwardSshConnectivityArgs) ToConnectionProfileOracleForwardSshConnectivityOutputWithContext(ctx context.Context) ConnectionProfileOracleForwardSshConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleForwardSshConnectivityOutput)
+}
+
+func (i ConnectionProfileOracleForwardSshConnectivityArgs) ToConnectionProfileOracleForwardSshConnectivityPtrOutput() ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return i.ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleForwardSshConnectivityArgs) ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleForwardSshConnectivityOutput).ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileOracleForwardSshConnectivityPtrInput is an input type that accepts ConnectionProfileOracleForwardSshConnectivityArgs, ConnectionProfileOracleForwardSshConnectivityPtr and ConnectionProfileOracleForwardSshConnectivityPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleForwardSshConnectivityPtrInput` via:
+//
+//	        ConnectionProfileOracleForwardSshConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileOracleForwardSshConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleForwardSshConnectivityPtrOutput() ConnectionProfileOracleForwardSshConnectivityPtrOutput
+	ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(context.Context) ConnectionProfileOracleForwardSshConnectivityPtrOutput
+}
+
+type connectionProfileOracleForwardSshConnectivityPtrType ConnectionProfileOracleForwardSshConnectivityArgs
+
+func ConnectionProfileOracleForwardSshConnectivityPtr(v *ConnectionProfileOracleForwardSshConnectivityArgs) ConnectionProfileOracleForwardSshConnectivityPtrInput {
+	return (*connectionProfileOracleForwardSshConnectivityPtrType)(v)
+}
+
+func (*connectionProfileOracleForwardSshConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracleForwardSshConnectivity)(nil)).Elem()
+}
+
+func (i *connectionProfileOracleForwardSshConnectivityPtrType) ToConnectionProfileOracleForwardSshConnectivityPtrOutput() ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return i.ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileOracleForwardSshConnectivityPtrType) ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleForwardSshConnectivityPtrOutput)
+}
+
+type ConnectionProfileOracleForwardSshConnectivityOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleForwardSshConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracleForwardSshConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) ToConnectionProfileOracleForwardSshConnectivityOutput() ConnectionProfileOracleForwardSshConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) ToConnectionProfileOracleForwardSshConnectivityOutputWithContext(ctx context.Context) ConnectionProfileOracleForwardSshConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) ToConnectionProfileOracleForwardSshConnectivityPtrOutput() ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return o.ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOracleForwardSshConnectivity) *ConnectionProfileOracleForwardSshConnectivity {
+		return &v
+	}).(ConnectionProfileOracleForwardSshConnectivityPtrOutput)
+}
+
+// Required. Hostname for the SSH tunnel.
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleForwardSshConnectivity) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Input only. SSH password. Only one of `password` and `privateKey` can be configured.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleForwardSshConnectivity) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port for the SSH tunnel, default value is 22.
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleForwardSshConnectivity) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleForwardSshConnectivity) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Required. Username for the SSH tunnel.
+func (o ConnectionProfileOracleForwardSshConnectivityOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleForwardSshConnectivity) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ConnectionProfileOracleForwardSshConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleForwardSshConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracleForwardSshConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) ToConnectionProfileOracleForwardSshConnectivityPtrOutput() ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) ToConnectionProfileOracleForwardSshConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleForwardSshConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) Elem() ConnectionProfileOracleForwardSshConnectivityOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleForwardSshConnectivity) ConnectionProfileOracleForwardSshConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileOracleForwardSshConnectivity
+		return ret
+	}).(ConnectionProfileOracleForwardSshConnectivityOutput)
+}
+
+// Required. Hostname for the SSH tunnel.
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleForwardSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. SSH password. Only one of `password` and `privateKey` can be configured.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleForwardSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port for the SSH tunnel, default value is 22.
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleForwardSshConnectivity) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleForwardSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Username for the SSH tunnel.
+func (o ConnectionProfileOracleForwardSshConnectivityPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleForwardSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOraclePrivateConnectivity struct {
+	// Required. The resource name (URI) of the private connection.
+	PrivateConnection string `pulumi:"privateConnection"`
+}
+
+// ConnectionProfileOraclePrivateConnectivityInput is an input type that accepts ConnectionProfileOraclePrivateConnectivityArgs and ConnectionProfileOraclePrivateConnectivityOutput values.
+// You can construct a concrete instance of `ConnectionProfileOraclePrivateConnectivityInput` via:
+//
+//	ConnectionProfileOraclePrivateConnectivityArgs{...}
+type ConnectionProfileOraclePrivateConnectivityInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOraclePrivateConnectivityOutput() ConnectionProfileOraclePrivateConnectivityOutput
+	ToConnectionProfileOraclePrivateConnectivityOutputWithContext(context.Context) ConnectionProfileOraclePrivateConnectivityOutput
+}
+
+type ConnectionProfileOraclePrivateConnectivityArgs struct {
+	// Required. The resource name (URI) of the private connection.
+	PrivateConnection pulumi.StringInput `pulumi:"privateConnection"`
+}
+
+func (ConnectionProfileOraclePrivateConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOraclePrivateConnectivity)(nil)).Elem()
+}
+
+func (i ConnectionProfileOraclePrivateConnectivityArgs) ToConnectionProfileOraclePrivateConnectivityOutput() ConnectionProfileOraclePrivateConnectivityOutput {
+	return i.ToConnectionProfileOraclePrivateConnectivityOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOraclePrivateConnectivityArgs) ToConnectionProfileOraclePrivateConnectivityOutputWithContext(ctx context.Context) ConnectionProfileOraclePrivateConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOraclePrivateConnectivityOutput)
+}
+
+func (i ConnectionProfileOraclePrivateConnectivityArgs) ToConnectionProfileOraclePrivateConnectivityPtrOutput() ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return i.ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOraclePrivateConnectivityArgs) ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOraclePrivateConnectivityOutput).ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileOraclePrivateConnectivityPtrInput is an input type that accepts ConnectionProfileOraclePrivateConnectivityArgs, ConnectionProfileOraclePrivateConnectivityPtr and ConnectionProfileOraclePrivateConnectivityPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileOraclePrivateConnectivityPtrInput` via:
+//
+//	        ConnectionProfileOraclePrivateConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileOraclePrivateConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOraclePrivateConnectivityPtrOutput() ConnectionProfileOraclePrivateConnectivityPtrOutput
+	ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(context.Context) ConnectionProfileOraclePrivateConnectivityPtrOutput
+}
+
+type connectionProfileOraclePrivateConnectivityPtrType ConnectionProfileOraclePrivateConnectivityArgs
+
+func ConnectionProfileOraclePrivateConnectivityPtr(v *ConnectionProfileOraclePrivateConnectivityArgs) ConnectionProfileOraclePrivateConnectivityPtrInput {
+	return (*connectionProfileOraclePrivateConnectivityPtrType)(v)
+}
+
+func (*connectionProfileOraclePrivateConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOraclePrivateConnectivity)(nil)).Elem()
+}
+
+func (i *connectionProfileOraclePrivateConnectivityPtrType) ToConnectionProfileOraclePrivateConnectivityPtrOutput() ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return i.ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileOraclePrivateConnectivityPtrType) ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOraclePrivateConnectivityPtrOutput)
+}
+
+type ConnectionProfileOraclePrivateConnectivityOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOraclePrivateConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOraclePrivateConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityOutput) ToConnectionProfileOraclePrivateConnectivityOutput() ConnectionProfileOraclePrivateConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityOutput) ToConnectionProfileOraclePrivateConnectivityOutputWithContext(ctx context.Context) ConnectionProfileOraclePrivateConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityOutput) ToConnectionProfileOraclePrivateConnectivityPtrOutput() ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return o.ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityOutput) ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOraclePrivateConnectivity) *ConnectionProfileOraclePrivateConnectivity {
+		return &v
+	}).(ConnectionProfileOraclePrivateConnectivityPtrOutput)
+}
+
+// Required. The resource name (URI) of the private connection.
+func (o ConnectionProfileOraclePrivateConnectivityOutput) PrivateConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOraclePrivateConnectivity) string { return v.PrivateConnection }).(pulumi.StringOutput)
+}
+
+type ConnectionProfileOraclePrivateConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOraclePrivateConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOraclePrivateConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityPtrOutput) ToConnectionProfileOraclePrivateConnectivityPtrOutput() ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityPtrOutput) ToConnectionProfileOraclePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOraclePrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOraclePrivateConnectivityPtrOutput) Elem() ConnectionProfileOraclePrivateConnectivityOutput {
+	return o.ApplyT(func(v *ConnectionProfileOraclePrivateConnectivity) ConnectionProfileOraclePrivateConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileOraclePrivateConnectivity
+		return ret
+	}).(ConnectionProfileOraclePrivateConnectivityOutput)
+}
+
+// Required. The resource name (URI) of the private connection.
+func (o ConnectionProfileOraclePrivateConnectivityPtrOutput) PrivateConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOraclePrivateConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateConnection
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOracleSsl struct {
+	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// The replica will use this certificate to verify it's connecting to the right host.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate string `pulumi:"caCertificate"`
+	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+	// If this field is used then the 'clientKey' field is mandatory
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+	// If this field is used then the 'clientCertificate' field is mandatory.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientKey *string `pulumi:"clientKey"`
+	// (Output)
+	// The current connection profile state.
+	Type *string `pulumi:"type"`
+}
+
+// ConnectionProfileOracleSslInput is an input type that accepts ConnectionProfileOracleSslArgs and ConnectionProfileOracleSslOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleSslInput` via:
+//
+//	ConnectionProfileOracleSslArgs{...}
+type ConnectionProfileOracleSslInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleSslOutput() ConnectionProfileOracleSslOutput
+	ToConnectionProfileOracleSslOutputWithContext(context.Context) ConnectionProfileOracleSslOutput
+}
+
+type ConnectionProfileOracleSslArgs struct {
+	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// The replica will use this certificate to verify it's connecting to the right host.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+	// If this field is used then the 'clientKey' field is mandatory
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+	// If this field is used then the 'clientCertificate' field is mandatory.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// (Output)
+	// The current connection profile state.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ConnectionProfileOracleSslArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracleSsl)(nil)).Elem()
+}
+
+func (i ConnectionProfileOracleSslArgs) ToConnectionProfileOracleSslOutput() ConnectionProfileOracleSslOutput {
+	return i.ToConnectionProfileOracleSslOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleSslArgs) ToConnectionProfileOracleSslOutputWithContext(ctx context.Context) ConnectionProfileOracleSslOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleSslOutput)
+}
+
+func (i ConnectionProfileOracleSslArgs) ToConnectionProfileOracleSslPtrOutput() ConnectionProfileOracleSslPtrOutput {
+	return i.ToConnectionProfileOracleSslPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleSslArgs) ToConnectionProfileOracleSslPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleSslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleSslOutput).ToConnectionProfileOracleSslPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileOracleSslPtrInput is an input type that accepts ConnectionProfileOracleSslArgs, ConnectionProfileOracleSslPtr and ConnectionProfileOracleSslPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleSslPtrInput` via:
+//
+//	        ConnectionProfileOracleSslArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileOracleSslPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleSslPtrOutput() ConnectionProfileOracleSslPtrOutput
+	ToConnectionProfileOracleSslPtrOutputWithContext(context.Context) ConnectionProfileOracleSslPtrOutput
+}
+
+type connectionProfileOracleSslPtrType ConnectionProfileOracleSslArgs
+
+func ConnectionProfileOracleSslPtr(v *ConnectionProfileOracleSslArgs) ConnectionProfileOracleSslPtrInput {
+	return (*connectionProfileOracleSslPtrType)(v)
+}
+
+func (*connectionProfileOracleSslPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracleSsl)(nil)).Elem()
+}
+
+func (i *connectionProfileOracleSslPtrType) ToConnectionProfileOracleSslPtrOutput() ConnectionProfileOracleSslPtrOutput {
+	return i.ToConnectionProfileOracleSslPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileOracleSslPtrType) ToConnectionProfileOracleSslPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleSslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleSslPtrOutput)
+}
+
+type ConnectionProfileOracleSslOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleSslOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracleSsl)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleSslOutput) ToConnectionProfileOracleSslOutput() ConnectionProfileOracleSslOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleSslOutput) ToConnectionProfileOracleSslOutputWithContext(ctx context.Context) ConnectionProfileOracleSslOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleSslOutput) ToConnectionProfileOracleSslPtrOutput() ConnectionProfileOracleSslPtrOutput {
+	return o.ToConnectionProfileOracleSslPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileOracleSslOutput) ToConnectionProfileOracleSslPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleSslPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOracleSsl) *ConnectionProfileOracleSsl {
+		return &v
+	}).(ConnectionProfileOracleSslPtrOutput)
+}
+
+// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// The replica will use this certificate to verify it's connecting to the right host.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleSslOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleSsl) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+// If this field is used then the 'clientKey' field is mandatory
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleSslOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleSsl) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+// If this field is used then the 'clientCertificate' field is mandatory.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleSslOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleSsl) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current connection profile state.
+func (o ConnectionProfileOracleSslOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleSsl) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOracleSslPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleSslPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracleSsl)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleSslPtrOutput) ToConnectionProfileOracleSslPtrOutput() ConnectionProfileOracleSslPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleSslPtrOutput) ToConnectionProfileOracleSslPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleSslPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleSslPtrOutput) Elem() ConnectionProfileOracleSslOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleSsl) ConnectionProfileOracleSsl {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileOracleSsl
+		return ret
+	}).(ConnectionProfileOracleSslOutput)
+}
+
+// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// The replica will use this certificate to verify it's connecting to the right host.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleSslPtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleSsl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+// If this field is used then the 'clientKey' field is mandatory
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleSslPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleSsl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+// If this field is used then the 'clientCertificate' field is mandatory.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfileOracleSslPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleSsl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current connection profile state.
+func (o ConnectionProfileOracleSslPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleSsl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOracleStaticServiceIpConnectivity struct {
+}
+
+// ConnectionProfileOracleStaticServiceIpConnectivityInput is an input type that accepts ConnectionProfileOracleStaticServiceIpConnectivityArgs and ConnectionProfileOracleStaticServiceIpConnectivityOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleStaticServiceIpConnectivityInput` via:
+//
+//	ConnectionProfileOracleStaticServiceIpConnectivityArgs{...}
+type ConnectionProfileOracleStaticServiceIpConnectivityInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleStaticServiceIpConnectivityOutput() ConnectionProfileOracleStaticServiceIpConnectivityOutput
+	ToConnectionProfileOracleStaticServiceIpConnectivityOutputWithContext(context.Context) ConnectionProfileOracleStaticServiceIpConnectivityOutput
+}
+
+type ConnectionProfileOracleStaticServiceIpConnectivityArgs struct {
+}
+
+func (ConnectionProfileOracleStaticServiceIpConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracleStaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (i ConnectionProfileOracleStaticServiceIpConnectivityArgs) ToConnectionProfileOracleStaticServiceIpConnectivityOutput() ConnectionProfileOracleStaticServiceIpConnectivityOutput {
+	return i.ToConnectionProfileOracleStaticServiceIpConnectivityOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleStaticServiceIpConnectivityArgs) ToConnectionProfileOracleStaticServiceIpConnectivityOutputWithContext(ctx context.Context) ConnectionProfileOracleStaticServiceIpConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleStaticServiceIpConnectivityOutput)
+}
+
+func (i ConnectionProfileOracleStaticServiceIpConnectivityArgs) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutput() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return i.ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOracleStaticServiceIpConnectivityArgs) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleStaticServiceIpConnectivityOutput).ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileOracleStaticServiceIpConnectivityPtrInput is an input type that accepts ConnectionProfileOracleStaticServiceIpConnectivityArgs, ConnectionProfileOracleStaticServiceIpConnectivityPtr and ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileOracleStaticServiceIpConnectivityPtrInput` via:
+//
+//	        ConnectionProfileOracleStaticServiceIpConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileOracleStaticServiceIpConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutput() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput
+	ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(context.Context) ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput
+}
+
+type connectionProfileOracleStaticServiceIpConnectivityPtrType ConnectionProfileOracleStaticServiceIpConnectivityArgs
+
+func ConnectionProfileOracleStaticServiceIpConnectivityPtr(v *ConnectionProfileOracleStaticServiceIpConnectivityArgs) ConnectionProfileOracleStaticServiceIpConnectivityPtrInput {
+	return (*connectionProfileOracleStaticServiceIpConnectivityPtrType)(v)
+}
+
+func (*connectionProfileOracleStaticServiceIpConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracleStaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (i *connectionProfileOracleStaticServiceIpConnectivityPtrType) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutput() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return i.ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileOracleStaticServiceIpConnectivityPtrType) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput)
+}
+
+type ConnectionProfileOracleStaticServiceIpConnectivityOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleStaticServiceIpConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOracleStaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityOutput) ToConnectionProfileOracleStaticServiceIpConnectivityOutput() ConnectionProfileOracleStaticServiceIpConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityOutput) ToConnectionProfileOracleStaticServiceIpConnectivityOutputWithContext(ctx context.Context) ConnectionProfileOracleStaticServiceIpConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityOutput) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutput() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return o.ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityOutput) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOracleStaticServiceIpConnectivity) *ConnectionProfileOracleStaticServiceIpConnectivity {
+		return &v
+	}).(ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput)
+}
+
+type ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOracleStaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutput() ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput) ToConnectionProfileOracleStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput) Elem() ConnectionProfileOracleStaticServiceIpConnectivityOutput {
+	return o.ApplyT(func(v *ConnectionProfileOracleStaticServiceIpConnectivity) ConnectionProfileOracleStaticServiceIpConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileOracleStaticServiceIpConnectivity
+		return ret
+	}).(ConnectionProfileOracleStaticServiceIpConnectivityOutput)
 }
 
 type ConnectionProfilePostgresql struct {
@@ -2918,12 +3669,6 @@ func (i ConnectionProfilePostgresqlArgs) ToConnectionProfilePostgresqlOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlOutput)
 }
 
-func (i ConnectionProfilePostgresqlArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresql] {
-	return pulumix.Output[ConnectionProfilePostgresql]{
-		OutputState: i.ToConnectionProfilePostgresqlOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfilePostgresqlArgs) ToConnectionProfilePostgresqlPtrOutput() ConnectionProfilePostgresqlPtrOutput {
 	return i.ToConnectionProfilePostgresqlPtrOutputWithContext(context.Background())
 }
@@ -2965,12 +3710,6 @@ func (i *connectionProfilePostgresqlPtrType) ToConnectionProfilePostgresqlPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlPtrOutput)
 }
 
-func (i *connectionProfilePostgresqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresql] {
-	return pulumix.Output[*ConnectionProfilePostgresql]{
-		OutputState: i.ToConnectionProfilePostgresqlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfilePostgresqlOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfilePostgresqlOutput) ElementType() reflect.Type {
@@ -2993,12 +3732,6 @@ func (o ConnectionProfilePostgresqlOutput) ToConnectionProfilePostgresqlPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresql) *ConnectionProfilePostgresql {
 		return &v
 	}).(ConnectionProfilePostgresqlPtrOutput)
-}
-
-func (o ConnectionProfilePostgresqlOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresql] {
-	return pulumix.Output[ConnectionProfilePostgresql]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -3058,12 +3791,6 @@ func (o ConnectionProfilePostgresqlPtrOutput) ToConnectionProfilePostgresqlPtrOu
 
 func (o ConnectionProfilePostgresqlPtrOutput) ToConnectionProfilePostgresqlPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlPtrOutput {
 	return o
-}
-
-func (o ConnectionProfilePostgresqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresql] {
-	return pulumix.Output[*ConnectionProfilePostgresql]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfilePostgresqlPtrOutput) Elem() ConnectionProfilePostgresqlOutput {
@@ -3220,12 +3947,6 @@ func (i ConnectionProfilePostgresqlSslArgs) ToConnectionProfilePostgresqlSslOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlSslOutput)
 }
 
-func (i ConnectionProfilePostgresqlSslArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[ConnectionProfilePostgresqlSsl]{
-		OutputState: i.ToConnectionProfilePostgresqlSslOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionProfilePostgresqlSslArgs) ToConnectionProfilePostgresqlSslPtrOutput() ConnectionProfilePostgresqlSslPtrOutput {
 	return i.ToConnectionProfilePostgresqlSslPtrOutputWithContext(context.Background())
 }
@@ -3267,12 +3988,6 @@ func (i *connectionProfilePostgresqlSslPtrType) ToConnectionProfilePostgresqlSsl
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlSslPtrOutput)
 }
 
-func (i *connectionProfilePostgresqlSslPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[*ConnectionProfilePostgresqlSsl]{
-		OutputState: i.ToConnectionProfilePostgresqlSslPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionProfilePostgresqlSslOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfilePostgresqlSslOutput) ElementType() reflect.Type {
@@ -3295,12 +4010,6 @@ func (o ConnectionProfilePostgresqlSslOutput) ToConnectionProfilePostgresqlSslPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlSsl) *ConnectionProfilePostgresqlSsl {
 		return &v
 	}).(ConnectionProfilePostgresqlSslPtrOutput)
-}
-
-func (o ConnectionProfilePostgresqlSslOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[ConnectionProfilePostgresqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -3342,12 +4051,6 @@ func (o ConnectionProfilePostgresqlSslPtrOutput) ToConnectionProfilePostgresqlSs
 
 func (o ConnectionProfilePostgresqlSslPtrOutput) ToConnectionProfilePostgresqlSslPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlSslPtrOutput {
 	return o
-}
-
-func (o ConnectionProfilePostgresqlSslPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfilePostgresqlSsl] {
-	return pulumix.Output[*ConnectionProfilePostgresqlSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionProfilePostgresqlSslPtrOutput) Elem() ConnectionProfilePostgresqlSslOutput {
@@ -3407,6 +4110,280 @@ func (o ConnectionProfilePostgresqlSslPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrivateConnectionError struct {
+	// A list of messages that carry the error details.
+	Details map[string]string `pulumi:"details"`
+	// A message containing more information about the error that occurred.
+	Message *string `pulumi:"message"`
+}
+
+// PrivateConnectionErrorInput is an input type that accepts PrivateConnectionErrorArgs and PrivateConnectionErrorOutput values.
+// You can construct a concrete instance of `PrivateConnectionErrorInput` via:
+//
+//	PrivateConnectionErrorArgs{...}
+type PrivateConnectionErrorInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionErrorOutput() PrivateConnectionErrorOutput
+	ToPrivateConnectionErrorOutputWithContext(context.Context) PrivateConnectionErrorOutput
+}
+
+type PrivateConnectionErrorArgs struct {
+	// A list of messages that carry the error details.
+	Details pulumi.StringMapInput `pulumi:"details"`
+	// A message containing more information about the error that occurred.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (PrivateConnectionErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionError)(nil)).Elem()
+}
+
+func (i PrivateConnectionErrorArgs) ToPrivateConnectionErrorOutput() PrivateConnectionErrorOutput {
+	return i.ToPrivateConnectionErrorOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionErrorArgs) ToPrivateConnectionErrorOutputWithContext(ctx context.Context) PrivateConnectionErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionErrorOutput)
+}
+
+// PrivateConnectionErrorArrayInput is an input type that accepts PrivateConnectionErrorArray and PrivateConnectionErrorArrayOutput values.
+// You can construct a concrete instance of `PrivateConnectionErrorArrayInput` via:
+//
+//	PrivateConnectionErrorArray{ PrivateConnectionErrorArgs{...} }
+type PrivateConnectionErrorArrayInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionErrorArrayOutput() PrivateConnectionErrorArrayOutput
+	ToPrivateConnectionErrorArrayOutputWithContext(context.Context) PrivateConnectionErrorArrayOutput
+}
+
+type PrivateConnectionErrorArray []PrivateConnectionErrorInput
+
+func (PrivateConnectionErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateConnectionError)(nil)).Elem()
+}
+
+func (i PrivateConnectionErrorArray) ToPrivateConnectionErrorArrayOutput() PrivateConnectionErrorArrayOutput {
+	return i.ToPrivateConnectionErrorArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionErrorArray) ToPrivateConnectionErrorArrayOutputWithContext(ctx context.Context) PrivateConnectionErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionErrorArrayOutput)
+}
+
+type PrivateConnectionErrorOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionError)(nil)).Elem()
+}
+
+func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutput() PrivateConnectionErrorOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutputWithContext(ctx context.Context) PrivateConnectionErrorOutput {
+	return o
+}
+
+// A list of messages that carry the error details.
+func (o PrivateConnectionErrorOutput) Details() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateConnectionError) map[string]string { return v.Details }).(pulumi.StringMapOutput)
+}
+
+// A message containing more information about the error that occurred.
+func (o PrivateConnectionErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateConnectionError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type PrivateConnectionErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateConnectionError)(nil)).Elem()
+}
+
+func (o PrivateConnectionErrorArrayOutput) ToPrivateConnectionErrorArrayOutput() PrivateConnectionErrorArrayOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorArrayOutput) ToPrivateConnectionErrorArrayOutputWithContext(ctx context.Context) PrivateConnectionErrorArrayOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConnectionErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateConnectionError {
+		return vs[0].([]PrivateConnectionError)[vs[1].(int)]
+	}).(PrivateConnectionErrorOutput)
+}
+
+type PrivateConnectionVpcPeeringConfig struct {
+	// A free subnet for peering. (CIDR of /29)
+	//
+	// ***
+	Subnet string `pulumi:"subnet"`
+	// Fully qualified name of the VPC that Database Migration Service will peer to.
+	// Format: projects/{project}/global/{networks}/{name}
+	VpcName string `pulumi:"vpcName"`
+}
+
+// PrivateConnectionVpcPeeringConfigInput is an input type that accepts PrivateConnectionVpcPeeringConfigArgs and PrivateConnectionVpcPeeringConfigOutput values.
+// You can construct a concrete instance of `PrivateConnectionVpcPeeringConfigInput` via:
+//
+//	PrivateConnectionVpcPeeringConfigArgs{...}
+type PrivateConnectionVpcPeeringConfigInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionVpcPeeringConfigOutput() PrivateConnectionVpcPeeringConfigOutput
+	ToPrivateConnectionVpcPeeringConfigOutputWithContext(context.Context) PrivateConnectionVpcPeeringConfigOutput
+}
+
+type PrivateConnectionVpcPeeringConfigArgs struct {
+	// A free subnet for peering. (CIDR of /29)
+	//
+	// ***
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Fully qualified name of the VPC that Database Migration Service will peer to.
+	// Format: projects/{project}/global/{networks}/{name}
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (PrivateConnectionVpcPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigOutput() PrivateConnectionVpcPeeringConfigOutput {
+	return i.ToPrivateConnectionVpcPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigOutput)
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return i.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigOutput).ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateConnectionVpcPeeringConfigPtrInput is an input type that accepts PrivateConnectionVpcPeeringConfigArgs, PrivateConnectionVpcPeeringConfigPtr and PrivateConnectionVpcPeeringConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateConnectionVpcPeeringConfigPtrInput` via:
+//
+//	        PrivateConnectionVpcPeeringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateConnectionVpcPeeringConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput
+	ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Context) PrivateConnectionVpcPeeringConfigPtrOutput
+}
+
+type privateConnectionVpcPeeringConfigPtrType PrivateConnectionVpcPeeringConfigArgs
+
+func PrivateConnectionVpcPeeringConfigPtr(v *PrivateConnectionVpcPeeringConfigArgs) PrivateConnectionVpcPeeringConfigPtrInput {
+	return (*privateConnectionVpcPeeringConfigPtrType)(v)
+}
+
+func (*privateConnectionVpcPeeringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (i *privateConnectionVpcPeeringConfigPtrType) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return i.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateConnectionVpcPeeringConfigPtrType) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigPtrOutput)
+}
+
+type PrivateConnectionVpcPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionVpcPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigOutput() PrivateConnectionVpcPeeringConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectionVpcPeeringConfig) *PrivateConnectionVpcPeeringConfig {
+		return &v
+	}).(PrivateConnectionVpcPeeringConfigPtrOutput)
+}
+
+// A free subnet for peering. (CIDR of /29)
+//
+// ***
+func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Fully qualified name of the VPC that Database Migration Service will peer to.
+// Format: projects/{project}/global/{networks}/{name}
+func (o PrivateConnectionVpcPeeringConfigOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type PrivateConnectionVpcPeeringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionVpcPeeringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcPeeringConfigOutput {
+	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) PrivateConnectionVpcPeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateConnectionVpcPeeringConfig
+		return ret
+	}).(PrivateConnectionVpcPeeringConfigOutput)
+}
+
+// A free subnet for peering. (CIDR of /29)
+//
+// ***
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the VPC that Database Migration Service will peer to.
+// Format: projects/{project}/global/{networks}/{name}
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileAlloydbInput)(nil)).Elem(), ConnectionProfileAlloydbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileAlloydbPtrInput)(nil)).Elem(), ConnectionProfileAlloydbArgs{})
@@ -3432,10 +4409,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMysqlPtrInput)(nil)).Elem(), ConnectionProfileMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMysqlSslInput)(nil)).Elem(), ConnectionProfileMysqlSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileMysqlSslPtrInput)(nil)).Elem(), ConnectionProfileMysqlSslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleInput)(nil)).Elem(), ConnectionProfileOracleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOraclePtrInput)(nil)).Elem(), ConnectionProfileOracleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleForwardSshConnectivityInput)(nil)).Elem(), ConnectionProfileOracleForwardSshConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleForwardSshConnectivityPtrInput)(nil)).Elem(), ConnectionProfileOracleForwardSshConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOraclePrivateConnectivityInput)(nil)).Elem(), ConnectionProfileOraclePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOraclePrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfileOraclePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleSslInput)(nil)).Elem(), ConnectionProfileOracleSslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleSslPtrInput)(nil)).Elem(), ConnectionProfileOracleSslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleStaticServiceIpConnectivityInput)(nil)).Elem(), ConnectionProfileOracleStaticServiceIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleStaticServiceIpConnectivityPtrInput)(nil)).Elem(), ConnectionProfileOracleStaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlInput)(nil)).Elem(), ConnectionProfilePostgresqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlSslInput)(nil)).Elem(), ConnectionProfilePostgresqlSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlSslPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlSslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileAlloydbOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileAlloydbPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileAlloydbSettingsOutput{})
@@ -3460,8 +4451,22 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileMysqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileMysqlSslOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileMysqlSslPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOraclePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleForwardSshConnectivityOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleForwardSshConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOraclePrivateConnectivityOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOraclePrivateConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleSslOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleSslPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleStaticServiceIpConnectivityOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlSslOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlSslPtrOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 }

@@ -395,16 +395,34 @@ class ConnectionCloudResourceArgs:
 class ConnectionCloudSpannerArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
+                 database_role: Optional[pulumi.Input[str]] = None,
+                 max_parallelism: Optional[pulumi.Input[int]] = None,
+                 use_data_boost: Optional[pulumi.Input[bool]] = None,
                  use_parallelism: Optional[pulumi.Input[bool]] = None,
                  use_serverless_analytics: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] database: Cloud Spanner database in the form `project/instance/database'
-        :param pulumi.Input[bool] use_parallelism: If parallelism should be used when reading from Cloud Spanner
-        :param pulumi.Input[bool] use_serverless_analytics: If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        :param pulumi.Input[str] database: Cloud Spanner database in the form `project/instance/database'.
+        :param pulumi.Input[str] database_role: Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        :param pulumi.Input[int] max_parallelism: Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+        :param pulumi.Input[bool] use_data_boost: If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+        :param pulumi.Input[bool] use_parallelism: If parallelism should be used when reading from Cloud Spanner.
+        :param pulumi.Input[bool] use_serverless_analytics: (Optional, Deprecated)
+               If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+               
+               > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         """
         pulumi.set(__self__, "database", database)
+        if database_role is not None:
+            pulumi.set(__self__, "database_role", database_role)
+        if max_parallelism is not None:
+            pulumi.set(__self__, "max_parallelism", max_parallelism)
+        if use_data_boost is not None:
+            pulumi.set(__self__, "use_data_boost", use_data_boost)
         if use_parallelism is not None:
             pulumi.set(__self__, "use_parallelism", use_parallelism)
+        if use_serverless_analytics is not None:
+            warnings.warn("""`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""", DeprecationWarning)
+            pulumi.log.warn("""use_serverless_analytics is deprecated: `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""")
         if use_serverless_analytics is not None:
             pulumi.set(__self__, "use_serverless_analytics", use_serverless_analytics)
 
@@ -412,7 +430,7 @@ class ConnectionCloudSpannerArgs:
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
         """
-        Cloud Spanner database in the form `project/instance/database'
+        Cloud Spanner database in the form `project/instance/database'.
         """
         return pulumi.get(self, "database")
 
@@ -421,10 +439,46 @@ class ConnectionCloudSpannerArgs:
         pulumi.set(self, "database", value)
 
     @property
+    @pulumi.getter(name="databaseRole")
+    def database_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        """
+        return pulumi.get(self, "database_role")
+
+    @database_role.setter
+    def database_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_role", value)
+
+    @property
+    @pulumi.getter(name="maxParallelism")
+    def max_parallelism(self) -> Optional[pulumi.Input[int]]:
+        """
+        Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
+        """
+        return pulumi.get(self, "max_parallelism")
+
+    @max_parallelism.setter
+    def max_parallelism(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_parallelism", value)
+
+    @property
+    @pulumi.getter(name="useDataBoost")
+    def use_data_boost(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+        """
+        return pulumi.get(self, "use_data_boost")
+
+    @use_data_boost.setter
+    def use_data_boost(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_data_boost", value)
+
+    @property
     @pulumi.getter(name="useParallelism")
     def use_parallelism(self) -> Optional[pulumi.Input[bool]]:
         """
-        If parallelism should be used when reading from Cloud Spanner
+        If parallelism should be used when reading from Cloud Spanner.
         """
         return pulumi.get(self, "use_parallelism")
 
@@ -436,8 +490,14 @@ class ConnectionCloudSpannerArgs:
     @pulumi.getter(name="useServerlessAnalytics")
     def use_serverless_analytics(self) -> Optional[pulumi.Input[bool]]:
         """
-        If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics
+        (Optional, Deprecated)
+        If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+
+        > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         """
+        warnings.warn("""`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""", DeprecationWarning)
+        pulumi.log.warn("""use_serverless_analytics is deprecated: `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""")
+
         return pulumi.get(self, "use_serverless_analytics")
 
     @use_serverless_analytics.setter
@@ -780,6 +840,7 @@ class DatasetAccessArgs:
                  dataset: Optional[pulumi.Input['DatasetAccessDatasetArgs']] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
+                 iam_member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
@@ -791,6 +852,8 @@ class DatasetAccessArgs:
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
+        :param pulumi.Input[str] iam_member: Some other type of member that appears in the IAM Policy but isn't a user,
+               group, domain, or special group. For example: `allUsers`
         :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other
                member of the access object. Basic, predefined, and custom roles
                are supported. Predefined roles that have equivalent basic roles
@@ -818,6 +881,8 @@ class DatasetAccessArgs:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
             pulumi.set(__self__, "group_by_email", group_by_email)
+        if iam_member is not None:
+            pulumi.set(__self__, "iam_member", iam_member)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if routine is not None:
@@ -866,6 +931,19 @@ class DatasetAccessArgs:
     @group_by_email.setter
     def group_by_email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group_by_email", value)
+
+    @property
+    @pulumi.getter(name="iamMember")
+    def iam_member(self) -> Optional[pulumi.Input[str]]:
+        """
+        Some other type of member that appears in the IAM Policy but isn't a user,
+        group, domain, or special group. For example: `allUsers`
+        """
+        return pulumi.get(self, "iam_member")
+
+    @iam_member.setter
+    def iam_member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_member", value)
 
     @property
     @pulumi.getter
@@ -4714,13 +4792,17 @@ class TableTimePartitioningArgs:
                table is partitioned based on the load time.
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
-               specified.
+               specified. `require_partition_filter` is deprecated and will be removed in
+               a future major release. Use the top level field with the same name instead.
         """
         pulumi.set(__self__, "type", type)
         if expiration_ms is not None:
             pulumi.set(__self__, "expiration_ms", expiration_ms)
         if field is not None:
             pulumi.set(__self__, "field", field)
+        if require_partition_filter is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""", DeprecationWarning)
+            pulumi.log.warn("""require_partition_filter is deprecated: This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""")
         if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
 
@@ -4770,8 +4852,12 @@ class TableTimePartitioningArgs:
         """
         If set to true, queries over this table
         require a partition filter that can be used for partition elimination to be
-        specified.
+        specified. `require_partition_filter` is deprecated and will be removed in
+        a future major release. Use the top level field with the same name instead.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""", DeprecationWarning)
+        pulumi.log.warn("""require_partition_filter is deprecated: This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""")
+
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter

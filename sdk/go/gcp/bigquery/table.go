@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a table resource in a dataset for Google BigQuery. For more information see
@@ -103,7 +102,17 @@ import (
 //
 // ## Import
 //
-// # BigQuery tables imported using any of these accepted formats
+// BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
+//
+//	id = "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}"
+//
+//	to = google_bigquery_table.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -186,7 +195,10 @@ type Table struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView TableMaterializedViewPtrOutput `pulumi:"materializedView"`
-	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	// The maximum staleness of data that could be
+	// returned when the table (or stale MV) is queried. Staleness encoded as a
+	// string encoding of [SQL IntervalValue
+	// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 	MaxStaleness pulumi.StringPtrOutput `pulumi:"maxStaleness"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntOutput `pulumi:"numBytes"`
@@ -202,6 +214,10 @@ type Table struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrOutput `pulumi:"rangePartitioning"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter pulumi.BoolPtrOutput `pulumi:"requirePartitionFilter"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -339,7 +355,10 @@ type tableState struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView *TableMaterializedView `pulumi:"materializedView"`
-	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	// The maximum staleness of data that could be
+	// returned when the table (or stale MV) is queried. Staleness encoded as a
+	// string encoding of [SQL IntervalValue
+	// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 	MaxStaleness *string `pulumi:"maxStaleness"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes *int `pulumi:"numBytes"`
@@ -355,6 +374,10 @@ type tableState struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -452,7 +475,10 @@ type TableState struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView TableMaterializedViewPtrInput
-	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	// The maximum staleness of data that could be
+	// returned when the table (or stale MV) is queried. Staleness encoded as a
+	// string encoding of [SQL IntervalValue
+	// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 	MaxStaleness pulumi.StringPtrInput
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntPtrInput
@@ -468,6 +494,10 @@ type TableState struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter pulumi.BoolPtrInput
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -544,7 +574,10 @@ type tableArgs struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView *TableMaterializedView `pulumi:"materializedView"`
-	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	// The maximum staleness of data that could be
+	// returned when the table (or stale MV) is queried. Staleness encoded as a
+	// string encoding of [SQL IntervalValue
+	// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 	MaxStaleness *string `pulumi:"maxStaleness"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -552,6 +585,10 @@ type tableArgs struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -620,7 +657,10 @@ type TableArgs struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView TableMaterializedViewPtrInput
-	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	// The maximum staleness of data that could be
+	// returned when the table (or stale MV) is queried. Staleness encoded as a
+	// string encoding of [SQL IntervalValue
+	// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 	MaxStaleness pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -628,6 +668,10 @@ type TableArgs struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
+	RequirePartitionFilter pulumi.BoolPtrInput
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -681,12 +725,6 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
 }
 
-func (i *Table) ToOutput(ctx context.Context) pulumix.Output[*Table] {
-	return pulumix.Output[*Table]{
-		OutputState: i.ToTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableArrayInput is an input type that accepts TableArray and TableArrayOutput values.
 // You can construct a concrete instance of `TableArrayInput` via:
 //
@@ -710,12 +748,6 @@ func (i TableArray) ToTableArrayOutput() TableArrayOutput {
 
 func (i TableArray) ToTableArrayOutputWithContext(ctx context.Context) TableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableArrayOutput)
-}
-
-func (i TableArray) ToOutput(ctx context.Context) pulumix.Output[[]*Table] {
-	return pulumix.Output[[]*Table]{
-		OutputState: i.ToTableArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TableMapInput is an input type that accepts TableMap and TableMapOutput values.
@@ -743,12 +775,6 @@ func (i TableMap) ToTableMapOutputWithContext(ctx context.Context) TableMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TableMapOutput)
 }
 
-func (i TableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Table] {
-	return pulumix.Output[map[string]*Table]{
-		OutputState: i.ToTableMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableOutput struct{ *pulumi.OutputState }
 
 func (TableOutput) ElementType() reflect.Type {
@@ -761,12 +787,6 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
-}
-
-func (o TableOutput) ToOutput(ctx context.Context) pulumix.Output[*Table] {
-	return pulumix.Output[*Table]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies column names to use for data clustering.
@@ -875,7 +895,10 @@ func (o TableOutput) MaterializedView() TableMaterializedViewPtrOutput {
 	return o.ApplyT(func(v *Table) TableMaterializedViewPtrOutput { return v.MaterializedView }).(TableMaterializedViewPtrOutput)
 }
 
-// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+// The maximum staleness of data that could be
+// returned when the table (or stale MV) is queried. Staleness encoded as a
+// string encoding of [SQL IntervalValue
+// type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
 func (o TableOutput) MaxStaleness() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.MaxStaleness }).(pulumi.StringPtrOutput)
 }
@@ -910,6 +933,13 @@ func (o TableOutput) PulumiLabels() pulumi.StringMapOutput {
 // partitioning for this table. Structure is documented below.
 func (o TableOutput) RangePartitioning() TableRangePartitioningPtrOutput {
 	return o.ApplyT(func(v *Table) TableRangePartitioningPtrOutput { return v.RangePartitioning }).(TableRangePartitioningPtrOutput)
+}
+
+// If set to true, queries over this table
+// require a partition filter that can be used for partition elimination to be
+// specified.
+func (o TableOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
 // A JSON schema for the external table. Schema is required
@@ -980,12 +1010,6 @@ func (o TableArrayOutput) ToTableArrayOutputWithContext(ctx context.Context) Tab
 	return o
 }
 
-func (o TableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Table] {
-	return pulumix.Output[[]*Table]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableArrayOutput) Index(i pulumi.IntInput) TableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Table {
 		return vs[0].([]*Table)[vs[1].(int)]
@@ -1004,12 +1028,6 @@ func (o TableMapOutput) ToTableMapOutput() TableMapOutput {
 
 func (o TableMapOutput) ToTableMapOutputWithContext(ctx context.Context) TableMapOutput {
 	return o
-}
-
-func (o TableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Table] {
-	return pulumix.Output[map[string]*Table]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableMapOutput) MapIndex(k pulumi.StringInput) TableOutput {

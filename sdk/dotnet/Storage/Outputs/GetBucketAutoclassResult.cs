@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class GetBucketAutoclassResult
     {
         public readonly bool Enabled;
+        public readonly string TerminalStorageClass;
 
         [OutputConstructor]
-        private GetBucketAutoclassResult(bool enabled)
+        private GetBucketAutoclassResult(
+            bool enabled,
+
+            string terminalStorageClass)
         {
             Enabled = enabled;
+            TerminalStorageClass = terminalStorageClass;
         }
     }
 }

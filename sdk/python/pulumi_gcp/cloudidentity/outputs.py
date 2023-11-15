@@ -11,17 +11,75 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'GroupAdditionalGroupKey',
     'GroupGroupKey',
     'GroupMembershipMemberKey',
     'GroupMembershipPreferredMemberKey',
     'GroupMembershipRole',
+    'GetGroupLookupGroupKeyResult',
     'GetGroupMembershipsMembershipResult',
     'GetGroupMembershipsMembershipMemberKeyResult',
     'GetGroupMembershipsMembershipPreferredMemberKeyResult',
     'GetGroupMembershipsMembershipRoleResult',
     'GetGroupsGroupResult',
+    'GetGroupsGroupAdditionalGroupKeyResult',
     'GetGroupsGroupGroupKeyResult',
 ]
+
+@pulumi.output_type
+class GroupAdditionalGroupKey(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 namespace: Optional[str] = None):
+        """
+        :param str id: The ID of the entity.
+               For Google-managed entities, the id must be the email address of an existing
+               group or user.
+               For external-identity-mapped entities, the id must be a string conforming
+               to the Identity Source's requirements.
+               Must be unique within a namespace.
+        :param str namespace: The namespace in which the entity exists.
+               If not specified, the EntityKey represents a Google-managed entity
+               such as a Google user or a Google Group.
+               If specified, the EntityKey represents an external-identity-mapped group.
+               The namespace must correspond to an identity source created in Admin Console
+               and must be in the form of `identitysources/{identity_source_id}`.
+               
+               - - -
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of the entity.
+        For Google-managed entities, the id must be the email address of an existing
+        group or user.
+        For external-identity-mapped entities, the id must be a string conforming
+        to the Identity Source's requirements.
+        Must be unique within a namespace.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace in which the entity exists.
+        If not specified, the EntityKey represents a Google-managed entity
+        such as a Google user or a Google Group.
+        If specified, the EntityKey represents an external-identity-mapped group.
+        The namespace must correspond to an identity source created in Admin Console
+        and must be in the form of `identitysources/{identity_source_id}`.
+
+        - - -
+        """
+        return pulumi.get(self, "namespace")
+
 
 @pulumi.output_type
 class GroupGroupKey(dict):
@@ -199,6 +257,52 @@ class GroupMembershipRole(dict):
         - - -
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGroupLookupGroupKeyResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 namespace: Optional[str] = None):
+        """
+        :param str id: (Required) The ID of the entity.
+               For Google-managed entities, the id is the email address of an existing group or user.
+               For external-identity-mapped entities, the id is a string conforming
+               to the Identity Source's requirements.
+        :param str namespace: (Optional) The namespace in which the entity exists.
+               If not populated, the EntityKey represents a Google-managed entity
+               such as a Google user or a Google Group.
+               If populated, the EntityKey represents an external-identity-mapped group.
+               The namespace must correspond to an identity source created in Admin Console
+               and must be in the form of `identitysources/{identity_source_id}`.
+        """
+        pulumi.set(__self__, "id", id)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        (Required) The ID of the entity.
+        For Google-managed entities, the id is the email address of an existing group or user.
+        For external-identity-mapped entities, the id is a string conforming
+        to the Identity Source's requirements.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        (Optional) The namespace in which the entity exists.
+        If not populated, the EntityKey represents a Google-managed entity
+        such as a Google user or a Google Group.
+        If populated, the EntityKey represents an external-identity-mapped group.
+        The namespace must correspond to an identity source created in Admin Console
+        and must be in the form of `identitysources/{identity_source_id}`.
+        """
+        return pulumi.get(self, "namespace")
 
 
 @pulumi.output_type
@@ -387,6 +491,7 @@ class GetGroupMembershipsMembershipRoleResult(dict):
 @pulumi.output_type
 class GetGroupsGroupResult(dict):
     def __init__(__self__, *,
+                 additional_group_keys: Sequence['outputs.GetGroupsGroupAdditionalGroupKeyResult'],
                  create_time: str,
                  description: str,
                  display_name: str,
@@ -406,6 +511,7 @@ class GetGroupsGroupResult(dict):
         :param str name: Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
         :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
         """
+        pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -415,6 +521,11 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="additionalGroupKeys")
+    def additional_group_keys(self) -> Sequence['outputs.GetGroupsGroupAdditionalGroupKeyResult']:
+        return pulumi.get(self, "additional_group_keys")
 
     @property
     @pulumi.getter(name="createTime")
@@ -480,6 +591,51 @@ class GetGroupsGroupResult(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetGroupsGroupAdditionalGroupKeyResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 namespace: str):
+        """
+        :param str id: The ID of the entity.
+               For Google-managed entities, the id is the email address of an existing group or user.
+               For external-identity-mapped entities, the id is a string conforming
+               to the Identity Source's requirements.
+        :param str namespace: The namespace in which the entity exists.
+               If not populated, the EntityKey represents a Google-managed entity
+               such as a Google user or a Google Group.
+               If populated, the EntityKey represents an external-identity-mapped group.
+               The namespace must correspond to an identity source created in Admin Console
+               and must be in the form of `identitysources/{identity_source_id}`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the entity.
+        For Google-managed entities, the id is the email address of an existing group or user.
+        For external-identity-mapped entities, the id is a string conforming
+        to the Identity Source's requirements.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        The namespace in which the entity exists.
+        If not populated, the EntityKey represents a Google-managed entity
+        such as a Google user or a Google Group.
+        If populated, the EntityKey represents an external-identity-mapped group.
+        The namespace must correspond to an identity source created in Admin Console
+        and must be in the form of `identitysources/{identity_source_id}`.
+        """
+        return pulumi.get(self, "namespace")
 
 
 @pulumi.output_type

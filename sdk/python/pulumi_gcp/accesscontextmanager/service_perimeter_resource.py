@@ -162,7 +162,15 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         ## Import
 
-        ServicePerimeterResource can be imported using any of these accepted formats:
+        ServicePerimeterResource can be imported using any of these accepted formats* `{{perimeter_name}}/{{resource}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeterResource using one of the formats above. For exampletf import {
+
+         id = "{{perimeter_name}}/{{resource}}"
+
+         to = google_access_context_manager_service_perimeter_resource.default }
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeterResource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
@@ -229,7 +237,15 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         ## Import
 
-        ServicePerimeterResource can be imported using any of these accepted formats:
+        ServicePerimeterResource can be imported using any of these accepted formats* `{{perimeter_name}}/{{resource}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeterResource using one of the formats above. For exampletf import {
+
+         id = "{{perimeter_name}}/{{resource}}"
+
+         to = google_access_context_manager_service_perimeter_resource.default }
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeterResource can be imported using one of the formats above. For example
+        ```
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}

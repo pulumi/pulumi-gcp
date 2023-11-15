@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An intent represents a user's intent to interact with a conversational agent.
@@ -100,7 +99,17 @@ import (
 //
 // ## Import
 //
-// # Intent can be imported using any of these accepted formats
+// Intent can be imported using any of these accepted formats* `{{parent}}/intents/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Intent using one of the formats above. For exampletf import {
+//
+//	id = "{{parent}}/intents/{{name}}"
+//
+//	to = google_dialogflow_cx_intent.default }
+//
+// ```sh
+//
+//	$ pulumi import gcp:diagflow/cxIntent:CxIntent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Intent can be imported using one of the formats above. For example
+//
+// ```
 //
 // ```sh
 //
@@ -124,8 +133,19 @@ type CxIntent struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+	IsDefaultNegativeIntent pulumi.BoolPtrOutput `pulumi:"isDefaultNegativeIntent"`
+	// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+	// The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+	IsDefaultWelcomeIntent pulumi.BoolPtrOutput `pulumi:"isDefaultWelcomeIntent"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+	// To manage the fallback intent, set `isDefaultNegativeIntent = true`
 	IsFallback pulumi.BoolPtrOutput `pulumi:"isFallback"`
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
 	// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -205,8 +225,19 @@ type cxIntentState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+	IsDefaultNegativeIntent *bool `pulumi:"isDefaultNegativeIntent"`
+	// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+	// The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+	IsDefaultWelcomeIntent *bool `pulumi:"isDefaultWelcomeIntent"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+	// To manage the fallback intent, set `isDefaultNegativeIntent = true`
 	IsFallback *bool `pulumi:"isFallback"`
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
 	// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -249,8 +280,19 @@ type CxIntentState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+	IsDefaultNegativeIntent pulumi.BoolPtrInput
+	// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+	// The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+	IsDefaultWelcomeIntent pulumi.BoolPtrInput
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+	// To manage the fallback intent, set `isDefaultNegativeIntent = true`
 	IsFallback pulumi.BoolPtrInput
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
 	// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -295,8 +337,19 @@ type cxIntentArgs struct {
 	//
 	// ***
 	DisplayName string `pulumi:"displayName"`
+	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+	IsDefaultNegativeIntent *bool `pulumi:"isDefaultNegativeIntent"`
+	// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+	// The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+	IsDefaultWelcomeIntent *bool `pulumi:"isDefaultWelcomeIntent"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+	// To manage the fallback intent, set `isDefaultNegativeIntent = true`
 	IsFallback *bool `pulumi:"isFallback"`
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
 	// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -332,8 +385,19 @@ type CxIntentArgs struct {
 	//
 	// ***
 	DisplayName pulumi.StringInput
+	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+	IsDefaultNegativeIntent pulumi.BoolPtrInput
+	// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+	// The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+	//
+	// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+	IsDefaultWelcomeIntent pulumi.BoolPtrInput
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+	// To manage the fallback intent, set `isDefaultNegativeIntent = true`
 	IsFallback pulumi.BoolPtrInput
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
 	// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
@@ -384,12 +448,6 @@ func (i *CxIntent) ToCxIntentOutputWithContext(ctx context.Context) CxIntentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentOutput)
 }
 
-func (i *CxIntent) ToOutput(ctx context.Context) pulumix.Output[*CxIntent] {
-	return pulumix.Output[*CxIntent]{
-		OutputState: i.ToCxIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CxIntentArrayInput is an input type that accepts CxIntentArray and CxIntentArrayOutput values.
 // You can construct a concrete instance of `CxIntentArrayInput` via:
 //
@@ -413,12 +471,6 @@ func (i CxIntentArray) ToCxIntentArrayOutput() CxIntentArrayOutput {
 
 func (i CxIntentArray) ToCxIntentArrayOutputWithContext(ctx context.Context) CxIntentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentArrayOutput)
-}
-
-func (i CxIntentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxIntent] {
-	return pulumix.Output[[]*CxIntent]{
-		OutputState: i.ToCxIntentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CxIntentMapInput is an input type that accepts CxIntentMap and CxIntentMapOutput values.
@@ -446,12 +498,6 @@ func (i CxIntentMap) ToCxIntentMapOutputWithContext(ctx context.Context) CxInten
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentMapOutput)
 }
 
-func (i CxIntentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxIntent] {
-	return pulumix.Output[map[string]*CxIntent]{
-		OutputState: i.ToCxIntentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CxIntentOutput struct{ *pulumi.OutputState }
 
 func (CxIntentOutput) ElementType() reflect.Type {
@@ -464,12 +510,6 @@ func (o CxIntentOutput) ToCxIntentOutput() CxIntentOutput {
 
 func (o CxIntentOutput) ToCxIntentOutputWithContext(ctx context.Context) CxIntentOutput {
 	return o
-}
-
-func (o CxIntentOutput) ToOutput(ctx context.Context) pulumix.Output[*CxIntent] {
-	return pulumix.Output[*CxIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -489,8 +529,25 @@ func (o CxIntentOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
+// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+//
+// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+func (o CxIntentOutput) IsDefaultNegativeIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxIntent) pulumi.BoolPtrOutput { return v.IsDefaultNegativeIntent }).(pulumi.BoolPtrOutput)
+}
+
+// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
+// The Default Welcome Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
+//
+// > Avoid having multiple `diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+func (o CxIntentOutput) IsDefaultWelcomeIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxIntent) pulumi.BoolPtrOutput { return v.IsDefaultWelcomeIntent }).(pulumi.BoolPtrOutput)
+}
+
 // Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 // Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+// To manage the fallback intent, set `isDefaultNegativeIntent = true`
 func (o CxIntentOutput) IsFallback() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.BoolPtrOutput { return v.IsFallback }).(pulumi.BoolPtrOutput)
 }
@@ -563,12 +620,6 @@ func (o CxIntentArrayOutput) ToCxIntentArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o CxIntentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxIntent] {
-	return pulumix.Output[[]*CxIntent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CxIntentArrayOutput) Index(i pulumi.IntInput) CxIntentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxIntent {
 		return vs[0].([]*CxIntent)[vs[1].(int)]
@@ -587,12 +638,6 @@ func (o CxIntentMapOutput) ToCxIntentMapOutput() CxIntentMapOutput {
 
 func (o CxIntentMapOutput) ToCxIntentMapOutputWithContext(ctx context.Context) CxIntentMapOutput {
 	return o
-}
-
-func (o CxIntentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxIntent] {
-	return pulumix.Output[map[string]*CxIntent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CxIntentMapOutput) MapIndex(k pulumi.StringInput) CxIntentOutput {

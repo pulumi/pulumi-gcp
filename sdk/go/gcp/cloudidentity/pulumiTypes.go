@@ -9,10 +9,151 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type GroupAdditionalGroupKey struct {
+	// The ID of the entity.
+	// For Google-managed entities, the id must be the email address of an existing
+	// group or user.
+	// For external-identity-mapped entities, the id must be a string conforming
+	// to the Identity Source's requirements.
+	// Must be unique within a namespace.
+	Id *string `pulumi:"id"`
+	// The namespace in which the entity exists.
+	// If not specified, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If specified, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
+	//
+	// ***
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GroupAdditionalGroupKeyInput is an input type that accepts GroupAdditionalGroupKeyArgs and GroupAdditionalGroupKeyOutput values.
+// You can construct a concrete instance of `GroupAdditionalGroupKeyInput` via:
+//
+//	GroupAdditionalGroupKeyArgs{...}
+type GroupAdditionalGroupKeyInput interface {
+	pulumi.Input
+
+	ToGroupAdditionalGroupKeyOutput() GroupAdditionalGroupKeyOutput
+	ToGroupAdditionalGroupKeyOutputWithContext(context.Context) GroupAdditionalGroupKeyOutput
+}
+
+type GroupAdditionalGroupKeyArgs struct {
+	// The ID of the entity.
+	// For Google-managed entities, the id must be the email address of an existing
+	// group or user.
+	// For external-identity-mapped entities, the id must be a string conforming
+	// to the Identity Source's requirements.
+	// Must be unique within a namespace.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The namespace in which the entity exists.
+	// If not specified, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If specified, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
+	//
+	// ***
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GroupAdditionalGroupKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (i GroupAdditionalGroupKeyArgs) ToGroupAdditionalGroupKeyOutput() GroupAdditionalGroupKeyOutput {
+	return i.ToGroupAdditionalGroupKeyOutputWithContext(context.Background())
+}
+
+func (i GroupAdditionalGroupKeyArgs) ToGroupAdditionalGroupKeyOutputWithContext(ctx context.Context) GroupAdditionalGroupKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAdditionalGroupKeyOutput)
+}
+
+// GroupAdditionalGroupKeyArrayInput is an input type that accepts GroupAdditionalGroupKeyArray and GroupAdditionalGroupKeyArrayOutput values.
+// You can construct a concrete instance of `GroupAdditionalGroupKeyArrayInput` via:
+//
+//	GroupAdditionalGroupKeyArray{ GroupAdditionalGroupKeyArgs{...} }
+type GroupAdditionalGroupKeyArrayInput interface {
+	pulumi.Input
+
+	ToGroupAdditionalGroupKeyArrayOutput() GroupAdditionalGroupKeyArrayOutput
+	ToGroupAdditionalGroupKeyArrayOutputWithContext(context.Context) GroupAdditionalGroupKeyArrayOutput
+}
+
+type GroupAdditionalGroupKeyArray []GroupAdditionalGroupKeyInput
+
+func (GroupAdditionalGroupKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (i GroupAdditionalGroupKeyArray) ToGroupAdditionalGroupKeyArrayOutput() GroupAdditionalGroupKeyArrayOutput {
+	return i.ToGroupAdditionalGroupKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GroupAdditionalGroupKeyArray) ToGroupAdditionalGroupKeyArrayOutputWithContext(ctx context.Context) GroupAdditionalGroupKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAdditionalGroupKeyArrayOutput)
+}
+
+type GroupAdditionalGroupKeyOutput struct{ *pulumi.OutputState }
+
+func (GroupAdditionalGroupKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (o GroupAdditionalGroupKeyOutput) ToGroupAdditionalGroupKeyOutput() GroupAdditionalGroupKeyOutput {
+	return o
+}
+
+func (o GroupAdditionalGroupKeyOutput) ToGroupAdditionalGroupKeyOutputWithContext(ctx context.Context) GroupAdditionalGroupKeyOutput {
+	return o
+}
+
+// The ID of the entity.
+// For Google-managed entities, the id must be the email address of an existing
+// group or user.
+// For external-identity-mapped entities, the id must be a string conforming
+// to the Identity Source's requirements.
+// Must be unique within a namespace.
+func (o GroupAdditionalGroupKeyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupAdditionalGroupKey) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The namespace in which the entity exists.
+// If not specified, the EntityKey represents a Google-managed entity
+// such as a Google user or a Google Group.
+// If specified, the EntityKey represents an external-identity-mapped group.
+// The namespace must correspond to an identity source created in Admin Console
+// and must be in the form of `identitysources/{identity_source_id}`.
+//
+// ***
+func (o GroupAdditionalGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupAdditionalGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GroupAdditionalGroupKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupAdditionalGroupKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (o GroupAdditionalGroupKeyArrayOutput) ToGroupAdditionalGroupKeyArrayOutput() GroupAdditionalGroupKeyArrayOutput {
+	return o
+}
+
+func (o GroupAdditionalGroupKeyArrayOutput) ToGroupAdditionalGroupKeyArrayOutputWithContext(ctx context.Context) GroupAdditionalGroupKeyArrayOutput {
+	return o
+}
+
+func (o GroupAdditionalGroupKeyArrayOutput) Index(i pulumi.IntInput) GroupAdditionalGroupKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupAdditionalGroupKey {
+		return vs[0].([]GroupAdditionalGroupKey)[vs[1].(int)]
+	}).(GroupAdditionalGroupKeyOutput)
+}
 
 type GroupGroupKey struct {
 	// The ID of the entity.
@@ -75,12 +216,6 @@ func (i GroupGroupKeyArgs) ToGroupGroupKeyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyOutput)
 }
 
-func (i GroupGroupKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GroupGroupKey] {
-	return pulumix.Output[GroupGroupKey]{
-		OutputState: i.ToGroupGroupKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupGroupKeyArgs) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutput {
 	return i.ToGroupGroupKeyPtrOutputWithContext(context.Background())
 }
@@ -122,12 +257,6 @@ func (i *groupGroupKeyPtrType) ToGroupGroupKeyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GroupGroupKeyPtrOutput)
 }
 
-func (i *groupGroupKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupGroupKey] {
-	return pulumix.Output[*GroupGroupKey]{
-		OutputState: i.ToGroupGroupKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupGroupKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupGroupKeyOutput) ElementType() reflect.Type {
@@ -150,12 +279,6 @@ func (o GroupGroupKeyOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupGroupKey) *GroupGroupKey {
 		return &v
 	}).(GroupGroupKeyPtrOutput)
-}
-
-func (o GroupGroupKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GroupGroupKey] {
-	return pulumix.Output[GroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -192,12 +315,6 @@ func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutput() GroupGroupKeyPtrOutpu
 
 func (o GroupGroupKeyPtrOutput) ToGroupGroupKeyPtrOutputWithContext(ctx context.Context) GroupGroupKeyPtrOutput {
 	return o
-}
-
-func (o GroupGroupKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupGroupKey] {
-	return pulumix.Output[*GroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupGroupKeyPtrOutput) Elem() GroupGroupKeyOutput {
@@ -299,12 +416,6 @@ func (i GroupMembershipMemberKeyArgs) ToGroupMembershipMemberKeyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipMemberKeyOutput)
 }
 
-func (i GroupMembershipMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipMemberKey] {
-	return pulumix.Output[GroupMembershipMemberKey]{
-		OutputState: i.ToGroupMembershipMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupMembershipMemberKeyArgs) ToGroupMembershipMemberKeyPtrOutput() GroupMembershipMemberKeyPtrOutput {
 	return i.ToGroupMembershipMemberKeyPtrOutputWithContext(context.Background())
 }
@@ -346,12 +457,6 @@ func (i *groupMembershipMemberKeyPtrType) ToGroupMembershipMemberKeyPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipMemberKeyPtrOutput)
 }
 
-func (i *groupMembershipMemberKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipMemberKey] {
-	return pulumix.Output[*GroupMembershipMemberKey]{
-		OutputState: i.ToGroupMembershipMemberKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMembershipMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipMemberKeyOutput) ElementType() reflect.Type {
@@ -374,12 +479,6 @@ func (o GroupMembershipMemberKeyOutput) ToGroupMembershipMemberKeyPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipMemberKey) *GroupMembershipMemberKey {
 		return &v
 	}).(GroupMembershipMemberKeyPtrOutput)
-}
-
-func (o GroupMembershipMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipMemberKey] {
-	return pulumix.Output[GroupMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -414,12 +513,6 @@ func (o GroupMembershipMemberKeyPtrOutput) ToGroupMembershipMemberKeyPtrOutput()
 
 func (o GroupMembershipMemberKeyPtrOutput) ToGroupMembershipMemberKeyPtrOutputWithContext(ctx context.Context) GroupMembershipMemberKeyPtrOutput {
 	return o
-}
-
-func (o GroupMembershipMemberKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipMemberKey] {
-	return pulumix.Output[*GroupMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMembershipMemberKeyPtrOutput) Elem() GroupMembershipMemberKeyOutput {
@@ -519,12 +612,6 @@ func (i GroupMembershipPreferredMemberKeyArgs) ToGroupMembershipPreferredMemberK
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipPreferredMemberKeyOutput)
 }
 
-func (i GroupMembershipPreferredMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[GroupMembershipPreferredMemberKey]{
-		OutputState: i.ToGroupMembershipPreferredMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupMembershipPreferredMemberKeyArgs) ToGroupMembershipPreferredMemberKeyPtrOutput() GroupMembershipPreferredMemberKeyPtrOutput {
 	return i.ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(context.Background())
 }
@@ -566,12 +653,6 @@ func (i *groupMembershipPreferredMemberKeyPtrType) ToGroupMembershipPreferredMem
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipPreferredMemberKeyPtrOutput)
 }
 
-func (i *groupMembershipPreferredMemberKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[*GroupMembershipPreferredMemberKey]{
-		OutputState: i.ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMembershipPreferredMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipPreferredMemberKeyOutput) ElementType() reflect.Type {
@@ -594,12 +675,6 @@ func (o GroupMembershipPreferredMemberKeyOutput) ToGroupMembershipPreferredMembe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipPreferredMemberKey) *GroupMembershipPreferredMemberKey {
 		return &v
 	}).(GroupMembershipPreferredMemberKeyPtrOutput)
-}
-
-func (o GroupMembershipPreferredMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[GroupMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -634,12 +709,6 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) ToGroupMembershipPreferredMe
 
 func (o GroupMembershipPreferredMemberKeyPtrOutput) ToGroupMembershipPreferredMemberKeyPtrOutputWithContext(ctx context.Context) GroupMembershipPreferredMemberKeyPtrOutput {
 	return o
-}
-
-func (o GroupMembershipPreferredMemberKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMembershipPreferredMemberKey] {
-	return pulumix.Output[*GroupMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMembershipPreferredMemberKeyPtrOutput) Elem() GroupMembershipPreferredMemberKeyOutput {
@@ -721,12 +790,6 @@ func (i GroupMembershipRoleArgs) ToGroupMembershipRoleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleOutput)
 }
 
-func (i GroupMembershipRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipRole] {
-	return pulumix.Output[GroupMembershipRole]{
-		OutputState: i.ToGroupMembershipRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupMembershipRoleArrayInput is an input type that accepts GroupMembershipRoleArray and GroupMembershipRoleArrayOutput values.
 // You can construct a concrete instance of `GroupMembershipRoleArrayInput` via:
 //
@@ -752,12 +815,6 @@ func (i GroupMembershipRoleArray) ToGroupMembershipRoleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleArrayOutput)
 }
 
-func (i GroupMembershipRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupMembershipRole] {
-	return pulumix.Output[[]GroupMembershipRole]{
-		OutputState: i.ToGroupMembershipRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMembershipRoleOutput struct{ *pulumi.OutputState }
 
 func (GroupMembershipRoleOutput) ElementType() reflect.Type {
@@ -770,12 +827,6 @@ func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutput() GroupMembership
 
 func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutputWithContext(ctx context.Context) GroupMembershipRoleOutput {
 	return o
-}
-
-func (o GroupMembershipRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GroupMembershipRole] {
-	return pulumix.Output[GroupMembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
@@ -800,16 +851,95 @@ func (o GroupMembershipRoleArrayOutput) ToGroupMembershipRoleArrayOutputWithCont
 	return o
 }
 
-func (o GroupMembershipRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupMembershipRole] {
-	return pulumix.Output[[]GroupMembershipRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupMembershipRoleArrayOutput) Index(i pulumi.IntInput) GroupMembershipRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupMembershipRole {
 		return vs[0].([]GroupMembershipRole)[vs[1].(int)]
 	}).(GroupMembershipRoleOutput)
+}
+
+type GetGroupLookupGroupKey struct {
+	// (Required) The ID of the entity.
+	// For Google-managed entities, the id is the email address of an existing group or user.
+	// For external-identity-mapped entities, the id is a string conforming
+	// to the Identity Source's requirements.
+	Id string `pulumi:"id"`
+	// (Optional) The namespace in which the entity exists.
+	// If not populated, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If populated, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GetGroupLookupGroupKeyInput is an input type that accepts GetGroupLookupGroupKeyArgs and GetGroupLookupGroupKeyOutput values.
+// You can construct a concrete instance of `GetGroupLookupGroupKeyInput` via:
+//
+//	GetGroupLookupGroupKeyArgs{...}
+type GetGroupLookupGroupKeyInput interface {
+	pulumi.Input
+
+	ToGetGroupLookupGroupKeyOutput() GetGroupLookupGroupKeyOutput
+	ToGetGroupLookupGroupKeyOutputWithContext(context.Context) GetGroupLookupGroupKeyOutput
+}
+
+type GetGroupLookupGroupKeyArgs struct {
+	// (Required) The ID of the entity.
+	// For Google-managed entities, the id is the email address of an existing group or user.
+	// For external-identity-mapped entities, the id is a string conforming
+	// to the Identity Source's requirements.
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Optional) The namespace in which the entity exists.
+	// If not populated, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If populated, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GetGroupLookupGroupKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupLookupGroupKey)(nil)).Elem()
+}
+
+func (i GetGroupLookupGroupKeyArgs) ToGetGroupLookupGroupKeyOutput() GetGroupLookupGroupKeyOutput {
+	return i.ToGetGroupLookupGroupKeyOutputWithContext(context.Background())
+}
+
+func (i GetGroupLookupGroupKeyArgs) ToGetGroupLookupGroupKeyOutputWithContext(ctx context.Context) GetGroupLookupGroupKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupLookupGroupKeyOutput)
+}
+
+type GetGroupLookupGroupKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGroupLookupGroupKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupLookupGroupKey)(nil)).Elem()
+}
+
+func (o GetGroupLookupGroupKeyOutput) ToGetGroupLookupGroupKeyOutput() GetGroupLookupGroupKeyOutput {
+	return o
+}
+
+func (o GetGroupLookupGroupKeyOutput) ToGetGroupLookupGroupKeyOutputWithContext(ctx context.Context) GetGroupLookupGroupKeyOutput {
+	return o
+}
+
+// (Required) The ID of the entity.
+// For Google-managed entities, the id is the email address of an existing group or user.
+// For external-identity-mapped entities, the id is a string conforming
+// to the Identity Source's requirements.
+func (o GetGroupLookupGroupKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupLookupGroupKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) The namespace in which the entity exists.
+// If not populated, the EntityKey represents a Google-managed entity
+// such as a Google user or a Google Group.
+// If populated, the EntityKey represents an external-identity-mapped group.
+// The namespace must correspond to an identity source created in Admin Console
+// and must be in the form of `identitysources/{identity_source_id}`.
+func (o GetGroupLookupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupLookupGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 type GetGroupMembershipsMembership struct {
@@ -869,12 +999,6 @@ func (i GetGroupMembershipsMembershipArgs) ToGetGroupMembershipsMembershipOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipOutput)
 }
 
-func (i GetGroupMembershipsMembershipArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembership] {
-	return pulumix.Output[GetGroupMembershipsMembership]{
-		OutputState: i.ToGetGroupMembershipsMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipArrayInput is an input type that accepts GetGroupMembershipsMembershipArray and GetGroupMembershipsMembershipArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipArrayInput` via:
 //
@@ -900,12 +1024,6 @@ func (i GetGroupMembershipsMembershipArray) ToGetGroupMembershipsMembershipArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembership] {
-	return pulumix.Output[[]GetGroupMembershipsMembership]{
-		OutputState: i.ToGetGroupMembershipsMembershipArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipOutput) ElementType() reflect.Type {
@@ -918,12 +1036,6 @@ func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutp
 
 func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembership] {
-	return pulumix.Output[GetGroupMembershipsMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipOutput) CreateTime() pulumi.StringOutput {
@@ -980,12 +1092,6 @@ func (o GetGroupMembershipsMembershipArrayOutput) ToGetGroupMembershipsMembershi
 	return o
 }
 
-func (o GetGroupMembershipsMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembership] {
-	return pulumix.Output[[]GetGroupMembershipsMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupMembershipsMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipsMembership {
 		return vs[0].([]GetGroupMembershipsMembership)[vs[1].(int)]
@@ -1039,12 +1145,6 @@ func (i GetGroupMembershipsMembershipMemberKeyArgs) ToGetGroupMembershipsMembers
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipMemberKeyOutput)
 }
 
-func (i GetGroupMembershipsMembershipMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipMemberKeyArrayInput is an input type that accepts GetGroupMembershipsMembershipMemberKeyArray and GetGroupMembershipsMembershipMemberKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipMemberKeyArrayInput` via:
 //
@@ -1070,12 +1170,6 @@ func (i GetGroupMembershipsMembershipMemberKeyArray) ToGetGroupMembershipsMember
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipMemberKeyArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipMemberKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipMemberKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipMemberKeyOutput) ElementType() reflect.Type {
@@ -1088,12 +1182,6 @@ func (o GetGroupMembershipsMembershipMemberKeyOutput) ToGetGroupMembershipsMembe
 
 func (o GetGroupMembershipsMembershipMemberKeyOutput) ToGetGroupMembershipsMembershipMemberKeyOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipMemberKeyOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity. For Google-managed entities, the id is the email address of an existing
@@ -1123,12 +1211,6 @@ func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) ToGetGroupMemberships
 
 func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) ToGetGroupMembershipsMembershipMemberKeyArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipMemberKeyArrayOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipMemberKeyArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipMemberKeyOutput {
@@ -1184,12 +1266,6 @@ func (i GetGroupMembershipsMembershipPreferredMemberKeyArgs) ToGetGroupMembershi
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipPreferredMemberKeyOutput)
 }
 
-func (i GetGroupMembershipsMembershipPreferredMemberKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipPreferredMemberKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipPreferredMemberKeyArrayInput is an input type that accepts GetGroupMembershipsMembershipPreferredMemberKeyArray and GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipPreferredMemberKeyArrayInput` via:
 //
@@ -1215,12 +1291,6 @@ func (i GetGroupMembershipsMembershipPreferredMemberKeyArray) ToGetGroupMembersh
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipPreferredMemberKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: i.ToGetGroupMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipPreferredMemberKeyOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipPreferredMemberKeyOutput) ElementType() reflect.Type {
@@ -1233,12 +1303,6 @@ func (o GetGroupMembershipsMembershipPreferredMemberKeyOutput) ToGetGroupMembers
 
 func (o GetGroupMembershipsMembershipPreferredMemberKeyOutput) ToGetGroupMembershipsMembershipPreferredMemberKeyOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipPreferredMemberKeyOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipPreferredMemberKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity. For Google-managed entities, the id is the email address of an existing
@@ -1268,12 +1332,6 @@ func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) ToGetGroupMe
 
 func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) ToGetGroupMembershipsMembershipPreferredMemberKeyArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipPreferredMemberKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipPreferredMemberKeyOutput {
@@ -1315,12 +1373,6 @@ func (i GetGroupMembershipsMembershipRoleArgs) ToGetGroupMembershipsMembershipRo
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipRoleOutput)
 }
 
-func (i GetGroupMembershipsMembershipRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[GetGroupMembershipsMembershipRole]{
-		OutputState: i.ToGetGroupMembershipsMembershipRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupMembershipsMembershipRoleArrayInput is an input type that accepts GetGroupMembershipsMembershipRoleArray and GetGroupMembershipsMembershipRoleArrayOutput values.
 // You can construct a concrete instance of `GetGroupMembershipsMembershipRoleArrayInput` via:
 //
@@ -1346,12 +1398,6 @@ func (i GetGroupMembershipsMembershipRoleArray) ToGetGroupMembershipsMembershipR
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipRoleArrayOutput)
 }
 
-func (i GetGroupMembershipsMembershipRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipRole]{
-		OutputState: i.ToGetGroupMembershipsMembershipRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupMembershipsMembershipRoleOutput struct{ *pulumi.OutputState }
 
 func (GetGroupMembershipsMembershipRoleOutput) ElementType() reflect.Type {
@@ -1364,12 +1410,6 @@ func (o GetGroupMembershipsMembershipRoleOutput) ToGetGroupMembershipsMembership
 
 func (o GetGroupMembershipsMembershipRoleOutput) ToGetGroupMembershipsMembershipRoleOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleOutput {
 	return o
-}
-
-func (o GetGroupMembershipsMembershipRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[GetGroupMembershipsMembershipRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
@@ -1391,12 +1431,6 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) ToGetGroupMembershipsMembe
 	return o
 }
 
-func (o GetGroupMembershipsMembershipRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupMembershipsMembershipRole] {
-	return pulumix.Output[[]GetGroupMembershipsMembershipRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipsMembershipRole {
 		return vs[0].([]GetGroupMembershipsMembershipRole)[vs[1].(int)]
@@ -1404,7 +1438,8 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupsGroup struct {
-	CreateTime string `pulumi:"createTime"`
+	AdditionalGroupKeys []GetGroupsGroupAdditionalGroupKey `pulumi:"additionalGroupKeys"`
+	CreateTime          string                             `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a Group.
 	Description string `pulumi:"description"`
 	// The display name of the Group.
@@ -1435,7 +1470,8 @@ type GetGroupsGroupInput interface {
 }
 
 type GetGroupsGroupArgs struct {
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	AdditionalGroupKeys GetGroupsGroupAdditionalGroupKeyArrayInput `pulumi:"additionalGroupKeys"`
+	CreateTime          pulumi.StringInput                         `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a Group.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The display name of the Group.
@@ -1466,12 +1502,6 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
 }
 
-func (i GetGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
@@ -1497,12 +1527,6 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-func (i GetGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
@@ -1517,10 +1541,8 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GetGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
+func (o GetGroupsGroupOutput) AdditionalGroupKeys() GetGroupsGroupAdditionalGroupKeyArrayOutput {
+	return o.ApplyT(func(v GetGroupsGroup) []GetGroupsGroupAdditionalGroupKey { return v.AdditionalGroupKeys }).(GetGroupsGroupAdditionalGroupKeyArrayOutput)
 }
 
 func (o GetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
@@ -1581,16 +1603,140 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GetGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
 		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
 	}).(GetGroupsGroupOutput)
+}
+
+type GetGroupsGroupAdditionalGroupKey struct {
+	// The ID of the entity.
+	// For Google-managed entities, the id is the email address of an existing group or user.
+	// For external-identity-mapped entities, the id is a string conforming
+	// to the Identity Source's requirements.
+	Id string `pulumi:"id"`
+	// The namespace in which the entity exists.
+	// If not populated, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If populated, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
+	Namespace string `pulumi:"namespace"`
+}
+
+// GetGroupsGroupAdditionalGroupKeyInput is an input type that accepts GetGroupsGroupAdditionalGroupKeyArgs and GetGroupsGroupAdditionalGroupKeyOutput values.
+// You can construct a concrete instance of `GetGroupsGroupAdditionalGroupKeyInput` via:
+//
+//	GetGroupsGroupAdditionalGroupKeyArgs{...}
+type GetGroupsGroupAdditionalGroupKeyInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupAdditionalGroupKeyOutput() GetGroupsGroupAdditionalGroupKeyOutput
+	ToGetGroupsGroupAdditionalGroupKeyOutputWithContext(context.Context) GetGroupsGroupAdditionalGroupKeyOutput
+}
+
+type GetGroupsGroupAdditionalGroupKeyArgs struct {
+	// The ID of the entity.
+	// For Google-managed entities, the id is the email address of an existing group or user.
+	// For external-identity-mapped entities, the id is a string conforming
+	// to the Identity Source's requirements.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The namespace in which the entity exists.
+	// If not populated, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If populated, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (GetGroupsGroupAdditionalGroupKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (i GetGroupsGroupAdditionalGroupKeyArgs) ToGetGroupsGroupAdditionalGroupKeyOutput() GetGroupsGroupAdditionalGroupKeyOutput {
+	return i.ToGetGroupsGroupAdditionalGroupKeyOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupAdditionalGroupKeyArgs) ToGetGroupsGroupAdditionalGroupKeyOutputWithContext(ctx context.Context) GetGroupsGroupAdditionalGroupKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupAdditionalGroupKeyOutput)
+}
+
+// GetGroupsGroupAdditionalGroupKeyArrayInput is an input type that accepts GetGroupsGroupAdditionalGroupKeyArray and GetGroupsGroupAdditionalGroupKeyArrayOutput values.
+// You can construct a concrete instance of `GetGroupsGroupAdditionalGroupKeyArrayInput` via:
+//
+//	GetGroupsGroupAdditionalGroupKeyArray{ GetGroupsGroupAdditionalGroupKeyArgs{...} }
+type GetGroupsGroupAdditionalGroupKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupAdditionalGroupKeyArrayOutput() GetGroupsGroupAdditionalGroupKeyArrayOutput
+	ToGetGroupsGroupAdditionalGroupKeyArrayOutputWithContext(context.Context) GetGroupsGroupAdditionalGroupKeyArrayOutput
+}
+
+type GetGroupsGroupAdditionalGroupKeyArray []GetGroupsGroupAdditionalGroupKeyInput
+
+func (GetGroupsGroupAdditionalGroupKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (i GetGroupsGroupAdditionalGroupKeyArray) ToGetGroupsGroupAdditionalGroupKeyArrayOutput() GetGroupsGroupAdditionalGroupKeyArrayOutput {
+	return i.ToGetGroupsGroupAdditionalGroupKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupAdditionalGroupKeyArray) ToGetGroupsGroupAdditionalGroupKeyArrayOutputWithContext(ctx context.Context) GetGroupsGroupAdditionalGroupKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupAdditionalGroupKeyArrayOutput)
+}
+
+type GetGroupsGroupAdditionalGroupKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupAdditionalGroupKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (o GetGroupsGroupAdditionalGroupKeyOutput) ToGetGroupsGroupAdditionalGroupKeyOutput() GetGroupsGroupAdditionalGroupKeyOutput {
+	return o
+}
+
+func (o GetGroupsGroupAdditionalGroupKeyOutput) ToGetGroupsGroupAdditionalGroupKeyOutputWithContext(ctx context.Context) GetGroupsGroupAdditionalGroupKeyOutput {
+	return o
+}
+
+// The ID of the entity.
+// For Google-managed entities, the id is the email address of an existing group or user.
+// For external-identity-mapped entities, the id is a string conforming
+// to the Identity Source's requirements.
+func (o GetGroupsGroupAdditionalGroupKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroupAdditionalGroupKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The namespace in which the entity exists.
+// If not populated, the EntityKey represents a Google-managed entity
+// such as a Google user or a Google Group.
+// If populated, the EntityKey represents an external-identity-mapped group.
+// The namespace must correspond to an identity source created in Admin Console
+// and must be in the form of `identitysources/{identity_source_id}`.
+func (o GetGroupsGroupAdditionalGroupKeyOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroupAdditionalGroupKey) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type GetGroupsGroupAdditionalGroupKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupAdditionalGroupKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroupAdditionalGroupKey)(nil)).Elem()
+}
+
+func (o GetGroupsGroupAdditionalGroupKeyArrayOutput) ToGetGroupsGroupAdditionalGroupKeyArrayOutput() GetGroupsGroupAdditionalGroupKeyArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupAdditionalGroupKeyArrayOutput) ToGetGroupsGroupAdditionalGroupKeyArrayOutputWithContext(ctx context.Context) GetGroupsGroupAdditionalGroupKeyArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupAdditionalGroupKeyArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupAdditionalGroupKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroupAdditionalGroupKey {
+		return vs[0].([]GetGroupsGroupAdditionalGroupKey)[vs[1].(int)]
+	}).(GetGroupsGroupAdditionalGroupKeyOutput)
 }
 
 type GetGroupsGroupGroupKey struct {
@@ -1646,12 +1792,6 @@ func (i GetGroupsGroupGroupKeyArgs) ToGetGroupsGroupGroupKeyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupGroupKeyOutput)
 }
 
-func (i GetGroupsGroupGroupKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroupGroupKey] {
-	return pulumix.Output[GetGroupsGroupGroupKey]{
-		OutputState: i.ToGetGroupsGroupGroupKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupsGroupGroupKeyArrayInput is an input type that accepts GetGroupsGroupGroupKeyArray and GetGroupsGroupGroupKeyArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupGroupKeyArrayInput` via:
 //
@@ -1677,12 +1817,6 @@ func (i GetGroupsGroupGroupKeyArray) ToGetGroupsGroupGroupKeyArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupGroupKeyArrayOutput)
 }
 
-func (i GetGroupsGroupGroupKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroupGroupKey] {
-	return pulumix.Output[[]GetGroupsGroupGroupKey]{
-		OutputState: i.ToGetGroupsGroupGroupKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupsGroupGroupKeyOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupGroupKeyOutput) ElementType() reflect.Type {
@@ -1695,12 +1829,6 @@ func (o GetGroupsGroupGroupKeyOutput) ToGetGroupsGroupGroupKeyOutput() GetGroups
 
 func (o GetGroupsGroupGroupKeyOutput) ToGetGroupsGroupGroupKeyOutputWithContext(ctx context.Context) GetGroupsGroupGroupKeyOutput {
 	return o
-}
-
-func (o GetGroupsGroupGroupKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroupGroupKey] {
-	return pulumix.Output[GetGroupsGroupGroupKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the entity.
@@ -1735,12 +1863,6 @@ func (o GetGroupsGroupGroupKeyArrayOutput) ToGetGroupsGroupGroupKeyArrayOutputWi
 	return o
 }
 
-func (o GetGroupsGroupGroupKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroupGroupKey] {
-	return pulumix.Output[[]GetGroupsGroupGroupKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupsGroupGroupKeyArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupGroupKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroupGroupKey {
 		return vs[0].([]GetGroupsGroupGroupKey)[vs[1].(int)]
@@ -1748,6 +1870,8 @@ func (o GetGroupsGroupGroupKeyArrayOutput) Index(i pulumi.IntInput) GetGroupsGro
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupAdditionalGroupKeyInput)(nil)).Elem(), GroupAdditionalGroupKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupAdditionalGroupKeyArrayInput)(nil)).Elem(), GroupAdditionalGroupKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupKeyInput)(nil)).Elem(), GroupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupGroupKeyPtrInput)(nil)).Elem(), GroupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipMemberKeyInput)(nil)).Elem(), GroupMembershipMemberKeyArgs{})
@@ -1756,6 +1880,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipPreferredMemberKeyPtrInput)(nil)).Elem(), GroupMembershipPreferredMemberKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleInput)(nil)).Elem(), GroupMembershipRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleArrayInput)(nil)).Elem(), GroupMembershipRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupLookupGroupKeyInput)(nil)).Elem(), GetGroupLookupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipInput)(nil)).Elem(), GetGroupMembershipsMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipMemberKeyInput)(nil)).Elem(), GetGroupMembershipsMembershipMemberKeyArgs{})
@@ -1766,8 +1891,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupAdditionalGroupKeyInput)(nil)).Elem(), GetGroupsGroupAdditionalGroupKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupAdditionalGroupKeyArrayInput)(nil)).Elem(), GetGroupsGroupAdditionalGroupKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupGroupKeyInput)(nil)).Elem(), GetGroupsGroupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupGroupKeyArrayInput)(nil)).Elem(), GetGroupsGroupGroupKeyArray{})
+	pulumi.RegisterOutputType(GroupAdditionalGroupKeyOutput{})
+	pulumi.RegisterOutputType(GroupAdditionalGroupKeyArrayOutput{})
 	pulumi.RegisterOutputType(GroupGroupKeyOutput{})
 	pulumi.RegisterOutputType(GroupGroupKeyPtrOutput{})
 	pulumi.RegisterOutputType(GroupMembershipMemberKeyOutput{})
@@ -1776,6 +1905,7 @@ func init() {
 	pulumi.RegisterOutputType(GroupMembershipPreferredMemberKeyPtrOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupLookupGroupKeyOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipMemberKeyOutput{})
@@ -1786,6 +1916,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupAdditionalGroupKeyOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupAdditionalGroupKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupGroupKeyOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupGroupKeyArrayOutput{})
 }

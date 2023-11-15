@@ -6,6 +6,7 @@ package com.pulumi.gcp.workstations.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.workstations.inputs.WorkstationClusterConditionArgs;
+import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -101,6 +102,23 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Configuration options for a custom domain.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="domainConfig")
+    private @Nullable Output<WorkstationClusterDomainConfigArgs> domainConfig;
+
+    /**
+     * @return Configuration options for a custom domain.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkstationClusterDomainConfigArgs>> domainConfig() {
+        return Optional.ofNullable(this.domainConfig);
     }
 
     /**
@@ -328,6 +346,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         this.createTime = $.createTime;
         this.degraded = $.degraded;
         this.displayName = $.displayName;
+        this.domainConfig = $.domainConfig;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
@@ -483,6 +502,29 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param domainConfig Configuration options for a custom domain.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainConfig(@Nullable Output<WorkstationClusterDomainConfigArgs> domainConfig) {
+            $.domainConfig = domainConfig;
+            return this;
+        }
+
+        /**
+         * @param domainConfig Configuration options for a custom domain.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainConfig(WorkstationClusterDomainConfigArgs domainConfig) {
+            return domainConfig(Output.of(domainConfig));
         }
 
         /**

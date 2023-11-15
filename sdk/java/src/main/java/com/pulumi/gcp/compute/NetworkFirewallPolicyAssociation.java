@@ -61,7 +61,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkFirewallPolicyAssociation can be imported using any of these accepted formats
+ * NetworkFirewallPolicyAssociation can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}` * `{{project}}/{{firewall_policy}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicyAssociation using one of the formats above. For exampletf import {
+ * 
+ *  id = &#34;projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}&#34;
+ * 
+ *  to = google_compute_network_firewall_policy_association.default }
+ * 
+ * ```sh
+ *  $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}

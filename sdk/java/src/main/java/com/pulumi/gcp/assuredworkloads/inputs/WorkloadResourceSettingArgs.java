@@ -16,14 +16,29 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
     public static final WorkloadResourceSettingArgs Empty = new WorkloadResourceSettingArgs();
 
     /**
-     * Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+     * User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+     * @return Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -48,6 +63,7 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
     private WorkloadResourceSettingArgs() {}
 
     private WorkloadResourceSettingArgs(WorkloadResourceSettingArgs $) {
+        this.displayName = $.displayName;
         this.resourceId = $.resourceId;
         this.resourceType = $.resourceType;
     }
@@ -71,7 +87,28 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         * @param displayName User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
          * 
          * @return builder
          * 
@@ -82,7 +119,7 @@ public final class WorkloadResourceSettingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
+         * @param resourceId Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don&#39;t set this value as folder_id is assigned by Google.
          * 
          * @return builder
          * 
